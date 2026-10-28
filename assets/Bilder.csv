@@ -1,0 +1,135 @@
+Datei;Motiv;Verwendung;Grösse
+hase_begleiter.png;Freundlicher Hase (Begleiter), ganzer Körper, winkend;Begleiter überall;1024x1024
+avatar_hase.png;Hase, Kopf/Brustbild, rund komponiert;Avatar;1024x1024
+avatar_fuchs.png;Fuchs, Kopf/Brustbild, rund komponiert;Avatar;1024x1024
+avatar_igel.png;Igel, Kopf/Brustbild, rund komponiert;Avatar;1024x1024
+avatar_eule.png;Eule, Kopf/Brustbild, rund komponiert;Avatar;1024x1024
+avatar_schildkroete.png;Schildkröte, Kopf/Brustbild, rund komponiert;Avatar;1024x1024
+avatar_reh.png;Reh, Kopf/Brustbild, rund komponiert;Avatar;1024x1024
+spiel_tracing.png;grosse Ziffer 3 mit Stift;Hub-Kachel;1024x1024
+spiel_appleMath.png;Äpfel mit Plus-Zeichen;Hub-Kachel;1024x1024
+spiel_memory.png;zwei Karten mit Fuchs;Hub-Kachel;1024x1024
+spiel_snake.png;freundliche grüne Schlange mit Erdbeere;Hub-Kachel;1024x1024
+spiel_counting.png;Marienkäfer auf Wiese;Hub-Kachel;1024x1024
+spiel_shapes.png;Haus mit Kreis, Dreieck, Quadrat;Hub-Kachel;1024x1024
+spiel_puzzle.png;Bärenbild als Puzzle;Hub-Kachel;1024x1024
+spiel_pattern.png;kleiner Zug mit Blatt/Blume;Hub-Kachel;1024x1024
+spiel_animalSounds.png;Kuh mit Schallwellen;Hub-Kachel;1024x1024
+spiel_naturePairs.png;Eichhörnchen mit Nuss;Hub-Kachel;1024x1024
+spiel_sorting.png;Korb mit Blättern;Hub-Kachel;1024x1024
+spiel_atelier.png;Biene, Pinsel und Farben;Hub-Kachel;1024x1024
+memory_fuchs.png;Fuchs;Memory-Karte;1024x1024
+memory_reh.png;Reh;Memory-Karte;1024x1024
+memory_igel.png;Igel;Memory-Karte;1024x1024
+memory_eichhoernchen.png;Eichhörnchen;Memory-Karte;1024x1024
+memory_eule.png;Eule;Memory-Karte;1024x1024
+memory_wildschwein.png;Wildschwein;Memory-Karte;1024x1024
+memory_baer.png;Bär;Memory-Karte;1024x1024
+memory_wolf.png;Wolf;Memory-Karte;1024x1024
+memory_marienkaefer.png;Marienkäfer;Memory-Karte;1024x1024
+memory_schmetterling.png;Schmetterling;Memory-Karte;1024x1024
+memory_biene.png;Biene;Memory-Karte;1024x1024
+memory_schnecke.png;Schnecke;Memory-Karte;1024x1024
+memory_raupe.png;Raupe;Memory-Karte;1024x1024
+memory_hase.png;Hase;Memory-Karte;1024x1024
+memory_frosch.png;Frosch;Memory-Karte;1024x1024
+memory_grashuepfer.png;Grashüpfer;Memory-Karte;1024x1024
+memory_sonnenblume.png;Sonnenblume;Memory-Karte;1024x1024
+memory_tulpe.png;Tulpe;Memory-Karte;1024x1024
+memory_pilz.png;Pilz;Memory-Karte;1024x1024
+memory_tanne.png;Tanne;Memory-Karte;1024x1024
+memory_ahornblatt.png;Ahornblatt;Memory-Karte;1024x1024
+memory_kastanie.png;Kastanie;Memory-Karte;1024x1024
+memory_regenbogen.png;Regenbogen;Memory-Karte;1024x1024
+memory_kirschbluete.png;Kirschblüte;Memory-Karte;1024x1024
+tier_kuh.png;Kuh;Tierstimmen (auch als Schatten);1024x1024
+tier_schaf.png;Schaf;Tierstimmen (auch als Schatten);1024x1024
+tier_hahn.png;Hahn;Tierstimmen (auch als Schatten);1024x1024
+tier_hund.png;Hund;Tierstimmen (auch als Schatten);1024x1024
+tier_katze.png;Katze;Tierstimmen (auch als Schatten);1024x1024
+tier_frosch.png;Frosch;Tierstimmen (auch als Schatten);1024x1024
+tier_schwein.png;Schwein;Tierstimmen (auch als Schatten);1024x1024
+tier_esel.png;Esel;Tierstimmen (auch als Schatten);1024x1024
+muster_blatt.png;Blatt;Musterzug;1024x1024
+muster_blume.png;Blume;Musterzug;1024x1024
+muster_pilz.png;Pilz;Musterzug;1024x1024
+muster_kastanie.png;Kastanie;Musterzug;1024x1024
+muster_kaefer.png;Käfer;Musterzug;1024x1024
+muster_schnecke.png;Schnecke;Musterzug;1024x1024
+muster_tanne.png;Tanne;Musterzug;1024x1024
+muster_apfel.png;Apfel;Musterzug;1024x1024
+muster_schmetterling.png;Schmetterling;Musterzug;1024x1024
+muster_biene.png;Biene;Musterzug;1024x1024
+muster_stein.png;Stein;Musterzug;1024x1024
+muster_erdbeere.png;Erdbeere;Musterzug;1024x1024
+motiv_apfel.png;Apfel (einzeln);Rechnen/Zählen;512x512
+motiv_karotte.png;Karotte (einzeln);Rechnen/Zählen;512x512
+motiv_kaefer.png;Käfer (einzeln);Rechnen/Zählen;512x512
+motiv_birne.png;Birne (einzeln);Rechnen/Zählen;512x512
+motiv_erdbeere.png;Erdbeere (einzeln);Rechnen/Zählen;512x512
+motiv_blume.png;Blume (einzeln);Rechnen/Zählen;512x512
+motiv_pilz.png;Pilz (einzeln);Rechnen/Zählen;512x512
+motiv_eichel.png;Eichel (einzeln);Rechnen/Zählen;512x512
+natur_apfel.png;Apfel;Naturpaare;512x512
+natur_apfelbaum.png;Apfelbaum;Naturpaare;512x512
+natur_banane.png;Banane;Naturpaare;512x512
+natur_bananenstaude.png;Bananenstaude;Naturpaare;512x512
+natur_bauernhof.png;Bauernhof;Naturpaare;512x512
+natur_baum.png;Baum;Naturpaare;512x512
+natur_biene.png;Biene;Naturpaare;512x512
+natur_birne.png;Birne;Naturpaare;512x512
+natur_blatt.png;Blatt;Naturpaare;512x512
+natur_bluete.png;Blüte;Naturpaare;512x512
+natur_eichhoernchen.png;Eichhörnchen;Naturpaare;512x512
+natur_eis.png;Eis;Naturpaare;512x512
+natur_erdbeere.png;Erdbeere;Naturpaare;512x512
+natur_erdbeerpflanze.png;Erdbeerpflanze;Naturpaare;512x512
+natur_fisch.png;Fisch;Naturpaare;512x512
+natur_fliege.png;Fliege;Naturpaare;512x512
+natur_frosch.png;Frosch;Naturpaare;512x512
+natur_gras.png;Gras;Naturpaare;512x512
+natur_hase.png;Hase;Naturpaare;512x512
+natur_heu.png;Heu;Naturpaare;512x512
+natur_igel.png;Igel;Naturpaare;512x512
+natur_kamel.png;Kamel;Naturpaare;512x512
+natur_karotte.png;Karotte;Naturpaare;512x512
+natur_kastanie.png;Kastanie;Naturpaare;512x512
+natur_kastanienbaum.png;Kastanienbaum;Naturpaare;512x512
+natur_kirschbaum.png;Kirschbaum;Naturpaare;512x512
+natur_kirschbluete.png;Kirschblüte;Naturpaare;512x512
+natur_kirschen.png;Kirschen;Naturpaare;512x512
+natur_knochen.png;Knochen;Naturpaare;512x512
+natur_kuh.png;Kuh;Naturpaare;512x512
+natur_kaefer.png;Käfer;Naturpaare;512x512
+natur_meer.png;Meer;Naturpaare;512x512
+natur_muecke.png;Mücke;Naturpaare;512x512
+natur_nuesse.png;Nüsse;Naturpaare;512x512
+natur_pilz.png;Pilz;Naturpaare;512x512
+natur_pinguin.png;Pinguin;Naturpaare;512x512
+natur_salat.png;Salat;Naturpaare;512x512
+natur_see.png;See;Naturpaare;512x512
+natur_sonnenblumenkerne.png;Sonnenblumenkerne;Naturpaare;512x512
+natur_stein.png;Stein;Naturpaare;512x512
+natur_teich.png;Teich;Naturpaare;512x512
+natur_trauben.png;Trauben;Naturpaare;512x512
+natur_wald.png;Wald;Naturpaare;512x512
+natur_wasser.png;Wasser;Naturpaare;512x512
+natur_weide.png;Weide;Naturpaare;512x512
+natur_weinrebe.png;Weinrebe;Naturpaare;512x512
+natur_wurm.png;Wurm;Naturpaare;512x512
+natur_wueste.png;Wüste;Naturpaare;512x512
+puzzle_fuchs.png;Fuchs in Landschaft (Wald), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_eule.png;Eule in Landschaft (Wald), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_baer.png;Bär in Landschaft (Wald), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_hase.png;Hase in Landschaft (Wiese), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_schmetterling.png;Schmetterling in Landschaft (Wiese), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_marienkaefer.png;Marienkäfer in Landschaft (Wiese), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_frosch.png;Frosch in Landschaft (Wasser), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_ente.png;Ente in Landschaft (Wasser), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_fisch.png;Fisch in Landschaft (Wasser), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_kuh.png;Kuh in Landschaft (Bauernhof), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_schwein.png;Schwein in Landschaft (Bauernhof), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+puzzle_hahn.png;Hahn in Landschaft (Bauernhof), ganze Szene, ruhiger Hintergrund;Tierpuzzle;1800x1200 (3:2)
+einfuehrung_schmetterling.png;Schmetterling;Einführung;512x512
+einfuehrung_blume.png;grosse Blume;Einführung;512x512
+korb.png;Weidenkorb;Einführung;512x512

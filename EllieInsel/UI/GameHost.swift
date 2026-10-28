@@ -190,7 +190,7 @@ final class GameHost {
         awaitingNext = false
         feedback = nil
         audio.effect(.complete)
-        audio.say("Geschafft! \(summary.text)")
+        audio.say("Geschafft! Das hast du toll gemacht.")
         app.logRound(
             game: game,
             difficulty: game == .atelier && summary.practiced.contains("frei") ? nil : difficulty,

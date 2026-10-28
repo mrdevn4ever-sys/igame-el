@@ -133,7 +133,7 @@ struct PatternGameView: View {
                         AnswerCard(state: model.state(for: m), minSize: 130) {
                             model.choose(m)
                         } content: {
-                            Text(m.emoji).font(.system(size: 76))
+                            Pic("muster_" + m.name.voiceSlug, m.emoji, size: 76)
                         }
                         .pulseHighlight(model.highlightAnswer && m == task.answer)
                         .accessibilityLabel(m.name)
@@ -158,7 +158,7 @@ struct PatternGameView: View {
                     .font(Theme.rounded(size * 0.5, .heavy))
                     .foregroundStyle(Theme.darkGreen)
             } else {
-                Text(motif.emoji).font(.system(size: size * 0.55))
+                Pic("muster_" + motif.name.voiceSlug, motif.emoji, size: size * 0.55)
             }
         }
         .frame(width: size, height: size)
@@ -285,7 +285,7 @@ final class PatternModel {
                     let names = task.sequence.enumerated()
                         .filter { $0.offset / task.unitLength == g && $0.offset != task.gap }
                         .map(\.element.name)
-                    self.host.audio.enqueue(names.joined(separator: ", "))
+                    for n in names { self.host.audio.enqueue(n) }
                 }
                 try? await Task.sleep(nanoseconds: 1_300_000_000)
             }

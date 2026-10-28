@@ -40,8 +40,7 @@ struct HubView: View {
 
     private var header: some View {
         HStack(spacing: 14) {
-            Text(app.data.profile.avatar.emoji)
-                .font(.system(size: 46))
+            Pic(app.data.profile.avatar.asset, app.data.profile.avatar.emoji, size: 46)
                 .frame(width: 72, height: 72)
                 .background(Circle().fill(.white))
             Text(app.data.profile.name.isEmpty ? "Hallo!" : app.data.profile.name)
@@ -191,8 +190,7 @@ private struct GameTile: View {
             VStack(spacing: 8) {
                 Spacer(minLength: 0)
                 ZStack(alignment: .bottomTrailing) {
-                    Text(game.emoji)
-                        .font(.system(size: 76))
+                    Pic("spiel_\(game.rawValue)", game.emoji, size: 76)
                     Text(game.tileDecoration)
                         .font(Theme.rounded(26, .heavy))
                         .foregroundStyle(Theme.darkGreen)

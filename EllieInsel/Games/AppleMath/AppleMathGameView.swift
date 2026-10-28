@@ -46,14 +46,14 @@ enum MathTaskFactory {
     /// 24 redaktionell geprüfte Beispielaufgaben (Einträge: a, b, Operation, Motiv, Stufe).
     static let curated: [(Int, Int, MathTask.Op, CountMotif, Difficulty)] = [
         (2, 1, .plus, .apfel, .entdecken), (1, 1, .plus, .karotte, .entdecken), (2, 2, .plus, .kaefer, .entdecken),
-        (3, 1, .plus, .erdbeere, .entdecken), (1, 3, .plus, .birne, .entdecken), (3, 2, .plus, .apfel, .entdecken),
-        (4, 1, .plus, .blume, .entdecken), (2, 3, .plus, .pilz, .entdecken),
+        (3, 1, .plus, .karotte, .entdecken), (1, 3, .plus, .apfel, .entdecken), (3, 2, .plus, .apfel, .entdecken),
+        (4, 1, .plus, .kaefer, .entdecken), (2, 3, .plus, .karotte, .entdecken),
         (4, 3, .plus, .apfel, .ueben), (5, 2, .plus, .karotte, .ueben), (6, 3, .plus, .kaefer, .ueben),
-        (5, 5, .plus, .erdbeere, .ueben), (5, 2, .minus, .apfel, .ueben), (7, 3, .minus, .birne, .ueben),
-        (6, 1, .minus, .blume, .ueben), (8, 4, .minus, .eichel, .ueben),
+        (5, 5, .plus, .karotte, .ueben), (5, 2, .minus, .apfel, .ueben), (7, 3, .minus, .apfel, .ueben),
+        (6, 1, .minus, .kaefer, .ueben), (8, 4, .minus, .karotte, .ueben),
         (3, 4, .plus, .kaefer, .knobeln), (6, 2, .minus, .kaefer, .knobeln), (4, 4, .plus, .apfel, .knobeln),
-        (9, 3, .minus, .apfel, .knobeln), (7, 2, .plus, .erdbeere, .knobeln), (10, 4, .minus, .karotte, .knobeln),
-        (5, 3, .plus, .birne, .knobeln), (8, 5, .minus, .kaefer, .knobeln)
+        (9, 3, .minus, .apfel, .knobeln), (7, 2, .plus, .karotte, .knobeln), (10, 4, .minus, .karotte, .knobeln),
+        (5, 3, .plus, .apfel, .knobeln), (8, 5, .minus, .kaefer, .knobeln)
     ]
 
     static func round(difficulty: Difficulty, operations: Set<String>, count: Int) -> [MathTask] {
@@ -79,10 +79,13 @@ enum MathTaskFactory {
         return tasks
     }
 
+    /// Motive beim Rechnen: Äpfel, Karotten und Käfer.
+    static let motifs: [CountMotif] = [.apfel, .karotte, .kaefer]
+
     static func generate(difficulty: Difficulty, allowPlus: Bool, allowMinus: Bool) -> (Int, Int, MathTask.Op, CountMotif) {
         let maxTotal = difficulty == .entdecken ? 5 : 10
         let useMinus = allowMinus && (!allowPlus || Bool.random())
-        let motif = CountMotif.allCases.randomElement()!
+        let motif = motifs.randomElement()!
         if useMinus {
             let a = Int.random(in: 2...maxTotal)
             let b = Int.random(in: 1...(a - 1))
@@ -179,7 +182,7 @@ struct AppleMathGameView: View {
         let columns = Array(repeating: GridItem(.fixed(size + 10), spacing: 6), count: min(max(count, 1), 5))
         return LazyVGrid(columns: columns, spacing: 8) {
             ForEach(0..<count, id: \.self) { i in
-                CountableItem(emoji: motif.emoji, size: size, marked: model.marked.contains(offset + i), number: model.showNumbers ? offset + i + 1 : nil)
+                CountableItem(emoji: motif.emoji, size: size, marked: model.marked.contains(offset + i), number: model.showNumbers ? offset + i + 1 : nil, asset: motif.asset)
             }
         }
         .padding(18)
@@ -191,7 +194,7 @@ struct AppleMathGameView: View {
         return LazyVGrid(columns: columns, spacing: 8) {
             ForEach(0..<task.a, id: \.self) { i in
                 let removed = i >= task.answer
-                CountableItem(emoji: task.motif.emoji, size: size, marked: model.marked.contains(i), number: model.showNumbers && !removed ? i + 1 : nil)
+                CountableItem(emoji: task.motif.emoji, size: size, marked: model.marked.contains(i), number: model.showNumbers && !removed ? i + 1 : nil, asset: task.motif.asset)
                     .opacity(removed && model.takenAway ? 0.18 : 1)
                     .offset(y: removed && model.takenAway ? -26 : 0)
                     .overlay {
@@ -215,11 +218,11 @@ struct CountableItem: View {
     let size: CGFloat
     var marked: Bool
     var number: Int?
+    var asset: String?
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Text(emoji)
-                .font(.system(size: size))
+            Pic(asset ?? "", emoji, size: size)
                 .padding(4)
                 .background(Circle().fill(marked ? Theme.highlight.opacity(0.45) : .clear))
             if let number, marked {
@@ -323,8 +326,7 @@ final class AppleMathModel {
             solved = true
             takenAway = true
             countTask?.cancel()
-            let noun = task.answer == 1 ? task.motif.singular : task.motif.plural
-            host.taskSolved("Richtig, \(NumberWords.word(task.answer)) \(noun).")
+            host.taskSolved("Richtig, \(task.motif.phrase(task.answer)).")
         } else {
             if !tried.contains(value) { tried.append(value) }
             save()
@@ -371,7 +373,7 @@ final class AppleMathModel {
             if highlightAfter {
                 await self.host.audio.waitUntilQuiet()
                 self.highlightAnswer = true
-                self.host.showBunny("Es sind \(NumberWords.word(total)). Tippe auf die \(total).")
+                self.host.showBunny("Wir haben \(NumberWords.word(total)) gezählt. Tippe auf die \(total).")
             }
         }
     }

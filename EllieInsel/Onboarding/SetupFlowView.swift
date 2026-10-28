@@ -129,7 +129,7 @@ struct AvatarPicker: View {
                     selection = a
                 } label: {
                     VStack(spacing: 4) {
-                        Text(a.emoji).font(.system(size: 60))
+                        Pic(a.asset, a.emoji, size: 60)
                         Text(a.name).font(Theme.rounded(17, .semibold)).foregroundStyle(Theme.darkGreen)
                     }
                     .frame(width: 120, height: 120)

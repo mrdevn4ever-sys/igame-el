@@ -62,6 +62,9 @@ enum CountMotif: String, Codable, CaseIterable {
         return "\(NumberWords.word(n)) \(plural)"
     }
 
+    /// Bilddatei (optional), z. B. `motiv_apfel.png`.
+    var asset: String { "motiv_\(rawValue)" }
+
     /// Pronomen für «Wie viele …?»
     var isAnimal: Bool { self == .kaefer }
 }

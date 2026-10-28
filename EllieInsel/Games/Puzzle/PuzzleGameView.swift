@@ -62,6 +62,11 @@ enum PuzzleImageCache {
 
     static func image(for scene: PuzzleScene) -> UIImage? {
         if let img = cache[scene.name] { return img }
+        // Mitgelieferte Illustration (z. B. `puzzle_fuchs.png`, Seitenverhältnis 3:2) bevorzugen.
+        if let provided = UIImage(named: "puzzle_" + scene.name.voiceSlug) {
+            cache[scene.name] = provided
+            return provided
+        }
         let renderer = ImageRenderer(content: PuzzleSceneView(scene: scene))
         renderer.scale = 2
         guard let img = renderer.uiImage else { return nil }

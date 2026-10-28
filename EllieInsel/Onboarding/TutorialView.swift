@@ -67,11 +67,9 @@ struct TutorialView: View {
 
     private func butterflyStage(_ size: CGSize) -> some View {
         ZStack {
-            Text("🌸")
-                .font(.system(size: 220))
+            Pic("einfuehrung_blume", "🌸", size: 220)
                 .position(x: size.width / 2, y: size.height * 0.55)
-            Text("🦋")
-                .font(.system(size: 130))
+            Pic("einfuehrung_schmetterling", "🦋", size: 130)
                 .rotationEffect(.degrees(butterflyFlown ? 25 : 0))
                 .position(
                     x: size.width / 2 + (butterflyFlown ? size.width * 0.3 : 0),
@@ -95,8 +93,7 @@ struct TutorialView: View {
         let applePos = CGPoint(x: size.width * 0.3, y: size.height * 0.55)
         let basketPos = CGPoint(x: size.width * 0.7, y: size.height * 0.55)
         return ZStack {
-            Text("🧺")
-                .font(.system(size: 180))
+            Pic("korb", "🧺", size: 180)
                 .padding(20)
                 .background(Circle().fill(appleSelected ? Theme.highlight.opacity(0.35) : .clear))
                 .position(basketPos)
@@ -104,8 +101,7 @@ struct TutorialView: View {
                     if appleSelected { placeApple() }
                 }
             if !appleInBasket {
-                Text("🍎")
-                    .font(.system(size: 120))
+                Pic("motiv_apfel", "🍎", size: 120)
                     .padding(10)
                     .background(Circle().stroke(Theme.highlight, lineWidth: appleSelected ? 6 : 0))
                     .position(applePos)
@@ -128,8 +124,7 @@ struct TutorialView: View {
                         if appleSelected { app.audio.say("Jetzt tippe den Korb an.") }
                     })
             } else {
-                Text("🍎")
-                    .font(.system(size: 80))
+                Pic("motiv_apfel", "🍎", size: 80)
                     .position(x: basketPos.x, y: basketPos.y - 40)
             }
         }

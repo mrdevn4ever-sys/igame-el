@@ -31,7 +31,11 @@ Alternativ lässt sich das Projekt mit [XcodeGen](https://github.com/yonaskolb/X
 Spielstände (konkrete Aufgaben, Antwortreihenfolge, bestätigte Zeichenabschnitte, Kartenpositionen …) werden
 laufend gespeichert und beim nächsten Öffnen exakt fortgesetzt. Snake wartet nach einer Unterbrechung auf einen bewussten Start.
 
-## Stimme und Tierlaute
+## Stimme, Tierlaute und Bilder
+
+Alle optionalen Assets (Dateinamen, Ordner, Formate) stehen in [ASSETS.md](ASSETS.md).
+
+### Kurzfassung
 
 Die App spricht zunächst mit der besten installierten deutschen Systemstimme
 (bessere Stimmen: *Einstellungen › Bedienungshilfen › Gesprochene Inhalte › Stimmen › Deutsch*).

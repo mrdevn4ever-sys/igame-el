@@ -116,7 +116,8 @@ final class AudioManager: NSObject {
     /// Hängt einen Satz an (z. B. Zahlwörter beim Zählen), damit sie geordnet nacheinander erklingen.
     func enqueue(_ text: String) {
         guard settings.voiceAudible, !text.isEmpty else { return }
-        queue.append(text)
+        // Aufnahmen liegen satzweise vor; jeder Satz wird einzeln gesucht.
+        queue.append(contentsOf: Self.sentences(text))
         if worker == nil {
             let gen = generation
             worker = Task { @MainActor [weak self] in
@@ -182,6 +183,24 @@ final class AudioManager: NSObject {
         utterance.volume = Float(settings.voiceVolume)
         utterance.postUtteranceDelay = 0.05
         synth.speak(utterance)
+    }
+
+    /// Zerlegt einen Text an Satzenden (. ! ? gefolgt von einem Leerzeichen).
+    static func sentences(_ text: String) -> [String] {
+        var result: [String] = []
+        var current = ""
+        let chars = Array(text)
+        for (i, ch) in chars.enumerated() {
+            current.append(ch)
+            if ".!?".contains(ch), i + 1 < chars.count, chars[i + 1] == " " {
+                let t = current.trimmingCharacters(in: .whitespaces)
+                if !t.isEmpty { result.append(t) }
+                current = ""
+            }
+        }
+        let rest = current.trimmingCharacters(in: .whitespaces)
+        if !rest.isEmpty { result.append(rest) }
+        return result
     }
 
     static func bundledVoiceURL(for text: String) -> URL? {

@@ -64,9 +64,7 @@ struct BunnyView: View {
 
     var body: some View {
         HStack(alignment: .bottom, spacing: 8) {
-            Text("🐰")
-                .font(.system(size: size))
-                .accessibilityHidden(true)
+            Pic("hase_begleiter", "🐰", size: size)
             if let message {
                 Text(message)
                     .font(Theme.rounded(22, .semibold))
@@ -220,5 +218,32 @@ struct EmojiView: View {
             .font(.system(size: size))
             .minimumScaleFactor(0.5)
             .accessibilityHidden(true)
+    }
+}
+
+/// Zeigt eine mitgelieferte Illustration (PNG im Ordner `EllieInsel/Images/`), sonst das Emoji.
+struct Pic: View {
+    let asset: String
+    let emoji: String
+    var size: CGFloat
+
+    init(_ asset: String, _ emoji: String, size: CGFloat) {
+        self.asset = asset
+        self.emoji = emoji
+        self.size = size
+    }
+
+    var body: some View {
+        if !asset.isEmpty, let image = UIImage(named: asset) {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .frame(width: size * 1.3, height: size * 1.3)
+                .accessibilityHidden(true)
+        } else {
+            Text(emoji)
+                .font(.system(size: size))
+                .accessibilityHidden(true)
+        }
     }
 }

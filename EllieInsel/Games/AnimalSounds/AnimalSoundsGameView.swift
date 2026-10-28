@@ -113,8 +113,7 @@ struct AnimalSoundsGameView: View {
                         Text("Bildermodus: Wessen Schatten ist das?")
                             .font(Theme.rounded(22, .semibold))
                             .foregroundStyle(Theme.darkGreen)
-                        Text(task.animal.emoji)
-                            .font(.system(size: 150))
+                        Pic("tier_\(task.animal.rawValue)", task.animal.emoji, size: 150)
                             .colorMultiply(.black)
                             .opacity(0.85)
                     }
@@ -130,7 +129,7 @@ struct AnimalSoundsGameView: View {
                             model.choose(a)
                         } content: {
                             VStack(spacing: 4) {
-                                Text(a.emoji).font(.system(size: 90))
+                                Pic("tier_\(a.rawValue)", a.emoji, size: 90)
                                 if model.showNames {
                                     Text(a.name).font(Theme.rounded(20, .semibold)).foregroundStyle(Theme.darkGreen)
                                 }

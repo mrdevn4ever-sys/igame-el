@@ -87,6 +87,8 @@ enum Avatar: String, Codable, CaseIterable, Identifiable {
         }
     }
 
+    var asset: String { "avatar_\(rawValue)" }
+
     var name: String {
         switch self {
         case .hase: return "Hase"

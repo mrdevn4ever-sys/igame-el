@@ -47,7 +47,11 @@ extension String {
             }
         }
         while out.hasSuffix("_") { out.removeLast() }
-        return String(out.prefix(80))
+        if out.count > 80 {
+            // Lange Sätze: gekürzt plus Prüfsumme, damit sich keine Namen überschneiden.
+            return String(out.prefix(60)) + "_" + String(String(out.stableHash, radix: 16).prefix(8))
+        }
+        return out
     }
 }
 

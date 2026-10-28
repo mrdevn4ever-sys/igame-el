@@ -119,7 +119,7 @@ struct CountingGameView: View {
                 ForEach(0..<task.count, id: \.self) { i in
                     let p = task.positions[i]
                     let order = model.counted.firstIndex(of: i)
-                    CountTarget(emoji: task.motif.emoji, number: order.map { $0 + 1 }, hinted: model.hintIndex == i)
+                    CountTarget(emoji: task.motif.emoji, asset: task.motif.asset, number: order.map { $0 + 1 }, hinted: model.hintIndex == i)
                         .position(x: p.x * geo.size.width, y: p.y * geo.size.height)
                         .onTapGesture { model.countItem(i) }
                 }
@@ -158,8 +158,7 @@ struct CountingGameView: View {
                     ForEach(0..<task.available, id: \.self) { i in
                         if !model.basket.contains(i) {
                             let p = task.positions[i]
-                            Text(task.motif.emoji)
-                                .font(.system(size: 64))
+                            Pic(task.motif.asset, task.motif.emoji, size: 64)
                                 .frame(width: 96, height: 96)
                                 .contentShape(Rectangle())
                                 .position(x: p.x * geo.size.width, y: p.y * geo.size.height)
@@ -177,7 +176,7 @@ struct CountingGameView: View {
                         LazyVGrid(columns: Array(repeating: GridItem(.fixed(64)), count: 4), spacing: 8) {
                             ForEach(Array(model.basket.enumerated()), id: \.element) { pos, i in
                                 ZStack(alignment: .topTrailing) {
-                                    Text(task.motif.emoji).font(.system(size: 52))
+                                    Pic(task.motif.asset, task.motif.emoji, size: 52)
                                     Text("\(pos + 1)")
                                         .font(Theme.rounded(16, .heavy))
                                         .foregroundStyle(.white)
@@ -209,13 +208,13 @@ struct CountingGameView: View {
 
 struct CountTarget: View {
     let emoji: String
+    var asset: String = ""
     let number: Int?
     var hinted: Bool
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Text(emoji)
-                .font(.system(size: 64))
+            Pic(asset, emoji, size: 64)
                 .frame(width: 100, height: 100)
                 .background(Circle().fill(number != nil ? Theme.highlight.opacity(0.4) : .white.opacity(0.001)))
                 .overlay(Circle().stroke(Theme.highlight, lineWidth: hinted ? 6 : 0))
@@ -345,8 +344,7 @@ final class CountingModel {
         guard let task, !solved else { return }
         if v == task.count {
             solved = true
-            let noun = task.count == 1 ? task.motif.singular : task.motif.plural
-            host.taskSolved("Genau, \(NumberWords.word(task.count)) \(noun). Du hast alle gezählt.")
+            host.taskSolved("Genau, \(task.motif.phrase(task.count)). Du hast alle gezählt.")
         } else {
             if !tried.contains(v) { tried.append(v) }
             save()
@@ -411,7 +409,7 @@ final class CountingModel {
                 case 2: host.showBunny("Du hast bis \(NumberWords.word(task.count)) gezählt.")
                 default:
                     highlightAnswer = true
-                    host.showBunny("Es sind \(NumberWords.word(task.count)). Tippe auf die \(task.count).")
+                    host.showBunny("Wir haben \(NumberWords.word(task.count)) gezählt. Tippe auf die \(task.count).")
                 }
             }
         case .giveMe:
@@ -430,7 +428,7 @@ final class CountingModel {
                 }
                 highlightBasket = true
                 save()
-                host.showBunny("Jetzt sind es \(NumberWords.word(task.count)). Tippe auf «Fertig».")
+                host.showBunny("Jetzt stimmt es. Tippe auf «Fertig».")
             }
         }
     }

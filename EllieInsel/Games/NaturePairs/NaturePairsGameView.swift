@@ -139,8 +139,7 @@ struct NaturePairsGameView: View {
             if let task = model.task {
                 HStack(spacing: 30) {
                     VStack(spacing: 8) {
-                        Text(task.question.subject.emoji)
-                            .font(.system(size: 130))
+                        Pic("natur_" + task.question.subject.name.voiceSlug, task.question.subject.emoji, size: 130)
                         Text(task.question.subject.name)
                             .font(Theme.rounded(28, .bold))
                             .foregroundStyle(Theme.darkGreen)
@@ -159,7 +158,7 @@ struct NaturePairsGameView: View {
                             .font(.system(size: 50, weight: .bold))
                             .foregroundStyle(Theme.success)
                         VStack(spacing: 8) {
-                            Text(chosen.emoji).font(.system(size: 110))
+                            Pic("natur_" + chosen.name.voiceSlug, chosen.emoji, size: 110)
                             Text(chosen.name).font(Theme.rounded(24, .bold)).foregroundStyle(Theme.darkGreen)
                         }
                         .padding(30)
@@ -184,7 +183,7 @@ struct NaturePairsGameView: View {
                             model.choose(item)
                         } content: {
                             VStack(spacing: 4) {
-                                Text(item.emoji).font(.system(size: 70))
+                                Pic("natur_" + item.name.voiceSlug, item.emoji, size: 70)
                                 Text(item.name)
                                     .font(Theme.rounded(17, .semibold))
                                     .foregroundStyle(Theme.darkGreen)

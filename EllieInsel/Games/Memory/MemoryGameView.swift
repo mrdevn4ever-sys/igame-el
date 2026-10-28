@@ -96,8 +96,7 @@ struct MemoryCardView: View {
                 .fill(shown ? Color.white : Theme.lightBlue)
                 .shadow(color: .black.opacity(0.14), radius: 5, y: 3)
             if shown {
-                Text(card.motif.emoji)
-                    .font(.system(size: size * 0.55))
+                Pic("memory_" + card.motif.name.voiceSlug, card.motif.emoji, size: size * 0.55)
                     .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
             } else {
                 Text("🍃")
