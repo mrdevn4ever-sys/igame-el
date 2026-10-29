@@ -189,14 +189,25 @@ private struct GameTile: View {
         } label: {
             VStack(spacing: 8) {
                 Spacer(minLength: 0)
-                ZStack(alignment: .bottomTrailing) {
-                    Pic("spiel_\(game.rawValue)", game.emoji, size: 76)
-                    Text(game.tileDecoration)
-                        .font(Theme.rounded(26, .heavy))
-                        .foregroundStyle(Theme.darkGreen)
-                        .padding(.horizontal, 8)
-                        .background(Capsule().fill(.white.opacity(0.85)))
-                        .offset(x: 30, y: 6)
+                if let image = UIImage(named: "spiel_\(game.rawValue)") {
+                    // Illustration füllt die Kachel; das Zusatzzeichen entfällt.
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .padding(.horizontal, 12)
+                        .padding(.top, 10)
+                        .accessibilityHidden(true)
+                } else {
+                    ZStack(alignment: .bottomTrailing) {
+                        Text(game.emoji)
+                            .font(.system(size: 76))
+                        Text(game.tileDecoration)
+                            .font(Theme.rounded(26, .heavy))
+                            .foregroundStyle(Theme.darkGreen)
+                            .padding(.horizontal, 8)
+                            .background(Capsule().fill(.white.opacity(0.85)))
+                            .offset(x: 30, y: 6)
+                    }
                 }
                 Spacer(minLength: 0)
                 Text(game.title)
