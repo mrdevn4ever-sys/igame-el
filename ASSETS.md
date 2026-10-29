@@ -39,6 +39,11 @@ echte (oder realistisch generierte) Tiergeräusche, 1–3 Sekunden, **ohne Sprac
 - `natur_*.png`: Antwortbilder (z. B. `natur_nuesse.png`, `natur_wueste.png`) – Gegenstand/Ort klar erkennbar.
 - `tier_*.png` werden im Bildermodus auch als schwarzer Schatten gezeigt → klare Silhouette wichtig.
 
+## Hinweis zur Grösse
+
+`memory_*`, `muster_*`, `tier_*` und `avatar_*` werden in der App mit 512 × 512 px verwendet (geliefert werden dürfen 1024 px,
+sie werden beim Einbau verkleinert). Puzzle-Szenen und Spielkacheln bleiben in voller Auflösung.
+
 ## Nachlieferungen
 
 Wenn neue Spielinhalte neue Sätze brauchen, kommt eine zusätzliche Liste mit **nur den neuen Dateien** dazu
