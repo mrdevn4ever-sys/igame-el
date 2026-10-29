@@ -162,7 +162,7 @@ struct AppleMathGameView: View {
 
     @ViewBuilder
     private func sceneView(_ task: MathTask) -> some View {
-        let itemSize: CGFloat = host.difficulty == .knobeln ? 50 : 64
+        let itemSize: CGFloat = host.difficulty == .entdecken ? 96 : host.difficulty == .ueben ? 76 : 68
         HStack(spacing: 30) {
             switch task.op {
             case .plus:
@@ -179,7 +179,7 @@ struct AppleMathGameView: View {
     }
 
     private func group(count: Int, offset: Int, motif: CountMotif, size: CGFloat) -> some View {
-        let columns = Array(repeating: GridItem(.fixed(size + 10), spacing: 6), count: min(max(count, 1), 5))
+        let columns = Array(repeating: GridItem(.fixed(size * 1.25 + 8), spacing: 6), count: min(max(count, 1), 5))
         return LazyVGrid(columns: columns, spacing: 8) {
             ForEach(0..<count, id: \.self) { i in
                 CountableItem(emoji: motif.emoji, size: size, marked: model.marked.contains(offset + i), number: model.showNumbers ? offset + i + 1 : nil, asset: motif.asset)
@@ -190,7 +190,7 @@ struct AppleMathGameView: View {
     }
 
     private func minusGroup(_ task: MathTask, size: CGFloat) -> some View {
-        let columns = Array(repeating: GridItem(.fixed(size + 10), spacing: 6), count: min(max(task.a, 1), 5))
+        let columns = Array(repeating: GridItem(.fixed(size * 1.25 + 8), spacing: 6), count: min(max(task.a, 1), 5))
         return LazyVGrid(columns: columns, spacing: 8) {
             ForEach(0..<task.a, id: \.self) { i in
                 let removed = i >= task.answer
@@ -223,6 +223,7 @@ struct CountableItem: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Pic(asset ?? "", emoji, size: size)
+                .frame(width: size * 1.2, height: size * 1.2)
                 .padding(4)
                 .background(Circle().fill(marked ? Theme.highlight.opacity(0.45) : .clear))
             if let number, marked {

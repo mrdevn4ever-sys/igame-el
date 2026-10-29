@@ -85,8 +85,7 @@ private struct WelcomeStep: View {
 
     var body: some View {
         VStack(spacing: 28) {
-            Text("🐰🏝️")
-                .font(.system(size: 120))
+            Pic("hase_begleiter", "🐰", size: 150)
             StepTitle(
                 title: "Ellies Entdeckerinsel",
                 subtitle: "Eine ruhige Spielwelt mit Tieren, Pflanzen, Zahlen und Formen. Wir richten sie zuerst gemeinsam ein – das dauert etwa drei Minuten."
@@ -303,8 +302,10 @@ private struct HandoverStep: View {
 
     var body: some View {
         VStack(spacing: 28) {
-            Text(app.data.profile.avatar.emoji + " 🐰")
-                .font(.system(size: 110))
+            HStack(spacing: 24) {
+                Pic(app.data.profile.avatar.asset, app.data.profile.avatar.emoji, size: 110)
+                Pic("hase_begleiter", "🐰", size: 120)
+            }
             StepTitle(
                 title: "Jetzt darf \(app.data.profile.name.isEmpty ? "das Kind" : app.data.profile.name) ausprobieren",
                 subtitle: "Der Hase zeigt in einer kleinen Einführung, wie man tippt, zuordnet und zurückfindet."

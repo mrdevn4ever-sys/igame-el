@@ -53,7 +53,7 @@ struct AtelierGameView: View {
                         Label("Meine Bilder", systemImage: "photo.on.rectangle.angled")
                     }
                     .buttonStyle(BigButtonStyle(color: Theme.lightYellow, foreground: Theme.darkGreen))
-                    Text("\(app.gallery.count) Bilder")
+                    Text(app.gallery.count == 1 ? "1 Bild" : "\(app.gallery.count) Bilder")
                         .font(Theme.rounded(18, .medium))
                         .foregroundStyle(Theme.darkGreen.opacity(0.7))
                 }

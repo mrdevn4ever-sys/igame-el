@@ -176,7 +176,7 @@ struct CountingGameView: View {
                         LazyVGrid(columns: Array(repeating: GridItem(.fixed(64)), count: 4), spacing: 8) {
                             ForEach(Array(model.basket.enumerated()), id: \.element) { pos, i in
                                 ZStack(alignment: .topTrailing) {
-                                    Pic(task.motif.asset, task.motif.emoji, size: 52)
+                                    Pic(task.motif.asset, task.motif.emoji, size: 46)
                                     Text("\(pos + 1)")
                                         .font(Theme.rounded(16, .heavy))
                                         .foregroundStyle(.white)

@@ -238,7 +238,7 @@ struct Pic: View {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
-                .frame(width: size * 1.3, height: size * 1.3)
+                .frame(width: size * 1.2, height: size * 1.2)
                 .accessibilityHidden(true)
         } else {
             Text(emoji)

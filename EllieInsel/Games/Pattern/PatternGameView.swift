@@ -110,6 +110,7 @@ struct PatternGameView: View {
                         }
                         .offset(x: model.trainOffset)
                         .animation(.easeInOut(duration: 1.2), value: model.trainOffset)
+                        .id(model.index)
                         // Schienen
                         Rectangle()
                             .fill(Theme.darkGreen.opacity(0.5))
@@ -223,7 +224,9 @@ final class PatternModel {
         solved = false
         highlightGroup = nil
         highlightAnswer = false
-        trainOffset = 0
+        var noAnimation = Transaction()
+        noAnimation.disablesAnimations = true
+        withTransaction(noAnimation) { trainOffset = 0 }
         save()
         instruct()
     }
