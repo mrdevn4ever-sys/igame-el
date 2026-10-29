@@ -179,7 +179,10 @@ for n in re.findall(r'PatternMotif\(emoji: "[^"]+", name: "([^"]+)"\)', src("Gam
 # --- Spiel 9: Tierstimmen ---
 ANIMALS = [("kuh", "Kuh", "die", "Muuuuh!"), ("schaf", "Schaf", "das", "Mäh, mäh!"), ("hahn", "Hahn", "der", "Kikeriki!"),
            ("hund", "Hund", "der", "Wau, wau!"), ("katze", "Katze", "die", "Miau!"), ("frosch", "Frosch", "der", "Quak, quak!"),
-           ("schwein", "Schwein", "das", "Grunz, grunz!"), ("esel", "Esel", "der", "I-aah, i-aah!")]
+           ("schwein", "Schwein", "das", "Grunz, grunz!"), ("esel", "Esel", "der", "I-aah, i-aah!"),
+           ("pferd", "Pferd", "das", "Hü-hü-hüüü!"), ("ziege", "Ziege", "die", "Meck, meck!"), ("ente", "Ente", "die", "Nak, nak, nak!"),
+           ("gans", "Gans", "die", "Schnatter, schnatter!"), ("eule", "Eule", "die", "Huhu, huhu!"),
+           ("kuckuck", "Kuckuck", "der", "Kuckuck, kuckuck!"), ("biene", "Biene", "die", "Summ, summ, summ!"), ("wolf", "Wolf", "der", "Auuuuh!")]
 for raw, name, art, imit in ANIMALS:
     add(f"Richtig, das war {art} {name}.", "Tierstimmen"); add(f"{art} {name}", "Tierstimmen")
     add(f"{cap(art)} {name} ist es nicht.", "Tierstimmen"); add(f"Das war {art} {name}. {imit}", "Tierstimmen")
@@ -196,7 +199,9 @@ for n in NATURE_ITEMS:
 
 # --- Spiel 11: Tierpuzzle ---
 PUZZLE = re.findall(r'PuzzleScene\(animal: "[^"]+", name: "([^"]+)", habitat: "([^"]+)"', src("Games/Puzzle/PuzzleGameView.swift"))
-def puzzle_art(n): return "die" if n in ["Eule", "Ente", "Kuh"] else "das" if n == "Schwein" else "der"
+def puzzle_art(n):
+    if n in ["Eule", "Ente", "Kuh", "Biene", "Schnecke", "Ziege", "Katze"]: return "die"
+    return "das" if n in ["Schwein", "Eichhörnchen", "Reh", "Pferd", "Schaf"] else "der"
 for n, _ in PUZZLE:
     add(f"Schau dir das Bild genau an. Das ist {puzzle_art(n)} {n}.", "Tierpuzzle")
     add(f"Das ganze Bild ist fertig: {puzzle_art(n)} {n}!", "Tierpuzzle")
@@ -240,8 +245,15 @@ for m, (sg, _, _) in MOTIFS.items(): I(f"motiv_{m}", f"{sg} (einzeln)", "Rechnen
 subjects = sorted(set(re.findall(r'subject: i\("[^"]+", "([^"]+)"\)', nat)))
 for n in sorted(set(subjects) | set(NATURE_ITEMS)):
     I("natur_" + slug(n), n, "Naturpaare", "512x512")
-for n, hab in PUZZLE: I("puzzle_" + slug(n), f"{n} in Landschaft ({hab}), ganze Szene, ruhiger Hintergrund", "Tierpuzzle", "1800x1200 (3:2)")
+for n, hab in PUZZLE: I("puzzle_" + slug(n), f"{n} in Landschaft ({hab}), ganze Szene, detailreich: jede Ecke mit eigenem Inhalt, keine grossen leeren Flächen", "Tierpuzzle", "1800x1200 (3:2)")
 I("einfuehrung_schmetterling", "Schmetterling", "Einführung", "512x512")
+garden = re.findall(r'"([^"]+)": "([a-z]+)"', src("Garden/GardenCatalog.swift"))
+GARDEN_DESC = {"aehren": "Getreideähren", "kraeuter": "Kräuterbusch", "gaensebluemchen": "Gänseblümchen", "huette": "kleine Holzhütte",
+               "brunnen": "kleiner Gartenbrunnen", "drachen": "Kinderdrachen (Flugdrachen)", "ballon": "Luftballon", "stern": "goldener Stern",
+               "haus": "kleines Haus", "nest": "Vogelnest mit Eiern", "kleeblatt": "vierblättriges Kleeblatt"}
+for emoji, name in garden:
+    I("garten_" + name, GARDEN_DESC.get(name, name.replace("ae", "ä").replace("oe", "ö").replace("ue", "ü").capitalize()), "Garten-Dekoration", "512x512")
+I("snake_heidelbeeren", "kleines Büschel Heidelbeeren", "Garten-Snake (Frucht)", "512x512")
 I("einfuehrung_blume", "grosse Blume", "Einführung", "512x512")
 I("korb", "Weidenkorb", "Einführung", "512x512")
 uniq = {}

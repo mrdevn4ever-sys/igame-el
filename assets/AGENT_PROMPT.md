@@ -160,3 +160,24 @@ python3 tools/check_assets.py
 3. **Nicht ändern:** `*.swift`, `EllieInsel.xcodeproj`, `assets/*.csv`, `tools/*`.
    Wenn dir ein Text in der CSV falsch vorkommt, liste ihn in deinem Abschlussbericht auf, statt ihn zu ändern. Die App findet die Datei sonst nicht.
 4. Kurzer Abschlussbericht: verwendete Stimme und Werkzeuge, Ausgabe von `check_assets.py`, offene Punkte.
+
+---
+
+## 8. Nachlieferungen (zusätzlich zum ersten Auftrag)
+
+Die App hat neue Niveau-Stufen und Inhalte bekommen. Dafür gibt es **nur neue Dateien** – alles bereits Gelieferte bleibt gültig.
+
+| Liste | Inhalt | Zielordner |
+|---|---|---|
+| `assets/Bilder_Nachlieferung_1.csv` | 112 Bilder: 12 neue Puzzle-Szenen, 24 Memory-Motive, 8 Tiere, 19 Naturpaare-Bilder, 48 Garten-Dekorationen, 1 Snake-Frucht | `EllieInsel/Images/` |
+| `assets/Sprachaufnahmen_Nachlieferung_1.csv` | 499 Sätze (Rechnen und Zählen bis 20, Zahlen 11–20, Apfelbaum) | `EllieInsel/Audio/` |
+| `assets/Sprachaufnahmen_Nachlieferung_2.csv` | 202 Sätze (neue Memory-, Naturpaare-, Puzzle- und Tierstimmen-Inhalte) + 16 Tierlaute | `EllieInsel/Audio/` |
+
+Gleicher Stil, gleiche Stimme, gleiche technischen Vorgaben wie oben. Zusätzlich:
+
+- **Neue Puzzle-Szenen (`puzzle_*`)**: Sie werden bis zu 30 Teile gross zerschnitten. **Jede Ecke und jeder Rand braucht eigenen, erkennbaren Inhalt** (Blumen, Zaun, Bach, Pilze, Steine, Schmetterling …). Keine grossen einfarbigen Himmels- oder Wiesenflächen.
+- **Garten-Dekorationen (`garten_*`)**: einzelne Gegenstände/Tiere, die frei im Garten platziert werden – klein noch gut erkennbar, Ansicht leicht von vorne, gleicher Bilderbuchstil.
+- **Neue Tiere (`tier_*`)**: ganzes Tier seitlich, klare Silhouette (Schattenmodus). Tierlaute: `tier_<tier>_1.m4a` / `_2.m4a` für `pferd, ziege, ente, gans, eule, kuckuck, biene, wolf` (Biene = Summen, Kuckuck = Kuckucksruf, Wolf = Heulen, nicht bedrohlich).
+- **Naturpaare (`natur_*`)**: Orte (Bienenstock, Fuchsbau, Höhle) als runde Vignette wie die bestehenden Lebensräume; Pflanzen eindeutig an Frucht/Blatt erkennbar (Eiche mit Eicheln, Löwenzahn mit gelber Blüte, Kartoffelpflanze mit Knollen an der Wurzel).
+
+Abschlussprüfung wie gehabt: `python3 tools/check_assets.py` (prüft die vollständige Liste inklusive Nachlieferungen).

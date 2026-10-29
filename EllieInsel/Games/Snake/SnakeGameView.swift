@@ -100,14 +100,12 @@ struct SnakeGameView: View {
             }
 
             ForEach(model.obstacles, id: \.self) { o in
-                Text("🪨")
-                    .font(.system(size: cell * 0.8))
+                Pic("muster_stein", "🪨", size: cell * 0.7)
                     .frame(width: cell, height: cell)
                     .offset(x: CGFloat(o.x) * cell, y: CGFloat(o.y) * cell)
             }
 
-            Text(model.fruitEmoji)
-                .font(.system(size: cell * 0.8))
+            Pic(SnakeModel.fruitAsset(model.fruitEmoji), model.fruitEmoji, size: cell * 0.7)
                 .frame(width: cell, height: cell)
                 .pulseHighlight(model.highlightFruit)
                 .offset(x: CGFloat(model.fruit.x) * cell, y: CGFloat(model.fruit.y) * cell)
@@ -246,6 +244,19 @@ final class SnakeModel {
     @ObservationIgnored private var started = false
 
     private let fruits = ["🍓", "🍎", "🍐", "🍒", "🫐", "🥕"]
+
+    /// Vorhandene Illustrationen für die Früchte (Heidelbeeren eigens für Snake).
+    static func fruitAsset(_ emoji: String) -> String {
+        switch emoji {
+        case "🍓": return "motiv_erdbeere"
+        case "🍎": return "motiv_apfel"
+        case "🍐": return "motiv_birne"
+        case "🍒": return "natur_kirschen"
+        case "🫐": return "snake_heidelbeeren"
+        case "🥕": return "motiv_karotte"
+        default: return ""
+        }
+    }
 
     init(host: GameHost) { self.host = host }
 

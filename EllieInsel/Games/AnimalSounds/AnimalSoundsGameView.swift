@@ -3,6 +3,7 @@ import Combine
 
 enum SoundAnimal: String, Codable, CaseIterable {
     case kuh, schaf, hahn, hund, katze, frosch, schwein, esel
+    case pferd, ziege, ente, gans, eule, kuckuck, biene, wolf
 
     var emoji: String {
         switch self {
@@ -14,6 +15,14 @@ enum SoundAnimal: String, Codable, CaseIterable {
         case .frosch: return "🐸"
         case .schwein: return "🐖"
         case .esel: return "🫏"
+        case .pferd: return "🐎"
+        case .ziege: return "🐐"
+        case .ente: return "🦆"
+        case .gans: return "🪿"
+        case .eule: return "🦉"
+        case .kuckuck: return "🐦"
+        case .biene: return "🐝"
+        case .wolf: return "🐺"
         }
     }
 
@@ -27,13 +36,21 @@ enum SoundAnimal: String, Codable, CaseIterable {
         case .frosch: return "Frosch"
         case .schwein: return "Schwein"
         case .esel: return "Esel"
+        case .pferd: return "Pferd"
+        case .ziege: return "Ziege"
+        case .ente: return "Ente"
+        case .gans: return "Gans"
+        case .eule: return "Eule"
+        case .kuckuck: return "Kuckuck"
+        case .biene: return "Biene"
+        case .wolf: return "Wolf"
         }
     }
 
     var article: String {
         switch self {
-        case .kuh, .katze: return "die"
-        case .schaf, .schwein: return "das"
+        case .kuh, .katze, .ziege, .ente, .gans, .eule, .biene: return "die"
+        case .schaf, .schwein, .pferd: return "das"
         default: return "der"
         }
     }
@@ -49,6 +66,14 @@ enum SoundAnimal: String, Codable, CaseIterable {
         case .frosch: return "Quak, quak!"
         case .schwein: return "Grunz, grunz!"
         case .esel: return "I-aah, i-aah!"
+        case .pferd: return "Hü-hü-hüüü!"
+        case .ziege: return "Meck, meck!"
+        case .ente: return "Nak, nak, nak!"
+        case .gans: return "Schnatter, schnatter!"
+        case .eule: return "Huhu, huhu!"
+        case .kuckuck: return "Kuckuck, kuckuck!"
+        case .biene: return "Summ, summ, summ!"
+        case .wolf: return "Auuuuh!"
         }
     }
 
@@ -62,17 +87,26 @@ enum SoundAnimal: String, Codable, CaseIterable {
         case .frosch: return 0.75
         case .schwein: return 0.65
         case .esel: return 1.0
+        case .pferd: return 1.2
+        case .ziege: return 1.5
+        case .ente: return 1.3
+        case .gans: return 1.1
+        case .eule: return 0.8
+        case .kuckuck: return 1.3
+        case .biene: return 1.0
+        case .wolf: return 0.7
         }
     }
 
     /// Grobe Klanggruppe, um in «Entdecken» sehr unterschiedliche Tiere zu kombinieren.
     var soundGroup: Int {
         switch self {
-        case .kuh, .schwein, .esel: return 0
-        case .schaf, .katze: return 1
-        case .hahn: return 2
-        case .hund: return 3
+        case .kuh, .schwein, .esel, .pferd: return 0
+        case .schaf, .katze, .ziege: return 1
+        case .hahn, .ente, .gans, .eule, .kuckuck: return 2
+        case .hund, .wolf: return 3
         case .frosch: return 4
+        case .biene: return 5
         }
     }
 

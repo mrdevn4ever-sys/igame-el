@@ -22,8 +22,30 @@ enum PuzzleCatalog {
         PuzzleScene(animal: "🐟", name: "Fisch", habitat: "Wasser", decor: ["🫧", "🐚", "🌿"]),
         PuzzleScene(animal: "🐄", name: "Kuh", habitat: "Bauernhof", decor: ["🏡", "🌾", "☀️"]),
         PuzzleScene(animal: "🐖", name: "Schwein", habitat: "Bauernhof", decor: ["🌻", "🏡", "🌾"]),
-        PuzzleScene(animal: "🐓", name: "Hahn", habitat: "Bauernhof", decor: ["☀️", "🌾", "🥚"])
+        PuzzleScene(animal: "🐓", name: "Hahn", habitat: "Bauernhof", decor: ["☀️", "🌾", "🥚"]),
+        // Detailreichere Szenen für viele Teile
+        PuzzleScene(animal: "🦔", name: "Igel", habitat: "Wald", decor: ["🍂", "🍄", "🌰"]),
+        PuzzleScene(animal: "🐿️", name: "Eichhörnchen", habitat: "Wald", decor: ["🌲", "🌰", "🍁"]),
+        PuzzleScene(animal: "🦌", name: "Reh", habitat: "Wald", decor: ["🌲", "🌼", "🌳"]),
+        PuzzleScene(animal: "🐝", name: "Biene", habitat: "Wiese", decor: ["🌻", "🌷", "🌼"]),
+        PuzzleScene(animal: "🐌", name: "Schnecke", habitat: "Wiese", decor: ["🍄", "🌿", "💧"]),
+        PuzzleScene(animal: "🦢", name: "Schwan", habitat: "Wasser", decor: ["🪷", "🌾", "☀️"]),
+        PuzzleScene(animal: "🦦", name: "Otter", habitat: "Wasser", decor: ["🐟", "🪨", "🌿"]),
+        PuzzleScene(animal: "🐎", name: "Pferd", habitat: "Bauernhof", decor: ["🏡", "🌾", "🍎"]),
+        PuzzleScene(animal: "🐑", name: "Schaf", habitat: "Bauernhof", decor: ["🌼", "☁️", "🌳"]),
+        PuzzleScene(animal: "🐐", name: "Ziege", habitat: "Bauernhof", decor: ["⛰️", "🌼", "🌲"]),
+        PuzzleScene(animal: "🐈", name: "Katze", habitat: "Bauernhof", decor: ["🧶", "🌻", "🏡"]),
+        PuzzleScene(animal: "🐕", name: "Hund", habitat: "Bauernhof", decor: ["🦴", "🌳", "🏡"])
     ]
+
+    /// Artikel für die Ansage («Das ist die Eule.»).
+    static func article(_ name: String) -> String {
+        switch name {
+        case "Eule", "Ente", "Kuh", "Biene", "Schnecke", "Ziege", "Katze": return "die"
+        case "Schwein", "Eichhörnchen", "Reh", "Pferd", "Schaf": return "das"
+        default: return "der"
+        }
+    }
 }
 
 /// Gemalte Szene, die für das Puzzle in ein Bild umgewandelt wird.
@@ -294,13 +316,7 @@ final class PuzzleModel {
         }
     }
 
-    private var article: String {
-        switch scene.name {
-        case "Eule", "Ente", "Kuh": return "die"
-        case "Schwein": return "das"
-        default: return "der"
-        }
-    }
+    private var article: String { PuzzleCatalog.article(scene.name) }
 
     private func save() {
         host.persist(PuzzleState(sceneIndex: sceneIndex, pieces: pieces, placed: placed, trayOrder: trayOrder, previewDone: !showingPreview))

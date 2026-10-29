@@ -67,8 +67,7 @@ struct GardenView: View {
                     app.claimReward(reward, item: item)
                     selectedStock = item
                 } label: {
-                    Text(item)
-                        .font(.system(size: 44))
+                    Pic(GardenCatalog.asset(item), item, size: 44)
                         .frame(width: 72, height: 72)
                         .background(RoundedRectangle(cornerRadius: 18).fill(.white))
                 }
@@ -98,8 +97,7 @@ struct GardenView: View {
 
             ForEach(app.data.garden.placed) { deco in
                 let isDragging = dragging?.id == deco.id
-                Text(deco.item)
-                    .font(.system(size: 64))
+                Pic(GardenCatalog.asset(deco.item), deco.item, size: 64)
                     .padding(6)
                     .background(
                         Circle().stroke(Theme.highlight, lineWidth: selectedPlaced == deco.id ? 5 : 0)
@@ -125,8 +123,7 @@ struct GardenView: View {
             }
 
             if let stockDrag {
-                Text(stockDrag.item)
-                    .font(.system(size: 64))
+                Pic(GardenCatalog.asset(stockDrag.item), stockDrag.item, size: 64)
                     .position(x: stockDrag.location.x - gardenFrame.minX, y: stockDrag.location.y - gardenFrame.minY)
                     .allowsHitTesting(false)
             }
@@ -162,8 +159,7 @@ struct GardenView: View {
         return ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 14) {
                 ForEach(counts, id: \.item) { entry in
-                    Text(entry.item)
-                        .font(.system(size: 50))
+                    Pic(GardenCatalog.asset(entry.item), entry.item, size: 50)
                         .frame(width: 84, height: 84)
                         .background(
                             RoundedRectangle(cornerRadius: 22)

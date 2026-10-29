@@ -243,8 +243,7 @@ struct RoundCompleteView: View {
                                 app.claimReward(reward, item: item)
                                 app.audio.say("Das kommt in deinen Garten.")
                             } label: {
-                                Text(item)
-                                    .font(.system(size: 60))
+                                Pic(GardenCatalog.asset(item), item, size: 60)
                                     .frame(width: 104, height: 104)
                                     .background(RoundedRectangle(cornerRadius: 24).fill(Theme.meadow))
                             }
@@ -258,7 +257,7 @@ struct RoundCompleteView: View {
                 }
             } else if let chosen {
                 HStack(spacing: 10) {
-                    Text(chosen).font(.system(size: 50))
+                    Pic(GardenCatalog.asset(chosen), chosen, size: 50)
                     Text("wartet in deinem Garten.")
                         .font(Theme.rounded(22, .semibold))
                         .foregroundStyle(Theme.darkGreen)

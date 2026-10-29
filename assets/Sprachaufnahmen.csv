@@ -626,83 +626,155 @@ zeit_fuer_eine_kleine_pause.m4a;Zeit für eine kleine Pause?;Hub
 ahornblatt.m4a;Ahornblatt;Memory
 baer.m4a;Bär;Memory
 biene.m4a;Biene;Memory
+birne.m4a;Birne;Memory
 dreh_eine_karte_um_und_merk_dir_das_tier.m4a;Dreh eine Karte um und merk dir das Tier.;Memory
 du_hast_alle_paare_gefunden.m4a;Du hast alle Paare gefunden.;Memory
 eichhoernchen.m4a;Eichhörnchen;Memory
+ente.m4a;Ente;Memory
+esel.m4a;Esel;Memory
 eule.m4a;Eule;Memory
 findest_du_zwei_gleiche.m4a;Findest du zwei gleiche?;Memory
 findest_du_zwei_gleiche_tiere.m4a;Findest du zwei gleiche Tiere?;Memory
+fisch.m4a;Fisch;Memory
 frosch.m4a;Frosch;Memory
 fuchs.m4a;Fuchs;Memory
+gans.m4a;Gans;Memory
+giesskanne.m4a;Giesskanne;Memory
 grashuepfer.m4a;Grashüpfer;Memory
 hase.m4a;Hase;Memory
+huhn.m4a;Huhn;Memory
+hund.m4a;Hund;Memory
 igel.m4a;Igel;Memory
 kastanie.m4a;Kastanie;Memory
+katze.m4a;Katze;Memory
 kirschbluete.m4a;Kirschblüte;Memory
+kirsche.m4a;Kirsche;Memory
+krebs.m4a;Krebs;Memory
+kuerbis.m4a;Kürbis;Memory
+libelle.m4a;Libelle;Memory
 marienkaefer.m4a;Marienkäfer;Memory
+muschel.m4a;Muschel;Memory
+otter.m4a;Otter;Memory
+pferd.m4a;Pferd;Memory
 pilz.m4a;Pilz;Memory
+radieschen.m4a;Radieschen;Memory
 raupe.m4a;Raupe;Memory
 regenbogen.m4a;Regenbogen;Memory
 reh.m4a;Reh;Memory
+salat.m4a;Salat;Memory
 schau_mal_hier.m4a;Schau mal hier.;Memory
 schmetterling.m4a;Schmetterling;Memory
 schnecke.m4a;Schnecke;Memory
+schubkarre.m4a;Schubkarre;Memory
+schwan.m4a;Schwan;Memory
+seerose.m4a;Seerose;Memory
+seestern.m4a;Seestern;Memory
 sonnenblume.m4a;Sonnenblume;Memory
 tanne.m4a;Tanne;Memory
 tippe_zwei_karten_an.m4a;Tippe zwei Karten an.;Memory
 tulpe.m4a;Tulpe;Memory
 versuch_es_mit_dieser_karte.m4a;Versuch es mit dieser Karte.;Memory
+vogelhaus.m4a;Vogelhaus;Memory
 wildschwein.m4a;Wildschwein;Memory
 wir_finden_das_paar_gemeinsam.m4a;Wir finden das Paar gemeinsam.;Memory
 wo_hast_du_schon_ahornblatt_gesehen.m4a;Wo hast du schon Ahornblatt gesehen?;Memory
 wo_hast_du_schon_baer_gesehen.m4a;Wo hast du schon Bär gesehen?;Memory
 wo_hast_du_schon_biene_gesehen.m4a;Wo hast du schon Biene gesehen?;Memory
+wo_hast_du_schon_birne_gesehen.m4a;Wo hast du schon Birne gesehen?;Memory
 wo_hast_du_schon_eichhoernchen_gesehen.m4a;Wo hast du schon Eichhörnchen gesehen?;Memory
+wo_hast_du_schon_ente_gesehen.m4a;Wo hast du schon Ente gesehen?;Memory
+wo_hast_du_schon_esel_gesehen.m4a;Wo hast du schon Esel gesehen?;Memory
 wo_hast_du_schon_eule_gesehen.m4a;Wo hast du schon Eule gesehen?;Memory
+wo_hast_du_schon_fisch_gesehen.m4a;Wo hast du schon Fisch gesehen?;Memory
 wo_hast_du_schon_frosch_gesehen.m4a;Wo hast du schon Frosch gesehen?;Memory
 wo_hast_du_schon_fuchs_gesehen.m4a;Wo hast du schon Fuchs gesehen?;Memory
+wo_hast_du_schon_gans_gesehen.m4a;Wo hast du schon Gans gesehen?;Memory
+wo_hast_du_schon_giesskanne_gesehen.m4a;Wo hast du schon Giesskanne gesehen?;Memory
 wo_hast_du_schon_grashuepfer_gesehen.m4a;Wo hast du schon Grashüpfer gesehen?;Memory
 wo_hast_du_schon_hase_gesehen.m4a;Wo hast du schon Hase gesehen?;Memory
+wo_hast_du_schon_huhn_gesehen.m4a;Wo hast du schon Huhn gesehen?;Memory
+wo_hast_du_schon_hund_gesehen.m4a;Wo hast du schon Hund gesehen?;Memory
 wo_hast_du_schon_igel_gesehen.m4a;Wo hast du schon Igel gesehen?;Memory
 wo_hast_du_schon_kastanie_gesehen.m4a;Wo hast du schon Kastanie gesehen?;Memory
+wo_hast_du_schon_katze_gesehen.m4a;Wo hast du schon Katze gesehen?;Memory
 wo_hast_du_schon_kirschbluete_gesehen.m4a;Wo hast du schon Kirschblüte gesehen?;Memory
+wo_hast_du_schon_kirsche_gesehen.m4a;Wo hast du schon Kirsche gesehen?;Memory
+wo_hast_du_schon_krebs_gesehen.m4a;Wo hast du schon Krebs gesehen?;Memory
+wo_hast_du_schon_kuerbis_gesehen.m4a;Wo hast du schon Kürbis gesehen?;Memory
+wo_hast_du_schon_libelle_gesehen.m4a;Wo hast du schon Libelle gesehen?;Memory
 wo_hast_du_schon_marienkaefer_gesehen.m4a;Wo hast du schon Marienkäfer gesehen?;Memory
+wo_hast_du_schon_muschel_gesehen.m4a;Wo hast du schon Muschel gesehen?;Memory
+wo_hast_du_schon_otter_gesehen.m4a;Wo hast du schon Otter gesehen?;Memory
+wo_hast_du_schon_pferd_gesehen.m4a;Wo hast du schon Pferd gesehen?;Memory
 wo_hast_du_schon_pilz_gesehen.m4a;Wo hast du schon Pilz gesehen?;Memory
+wo_hast_du_schon_radieschen_gesehen.m4a;Wo hast du schon Radieschen gesehen?;Memory
 wo_hast_du_schon_raupe_gesehen.m4a;Wo hast du schon Raupe gesehen?;Memory
 wo_hast_du_schon_regenbogen_gesehen.m4a;Wo hast du schon Regenbogen gesehen?;Memory
 wo_hast_du_schon_reh_gesehen.m4a;Wo hast du schon Reh gesehen?;Memory
+wo_hast_du_schon_salat_gesehen.m4a;Wo hast du schon Salat gesehen?;Memory
 wo_hast_du_schon_schmetterling_gesehen.m4a;Wo hast du schon Schmetterling gesehen?;Memory
 wo_hast_du_schon_schnecke_gesehen.m4a;Wo hast du schon Schnecke gesehen?;Memory
+wo_hast_du_schon_schubkarre_gesehen.m4a;Wo hast du schon Schubkarre gesehen?;Memory
+wo_hast_du_schon_schwan_gesehen.m4a;Wo hast du schon Schwan gesehen?;Memory
+wo_hast_du_schon_seerose_gesehen.m4a;Wo hast du schon Seerose gesehen?;Memory
+wo_hast_du_schon_seestern_gesehen.m4a;Wo hast du schon Seestern gesehen?;Memory
 wo_hast_du_schon_sonnenblume_gesehen.m4a;Wo hast du schon Sonnenblume gesehen?;Memory
 wo_hast_du_schon_tanne_gesehen.m4a;Wo hast du schon Tanne gesehen?;Memory
 wo_hast_du_schon_tulpe_gesehen.m4a;Wo hast du schon Tulpe gesehen?;Memory
+wo_hast_du_schon_vogelhaus_gesehen.m4a;Wo hast du schon Vogelhaus gesehen?;Memory
 wo_hast_du_schon_wildschwein_gesehen.m4a;Wo hast du schon Wildschwein gesehen?;Memory
 wo_hast_du_schon_wolf_gesehen.m4a;Wo hast du schon Wolf gesehen?;Memory
+wo_hast_du_schon_ziege_gesehen.m4a;Wo hast du schon Ziege gesehen?;Memory
 wolf.m4a;Wolf;Memory
+ziege.m4a;Ziege;Memory
 zwei_gleiche_ahornblatt.m4a;Zwei gleiche: Ahornblatt!;Memory
 zwei_gleiche_baer.m4a;Zwei gleiche: Bär!;Memory
 zwei_gleiche_biene.m4a;Zwei gleiche: Biene!;Memory
+zwei_gleiche_birne.m4a;Zwei gleiche: Birne!;Memory
 zwei_gleiche_eichhoernchen.m4a;Zwei gleiche: Eichhörnchen!;Memory
+zwei_gleiche_ente.m4a;Zwei gleiche: Ente!;Memory
+zwei_gleiche_esel.m4a;Zwei gleiche: Esel!;Memory
 zwei_gleiche_eule.m4a;Zwei gleiche: Eule!;Memory
+zwei_gleiche_fisch.m4a;Zwei gleiche: Fisch!;Memory
 zwei_gleiche_frosch.m4a;Zwei gleiche: Frosch!;Memory
 zwei_gleiche_fuchs.m4a;Zwei gleiche: Fuchs!;Memory
+zwei_gleiche_gans.m4a;Zwei gleiche: Gans!;Memory
+zwei_gleiche_giesskanne.m4a;Zwei gleiche: Giesskanne!;Memory
 zwei_gleiche_grashuepfer.m4a;Zwei gleiche: Grashüpfer!;Memory
 zwei_gleiche_hase.m4a;Zwei gleiche: Hase!;Memory
+zwei_gleiche_huhn.m4a;Zwei gleiche: Huhn!;Memory
+zwei_gleiche_hund.m4a;Zwei gleiche: Hund!;Memory
 zwei_gleiche_igel.m4a;Zwei gleiche: Igel!;Memory
 zwei_gleiche_kastanie.m4a;Zwei gleiche: Kastanie!;Memory
+zwei_gleiche_katze.m4a;Zwei gleiche: Katze!;Memory
 zwei_gleiche_kirschbluete.m4a;Zwei gleiche: Kirschblüte!;Memory
+zwei_gleiche_kirsche.m4a;Zwei gleiche: Kirsche!;Memory
+zwei_gleiche_krebs.m4a;Zwei gleiche: Krebs!;Memory
+zwei_gleiche_kuerbis.m4a;Zwei gleiche: Kürbis!;Memory
+zwei_gleiche_libelle.m4a;Zwei gleiche: Libelle!;Memory
 zwei_gleiche_marienkaefer.m4a;Zwei gleiche: Marienkäfer!;Memory
+zwei_gleiche_muschel.m4a;Zwei gleiche: Muschel!;Memory
+zwei_gleiche_otter.m4a;Zwei gleiche: Otter!;Memory
+zwei_gleiche_pferd.m4a;Zwei gleiche: Pferd!;Memory
 zwei_gleiche_pilz.m4a;Zwei gleiche: Pilz!;Memory
+zwei_gleiche_radieschen.m4a;Zwei gleiche: Radieschen!;Memory
 zwei_gleiche_raupe.m4a;Zwei gleiche: Raupe!;Memory
 zwei_gleiche_regenbogen.m4a;Zwei gleiche: Regenbogen!;Memory
 zwei_gleiche_reh.m4a;Zwei gleiche: Reh!;Memory
+zwei_gleiche_salat.m4a;Zwei gleiche: Salat!;Memory
 zwei_gleiche_schmetterling.m4a;Zwei gleiche: Schmetterling!;Memory
 zwei_gleiche_schnecke.m4a;Zwei gleiche: Schnecke!;Memory
+zwei_gleiche_schubkarre.m4a;Zwei gleiche: Schubkarre!;Memory
+zwei_gleiche_schwan.m4a;Zwei gleiche: Schwan!;Memory
+zwei_gleiche_seerose.m4a;Zwei gleiche: Seerose!;Memory
+zwei_gleiche_seestern.m4a;Zwei gleiche: Seestern!;Memory
 zwei_gleiche_sonnenblume.m4a;Zwei gleiche: Sonnenblume!;Memory
 zwei_gleiche_tanne.m4a;Zwei gleiche: Tanne!;Memory
 zwei_gleiche_tulpe.m4a;Zwei gleiche: Tulpe!;Memory
+zwei_gleiche_vogelhaus.m4a;Zwei gleiche: Vogelhaus!;Memory
 zwei_gleiche_wildschwein.m4a;Zwei gleiche: Wildschwein!;Memory
 zwei_gleiche_wolf.m4a;Zwei gleiche: Wolf!;Memory
+zwei_gleiche_ziege.m4a;Zwei gleiche: Ziege!;Memory
 apfel.m4a;Apfel;Musterzug
 blatt.m4a;Blatt;Musterzug
 blume.m4a;Blume;Musterzug
@@ -736,12 +808,16 @@ kaefer.m4a;Käfer;Musterzug
 stein.m4a;Stein;Musterzug
 am_apfelbaum_wachsen_blaetter_blueten_und_aepfel.m4a;Am Apfelbaum wachsen Blätter, Blüten und Äpfel.;Naturpaare
 am_kastanienbaum_wachsen_kastanien_in_stacheligen_huellen.m4a;Am Kastanienbaum wachsen Kastanien in stacheligen Hüllen.;Naturpaare
+an_der_eiche_wachsen_eicheln.m4a;An der Eiche wachsen Eicheln.;Naturpaare
 an_der_weinrebe_wachsen_trauben.m4a;An der Weinrebe wachsen Trauben.;Naturpaare
 apfel_passt_hier_nicht.m4a;Apfel passt hier nicht.;Naturpaare
 apfel_passt_sicher_nicht.m4a;Apfel passt sicher nicht.;Naturpaare
 apfelbaum_passt_hier_nicht.m4a;Apfelbaum passt hier nicht.;Naturpaare
 apfelbaum_passt_sicher_nicht.m4a;Apfelbaum passt sicher nicht.;Naturpaare
 aus_den_blueten_der_erdbeerpflanze_werden_erdbeeren.m4a;Aus den Blüten der Erdbeerpflanze werden Erdbeeren.;Naturpaare
+aus_der_gelben_bluete_des_loewenzahns_wird_eine_pusteblume.m4a;Aus der gelben Blüte des Löwenzahns wird eine Pusteblume.;Naturpaare
+baer_passt_hier_nicht.m4a;Bär passt hier nicht.;Naturpaare
+baer_passt_sicher_nicht.m4a;Bär passt sicher nicht.;Naturpaare
 banane_passt_hier_nicht.m4a;Banane passt hier nicht.;Naturpaare
 banane_passt_sicher_nicht.m4a;Banane passt sicher nicht.;Naturpaare
 bananen_wachsen_in_grossen_buescheln_an_der_bananenstaude.m4a;Bananen wachsen in grossen Büscheln an der Bananenstaude.;Naturpaare
@@ -754,6 +830,8 @@ baum_passt_sicher_nicht.m4a;Baum passt sicher nicht.;Naturpaare
 biene_passt_hier_nicht.m4a;Biene passt hier nicht.;Naturpaare
 biene_passt_sicher_nicht.m4a;Biene passt sicher nicht.;Naturpaare
 bienen_holen_nektar_und_pollen_aus_blueten.m4a;Bienen holen Nektar und Pollen aus Blüten.;Naturpaare
+bienenstock_passt_hier_nicht.m4a;Bienenstock passt hier nicht.;Naturpaare
+bienenstock_passt_sicher_nicht.m4a;Bienenstock passt sicher nicht.;Naturpaare
 birne_passt_hier_nicht.m4a;Birne passt hier nicht.;Naturpaare
 birne_passt_sicher_nicht.m4a;Birne passt sicher nicht.;Naturpaare
 blatt_passt_hier_nicht.m4a;Blatt passt hier nicht.;Naturpaare
@@ -763,10 +841,17 @@ bluete_passt_sicher_nicht.m4a;Blüte passt sicher nicht.;Naturpaare
 denk_daran_was_an_dieser_pflanze_waechst.m4a;Denk daran, was an dieser Pflanze wächst.;Naturpaare
 denk_daran_was_dieses_tier_gerne_isst.m4a;Denk daran, was dieses Tier gerne isst.;Naturpaare
 denk_daran_wo_dieses_tier_wohnt.m4a;Denk daran, wo dieses Tier wohnt.;Naturpaare
+der_fuchs_wohnt_im_wald_in_einer_hoehle_unter_der_erde_dem_fuchsbau.m4a;Der Fuchs wohnt im Wald in einer Höhle unter der Erde, dem Fuchsbau.;Naturpaare
 diese_bilder_passen.m4a;Diese Bilder passen.;Naturpaare
+dort_machen_sie_honig.m4a;Dort machen sie Honig.;Naturpaare
+eiche_passt_hier_nicht.m4a;Eiche passt hier nicht.;Naturpaare
+eiche_passt_sicher_nicht.m4a;Eiche passt sicher nicht.;Naturpaare
+eicheln_passt_hier_nicht.m4a;Eicheln passt hier nicht.;Naturpaare
+eicheln_passt_sicher_nicht.m4a;Eicheln passt sicher nicht.;Naturpaare
 eichhoernchen_fressen_gerne_nuesse_und_samen.m4a;Eichhörnchen fressen gerne Nüsse und Samen.;Naturpaare
 eichhoernchen_passt_hier_nicht.m4a;Eichhörnchen passt hier nicht.;Naturpaare
 eichhoernchen_passt_sicher_nicht.m4a;Eichhörnchen passt sicher nicht.;Naturpaare
+eichhoernchen_sammeln_sie_gerne.m4a;Eichhörnchen sammeln sie gerne.;Naturpaare
 eichhoernchen_wohnen_in_baeumen_im_wald_oder_im_park.m4a;Eichhörnchen wohnen in Bäumen im Wald oder im Park.;Naturpaare
 eis_passt_hier_nicht.m4a;Eis passt hier nicht.;Naturpaare
 eis_passt_sicher_nicht.m4a;Eis passt sicher nicht.;Naturpaare
@@ -784,6 +869,10 @@ froesche_fangen_fliegen_und_muecken_mit_ihrer_zunge.m4a;Frösche fangen Fliegen 
 froesche_leben_an_teichen_und_seen.m4a;Frösche leben an Teichen und Seen.;Naturpaare
 frosch_passt_hier_nicht.m4a;Frosch passt hier nicht.;Naturpaare
 frosch_passt_sicher_nicht.m4a;Frosch passt sicher nicht.;Naturpaare
+fuchs_passt_hier_nicht.m4a;Fuchs passt hier nicht.;Naturpaare
+fuchs_passt_sicher_nicht.m4a;Fuchs passt sicher nicht.;Naturpaare
+fuchsbau_passt_hier_nicht.m4a;Fuchsbau passt hier nicht.;Naturpaare
+fuchsbau_passt_sicher_nicht.m4a;Fuchsbau passt sicher nicht.;Naturpaare
 gras_passt_hier_nicht.m4a;Gras passt hier nicht.;Naturpaare
 gras_passt_sicher_nicht.m4a;Gras passt sicher nicht.;Naturpaare
 hase_passt_hier_nicht.m4a;Hase passt hier nicht.;Naturpaare
@@ -791,10 +880,15 @@ hase_passt_sicher_nicht.m4a;Hase passt sicher nicht.;Naturpaare
 hasen_fressen_pflanzen_wie_gras_salat_und_karotten.m4a;Hasen fressen Pflanzen wie Gras, Salat und Karotten.;Naturpaare
 heu_passt_hier_nicht.m4a;Heu passt hier nicht.;Naturpaare
 heu_passt_sicher_nicht.m4a;Heu passt sicher nicht.;Naturpaare
+hoehle_passt_hier_nicht.m4a;Höhle passt hier nicht.;Naturpaare
+hoehle_passt_sicher_nicht.m4a;Höhle passt sicher nicht.;Naturpaare
+honigbienen_wohnen_im_bienenstock.m4a;Honigbienen wohnen im Bienenstock.;Naturpaare
 igel_fressen_wuermer_kaefer_und_schnecken.m4a;Igel fressen Würmer, Käfer und Schnecken.;Naturpaare
 igel_passt_hier_nicht.m4a;Igel passt hier nicht.;Naturpaare
 igel_passt_sicher_nicht.m4a;Igel passt sicher nicht.;Naturpaare
 im_fruehling_blueht_der_kirschbaum_im_sommer_traegt_er_kirschen.m4a;Im Frühling blüht der Kirschbaum, im Sommer trägt er Kirschen.;Naturpaare
+im_winter_schlaeft_der_baer_lange_in_einer_hoehle.m4a;Im Winter schläft der Bär lange in einer Höhle.;Naturpaare
+in_der_mitte_der_sonnenblume_wachsen_viele_kerne.m4a;In der Mitte der Sonnenblume wachsen viele Kerne.;Naturpaare
 ja_das_passt.m4a;Ja, das passt!;Naturpaare
 kaefer_passt_hier_nicht.m4a;Käfer passt hier nicht.;Naturpaare
 kaefer_passt_sicher_nicht.m4a;Käfer passt sicher nicht.;Naturpaare
@@ -803,6 +897,12 @@ kamel_passt_sicher_nicht.m4a;Kamel passt sicher nicht.;Naturpaare
 kamele_leben_in_der_wueste.m4a;Kamele leben in der Wüste.;Naturpaare
 karotte_passt_hier_nicht.m4a;Karotte passt hier nicht.;Naturpaare
 karotte_passt_sicher_nicht.m4a;Karotte passt sicher nicht.;Naturpaare
+karotten_und_aepfel_moegen_sie_als_leckerbissen.m4a;Karotten und Äpfel mögen sie als Leckerbissen.;Naturpaare
+kartoffel_passt_hier_nicht.m4a;Kartoffel passt hier nicht.;Naturpaare
+kartoffel_passt_sicher_nicht.m4a;Kartoffel passt sicher nicht.;Naturpaare
+kartoffeln_wachsen_unter_der_erde_an_den_wurzeln_der_pflanze.m4a;Kartoffeln wachsen unter der Erde an den Wurzeln der Pflanze.;Naturpaare
+kartoffelpflanze_passt_hier_nicht.m4a;Kartoffelpflanze passt hier nicht.;Naturpaare
+kartoffelpflanze_passt_sicher_nicht.m4a;Kartoffelpflanze passt sicher nicht.;Naturpaare
 kastanie_passt_hier_nicht.m4a;Kastanie passt hier nicht.;Naturpaare
 kastanie_passt_sicher_nicht.m4a;Kastanie passt sicher nicht.;Naturpaare
 kastanienbaum_passt_hier_nicht.m4a;Kastanienbaum passt hier nicht.;Naturpaare
@@ -815,46 +915,80 @@ kirschen_passt_hier_nicht.m4a;Kirschen passt hier nicht.;Naturpaare
 kirschen_passt_sicher_nicht.m4a;Kirschen passt sicher nicht.;Naturpaare
 knochen_passt_hier_nicht.m4a;Knochen passt hier nicht.;Naturpaare
 knochen_passt_sicher_nicht.m4a;Knochen passt sicher nicht.;Naturpaare
+koerner_passt_hier_nicht.m4a;Körner passt hier nicht.;Naturpaare
+koerner_passt_sicher_nicht.m4a;Körner passt sicher nicht.;Naturpaare
 kuehe_fressen_gras_und_im_winter_heu.m4a;Kühe fressen Gras und im Winter Heu.;Naturpaare
 kuehe_leben_auf_dem_bauernhof_und_auf_der_weide.m4a;Kühe leben auf dem Bauernhof und auf der Weide.;Naturpaare
 kuh_passt_hier_nicht.m4a;Kuh passt hier nicht.;Naturpaare
 kuh_passt_sicher_nicht.m4a;Kuh passt sicher nicht.;Naturpaare
+loewenzahn_passt_hier_nicht.m4a;Löwenzahn passt hier nicht.;Naturpaare
+loewenzahn_passt_sicher_nicht.m4a;Löwenzahn passt sicher nicht.;Naturpaare
+maeuse_fressen_gerne_koerner_samen_und_nuesse.m4a;Mäuse fressen gerne Körner, Samen und Nüsse.;Naturpaare
+maus_passt_hier_nicht.m4a;Maus passt hier nicht.;Naturpaare
+maus_passt_sicher_nicht.m4a;Maus passt sicher nicht.;Naturpaare
 meer_passt_hier_nicht.m4a;Meer passt hier nicht.;Naturpaare
 meer_passt_sicher_nicht.m4a;Meer passt sicher nicht.;Naturpaare
 muecke_passt_hier_nicht.m4a;Mücke passt hier nicht.;Naturpaare
 muecke_passt_sicher_nicht.m4a;Mücke passt sicher nicht.;Naturpaare
+nest_passt_hier_nicht.m4a;Nest passt hier nicht.;Naturpaare
+nest_passt_sicher_nicht.m4a;Nest passt sicher nicht.;Naturpaare
 nuesse_passt_hier_nicht.m4a;Nüsse passt hier nicht.;Naturpaare
 nuesse_passt_sicher_nicht.m4a;Nüsse passt sicher nicht.;Naturpaare
+pferd_passt_hier_nicht.m4a;Pferd passt hier nicht.;Naturpaare
+pferd_passt_sicher_nicht.m4a;Pferd passt sicher nicht.;Naturpaare
+pferde_fressen_heu_und_gras.m4a;Pferde fressen Heu und Gras.;Naturpaare
 pilz_passt_hier_nicht.m4a;Pilz passt hier nicht.;Naturpaare
 pilz_passt_sicher_nicht.m4a;Pilz passt sicher nicht.;Naturpaare
 pinguin_passt_hier_nicht.m4a;Pinguin passt hier nicht.;Naturpaare
 pinguin_passt_sicher_nicht.m4a;Pinguin passt sicher nicht.;Naturpaare
 pinguine_leben_am_meer_viele_dort_wo_es_eis_gibt.m4a;Pinguine leben am Meer, viele dort, wo es Eis gibt.;Naturpaare
+pusteblume_passt_hier_nicht.m4a;Pusteblume passt hier nicht.;Naturpaare
+pusteblume_passt_sicher_nicht.m4a;Pusteblume passt sicher nicht.;Naturpaare
+raupe_passt_hier_nicht.m4a;Raupe passt hier nicht.;Naturpaare
+raupe_passt_sicher_nicht.m4a;Raupe passt sicher nicht.;Naturpaare
+raupen_fressen_blaetter.m4a;Raupen fressen Blätter.;Naturpaare
 salat_passt_hier_nicht.m4a;Salat passt hier nicht.;Naturpaare
 salat_passt_sicher_nicht.m4a;Salat passt sicher nicht.;Naturpaare
 see_passt_hier_nicht.m4a;See passt hier nicht.;Naturpaare
 see_passt_sicher_nicht.m4a;See passt sicher nicht.;Naturpaare
+seestern_passt_hier_nicht.m4a;Seestern passt hier nicht.;Naturpaare
+seestern_passt_sicher_nicht.m4a;Seestern passt sicher nicht.;Naturpaare
+seesterne_leben_im_meer_oft_auf_dem_meeresboden.m4a;Seesterne leben im Meer, oft auf dem Meeresboden.;Naturpaare
 sie_kommen_lange_ohne_wasser_aus.m4a;Sie kommen lange ohne Wasser aus.;Naturpaare
+sonnenblume_passt_hier_nicht.m4a;Sonnenblume passt hier nicht.;Naturpaare
+sonnenblume_passt_sicher_nicht.m4a;Sonnenblume passt sicher nicht.;Naturpaare
 sonnenblumenkerne_passt_hier_nicht.m4a;Sonnenblumenkerne passt hier nicht.;Naturpaare
 sonnenblumenkerne_passt_sicher_nicht.m4a;Sonnenblumenkerne passt sicher nicht.;Naturpaare
+spaeter_werden_sie_zu_schmetterlingen.m4a;Später werden sie zu Schmetterlingen.;Naturpaare
 stein_passt_hier_nicht.m4a;Stein passt hier nicht.;Naturpaare
 stein_passt_sicher_nicht.m4a;Stein passt sicher nicht.;Naturpaare
 teich_passt_hier_nicht.m4a;Teich passt hier nicht.;Naturpaare
 teich_passt_sicher_nicht.m4a;Teich passt sicher nicht.;Naturpaare
 trauben_passt_hier_nicht.m4a;Trauben passt hier nicht.;Naturpaare
 trauben_passt_sicher_nicht.m4a;Trauben passt sicher nicht.;Naturpaare
+viele_voegel_picken_wuermer_und_koerner.m4a;Viele Vögel picken Würmer und Körner.;Naturpaare
+vogel_passt_hier_nicht.m4a;Vogel passt hier nicht.;Naturpaare
+vogel_passt_sicher_nicht.m4a;Vogel passt sicher nicht.;Naturpaare
 wald_passt_hier_nicht.m4a;Wald passt hier nicht.;Naturpaare
 wald_passt_sicher_nicht.m4a;Wald passt sicher nicht.;Naturpaare
 was_frisst_das_eichhoernchen.m4a;Was frisst das Eichhörnchen?;Naturpaare
+was_frisst_das_pferd.m4a;Was frisst das Pferd?;Naturpaare
 was_frisst_der_frosch.m4a;Was frisst der Frosch?;Naturpaare
 was_frisst_der_hase.m4a;Was frisst der Hase?;Naturpaare
 was_frisst_der_igel.m4a;Was frisst der Igel?;Naturpaare
+was_frisst_der_vogel.m4a;Was frisst der Vogel?;Naturpaare
 was_frisst_die_kuh.m4a;Was frisst die Kuh?;Naturpaare
+was_frisst_die_maus.m4a;Was frisst die Maus?;Naturpaare
+was_frisst_die_raupe.m4a;Was frisst die Raupe?;Naturpaare
 was_waechst_am_apfelbaum.m4a;Was wächst am Apfelbaum?;Naturpaare
 was_waechst_am_kastanienbaum.m4a;Was wächst am Kastanienbaum?;Naturpaare
 was_waechst_am_kirschbaum.m4a;Was wächst am Kirschbaum?;Naturpaare
+was_waechst_am_loewenzahn.m4a;Was wächst am Löwenzahn?;Naturpaare
 was_waechst_an_der_bananenstaude.m4a;Was wächst an der Bananenstaude?;Naturpaare
+was_waechst_an_der_eiche.m4a;Was wächst an der Eiche?;Naturpaare
 was_waechst_an_der_erdbeerpflanze.m4a;Was wächst an der Erdbeerpflanze?;Naturpaare
+was_waechst_an_der_kartoffelpflanze.m4a;Was wächst an der Kartoffelpflanze?;Naturpaare
+was_waechst_an_der_sonnenblume.m4a;Was wächst an der Sonnenblume?;Naturpaare
 was_waechst_an_der_weinrebe.m4a;Was wächst an der Weinrebe?;Naturpaare
 wasser_passt_hier_nicht.m4a;Wasser passt hier nicht.;Naturpaare
 wasser_passt_sicher_nicht.m4a;Wasser passt sicher nicht.;Naturpaare
@@ -868,7 +1002,11 @@ wo_lebt_das_kamel.m4a;Wo lebt das Kamel?;Naturpaare
 wo_lebt_der_fisch.m4a;Wo lebt der Fisch?;Naturpaare
 wo_lebt_der_frosch.m4a;Wo lebt der Frosch?;Naturpaare
 wo_lebt_der_pinguin.m4a;Wo lebt der Pinguin?;Naturpaare
+wo_lebt_der_seestern.m4a;Wo lebt der Seestern?;Naturpaare
 wo_lebt_die_kuh.m4a;Wo lebt die Kuh?;Naturpaare
+wo_schlaeft_der_baer_im_winter.m4a;Wo schläft der Bär im Winter?;Naturpaare
+wo_wohnt_der_fuchs.m4a;Wo wohnt der Fuchs?;Naturpaare
+wo_wohnt_die_biene.m4a;Wo wohnt die Biene?;Naturpaare
 wueste_passt_hier_nicht.m4a;Wüste passt hier nicht.;Naturpaare
 wueste_passt_sicher_nicht.m4a;Wüste passt sicher nicht.;Naturpaare
 wurm_passt_hier_nicht.m4a;Wurm passt hier nicht.;Naturpaare
@@ -986,6 +1124,10 @@ hilf_dem_marienkaefer_zur_bluete.m4a;Hilf dem Marienkäfer zur Blüte.;Spurenate
 hilf_dem_schmetterling_zur_sonnenblume.m4a;Hilf dem Schmetterling zur Sonnenblume.;Spurenatelier
 hilf_der_biene_zur_blume.m4a;Hilf der Biene zur Blume.;Spurenatelier
 hilf_der_schnecke_zum_blatt.m4a;Hilf der Schnecke zum Blatt.;Spurenatelier
+das_ganze_bild_ist_fertig_das_eichhoernchen.m4a;Das ganze Bild ist fertig: das Eichhörnchen!;Tierpuzzle
+das_ganze_bild_ist_fertig_das_pferd.m4a;Das ganze Bild ist fertig: das Pferd!;Tierpuzzle
+das_ganze_bild_ist_fertig_das_reh.m4a;Das ganze Bild ist fertig: das Reh!;Tierpuzzle
+das_ganze_bild_ist_fertig_das_schaf.m4a;Das ganze Bild ist fertig: das Schaf!;Tierpuzzle
 das_ganze_bild_ist_fertig_das_schwein.m4a;Das ganze Bild ist fertig: das Schwein!;Tierpuzzle
 das_ganze_bild_ist_fertig_der_baer.m4a;Das ganze Bild ist fertig: der Bär!;Tierpuzzle
 das_ganze_bild_ist_fertig_der_fisch.m4a;Das ganze Bild ist fertig: der Fisch!;Tierpuzzle
@@ -993,11 +1135,23 @@ das_ganze_bild_ist_fertig_der_frosch.m4a;Das ganze Bild ist fertig: der Frosch!;
 das_ganze_bild_ist_fertig_der_fuchs.m4a;Das ganze Bild ist fertig: der Fuchs!;Tierpuzzle
 das_ganze_bild_ist_fertig_der_hahn.m4a;Das ganze Bild ist fertig: der Hahn!;Tierpuzzle
 das_ganze_bild_ist_fertig_der_hase.m4a;Das ganze Bild ist fertig: der Hase!;Tierpuzzle
+das_ganze_bild_ist_fertig_der_hund.m4a;Das ganze Bild ist fertig: der Hund!;Tierpuzzle
+das_ganze_bild_ist_fertig_der_igel.m4a;Das ganze Bild ist fertig: der Igel!;Tierpuzzle
 das_ganze_bild_ist_fertig_der_marienkaefer.m4a;Das ganze Bild ist fertig: der Marienkäfer!;Tierpuzzle
+das_ganze_bild_ist_fertig_der_otter.m4a;Das ganze Bild ist fertig: der Otter!;Tierpuzzle
 das_ganze_bild_ist_fertig_der_schmetterling.m4a;Das ganze Bild ist fertig: der Schmetterling!;Tierpuzzle
+das_ganze_bild_ist_fertig_der_schwan.m4a;Das ganze Bild ist fertig: der Schwan!;Tierpuzzle
+das_ganze_bild_ist_fertig_die_biene.m4a;Das ganze Bild ist fertig: die Biene!;Tierpuzzle
 das_ganze_bild_ist_fertig_die_ente.m4a;Das ganze Bild ist fertig: die Ente!;Tierpuzzle
 das_ganze_bild_ist_fertig_die_eule.m4a;Das ganze Bild ist fertig: die Eule!;Tierpuzzle
+das_ganze_bild_ist_fertig_die_katze.m4a;Das ganze Bild ist fertig: die Katze!;Tierpuzzle
 das_ganze_bild_ist_fertig_die_kuh.m4a;Das ganze Bild ist fertig: die Kuh!;Tierpuzzle
+das_ganze_bild_ist_fertig_die_schnecke.m4a;Das ganze Bild ist fertig: die Schnecke!;Tierpuzzle
+das_ganze_bild_ist_fertig_die_ziege.m4a;Das ganze Bild ist fertig: die Ziege!;Tierpuzzle
+das_ist_das_eichhoernchen.m4a;Das ist das Eichhörnchen.;Tierpuzzle
+das_ist_das_pferd.m4a;Das ist das Pferd.;Tierpuzzle
+das_ist_das_reh.m4a;Das ist das Reh.;Tierpuzzle
+das_ist_das_schaf.m4a;Das ist das Schaf.;Tierpuzzle
 das_ist_das_schwein.m4a;Das ist das Schwein.;Tierpuzzle
 das_ist_der_baer.m4a;Das ist der Bär.;Tierpuzzle
 das_ist_der_fisch.m4a;Das ist der Fisch.;Tierpuzzle
@@ -1005,24 +1159,43 @@ das_ist_der_frosch.m4a;Das ist der Frosch.;Tierpuzzle
 das_ist_der_fuchs.m4a;Das ist der Fuchs.;Tierpuzzle
 das_ist_der_hahn.m4a;Das ist der Hahn.;Tierpuzzle
 das_ist_der_hase.m4a;Das ist der Hase.;Tierpuzzle
+das_ist_der_hund.m4a;Das ist der Hund.;Tierpuzzle
+das_ist_der_igel.m4a;Das ist der Igel.;Tierpuzzle
 das_ist_der_marienkaefer.m4a;Das ist der Marienkäfer.;Tierpuzzle
+das_ist_der_otter.m4a;Das ist der Otter.;Tierpuzzle
 das_ist_der_schmetterling.m4a;Das ist der Schmetterling.;Tierpuzzle
+das_ist_der_schwan.m4a;Das ist der Schwan.;Tierpuzzle
+das_ist_die_biene.m4a;Das ist die Biene.;Tierpuzzle
 das_ist_die_ente.m4a;Das ist die Ente.;Tierpuzzle
 das_ist_die_eule.m4a;Das ist die Eule.;Tierpuzzle
+das_ist_die_katze.m4a;Das ist die Katze.;Tierpuzzle
 das_ist_die_kuh.m4a;Das ist die Kuh.;Tierpuzzle
+das_ist_die_schnecke.m4a;Das ist die Schnecke.;Tierpuzzle
+das_ist_die_ziege.m4a;Das ist die Ziege.;Tierpuzzle
 schau_dir_das_bild_genau_an.m4a;Schau dir das Bild genau an.;Tierpuzzle
+auuuuh.m4a;Auuuuh!;Tierstimmen
+das_pferd.m4a;das Pferd;Tierstimmen
+das_pferd_ist_es_nicht.m4a;Das Pferd ist es nicht.;Tierstimmen
 das_schaf.m4a;das Schaf;Tierstimmen
 das_schaf_ist_es_nicht.m4a;Das Schaf ist es nicht.;Tierstimmen
 das_schwein.m4a;das Schwein;Tierstimmen
 das_schwein_ist_es_nicht.m4a;Das Schwein ist es nicht.;Tierstimmen
+das_war_das_pferd.m4a;Das war das Pferd.;Tierstimmen
 das_war_das_schaf.m4a;Das war das Schaf.;Tierstimmen
 das_war_das_schwein.m4a;Das war das Schwein.;Tierstimmen
 das_war_der_esel.m4a;Das war der Esel.;Tierstimmen
 das_war_der_frosch.m4a;Das war der Frosch.;Tierstimmen
 das_war_der_hahn.m4a;Das war der Hahn.;Tierstimmen
 das_war_der_hund.m4a;Das war der Hund.;Tierstimmen
+das_war_der_kuckuck.m4a;Das war der Kuckuck.;Tierstimmen
+das_war_der_wolf.m4a;Das war der Wolf.;Tierstimmen
+das_war_die_biene.m4a;Das war die Biene.;Tierstimmen
+das_war_die_ente.m4a;Das war die Ente.;Tierstimmen
+das_war_die_eule.m4a;Das war die Eule.;Tierstimmen
+das_war_die_gans.m4a;Das war die Gans.;Tierstimmen
 das_war_die_katze.m4a;Das war die Katze.;Tierstimmen
 das_war_die_kuh.m4a;Das war die Kuh.;Tierstimmen
+das_war_die_ziege.m4a;Das war die Ziege.;Tierstimmen
 der_esel.m4a;der Esel;Tierstimmen
 der_esel_ist_es_nicht.m4a;Der Esel ist es nicht.;Tierstimmen
 der_frosch.m4a;der Frosch;Tierstimmen
@@ -1031,25 +1204,54 @@ der_hahn.m4a;der Hahn;Tierstimmen
 der_hahn_ist_es_nicht.m4a;Der Hahn ist es nicht.;Tierstimmen
 der_hund.m4a;der Hund;Tierstimmen
 der_hund_ist_es_nicht.m4a;Der Hund ist es nicht.;Tierstimmen
+der_kuckuck.m4a;der Kuckuck;Tierstimmen
+der_kuckuck_ist_es_nicht.m4a;Der Kuckuck ist es nicht.;Tierstimmen
+der_wolf.m4a;der Wolf;Tierstimmen
+der_wolf_ist_es_nicht.m4a;Der Wolf ist es nicht.;Tierstimmen
+die_biene.m4a;die Biene;Tierstimmen
+die_biene_ist_es_nicht.m4a;Die Biene ist es nicht.;Tierstimmen
+die_ente.m4a;die Ente;Tierstimmen
+die_ente_ist_es_nicht.m4a;Die Ente ist es nicht.;Tierstimmen
+die_eule.m4a;die Eule;Tierstimmen
+die_eule_ist_es_nicht.m4a;Die Eule ist es nicht.;Tierstimmen
+die_gans.m4a;die Gans;Tierstimmen
+die_gans_ist_es_nicht.m4a;Die Gans ist es nicht.;Tierstimmen
 die_katze.m4a;die Katze;Tierstimmen
 die_katze_ist_es_nicht.m4a;Die Katze ist es nicht.;Tierstimmen
 die_kuh.m4a;die Kuh;Tierstimmen
 die_kuh_ist_es_nicht.m4a;Die Kuh ist es nicht.;Tierstimmen
+die_ziege.m4a;die Ziege;Tierstimmen
+die_ziege_ist_es_nicht.m4a;Die Ziege ist es nicht.;Tierstimmen
 grunz_grunz.m4a;Grunz, grunz!;Tierstimmen
+hue_hue_hueueue.m4a;Hü-hü-hüüü!;Tierstimmen
+huhu_huhu.m4a;Huhu, huhu!;Tierstimmen
 i_aah_i_aah.m4a;I-aah, i-aah!;Tierstimmen
 kikeriki.m4a;Kikeriki!;Tierstimmen
+kuckuck_kuckuck.m4a;Kuckuck, kuckuck!;Tierstimmen
 maeh_maeh.m4a;Mäh, mäh!;Tierstimmen
+meck_meck.m4a;Meck, meck!;Tierstimmen
 miau.m4a;Miau!;Tierstimmen
 muuuuh.m4a;Muuuuh!;Tierstimmen
+nak_nak_nak.m4a;Nak, nak, nak!;Tierstimmen
 quak_quak.m4a;Quak, quak!;Tierstimmen
+richtig_das_war_das_pferd.m4a;Richtig, das war das Pferd.;Tierstimmen
 richtig_das_war_das_schaf.m4a;Richtig, das war das Schaf.;Tierstimmen
 richtig_das_war_das_schwein.m4a;Richtig, das war das Schwein.;Tierstimmen
 richtig_das_war_der_esel.m4a;Richtig, das war der Esel.;Tierstimmen
 richtig_das_war_der_frosch.m4a;Richtig, das war der Frosch.;Tierstimmen
 richtig_das_war_der_hahn.m4a;Richtig, das war der Hahn.;Tierstimmen
 richtig_das_war_der_hund.m4a;Richtig, das war der Hund.;Tierstimmen
+richtig_das_war_der_kuckuck.m4a;Richtig, das war der Kuckuck.;Tierstimmen
+richtig_das_war_der_wolf.m4a;Richtig, das war der Wolf.;Tierstimmen
+richtig_das_war_die_biene.m4a;Richtig, das war die Biene.;Tierstimmen
+richtig_das_war_die_ente.m4a;Richtig, das war die Ente.;Tierstimmen
+richtig_das_war_die_eule.m4a;Richtig, das war die Eule.;Tierstimmen
+richtig_das_war_die_gans.m4a;Richtig, das war die Gans.;Tierstimmen
 richtig_das_war_die_katze.m4a;Richtig, das war die Katze.;Tierstimmen
 richtig_das_war_die_kuh.m4a;Richtig, das war die Kuh.;Tierstimmen
+richtig_das_war_die_ziege.m4a;Richtig, das war die Ziege.;Tierstimmen
+schnatter_schnatter.m4a;Schnatter, schnatter!;Tierstimmen
+summ_summ_summ.m4a;Summ, summ, summ!;Tierstimmen
 wau_wau.m4a;Wau, wau!;Tierstimmen
 beginne_beim_gelben_punkt_und_folge_den_pfeilen.m4a;Beginne beim gelben Punkt und folge den Pfeilen.;Tracing
 gut_gezeichnet.m4a;Gut gezeichnet!;Tracing
@@ -1578,3 +1780,19 @@ tier_schwein_1.m4a;ECHTE TIERAUFNAHME: Schwein (Variante 1, 1–3 Sekunden, kein
 tier_schwein_2.m4a;ECHTE TIERAUFNAHME: Schwein (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
 tier_esel_1.m4a;ECHTE TIERAUFNAHME: Esel (Variante 1, 1–3 Sekunden, keine Sprache);Tierlaute
 tier_esel_2.m4a;ECHTE TIERAUFNAHME: Esel (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_pferd_1.m4a;ECHTE TIERAUFNAHME: Pferd (Variante 1, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_pferd_2.m4a;ECHTE TIERAUFNAHME: Pferd (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_ziege_1.m4a;ECHTE TIERAUFNAHME: Ziege (Variante 1, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_ziege_2.m4a;ECHTE TIERAUFNAHME: Ziege (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_ente_1.m4a;ECHTE TIERAUFNAHME: Ente (Variante 1, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_ente_2.m4a;ECHTE TIERAUFNAHME: Ente (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_gans_1.m4a;ECHTE TIERAUFNAHME: Gans (Variante 1, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_gans_2.m4a;ECHTE TIERAUFNAHME: Gans (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_eule_1.m4a;ECHTE TIERAUFNAHME: Eule (Variante 1, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_eule_2.m4a;ECHTE TIERAUFNAHME: Eule (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_kuckuck_1.m4a;ECHTE TIERAUFNAHME: Kuckuck (Variante 1, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_kuckuck_2.m4a;ECHTE TIERAUFNAHME: Kuckuck (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_biene_1.m4a;ECHTE TIERAUFNAHME: Biene (Variante 1, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_biene_2.m4a;ECHTE TIERAUFNAHME: Biene (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_wolf_1.m4a;ECHTE TIERAUFNAHME: Wolf (Variante 1, 1–3 Sekunden, keine Sprache);Tierlaute
+tier_wolf_2.m4a;ECHTE TIERAUFNAHME: Wolf (Variante 2, 1–3 Sekunden, keine Sprache);Tierlaute
