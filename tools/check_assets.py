@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Prüft, ob alle Assets aus assets/*.csv vorhanden und korrekt sind.
 
-Aufruf im Repo-Hauptordner:  python3 tools/check_assets.py
+Aufruf im Repo-Hauptordner:  python3 tools/check_assets.py            (alles)
+                             python3 tools/check_assets.py --bilder   (nur Bilder)
+                             python3 tools/check_assets.py --audio    (nur Ton)
 Benötigt für Bildprüfungen: Pillow (pip install pillow). Für Audiolängen optional: ffprobe.
 Exit-Code 0 = alles vollständig, 1 = Fehler.
 """
@@ -11,24 +13,28 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AUDIO = os.path.join(ROOT, "EllieInsel", "Audio")
 IMAGES = os.path.join(ROOT, "EllieInsel", "Images")
 errors, warnings = [], []
+ONLY_IMAGES = "--bilder" in sys.argv
+ONLY_AUDIO = "--audio" in sys.argv
 
 def rows(name):
     with open(os.path.join(ROOT, "assets", name), encoding="utf-8") as fh:
         return list(csv.DictReader(fh, delimiter=";"))
 
 # --- Audio ---
-audio_rows = rows("Sprachaufnahmen.csv")
+audio_rows = [] if ONLY_IMAGES else rows("Sprachaufnahmen.csv")
 expected_audio = {r["Datei"] for r in audio_rows}
 present_audio = set(os.listdir(AUDIO)) if os.path.isdir(AUDIO) else set()
 missing = sorted(expected_audio - present_audio)
 extra = sorted(f for f in present_audio - expected_audio if not f.startswith("."))
 if missing:
     errors.append(f"{len(missing)} Audiodateien fehlen, z. B. {missing[:5]}")
-if extra:
+if extra and not ONLY_IMAGES:
     warnings.append(f"{len(extra)} unbekannte Dateien in EllieInsel/Audio: {extra[:5]}")
 
 ffprobe = shutil.which("ffprobe")
-if ffprobe:
+if ONLY_IMAGES:
+    pass
+elif ffprobe:
     for f in sorted(expected_audio & present_audio):
         try:
             out = subprocess.run([ffprobe, "-v", "error", "-show_entries", "format=duration:stream=channels,sample_rate",
@@ -49,10 +55,12 @@ else:
     warnings.append("ffprobe nicht gefunden – Audiolängen nicht geprüft")
 
 # --- Bilder ---
-image_rows = rows("Bilder.csv")
+image_rows = [] if ONLY_AUDIO else rows("Bilder.csv")
 present_img = set(os.listdir(IMAGES)) if os.path.isdir(IMAGES) else set()
 try:
     from PIL import Image
+    if ONLY_AUDIO:
+        Image = None
 except ImportError:
     Image = None
     warnings.append("Pillow fehlt – Bildgrössen/Transparenz nicht geprüft")
@@ -88,7 +96,7 @@ for r in image_rows:
     except Exception as e:
         errors.append(f"{f}: nicht lesbar ({e})")
 extra_img = sorted(f for f in present_img - {r["Datei"] for r in image_rows} if not f.startswith("."))
-if extra_img:
+if extra_img and not ONLY_AUDIO:
     warnings.append(f"{len(extra_img)} unbekannte Dateien in EllieInsel/Images: {extra_img[:5]}")
 
 # --- Doppelte Namen über beide Ordner (Xcode legt alles flach ins Bundle) ---
