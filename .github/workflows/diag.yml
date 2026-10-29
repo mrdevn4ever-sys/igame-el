@@ -1,5 +1,7 @@
 name: Runner-Diagnose
-on: workflow_dispatch
+on:
+  push:
+    paths: [".github/workflows/diag.yml"]
 jobs:
   linux:
     runs-on: ubuntu-latest
