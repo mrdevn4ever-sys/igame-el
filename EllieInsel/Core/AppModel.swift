@@ -29,7 +29,7 @@ final class AppModel {
     @ObservationIgnored private var saveTask: Task<Void, Never>?
 
     init() {
-        let loaded = DemoMode.isActive ? DemoMode.makeData() : (Persistence.loadData() ?? AppData())
+        let loaded = DemoMode.isActive && !DemoMode.flag("-keep") ? DemoMode.makeData() : (Persistence.loadData() ?? AppData())
         data = loaded
         gallery = Persistence.loadGallery()
         if !loaded.setupComplete {

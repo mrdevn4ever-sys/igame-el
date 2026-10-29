@@ -62,6 +62,19 @@ for g in tracing appleMath memory snake counting shapes puzzle pattern animalSou
   i=$((i+1))
 done
 
+# Fortsetzen: Runde anfangen, App beenden, wieder öffnen
+for g in memory tracing appleMath puzzle; do
+  run "50_${g}_angefangen" 12 0 -screen game -game "$g" -autoplay -steps 2
+  run "51_${g}_hub_danach" 5 0 -keep -screen hub
+  run "52_${g}_fortgesetzt" 6 0 -keep -screen game -game "$g"
+done
+# Hilfe-Stufen sichtbar (Hinweis, dann Vorzeigen)
+for g in tracing appleMath memory counting shapes sorting pattern naturePairs puzzle snake; do
+  run "60_${g}_hilfe" 8 4 -screen game -game "$g" -autoplay -helpfirst -steps 1
+done
+# Garten mit Geschenk und Elternbereich-Unterseiten
+run 70_garten_geschenk 5 0 -screen garden
+
 # Absturzberichte einsammeln
 mkdir -p "$OUT/crashes"
 find ~/Library/Logs/DiagnosticReports -iname "*EllieInsel*" -exec cp {} "$OUT/crashes/" \; 2>/dev/null || true

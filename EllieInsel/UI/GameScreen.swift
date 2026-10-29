@@ -26,11 +26,20 @@ struct GameScreen: View {
     private func startAutoplay(_ host: GameHost) {
         Task { @MainActor in
             try? await Task.sleep(nanoseconds: 3_000_000_000)
-            for _ in 0..<80 {
+            let maxSteps = Int(DemoMode.value("-steps") ?? "") ?? 80
+            let helpFirst = DemoMode.flag("-helpfirst")
+            for _ in 0..<maxSteps {
                 if host.roundComplete { return }
                 if host.awaitingNext {
                     host.next()
                 } else {
+                    if helpFirst {
+                        // Hinweis und Vorzeigen sichtbar machen, bevor gelöst wird.
+                        for _ in 0..<2 {
+                            host.requestHelp()
+                            try? await Task.sleep(nanoseconds: 2_200_000_000)
+                        }
+                    }
                     host.debugSolveHandler?()
                 }
                 try? await Task.sleep(nanoseconds: 1_300_000_000)
