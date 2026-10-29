@@ -109,8 +109,8 @@ struct SnakeGameView: View {
             Text(model.fruitEmoji)
                 .font(.system(size: cell * 0.8))
                 .frame(width: cell, height: cell)
-                .offset(x: CGFloat(model.fruit.x) * cell, y: CGFloat(model.fruit.y) * cell)
                 .pulseHighlight(model.highlightFruit)
+                .offset(x: CGFloat(model.fruit.x) * cell, y: CGFloat(model.fruit.y) * cell)
 
             ForEach(Array(model.body.enumerated()), id: \.offset) { i, p in
                 RoundedRectangle(cornerRadius: cell * 0.35)

@@ -80,7 +80,8 @@ struct BunnyView: View {
                     .fixedSize(horizontal: false, vertical: true)
             }
         }
-        .animation(.spring(response: 0.35, dampingFraction: 0.8), value: message)
+        // Nur Erscheinen und Verschwinden animieren, damit sich Texte nicht überlagern.
+        .animation(.spring(response: 0.35, dampingFraction: 0.8), value: message == nil)
     }
 }
 

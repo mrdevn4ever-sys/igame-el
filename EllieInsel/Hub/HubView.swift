@@ -78,7 +78,7 @@ struct HubView: View {
                     HStack(spacing: 10) {
                         Image(systemName: "play.fill")
                         Text("Weiterspielen")
-                        Text(game.emoji)
+                        Pic("spiel_\(game.rawValue)", game.emoji, size: 34)
                     }
                     .font(Theme.rounded(22))
                 }
