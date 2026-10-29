@@ -17,6 +17,23 @@ struct GameScreen: View {
             if host == nil {
                 let h = GameHost(game: game, app: app)
                 host = h
+                if DemoMode.autoplay { startAutoplay(h) }
+            }
+        }
+    }
+
+    /// Spielt im Simulator selbständig eine Runde durch.
+    private func startAutoplay(_ host: GameHost) {
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 3_000_000_000)
+            for _ in 0..<80 {
+                if host.roundComplete { return }
+                if host.awaitingNext {
+                    host.next()
+                } else {
+                    host.debugSolveHandler?()
+                }
+                try? await Task.sleep(nanoseconds: 1_300_000_000)
             }
         }
     }

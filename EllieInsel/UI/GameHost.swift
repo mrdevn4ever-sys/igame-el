@@ -39,6 +39,8 @@ final class GameHost {
     @ObservationIgnored var nextTaskHandler: (() -> Void)?
     @ObservationIgnored var newRoundHandler: (() -> Void)?
     @ObservationIgnored var summaryProvider: (() -> RoundSummary)?
+    /// Löst den nächsten Schritt automatisch (nur für automatische Durchläufe im Simulator).
+    @ObservationIgnored var debugSolveHandler: (() -> Void)?
 
     init(game: GameID, app: AppModel) {
         self.game = game

@@ -263,6 +263,7 @@ final class AtelierModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.nextTaskHandler = { [weak self] in self?.nextPath() }
         host.summaryProvider = { [weak self] in
@@ -522,6 +523,32 @@ final class AtelierModel {
     }
 
     // MARK: Hilfe
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        switch mode {
+        case .none:
+            choose(DemoMode.value("-atelier") == "free" ? .free : .paths)
+        case .paths:
+            guard !progress.isComplete, let pts = samples.first else { return }
+            for p in pts { progress.feed(p, samples: samples, tolerance: 0.02, lookahead: 3) }
+            if progress.isComplete { completePath() }
+        case .free:
+            if drawing.strokes.isEmpty {
+                let points = (0..<40).map { i -> PKStrokePoint in
+                    let t = Double(i) / 39
+                    return PKStrokePoint(location: CGPoint(x: 120 + 420 * t, y: 220 + 90 * sin(t * 6)), timeOffset: t,
+                                         size: CGSize(width: 14, height: 14), opacity: 1, force: 1, azimuth: 0, altitude: .pi / 2)
+                }
+                let stroke = PKStroke(ink: PKInk(.pen, color: .systemBlue), path: PKStrokePath(controlPoints: points, creationDate: Date()))
+                drawing = PKDrawing(strokes: [stroke])
+                strokeFinished(drawing)
+            } else {
+                finishDrawing()
+            }
+        }
+    }
 
     private func help(_ level: Int) {
         switch mode {

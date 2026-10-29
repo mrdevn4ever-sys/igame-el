@@ -59,6 +59,7 @@ struct RootView: View {
                     .transition(.opacity)
             }
         }
+        .onAppear { DemoMode.applyOrientation() }
         .statusBarHidden(true)
         .persistentSystemOverlays(.hidden)
     }

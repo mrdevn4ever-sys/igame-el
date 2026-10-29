@@ -262,6 +262,7 @@ final class SnakeModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.summaryProvider = { [weak self] in
             let level = self?.host.difficulty.title ?? ""
@@ -426,6 +427,18 @@ final class SnakeModel {
     }
 
     // MARK: Hilfe
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        if crashed { restartAfterCrash(); return }
+        pause()
+        guard let head = body.first else { return }
+        let n = SnakeLayouts.size
+        let target = GridPoint(x: (head.x + direction.delta.0 + n) % n, y: (head.y + direction.delta.1 + n) % n)
+        if !obstacles.contains(target) && !body.contains(target) { fruit = target }
+        step()
+    }
 
     private func help(_ level: Int) {
         guard let head = body.first else { return }

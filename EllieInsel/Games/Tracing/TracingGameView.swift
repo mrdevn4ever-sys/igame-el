@@ -248,6 +248,7 @@ final class TracingModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] level in self?.help(level) }
         host.nextTaskHandler = { [weak self] in self?.nextDigit() }
         host.summaryProvider = { [weak self] in
@@ -384,6 +385,12 @@ final class TracingModel {
     }
 
     // MARK: Hilfe
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        solveTogether()
+    }
 
     private func help(_ level: Int) {
         switch level {

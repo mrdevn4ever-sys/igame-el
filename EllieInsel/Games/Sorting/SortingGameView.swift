@@ -271,6 +271,7 @@ final class SortingModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.nextTaskHandler = { [weak self] in self?.advance() }
         host.summaryProvider = { [weak self] in
@@ -368,6 +369,13 @@ final class SortingModel {
             case .size: host.wrong("Ist es gross oder klein?")
             }
         }
+    }
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        guard let task, let next = task.items.indices.first(where: { placed[$0] == nil }) else { return }
+        drop(item: next, in: task.items[next].category)
     }
 
     private func help(_ level: Int) {

@@ -241,6 +241,7 @@ final class PuzzleModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.summaryProvider = { [weak self] in
             guard let self else { return RoundSummary(text: "Ein Puzzle zusammengesetzt.") }
@@ -336,6 +337,13 @@ final class PuzzleModel {
             host.audio.effect(.gentle)
             host.showBunny("Dieses Teil gehört woanders hin.", speak: true, seconds: 2.5)
         }
+    }
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        guard !showingPreview, let next = trayOrder.first(where: { !placed.contains($0) }) else { return }
+        drop(piece: next, on: next)
     }
 
     private func help(_ level: Int) {

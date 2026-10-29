@@ -255,6 +255,7 @@ final class CountingModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.nextTaskHandler = { [weak self] in self?.advance() }
         host.summaryProvider = { [weak self] in
@@ -384,6 +385,28 @@ final class CountingModel {
     }
 
     // MARK: Hilfe
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        guard let task, !solved else { return }
+        switch task.mode {
+        case .howMany:
+            if !allCounted {
+                for i in 0..<task.count { countItem(i) }
+            } else {
+                answer(task.count)
+            }
+        case .giveMe:
+            while basket.count > task.count { basket.removeLast() }
+            var i = 0
+            while basket.count < task.count && i < task.available {
+                if !basket.contains(i) { basket.append(i) }
+                i += 1
+            }
+            finishBasket()
+        }
+    }
 
     private func help(_ level: Int) {
         guard let task else { return }

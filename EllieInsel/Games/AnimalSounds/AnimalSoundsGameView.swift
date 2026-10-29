@@ -232,6 +232,7 @@ final class AnimalSoundsModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.nextTaskHandler = { [weak self] in self?.advance() }
         host.summaryProvider = { [weak self] in
@@ -361,6 +362,12 @@ final class AnimalSoundsModel {
             save()
             host.wrong(pictureMode ? "Schau dir den Schatten nochmals an." : "Hör nochmals genau hin.")
         }
+    }
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        if let task, !solved { choose(task.animal) }
     }
 
     private func help(_ level: Int) {

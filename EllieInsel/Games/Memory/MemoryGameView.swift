@@ -157,6 +157,7 @@ final class MemoryModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.summaryProvider = { [weak self] in
             guard let self else { return RoundSummary(text: "Memory gelöst.") }
@@ -249,6 +250,12 @@ final class MemoryModel {
     }
 
     // MARK: Hilfe
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        help(3)
+    }
 
     private func help(_ level: Int) {
         guard !comparing else { return }

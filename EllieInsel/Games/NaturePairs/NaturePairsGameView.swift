@@ -235,6 +235,7 @@ final class NaturePairsModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.nextTaskHandler = { [weak self] in self?.advance() }
         host.summaryProvider = { [weak self] in
@@ -313,6 +314,13 @@ final class NaturePairsModel {
             save()
             host.wrong("\(item.name) passt hier nicht. Schauen wir es gemeinsam an.")
         }
+    }
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        guard let task, !solved, let item = task.options.first(where: { task.isValid($0) }) else { return }
+        choose(item)
     }
 
     private func help(_ level: Int) {

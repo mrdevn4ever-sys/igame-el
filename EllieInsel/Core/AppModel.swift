@@ -29,7 +29,7 @@ final class AppModel {
     @ObservationIgnored private var saveTask: Task<Void, Never>?
 
     init() {
-        let loaded = Persistence.loadData() ?? AppData()
+        let loaded = DemoMode.isActive ? DemoMode.makeData() : (Persistence.loadData() ?? AppData())
         data = loaded
         gallery = Persistence.loadGallery()
         if !loaded.setupComplete {
@@ -38,6 +38,11 @@ final class AppModel {
             screen = .tutorial
         } else {
             screen = .hub
+        }
+        if DemoMode.isActive {
+            if loaded.setupComplete { screen = DemoMode.startScreen }
+            hubPage = Int(DemoMode.value("-page") ?? "0") ?? 0
+            if DemoMode.value("-screen") == "tutorial" { screen = .tutorial }
         }
         audio.apply(loaded.sound)
     }

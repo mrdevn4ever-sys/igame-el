@@ -211,6 +211,7 @@ final class ShapesModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.nextTaskHandler = { [weak self] in self?.advance() }
         host.summaryProvider = { [weak self] in
@@ -282,6 +283,13 @@ final class ShapesModel {
         } else {
             host.wrong("Das ist ein \(board.slots[piece].name). Die Form passt hier nicht.")
         }
+    }
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        guard let board, let next = board.pieceOrder.first(where: { !filled.contains($0) }) else { return }
+        drop(piece: next, on: next)
     }
 
     private func help(_ level: Int) {

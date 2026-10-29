@@ -194,6 +194,7 @@ final class PatternModel {
     func start() {
         guard !started else { return }
         started = true
+        host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
         host.nextTaskHandler = { [weak self] in self?.advance() }
         host.summaryProvider = { [weak self] in
@@ -291,6 +292,12 @@ final class PatternModel {
             }
             self.highlightGroup = nil
         }
+    }
+
+    // MARK: Automatischer Durchlauf (Simulator)
+
+    func debugSolve() {
+        if let task, !solved { choose(task.answer) }
     }
 
     private func help(_ level: Int) {
