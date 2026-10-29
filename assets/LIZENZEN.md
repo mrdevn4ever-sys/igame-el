@@ -4,7 +4,7 @@ Stand: 29. Oktober 2026
 
 ## Bilder
 
-Alle 134 Bilddateien unter `EllieInsel/Images/` wurden für «Ellies Entdeckerinsel» neu erzeugt. Es wurden keine fremden Illustrationen, Fotos, Logos oder Markenassets übernommen.
+Alle 246 Bilddateien unter `EllieInsel/Images/` wurden für «Ellies Entdeckerinsel» neu erzeugt oder aus freigegebenen Projektassets technisch abgeleitet. Es wurden keine fremden Illustrationen, Fotos, Logos oder Markenassets übernommen.
 
 ### Generierung
 
@@ -12,6 +12,7 @@ Alle 134 Bilddateien unter `EllieInsel/Images/` wurden für «Ellies Entdeckerin
 - **Modellbezeichnung:** `gpt-image-2`
 - **Stilreferenzen:** ausschließlich zuvor für dieses Projekt mit demselben Werkzeug erzeugte und vom App-Eigentümer freigegebene Projektassets (`hase_begleiter`, `memory_fuchs`, `motiv_apfel`, `natur_wueste`, `puzzle_fuchs`) sowie daraus abgeleitete kanonische Motive
 - **Erzeugungszeitraum:** 28.–29. Oktober 2026
+- **Nachlieferung vom 29. Oktober 2026:** 112 PNG-Dateien gemäß `assets/Bilder_Nachlieferung_1.csv`; davon 74 mit `gpt-image-2` über den Hermes-Adapter für ChatGPT/Codex OAuth neu erzeugt und 38 aus freigegebenen kanonischen Projektassets technisch abgeleitet
 - **Nutzungsbedingungen:** [OpenAI Terms of Use](https://openai.com/policies/row-terms-of-use/) und [OpenAI Service Terms](https://openai.com/policies/service-terms/)
 
 Die OpenAI Terms of Use erklären im Abschnitt zu Inhalten, dass der Nutzer – soweit gesetzlich zulässig – seine Rechte am Input behält und den Output besitzt; OpenAI tritt etwaige Rechte am Output an den Nutzer ab. Die Bedingungen weisen zugleich darauf hin, dass Ausgaben nicht zwingend einzigartig sind und der Nutzer für Inhalt und Nutzung verantwortlich bleibt. Diese Datei dokumentiert die verwendete Quelle und ersetzt keine individuelle Rechtsberatung.
