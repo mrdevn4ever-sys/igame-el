@@ -10,13 +10,15 @@ mkdir -p "$OUT/logs"
 REPORT="$OUT/bericht.txt"
 : > "$REPORT"
 
-xcrun simctl install "$UDID" "$APP"
+# Simulator auf Apple Silicon verlangt eine (Ad-hoc-)Signatur
+codesign --force --deep --sign - "$APP" 2>&1 | tee -a "$REPORT"
+xcrun simctl install "$UDID" "$APP" 2>&1 | tee -a "$REPORT"
 
 run() {  # run <name> <wartezeit> <zwischenbild-nach> <args...>
   local name="$1" wait="$2" mid="$3"; shift 3
   xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1
-  xcrun simctl launch --terminate-running-process --stdout="$OUT/logs/$name.out" --stderr="$OUT/logs/$name.err" \
-    "$UDID" "$BUNDLE" -demo "$@" >/dev/null 2>&1
+  local pid
+  pid=$(xcrun simctl launch "$UDID" "$BUNDLE" -demo "$@" 2>>"$OUT/logs/$name.launch" | awk -F': ' '{print $2}')
   if [ "$mid" -gt 0 ]; then
     sleep "$mid"
     xcrun simctl io "$UDID" screenshot --type=png "$OUT/${name}_a.png" >/dev/null 2>&1
@@ -25,10 +27,12 @@ run() {  # run <name> <wartezeit> <zwischenbild-nach> <args...>
     sleep "$wait"
   fi
   xcrun simctl io "$UDID" screenshot --type=png "$OUT/${name}.png" >/dev/null 2>&1
-  if xcrun simctl spawn "$UDID" launchctl list 2>/dev/null | grep -q "UIKitApplication:$BUNDLE"; then
+  if [ -z "$pid" ]; then
+    echo "STARTFEHLER $name: $(cat "$OUT/logs/$name.launch")" | tee -a "$REPORT"
+  elif xcrun simctl spawn "$UDID" launchctl list 2>/dev/null | grep -q "$BUNDLE"; then
     echo "OK      $name" | tee -a "$REPORT"
   else
-    echo "ABSTURZ $name" | tee -a "$REPORT"
+    echo "ABSTURZ $name (pid $pid)" | tee -a "$REPORT"
   fi
 }
 
@@ -60,5 +64,5 @@ done
 
 # Absturzberichte einsammeln
 mkdir -p "$OUT/crashes"
-cp ~/Library/Logs/DiagnosticReports/EllieInsel* "$OUT/crashes/" 2>/dev/null || true
+find ~/Library/Logs/DiagnosticReports -iname "*EllieInsel*" -exec cp {} "$OUT/crashes/" \; 2>/dev/null || true
 echo "Absturzberichte: $(ls "$OUT/crashes" | wc -l)" | tee -a "$REPORT"
