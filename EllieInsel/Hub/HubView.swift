@@ -227,7 +227,8 @@ private struct GameTile: View {
             .overlay(alignment: .topLeading) {
                 // Apfelbaum: wächst mit dem Niveau dieses Spiels
                 AppleTreeView(level: app.data.level(for: game), maxLevel: LevelCatalog.maxLevel(game), showGround: false)
-                    .frame(width: 62, height: 62)
+                    .frame(width: 84, height: 84)
+                    .background(Circle().fill(.white.opacity(0.55)))
                     .padding(8)
             }
             .overlay(alignment: .topTrailing) {

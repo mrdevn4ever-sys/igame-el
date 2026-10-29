@@ -95,6 +95,12 @@ run 103_anpassung_schwach 48 40 -screen game -game counting -level 5 -autoplay -
 run 104_hub_nach_schwach 5 0 -keep -screen hub
 run 105_puzzle_runden 70 30 -screen game -game puzzle -autoplay -rounds 3
 
+# Neue Inhalte: Memory-Themen, neue Tiere und Naturpaare auf mehreren Stufen
+run 110_memory_stufe4 6 0 -screen game -game memory -level 4
+run 111_animalSounds_stufe5_bild 8 0 -screen game -game animalSounds -level 5
+run 112_naturePairs_runde 40 0 -screen game -game naturePairs -level 3 -autoplay
+run 113_garten_bilder 5 0 -screen garden
+
 # Absturzberichte einsammeln
 mkdir -p "$OUT/crashes"
 find ~/Library/Logs/DiagnosticReports -iname "*EllieInsel*" -exec cp {} "$OUT/crashes/" \; 2>/dev/null || true
