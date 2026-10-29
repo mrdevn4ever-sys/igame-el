@@ -152,7 +152,7 @@ struct PuzzleGameView: View {
 
                 // Teile neben der Zielfläche
                 if !model.showingPreview {
-                    let trayCols = model.pieces <= 4 ? 2 : 3
+                    let trayCols = model.pieces <= 4 ? 2 : model.pieces <= 9 ? 3 : model.pieces <= 16 ? 4 : 5
                     let trayRows = Int(ceil(Double(model.pieces) / Double(trayCols)))
                     let slotW = tray.width / CGFloat(trayCols)
                     let slotH = tray.height / CGFloat(trayRows)
@@ -233,8 +233,8 @@ final class PuzzleModel {
 
     init(host: GameHost) { self.host = host }
 
-    var rows: Int { pieces == 4 ? 2 : pieces == 6 ? 2 : 3 }
-    var cols: Int { pieces == 4 ? 2 : 3 }
+    var rows: Int { LevelCatalog.puzzleGrid(pieces: pieces).rows }
+    var cols: Int { LevelCatalog.puzzleGrid(pieces: pieces).cols }
     var complete: Bool { placed.count == pieces }
     var scene: PuzzleScene { PuzzleCatalog.scenes[sceneIndex % PuzzleCatalog.scenes.count] }
 
@@ -258,11 +258,7 @@ final class PuzzleModel {
             if complete { host.resumeIfNeeded(); return }
             if showingPreview { runPreview() } else { host.setInstruction("Setz das Bild wieder zusammen.") }
         } else {
-            switch host.difficulty {
-            case .entdecken: pieces = 4
-            case .ueben: pieces = 6
-            case .knobeln: pieces = 9
-            }
+            pieces = LevelCatalog.puzzle(host.level).pieces
             let done = host.app.data.roundsCompleted[GameID.puzzle.rawValue] ?? 0
             sceneIndex = (done + Int.random(in: 0..<3)) % PuzzleCatalog.scenes.count
             placed = []
@@ -334,6 +330,7 @@ final class PuzzleModel {
                 host.taskSolved("Das ganze Bild ist fertig: \(article) \(scene.name)!", needsNext: false)
             }
         } else {
+            host.countError()
             host.audio.effect(.gentle)
             host.showBunny("Dieses Teil gehört woanders hin.", speak: true, seconds: 2.5)
         }

@@ -165,6 +165,52 @@ final class AppModel {
         }
     }
 
+    // MARK: - Niveau
+
+    struct LevelOutcome: Equatable {
+        var change: LevelChange
+        var from: Int
+        var to: Int
+    }
+
+    /// Nach einer abgeschlossenen Runde: Niveau neu bestimmen (nur wenn die Automatik an ist).
+    func completeRound(game: GameID, results: [TaskResult], tasksPerRound: Int) -> LevelOutcome {
+        var state = data.skill(for: game)
+        let from = state.level
+        guard data.isAdaptive(game), !results.isEmpty else {
+            return LevelOutcome(change: .none, from: from, to: from)
+        }
+        let change = LevelEngine.finishRound(
+            state: &state, round: results, maxLevel: LevelCatalog.maxLevel(game),
+            tasksPerRound: tasksPerRound, targetSeconds: LevelCatalog.targetSeconds(game, level: from)
+        )
+        let to = state.level
+        update { d in
+            d.skills[game.rawValue] = state
+            if case .up = change {
+                let text = "Neues Niveau \(to): \(LevelCatalog.describe(game, level: to))."
+                d.activities.insert(ActivityEntry(date: Date(), game: game, difficulty: nil, text: text, stats: HelpStats()), at: 0)
+            }
+        }
+        return LevelOutcome(change: change, from: from, to: to)
+    }
+
+    func noteAbort(game: GameID) {
+        guard data.isAdaptive(game) else { return }
+        var state = data.skill(for: game)
+        _ = LevelEngine.noteAbort(state: &state)
+        update { $0.skills[game.rawValue] = state }
+    }
+
+    /// Eltern legen das Niveau fest (Verlauf auf diesem Niveau beginnt neu).
+    func setLevel(_ level: Int, for game: GameID) {
+        var state = data.skill(for: game)
+        state.level = min(max(level, 1), LevelCatalog.maxLevel(game))
+        state.results.removeAll()
+        state.history.append(.init(date: Date(), level: state.level))
+        update { $0.skills[game.rawValue] = state }
+    }
+
     // MARK: - Galerie
 
     func saveArtwork(_ art: Artwork) {

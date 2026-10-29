@@ -75,6 +75,26 @@ done
 # Garten mit Geschenk und Elternbereich-Unterseiten
 run 70_garten_geschenk 5 0 -screen garden
 
+# Höchste Stufe jedes Spiels
+i=80
+for g in tracing appleMath memory snake counting shapes puzzle pattern animalSounds naturePairs sorting atelier; do
+  run "${i}_${g}_hoechste_stufe" 9 0 -screen game -game "$g" -level 99
+  i=$((i+1))
+done
+# Mittlere Stufen ausgewählter Spiele
+run 95_appleMath_stufe8_ergaenzen 7 0 -screen game -game appleMath -level 8
+run 96_appleMath_stufe9_zwei_schritte 8 0 -screen game -game appleMath -level 9
+run 97_puzzle_stufe5 9 0 -screen game -game puzzle -level 5
+run 98_tracing_stufe7 6 0 -screen game -game tracing -level 7
+
+# Anpassung: schnell und fehlerfrei -> Baum wächst; viel Hilfe -> Niveau sinkt
+run 100_anpassung_stark 64 22 -screen game -game appleMath -autoplay -rounds 3
+run 101_hub_nach_aufstieg 5 0 -keep -screen hub
+run 102_eltern_spiele 6 0 -keep -screen parents -section games
+run 103_anpassung_schwach 48 40 -screen game -game counting -level 5 -autoplay -helpfirst
+run 104_hub_nach_schwach 5 0 -keep -screen hub
+run 105_puzzle_runden 70 30 -screen game -game puzzle -autoplay -rounds 3
+
 # Absturzberichte einsammeln
 mkdir -p "$OUT/crashes"
 find ~/Library/Logs/DiagnosticReports -iname "*EllieInsel*" -exec cp {} "$OUT/crashes/" \; 2>/dev/null || true

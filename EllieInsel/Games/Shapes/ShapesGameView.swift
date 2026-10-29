@@ -8,28 +8,30 @@ struct ShapeBoard: Codable, Equatable {
 }
 
 enum ShapeBoards {
-    /// 36 Spielfelder, zwölf pro Stufe, reproduzierbar erzeugt.
-    static func boards(for difficulty: Difficulty) -> [ShapeBoard] {
-        var rng = SeededGenerator(seed: difficulty == .entdecken ? 11 : difficulty == .ueben ? 22 : 33)
+    /// Zwölf Spielfelder pro Niveau, reproduzierbar erzeugt.
+    static func boards(level: Int) -> [ShapeBoard] {
+        let spec = LevelCatalog.shapes(level)
+        var rng = SeededGenerator(seed: 1000 + UInt64(level))
         var result: [ShapeBoard] = []
         let palette: [Palette] = [.red, .orange, .yellow, .green, .blue, .purple, .pink]
-        while result.count < 12 {
+        var attempts = 0
+        while result.count < 12 && attempts < 500 {
+            attempts += 1
             var kinds: [ShapeKind]
-            switch difficulty {
-            case .entdecken:
+            if spec.similar {
+                // Ähnliche Konturen: Kreis/Oval und Quadrat/Rechteck gemeinsam
+                kinds = [.circle, .oval, .square, .rectangle]
+                let extra: [ShapeKind] = [.triangle, .star].shuffled(using: &rng)
+                kinds += extra.prefix(max(0, spec.count - 4))
+                kinds = Array(kinds.prefix(spec.count))
+            } else if spec.count <= 4 {
                 // Deutlich unterschiedliche Formen
                 let pool: [ShapeKind] = [.circle, .square, .triangle, .star]
-                kinds = Array(pool.shuffled(using: &rng).prefix(result.count % 2 == 0 ? 2 : 3))
-            case .ueben:
-                let pool: [ShapeKind] = [.circle, .square, .triangle, .rectangle, .star, .oval]
-                kinds = Array(pool.shuffled(using: &rng).prefix(result.count % 2 == 0 ? 3 : 4))
-            case .knobeln:
-                // Ähnlichere Konturen: Kreis/Oval und Quadrat/Rechteck gemeinsam
-                var base: [ShapeKind] = [.circle, .oval, .square, .rectangle]
-                let extra: [ShapeKind] = [.triangle, .star]
-                if result.count % 2 == 1 { base.append(extra[result.count % 4 == 1 ? 0 : 1]) }
-                kinds = base.shuffled(using: &rng)
+                kinds = Array(pool.shuffled(using: &rng).prefix(spec.count))
+            } else {
+                kinds = Array(ShapeKind.allCases.shuffled(using: &rng).prefix(spec.count))
             }
+            kinds.shuffle(using: &rng)
             let order = Array(kinds.indices).shuffled(using: &rng)
             let colors = Array(palette.shuffled(using: &rng).prefix(kinds.count))
             let board = ShapeBoard(slots: kinds, pieceOrder: order, colors: colors)
@@ -61,7 +63,7 @@ struct ShapesGameView: View {
     var body: some View {
         GeometryReader { geo in
             if let board = model.board {
-                let layout = ShapesLayout(size: geo.size, count: board.slots.count)
+                let layout = ShapesLayout(size: geo.size, count: board.slots.count, snapFactor: CGFloat(LevelCatalog.shapes(host.level).snap))
                 ZStack {
                     houseBackground(layout)
                     // Aussparungen
@@ -169,7 +171,10 @@ struct ShapesLayout {
         min(size.width / CGFloat(count + 1) * 0.75, size.height * 0.2, 170)
     }
 
-    var snapRadius: CGFloat { shapeSize * 0.75 }
+    var snapFactor: CGFloat = 1
+
+    /// Einrasten auch knapp neben der Mitte; auf höheren Stufen etwas genauer.
+    var snapRadius: CGFloat { shapeSize * 0.75 * snapFactor }
 
     func slot(_ i: Int) -> CGPoint {
         let r = houseRect
@@ -227,7 +232,7 @@ final class ShapesModel {
             if host.awaitingNext { host.next(); return }
             host.setInstruction("Welche Form passt hier hinein?")
         } else {
-            boards = Array(ShapeBoards.boards(for: host.difficulty).shuffled().prefix(host.tasksPerRound))
+            boards = Array(ShapeBoards.boards(level: host.level).shuffled().prefix(host.tasksPerRound))
             index = 0
             present()
         }

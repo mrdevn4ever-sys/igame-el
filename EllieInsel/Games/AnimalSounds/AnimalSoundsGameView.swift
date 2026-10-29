@@ -125,11 +125,11 @@ struct AnimalSoundsGameView: View {
                 Spacer(minLength: 0)
                 HStack(spacing: 26) {
                     ForEach(task.choices, id: \.self) { a in
-                        AnswerCard(state: model.state(for: a), minSize: 150) {
+                        AnswerCard(state: model.state(for: a), minSize: task.choices.count > 4 ? 118 : 150) {
                             model.choose(a)
                         } content: {
                             VStack(spacing: 4) {
-                                Pic("tier_\(a.rawValue)", a.emoji, size: 90)
+                                Pic("tier_\(a.rawValue)", a.emoji, size: task.choices.count > 4 ? 66 : 90)
                                 if model.showNames {
                                     Text(a.name).font(Theme.rounded(20, .semibold)).foregroundStyle(Theme.darkGreen)
                                 }
@@ -221,13 +221,7 @@ final class AnimalSoundsModel {
 
     var task: AnimalTask? { tasks[safe: index] }
 
-    var choiceCount: Int {
-        switch host.difficulty {
-        case .entdecken: return 2
-        case .ueben: return 3
-        case .knobeln: return 4
-        }
-    }
+    var choiceCount: Int { LevelCatalog.animals(host.level).choices }
 
     func start() {
         guard !started else { return }
@@ -271,10 +265,11 @@ final class AnimalSoundsModel {
             let target = animals.removeFirst()
             animals.append(target)
             var others = SoundAnimal.allCases.filter { $0 != target }.shuffled()
-            if host.difficulty == .entdecken {
+            let similar = LevelCatalog.animals(host.level).similar
+            if host.level <= 2 {
                 // Sehr unterschiedliche Geräusche kombinieren
                 others = others.filter { $0.soundGroup != target.soundGroup }
-            } else if host.difficulty == .knobeln {
+            } else if similar {
                 // Anspruchsvoller: ähnliche Klanggruppen bevorzugen
                 others.sort { ($0.soundGroup == target.soundGroup ? 0 : 1) < ($1.soundGroup == target.soundGroup ? 0 : 1) }
             }

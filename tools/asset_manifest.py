@@ -53,7 +53,8 @@ def add(text, area):
 
 # --- Zahlwörter und Motive ------------------------------------------------------
 WORDS = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn",
-         "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig"]
+         "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig",
+         "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig", "vierundzwanzig"]
 DIGITS = ["Null", "Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun"]
 MOTIFS = {  # rawValue: (Einzahl, Mehrzahl, weiblich)
     "apfel": ("Apfel", "Äpfel", False), "karotte": ("Karotte", "Karotten", True), "kaefer": ("Käfer", "Käfer", False),
@@ -91,7 +92,8 @@ add("Zeit für eine kleine Pause? Du hast schon schön gespielt.", "Hub")
 add("Geschafft! Das hast du toll gemacht.", "Allgemein")
 
 # --- Spiel 1: Zahlen nachzeichnen ---
-for i, d in enumerate(DIGITS):
+for n in range(0, 21):
+    d = DIGITS[n] if n < 10 else cap(word(n))
     add(f"Das ist die {d}. Beginne beim Punkt.", "Zahlen nachzeichnen")
     add(f"Super! Das ist die {d}.", "Zahlen nachzeichnen")
 
@@ -114,10 +116,17 @@ for m in ["apfel", "karotte", "kaefer"]:
             add(f"{A} {'liegt' if a == 1 else 'liegen'} im Korb.", "Apfel-Rechnen")
             add(f"Der Hase bringt {acc(m, a)} dazu.", "Apfel-Rechnen")
             add(f"Der Hase nimmt {acc(m, a)} heraus.", "Apfel-Rechnen")
-    for n in range(1, 11):
+    for n in range(1, 21):
         add(f"Richtig, {phrase(m, n)}.", "Apfel-Rechnen")
+        add(f"{cap(phrase(m, n))}.", "Apfel-Rechnen")
+        add(f"{cap(phrase(m, n))} {'wird' if n == 1 else 'werden'} weggenommen.", "Apfel-Rechnen")
+        add(f"Dazu {'kommt' if n == 1 else 'kommen'} {phrase(m, n)}.", "Apfel-Rechnen")
+        add(f"Dann {'wird' if n == 1 else 'werden'} {phrase(m, n)} weggenommen.", "Apfel-Rechnen")
 add("Wie viele sind es jetzt?", "Apfel-Rechnen")
-for n in range(1, 11):
+add("Wie viel ist das?", "Apfel-Rechnen")
+for t in range(3, 21):
+    add(f"Wie viele fehlen bis {word(t)}?", "Apfel-Rechnen")
+for n in range(1, 21):
     add(f"Wir haben {word(n)} gezählt. Tippe auf die {n}.", "Rechnen/Zählen")
 
 # --- Spiel 3: Memory ---
@@ -126,19 +135,20 @@ for n in MEMORY:
     add(n, "Memory"); add(f"Zwei gleiche: {n}!", "Memory"); add(f"Wo hast du schon {n} gesehen?", "Memory")
 
 # --- Spiel 4: Snake ---
-for n in range(1, 5): add(f"Mjam! {cap(word(n))}.", "Snake")
+for n in range(1, 10): add(f"Mjam! {cap(word(n))}.", "Snake")
+for n in range(5, 11): add(f"Sammle {word(n)} Früchte. Tippe auf einen Pfeil.", "Snake")
 
 # --- Spiel 5: Zählgarten ---
 for m in ["kaefer", "karotte", "apfel", "pilz", "blume", "eichel"]:
     sg, pl, fem = MOTIFS[m]
     add(f"Tippe {'jede' if fem else 'jeden'} {sg} einmal an. Wie viele {pl} sind es?", "Zählgarten")
-    for n in range(1, 11):
+    for n in range(1, 21):
         add(f"Gib mir {acc(m, n)}.", "Zählgarten")
         add(f"Genau, {phrase(m, n)}. Du hast alle gezählt.", "Zählgarten")
         add(f"Danke! Das sind genau {acc(m, n).replace('einen ', 'ein ')}.", "Zählgarten")
-for n in range(0, 13):
+for n in range(0, 25):
     add(f"Im Korb {'ist' if n == 1 else 'sind'} {word(n)}.", "Zählgarten")
-for n in range(1, 11):
+for n in range(1, 21):
     add(f"Wir brauchen {word(n)}.", "Zählgarten"); add(f"Wir brauchen nur {word(n)}.", "Zählgarten")
     add(f"Du hast bis {word(n)} gezählt.", "Zählgarten")
 add("Leg noch etwas dazu.", "Zählgarten"); add("Tippe im Korb auf eines, dann kommt es zurück.", "Zählgarten")

@@ -224,6 +224,12 @@ private struct GameTile: View {
                     .fill(game.tint)
                     .shadow(color: .black.opacity(0.12), radius: 8, y: 4)
             )
+            .overlay(alignment: .topLeading) {
+                // Apfelbaum: wächst mit dem Niveau dieses Spiels
+                AppleTreeView(level: app.data.level(for: game), maxLevel: LevelCatalog.maxLevel(game), showGround: false)
+                    .frame(width: 62, height: 62)
+                    .padding(8)
+            }
             .overlay(alignment: .topTrailing) {
                 if app.data.saves[game.rawValue] != nil {
                     Image(systemName: "bookmark.fill")

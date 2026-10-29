@@ -65,7 +65,8 @@ enum CodeHasher {
 enum NumberWords {
     static let words = [
         "null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn",
-        "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig"
+        "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn", "zwanzig",
+        "einundzwanzig", "zweiundzwanzig", "dreiundzwanzig", "vierundzwanzig"
     ]
 
     /// Zahlwort zum Zählen («eins, zwei, drei»).
@@ -82,7 +83,8 @@ enum NumberWords {
     /// Grossgeschriebene Ziffernbezeichnung («die Drei»).
     static func digitName(_ n: Int) -> String {
         let names = ["Null", "Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun"]
-        return n >= 0 && n < names.count ? names[n] : "\(n)"
+        if n >= 0 && n < names.count { return names[n] }
+        return n <= 20 ? word(n).capitalizedFirst : "\(n)"
     }
 }
 

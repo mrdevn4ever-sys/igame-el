@@ -39,32 +39,24 @@ enum SortFactory {
         }
     }
 
-    /// 24 Aufgaben: je acht für Farbe, Form und Grösse (pro Stufe angepasst).
-    static func catalog(difficulty: Difficulty) -> [SortTask] {
-        var rng = SeededGenerator(seed: 700 + UInt64(Difficulty.allCases.firstIndex(of: difficulty)!))
+    /// 24 Aufgaben pro Niveau: je acht für Farbe, Form und Grösse.
+    static func catalog(level: Int) -> [SortTask] {
+        var rng = SeededGenerator(seed: 700 + UInt64(level))
         var tasks: [SortTask] = []
         for feature in [SortTask.Feature.color, .shape, .size] {
             for v in 0..<8 {
-                tasks.append(make(feature: feature, variant: v, difficulty: difficulty, rng: &rng))
+                tasks.append(make(feature: feature, variant: v, level: level, rng: &rng))
             }
         }
         return tasks
     }
 
-    static func make(feature: SortTask.Feature, variant: Int, difficulty: Difficulty, rng: inout SeededGenerator) -> SortTask {
-        let basketCount: Int
-        let itemCount: Int
-        switch difficulty {
-        case .entdecken:
-            basketCount = 2
-            itemCount = variant % 2 == 0 ? 4 : 6
-        case .ueben:
-            basketCount = 3
-            itemCount = 6
-        case .knobeln:
-            basketCount = variant % 2 == 0 ? 2 : 3
-            itemCount = 8
-        }
+    static func make(feature: SortTask.Feature, variant: Int, level: Int, rng: inout SeededGenerator) -> SortTask {
+        let spec = LevelCatalog.sorting(level)
+        // Grössen gibt es nur in drei Abstufungen.
+        let basketCount = feature == .size ? min(spec.baskets, 3) : spec.baskets
+        let itemCount = spec.items
+        let fine = spec.fine
         var categories: [SortCategory] = []
         var items: [SortItem] = []
         let positions = scatter(itemCount, rng: &rng)
@@ -74,7 +66,7 @@ enum SortFactory {
 
         switch feature {
         case .color:
-            let pool: [Palette] = difficulty == .knobeln
+            let pool: [Palette] = fine
                 ? [.red, .orange, .yellow, .pink, .purple].shuffled(using: &rng)
                 : [.red, .blue, .yellow, .green].shuffled(using: &rng)
             categories = pool.prefix(basketCount).map { SortCategory(color: $0) }
@@ -85,7 +77,7 @@ enum SortFactory {
             }
             return SortTask(feature: .color, categories: categories, items: items)
         case .shape:
-            let pool: [ShapeKind] = difficulty == .knobeln
+            let pool: [ShapeKind] = fine
                 ? [.circle, .oval, .square, .rectangle].shuffled(using: &rng)
                 : [.circle, .square, .triangle, .star].shuffled(using: &rng)
             categories = pool.prefix(basketCount).map { SortCategory(shape: $0) }
@@ -288,8 +280,8 @@ final class SortingModel {
             explain()
         } else {
             let allowed = host.options.sortingFeatures
-            let pool = SortFactory.catalog(difficulty: host.difficulty).filter { allowed.contains($0.feature.rawValue) }
-            tasks = Array((pool.isEmpty ? SortFactory.catalog(difficulty: host.difficulty) : pool).shuffled().prefix(host.tasksPerRound))
+            let pool = SortFactory.catalog(level: host.level).filter { allowed.contains($0.feature.rawValue) }
+            tasks = Array((pool.isEmpty ? SortFactory.catalog(level: host.level) : pool).shuffled().prefix(host.tasksPerRound))
             index = 0
             present()
         }

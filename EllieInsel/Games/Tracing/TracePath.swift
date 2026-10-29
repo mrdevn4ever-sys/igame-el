@@ -74,6 +74,14 @@ enum PathBuilder {
 
 /// Ziffernvorlagen 0–9 mit Startpunkt (erster Punkt) und Zeichenrichtung (Punktfolge).
 enum DigitPaths {
+    /// Zahl 0–20; zweistellige Zahlen bestehen aus zwei verkleinerten Ziffern nebeneinander.
+    static func number(_ n: Int) -> TraceShape {
+        guard n >= 10 else { return shape(for: n) }
+        let tens = shape(for: n / 10).strokes.map { $0.map { NPoint($0.x * 0.52 - 0.02, $0.y) } }
+        let ones = shape(for: n % 10).strokes.map { $0.map { NPoint($0.x * 0.52 + 0.48, $0.y) } }
+        return TraceShape(strokes: tens + ones)
+    }
+
     static func shape(for digit: Int) -> TraceShape {
         typealias P = PathBuilder
         switch digit {

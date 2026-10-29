@@ -13,7 +13,8 @@ final class GameHost {
     let game: GameID
     @ObservationIgnored let app: AppModel
 
-    private(set) var difficulty: Difficulty
+    /// Niveau dieser Runde (ändert sich nur zwischen Runden).
+    private(set) var level: Int
     private(set) var roundID: String
     private(set) var tasksDone: Int
     private(set) var stats: HelpStats
@@ -27,7 +28,25 @@ final class GameHost {
     /// Erhöht sich bei jedem Rundenstart (für `.id` in Spielansichten).
     private(set) var roundToken = 0
 
-    var tasksPerRound: Int { game.tasksPerRound }
+    /// Aufgaben pro Runde (Snake: Früchte je nach Niveau).
+    private(set) var tasksPerRound: Int
+    /// Ergebnis der Niveau-Bewertung nach der Runde (für den wachsenden Baum).
+    private(set) var levelOutcome: AppModel.LevelOutcome?
+
+    var maxLevel: Int { LevelCatalog.maxLevel(game) }
+
+    /// Grobe Stufe für Texte und ältere Logik.
+    var difficulty: Difficulty {
+        let third = Double(level - 1) / Double(max(maxLevel - 1, 1))
+        return third < 0.34 ? .entdecken : third < 0.67 ? .ueben : .knobeln
+    }
+
+    // Messung der laufenden Aufgabe
+    @ObservationIgnored private var roundResults: [TaskResult] = []
+    @ObservationIgnored private var taskErrors = 0
+    @ObservationIgnored private var taskHelp = 0
+    @ObservationIgnored private var activeSeconds: Double = 0
+    @ObservationIgnored private var clockStart: Date? = Date()
 
     @ObservationIgnored private var restored: SavedGame?
     @ObservationIgnored private var lastPayload: Data?
@@ -47,7 +66,9 @@ final class GameHost {
         self.app = app
         let saved = app.savedGame(for: game)
         restored = saved
-        difficulty = saved?.difficulty ?? app.data.difficulty(for: game)
+        level = saved?.level ?? app.data.level(for: game)
+        tasksPerRound = game.tasksPerRound
+        roundResults = saved?.results ?? []
         roundID = saved?.roundID ?? UUID().uuidString
         tasksDone = saved?.tasksDone ?? 0
         stats = saved?.stats ?? HelpStats()
@@ -82,7 +103,9 @@ final class GameHost {
             tasksDone: tasksDone,
             stats: stats,
             payload: lastPayload,
-            awaitingNext: awaitingNext
+            awaitingNext: awaitingNext,
+            level: level,
+            results: roundResults
         )
         app.storeGame(saved, for: game)
     }
@@ -121,6 +144,7 @@ final class GameHost {
     func requestHelp() {
         guard !awaitingNext, !roundComplete else { return }
         helpLevel = min(helpLevel + 1, 3)
+        taskHelp = max(taskHelp, helpLevel)
         switch helpLevel {
         case 1: stats.hints += 1
         case 2: stats.demonstrations += 1
@@ -137,6 +161,7 @@ final class GameHost {
     // MARK: - Rückmeldung
 
     func wrong(_ text: String = "Schauen wir es gemeinsam an.") {
+        taskErrors += 1
         audio.effect(.gentle)
         showBunny(text)
     }
@@ -145,6 +170,7 @@ final class GameHost {
     /// - Parameter needsNext: «Weiter»-Knopf zeigen (bei fortlaufenden Spielen wie Snake nicht).
     func taskSolved(_ text: String, needsNext: Bool = true) {
         guard !roundComplete else { return }
+        recordResult()
         tasksDone += 1
         helpLevel = 0
         audio.effect(.success)
@@ -169,6 +195,7 @@ final class GameHost {
         awaitingNext = false
         feedback = nil
         helpLevel = 0
+        startTaskClock()
         nextTaskHandler?()
     }
 
@@ -191,8 +218,14 @@ final class GameHost {
         roundComplete = true
         awaitingNext = false
         feedback = nil
+        if !(game == .atelier && summary.practiced.contains("frei")) {
+            levelOutcome = app.completeRound(game: game, results: roundResults, tasksPerRound: tasksPerRound)
+        }
         audio.effect(.complete)
         audio.say("Geschafft! Das hast du toll gemacht.")
+        if let outcome = levelOutcome, outcome.to > outcome.from {
+            audio.enqueue("Dein Apfelbaum ist gewachsen. Jetzt wird es ein bisschen spannender.")
+        }
         app.logRound(
             game: game,
             difficulty: game == .atelier && summary.practiced.contains("frei") ? nil : difficulty,
@@ -218,10 +251,55 @@ final class GameHost {
         bunnyMessage = nil
         restored = nil
         lastPayload = nil
-        difficulty = app.data.difficulty(for: game)
+        level = app.data.level(for: game)
+        tasksPerRound = game.tasksPerRound
+        roundResults = []
+        levelOutcome = nil
+        startTaskClock()
         roundToken += 1
         app.clearGame(game)
         newRoundHandler?()
+    }
+
+    // MARK: - Messung
+
+    /// Spiele mit eigener Aufgabenzahl (Snake: Früchte pro Runde).
+    func setTasksPerRound(_ n: Int) {
+        tasksPerRound = max(1, n)
+    }
+
+    /// Zusätzlicher Fehlversuch ohne Ansage (Zusammenstoss, falsch gelegtes Teil).
+    func countError(_ n: Int = 1) {
+        taskErrors += n
+    }
+
+    /// Spiele, die Fehler selbst bewerten (Memory: Züge pro Paar), setzen den Wert direkt.
+    func setTaskErrors(_ n: Int) {
+        taskErrors = n
+    }
+
+    func startTaskClock() {
+        taskErrors = 0
+        taskHelp = 0
+        activeSeconds = 0
+        clockStart = Date()
+    }
+
+    func pauseClock() {
+        if let s = clockStart { activeSeconds += Date().timeIntervalSince(s) }
+        clockStart = nil
+    }
+
+    func resumeClock() {
+        if clockStart == nil { clockStart = Date() }
+    }
+
+    private func recordResult() {
+        pauseClock()
+        // Sehr lange Pausen innerhalb einer Aufgabe zählen höchstens zwei Minuten.
+        let seconds = min(activeSeconds, 120)
+        roundResults.append(TaskResult(level: level, errors: taskErrors, help: taskHelp, seconds: seconds))
+        startTaskClock()
     }
 
     var pendingReward: PendingReward? {

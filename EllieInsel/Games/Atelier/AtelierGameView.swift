@@ -244,21 +244,13 @@ final class AtelierModel {
         return PKInkingTool(.pen, color: color.uiColor, width: width)
     }
 
+    var spec: LevelCatalog.AtelierSpec { LevelCatalog.atelier(host.level) }
+
     var traceStyle: TraceStyle {
-        switch host.difficulty {
-        case .entdecken: return TraceStyle(trackWidth: 0.16, showCenterLine: true, showArrows: true, trackOpacity: 1.2)
-        case .ueben: return TraceStyle(trackWidth: 0.12, showCenterLine: true, showArrows: true, trackOpacity: 1)
-        case .knobeln: return TraceStyle(trackWidth: 0.09, showCenterLine: true, showArrows: false, trackOpacity: 0.8)
-        }
+        TraceStyle(trackWidth: spec.width, showCenterLine: true, showArrows: spec.showArrows, trackOpacity: host.level <= 2 ? 1.2 : 1)
     }
 
-    private var tolerance: Double {
-        switch host.difficulty {
-        case .entdecken: return 0.09
-        case .ueben: return 0.07
-        case .knobeln: return 0.05
-        }
-    }
+    private var tolerance: Double { spec.tolerance }
 
     func start() {
         guard !started else { return }
@@ -271,7 +263,7 @@ final class AtelierModel {
             if self.mode == .free {
                 return RoundSummary(text: "Ein Bild frei gemalt.", practiced: ["frei"])
             }
-            return RoundSummary(text: "Drei Wege nachgefahren (\(self.host.difficulty.title)).", practiced: ["Wege \(self.host.difficulty.title)"])
+            return RoundSummary(text: "Drei Wege nachgefahren (Niveau \(self.host.level)).", practiced: ["Wege Niveau \(self.host.level)"])
         }
 
         // Ein Bild aus der Galerie weiterbearbeiten
@@ -321,7 +313,7 @@ final class AtelierModel {
         mode = m
         switch m {
         case .paths:
-            pathIDs = AtelierPaths.paths(for: host.difficulty).shuffled().prefix(host.tasksPerRound).map(\.id)
+            pathIDs = AtelierPaths.paths(for: spec.pathLevel).shuffled().prefix(host.tasksPerRound).map(\.id)
             pathIndex = 0
             loadPath(keeping: nil)
         case .free:

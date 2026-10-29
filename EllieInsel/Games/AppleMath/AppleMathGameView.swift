@@ -1,24 +1,57 @@
 import SwiftUI
 
 struct MathTask: Codable, Equatable {
-    enum Op: String, Codable { case plus, minus }
+    enum Op: String, Codable {
+        case plus, minus
+        /// a + ? = a + b
+        case missing
+        /// a + b − c
+        case twoStep
+    }
     var a: Int
     var b: Int
     var op: Op
     var motif: CountMotif
     var story: Bool
     var options: [Int]
+    /// Zweiter Schritt (weggenommen)
+    var c: Int?
+    /// Nur Ziffern, ohne Gegenstände
+    var symbols: Bool?
 
-    var answer: Int { op == .plus ? a + b : a - b }
+    var isSymbols: Bool { symbols ?? false }
+    var total: Int { a + b }
+
+    var answer: Int {
+        switch op {
+        case .plus: return a + b
+        case .minus: return a - b
+        case .missing: return b
+        case .twoStep: return a + b - (c ?? 0)
+        }
+    }
 
     var question: String {
-        if story { return storyText }
+        // Ziffernaufgaben stehen gross auf dem Bildschirm.
+        if isSymbols { return "Wie viel ist das?" }
+        if story && (op == .plus || op == .minus) { return storyText }
         switch op {
         case .plus:
+            if a + b > 10 {
+                // Zahlenraum bis 20: kurze Einzelsätze (überschaubare Zahl an Sprachaufnahmen)
+                let verb = b == 1 ? "kommt" : "kommen"
+                return "\(motif.phrase(a).capitalizedFirst). Dazu \(verb) \(motif.phrase(b)). Wie viele sind es zusammen?"
+            }
             return "\(motif.phrase(a).capitalizedFirst) und \(motif.phrase(b)). Wie viele sind es zusammen?"
         case .minus:
             let verb = b == 1 ? "wird" : "werden"
             return "\(motif.phrase(a).capitalizedFirst). \(motif.phrase(b).capitalizedFirst) \(verb) weggenommen. Wie viele bleiben?"
+        case .missing:
+            return "\(motif.phrase(a).capitalizedFirst). Wie viele fehlen bis \(NumberWords.word(total))?"
+        case .twoStep:
+            let c = c ?? 0
+            let verb = c == 1 ? "wird" : "werden"
+            return "\(motif.phrase(a).capitalizedFirst) und \(motif.phrase(b)). Dann \(verb) \(motif.phrase(c)) weggenommen. Wie viele bleiben?"
         }
     }
 
@@ -30,91 +63,113 @@ struct MathTask: Codable, Equatable {
             return "\(A) \(a == 1 ? "sitzt" : "sitzen") auf dem Blatt. \(B) \(b == 1 ? "fliegt" : "fliegen") dazu. Wie viele sind es jetzt?"
         case (.minus, true):
             return "\(A) \(a == 1 ? "sitzt" : "sitzen") auf dem Blatt. \(B) \(b == 1 ? "fliegt" : "fliegen") weg. Wie viele bleiben?"
-        case (.plus, false):
-            return "\(A) \(a == 1 ? "liegt" : "liegen") im Korb. Der Hase bringt \(motif.accusative(b)) dazu. Wie viele sind es jetzt?"
         case (.minus, false):
             return "\(A) \(a == 1 ? "liegt" : "liegen") im Korb. Der Hase nimmt \(motif.accusative(b)) heraus. Wie viele bleiben?"
+        default:
+            return "\(A) \(a == 1 ? "liegt" : "liegen") im Korb. Der Hase bringt \(motif.accusative(b)) dazu. Wie viele sind es jetzt?"
         }
     }
 
     var practiceLabel: String {
-        op == .plus ? "\(a) + \(b) = \(answer)" : "\(a) − \(b) = \(answer)"
+        switch op {
+        case .plus: return "\(a) + \(b) = \(answer)"
+        case .minus: return "\(a) − \(b) = \(answer)"
+        case .missing: return "\(a) + ? = \(total)"
+        case .twoStep: return "\(a) + \(b) − \(c ?? 0) = \(answer)"
+        }
     }
 }
 
 enum MathTaskFactory {
-    /// 24 redaktionell geprüfte Beispielaufgaben (Einträge: a, b, Operation, Motiv, Stufe).
-    static let curated: [(Int, Int, MathTask.Op, CountMotif, Difficulty)] = [
-        (2, 1, .plus, .apfel, .entdecken), (1, 1, .plus, .karotte, .entdecken), (2, 2, .plus, .kaefer, .entdecken),
-        (3, 1, .plus, .karotte, .entdecken), (1, 3, .plus, .apfel, .entdecken), (3, 2, .plus, .apfel, .entdecken),
-        (4, 1, .plus, .kaefer, .entdecken), (2, 3, .plus, .karotte, .entdecken),
-        (4, 3, .plus, .apfel, .ueben), (5, 2, .plus, .karotte, .ueben), (6, 3, .plus, .kaefer, .ueben),
-        (5, 5, .plus, .karotte, .ueben), (5, 2, .minus, .apfel, .ueben), (7, 3, .minus, .apfel, .ueben),
-        (6, 1, .minus, .kaefer, .ueben), (8, 4, .minus, .karotte, .ueben),
-        (3, 4, .plus, .kaefer, .knobeln), (6, 2, .minus, .kaefer, .knobeln), (4, 4, .plus, .apfel, .knobeln),
-        (9, 3, .minus, .apfel, .knobeln), (7, 2, .plus, .karotte, .knobeln), (10, 4, .minus, .karotte, .knobeln),
-        (5, 3, .plus, .apfel, .knobeln), (8, 5, .minus, .kaefer, .knobeln)
+    /// 24 redaktionell geprüfte Beispielaufgaben (a, b, Operation, Motiv). Verwendet, wenn sie zur Stufe passen.
+    static let curated: [(Int, Int, MathTask.Op, CountMotif)] = [
+        (2, 1, .plus, .apfel), (1, 1, .plus, .karotte), (2, 2, .plus, .kaefer),
+        (3, 1, .plus, .karotte), (1, 3, .plus, .apfel), (3, 2, .plus, .apfel),
+        (4, 1, .plus, .kaefer), (2, 3, .plus, .karotte),
+        (4, 3, .plus, .apfel), (5, 2, .plus, .karotte), (6, 3, .plus, .kaefer),
+        (5, 5, .plus, .karotte), (5, 2, .minus, .apfel), (7, 3, .minus, .apfel),
+        (6, 1, .minus, .kaefer), (8, 4, .minus, .karotte),
+        (3, 4, .plus, .kaefer), (6, 2, .minus, .kaefer), (4, 4, .plus, .apfel),
+        (9, 3, .minus, .apfel), (7, 2, .plus, .karotte), (10, 4, .minus, .karotte),
+        (5, 3, .plus, .apfel), (8, 5, .minus, .kaefer)
     ]
-
-    static func round(difficulty: Difficulty, operations: Set<String>, count: Int) -> [MathTask] {
-        var tasks: [MathTask] = []
-        let allowPlus = operations.contains("plus") || difficulty == .entdecken
-        let allowMinus = operations.contains("minus") && difficulty != .entdecken
-        var pool = curated.filter { $0.4 == difficulty }.filter {
-            ($0.2 == .plus && allowPlus) || ($0.2 == .minus && allowMinus)
-        }.shuffled()
-        var lastAnswerIndex = -1
-        while tasks.count < count {
-            let base: (Int, Int, MathTask.Op, CountMotif)
-            if tasks.count < 2, let c = pool.popLast() {
-                base = (c.0, c.1, c.2, c.3)
-            } else {
-                base = generate(difficulty: difficulty, allowPlus: allowPlus, allowMinus: allowMinus)
-            }
-            let candidate = makeTask(a: base.0, b: base.1, op: base.2, motif: base.3, difficulty: difficulty, avoidIndex: lastAnswerIndex)
-            if tasks.contains(where: { $0.a == candidate.a && $0.b == candidate.b && $0.op == candidate.op }) { continue }
-            lastAnswerIndex = candidate.options.firstIndex(of: candidate.answer) ?? -1
-            tasks.append(candidate)
-        }
-        return tasks
-    }
 
     /// Motive beim Rechnen: Äpfel, Karotten und Käfer.
     static let motifs: [CountMotif] = [.apfel, .karotte, .kaefer]
 
-    static func generate(difficulty: Difficulty, allowPlus: Bool, allowMinus: Bool) -> (Int, Int, MathTask.Op, CountMotif) {
-        let maxTotal = difficulty == .entdecken ? 5 : 10
-        let useMinus = allowMinus && (!allowPlus || Bool.random())
-        let motif = motifs.randomElement()!
-        if useMinus {
-            let a = Int.random(in: 2...maxTotal)
-            let b = Int.random(in: 1...(a - 1))
-            return (a, b, .minus, motif)
-        } else {
-            let total = Int.random(in: 2...maxTotal)
-            let a = Int.random(in: 1...(total - 1))
-            return (a, total - a, .plus, motif)
+    static func round(level: Int, operations: Set<String>, count: Int) -> [MathTask] {
+        let spec = LevelCatalog.math(level)
+        let allowMinus = spec.allowMinus && operations.contains("minus")
+        let allowPlus = operations.contains("plus") || !allowMinus
+        var kind = spec.kind
+        if kind == .twoStep && !allowMinus { kind = .basic }
+        var curatedPool = curated.filter { c in
+            spec.kind == .basic && (c.2 == .plus ? allowPlus && c.0 + c.1 <= spec.maxTotal : allowMinus && c.0 <= spec.maxTotal)
+        }.shuffled()
+        var tasks: [MathTask] = []
+        var lastAnswerIndex = -1
+        var attempts = 0
+        while tasks.count < count && attempts < 300 {
+            attempts += 1
+            let motif = motifs.randomElement()!
+            var a = 1, b = 1, c: Int?
+            var op: MathTask.Op = .plus
+            switch kind {
+            case .basic, .symbols:
+                if tasks.count < 2, kind == .basic, let cur = curatedPool.popLast() {
+                    a = cur.0; b = cur.1; op = cur.2
+                } else {
+                    let useMinus = allowMinus && (!allowPlus || Bool.random())
+                    if useMinus {
+                        a = Int.random(in: 2...spec.maxTotal)
+                        b = Int.random(in: 1...(a - 1))
+                        op = .minus
+                    } else {
+                        let total = Int.random(in: 2...spec.maxTotal)
+                        a = Int.random(in: 1...(total - 1))
+                        b = total - a
+                    }
+                }
+            case .missing:
+                let total = Int.random(in: 3...spec.maxTotal)
+                a = Int.random(in: 1...(total - 1))
+                b = total - a
+                op = .missing
+            case .twoStep:
+                let total = Int.random(in: 3...spec.maxTotal)
+                a = Int.random(in: 1...(total - 1))
+                b = total - a
+                c = Int.random(in: 1...(total - 1))
+                op = .twoStep
+            }
+            var task = MathTask(a: a, b: b, op: op, motif: motif,
+                                story: spec.story && (op == .plus || op == .minus), options: [],
+                                c: c, symbols: kind == .symbols ? true : nil)
+            if tasks.contains(where: { $0.a == task.a && $0.b == task.b && $0.op == task.op && $0.c == task.c }) { continue }
+            task.options = options(for: task, count: spec.options, maxValue: spec.maxTotal + 2, avoidIndex: lastAnswerIndex)
+            lastAnswerIndex = task.options.firstIndex(of: task.answer) ?? -1
+            tasks.append(task)
         }
+        return tasks
     }
 
-    static func makeTask(a: Int, b: Int, op: MathTask.Op, motif: CountMotif, difficulty: Difficulty, avoidIndex: Int) -> MathTask {
-        let answer = op == .plus ? a + b : a - b
-        let optionCount = difficulty == .entdecken ? 2 : 3
-        let maxValue = difficulty == .entdecken ? 6 : 12
+    /// Genau eine richtige Antwort, keine doppelten Werte, wechselnde Position.
+    static func options(for task: MathTask, count: Int, maxValue: Int, avoidIndex: Int) -> [Int] {
+        let answer = task.answer
         var options = [answer]
-        var candidates = [answer + 1, answer - 1, answer + 2, answer - 2, answer + 3].filter { $0 >= 0 && $0 <= maxValue }
+        var candidates = [answer + 1, answer - 1, answer + 2, answer - 2, answer + 3, answer - 3].filter { $0 >= 0 && $0 <= maxValue }
         candidates.shuffle()
-        // Häufiger Fehler: bei Subtraktion den Ausgangswert nennen.
-        if op == .minus, !candidates.contains(a), a != answer { candidates.insert(a, at: 0) }
-        for c in candidates where options.count < optionCount && !options.contains(c) {
+        // Typische Fehler als Ablenker: Ausgangswert bei Minus, Gesamtmenge beim Ergänzen.
+        if task.op == .minus, task.a != answer, task.a <= maxValue { candidates.insert(task.a, at: 0) }
+        if task.op == .missing, task.total != answer { candidates.insert(task.total, at: 0) }
+        for c in candidates where options.count < count && !options.contains(c) {
             options.append(c)
         }
         options.shuffle()
-        // Richtige Antwort nicht immer an derselben Position.
         if options.firstIndex(of: answer) == avoidIndex, options.count > 1 {
             options.append(options.removeFirst())
         }
-        return MathTask(a: a, b: b, op: op, motif: motif, story: difficulty == .knobeln, options: options)
+        return options
     }
 }
 
@@ -162,27 +217,66 @@ struct AppleMathGameView: View {
 
     @ViewBuilder
     private func sceneView(_ task: MathTask) -> some View {
-        let itemSize: CGFloat = host.difficulty == .entdecken ? 96 : host.difficulty == .ueben ? 76 : 68
-        HStack(spacing: 30) {
-            switch task.op {
-            case .plus:
-                group(count: task.a, offset: 0, motif: task.motif, size: itemSize)
-                Text("+")
-                    .font(Theme.rounded(60, .heavy))
+        let biggest = max(task.op == .minus ? task.a : max(task.a, task.b), 1)
+        let itemSize: CGFloat = biggest <= 3 ? 96 : biggest <= 5 ? 80 : biggest <= 10 ? 62 : 44
+        HStack(spacing: 26) {
+            if task.isSymbols && !model.showObjects {
+                Text(task.op == .minus ? "\(task.a) − \(task.b) = ?" : "\(task.a) + \(task.b) = ?")
+                    .font(Theme.rounded(110, .heavy))
                     .foregroundStyle(Theme.darkGreen)
-                group(count: task.b, offset: task.a, motif: task.motif, size: itemSize)
-            case .minus:
-                minusGroup(task, size: itemSize)
+            } else {
+                switch task.op {
+                case .plus:
+                    group(count: task.a, offset: 0, motif: task.motif, size: itemSize)
+                    sign("+")
+                    group(count: task.b, offset: task.a, motif: task.motif, size: itemSize)
+                case .minus:
+                    minusGroup(task, size: itemSize)
+                case .missing:
+                    group(count: task.a, offset: 0, motif: task.motif, size: itemSize)
+                    sign("+")
+                    if model.revealMissing {
+                        group(count: task.b, offset: task.a, motif: task.motif, size: itemSize, localNumbers: true)
+                    } else {
+                        Text("?")
+                            .font(Theme.rounded(80, .heavy))
+                            .foregroundStyle(Theme.darkGreen.opacity(0.6))
+                            .frame(width: 140, height: 140)
+                            .background(RoundedRectangle(cornerRadius: 28).strokeBorder(Theme.darkGreen.opacity(0.4), style: StrokeStyle(lineWidth: 4, dash: [10, 8])))
+                    }
+                    sign("=")
+                    Text("\(task.total)")
+                        .font(Theme.rounded(90, .heavy))
+                        .foregroundStyle(Theme.darkGreen)
+                case .twoStep:
+                    group(count: task.a, offset: 0, motif: task.motif, size: itemSize, removedFrom: task.answer)
+                    sign("+")
+                    group(count: task.b, offset: task.a, motif: task.motif, size: itemSize, removedFrom: task.answer)
+                }
             }
         }
         .padding(30)
+        .animation(.easeInOut(duration: 0.8), value: model.takenAway)
     }
 
-    private func group(count: Int, offset: Int, motif: CountMotif, size: CGFloat) -> some View {
+    private func sign(_ s: String) -> some View {
+        Text(s)
+            .font(Theme.rounded(60, .heavy))
+            .foregroundStyle(Theme.darkGreen)
+    }
+
+    /// Gruppe von Gegenständen. `removedFrom`: ab diesem Gesamtindex gelten sie als weggenommen.
+    private func group(count: Int, offset: Int, motif: CountMotif, size: CGFloat, removedFrom: Int? = nil, localNumbers: Bool = false) -> some View {
         let columns = Array(repeating: GridItem(.fixed(size * 1.25 + 8), spacing: 6), count: min(max(count, 1), 5))
         return LazyVGrid(columns: columns, spacing: 8) {
             ForEach(0..<count, id: \.self) { i in
-                CountableItem(emoji: motif.emoji, size: size, marked: model.marked.contains(offset + i), number: model.showNumbers ? offset + i + 1 : nil, asset: motif.asset)
+                let index = offset + i
+                let removed = removedFrom.map { index >= $0 } ?? false
+                let number = localNumbers ? i + 1 : index + 1
+                CountableItem(emoji: motif.emoji, size: size, marked: model.marked.contains(index),
+                              number: model.showNumbers && !removed ? number : nil, asset: motif.asset)
+                    .opacity(removed && model.takenAway ? 0.18 : 1)
+                    .offset(y: removed && model.takenAway ? -26 : 0)
             }
         }
         .padding(18)
@@ -251,6 +345,10 @@ final class AppleMathModel {
     var showNumbers = true
     var takenAway = false
     var highlightAnswer = false
+    /// Ergänzen: Die fehlenden Gegenstände werden bei der Hilfe sichtbar.
+    var revealMissing = false
+    /// Ziffernaufgaben: Gegenstände als Hilfe einblenden.
+    var showObjects = false
     @ObservationIgnored private var started = false
     @ObservationIgnored private var countTask: Task<Void, Never>?
 
@@ -266,10 +364,14 @@ final class AppleMathModel {
         host.nextTaskHandler = { [weak self] in self?.advance() }
         host.summaryProvider = { [weak self] in
             guard let self else { return RoundSummary(text: "Rechenaufgaben gelöst.") }
-            let maxN = self.host.difficulty == .entdecken ? 5 : 10
-            let hasMinus = self.tasks.contains { $0.op == .minus }
-            let kind = hasMinus ? "Plus- und Minusaufgaben" : "Plusaufgaben"
-            return RoundSummary(text: "Vier \(kind) mit Mengen bis \(NumberWords.word(maxN)) gelöst.", practiced: self.tasks.map(\.practiceLabel))
+            let spec = LevelCatalog.math(self.host.level)
+            let kind: String
+            switch spec.kind {
+            case .basic, .symbols: kind = self.tasks.contains { $0.op == .minus } ? "Plus- und Minusaufgaben" : "Plusaufgaben"
+            case .missing: kind = "Ergänzungsaufgaben"
+            case .twoStep: kind = "Aufgaben mit zwei Schritten"
+            }
+            return RoundSummary(text: "Vier \(kind) mit Mengen bis \(NumberWords.word(spec.maxTotal)) gelöst.", practiced: self.tasks.map(\.practiceLabel))
         }
         if let saved = host.takeRestoredPayload(AppleMathState.self), !saved.tasks.isEmpty {
             tasks = saved.tasks
@@ -279,7 +381,7 @@ final class AppleMathModel {
             if host.awaitingNext { host.next(); return }
             present()
         } else {
-            tasks = MathTaskFactory.round(difficulty: host.difficulty, operations: host.options.mathOperations, count: host.tasksPerRound)
+            tasks = MathTaskFactory.round(level: host.level, operations: host.options.mathOperations, count: host.tasksPerRound)
             index = 0
             present()
         }
@@ -292,11 +394,13 @@ final class AppleMathModel {
         marked = []
         highlightAnswer = false
         takenAway = false
-        showNumbers = host.difficulty != .knobeln
+        revealMissing = false
+        showObjects = false
+        showNumbers = LevelCatalog.math(host.level).showNumbers
         save()
         guard let task else { return }
         host.setInstruction(task.question)
-        if task.op == .minus {
+        if task.op == .minus || task.op == .twoStep {
             countTask?.cancel()
             countTask = Task { @MainActor [weak self] in
                 try? await Task.sleep(nanoseconds: 1_400_000_000)
@@ -363,8 +467,12 @@ final class AppleMathModel {
         guard let task else { return }
         countTask?.cancel()
         takenAway = true
+        showObjects = true
         marked = []
         let total = task.answer
+        // Beim Ergänzen werden die fehlenden Gegenstände gezeigt und gezählt.
+        let first = task.op == .missing ? task.a : 0
+        if task.op == .missing { revealMissing = true }
         countTask = Task { @MainActor [weak self] in
             guard let self else { return }
             try? await Task.sleep(nanoseconds: 900_000_000)
@@ -373,7 +481,7 @@ final class AppleMathModel {
                 for i in 0..<total {
                     guard !Task.isCancelled else { return }
                     self.showNumbers = true
-                    self.marked.insert(i)
+                    self.marked.insert(first + i)
                     self.host.audio.enqueue(NumberWords.word(i + 1))
                     try? await Task.sleep(nanoseconds: 700_000_000)
                 }

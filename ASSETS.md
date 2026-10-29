@@ -39,6 +39,17 @@ echte (oder realistisch generierte) Tiergeräusche, 1–3 Sekunden, **ohne Sprac
 - `natur_*.png`: Antwortbilder (z. B. `natur_nuesse.png`, `natur_wueste.png`) – Gegenstand/Ort klar erkennbar.
 - `tier_*.png` werden im Bildermodus auch als schwarzer Schatten gezeigt → klare Silhouette wichtig.
 
+## Nachlieferungen
+
+Wenn neue Spielinhalte neue Sätze brauchen, kommt eine zusätzliche Liste mit **nur den neuen Dateien** dazu
+(bestehende Aufnahmen bleiben gültig):
+
+| Datei | Inhalt |
+|---|---|
+| `assets/Sprachaufnahmen_Nachlieferung_1.csv` | 499 Sätze für die Niveau-Stufen (Rechnen und Zählen bis 20, Zahlen 11–20 nachzeichnen, Apfelbaum-Aufstieg) |
+
+Gleicher Ordner (`EllieInsel/Audio/`), gleiches Format, gleiche Stimme.
+
 ## Liste neu erzeugen
 
 Wenn sich Texte in der App ändern: `python3 tools/asset_manifest.py` (erzeugt beide CSV-Dateien neu).

@@ -86,23 +86,19 @@ enum NatureCatalog {
                        explanation: "Bananen wachsen in grossen Büscheln an der Bananenstaude.")
     ]
 
-    /// Auswahlvariante einer Frage für eine Stufe (18 × 3 = 54 Varianten).
-    static func variant(of q: NatureQuestion, difficulty: Difficulty, seed: UInt64) -> NatureTask {
+    /// Auswahlvariante einer Frage für ein Niveau. Jede angebotene Antwort ist sicher passend oder sicher unpassend.
+    static func variant(of q: NatureQuestion, level: Int, seed: UInt64) -> NatureTask {
         var rng = SeededGenerator(seed: seed)
+        let spec = LevelCatalog.nature(level)
         var options: [NatureItem]
         var multi = false
-        switch difficulty {
-        case .entdecken:
-            options = [q.valid[0], q.wrong.shuffled(using: &rng)[0]]
-        case .ueben:
-            options = [q.valid.shuffled(using: &rng)[0]] + Array(q.wrong.shuffled(using: &rng).prefix(2))
-        case .knobeln:
-            if q.valid.count >= 2 {
-                options = Array(q.valid.shuffled(using: &rng).prefix(2)) + Array(q.wrong.shuffled(using: &rng).prefix(2))
-                multi = true
-            } else {
-                options = [q.valid[0]] + Array(q.wrong.shuffled(using: &rng).prefix(3))
-            }
+        let wrong = q.wrong.shuffled(using: &rng)
+        if spec.multi && q.valid.count >= 2 {
+            let validCount = min(q.valid.count, spec.options >= 5 ? 3 : 2, spec.options - 1)
+            options = Array(q.valid.shuffled(using: &rng).prefix(validCount)) + Array(wrong.prefix(spec.options - validCount))
+            multi = true
+        } else {
+            options = [q.valid.shuffled(using: &rng)[0]] + Array(wrong.prefix(spec.options - 1))
         }
         options.shuffle(using: &rng)
         return NatureTask(question: q, options: options, multipleValid: multi)
@@ -262,7 +258,7 @@ final class NaturePairsModel {
                 picked += pool.filter { $0.relation != relation }.shuffled()
             }
             tasks = picked.prefix(host.tasksPerRound).map {
-                NatureCatalog.variant(of: $0, difficulty: host.difficulty, seed: UInt64.random(in: 1...UInt64.max))
+                NatureCatalog.variant(of: $0, level: host.level, seed: UInt64.random(in: 1...UInt64.max))
             }
             index = 0
             present()

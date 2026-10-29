@@ -52,11 +52,12 @@ struct QuantityView: View {
     let emoji: String
 
     var body: some View {
-        let columns = Array(repeating: GridItem(.fixed(70), spacing: 10), count: min(max(count, 1), 5))
+        let cell: CGFloat = count > 10 ? 44 : 70
+        let columns = Array(repeating: GridItem(.fixed(cell), spacing: count > 10 ? 6 : 10), count: min(max(count, 1), 5))
         LazyVGrid(columns: columns, spacing: 10) {
             ForEach(0..<count, id: \.self) { i in
                 Text(emoji)
-                    .font(.system(size: 54))
+                    .font(.system(size: cell * 0.77))
                     .scaleEffect(i < highlighted ? 1.15 : 0.95)
                     .opacity(i < highlighted ? 1 : 0.55)
                     .animation(.spring(response: 0.3, dampingFraction: 0.6), value: highlighted)
@@ -229,21 +230,23 @@ final class TracingModel {
     var digit: Int { digits[safe: index] ?? 3 }
     var quantityEmoji: String { ["🍎", "🍓", "🐞", "🌼", "🍐"][index % 5] }
 
+    var spec: LevelCatalog.TracingSpec { LevelCatalog.tracing(host.level) }
+    /// Höchste Stufe: Die Spur verblasst kurz nach dem Zeigen.
+    var trackFaded = false
+    @ObservationIgnored private var fadeTask: Task<Void, Never>?
+
     var style: TraceStyle {
-        switch host.difficulty {
-        case .entdecken: return TraceStyle(trackWidth: 0.2, showCenterLine: true, showArrows: true, trackOpacity: 1.2)
-        case .ueben: return TraceStyle(trackWidth: 0.16, showCenterLine: true, showArrows: true, trackOpacity: 1)
-        case .knobeln: return TraceStyle(trackWidth: 0.13, showCenterLine: false, showArrows: false, trackOpacity: 0.7)
-        }
+        let s = spec
+        let twoDigits = digit >= 10
+        return TraceStyle(
+            trackWidth: twoDigits ? s.width * 0.75 : s.width,
+            showCenterLine: s.showCenterLine,
+            showArrows: s.showArrows,
+            trackOpacity: trackFaded ? 0.12 : (host.level <= 2 ? 1.2 : 1)
+        )
     }
 
-    var tolerance: Double {
-        switch host.difficulty {
-        case .entdecken: return 0.1
-        case .ueben: return 0.08
-        case .knobeln: return 0.065
-        }
-    }
+    var tolerance: Double { digit >= 10 ? spec.tolerance * 0.8 : spec.tolerance }
 
     func start() {
         guard !started else { return }
@@ -260,7 +263,7 @@ final class TracingModel {
         if let saved = host.takeRestoredPayload(TracingState.self) {
             digits = saved.digits
             index = saved.index
-            samples = DigitPaths.shape(for: digit).resampled()
+            samples = DigitPaths.number(digit).resampled()
             progress = saved.progress.confirmed.count == samples.count ? saved.progress : TraceProgress(strokeCount: samples.count)
             if host.tasksDone >= host.tasksPerRound {
                 host.resumeIfNeeded()
@@ -286,20 +289,22 @@ final class TracingModel {
     func stopTasks() {
         demoTask?.cancel()
         countTask?.cancel()
+        fadeTask?.cancel()
     }
 
     private func makeDigits() -> [Int] {
-        let pool: [Int] = host.difficulty == .entdecken ? Array(1...5) : Array(0...9)
-        var rest = pool.filter { $0 != 3 }.shuffled()
-        // Die erste Runde beginnt mit der gut vorbereiteten Drei.
-        let first = (host.app.data.roundsCompleted[GameID.tracing.rawValue] ?? 0) == 0 ? 3 : rest.removeFirst()
-        if first != 3 { rest.append(3); rest.shuffle() }
-        return [first] + Array(rest.filter { $0 != first }.prefix(host.tasksPerRound - 1))
+        let pool = spec.numbers
+        // Die allererste Runde beginnt mit der gut vorbereiteten Drei.
+        if pool.contains(3), (host.app.data.roundsCompleted[GameID.tracing.rawValue] ?? 0) == 0 {
+            return [3] + Array(pool.filter { $0 != 3 }.shuffled().prefix(host.tasksPerRound - 1))
+        }
+        return Array(pool.shuffled().prefix(host.tasksPerRound))
     }
 
     private func loadDigit() {
-        samples = DigitPaths.shape(for: digit).resampled()
+        samples = DigitPaths.number(digit).resampled()
         progress = TraceProgress(strokeCount: samples.count)
+        trackFaded = false
         showQuantity = false
         countedSoFar = 0
         solved = false
@@ -310,6 +315,15 @@ final class TracingModel {
 
     private func introduce() {
         host.setInstruction("Das ist die \(NumberWords.digitName(digit)). Beginne beim Punkt.")
+        fadeTask?.cancel()
+        trackFaded = false
+        if spec.fadeTrack {
+            fadeTask = Task { @MainActor [weak self] in
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                guard !Task.isCancelled else { return }
+                withAnimation(.easeInOut(duration: 0.8)) { self?.trackFaded = true }
+            }
+        }
     }
 
     private func nextDigit() {
@@ -375,7 +389,7 @@ final class TracingModel {
                     guard !Task.isCancelled else { return }
                     withAnimation { self.countedSoFar = i }
                     self.host.audio.enqueue(NumberWords.word(i))
-                    try? await Task.sleep(nanoseconds: 650_000_000)
+                    try? await Task.sleep(nanoseconds: self.digit > 10 ? 380_000_000 : 650_000_000)
                 }
             }
             guard !Task.isCancelled else { return }

@@ -15,32 +15,32 @@ struct CountingTask: Codable, Equatable {
 enum CountingFactory {
     static let motifs: [CountMotif] = [.kaefer, .karotte, .apfel, .pilz, .blume, .eichel]
 
-    static func range(_ d: Difficulty) -> ClosedRange<Int> {
-        switch d {
-        case .entdecken: return 1...3
-        case .ueben: return 1...5
-        case .knobeln: return 1...10
-        }
+    static func range(level: Int) -> ClosedRange<Int> {
+        LevelCatalog.counting(level).range
     }
 
     /// Zählanordnung: lockeres Raster mit Versatz, damit sich nichts überdeckt.
     static func arrangement(count: Int, seed: UInt64) -> [NPoint] {
         var rng = SeededGenerator(seed: seed)
-        let cols = 5, rows = 3
+        // Grössere Mengen brauchen ein dichteres Raster.
+        let cols = count > 15 ? 6 : 5
+        let rows = count > 15 ? 4 : count > 10 ? 4 : 3
         var cells = Array(0..<(cols * rows)).shuffled(using: &rng)
         var pts: [NPoint] = []
         for _ in 0..<min(count, cells.count) {
             let c = cells.removeFirst()
             let cx = (Double(c % cols) + 0.5) / Double(cols)
             let cy = (Double(c / cols) + 0.5) / Double(rows)
-            let jx = Double.random(in: -0.04...0.04, using: &rng)
-            let jy = Double.random(in: -0.06...0.06, using: &rng)
+            let jx = Double.random(in: -0.03...0.03, using: &rng)
+            let jy = Double.random(in: -0.04...0.04, using: &rng)
             pts.append(NPoint(cx + jx, cy + jy))
         }
         return pts
     }
 
-    static func round(difficulty: Difficulty, modes: Set<String>, count: Int) -> [CountingTask] {
+    static func round(level: Int, modes: Set<String>, count: Int) -> [CountingTask] {
+        let r = range(level: level)
+        let optionCount = LevelCatalog.counting(level).options
         var allowed: [CountingTask.Mode] = []
         if modes.contains("howMany") { allowed.append(.howMany) }
         if modes.contains("giveMe") { allowed.append(.giveMe) }
@@ -49,19 +49,19 @@ enum CountingFactory {
         var lastCount = -1
         for i in 0..<count {
             let mode = allowed[i % allowed.count]
-            var n = Int.random(in: range(difficulty))
-            if n == lastCount { n = n == range(difficulty).upperBound ? n - 1 : n + 1 }
-            n = max(range(difficulty).lowerBound, n)
+            var n = Int.random(in: r)
+            if n == lastCount { n = n == r.upperBound ? n - 1 : n + 1 }
+            n = max(r.lowerBound, n)
             lastCount = n
             let motif = motifs.randomElement()!
             switch mode {
             case .howMany:
                 let positions = arrangement(count: n, seed: UInt64.random(in: 1...UInt64.max))
                 tasks.append(CountingTask(mode: .howMany, motif: motif, count: n, available: n, positions: positions,
-                                          options: options(for: n, difficulty: difficulty)))
+                                          options: options(for: n, count: optionCount)))
             case .giveMe:
-                let extra = difficulty == .entdecken ? 2 : 3
-                let available = min(n + extra, 12)
+                let extra = level <= 2 ? 2 : 3
+                let available = min(n + extra, 24)
                 let positions = arrangement(count: available, seed: UInt64.random(in: 1...UInt64.max))
                 tasks.append(CountingTask(mode: .giveMe, motif: motif, count: n, available: available, positions: positions, options: []))
             }
@@ -69,8 +69,7 @@ enum CountingFactory {
         return tasks
     }
 
-    static func options(for n: Int, difficulty: Difficulty) -> [Int] {
-        let wanted = difficulty == .entdecken ? 2 : 3
+    static func options(for n: Int, count wanted: Int) -> [Int] {
         var opts = [n]
         for c in [n + 1, n - 1, n + 2, n - 2].shuffled() where c >= 1 && opts.count < wanted && !opts.contains(c) {
             opts.append(c)
@@ -119,7 +118,8 @@ struct CountingGameView: View {
                 ForEach(0..<task.count, id: \.self) { i in
                     let p = task.positions[i]
                     let order = model.counted.firstIndex(of: i)
-                    CountTarget(emoji: task.motif.emoji, asset: task.motif.asset, number: order.map { $0 + 1 }, hinted: model.hintIndex == i)
+                    CountTarget(emoji: task.motif.emoji, asset: task.motif.asset, number: order.map { $0 + 1 }, hinted: model.hintIndex == i,
+                                size: task.count > 12 ? 50 : 64)
                         .position(x: p.x * geo.size.width, y: p.y * geo.size.height)
                         .onTapGesture { model.countItem(i) }
                 }
@@ -158,8 +158,8 @@ struct CountingGameView: View {
                     ForEach(0..<task.available, id: \.self) { i in
                         if !model.basket.contains(i) {
                             let p = task.positions[i]
-                            Pic(task.motif.asset, task.motif.emoji, size: 64)
-                                .frame(width: 96, height: 96)
+                            Pic(task.motif.asset, task.motif.emoji, size: task.available > 12 ? 50 : 64)
+                                .frame(width: task.available > 12 ? 78 : 96, height: task.available > 12 ? 78 : 96)
                                 .contentShape(Rectangle())
                                 .position(x: p.x * geo.size.width, y: p.y * geo.size.height)
                                 .onTapGesture { model.toBasket(i) }
@@ -173,17 +173,17 @@ struct CountingGameView: View {
                     RoundedRectangle(cornerRadius: 36).fill(Theme.creamDark)
                     VStack {
                         Text("🧺").font(.system(size: 80))
-                        LazyVGrid(columns: Array(repeating: GridItem(.fixed(64)), count: 4), spacing: 8) {
+                        LazyVGrid(columns: Array(repeating: GridItem(.fixed(task.available > 12 ? 44 : 64)), count: task.available > 12 ? 6 : 4), spacing: 8) {
                             ForEach(Array(model.basket.enumerated()), id: \.element) { pos, i in
                                 ZStack(alignment: .topTrailing) {
-                                    Pic(task.motif.asset, task.motif.emoji, size: 46)
+                                    Pic(task.motif.asset, task.motif.emoji, size: task.available > 12 ? 32 : 46)
                                     Text("\(pos + 1)")
                                         .font(Theme.rounded(16, .heavy))
                                         .foregroundStyle(.white)
                                         .frame(width: 26, height: 26)
                                         .background(Circle().fill(Theme.darkGreen))
                                 }
-                                .frame(width: 64, height: 64)
+                                .frame(width: task.available > 12 ? 44 : 64, height: task.available > 12 ? 44 : 64)
                                 .onTapGesture { model.fromBasket(i) }
                             }
                         }
@@ -211,11 +211,12 @@ struct CountTarget: View {
     var asset: String = ""
     let number: Int?
     var hinted: Bool
+    var size: CGFloat = 64
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            Pic(asset, emoji, size: 64)
-                .frame(width: 100, height: 100)
+            Pic(asset, emoji, size: size)
+                .frame(width: size * 1.55, height: size * 1.55)
                 .background(Circle().fill(number != nil ? Theme.highlight.opacity(0.4) : .white.opacity(0.001)))
                 .overlay(Circle().stroke(Theme.highlight, lineWidth: hinted ? 6 : 0))
             if let number {
@@ -260,7 +261,7 @@ final class CountingModel {
         host.nextTaskHandler = { [weak self] in self?.advance() }
         host.summaryProvider = { [weak self] in
             guard let self else { return RoundSummary(text: "Im Zählgarten gezählt.") }
-            let maxN = CountingFactory.range(self.host.difficulty).upperBound
+            let maxN = CountingFactory.range(level: self.host.level).upperBound
             return RoundSummary(
                 text: "Vier Zählaufgaben mit Mengen bis \(NumberWords.word(maxN)) abgeschlossen.",
                 practiced: self.tasks.map { $0.mode == .howMany ? "\($0.count) gezählt" : "\($0.count) abgegeben" }
@@ -276,7 +277,7 @@ final class CountingModel {
             if host.awaitingNext { host.next(); return }
             instruct()
         } else {
-            tasks = CountingFactory.round(difficulty: host.difficulty, modes: host.options.countingModes, count: host.tasksPerRound)
+            tasks = CountingFactory.round(level: host.level, modes: host.options.countingModes, count: host.tasksPerRound)
             index = 0
             present()
         }

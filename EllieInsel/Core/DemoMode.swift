@@ -39,6 +39,11 @@ enum DemoMode {
         if let raw = value("-difficulty"), let diff = Difficulty(rawValue: raw) {
             for g in GameID.allCases { d.difficulties[g.rawValue] = diff }
         }
+        if let raw = value("-level"), let l = Int(raw) {
+            for g in GameID.allCases {
+                d.skills[g.rawValue] = SkillState(level: min(max(l, 1), LevelCatalog.maxLevel(g)))
+            }
+        }
         d.lastGame = GameID.memory.rawValue
         d.garden.placed = [
             PlacedDecoration(item: "🌳", x: 0.15, y: 0.45), PlacedDecoration(item: "🌷", x: 0.3, y: 0.7),

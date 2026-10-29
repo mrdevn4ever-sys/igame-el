@@ -16,39 +16,35 @@ enum PatternCatalog {
         PatternMotif(emoji: "🪨", name: "Stein"), PatternMotif(emoji: "🍓", name: "Erdbeere")
     ]
 
-    /// 36 geprüfte Musteraufgaben, zwölf pro Stufe.
-    static func tasks(for difficulty: Difficulty) -> [PatternTask] {
-        var rng = SeededGenerator(seed: 4000 + UInt64(Difficulty.allCases.firstIndex(of: difficulty)!))
+    /// Zwölf geprüfte Musteraufgaben pro Niveau. Vor der Lücke stehen immer zwei vollständige Wiederholungen.
+    static func tasks(level: Int) -> [PatternTask] {
+        let spec = LevelCatalog.pattern(level)
+        var rng = SeededGenerator(seed: 4000 + UInt64(level))
         var result: [PatternTask] = []
-        while result.count < 12 {
-            let picked = Array(motifs.shuffled(using: &rng).prefix(3))
-            let unit: [Int]
-            switch difficulty {
-            case .entdecken: unit = [0, 1]
-            case .ueben: unit = result.count % 2 == 0 ? [0, 0, 1] : [0, 1, 1]
-            case .knobeln: unit = [0, 1, 2]
-            }
-            let reps = 3
+        var attempts = 0
+        while result.count < 12 && attempts < 400 {
+            attempts += 1
+            let unit = spec.units[result.count % spec.units.count]
+            let distinctCount = (unit.max() ?? 0) + 1
+            let picked = Array(motifs.shuffled(using: &rng).prefix(distinctCount))
             var seq: [Int] = []
-            for _ in 0..<reps { seq.append(contentsOf: unit) }
-            // Lücke nach mindestens zwei vollständigen Wiederholungen.
+            for _ in 0..<3 { seq.append(contentsOf: unit) }
+            let lastBlock = unit.count * 2
             let gap: Int
-            if difficulty == .knobeln && result.count % 3 != 0 {
-                gap = unit.count * 2 + (result.count % 3) - 1 // innerhalb des letzten Blocks
+            if spec.innerGap && result.count % 2 == 1 {
+                gap = lastBlock + Int.random(in: 0..<(unit.count - 1), using: &rng)
             } else {
-                gap = unit.count * 2 + (difficulty == .entdecken ? 1 : unit.count - 1)
+                gap = lastBlock + unit.count - 1
             }
-            let shown = Array(seq.prefix(max(gap + 1, difficulty == .knobeln ? seq.count : gap + 1)))
+            let shown = spec.innerGap ? seq : Array(seq.prefix(gap + 1))
             let sequence = shown.map { picked[$0] }
             let answer = sequence[gap]
-            let distinctInPattern = Array(Set(unit)).sorted().map { picked[$0] }
-            var options = distinctInPattern
-            let optionCount = difficulty == .entdecken ? 2 : 3
-            if options.count < optionCount {
+            var options = picked
+            if options.count < spec.options {
                 let extra = motifs.filter { !options.contains($0) }.shuffled(using: &rng)
-                options.append(contentsOf: extra.prefix(optionCount - options.count))
+                options.append(contentsOf: extra.prefix(spec.options - options.count))
             }
-            options = Array(options.prefix(optionCount))
+            options = Array(options.prefix(max(spec.options, 2)))
             if !options.contains(answer) { options[0] = answer }
             options.shuffle(using: &rng)
             let task = PatternTask(sequence: sequence, gap: gap, options: options, unitLength: unit.count)
@@ -66,13 +62,15 @@ struct PatternTask: Codable, Equatable {
 
     var answer: PatternMotif { sequence[gap] }
 
+    /// Bezeichnung des Musters, z. B. «AAB».
     var label: String {
-        switch unitLength {
-        case 2: return "ABAB"
-        case 3 where sequence[0] == sequence[1]: return "AAB"
-        case 3 where sequence[1] == sequence[2]: return "ABB"
-        default: return "ABC"
+        var names: [PatternMotif] = []
+        var out = ""
+        for m in sequence.prefix(unitLength) {
+            if !names.contains(m) { names.append(m) }
+            out.append(Character(UnicodeScalar(65 + names.firstIndex(of: m)!)!))
         }
+        return out
     }
 }
 
@@ -211,7 +209,7 @@ final class PatternModel {
             if host.awaitingNext { host.next(); return }
             instruct()
         } else {
-            tasks = Array(PatternCatalog.tasks(for: host.difficulty).shuffled().prefix(host.tasksPerRound))
+            tasks = Array(PatternCatalog.tasks(level: host.level).shuffled().prefix(host.tasksPerRound))
             index = 0
             present()
         }

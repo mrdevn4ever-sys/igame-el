@@ -30,9 +30,26 @@ struct AppData: Codable {
 
     var garden = GardenData()
 
+    // Automatische Anpassung
+    var skills: [String: SkillState] = [:]
+    var adaptiveOff: Set<String> = []
+
     func difficulty(for game: GameID) -> Difficulty {
         difficulties[game.rawValue] ?? .entdecken
     }
+
+    /// Aktuelles Niveau eines Spiels (Start aus der Dreistufen-Einstellung, falls noch nicht gespielt).
+    func level(for game: GameID) -> Int {
+        let maxLevel = LevelCatalog.maxLevel(game)
+        if let s = skills[game.rawValue] { return min(max(s.level, 1), maxLevel) }
+        return LevelEngine.startLevel(for: difficulty(for: game), maxLevel: maxLevel)
+    }
+
+    func skill(for game: GameID) -> SkillState {
+        skills[game.rawValue] ?? SkillState(level: level(for: game))
+    }
+
+    func isAdaptive(_ game: GameID) -> Bool { !adaptiveOff.contains(game.rawValue) }
 
     func isVisible(_ game: GameID) -> Bool {
         !hiddenGames.contains(game.rawValue)
@@ -61,6 +78,8 @@ struct AppData: Codable {
         roundsCompleted = (try? c.decode([String: Int].self, forKey: .roundsCompleted)) ?? d.roundsCompleted
         practicedItems = (try? c.decode([String: [String]].self, forKey: .practicedItems)) ?? d.practicedItems
         garden = (try? c.decode(GardenData.self, forKey: .garden)) ?? d.garden
+        skills = (try? c.decode([String: SkillState].self, forKey: .skills)) ?? d.skills
+        adaptiveOff = (try? c.decode(Set<String>.self, forKey: .adaptiveOff)) ?? d.adaptiveOff
     }
 
     private static let blank = AppData()
@@ -215,4 +234,8 @@ struct SavedGame: Codable {
     var payload: Data
     /// Aufgabe gelöst, «Weiter» noch nicht gewählt.
     var awaitingNext: Bool?
+    /// Niveau, mit dem die Runde begonnen hat
+    var level: Int?
+    /// Bereits gelöste Aufgaben dieser Runde
+    var results: [TaskResult]?
 }

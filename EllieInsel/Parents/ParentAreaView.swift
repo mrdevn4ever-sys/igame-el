@@ -4,7 +4,7 @@ import UniformTypeIdentifiers
 /// Elternbereich: Übersicht, Profil, Ton, Spiele, Pausen, Datensicherung.
 struct ParentAreaView: View {
     @Environment(AppModel.self) private var app
-    @State private var section: ParentSection? = .overview
+    @State private var section: ParentSection? = ParentSection(rawValue: DemoMode.value("-section") ?? "") ?? .overview
 
     enum ParentSection: String, CaseIterable, Identifiable {
         case overview, profile, sound, games, pause, backup, more
@@ -190,7 +190,7 @@ private struct GamesSection: View {
     var body: some View {
         Form {
             Section {
-                Text("Eine geänderte Stufe gilt ab der nächsten Runde, damit sich eine laufende Aufgabe nicht überraschend verändert.")
+                Text("Jedes Spiel hat einen Apfelbaum: ein Apfel pro Niveau. Mit «Automatisch» passt sich das Niveau nach jeder Runde an – nach oben, wenn fast alles sicher und zügig gelingt, nach unten, wenn es zu schwer wird. Eine Änderung gilt immer erst ab der nächsten Runde.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
@@ -204,15 +204,7 @@ private struct GamesSection: View {
                             }
                         }
                     ))
-                    Picker("Stufe", selection: Binding(
-                        get: { app.data.difficulty(for: game) },
-                        set: { d in app.update { $0.difficulties[game.rawValue] = d } }
-                    )) {
-                        ForEach(Difficulty.allCases) { d in
-                            Text("\(d.symbol) \(d.title)").tag(d)
-                        }
-                    }
-                    .pickerStyle(.segmented)
+                    LevelControls(game: game)
                     gameOptions(game)
                 } header: {
                     Text("\(game.emoji) \(game.title)")
@@ -250,6 +242,62 @@ private struct GamesSection: View {
             Toggle("Bildermodus ohne Ton anbieten", isOn: app.binding(\.options.animalPictureModeAllowed))
         default:
             EmptyView()
+        }
+    }
+}
+
+/// Niveau eines Spiels: Baum, Beschreibung, Automatik, manuelle Wahl und letzte Ergebnisse.
+private struct LevelControls: View {
+    @Environment(AppModel.self) private var app
+    let game: GameID
+
+    var body: some View {
+        let level = app.data.level(for: game)
+        let maxLevel = LevelCatalog.maxLevel(game)
+        let skill = app.data.skill(for: game)
+        HStack(spacing: 16) {
+            AppleTreeView(level: level, maxLevel: maxLevel)
+                .frame(width: 70, height: 70)
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Niveau \(level) von \(maxLevel)")
+                    .font(.headline)
+                Text(LevelCatalog.describe(game, level: level))
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                resultDots(skill: skill, level: level)
+            }
+            Spacer()
+            Stepper("Niveau", value: Binding(
+                get: { level },
+                set: { app.setLevel($0, for: game) }
+            ), in: 1...maxLevel)
+            .labelsHidden()
+        }
+        Toggle("Automatisch anpassen", isOn: Binding(
+            get: { app.data.isAdaptive(game) },
+            set: { on in
+                app.update {
+                    if on { $0.adaptiveOff.remove(game.rawValue) } else { $0.adaptiveOff.insert(game.rawValue) }
+                }
+            }
+        ))
+    }
+
+    /// Letzte Aufgaben auf diesem Niveau: grün = sicher, gelb = gut, orange = schwer.
+    @ViewBuilder
+    private func resultDots(skill: SkillState, level: Int) -> some View {
+        let reference = LevelEngine.referenceSeconds(skill, level: level, fallback: LevelCatalog.targetSeconds(game, level: level))
+        let recent = skill.results.filter { $0.level == level }.suffix(10)
+        if !recent.isEmpty {
+            HStack(spacing: 4) {
+                ForEach(Array(recent.enumerated()), id: \.offset) { _, r in
+                    let rating = LevelEngine.rate(r, reference: reference)
+                    Circle()
+                        .fill(rating == .strong ? Color.green : rating == .good ? Color.yellow : Color.orange)
+                        .frame(width: 10, height: 10)
+                }
+            }
+            .accessibilityLabel("Letzte Ergebnisse")
         }
     }
 }

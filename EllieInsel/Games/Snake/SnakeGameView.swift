@@ -80,7 +80,7 @@ struct SnakeGameView: View {
     }
 
     private func board(side: CGFloat) -> some View {
-        let n = SnakeLayouts.size
+        let n = model.gridSize
         let cell = side / CGFloat(n)
         return ZStack(alignment: .topLeading) {
             // Gartenraster
@@ -94,7 +94,7 @@ struct SnakeGameView: View {
             }
             .background(Theme.meadow)
 
-            if host.difficulty == .knobeln {
+            if !model.wraps {
                 Rectangle()
                     .stroke(Theme.darkGreen.opacity(0.7), lineWidth: 6)
             }
@@ -249,24 +249,21 @@ final class SnakeModel {
 
     init(host: GameHost) { self.host = host }
 
-    var stepSeconds: Double {
-        switch host.difficulty {
-        case .entdecken: return 0.65
-        case .ueben: return 0.45
-        case .knobeln: return 0.35
-        }
-    }
-
-    var wraps: Bool { host.difficulty != .knobeln }
+    var spec: LevelCatalog.SnakeSpec { LevelCatalog.snake(host.level) }
+    var stepSeconds: Double { spec.stepSeconds }
+    var wraps: Bool { spec.wraps }
+    var gridSize: Int { spec.grid }
 
     func start() {
         guard !started else { return }
         started = true
         host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
+        host.setTasksPerRound(spec.fruits)
         host.summaryProvider = { [weak self] in
-            let level = self?.host.difficulty.title ?? ""
-            return RoundSummary(text: "Mit der Schlange fünf Früchte gesammelt (\(level)).", practiced: ["Richtungen planen"])
+            guard let self else { return RoundSummary(text: "Früchte gesammelt.") }
+            return RoundSummary(text: "Mit der Schlange \(NumberWords.word(self.spec.fruits)) Früchte gesammelt (\(LevelCatalog.describe(.snake, level: self.host.level))).",
+                                practiced: ["Richtungen planen"])
         }
         if let saved = host.takeRestoredPayload(SnakeState.self), !saved.body.isEmpty {
             body = saved.body
@@ -281,19 +278,15 @@ final class SnakeModel {
             host.setInstruction("Tippe auf eine Richtung, dann geht es weiter.")
         } else {
             reset(keepingFruitCount: false)
-            host.setInstruction("Sammle fünf Früchte. Tippe auf einen Pfeil.")
+            host.setInstruction("Sammle \(NumberWords.word(spec.fruits)) Früchte. Tippe auf einen Pfeil.")
         }
     }
 
     private func reset(keepingFruitCount: Bool) {
-        let mid = SnakeLayouts.size / 2
+        let mid = gridSize / 2
         body = [GridPoint(x: mid - 2, y: mid), GridPoint(x: mid - 3, y: mid), GridPoint(x: mid - 4, y: mid)]
         direction = .right
-        if host.difficulty == .knobeln {
-            obstacles = SnakeLayouts.obstacles.randomElement()!
-        } else {
-            obstacles = []
-        }
+        obstacles = makeObstacles(count: spec.obstacles, mid: mid)
         crashed = false
         running = false
         queue = []
@@ -301,12 +294,30 @@ final class SnakeModel {
         save()
     }
 
+    /// Geprüfte Anordnungen auf dem 12er-Feld, sonst zufällig mit freier Startreihe und Abstand zum Rand.
+    private func makeObstacles(count: Int, mid: Int) -> [GridPoint] {
+        guard count > 0 else { return [] }
+        if gridSize == SnakeLayouts.size {
+            return Array(SnakeLayouts.obstacles.randomElement()!.prefix(count))
+        }
+        var result: [GridPoint] = []
+        var attempts = 0
+        while result.count < count && attempts < 500 {
+            attempts += 1
+            let p = GridPoint(x: Int.random(in: 1..<(gridSize - 1)), y: Int.random(in: 1..<(gridSize - 1)))
+            if abs(p.y - mid) <= 1 { continue }
+            if result.contains(where: { abs($0.x - p.x) + abs($0.y - p.y) < 2 }) { continue }
+            result.append(p)
+        }
+        return result
+    }
+
     private func save() {
         host.persist(SnakeState(body: body, direction: direction, fruit: fruit, fruitEmoji: fruitEmoji, obstacles: obstacles, crashed: crashed))
     }
 
     private func placeFruit() {
-        let n = SnakeLayouts.size
+        let n = gridSize
         var free: [GridPoint] = []
         let head = body.first ?? GridPoint(x: 0, y: 0)
         for x in 0..<n {
@@ -318,7 +329,7 @@ final class SnakeModel {
                 // Nicht zu nah am Kopf, aber auch nicht zu weit für Anfänger.
                 let dist = abs(p.x - head.x) + abs(p.y - head.y)
                 if dist < 3 { continue }
-                if host.difficulty == .entdecken && dist > 8 { continue }
+                if host.level <= 2 && dist > 8 { continue }
                 free.append(p)
             }
         }
@@ -375,7 +386,7 @@ final class SnakeModel {
             queue.removeFirst()
             if next != direction.opposite || body.count <= 1 { direction = next }
         }
-        let n = SnakeLayouts.size
+        let n = gridSize
         guard let head = body.first else { return }
         var nx = head.x + direction.delta.0
         var ny = head.y + direction.delta.1
@@ -411,6 +422,7 @@ final class SnakeModel {
     }
 
     private func crash() {
+        host.countError()
         running = false
         crashed = true
         loop?.cancel()
@@ -434,7 +446,7 @@ final class SnakeModel {
         if crashed { restartAfterCrash(); return }
         pause()
         guard let head = body.first else { return }
-        let n = SnakeLayouts.size
+        let n = gridSize
         let target = GridPoint(x: (head.x + direction.delta.0 + n) % n, y: (head.y + direction.delta.1 + n) % n)
         if !obstacles.contains(target) && !body.contains(target) { fruit = target }
         step()

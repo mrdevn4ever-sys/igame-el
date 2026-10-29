@@ -4,6 +4,7 @@ import SwiftUI
 struct GameScreen: View {
     let game: GameID
     @Environment(AppModel.self) private var app
+    @Environment(\.scenePhase) private var scenePhase
     @State private var host: GameHost?
 
     var body: some View {
@@ -20,16 +21,34 @@ struct GameScreen: View {
                 if DemoMode.autoplay { startAutoplay(h) }
             }
         }
+        .onDisappear {
+            // Runde mitten drin verlassen: zählt für die Entlastung bei wiederholtem Abbrechen.
+            if let host, !host.roundComplete, host.tasksDone > 0 {
+                app.noteAbort(game: game)
+            }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { host?.resumeClock() } else { host?.pauseClock() }
+        }
     }
 
     /// Spielt im Simulator selbständig eine Runde durch.
     private func startAutoplay(_ host: GameHost) {
         Task { @MainActor in
             try? await Task.sleep(nanoseconds: 3_000_000_000)
-            let maxSteps = Int(DemoMode.value("-steps") ?? "") ?? 80
+            let rounds = Int(DemoMode.value("-rounds") ?? "") ?? 1
+            let maxSteps = Int(DemoMode.value("-steps") ?? "") ?? 80 * rounds
             let helpFirst = DemoMode.flag("-helpfirst")
+            var roundsDone = 0
             for _ in 0..<maxSteps {
-                if host.roundComplete { return }
+                if host.roundComplete {
+                    roundsDone += 1
+                    if roundsDone >= rounds { return }
+                    try? await Task.sleep(nanoseconds: 3_500_000_000)
+                    host.startNewRound()
+                    try? await Task.sleep(nanoseconds: 2_500_000_000)
+                    continue
+                }
                 if host.awaitingNext {
                     host.next()
                 } else {
@@ -94,14 +113,10 @@ private struct GameFrame: View {
                 .foregroundStyle(Theme.darkGreen)
                 .lineLimit(1)
                 .minimumScaleFactor(0.6)
-            if host.game != .atelier {
-                Text("\(host.difficulty.symbol) \(host.difficulty.title)")
-                    .font(Theme.rounded(16, .semibold))
-                    .foregroundStyle(Theme.darkGreen.opacity(0.7))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 4)
-                    .background(Capsule().fill(host.game.tint.opacity(0.6)))
-            }
+            // Niveau als Apfelbaum (ein Apfel pro Niveau)
+            AppleTreeView(level: host.level, maxLevel: host.maxLevel)
+                .frame(width: 58, height: 58)
+                .background(Circle().fill(host.game.tint.opacity(0.5)))
             Spacer()
             CircleIconButton(systemName: "arrow.counterclockwise", label: "Neu beginnen", size: 52) {
                 confirmRestart = true
@@ -192,8 +207,21 @@ struct RoundCompleteView: View {
 
     var body: some View {
         VStack(spacing: 22) {
-            Text("🎉")
-                .font(.system(size: 72))
+            if let outcome = host.levelOutcome {
+                HStack(spacing: 20) {
+                    GrowingTreeView(outcome: outcome, maxLevel: host.maxLevel)
+                        .frame(width: 150, height: 150)
+                    if outcome.to > outcome.from {
+                        Text("Dein Apfelbaum ist gewachsen! 🍎")
+                            .font(Theme.rounded(26, .heavy))
+                            .foregroundStyle(Theme.success)
+                            .multilineTextAlignment(.leading)
+                    }
+                }
+            } else {
+                Text("🎉")
+                    .font(.system(size: 72))
+            }
             Text("Geschafft!")
                 .font(Theme.rounded(44, .heavy))
                 .foregroundStyle(Theme.darkGreen)

@@ -136,23 +136,22 @@ final class MemoryModel {
 
     init(host: GameHost) { self.host = host }
 
-    var pairs: Int {
-        switch host.difficulty {
-        case .entdecken: return 3
-        case .ueben: return 6
-        case .knobeln: return 8
-        }
-    }
+    var pairs: Int { LevelCatalog.memoryPairs(host.level) }
 
     var columns: Int {
         switch cards.count {
         case ...6: return 3
-        case ...12: return 4
-        default: return 4
+        case ...16: return 4
+        case ...20: return 5
+        default: return 6
         }
     }
 
-    private var revealSeconds: Double { host.options.calmMemory ? 2.8 : 1.3 }
+    /// Höchste Stufe: Karten bleiben kürzer offen (ausser beim ruhigen Betrachten).
+    private var revealSeconds: Double {
+        if host.options.calmMemory { return 2.8 }
+        return host.level >= LevelCatalog.maxLevel(.memory) ? 0.9 : 1.3
+    }
 
     func start() {
         guard !started else { return }
@@ -183,8 +182,14 @@ final class MemoryModel {
 
     private func newBoard() {
         let g = MemoryCatalog.groups.randomElement()!
+        var pool = g.motifs.shuffled()
         group = g.title
-        let motifs = Array(g.motifs.shuffled().prefix(pairs))
+        if pairs > pool.count {
+            // Mehr Paare als eine Themengruppe hat: Gruppen mischen.
+            pool += MemoryCatalog.groups.filter { $0.title != g.title }.flatMap { $0.motifs }.shuffled()
+            group = "Tiere und Natur"
+        }
+        let motifs = Array(pool.prefix(pairs))
         var list: [MemoryCard] = []
         for (i, m) in (motifs + motifs).enumerated() {
             list.append(MemoryCard(id: i, motif: m))
@@ -222,6 +227,9 @@ final class MemoryModel {
             host.resetHelp()
             save()
             if cards.allSatisfy(\.matched) {
+                // Bewertung über die Züge: wenige Züge pro Paar = sicher gemerkt.
+                let ratio = Double(moves) / Double(max(pairs, 1))
+                host.setTaskErrors(ratio <= 1.7 ? 0 : ratio <= 2.4 ? 1 : 2)
                 host.taskSolved("Du hast alle Paare gefunden.", needsNext: false)
             } else {
                 host.audio.effect(.success)
