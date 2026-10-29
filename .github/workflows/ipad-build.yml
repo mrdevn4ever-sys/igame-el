@@ -1,0 +1,67 @@
+name: iPad Build
+
+on:
+  push:
+    branches: [claude/ellies-entdeckerinsel]
+    paths:
+      - "EllieInsel/**"
+      - "EllieInsel.xcodeproj/**"
+      - ".github/workflows/ipad-build.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: ipad-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Xcode 16 wählen
+        run: |
+          XC=$(ls -d /Applications/Xcode_16*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XC"
+          xcodebuild -version
+
+      - name: Für iPad bauen (Release, unsigniert)
+        run: |
+          set -o pipefail
+          xcodebuild archive \
+            -project EllieInsel.xcodeproj \
+            -scheme EllieInsel \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/EllieInsel.xcarchive \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
+            2>&1 | tee build.log | grep -E "(error|warning: unreachable|BUILD|ARCHIVE)" || true
+          test -d build/EllieInsel.xcarchive/Products/Applications/EllieInsel.app
+
+      - name: Fehler zusammenfassen
+        if: failure()
+        run: |
+          echo "=== KOMPILIERFEHLER ==="
+          grep -E "^/.*: error:" build.log | sed 's|.*/EllieInsel/||' | sort -u | head -150 || true
+          grep -E "error:" build.log | grep -v "^/" | sort -u | head -30 || true
+
+      - name: IPA erstellen
+        run: |
+          mkdir -p Payload
+          cp -R build/EllieInsel.xcarchive/Products/Applications/EllieInsel.app Payload/
+          zip -qry EllieInsel-unsigned.ipa Payload
+          ls -lh EllieInsel-unsigned.ipa
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EllieInsel-iPad-unsigned
+          path: EllieInsel-unsigned.ipa
+          retention-days: 30
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-log
+          path: build.log
+          retention-days: 7
