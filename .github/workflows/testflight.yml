@@ -1,0 +1,95 @@
+name: TestFlight
+
+# Auslösen: Tag pushen, z. B.
+#   git tag testflight-1 && git push origin testflight-1
+on:
+  push:
+    tags: ["testflight-*"]
+
+jobs:
+  upload:
+    runs-on: macos-15
+    timeout-minutes: 60
+    env:
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Secrets prüfen
+        run: |
+          for v in ASC_KEY_ID ASC_ISSUER_ID APPLE_TEAM_ID; do
+            [ -n "${!v}" ] || { echo "::error::Secret $v fehlt"; exit 1; }
+          done
+          [ -n "${{ secrets.ASC_KEY_P8 }}" ] || { echo "::error::Secret ASC_KEY_P8 fehlt"; exit 1; }
+
+      - name: Xcode 16 wählen
+        run: |
+          XC=$(ls -d /Applications/Xcode_16*.app | sort -V | tail -1)
+          sudo xcode-select -s "$XC"
+          xcodebuild -version
+
+      - name: API-Schlüssel ablegen
+        run: |
+          mkdir -p "$RUNNER_TEMP/keys"
+          printf '%s\n' "${{ secrets.ASC_KEY_P8 }}" > "$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8"
+          echo "KEY_PATH=$RUNNER_TEMP/keys/AuthKey_${ASC_KEY_ID}.p8" >> $GITHUB_ENV
+          echo "BUILD_NUMBER=$((100 + ${{ github.run_number }}))" >> $GITHUB_ENV
+
+      - name: Archivieren (signiert, App Store)
+        run: |
+          set -o pipefail
+          xcodebuild archive \
+            -project EllieInsel.xcodeproj -scheme EllieInsel -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath build/EllieInsel.xcarchive \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            DEVELOPMENT_TEAM="$APPLE_TEAM_ID" CODE_SIGN_STYLE=Automatic \
+            CURRENT_PROJECT_VERSION="$BUILD_NUMBER" \
+            2>&1 | tee archive.log | grep -E "(error|warning: .*sign|ARCHIVE)" || true
+          test -d build/EllieInsel.xcarchive
+
+      - name: Exportieren und zu App Store Connect hochladen
+        run: |
+          set -o pipefail
+          cat > ExportOptions.plist <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+            <key>method</key><string>app-store-connect</string>
+            <key>destination</key><string>upload</string>
+            <key>teamID</key><string>${APPLE_TEAM_ID}</string>
+            <key>signingStyle</key><string>automatic</string>
+            <key>uploadSymbols</key><true/>
+            <key>manageAppVersionAndBuildNumber</key><false/>
+          </dict></plist>
+          PLIST
+          xcodebuild -exportArchive \
+            -archivePath build/EllieInsel.xcarchive \
+            -exportOptionsPlist ExportOptions.plist \
+            -exportPath build/export \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$KEY_PATH" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            2>&1 | tee export.log | grep -E "(error|Upload|EXPORT|succeeded|failed)" || true
+          grep -q "EXPORT SUCCEEDED" export.log
+          echo "Build $BUILD_NUMBER hochgeladen. In App Store Connect → TestFlight erscheint er nach der Verarbeitung (meist 10–30 Minuten)."
+
+      - name: Fehler zusammenfassen
+        if: failure()
+        run: |
+          grep -hE "error:|Error|No profiles|No signing certificate|is not available|App Store Connect" archive.log export.log 2>/dev/null | sort -u | head -60 || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: testflight-logs
+          path: |
+            archive.log
+            export.log
+          retention-days: 7
