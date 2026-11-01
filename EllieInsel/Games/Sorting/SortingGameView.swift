@@ -28,6 +28,11 @@ struct SortTask: Codable, Equatable {
 enum SortFactory {
     static let sizeObjects: [(emoji: String, plural: String)] = [("🍂", "Blätter"), ("🍎", "Äpfel"), ("🍄", "Pilze"), ("🌰", "Kastanien")]
 
+    /// Bilddatei zu einem Grössen-Motiv (Emoji bleibt als Ersatz).
+    static func asset(for emoji: String) -> String {
+        ["🍂": "muster_blatt", "🍎": "muster_apfel", "🍄": "muster_pilz", "🌰": "muster_kastanie"][emoji] ?? ""
+    }
+
     static func scatter(_ n: Int, rng: inout SeededGenerator) -> [NPoint] {
         let cols = n <= 6 ? 3 : 4
         let rows = Int(ceil(Double(n) / Double(cols)))
@@ -196,8 +201,8 @@ struct SortingGameView: View {
                     }
                 } else if let level = cat.sizeLevel {
                     HStack(spacing: 8) {
-                        Text(task.sizeEmoji ?? "🍂")
-                            .font(.system(size: level == 0 ? 24 : level == 1 ? 36 : 52))
+                        Pic(SortFactory.asset(for: task.sizeEmoji ?? "🍂"), task.sizeEmoji ?? "🍂",
+                            size: level == 0 ? 22 : level == 1 ? 32 : 44)
                         Text(level == 0 ? "klein" : level == 1 ? "mittel" : "gross").font(Theme.rounded(20, .bold))
                     }
                 }
@@ -233,14 +238,17 @@ struct SortItemView: View {
     let size: CGFloat
 
     var body: some View {
+        // Grosse Motive (Massstab über 1) bekommen einen grösseren Rahmen, damit nichts abgeschnitten wird.
+        let box = size * max(1, item.scale)
         Group {
             if let emoji = item.emoji {
-                Text(emoji).font(.system(size: size * item.scale))
+                Pic(SortFactory.asset(for: emoji), emoji, size: size * item.scale / 1.2)
+                    .fixedSize()
             } else if let shape = item.shape {
                 ShapeTile(kind: shape, size: size * 0.8 * item.scale, color: item.color.color)
             }
         }
-        .frame(width: size, height: size)
+        .frame(width: box, height: box)
     }
 }
 
