@@ -4,6 +4,8 @@ import PencilKit
 /// PencilKit-Zeichenfläche für Finger und Apple Pencil.
 struct PencilCanvas: UIViewRepresentable {
     @Binding var drawing: PKDrawing
+    /// Neuer Wert = das Modell hat die Zeichnung ersetzt. Sonst gilt, was auf der Fläche ist.
+    var revision: Int
     var tool: PKTool
     var onStrokeFinished: (PKDrawing) -> Void
 
@@ -24,7 +26,10 @@ struct PencilCanvas: UIViewRepresentable {
     func updateUIView(_ canvas: PKCanvasView, context: Context) {
         context.coordinator.parent = self
         canvas.tool = tool
-        if canvas.drawing != drawing {
+        // Nur bewusste Änderungen des Modells übernehmen. Ein Vergleich der Zeichnungen würde
+        // gerade Radiertes oder Rückgängiges wieder einsetzen, solange das Modell noch nachzieht.
+        if context.coordinator.revision != revision {
+            context.coordinator.revision = revision
             context.coordinator.applyingExternal = true
             canvas.drawing = drawing
             context.coordinator.applyingExternal = false
@@ -36,17 +41,16 @@ struct PencilCanvas: UIViewRepresentable {
     final class Coordinator: NSObject, PKCanvasViewDelegate {
         var parent: PencilCanvas
         var applyingExternal = false
+        var revision: Int
 
         init(parent: PencilCanvas) {
             self.parent = parent
+            self.revision = parent.revision
         }
 
         func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
             guard !applyingExternal else { return }
-            let d = canvasView.drawing
-            DispatchQueue.main.async {
-                self.parent.drawing = d
-            }
+            parent.drawing = canvasView.drawing
         }
 
         func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {

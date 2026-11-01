@@ -117,7 +117,7 @@ private struct FreeDrawingView: View {
                 let h = w * 3 / 4
                 ZStack(alignment: .topLeading) {
                     CanvasBackgroundView(background: model.background)
-                    PencilCanvas(drawing: $model.drawing, tool: model.pkTool) { d in
+                    PencilCanvas(drawing: $model.drawing, revision: model.drawingRevision, tool: model.pkTool) { d in
                         model.strokeFinished(d)
                     }
                     GlitterOverlay(sparkles: model.sparkles)
@@ -313,6 +313,9 @@ final class AtelierModel {
         var stickers: [PlacedSticker]
     }
     var drawing = PKDrawing()
+    /// Erhöht sich, wenn das Modell die Zeichnung ersetzt (Rückgängig, Füllen, Laden …).
+    /// Nur dann übernimmt die Zeichenfläche den Stand des Modells.
+    var drawingRevision = 0
     var background: CanvasBackground = .leer
     var ink: InkChoice = .plain(.blue)
     var width: CGFloat = 14
@@ -339,6 +342,11 @@ final class AtelierModel {
 
     var pkTool: PKTool {
         if tool == .eraser { return PKEraserTool(.bitmap) }
+        // Gleichmässige Linienbreite, unabhängig vom Tempo
+        let mono = PKInkingTool.InkType.monoline
+        if mono.validWidthRange.contains(width) {
+            return PKInkingTool(mono, color: ink.uiColor, width: width)
+        }
         return PKInkingTool(.pen, color: ink.uiColor, width: width)
     }
 
@@ -386,6 +394,7 @@ final class AtelierModel {
                 background = saved.background
                 if let data = saved.drawing, let d = try? PKDrawing(data: data) {
                     drawing = d
+                    drawingRevision += 1
                     lastCommitted = d
                 }
                 stickers = saved.stickers ?? []
@@ -418,6 +427,7 @@ final class AtelierModel {
             loadPath(keeping: nil)
         case .free:
             drawing = PKDrawing()
+            drawingRevision += 1
             lastCommitted = drawing
             stickers = []
             sparkles = []
@@ -513,6 +523,7 @@ final class AtelierModel {
             // Nach einer Drehung die Zeichnung an die neue Fläche anpassen.
             let s = newWidth / canvasWidth
             drawing = drawing.transformed(using: CGAffineTransform(scaleX: s, y: s))
+            drawingRevision += 1
             lastCommitted = drawing
             undoStack = []
             canUndo = false
@@ -531,6 +542,15 @@ final class AtelierModel {
 
     func strokeFinished(_ d: PKDrawing) {
         pushUndo()
+        var d = d
+        if tool == .pen, d.strokes.count > lastCommitted.strokes.count {
+            // Neue Striche auf die gewählte Breite bringen (schnelles Malen machte sie sonst dicker).
+            for i in lastCommitted.strokes.count..<d.strokes.count {
+                d.strokes[i] = uniform(d.strokes[i], width: width)
+            }
+            drawing = d
+            drawingRevision += 1
+        }
         lastCommitted = d
         if d.strokes.contains(where: { Glitter.match($0.ink.color) != nil }) || !sparkles.isEmpty {
             refreshSparkles(d)
@@ -538,10 +558,20 @@ final class AtelierModel {
         save()
     }
 
+    private func uniform(_ s: PKStroke, width: CGFloat) -> PKStroke {
+        let points = s.path.map { p in
+            PKStrokePoint(location: p.location, timeOffset: p.timeOffset, size: CGSize(width: width, height: width),
+                          opacity: 1, force: 1, azimuth: p.azimuth, altitude: p.altitude)
+        }
+        return PKStroke(ink: s.ink, path: PKStrokePath(controlPoints: points, creationDate: s.path.creationDate),
+                        transform: s.transform, mask: s.mask)
+    }
+
     func undo() {
         guard let prev = undoStack.popLast() else { return }
         host.audio.effect(.tap)
         drawing = prev.drawing
+        drawingRevision += 1
         lastCommitted = prev.drawing
         stickers = prev.stickers
         canUndo = !undoStack.isEmpty
@@ -592,6 +622,7 @@ final class AtelierModel {
         var d = drawing
         d.strokes.append(contentsOf: FloodFill.strokes(runs, color: ink.uiColor))
         drawing = d
+        drawingRevision += 1
         lastCommitted = d
         host.audio.effect(.snap)
         refreshSparkles(d)
@@ -663,6 +694,7 @@ final class AtelierModel {
         background = CanvasBackground(rawValue: art.background) ?? .leer
         if let d = try? PKDrawing(data: art.drawing) {
             drawing = d
+            drawingRevision += 1
             lastCommitted = d
         }
         stickers = art.stickers ?? []
@@ -746,6 +778,7 @@ final class AtelierModel {
                     return CGPoint(x: w * 0.55 + w * 0.38 * CGFloat(t), y: h * 0.75 + 40 * CGFloat(sin(t * 8)))
                 }
                 drawing = PKDrawing(strokes: [line(circle, Palette.black.uiColor, 10), line(wave, Glitter.pink.uiColor, 30)])
+                drawingRevision += 1
                 strokeFinished(drawing)
                 ink = .glitter(.gold)
                 fill(at: c, size: CGSize(width: w, height: h))
