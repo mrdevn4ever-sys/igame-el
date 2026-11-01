@@ -58,6 +58,7 @@ done
 # Freies Malen
 run 22_atelier_frei 20 8 -screen game -game atelier -atelier free -autoplay
 run 22b_atelier_glitzer 12 0 -screen game -game atelier -atelier free -autoplay -steps 2
+run 22c_atelier_live 12 0 -screen game -game atelier -atelier free -autoplay -steps 2 -livestroke
 # Schwierigste Stufe: Startbild jedes Spiels
 i=30
 for g in tracing appleMath memory snake counting shapes puzzle pattern animalSounds naturePairs sorting atelier; do

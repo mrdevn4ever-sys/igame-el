@@ -766,6 +766,15 @@ final class AtelierModel {
                 stickers.append(PlacedSticker(sticker: "garten_schmetterling", x: 0.72, y: 0.3, size: 0.18))
                 stickers.append(PlacedSticker(sticker: "🦄", x: 0.88, y: 0.12, size: 0.12))
                 save()
+                if DemoMode.flag("-livestroke") {
+                    // Strich «in der Hand»: noch nicht übernommen, muss aber schon fertig aussehen
+                    let zig = (0..<30).flatMap { i -> [Double] in
+                        let t = Double(i) / 29
+                        return [Double((w * 0.12 + w * 0.45 * CGFloat(t)) / s), Double((h * 0.88 - 30 * CGFloat(abs(sin(t * 9)))) / s)]
+                    }
+                    let pk = Glitter.pink
+                    liveOp = PaintOp(kind: .line, r: pk.rgb.0, g: pk.rgb.1, b: pk.rgb.2, glitter: pk, width: Double(30 / s), pts: zig, seed: 11)
+                }
             } else {
                 finishDrawing()
             }
