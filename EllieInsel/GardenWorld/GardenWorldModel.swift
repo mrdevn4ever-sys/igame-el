@@ -803,7 +803,7 @@ final class GardenWorldModel {
                 overlay = .celebration(adv.finishText)
                 playMelody()
             } else {
-                withAnimation { overlay = .celebration(adv.finishText) }
+                overlay = .celebration(adv.finishText)
             }
             resetActors()
         } else {

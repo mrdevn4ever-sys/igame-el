@@ -210,8 +210,20 @@ struct GardenWorldContent: View {
                     app.audio.effect(.tap)
                     model.selectedPiece = model.selectedPiece == p ? nil : p
                 } label: {
-                    WorldPic(p.asset, "〰️", size: 54)
-                        .frame(width: 66, height: 66)
+                    Group {
+                        if ImageCache.image(p.asset) != nil {
+                            WorldPic(p.asset, "", size: 54)
+                        } else {
+                            ZStack {
+                                ChannelShape(openings: p.baseOpenings)
+                                    .stroke(Color(red: 0.55, green: 0.38, blue: 0.22), style: StrokeStyle(lineWidth: 12, lineCap: .butt, lineJoin: .round))
+                                    .frame(width: 44, height: 44)
+                                if p == .schleuse { Rectangle().fill(Theme.darkGreen).frame(width: 6, height: 26) }
+                                if p == .wasserrad { Image(systemName: "gearshape.fill").font(.system(size: 22)).foregroundStyle(Theme.darkGreen) }
+                            }
+                        }
+                    }
+                    .frame(width: 66, height: 66)
                         .background(RoundedRectangle(cornerRadius: 16).fill(model.selectedPiece == p ? Theme.highlight.opacity(0.6) : .white))
                 }
                 .buttonStyle(PressableStyle())

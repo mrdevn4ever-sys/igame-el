@@ -102,7 +102,7 @@ enum DemoMode {
                    WaterTile(col: 2, row: 0, piece: .verzweigung, rotation: 0),
                    WaterTile(col: 3, row: 0, piece: .gerade), WaterTile(col: 4, row: 0, piece: .wasserrad), WaterTile(col: 5, row: 0, piece: .gerade),
                    WaterTile(col: 2, row: 1, piece: .gerade, rotation: 1), WaterTile(col: 2, row: 2, piece: .gerade, rotation: 1),
-                   WaterTile(col: 2, row: 3, piece: .kurve, rotation: 3), WaterTile(col: 3, row: 3, piece: .gerade),
+                   WaterTile(col: 2, row: 3, piece: .kurve, rotation: 0), WaterTile(col: 3, row: 3, piece: .gerade),
                    WaterTile(col: 4, row: 3, piece: .gerade), WaterTile(col: 5, row: 3, piece: .gerade)]
         w.streamBed = BedState(plant: .tomate, stage: 3, needsWater: false, growingSince: now)
         w.pondReached = true
