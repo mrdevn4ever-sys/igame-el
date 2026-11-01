@@ -15,14 +15,18 @@ concurrency:
 
 jobs:
   build:
-    runs-on: macos-15
+    runs-on: macos-26
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
-      - name: Xcode 16 wählen
+      - name: Xcode 26 wählen
         run: |
-          XC=$(ls -d /Applications/Xcode_16*.app | sort -V | tail -1)
+          ls -d /Applications/Xcode*.app
+          # Neueste stabile Xcode-26-Version (App Store Connect verlangt das iOS-26-SDK)
+          XC=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | grep -viE "beta|release_candidate|_rc" | sort -V | tail -1)
+          [ -n "$XC" ] || XC=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)
+          [ -n "$XC" ] || { echo "::error::Kein Xcode 26 auf dem Runner gefunden"; exit 1; }
           sudo xcode-select -s "$XC"
           xcodebuild -version
 
