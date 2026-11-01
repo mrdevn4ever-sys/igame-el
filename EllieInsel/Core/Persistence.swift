@@ -14,6 +14,8 @@ struct Artwork: Codable, Identifiable, Equatable {
     var thumbnail: Data
     /// Breite der Zeichenfläche beim Speichern (zum Skalieren nach einer Drehung).
     var canvasWidth: Double?
+    /// Aufgeklebte Sticker (ältere Bilder haben keine).
+    var stickers: [PlacedSticker]? = nil
 }
 
 /// Inhalt einer Sicherungsdatei.

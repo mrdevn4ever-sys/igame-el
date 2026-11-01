@@ -12,6 +12,7 @@ struct PencilCanvas: UIViewRepresentable {
         canvas.drawingPolicy = .anyInput
         canvas.backgroundColor = .clear
         canvas.isOpaque = false
+        canvas.overrideUserInterfaceStyle = .light
         canvas.isScrollEnabled = false
         canvas.contentInsetAdjustmentBehavior = .never
         canvas.drawing = drawing

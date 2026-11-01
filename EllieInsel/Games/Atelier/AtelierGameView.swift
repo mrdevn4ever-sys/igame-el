@@ -13,6 +13,7 @@ struct AtelierState: Codable {
     var drawing: Data?
     var background: CanvasBackground = .leer
     var canvasWidth: Double?
+    var stickers: [PlacedSticker]?
 }
 
 /// Spiel 12: Spurenatelier und freies Malen.
@@ -100,26 +101,52 @@ struct AtelierGameView: View {
     }
 }
 
-/// Freies Malen mit überschaubaren Werkzeugen.
+/// Freies Malen: Stifte, Glitzer, Füllen, Sticker, Radierer.
 private struct FreeDrawingView: View {
     @Bindable var model: AtelierModel
 
-    private let colors: [Palette] = [.red, .orange, .yellow, .green, .blue, .purple, .brown, .black]
+    private let colors: [Palette] = [.red, .orange, .yellow, .green, .blue, .purple, .pink, .brown, .black]
     private let widths: [CGFloat] = [6, 14, 30]
+    private let grid = [GridItem(.fixed(56), spacing: 6), GridItem(.fixed(56), spacing: 6)]
 
     var body: some View {
-        HStack(spacing: 16) {
-            toolbar
+        HStack(spacing: 14) {
+            leftPanel
             GeometryReader { geo in
                 let w = min(geo.size.width, geo.size.height * 4 / 3)
                 let h = w * 3 / 4
-                ZStack {
+                ZStack(alignment: .topLeading) {
                     CanvasBackgroundView(background: model.background)
-                    PencilCanvas(drawing: $model.drawing, tool: model.tool) { d in
+                    PencilCanvas(drawing: $model.drawing, tool: model.pkTool) { d in
                         model.strokeFinished(d)
+                    }
+                    GlitterOverlay(sparkles: model.sparkles)
+                    if model.tool == .fill || model.tool == .sticker {
+                        // Fängt Tipper ab: füllen bzw. Sticker aufkleben
+                        Color.clear
+                            .contentShape(Rectangle())
+                            .onTapGesture(coordinateSpace: .local) { p in
+                                model.tapCanvas(at: p, size: CGSize(width: w, height: h))
+                            }
+                    }
+                    ForEach(model.stickers) { s in
+                        StickerView(sticker: s.sticker, size: s.size * w)
+                            .position(x: s.x * w, y: s.y * h)
+                            .gesture(
+                                DragGesture(minimumDistance: 2, coordinateSpace: .named("atelierCanvas"))
+                                    .onChanged { v in
+                                        model.dragSticker(s.id, to: CGPoint(x: v.location.x / w, y: v.location.y / h))
+                                    }
+                                    .onEnded { _ in model.endStickerDrag() }
+                            )
+                            .onTapGesture {
+                                if model.tool == .eraser { model.removeSticker(s.id) }
+                            }
+                            .allowsHitTesting(model.tool == .sticker || model.tool == .eraser)
                     }
                 }
                 .frame(width: w, height: h)
+                .coordinateSpace(name: "atelierCanvas")
                 .clipShape(RoundedRectangle(cornerRadius: 24))
                 .shadow(color: .black.opacity(0.12), radius: 8)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -130,46 +157,107 @@ private struct FreeDrawingView: View {
         }
     }
 
-    private var toolbar: some View {
+    // MARK: Linke Leiste: Farben oder Sticker
+
+    @ViewBuilder
+    private var leftPanel: some View {
         ScrollView(showsIndicators: false) {
-            VStack(spacing: 10) {
+            if model.tool == .sticker {
+                stickerPanel
+            } else {
+                colorPanel
+            }
+        }
+        .frame(width: 124)
+    }
+
+    private var colorPanel: some View {
+        VStack(spacing: 8) {
+            LazyVGrid(columns: grid, spacing: 6) {
                 ForEach(colors, id: \.self) { c in
-                    Button {
-                        model.selectColor(c)
-                    } label: {
-                        Circle()
-                            .fill(c.color)
-                            .frame(width: 56, height: 56)
-                            .overlay(Circle().stroke(Theme.darkGreen, lineWidth: model.color == c && !model.erasing ? 5 : 0).padding(-5))
+                    Button { model.selectInk(.plain(c)) } label: {
+                        InkSwatch(ink: .plain(c), selected: model.ink == .plain(c) && model.tool != .eraser)
                     }
                     .accessibilityLabel("Farbe \(c.name)")
                 }
-                Divider().frame(width: 50)
-                ForEach(widths, id: \.self) { w in
-                    Button {
-                        model.selectWidth(w)
-                    } label: {
-                        Circle()
-                            .fill(Theme.darkGreen)
-                            .frame(width: w + 6, height: w + 6)
-                            .frame(width: 64, height: 56)
-                            .background(RoundedRectangle(cornerRadius: 14).fill(model.width == w && !model.erasing ? Theme.highlight.opacity(0.5) : .white))
+            }
+            Label("Glitzer", systemImage: "sparkles")
+                .font(Theme.rounded(17, .bold))
+                .foregroundStyle(Theme.darkGreen)
+                .padding(.top, 4)
+            LazyVGrid(columns: grid, spacing: 6) {
+                ForEach(Glitter.allCases, id: \.self) { g in
+                    Button { model.selectInk(.glitter(g)) } label: {
+                        InkSwatch(ink: .glitter(g), selected: model.ink == .glitter(g) && model.tool != .eraser)
                     }
-                    .accessibilityLabel(w < 10 ? "Dünn" : w < 20 ? "Mittel" : "Dick")
+                    .accessibilityLabel(g.name)
                 }
             }
-            .padding(.vertical, 6)
+            if model.tool != .fill {
+                Divider().frame(width: 100).padding(.vertical, 2)
+                HStack(spacing: 4) {
+                    ForEach(widths, id: \.self) { w in
+                        Button { model.selectWidth(w) } label: {
+                            Circle()
+                                .fill(Theme.darkGreen)
+                                .frame(width: min(w, 28) + 4, height: min(w, 28) + 4)
+                                .frame(width: 38, height: 48)
+                                .background(RoundedRectangle(cornerRadius: 12).fill(model.width == w ? Theme.highlight.opacity(0.5) : .white))
+                        }
+                        .accessibilityLabel(w < 10 ? "Dünn" : w < 20 ? "Mittel" : "Dick")
+                    }
+                }
+            }
         }
-        .frame(width: 80)
+        .padding(.vertical, 6)
+    }
+
+    private var stickerPanel: some View {
+        VStack(spacing: 8) {
+            HStack(spacing: 4) {
+                ForEach(StickerCatalog.sizes.indices, id: \.self) { i in
+                    Button { model.selectStickerSize(i) } label: {
+                        Image(systemName: "star.fill")
+                            .font(.system(size: ([14, 20, 28] as [CGFloat])[i]))
+                            .foregroundStyle(Theme.darkGreen)
+                            .frame(width: 38, height: 48)
+                            .background(RoundedRectangle(cornerRadius: 12).fill(model.stickerSizeIndex == i ? Theme.highlight.opacity(0.5) : .white))
+                    }
+                    .accessibilityLabel(["Klein", "Mittel", "Gross"][i])
+                }
+            }
+            LazyVGrid(columns: grid, spacing: 6) {
+                ForEach(StickerCatalog.all, id: \.self) { s in
+                    Button { model.selectSticker(s) } label: {
+                        StickerView(sticker: s, size: 44)
+                            .frame(width: 56, height: 56)
+                            .background(RoundedRectangle(cornerRadius: 14).fill(model.selectedSticker == s ? Theme.highlight.opacity(0.5) : .white))
+                    }
+                    .accessibilityLabel("Sticker")
+                }
+            }
+        }
+        .padding(.vertical, 6)
+    }
+
+    // MARK: Rechte Leiste: Werkzeuge
+
+    private func toolButton(_ t: AtelierModel.DrawTool, _ icon: String, _ label: String) -> some View {
+        CircleIconButton(systemName: icon, label: label,
+                         tint: model.tool == t ? .white : Theme.darkGreen,
+                         background: model.tool == t ? Theme.darkGreen : .white,
+                         size: 56) {
+            model.selectTool(t)
+        }
     }
 
     private var sideActions: some View {
-        VStack(spacing: 14) {
-            CircleIconButton(systemName: "eraser.fill", label: "Radierer", tint: model.erasing ? .white : Theme.darkGreen,
-                             background: model.erasing ? Theme.darkGreen : .white) {
-                model.toggleEraser()
-            }
-            CircleIconButton(systemName: "arrow.uturn.backward", label: "Rückgängig") {
+        VStack(spacing: 10) {
+            toolButton(.pen, "pencil.tip", "Malen")
+            toolButton(.fill, "drop.fill", "Füllen")
+            toolButton(.sticker, "star.fill", "Sticker")
+            toolButton(.eraser, "eraser.fill", "Radierer")
+            CircleIconButton(systemName: "arrow.uturn.backward", label: "Rückgängig", size: 56) {
                 model.undo()
             }
             .opacity(model.canUndo ? 1 : 0.4)
@@ -179,26 +267,26 @@ private struct FreeDrawingView: View {
                 }
             } label: {
                 Text(model.background.icon)
-                    .font(.system(size: 30))
-                    .frame(width: 64, height: 64)
+                    .font(.system(size: 26))
+                    .frame(width: 56, height: 56)
                     .background(Circle().fill(.white).shadow(color: .black.opacity(0.12), radius: 4, y: 2))
             }
             .accessibilityLabel("Hintergrund wählen")
-            Spacer()
+            Spacer(minLength: 4)
             Button {
                 model.finishDrawing()
             } label: {
                 VStack(spacing: 4) {
-                    Image(systemName: "checkmark.circle.fill").font(.system(size: 34))
-                    Text("Fertig").font(Theme.rounded(20, .bold))
+                    Image(systemName: "checkmark.circle.fill").font(.system(size: 30))
+                    Text("Fertig").font(Theme.rounded(19, .bold))
                 }
                 .foregroundStyle(.white)
-                .frame(width: 100, height: 100)
-                .background(RoundedRectangle(cornerRadius: 26).fill(Theme.success))
+                .frame(width: 92, height: 86)
+                .background(RoundedRectangle(cornerRadius: 24).fill(Theme.success))
             }
             .buttonStyle(PressableStyle())
         }
-        .frame(width: 104)
+        .frame(width: 96)
     }
 }
 
@@ -219,13 +307,23 @@ final class AtelierModel {
     @ObservationIgnored private var demoTask: Task<Void, Never>?
 
     // Freies Malen
+    enum DrawTool { case pen, fill, sticker, eraser }
+    struct Snapshot {
+        var drawing: PKDrawing
+        var stickers: [PlacedSticker]
+    }
     var drawing = PKDrawing()
     var background: CanvasBackground = .leer
-    var color: Palette = .blue
+    var ink: InkChoice = .plain(.blue)
     var width: CGFloat = 14
-    var erasing = false
+    var tool: DrawTool = .pen
+    var stickers: [PlacedSticker] = []
+    var selectedSticker = StickerCatalog.all[0]
+    var stickerSizeIndex = 1
+    var sparkles: [Sparkle] = []
     var artworkID: UUID?
-    @ObservationIgnored private var undoStack: [PKDrawing] = []
+    @ObservationIgnored private var draggingSticker: UUID?
+    @ObservationIgnored private var undoStack: [Snapshot] = []
     @ObservationIgnored private var lastCommitted = PKDrawing()
     @ObservationIgnored private var canvasWidth: Double = 0
     var canUndo = false
@@ -239,9 +337,9 @@ final class AtelierModel {
         return AtelierPaths.all.first { $0.id == id }
     }
 
-    var tool: PKTool {
-        if erasing { return PKEraserTool(.bitmap) }
-        return PKInkingTool(.pen, color: color.uiColor, width: width)
+    var pkTool: PKTool {
+        if tool == .eraser { return PKEraserTool(.bitmap) }
+        return PKInkingTool(.pen, color: ink.uiColor, width: width)
     }
 
     var spec: LevelCatalog.AtelierSpec { LevelCatalog.atelier(host.level) }
@@ -290,7 +388,9 @@ final class AtelierModel {
                     drawing = d
                     lastCommitted = d
                 }
+                stickers = saved.stickers ?? []
                 canvasWidth = saved.canvasWidth ?? 0
+                refreshSparkles()
                 host.setInstruction("Male weiter. Tippe auf «Fertig», wenn dein Bild fertig ist.")
             case .none:
                 chooseInstruction()
@@ -319,6 +419,8 @@ final class AtelierModel {
         case .free:
             drawing = PKDrawing()
             lastCommitted = drawing
+            stickers = []
+            sparkles = []
             artworkID = nil
             undoStack = []
             canUndo = false
@@ -329,7 +431,7 @@ final class AtelierModel {
 
     func leave() {
         demoTask?.cancel()
-        if mode == .free && !drawing.strokes.isEmpty && !host.roundComplete {
+        if mode == .free && !isBlank && !host.roundComplete {
             // Verlassen des Bildes: Es landet in der Galerie und kann später weiterbearbeitet werden.
             storeArtwork()
             save()
@@ -345,6 +447,7 @@ final class AtelierModel {
         state.drawing = mode == .free ? drawing.dataRepresentation() : nil
         state.background = background
         state.canvasWidth = canvasWidth
+        state.stickers = mode == .free ? stickers : nil
         host.persist(state)
     }
 
@@ -413,42 +516,129 @@ final class AtelierModel {
             lastCommitted = drawing
             undoStack = []
             canUndo = false
+            refreshSparkles()
         }
         canvasWidth = newWidth
     }
 
-    func strokeFinished(_ d: PKDrawing) {
-        undoStack.append(lastCommitted)
+    var isBlank: Bool { drawing.strokes.isEmpty && stickers.isEmpty }
+
+    private func pushUndo() {
+        undoStack.append(Snapshot(drawing: lastCommitted, stickers: stickers))
         if undoStack.count > 40 { undoStack.removeFirst() }
-        lastCommitted = d
         canUndo = true
+    }
+
+    func strokeFinished(_ d: PKDrawing) {
+        pushUndo()
+        lastCommitted = d
+        if d.strokes.contains(where: { Glitter.match($0.ink.color) != nil }) || !sparkles.isEmpty {
+            refreshSparkles(d)
+        }
         save()
     }
 
     func undo() {
         guard let prev = undoStack.popLast() else { return }
         host.audio.effect(.tap)
-        drawing = prev
-        lastCommitted = prev
+        drawing = prev.drawing
+        lastCommitted = prev.drawing
+        stickers = prev.stickers
         canUndo = !undoStack.isEmpty
+        refreshSparkles()
         save()
     }
 
-    func selectColor(_ c: Palette) {
+    func refreshSparkles(_ d: PKDrawing? = nil) {
+        sparkles = GlitterField.sparkles(for: d ?? drawing)
+    }
+
+    func selectInk(_ i: InkChoice) {
         host.audio.effect(.tap)
-        color = c
-        erasing = false
+        ink = i
+        if tool == .eraser || tool == .sticker { tool = .pen }
     }
 
     func selectWidth(_ w: CGFloat) {
         host.audio.effect(.tap)
         width = w
-        erasing = false
+        if tool != .pen { tool = .pen }
     }
 
-    func toggleEraser() {
+    func selectTool(_ t: DrawTool) {
         host.audio.effect(.tap)
-        erasing.toggle()
+        tool = t
+        switch t {
+        case .fill: host.showBunny("Tippe in eine Fläche, dann wird sie ausgemalt.", seconds: 3)
+        case .sticker: host.showBunny("Wähle einen Sticker und tippe auf dein Bild.", seconds: 3)
+        default: break
+        }
+    }
+
+    // MARK: Füllen und Sticker
+
+    func tapCanvas(at p: CGPoint, size: CGSize) {
+        switch tool {
+        case .fill: fill(at: p, size: size)
+        case .sticker: placeSticker(at: p, size: size)
+        default: break
+        }
+    }
+
+    private func fill(at p: CGPoint, size: CGSize) {
+        let runs = FloodFill.runs(drawing: drawing, size: size, at: p)
+        guard !runs.isEmpty else { return }
+        pushUndo()
+        var d = drawing
+        d.strokes.append(contentsOf: FloodFill.strokes(runs, color: ink.uiColor))
+        drawing = d
+        lastCommitted = d
+        host.audio.effect(.snap)
+        refreshSparkles(d)
+        save()
+    }
+
+    func selectSticker(_ s: String) {
+        host.audio.effect(.tap)
+        selectedSticker = s
+    }
+
+    func selectStickerSize(_ i: Int) {
+        host.audio.effect(.tap)
+        stickerSizeIndex = i
+    }
+
+    private func placeSticker(at p: CGPoint, size: CGSize) {
+        guard size.width > 0, size.height > 0, stickers.count < 80 else { return }
+        pushUndo()
+        stickers.append(PlacedSticker(sticker: selectedSticker, x: Double(p.x / size.width), y: Double(p.y / size.height),
+                                      size: StickerCatalog.sizes[stickerSizeIndex]))
+        host.audio.effect(.snap)
+        save()
+    }
+
+    func dragSticker(_ id: UUID, to p: CGPoint) {
+        guard tool == .sticker, let idx = stickers.firstIndex(where: { $0.id == id }) else { return }
+        if draggingSticker != id {
+            pushUndo()
+            draggingSticker = id
+        }
+        stickers[idx].x = min(max(Double(p.x), 0), 1)
+        stickers[idx].y = min(max(Double(p.y), 0), 1)
+    }
+
+    func endStickerDrag() {
+        guard draggingSticker != nil else { return }
+        draggingSticker = nil
+        save()
+    }
+
+    func removeSticker(_ id: UUID) {
+        guard stickers.contains(where: { $0.id == id }) else { return }
+        pushUndo()
+        stickers.removeAll { $0.id == id }
+        host.audio.effect(.tap)
+        save()
     }
 
     func setBackground(_ bg: CanvasBackground) {
@@ -458,7 +648,7 @@ final class AtelierModel {
     }
 
     func finishDrawing() {
-        guard !drawing.strokes.isEmpty else {
+        guard !isBlank else {
             host.showBunny("Dein Blatt ist noch leer. Male zuerst etwas.")
             return
         }
@@ -475,14 +665,16 @@ final class AtelierModel {
             drawing = d
             lastCommitted = d
         }
+        stickers = art.stickers ?? []
         canvasWidth = art.canvasWidth ?? 0
+        refreshSparkles()
         save()
         host.setInstruction("Male weiter an deinem Bild.")
     }
 
     /// Speichert bearbeitbare Striche und eine Vorschau. Leere Bilder erzeugen keinen Eintrag.
     private func storeArtwork() {
-        guard !drawing.strokes.isEmpty else { return }
+        guard !isBlank else { return }
         let id = artworkID ?? UUID()
         artworkID = id
         let thumb = makeThumbnail()
@@ -494,7 +686,8 @@ final class AtelierModel {
             background: background.rawValue,
             drawing: drawing.dataRepresentation(),
             thumbnail: thumb,
-            canvasWidth: canvasWidth
+            canvasWidth: canvasWidth,
+            stickers: stickers
         )
         host.app.saveArtwork(art)
     }
@@ -503,10 +696,15 @@ final class AtelierModel {
         let w = canvasWidth > 0 ? canvasWidth : 800
         let h = w * 3 / 4
         let rect = CGRect(x: 0, y: 0, width: w, height: h)
-        let strokes = drawing.image(from: rect, scale: 1)
-        let view = ZStack {
+        var strokes = UIImage()
+        UITraitCollection(userInterfaceStyle: .light).performAsCurrent {
+            strokes = drawing.image(from: rect, scale: 1)
+        }
+        let view = ZStack(alignment: .topLeading) {
             CanvasBackgroundView(background: background)
             Image(uiImage: strokes).resizable()
+            GlitterCanvas(sparkles: sparkles, time: 0)
+            StickerLayer(stickers: stickers, size: CGSize(width: w, height: h))
         }
         .frame(width: w, height: h)
         let renderer = ImageRenderer(content: view)
@@ -528,14 +726,32 @@ final class AtelierModel {
             if progress.isComplete { completePath() }
         case .free:
             if drawing.strokes.isEmpty {
-                let points = (0..<40).map { i -> PKStrokePoint in
-                    let t = Double(i) / 39
-                    return PKStrokePoint(location: CGPoint(x: 120 + 420 * t, y: 220 + 90 * sin(t * 6)), timeOffset: t,
-                                         size: CGSize(width: 14, height: 14), opacity: 1, force: 1, azimuth: 0, altitude: .pi / 2)
+                // Vorführbild: Kreis mit Goldglitzer gefüllt, Pinkglitzer-Welle, zwei Sticker
+                let w = canvasWidth > 0 ? CGFloat(canvasWidth) : 800
+                let h = w * 3 / 4
+                func line(_ pts: [CGPoint], _ color: UIColor, _ width: CGFloat) -> PKStroke {
+                    let points = pts.enumerated().map { i, p in
+                        PKStrokePoint(location: p, timeOffset: Double(i) * 0.01, size: CGSize(width: width, height: width),
+                                      opacity: 1, force: 1, azimuth: 0, altitude: .pi / 2)
+                    }
+                    return PKStroke(ink: PKInk(.pen, color: color), path: PKStrokePath(controlPoints: points, creationDate: Date()))
                 }
-                let stroke = PKStroke(ink: PKInk(.pen, color: .systemBlue), path: PKStrokePath(controlPoints: points, creationDate: Date()))
-                drawing = PKDrawing(strokes: [stroke])
+                let c = CGPoint(x: w * 0.3, y: h * 0.45), r = h * 0.25
+                let circle = (0...60).map { i -> CGPoint in
+                    let a = Double(i) / 60 * 2 * .pi
+                    return CGPoint(x: c.x + r * CGFloat(cos(a)), y: c.y + r * CGFloat(sin(a)))
+                }
+                let wave = (0..<40).map { i -> CGPoint in
+                    let t = Double(i) / 39
+                    return CGPoint(x: w * 0.55 + w * 0.38 * CGFloat(t), y: h * 0.75 + 40 * CGFloat(sin(t * 8)))
+                }
+                drawing = PKDrawing(strokes: [line(circle, Palette.black.uiColor, 10), line(wave, Glitter.pink.uiColor, 30)])
                 strokeFinished(drawing)
+                ink = .glitter(.gold)
+                fill(at: c, size: CGSize(width: w, height: h))
+                stickers.append(PlacedSticker(sticker: "garten_schmetterling", x: 0.72, y: 0.3, size: 0.18))
+                stickers.append(PlacedSticker(sticker: "🦄", x: 0.88, y: 0.12, size: 0.12))
+                save()
             } else {
                 finishDrawing()
             }
@@ -547,7 +763,7 @@ final class AtelierModel {
         case .none:
             host.showBunny("Tippe auf eines der grossen Bilder.")
         case .free:
-            host.showBunny("Wähle eine Farbe und male mit dem Finger. Hier gibt es kein Richtig oder Falsch.")
+            host.showBunny("Wähle eine Farbe und male mit dem Finger. Mit dem Tropfen malst du ganze Flächen aus, mit dem Stern klebst du Sticker. Hier gibt es kein Richtig oder Falsch.")
         case .paths:
             guard !progress.isComplete else { return }
             let pts = samples[0]
