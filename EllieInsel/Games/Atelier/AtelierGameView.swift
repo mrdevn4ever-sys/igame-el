@@ -541,13 +541,18 @@ final class AtelierModel {
     }
 
     func strokeFinished(_ d: PKDrawing) {
+        guard d != lastCommitted else { return }
         pushUndo()
         var d = d
         if tool == .pen, d.strokes.count > lastCommitted.strokes.count {
             // Neue Striche auf die gewählte Breite bringen (schnelles Malen machte sie sonst dicker).
+            var fresh: [PKStroke] = []
             for i in lastCommitted.strokes.count..<d.strokes.count {
-                d.strokes[i] = uniform(d.strokes[i], width: width)
+                let s = uniform(d.strokes[i], width: width)
+                // Regenbogenglitzer: der Strich wird in Farbabschnitte geteilt
+                fresh += ink == .glitter(.regenbogen) ? rainbowSegments(s) : [s]
             }
+            d.strokes = Array(d.strokes.prefix(lastCommitted.strokes.count)) + fresh
             drawing = d
             drawingRevision += 1
         }
@@ -556,6 +561,29 @@ final class AtelierModel {
             refreshSparkles(d)
         }
         save()
+    }
+
+    /// Teilt einen Strich in Abschnitte von etwa 45 Punkten Länge, jeder in der nächsten Regenbogenfarbe.
+    private func rainbowSegments(_ s: PKStroke) -> [PKStroke] {
+        let pts = Array(s.path)
+        guard pts.count > 2 else { return [s] }
+        var result: [PKStroke] = []
+        var current: [PKStrokePoint] = [pts[0]]
+        var length: CGFloat = 0
+        var band = 0
+        for i in 1..<pts.count {
+            current.append(pts[i])
+            length += hypot(pts[i].location.x - pts[i - 1].location.x, pts[i].location.y - pts[i - 1].location.y)
+            if length >= 45 || i == pts.count - 1 {
+                let ink = PKInk(.monoline, color: Glitter.rainbowColor(band))
+                result.append(PKStroke(ink: ink, path: PKStrokePath(controlPoints: current, creationDate: s.path.creationDate),
+                                       transform: s.transform, mask: s.mask))
+                band += 1
+                length = 0
+                current = [pts[i]]
+            }
+        }
+        return result
     }
 
     private func uniform(_ s: PKStroke, width: CGFloat) -> PKStroke {
@@ -620,7 +648,7 @@ final class AtelierModel {
         guard !runs.isEmpty else { return }
         pushUndo()
         var d = drawing
-        d.strokes.append(contentsOf: FloodFill.strokes(runs, color: ink.uiColor))
+        d.strokes.append(contentsOf: FloodFill.strokes(runs, color: ink.uiColor, rainbow: ink == .glitter(.regenbogen)))
         drawing = d
         drawingRevision += 1
         lastCommitted = d
@@ -777,7 +805,14 @@ final class AtelierModel {
                     let t = Double(i) / 39
                     return CGPoint(x: w * 0.55 + w * 0.38 * CGFloat(t), y: h * 0.75 + 40 * CGFloat(sin(t * 8)))
                 }
-                drawing = PKDrawing(strokes: [line(circle, Palette.black.uiColor, 10), line(wave, Glitter.pink.uiColor, 30)])
+                ink = .plain(.black)
+                width = 10
+                drawing = PKDrawing(strokes: [line(circle, Palette.black.uiColor, 10)])
+                drawingRevision += 1
+                strokeFinished(drawing)
+                ink = .glitter(.regenbogen)
+                width = 30
+                drawing = PKDrawing(strokes: drawing.strokes + [line(wave, Glitter.regenbogen.uiColor, 30)])
                 drawingRevision += 1
                 strokeFinished(drawing)
                 ink = .glitter(.gold)

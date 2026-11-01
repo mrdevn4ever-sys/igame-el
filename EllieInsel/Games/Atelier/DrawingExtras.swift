@@ -42,9 +42,20 @@ enum Glitter: String, CaseIterable, Codable {
         case .blau: return (0.176, 0.369, 0.894)
         case .tuerkis: return (0.098, 0.737, 0.757)
         case .gruen: return (0.176, 0.659, 0.333)
-        case .regenbogen: return (0.886, 0.812, 0.965)
+        case .regenbogen: return Glitter.rainbowBands[0]
         case .perlmutt: return (0.937, 0.918, 0.961)
         }
+    }
+
+    /// Farbbänder des Regenbogenglitzers (eigene Werte, damit sie als Glitzer erkennbar bleiben).
+    static let rainbowBands: [(Double, Double, Double)] = [
+        (0.937, 0.267, 0.302), (0.976, 0.561, 0.157), (0.973, 0.847, 0.192),
+        (0.329, 0.765, 0.373), (0.247, 0.553, 0.910), (0.612, 0.373, 0.851)
+    ]
+
+    static func rainbowColor(_ i: Int) -> UIColor {
+        let c = rainbowBands[((i % rainbowBands.count) + rainbowBands.count) % rainbowBands.count]
+        return UIColor(red: c.0, green: c.1, blue: c.2, alpha: 1)
     }
 
     var uiColor: UIColor { UIColor(red: rgb.0, green: rgb.1, blue: rgb.2, alpha: 1) }
@@ -58,7 +69,7 @@ enum Glitter: String, CaseIterable, Codable {
     var sparkleColors: [Color] {
         switch self {
         case .regenbogen:
-            return [Palette.red, .orange, .yellow, .green, .blue, .purple].map(\.color) + [.white]
+            return [.white, .white, Color(red: 1, green: 0.97, blue: 0.85)]
         case .perlmutt:
             return [.white, Color(red: 1, green: 0.8, blue: 0.9), Color(red: 0.8, green: 0.9, blue: 1), Color(red: 0.85, green: 1, blue: 0.9)]
         case .gold:
@@ -72,6 +83,9 @@ enum Glitter: String, CaseIterable, Codable {
     static func match(_ c: UIColor) -> Glitter? {
         var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
         guard c.getRed(&r, green: &g, blue: &b, alpha: &a) else { return nil }
+        if rainbowBands.contains(where: { abs(Double(r) - $0.0) < 0.012 && abs(Double(g) - $0.1) < 0.012 && abs(Double(b) - $0.2) < 0.012 }) {
+            return .regenbogen
+        }
         return allCases.first {
             abs(Double(r) - $0.rgb.0) < 0.012 && abs(Double(g) - $0.rgb.1) < 0.012 && abs(Double(b) - $0.rgb.2) < 0.012
         }
@@ -217,10 +231,14 @@ enum FloodFill {
     }
 
     /// Streifen als gleichmässig breite Striche (liegen über der Zeichnung und bleiben bearbeitbar).
-    static func strokes(_ runs: [Run], color: UIColor, step: Int = 3) -> [PKStroke] {
+    static func strokes(_ runs: [Run], color: UIColor, step: Int = 3, rainbow: Bool = false) -> [PKStroke] {
         let width = CGFloat(step) + 1.6
-        let ink = PKInk(.monoline, color: color)
+        let plain = PKInk(.monoline, color: color)
+        let top = runs.map(\.y).min() ?? 0
+        let bottom = runs.map(\.y).max() ?? 1
+        let band = max((bottom - top) / 6, 1)
         return runs.map { r in
+            let ink = rainbow ? PKInk(.monoline, color: Glitter.rainbowColor(min(Int((r.y - top) / band), 5))) : plain
             let x0 = r.x0 - 1, x1 = r.x1 + 1
             let n = max(2, Int((x1 - x0) / 30) + 2)
             let points = (0..<n).map { k -> PKStrokePoint in
@@ -307,10 +325,9 @@ struct GlitterOverlay: View {
     let sparkles: [Sparkle]
 
     var body: some View {
-        TimelineView(.animation(minimumInterval: 1.0 / 12, paused: sparkles.isEmpty)) { context in
-            GlitterCanvas(sparkles: sparkles, time: context.date.timeIntervalSinceReferenceDate)
-        }
-        .allowsHitTesting(false)
+        // Ruhiger Glitzer: feste Funken, kein Dauerflackern.
+        GlitterCanvas(sparkles: sparkles, time: 0)
+            .allowsHitTesting(false)
     }
 }
 

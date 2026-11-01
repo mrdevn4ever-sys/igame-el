@@ -48,16 +48,20 @@ struct PencilCanvas: UIViewRepresentable {
             self.revision = parent.revision
         }
 
+        private var pendingCommit: DispatchWorkItem?
+
         func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
             guard !applyingExternal else { return }
             parent.drawing = canvasView.drawing
-        }
-
-        func canvasViewDidEndUsingTool(_ canvasView: PKCanvasView) {
-            let d = canvasView.drawing
-            DispatchQueue.main.async {
-                self.parent.onStrokeFinished(d)
+            // Erst übernehmen, wenn der Strich wirklich in der Zeichnung steht.
+            // (canvasViewDidEndUsingTool kommt, bevor PencilKit den letzten Strich einfügt.)
+            pendingCommit?.cancel()
+            let work = DispatchWorkItem { [weak self, weak canvasView] in
+                guard let self, let canvasView else { return }
+                self.parent.onStrokeFinished(canvasView.drawing)
             }
+            pendingCommit = work
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.12, execute: work)
         }
     }
 }
