@@ -1,0 +1,346 @@
+Datei;Paket;Bereich;Grösse;Beschreibung
+gw_szene_hausgarten_tag.png;1;Szene;2732x2048 deckend;Hausgarten am Tag, leicht erhöhte Perspektive (ca. 30° von oben). Wiese, links ein Kiesweg, rechts hinten eine Holzterrasse am kleinen Haus, vorne rechts ein kleiner Teich, hinten Hecke und Himmel. KEINE Beete, KEINE Tiere, KEINE Gegenstände auf der Terrasse – die setzt die App. Freie Flächen: drei Beetplätze links-mitte (nebeneinander), Picknickplatz rechts-mitte, Werkbankplatz hinten links.
+gw_szene_hausgarten_abend.png;1;Szene;2732x2048 deckend;Exakt dieselbe Szene wie gw_szene_hausgarten_tag (gleiche Linien, gleiche Perspektive), aber Abendstimmung: tiefblauer Himmel mit ersten Sternen, warmes Licht im Hausfenster, Glühwürmchen-freie Fläche (die macht die App), sanfte Blautöne.
+gw_szene_hausgarten_gesperrt_weg.png;1;Szene;1024x1024 transparent;Ende des Kieswegs am rechten Bildrand mit einer kleinen unfertigen Holzbrücke über einen Bachlauf (nur Pfosten, keine Bretter) – zeigt, dass es weitergeht.
+gw_dino_stehen.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): steht frontal-leicht seitlich, freundlich lächelnd, Arme locker. Füsse auf der Grundlinie.
+gw_dino_winken.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): winkt mit dem rechten Arm, Mund offen lachend. Füsse auf der Grundlinie.
+gw_dino_zeigen.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): zeigt mit dem Arm nach rechts auf etwas, neugieriger Blick. Füsse auf der Grundlinie.
+gw_dino_sitzen.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): sitzt im Schneidersitz auf dem Boden (für Picknickdecke), Hände auf dem Bauch. Füsse auf der Grundlinie.
+gw_dino_essen.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): sitzt und isst genüsslich eine Erdbeere, Augen zufrieden geschlossen. Füsse auf der Grundlinie.
+gw_dino_giessen.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): hält eine grüne Giesskanne und giesst nach rechts unten. Füsse auf der Grundlinie.
+gw_dino_tragen_korb.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): trägt einen Weidenkorb mit beiden Armen vor dem Bauch. Füsse auf der Grundlinie.
+gw_dino_staunen.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): staunt mit offenem Mund und grossen Augen, Hände an den Wangen. Füsse auf der Grundlinie.
+gw_dino_jubeln.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): springt jubelnd hoch, beide Arme oben. Füsse auf der Grundlinie.
+gw_dino_nachdenken.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): denkt nach, Finger am Kinn, Blick nach oben. Füsse auf der Grundlinie.
+gw_dino_schlafen.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): schläft zusammengerollt im Gras, kleine Zzz NICHT zeichnen. Füsse auf der Grundlinie.
+gw_dino_laufen_1.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): Seitenansicht nach rechts, Laufzyklus Bild 1 von 4 (linkes Bein vorne). Füsse auf der Grundlinie.
+gw_dino_laufen_2.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): Laufzyklus Bild 2 von 4 (Beine zusammen, Körper oben). Füsse auf der Grundlinie.
+gw_dino_laufen_3.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): Laufzyklus Bild 3 von 4 (rechtes Bein vorne). Füsse auf der Grundlinie.
+gw_dino_laufen_4.png;1;Dino;1024x1024 transparent;Der grüne Printatops-Baby-Triceratops (exakt wie Referenz): Laufzyklus Bild 4 von 4 (Beine zusammen, Körper oben). Füsse auf der Grundlinie.
+gw_beet_leer.png;1;Beet;1024x1024 transparent;Rechteckiges Holz-Hochbeet (Seitenansicht leicht von oben) mit lockerer dunkelbrauner Erde, leer.
+gw_beet_trocken.png;1;Beet;1024x1024 transparent;Gleiches Beet wie beet_leer, Erde hellbraun und leicht rissig (braucht Wasser) – nicht traurig, nur trocken.
+gw_beet_nass.png;1;Beet;1024x1024 transparent;Gleiches Beet wie beet_leer, Erde dunkel-feucht glänzend mit 2–3 kleinen Pfützen.
+gw_beet_gesaet.png;1;Beet;1024x1024 transparent;Gleiches Beet wie beet_leer mit drei kleinen Saatrillen/Erdhügeln.
+gw_pflanze_erdbeere_1_keimling.png;1;Pflanze;1024x1024 transparent;Erdbeerpflanze, Wachstumsstufe 1: zwei kleine runde Keimblätter. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_erdbeere_2_jungpflanze.png;1;Pflanze;1024x1024 transparent;Erdbeerpflanze, Wachstumsstufe 2: buschige Pflanze mit gezackten Blättern. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_erdbeere_3_bluete.png;1;Pflanze;1024x1024 transparent;Erdbeerpflanze, Wachstumsstufe 3: Pflanze mit 4 weissen Blüten. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_erdbeere_4_reif.png;1;Pflanze;1024x1024 transparent;Erdbeerpflanze, Wachstumsstufe 4: Pflanze mit 5 grossen roten glänzenden Erdbeeren, gut sichtbar verteilt. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_erdbeere.png;1;Saatgut;512x512 transparent;Saattüte Erdbeerpflanze: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_erdbeere.png;1;Ernte;512x512 transparent;Eine einzelne reife Erdbeere mit grünem Kelch
+gw_ernte_erdbeere_unreif.png;1;Ernte;512x512 transparent;Eine kleine grünlich-weisse unreife Erdbeere
+gw_pflanze_karotte_1_keimling.png;1;Pflanze;1024x1024 transparent;Karotte, Wachstumsstufe 1: zwei feine Keimblätter. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_karotte_2_jungpflanze.png;1;Pflanze;1024x1024 transparent;Karotte, Wachstumsstufe 2: kleines gefiedertes Karottengrün. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_karotte_3_bluete.png;1;Pflanze;1024x1024 transparent;Karotte, Wachstumsstufe 3: grosses buschiges Karottengrün, oben ragt ein Stück orange Karotte aus der Erde. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_karotte_4_reif.png;1;Pflanze;1024x1024 transparent;Karotte, Wachstumsstufe 4: üppiges Grün, oranger Karottenkopf deutlich sichtbar, bereit zum Ziehen. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_karotte.png;1;Saatgut;512x512 transparent;Saattüte Karotte: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_karotte.png;1;Ernte;512x512 transparent;Ganze orange Karotte mit Grün, frisch aus der Erde mit etwas Erde dran
+gw_ernte_karotte_sauber.png;1;Ernte;512x512 transparent;Gewaschene orange Karotte mit Grün
+gw_pflanze_sonnenblume_1_keimling.png;1;Pflanze;1024x1024 transparent;Sonnenblume, Wachstumsstufe 1: zwei Keimblätter. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_sonnenblume_2_jungpflanze.png;1;Pflanze;1024x1024 transparent;Sonnenblume, Wachstumsstufe 2: halbhoher Stängel mit grossen Blättern. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_sonnenblume_3_bluete.png;1;Pflanze;1024x1024 transparent;Sonnenblume, Wachstumsstufe 3: hohe Sonnenblume in voller gelber Blüte. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_sonnenblume_4_reif.png;1;Pflanze;1024x1024 transparent;Sonnenblume, Wachstumsstufe 4: Sonnenblume mit nach unten geneigtem Kopf, Blütenblätter teils welk, Kerne gut sichtbar (fröhlich, nicht traurig). Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_sonnenblume.png;1;Saatgut;512x512 transparent;Saattüte Sonnenblume: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_sonnenblumenkerne.png;1;Ernte;512x512 transparent;Kleines Häufchen gestreifter Sonnenblumenkerne
+gw_ernte_sonnenblumenkopf.png;1;Ernte;1024x1024 transparent;Grosser Sonnenblumenkopf frontal, voller Kerne, für das Herauslösen der Kerne
+gw_giesskanne.png;1;Werkzeug;512x512 transparent;Grüne Metall-Giesskanne mit Brause, Seitenansicht nach rechts
+gw_giesskanne_giessen.png;1;Werkzeug;512x512 transparent;Gleiche Giesskanne nach rechts unten geneigt (Wasser macht die App)
+gw_korb_leer.png;1;Werkzeug;512x512 transparent;Runder Weidenkorb mit Henkel, leer
+gw_korb_voll.png;1;Werkzeug;512x512 transparent;Gleicher Korb, gefüllt mit Erdbeeren, Karotten und Äpfeln
+gw_schaufel.png;1;Werkzeug;512x512 transparent;Kleine Kinderschaufel mit Holzgriff
+gw_samenkorn.png;1;Werkzeug;512x512 transparent;Einzelnes grosses braunes Samenkorn
+gw_picknickdecke_rot.png;1;Picknick;2048x2048 transparent;Rot-weiss karierte Picknickdecke flach auf der Wiese liegend, in der Perspektive der Szene (Draufsicht ca. 30°)
+gw_picknickdecke_blau.png;1;Picknick;2048x2048 transparent;Gleiche Decke, blau-weiss kariert
+gw_picknickdecke_blumen.png;1;Picknick;2048x2048 transparent;Gleiche Decke, gelb mit kleinen Blumen
+gw_schale_leer.png;1;Picknick;512x512 transparent;Runde helle Keramikschale, leer, leicht von oben
+gw_schale_erdbeeren.png;1;Picknick;512x512 transparent;Gleiche Schale gefüllt mit Erdbeeren
+gw_schale_karotten.png;1;Picknick;512x512 transparent;Gleiche Schale mit Karottensticks
+gw_schale_obst.png;1;Picknick;512x512 transparent;Gleiche Schale mit gemischtem Obst
+gw_teller.png;1;Picknick;512x512 transparent;Runder kleiner Teller, leicht von oben
+gw_becher.png;1;Picknick;512x512 transparent;Kleiner Becher mit Saft
+gw_tisch_terrasse.png;1;Picknick;2048x2048 transparent;Kleiner runder Holztisch mit zwei Hockern, Szenenperspektive
+gw_tier_schmetterling_sitzen.png;1;Bewohner;1024x1024 transparent;Schmetterling im gleichen weichen 3D-Stil wie der Dino: sitzt mit geschlossenen Flügeln, Seitenansicht.
+gw_tier_schmetterling_fliegen_1.png;1;Bewohner;1024x1024 transparent;Schmetterling im gleichen weichen 3D-Stil wie der Dino: fliegt, Flügel oben.
+gw_tier_schmetterling_fliegen_2.png;1;Bewohner;1024x1024 transparent;Schmetterling im gleichen weichen 3D-Stil wie der Dino: fliegt, Flügel unten.
+gw_tier_vogel_stehen.png;1;Bewohner;1024x1024 transparent;Vogel im gleichen weichen 3D-Stil wie der Dino: Rotkehlchen steht, Seitenansicht nach rechts.
+gw_tier_vogel_picken.png;1;Bewohner;1024x1024 transparent;Vogel im gleichen weichen 3D-Stil wie der Dino: pickt nach unten.
+gw_tier_vogel_fliegen_1.png;1;Bewohner;1024x1024 transparent;Vogel im gleichen weichen 3D-Stil wie der Dino: fliegt, Flügel oben.
+gw_tier_vogel_fliegen_2.png;1;Bewohner;1024x1024 transparent;Vogel im gleichen weichen 3D-Stil wie der Dino: fliegt, Flügel unten.
+gw_tier_vogel_singen.png;1;Bewohner;1024x1024 transparent;Vogel im gleichen weichen 3D-Stil wie der Dino: singt mit offenem Schnabel.
+gw_ui_umbauen.png;1;UI;512x512 transparent;Rundes Symbol: kleine rote Werkzeugkiste
+gw_ui_erinnerungsbuch.png;1;UI;512x512 transparent;Rundes Symbol: dickes Bilderbuch mit grünem Einband und Blume
+gw_ui_karte.png;1;UI;512x512 transparent;Rundes Symbol: kleine Schatzkarte der Insel
+gw_ui_sonne.png;1;UI;512x512 transparent;Symbol: lachende Sonne
+gw_ui_mond.png;1;UI;512x512 transparent;Symbol: schlafender Mond
+gw_buch_einband.png;1;UI;2048x2048 transparent;Erinnerungsbuch geschlossen, frontal, grüner Stoffeinband mit Dino-Prägung, kein Text
+gw_buch_seite.png;1;UI;2048x2048 transparent;Aufgeschlagene leere Doppelseite (Papier creme), für Fotos
+gw_szene_werkstatt_innen.png;2;Szene;2732x2048 deckend;Innenansicht einer gemütlichen Holzwerkstatt im Baumhaus-Stil: grosse Werkbank in der Mitte (leer!), Werkzeugwand hinten, Fenster mit Blick ins Grüne, Farbtöpfe im Regal. Mitte frei für Bauteile.
+gw_szene_kueche_innen.png;2;Szene;2732x2048 deckend;Gemütliche Gartenküche/Terrassenküche: grosser leerer Holztisch vorne (Arbeitsfläche, Draufsicht ca. 45°), hinten Regal, Spülbecken, Herd mit Fenster in den Garten. Tischfläche frei.
+gw_pflanze_apfelbaum_1_keimling.png;2;Pflanze;1024x1024 transparent;Apfelbaum, Wachstumsstufe 1: kleiner Setzling mit 3 Blättern. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_apfelbaum_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Apfelbaum, Wachstumsstufe 2: junges Bäumchen. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_apfelbaum_3_bluete.png;2;Pflanze;1024x1024 transparent;Apfelbaum, Wachstumsstufe 3: kleiner Baum mit rosa-weissen Blüten. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_apfelbaum_4_reif.png;2;Pflanze;1024x1024 transparent;Apfelbaum, Wachstumsstufe 4: runder Baum mit 7 roten Äpfeln, gut sichtbar verteilt. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_apfelbaum.png;2;Saatgut;512x512 transparent;Saattüte Apfelbaum: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_apfel.png;2;Ernte;512x512 transparent;Roter Apfel mit Blatt
+gw_pflanze_erbse_1_keimling.png;2;Pflanze;1024x1024 transparent;Erbsenpflanze, Wachstumsstufe 1: Keimling. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_erbse_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Erbsenpflanze, Wachstumsstufe 2: rankende Pflanze an einem Stäbchen. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_erbse_3_bluete.png;2;Pflanze;1024x1024 transparent;Erbsenpflanze, Wachstumsstufe 3: Pflanze mit weissen Blüten. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_erbse_4_reif.png;2;Pflanze;1024x1024 transparent;Erbsenpflanze, Wachstumsstufe 4: Pflanze mit 5 prallen grünen Schoten. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_erbse.png;2;Saatgut;512x512 transparent;Saattüte Erbsenpflanze: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_erbsenschote_zu.png;2;Ernte;512x512 transparent;Geschlossene grüne Erbsenschote
+gw_ernte_erbsenschote_offen.png;2;Ernte;512x512 transparent;Geöffnete Schote mit 5 Erbsen drin
+gw_ernte_erbse.png;2;Ernte;512x512 transparent;Einzelne grüne Erbse
+gw_pflanze_kuerbis_1_keimling.png;2;Pflanze;1024x1024 transparent;Kürbis, Wachstumsstufe 1: Keimling mit grossen Keimblättern. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_kuerbis_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Kürbis, Wachstumsstufe 2: rankende Pflanze mit grossen Blättern. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_kuerbis_3_bluete.png;2;Pflanze;1024x1024 transparent;Kürbis, Wachstumsstufe 3: Ranke mit grosser gelber Blüte. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_kuerbis_4_reif.png;2;Pflanze;1024x1024 transparent;Kürbis, Wachstumsstufe 4: grosser oranger Kürbis an der Ranke. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_kuerbis.png;2;Saatgut;512x512 transparent;Saattüte Kürbis: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_kuerbis.png;2;Ernte;512x512 transparent;Grosser oranger Kürbis mit Stiel
+gw_pflanze_tomate_1_keimling.png;2;Pflanze;1024x1024 transparent;Tomatenstaude, Wachstumsstufe 1: Keimling. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_tomate_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Tomatenstaude, Wachstumsstufe 2: junge Staude an Stab. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_tomate_3_bluete.png;2;Pflanze;1024x1024 transparent;Tomatenstaude, Wachstumsstufe 3: Staude mit gelben Blüten. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_tomate_4_reif.png;2;Pflanze;1024x1024 transparent;Tomatenstaude, Wachstumsstufe 4: Staude mit 6 roten Tomaten. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_tomate.png;2;Saatgut;512x512 transparent;Saattüte Tomatenstaude: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_tomate.png;2;Ernte;512x512 transparent;Rote Tomate mit grünem Stielansatz
+gw_pflanze_salat_1_keimling.png;2;Pflanze;1024x1024 transparent;Kopfsalat, Wachstumsstufe 1: Keimling. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_salat_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Kopfsalat, Wachstumsstufe 2: kleine Blattrosette. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_salat_3_bluete.png;2;Pflanze;1024x1024 transparent;Kopfsalat, Wachstumsstufe 3: halbgrosser Salatkopf. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_salat_4_reif.png;2;Pflanze;1024x1024 transparent;Kopfsalat, Wachstumsstufe 4: grosser knackiger Salatkopf. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_salat.png;2;Saatgut;512x512 transparent;Saattüte Kopfsalat: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_salat.png;2;Ernte;512x512 transparent;Ganzer Salatkopf
+gw_pflanze_radieschen_1_keimling.png;2;Pflanze;1024x1024 transparent;Radieschen, Wachstumsstufe 1: Keimling. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_radieschen_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Radieschen, Wachstumsstufe 2: kleine Blätter. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_radieschen_3_bluete.png;2;Pflanze;1024x1024 transparent;Radieschen, Wachstumsstufe 3: Blätter, rote Knolle schaut leicht heraus. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_radieschen_4_reif.png;2;Pflanze;1024x1024 transparent;Radieschen, Wachstumsstufe 4: üppige Blätter, rote Knolle deutlich sichtbar. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_radieschen.png;2;Saatgut;512x512 transparent;Saattüte Radieschen: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_radieschen.png;2;Ernte;512x512 transparent;Radieschen mit Blättern
+gw_pflanze_heidelbeere_1_keimling.png;2;Pflanze;1024x1024 transparent;Heidelbeerstrauch, Wachstumsstufe 1: Steckling. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_heidelbeere_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Heidelbeerstrauch, Wachstumsstufe 2: kleiner Strauch. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_heidelbeere_3_bluete.png;2;Pflanze;1024x1024 transparent;Heidelbeerstrauch, Wachstumsstufe 3: Strauch mit kleinen weissen Glockenblüten. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_heidelbeere_4_reif.png;2;Pflanze;1024x1024 transparent;Heidelbeerstrauch, Wachstumsstufe 4: Strauch voller blauer Beeren. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_heidelbeere.png;2;Saatgut;512x512 transparent;Saattüte Heidelbeerstrauch: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_heidelbeeren.png;2;Ernte;512x512 transparent;Kleines Häufchen Heidelbeeren
+gw_pflanze_tulpe_1_keimling.png;2;Pflanze;1024x1024 transparent;Tulpe, Wachstumsstufe 1: Zwiebel mit Spitze. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_tulpe_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Tulpe, Wachstumsstufe 2: Blätter. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_tulpe_3_bluete.png;2;Pflanze;1024x1024 transparent;Tulpe, Wachstumsstufe 3: geschlossene Knospe rot. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_tulpe_4_reif.png;2;Pflanze;1024x1024 transparent;Tulpe, Wachstumsstufe 4: offene rote Tulpe. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_tulpe.png;2;Saatgut;512x512 transparent;Saattüte Tulpe: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_tulpe.png;2;Ernte;512x512 transparent;Einzelne geschnittene rote Tulpe
+gw_pflanze_rose_1_keimling.png;2;Pflanze;1024x1024 transparent;Rosenstrauch, Wachstumsstufe 1: kleiner Trieb. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_rose_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Rosenstrauch, Wachstumsstufe 2: kleiner Strauch. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_rose_3_bluete.png;2;Pflanze;1024x1024 transparent;Rosenstrauch, Wachstumsstufe 3: Strauch mit Knospen. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_rose_4_reif.png;2;Pflanze;1024x1024 transparent;Rosenstrauch, Wachstumsstufe 4: Strauch mit 4 offenen rosa Rosen. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_rose.png;2;Saatgut;512x512 transparent;Saattüte Rosenstrauch: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_rose.png;2;Ernte;512x512 transparent;Einzelne geschnittene rosa Rose
+gw_pflanze_lavendel_1_keimling.png;2;Pflanze;1024x1024 transparent;Lavendel, Wachstumsstufe 1: Keimling. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_lavendel_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Lavendel, Wachstumsstufe 2: graugrüner Busch. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_lavendel_3_bluete.png;2;Pflanze;1024x1024 transparent;Lavendel, Wachstumsstufe 3: Busch mit ersten Rispen. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_lavendel_4_reif.png;2;Pflanze;1024x1024 transparent;Lavendel, Wachstumsstufe 4: Busch voller lila Blütenrispen. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_lavendel.png;2;Saatgut;512x512 transparent;Saattüte Lavendel: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_lavendel.png;2;Ernte;512x512 transparent;Kleines Bündel Lavendel
+gw_pflanze_mohn_1_keimling.png;2;Pflanze;1024x1024 transparent;Mohnblume, Wachstumsstufe 1: Keimling. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_mohn_2_jungpflanze.png;2;Pflanze;1024x1024 transparent;Mohnblume, Wachstumsstufe 2: Blätter. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_mohn_3_bluete.png;2;Pflanze;1024x1024 transparent;Mohnblume, Wachstumsstufe 3: hängende Knospe. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_pflanze_mohn_4_reif.png;2;Pflanze;1024x1024 transparent;Mohnblume, Wachstumsstufe 4: leuchtend rote offene Mohnblüte. Pflanze ohne Beet/Topf, steht auf der Grundlinie (wird ins Beet gesetzt).
+gw_saat_mohn.png;2;Saatgut;512x512 transparent;Saattüte Mohnblume: kleine Papiertüte mit grossem Bild der reifen Frucht/Blüte darauf, KEIN Text.
+gw_ernte_mohn.png;2;Ernte;512x512 transparent;Einzelne rote Mohnblume
+gw_kueche_schuessel_wasser.png;2;Küche;512x512 transparent;Glasschüssel mit Wasser (zum Waschen)
+gw_kueche_topf.png;2;Küche;512x512 transparent;Roter Kochtopf ohne Deckel, leer
+gw_kueche_topf_suppe.png;2;Küche;512x512 transparent;Gleicher Topf mit oranger Kürbissuppe
+gw_kueche_kochloeffel.png;2;Küche;512x512 transparent;Holzkochlöffel
+gw_kueche_kuchenboden.png;2;Küche;512x512 transparent;Runder heller Mürbeteig-Kuchenboden, leer, leicht von oben
+gw_kueche_kuchen_fertig.png;2;Küche;512x512 transparent;Gleicher Kuchenboden belegt mit Erdbeeren und Äpfeln
+gw_kueche_saftkrug.png;2;Küche;512x512 transparent;Glaskrug mit Apfelsaft
+gw_kueche_glas_leer.png;2;Küche;512x512 transparent;Leeres Trinkglas
+gw_kueche_glas_saft.png;2;Küche;512x512 transparent;Glas mit Saft
+gw_kueche_vase.png;2;Küche;512x512 transparent;Leere hellblaue Vase
+gw_kueche_vase_strauss.png;2;Küche;512x512 transparent;Gleiche Vase mit buntem Gartenstrauss
+gw_kueche_schneidebrett.png;2;Küche;512x512 transparent;Holzschneidebrett
+gw_kueche_teller_umriss.png;2;Küche;512x512 transparent;Gestrichelter heller Umriss eines Tellers (Platzhinweis)
+gw_kueche_suppenteller.png;2;Küche;512x512 transparent;Suppenteller mit Kürbissuppe
+gw_kueche_obstteller.png;2;Küche;512x512 transparent;Teller mit schön angerichtetem Obst
+gw_kueche_laterne_kuerbis.png;2;Küche;512x512 transparent;Ausgehöhlter Kürbis als Laterne mit freundlichem Gesicht, innen leuchtend
+gw_bau_vogelhaus_boden.png;2;Bauprojekt;1024x1024 transparent;Vogelhaus – Bauteil «boden»: quadratische Bodenplatte. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_vogelhaus_wand_vorne.png;2;Bauprojekt;1024x1024 transparent;Vogelhaus – Bauteil «wand_vorne»: Vorderwand mit rundem Einflugloch und Sitzstange. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_vogelhaus_wand_hinten.png;2;Bauprojekt;1024x1024 transparent;Vogelhaus – Bauteil «wand_hinten»: Rückwand. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_vogelhaus_dach.png;2;Bauprojekt;1024x1024 transparent;Vogelhaus – Bauteil «dach»: Satteldach aus zwei Brettern. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_vogelhaus_pfahl.png;2;Bauprojekt;1024x1024 transparent;Vogelhaus – Bauteil «pfahl»: Holzpfahl zum Aufstellen. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_vogelhaus_fertig.png;2;Bauprojekt;1024x1024 transparent;Vogelhaus fertig zusammengebaut, unbemaltes helles Holz, gleiche Perspektive wie die Teile. Steht auf dem Pfahl.
+gw_bau_vogelhaus_maske_dach.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_vogelhaus_fertig, aber NUR das Dach/oberes Teil in reinem Weiss, alles andere transparent (Färbemaske 1)
+gw_bau_vogelhaus_maske_korpus.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_vogelhaus_fertig, aber NUR der Korpus/Hauptteil in reinem Weiss, alles andere transparent (Färbemaske 2)
+gw_bau_igelhaus_boden.png;2;Bauprojekt;1024x1024 transparent;Igelhaus – Bauteil «boden»: Bodenbrett. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_igelhaus_waende.png;2;Bauprojekt;1024x1024 transparent;Igelhaus – Bauteil «waende»: U-förmige Wände mit Eingang. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_igelhaus_dach.png;2;Bauprojekt;1024x1024 transparent;Igelhaus – Bauteil «dach»: flaches Dach. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_igelhaus_laub.png;2;Bauprojekt;1024x1024 transparent;Igelhaus – Bauteil «laub»: Häufchen Herbstlaub zum Abdecken. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_igelhaus_fertig.png;2;Bauprojekt;1024x1024 transparent;Igelhaus fertig zusammengebaut, unbemaltes helles Holz, gleiche Perspektive wie die Teile. Mit Laub bedeckt, Eingang sichtbar.
+gw_bau_igelhaus_maske_dach.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_igelhaus_fertig, aber NUR das Dach/oberes Teil in reinem Weiss, alles andere transparent (Färbemaske 1)
+gw_bau_igelhaus_maske_korpus.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_igelhaus_fertig, aber NUR der Korpus/Hauptteil in reinem Weiss, alles andere transparent (Färbemaske 2)
+gw_bau_bank_sitz.png;2;Bauprojekt;1024x1024 transparent;Gartenbank – Bauteil «sitz»: Sitzfläche. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_bank_lehne.png;2;Bauprojekt;1024x1024 transparent;Gartenbank – Bauteil «lehne»: Rückenlehne. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_bank_beine.png;2;Bauprojekt;1024x1024 transparent;Gartenbank – Bauteil «beine»: zwei Beinpaare. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_bank_fertig.png;2;Bauprojekt;1024x1024 transparent;Gartenbank fertig zusammengebaut, unbemaltes helles Holz, gleiche Perspektive wie die Teile. Freundliche kleine Bank.
+gw_bau_bank_maske_dach.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_bank_fertig, aber NUR das Dach/oberes Teil in reinem Weiss, alles andere transparent (Färbemaske 1)
+gw_bau_bank_maske_korpus.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_bank_fertig, aber NUR der Korpus/Hauptteil in reinem Weiss, alles andere transparent (Färbemaske 2)
+gw_bau_futterstelle_schale.png;2;Bauprojekt;1024x1024 transparent;Vogel-Futterstelle – Bauteil «schale»: flache Futterschale. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_futterstelle_dach.png;2;Bauprojekt;1024x1024 transparent;Vogel-Futterstelle – Bauteil «dach»: kleines Dach. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_futterstelle_stange.png;2;Bauprojekt;1024x1024 transparent;Vogel-Futterstelle – Bauteil «stange»: Stange. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_futterstelle_fertig.png;2;Bauprojekt;1024x1024 transparent;Vogel-Futterstelle fertig zusammengebaut, unbemaltes helles Holz, gleiche Perspektive wie die Teile. Leer – Kerne setzt die App.
+gw_bau_futterstelle_maske_dach.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_futterstelle_fertig, aber NUR das Dach/oberes Teil in reinem Weiss, alles andere transparent (Färbemaske 1)
+gw_bau_futterstelle_maske_korpus.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_futterstelle_fertig, aber NUR der Korpus/Hauptteil in reinem Weiss, alles andere transparent (Färbemaske 2)
+gw_bau_insektenhotel_rahmen.png;2;Bauprojekt;1024x1024 transparent;Insektenhotel – Bauteil «rahmen»: Rahmen mit Giebel. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_insektenhotel_fuellung.png;2;Bauprojekt;1024x1024 transparent;Insektenhotel – Bauteil «fuellung»: Füllung aus Bambusröhrchen und Zapfen. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_insektenhotel_fertig.png;2;Bauprojekt;1024x1024 transparent;Insektenhotel fertig zusammengebaut, unbemaltes helles Holz, gleiche Perspektive wie die Teile. 
+gw_bau_insektenhotel_maske_dach.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_insektenhotel_fertig, aber NUR das Dach/oberes Teil in reinem Weiss, alles andere transparent (Färbemaske 1)
+gw_bau_insektenhotel_maske_korpus.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_insektenhotel_fertig, aber NUR der Korpus/Hauptteil in reinem Weiss, alles andere transparent (Färbemaske 2)
+gw_bau_blumentopf_topf.png;2;Bauprojekt;1024x1024 transparent;Blumentopf – Bauteil «topf»: Tontopf. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_blumentopf_rand.png;2;Bauprojekt;1024x1024 transparent;Blumentopf – Bauteil «rand»: Topfrand. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_blumentopf_fertig.png;2;Bauprojekt;1024x1024 transparent;Blumentopf fertig zusammengebaut, unbemaltes helles Holz, gleiche Perspektive wie die Teile. Leer.
+gw_bau_blumentopf_maske_dach.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_blumentopf_fertig, aber NUR das Dach/oberes Teil in reinem Weiss, alles andere transparent (Färbemaske 1)
+gw_bau_blumentopf_maske_korpus.png;2;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_blumentopf_fertig, aber NUR der Korpus/Hauptteil in reinem Weiss, alles andere transparent (Färbemaske 2)
+gw_werkbank_hammer.png;2;Werkstatt;512x512 transparent;Kinderhammer
+gw_werkbank_pinsel.png;2;Werkstatt;512x512 transparent;Pinsel
+gw_werkbank_farbtopf.png;2;Werkstatt;512x512 transparent;Offener Farbtopf (weisse Farbe, wird eingefärbt)
+gw_werkbank_schrauben.png;2;Werkstatt;512x512 transparent;Kleines Schälchen Holzdübel
+gw_werkbank_umriss.png;2;Werkstatt;512x512 transparent;Gestrichelter Umriss-Platzhalter (weiss)
+gw_muster_overlay_punkte.png;2;Muster;512x512 transparent;Nahtlos kachelbares Muster: weisse Punkte gleichmässig verteilt, Rest transparent
+gw_muster_overlay_streifen.png;2;Muster;512x512 transparent;Nahtlos kachelbares Muster: weisse diagonale Streifen, Rest transparent
+gw_muster_overlay_herzen.png;2;Muster;512x512 transparent;Nahtlos kachelbares Muster: kleine weisse Herzen, Rest transparent
+gw_muster_overlay_sterne.png;2;Muster;512x512 transparent;Nahtlos kachelbares Muster: kleine weisse Sterne, Rest transparent
+gw_muster_overlay_blumen.png;2;Muster;512x512 transparent;Nahtlos kachelbares Muster: kleine weisse Blümchen, Rest transparent
+gw_tier_hase_sitzen.png;2;Bewohner;1024x1024 transparent;Hase im Dino-Stil: sitzt.
+gw_tier_hase_schnuppern.png;2;Bewohner;1024x1024 transparent;Hase im Dino-Stil: schnuppert mit Nase nach vorne.
+gw_tier_hase_huepfen_1.png;2;Bewohner;1024x1024 transparent;Hase im Dino-Stil: Sprung abheben.
+gw_tier_hase_huepfen_2.png;2;Bewohner;1024x1024 transparent;Hase im Dino-Stil: Sprung in der Luft.
+gw_tier_hase_verstecken.png;2;Bewohner;1024x1024 transparent;Hase im Dino-Stil: halb hinter einem Busch, nur Ohren und Augen.
+gw_tier_igel_laufen_1.png;2;Bewohner;1024x1024 transparent;Igel im Dino-Stil: läuft, Seitenansicht.
+gw_tier_igel_laufen_2.png;2;Bewohner;1024x1024 transparent;Igel im Dino-Stil: Laufbild 2.
+gw_tier_igel_eingerollt.png;2;Bewohner;1024x1024 transparent;Igel im Dino-Stil: eingerollte Kugel.
+gw_tier_igel_schnuppern.png;2;Bewohner;1024x1024 transparent;Igel im Dino-Stil: schnuppert.
+gw_tier_igel_schlafen.png;2;Bewohner;1024x1024 transparent;Igel im Dino-Stil: schläft im Laub.
+gw_tier_eichhoernchen_sitzen.png;2;Bewohner;1024x1024 transparent;Eichhoernchen im Dino-Stil: sitzt mit Nuss.
+gw_tier_eichhoernchen_klettern.png;2;Bewohner;1024x1024 transparent;Eichhoernchen im Dino-Stil: klettert senkrecht (Baumstamm).
+gw_tier_eichhoernchen_springen.png;2;Bewohner;1024x1024 transparent;Eichhoernchen im Dino-Stil: Sprung.
+gw_tier_eichhoernchen_tragen.png;2;Bewohner;1024x1024 transparent;Eichhoernchen im Dino-Stil: trägt ein Fundstück im Maul.
+gw_tier_ente_schwimmen.png;2;Bewohner;1024x1024 transparent;Ente im Dino-Stil: schwimmt, nur Oberkörper über Wasser.
+gw_tier_ente_tauchen.png;2;Bewohner;1024x1024 transparent;Ente im Dino-Stil: Kopf unter Wasser, Po nach oben.
+gw_tier_ente_watscheln_1.png;2;Bewohner;1024x1024 transparent;Ente im Dino-Stil: watschelt an Land.
+gw_tier_ente_watscheln_2.png;2;Bewohner;1024x1024 transparent;Ente im Dino-Stil: Laufbild 2.
+gw_szene_bach_teich.png;3;Szene;2732x2048 deckend;Bach- und Teichbereich: oben links eine Quelle zwischen Steinen, unten rechts ein Teich mit Anlegestelle, dazwischen eine grosse freie Wiese mit sichtbarem Raster aus 6x4 hellen Erdfeldern (Bauplätze für Rinnen). Schilf am Teich.
+gw_szene_bach_teich_abend.png;3;Szene;2732x2048 deckend;Gleiche Szene am Abend.
+gw_rinne_gerade_h.png;3;Wasserbau;512x512 transparent;Gerade Holzrinne waagrecht, von Rand zu Rand (Kachel), OHNE Wasser. Draufsicht wie die Bauplätze der Szene.
+gw_rinne_gerade_v.png;3;Wasserbau;512x512 transparent;Gerade Holzrinne senkrecht. Draufsicht wie die Bauplätze der Szene.
+gw_rinne_kurve_ro.png;3;Wasserbau;512x512 transparent;Kurve von rechts nach oben. Draufsicht wie die Bauplätze der Szene.
+gw_rinne_kurve_rl.png;3;Wasserbau;512x512 transparent;Kurve von rechts nach unten. Draufsicht wie die Bauplätze der Szene.
+gw_rinne_kurve_lo.png;3;Wasserbau;512x512 transparent;Kurve von links nach oben. Draufsicht wie die Bauplätze der Szene.
+gw_rinne_kurve_lu.png;3;Wasserbau;512x512 transparent;Kurve von links nach unten. Draufsicht wie die Bauplätze der Szene.
+gw_rinne_t.png;3;Wasserbau;512x512 transparent;T-Verzweigung (links, rechts, unten). Draufsicht wie die Bauplätze der Szene.
+gw_rinne_kreuz.png;3;Wasserbau;512x512 transparent;Kreuzung. Draufsicht wie die Bauplätze der Szene.
+gw_schleuse_zu.png;3;Wasserbau;512x512 transparent;Gerade Rinne mit geschlossenem Holzschieber. Draufsicht wie die Bauplätze der Szene.
+gw_schleuse_offen.png;3;Wasserbau;512x512 transparent;Gleich, Schieber hochgezogen. Draufsicht wie die Bauplätze der Szene.
+gw_wasserrad_1.png;3;Wasserbau;512x512 transparent;Rinne mit kleinem Wasserrad, Stellung 1. Draufsicht wie die Bauplätze der Szene.
+gw_wasserrad_2.png;3;Wasserbau;512x512 transparent;Stellung 2 (45° gedreht). Draufsicht wie die Bauplätze der Szene.
+gw_wasserrad_3.png;3;Wasserbau;512x512 transparent;Stellung 3. Draufsicht wie die Bauplätze der Szene.
+gw_wasserrad_4.png;3;Wasserbau;512x512 transparent;Stellung 4. Draufsicht wie die Bauplätze der Szene.
+gw_quelle.png;3;Wasserbau;512x512 transparent;Quelle (Startkachel): Steine mit sprudelndem Wasser, Ausgang nach rechts. Draufsicht wie die Bauplätze der Szene.
+gw_ziel_teich.png;3;Wasserbau;512x512 transparent;Zielkachel: Einlauf in den Teich (Eingang von links). Draufsicht wie die Bauplätze der Szene.
+gw_ziel_beet.png;3;Wasserbau;512x512 transparent;Zielkachel: kleines Beet mit Einlauf. Draufsicht wie die Bauplätze der Szene.
+gw_wasser_gerade_h_1.png;3;Wasserbau;512x512 transparent;NUR Wasser für rinne_gerade_h, Animationsbild 1 von 3 (transparent, passt exakt in die Rinne). Draufsicht wie die Bauplätze der Szene.
+gw_wasser_gerade_h_2.png;3;Wasserbau;512x512 transparent;Animationsbild 2. Draufsicht wie die Bauplätze der Szene.
+gw_wasser_gerade_h_3.png;3;Wasserbau;512x512 transparent;Animationsbild 3. Draufsicht wie die Bauplätze der Szene.
+gw_wasser_kurve_1.png;3;Wasserbau;512x512 transparent;NUR Wasser für eine Kurve (rinne_kurve_ro), Bild 1 von 3. Draufsicht wie die Bauplätze der Szene.
+gw_wasser_kurve_2.png;3;Wasserbau;512x512 transparent;Bild 2. Draufsicht wie die Bauplätze der Szene.
+gw_wasser_kurve_3.png;3;Wasserbau;512x512 transparent;Bild 3. Draufsicht wie die Bauplätze der Szene.
+gw_luecke_hinweis.png;3;Wasserbau;512x512 transparent;Gestrichelter Umriss einer fehlenden Rinne (leuchtend gelb). Draufsicht wie die Bauplätze der Szene.
+gw_boot_blatt.png;3;Wasserbau;1024x1024 transparent;Blattboot (grosses grünes Blatt mit kleinem Mast aus Zweig), Draufsicht
+gw_boot_rinde.png;3;Wasserbau;1024x1024 transparent;Rindenboot mit Segel aus Blatt
+gw_boot_segel.png;3;Wasserbau;1024x1024 transparent;Kleines bemalbares Holzsegelboot (weiss, wird eingefärbt)
+gw_boot_fracht.png;3;Wasserbau;1024x1024 transparent;Blattboot mit kleiner Ladung (Muschel)
+gw_wippe.png;3;Wasserbau;1024x1024 transparent;Wasserwippe aus Holz
+gw_bruecke_klein.png;3;Wasserbau;1024x1024 transparent;Kleine Holzbrücke über eine Rinne
+gw_tier_frosch_sitzen.png;3;Bewohner;1024x1024 transparent;Frosch im Dino-Stil: sitzt auf Seerosenblatt.
+gw_tier_frosch_springen.png;3;Bewohner;1024x1024 transparent;Frosch im Dino-Stil: Sprung.
+gw_tier_frosch_quaken.png;3;Bewohner;1024x1024 transparent;Frosch im Dino-Stil: quakt mit Schallblase.
+gw_tier_fisch_schwimmen_1.png;3;Bewohner;1024x1024 transparent;Fisch im Dino-Stil: kleiner oranger Fisch, Draufsicht, Schwanz links.
+gw_tier_fisch_schwimmen_2.png;3;Bewohner;1024x1024 transparent;Fisch im Dino-Stil: Schwanz rechts.
+gw_seerose.png;3;Deko;1024x1024 transparent;Seerosenblatt mit rosa Blüte, Draufsicht
+gw_szene_tierlichtung.png;4;Szene;2732x2048 deckend;Waldlichtung: weiche Wiese, Baumstämme am Rand, ein grosser hohler Baumstamm, Büsche, ein Hügel. Freie Plätze für Unterschlüpfe.
+gw_szene_tierlichtung_abend.png;4;Szene;2732x2048 deckend;Gleiche Szene am Abend.
+gw_szene_inselkarte.png;4;Szene;2732x2048 deckend;Gemalte Übersichtskarte der Garteninsel von oben: Hausgarten (Mitte), Bach & Teich (rechts), Tierlichtung (oben links), Baumhaus (oben rechts), Wunderlichtung (oben Mitte, leicht glitzernd), verbunden durch Wege, ohne Text.
+gw_karte_nebel.png;4;Karte;2048x2048 transparent;Weiche Nebelwolke zum Abdecken noch nicht entdeckter Orte auf der Karte
+gw_bau_bruecke_pfosten.png;4;Bauprojekt;1024x1024 transparent;Holzbrücke – Bauteil «pfosten»: zwei Brückenpfosten. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_bruecke_bretter.png;4;Bauprojekt;1024x1024 transparent;Holzbrücke – Bauteil «bretter»: Stapel Brückenbretter. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_bruecke_gelaender.png;4;Bauprojekt;1024x1024 transparent;Holzbrücke – Bauteil «gelaender»: Geländer. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_bruecke_fertig.png;4;Bauprojekt;1024x1024 transparent;Holzbrücke fertig zusammengebaut, unbemaltes helles Holz, gleiche Perspektive wie die Teile. Brücke über einen Bach (Seitenansicht).
+gw_bau_bruecke_maske_dach.png;4;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_bruecke_fertig, aber NUR das Dach/oberes Teil in reinem Weiss, alles andere transparent (Färbemaske 1)
+gw_bau_bruecke_maske_korpus.png;4;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_bruecke_fertig, aber NUR der Korpus/Hauptteil in reinem Weiss, alles andere transparent (Färbemaske 2)
+gw_bau_tunnel_boegen.png;4;Bauprojekt;1024x1024 transparent;Weidentunnel – Bauteil «boegen»: Weidenbögen. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_tunnel_blaetter.png;4;Bauprojekt;1024x1024 transparent;Weidentunnel – Bauteil «blaetter»: Blätterdach. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_tunnel_fertig.png;4;Bauprojekt;1024x1024 transparent;Weidentunnel fertig zusammengebaut, unbemaltes helles Holz, gleiche Perspektive wie die Teile. Kleiner grüner Tunnel.
+gw_bau_tunnel_maske_dach.png;4;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_tunnel_fertig, aber NUR das Dach/oberes Teil in reinem Weiss, alles andere transparent (Färbemaske 1)
+gw_bau_tunnel_maske_korpus.png;4;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_tunnel_fertig, aber NUR der Korpus/Hauptteil in reinem Weiss, alles andere transparent (Färbemaske 2)
+gw_bau_windspiel_stab.png;4;Bauprojekt;1024x1024 transparent;Windspiel – Bauteil «stab»: Stab. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_windspiel_glocken.png;4;Bauprojekt;1024x1024 transparent;Windspiel – Bauteil «glocken»: kleine Glöckchen und Holzstäbe. Unbemaltes helles Holz (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_windspiel_fertig.png;4;Bauprojekt;1024x1024 transparent;Windspiel fertig zusammengebaut, unbemaltes helles Holz, gleiche Perspektive wie die Teile. 
+gw_bau_windspiel_maske_dach.png;4;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_windspiel_fertig, aber NUR das Dach/oberes Teil in reinem Weiss, alles andere transparent (Färbemaske 1)
+gw_bau_windspiel_maske_korpus.png;4;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie bau_windspiel_fertig, aber NUR der Korpus/Hauptteil in reinem Weiss, alles andere transparent (Färbemaske 2)
+gw_spur_hase.png;4;Abenteuer;512x512 transparent;Einzelner Fussabdruck hase in der Erde, Draufsicht
+gw_spur_igel.png;4;Abenteuer;512x512 transparent;Einzelner Fussabdruck igel in der Erde, Draufsicht
+gw_spur_vogel.png;4;Abenteuer;512x512 transparent;Einzelner Fussabdruck vogel in der Erde, Draufsicht
+gw_spur_ente.png;4;Abenteuer;512x512 transparent;Einzelner Fussabdruck ente in der Erde, Draufsicht
+gw_spur_dino.png;4;Abenteuer;512x512 transparent;Einzelner Fussabdruck dino in der Erde, Draufsicht
+gw_busch_1.png;4;Abenteuer;512x512 transparent;Runder Busch
+gw_busch_2.png;4;Abenteuer;512x512 transparent;Gleicher Busch, Blätter bewegt (Rascheln)
+gw_fund_feder.png;4;Abenteuer;512x512 transparent;Bunte Feder
+gw_fund_muschel.png;4;Abenteuer;512x512 transparent;Muschel
+gw_fund_stein.png;4;Abenteuer;512x512 transparent;Glatter bunter Glücksstein
+gw_fund_eichel.png;4;Abenteuer;512x512 transparent;Eichel mit Hütchen
+gw_fund_schneckenhaus.png;4;Abenteuer;512x512 transparent;Leeres Schneckenhaus
+gw_fund_blatt_gold.png;4;Abenteuer;512x512 transparent;Goldenes Herbstblatt
+gw_fund_tannzapfen.png;4;Abenteuer;512x512 transparent;Tannzapfen
+gw_fund_flaschenpost.png;4;Abenteuer;512x512 transparent;Kleine Flaschenpost mit Bildrolle
+gw_lichtpunkt.png;4;Abenteuer;512x512 transparent;Weicher warmer Lichtpunkt (Glühwürmchen-Glow)
+gw_ausrufezeichen_blase.png;4;Abenteuer;512x512 transparent;Kleine Sprechblase mit Herz (ohne Text)
+gw_tier_eule_sitzen.png;4;Bewohner;1024x1024 transparent;Eule im Dino-Stil: sitzt auf Ast, wach.
+gw_tier_eule_schlafen.png;4;Bewohner;1024x1024 transparent;Eule im Dino-Stil: schläft auf Ast.
+gw_tier_eule_fliegen.png;4;Bewohner;1024x1024 transparent;Eule im Dino-Stil: fliegt.
+gw_tier_reh_stehen.png;4;Bewohner;1024x1024 transparent;Reh im Dino-Stil: steht.
+gw_tier_reh_grasen.png;4;Bewohner;1024x1024 transparent;Reh im Dino-Stil: grast.
+gw_tier_schnecke_kriechen_1.png;4;Bewohner;1024x1024 transparent;Schnecke im Dino-Stil: kriecht.
+gw_tier_schnecke_kriechen_2.png;4;Bewohner;1024x1024 transparent;Schnecke im Dino-Stil: kriecht Bild 2.
+gw_szene_baumhaus.png;5;Szene;2732x2048 deckend;Grosser freundlicher Baum mit leerem Plattformgerüst oben (Baumhaus entsteht schrittweise), Leiter, Platz für Korbaufzug.
+gw_szene_baumhaus_abend.png;5;Szene;2732x2048 deckend;Gleiche Szene am Abend.
+gw_baumhaus_stufe_1.png;5;Baumhaus;2048x2048 transparent;Baumhaus auf der Plattform der Szene, Ausbaustufe 1: nur Plattform. Passt exakt auf szene_baumhaus.
+gw_baumhaus_stufe_2.png;5;Baumhaus;2048x2048 transparent;Baumhaus auf der Plattform der Szene, Ausbaustufe 2: Plattform mit Wänden. Passt exakt auf szene_baumhaus.
+gw_baumhaus_stufe_3.png;5;Baumhaus;2048x2048 transparent;Baumhaus auf der Plattform der Szene, Ausbaustufe 3: mit Dach. Passt exakt auf szene_baumhaus.
+gw_baumhaus_stufe_4.png;5;Baumhaus;2048x2048 transparent;Baumhaus auf der Plattform der Szene, Ausbaustufe 4: fertig mit Fenster, Wimpeln und Laterne. Passt exakt auf szene_baumhaus.
+gw_korbaufzug_seil.png;5;Baumhaus;1024x1024 transparent;Seil mit Rolle
+gw_korbaufzug_korb.png;5;Baumhaus;1024x1024 transparent;Korb am Seil
+gw_wimpelkette.png;5;Baumhaus;1024x1024 transparent;Wimpelkette in Weiss (wird eingefärbt)
+gw_laterne_papier.png;5;Baumhaus;1024x1024 transparent;Papierlaterne weiss (wird eingefärbt), leuchtend
+gw_szene_wunderlichtung.png;5;Szene;2732x2048 deckend;Zauberhafte Lichtung: violett-türkiser Schimmer, grosse leuchtende Pilze, Kristalle, Glitzer in der Luft, freie Plätze für Klangobjekte und Fantasieblumen. Klar als Fantasieort erkennbar.
+gw_szene_wunderlichtung_abend.png;5;Szene;2732x2048 deckend;Gleiche Szene nachts, alles leuchtet stärker.
+gw_klang_glockenblume.png;5;Klanggarten;1024x1024 transparent;Riesige Glockenblume, normal
+gw_klang_glockenblume_leuchten.png;5;Klanggarten;1024x1024 transparent;Riesige Glockenblume, gleiche Ansicht, leuchtet hell (beim Erklingen)
+gw_klang_pilztrommel.png;5;Klanggarten;1024x1024 transparent;Pilz als Trommel, normal
+gw_klang_pilztrommel_leuchten.png;5;Klanggarten;1024x1024 transparent;Pilz als Trommel, gleiche Ansicht, leuchtet hell (beim Erklingen)
+gw_klang_kristall.png;5;Klanggarten;1024x1024 transparent;Singender Kristall, normal
+gw_klang_kristall_leuchten.png;5;Klanggarten;1024x1024 transparent;Singender Kristall, gleiche Ansicht, leuchtet hell (beim Erklingen)
+gw_klang_muschelhorn.png;5;Klanggarten;1024x1024 transparent;Muschelhorn, normal
+gw_klang_muschelhorn_leuchten.png;5;Klanggarten;1024x1024 transparent;Muschelhorn, gleiche Ansicht, leuchtet hell (beim Erklingen)
+gw_klang_tropfenharfe.png;5;Klanggarten;1024x1024 transparent;Tropfenharfe aus Tautropfen, normal
+gw_klang_tropfenharfe_leuchten.png;5;Klanggarten;1024x1024 transparent;Tropfenharfe aus Tautropfen, gleiche Ansicht, leuchtet hell (beim Erklingen)
+gw_fantasie_bluete_glocke.png;5;Fantasieblume;1024x1024 transparent;Fantasieblüte in Form «glocke», REINWEISS mit weichen Schatten (wird eingefärbt)
+gw_fantasie_bluete_stern.png;5;Fantasieblume;1024x1024 transparent;Fantasieblüte in Form «stern», REINWEISS mit weichen Schatten (wird eingefärbt)
+gw_fantasie_bluete_herz.png;5;Fantasieblume;1024x1024 transparent;Fantasieblüte in Form «herz», REINWEISS mit weichen Schatten (wird eingefärbt)
+gw_fantasie_bluete_schirm.png;5;Fantasieblume;1024x1024 transparent;Fantasieblüte in Form «schirm», REINWEISS mit weichen Schatten (wird eingefärbt)
+gw_fantasie_bluete_spirale.png;5;Fantasieblume;1024x1024 transparent;Fantasieblüte in Form «spirale», REINWEISS mit weichen Schatten (wird eingefärbt)
+gw_fantasie_stiel_gerade.png;5;Fantasieblume;1024x1024 transparent;Fantasieblumen-Stiel: gerader Stiel mit 2 Blättern
+gw_fantasie_stiel_geschwungen.png;5;Fantasieblume;1024x1024 transparent;Fantasieblumen-Stiel: geschwungener Stiel
+gw_fantasie_stiel_spirale.png;5;Fantasieblume;1024x1024 transparent;Fantasieblumen-Stiel: Spiralstiel
+gw_licht_spiegel.png;5;Lichtspiel;1024x1024 transparent;Drehbarer Spiegel auf Steinsockel, Draufsicht
+gw_licht_prisma.png;5;Lichtspiel;1024x1024 transparent;Kristallprisma auf Sockel
+gw_licht_ziel_zu.png;5;Lichtspiel;1024x1024 transparent;Grosse geschlossene Fantasieknospe (Ziel)
+gw_licht_ziel_offen.png;5;Lichtspiel;1024x1024 transparent;Gleiche Knospe geöffnet und strahlend
+gw_fest_girlande.png;5;Fest;2048x2048 transparent;Blumengirlande
+gw_fest_tischdecke.png;5;Fest;2048x2048 transparent;Festliche Tischdecke weiss (wird eingefärbt)
+gw_fest_kuchen.png;5;Fest;2048x2048 transparent;Grosser Gartenfest-Kuchen
+gw_fest_lampions.png;5;Fest;2048x2048 transparent;Lampionkette leuchtend

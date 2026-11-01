@@ -1,0 +1,35 @@
+Datei;Paket;Beschreibung
+gw_sfx_giessen.m4a;1;Wasser aus Giesskanne auf Erde, 1–2 s
+gw_sfx_pflanzen.m4a;1;Samen fällt in Erde, weiches Plopp, <1 s
+gw_sfx_wachsen.m4a;1;Fröhliches aufsteigendes Glitzer-Wachsen, 1–2 s
+gw_sfx_ploppen.m4a;1;Beere wird gepflückt, kurzes Plopp
+gw_sfx_ziehen.m4a;1;Karotte aus Erde ziehen, kleiner Ruck
+gw_sfx_korb.m4a;1;Etwas fällt weich in einen Korb
+gw_sfx_schwer.m4a;1;Schwerer Kürbis landet im Korb
+gw_sfx_teller.m4a;1;Teller/Schale auf Holztisch stellen
+gw_sfx_essen.m4a;1;Fröhliches Mampfen
+gw_sfx_schmetterling.m4a;1;Zartes Flattern
+gw_sfx_vogel.m4a;1;Rotkehlchen zwitschert kurz
+gw_sfx_rascheln.m4a;2;Busch raschelt
+gw_sfx_hammer.m4a;2;Kleiner Holzhammer, 2 Schläge
+gw_sfx_pinsel.m4a;2;Pinselstrich
+gw_sfx_einrasten.m4a;2;Holzteil rastet ein, Klack
+gw_sfx_umruehren.m4a;2;Löffel rührt im Topf
+gw_sfx_wasser_fliessen.m4a;3;Leises fliessendes Wasser, nahtlos loopbar 3–5 s
+gw_sfx_schleuse.m4a;3;Holzschieber wird hochgezogen
+gw_sfx_wasserrad.m4a;3;Wasserrad dreht, loopbar
+gw_sfx_platschen.m4a;3;Kleines Platschen ins Wasser
+gw_sfx_frosch.m4a;3;Frosch quakt
+gw_sfx_ente.m4a;3;Ente quakt
+gw_sfx_bruecke.m4a;4;Schritte auf Holzbrücke
+gw_sfx_entdeckt.m4a;4;Kleiner Entdecker-Jingle 1–2 s
+gw_sfx_eule.m4a;4;Eule ruft
+gw_sfx_klang_c.m4a;5;Weicher Glockenton C
+gw_sfx_klang_d.m4a;5;Weicher Glockenton D
+gw_sfx_klang_e.m4a;5;Weicher Glockenton E
+gw_sfx_klang_g.m4a;5;Weicher Glockenton G
+gw_sfx_klang_a.m4a;5;Weicher Glockenton A
+gw_sfx_zauber.m4a;5;Zauberhafter Glitzerklang
+gw_musik_garten_tag.m4a;1;Ruhige fröhliche Gartenmusik, nahtlos loopbar 60–120 s, leise Instrumente
+gw_musik_garten_abend.m4a;1;Ruhige Abendmusik, loopbar
+gw_musik_wunderlichtung.m4a;5;Verträumte Zaubermusik, loopbar
