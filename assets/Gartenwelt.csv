@@ -344,3 +344,16 @@ gw_fest_girlande.png;5;Fest;2048x2048 transparent;Blumengirlande
 gw_fest_tischdecke.png;5;Fest;2048x2048 transparent;Festliche Tischdecke weiss (wird eingefärbt)
 gw_fest_kuchen.png;5;Fest;2048x2048 transparent;Grosser Gartenfest-Kuchen
 gw_fest_lampions.png;5;Fest;2048x2048 transparent;Lampionkette leuchtend
+gw_bau_segelboot_rumpf.png;3;Bauprojekt;1024x1024 transparent;Segelboot – Bauteil «rumpf»: Bootsrumpf. Unbemalt hell (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_segelboot_mast.png;3;Bauprojekt;1024x1024 transparent;Segelboot – Bauteil «mast»: Mast. Unbemalt hell (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_segelboot_segel.png;3;Bauprojekt;1024x1024 transparent;Segelboot – Bauteil «segel»: Segel (weiss). Unbemalt hell (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_segelboot_maske_dach.png;3;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie das fertige Segelboot (Bild gw_boot_segel), NUR Dach/oberes Teil reinweiss, Rest transparent (Färbemaske 1)
+gw_bau_segelboot_maske_korpus.png;3;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie das fertige Segelboot (Bild gw_boot_segel), NUR Hauptteil reinweiss, Rest transparent (Färbemaske 2)
+gw_bau_wimpelkette_schnur.png;5;Bauprojekt;1024x1024 transparent;Wimpelkette – Bauteil «schnur»: Schnur. Unbemalt hell (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_wimpelkette_wimpel.png;5;Bauprojekt;1024x1024 transparent;Wimpelkette – Bauteil «wimpel»: Stapel Wimpel (weiss). Unbemalt hell (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_wimpelkette_maske_dach.png;5;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie das fertige Wimpelkette (Bild gw_wimpelkette), NUR Dach/oberes Teil reinweiss, Rest transparent (Färbemaske 1)
+gw_bau_wimpelkette_maske_korpus.png;5;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie das fertige Wimpelkette (Bild gw_wimpelkette), NUR Hauptteil reinweiss, Rest transparent (Färbemaske 2)
+gw_bau_laterne_gestell.png;5;Bauprojekt;1024x1024 transparent;Laterne – Bauteil «gestell»: Laternengestell. Unbemalt hell (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_laterne_papier.png;5;Bauprojekt;1024x1024 transparent;Laterne – Bauteil «papier»: Papierbogen (weiss). Unbemalt hell (wird in der App eingefärbt), einzeln freigestellt.
+gw_bau_laterne_maske_dach.png;5;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie das fertige Laterne (Bild gw_laterne_papier), NUR Dach/oberes Teil reinweiss, Rest transparent (Färbemaske 1)
+gw_bau_laterne_maske_korpus.png;5;Bauprojekt;1024x1024 transparent;Gleiche Ansicht wie das fertige Laterne (Bild gw_laterne_papier), NUR Hauptteil reinweiss, Rest transparent (Färbemaske 2)

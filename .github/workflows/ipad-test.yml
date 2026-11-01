@@ -8,6 +8,11 @@ on:
       - "tools/sim_screenshots.sh"
       - ".github/workflows/ipad-test.yml"
   workflow_dispatch:
+    inputs:
+      nur:
+        description: "Nur Durchläufe, deren Name dieses Muster enthält (leer = alle)"
+        required: false
+        default: ""
 
 concurrency:
   group: ipad-test-${{ github.ref }}
@@ -54,6 +59,8 @@ jobs:
         run: grep -E "error:" build.log | sed 's|.*/EllieInsel/||' | sort -u | head -100 || true
 
       - name: Screenshots und automatische Durchläufe
+        env:
+          ONLY: ${{ github.event.inputs.nur }}
         run: tools/sim_screenshots.sh dd/Build/Products/Debug-iphonesimulator/EllieInsel.app "$UDID" shots
 
       - uses: actions/upload-artifact@v4

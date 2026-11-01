@@ -146,7 +146,7 @@ final class AppModel {
             // Höchstens eine Gartenvergabe pro Runde.
             if !d.garden.rewardedRounds.contains(roundID),
                !d.garden.pendingRewards.contains(where: { $0.id == roundID }) {
-                let options = GardenCatalog.rewardOptions(roundID: roundID, owned: d.garden.inventory + d.garden.placed.map(\.item))
+                let options = WorldReward.options(roundID: roundID, data: d)
                 d.garden.pendingRewards.append(PendingReward(id: roundID, game: game, options: options))
             }
         }
@@ -161,7 +161,7 @@ final class AppModel {
             guard let idx = d.garden.pendingRewards.firstIndex(where: { $0.id == reward.id }) else { return }
             d.garden.pendingRewards.remove(at: idx)
             d.garden.rewardedRounds.insert(reward.id)
-            d.garden.inventory.append(item)
+            WorldReward(item).apply(to: &d)
         }
     }
 

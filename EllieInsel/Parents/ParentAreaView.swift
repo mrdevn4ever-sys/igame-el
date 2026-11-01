@@ -342,7 +342,7 @@ private struct PauseSection: View {
                 }
                 .pickerStyle(.inline)
             } footer: {
-                Text("Der Hase schlägt im Hub freundlich eine Pause vor. Ein laufendes Spiel wird nicht unterbrochen.")
+                Text("Printatops schlägt im Hub freundlich eine Pause vor. Ein laufendes Spiel wird nicht unterbrochen.")
             }
         }
     }

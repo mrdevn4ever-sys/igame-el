@@ -85,7 +85,7 @@ private struct WelcomeStep: View {
 
     var body: some View {
         VStack(spacing: 28) {
-            Pic("hase_begleiter", "🐰", size: 150)
+            WorldPic("gw_dino_winken", "🦕", size: 190)
             StepTitle(
                 title: "Ellies Entdeckerinsel",
                 subtitle: "Eine ruhige Spielwelt mit Tieren, Pflanzen, Zahlen und Formen. Wir richten sie zuerst gemeinsam ein – das dauert etwa drei Minuten."
@@ -155,7 +155,7 @@ private struct SoundStep: View {
 
     var body: some View {
         VStack(spacing: 26) {
-            StepTitle(title: "Sprache und Ton", subtitle: "Der Hase spricht Hochdeutsch. Hören Sie sich die Stimme an.")
+            StepTitle(title: "Sprache und Ton", subtitle: "Printatops spricht Hochdeutsch. Hören Sie sich die Stimme an.")
             Button {
                 app.audio.say("Hallo! Schön, dass du da bist. Gemeinsam entdecken wir deine Insel.")
             } label: {
@@ -304,11 +304,11 @@ private struct HandoverStep: View {
         VStack(spacing: 28) {
             HStack(spacing: 24) {
                 Pic(app.data.profile.avatar.asset, app.data.profile.avatar.emoji, size: 110)
-                Pic("hase_begleiter", "🐰", size: 120)
+                WorldPic("gw_dino_zeigen", "🦕", size: 150)
             }
             StepTitle(
                 title: "Jetzt darf \(app.data.profile.name.isEmpty ? "das Kind" : app.data.profile.name) ausprobieren",
-                subtitle: "Der Hase zeigt in einer kleinen Einführung, wie man tippt, zuordnet und zurückfindet."
+                subtitle: "Printatops, der kleine Dino, zeigt in einer kleinen Einführung, wie man tippt, zuordnet und zurückfindet."
             )
             Button("Los geht's") {
                 app.audio.effect(.success)

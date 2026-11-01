@@ -4,7 +4,7 @@ Du erstellst alle Bilder und Klänge für die neue Gartenwelt der iPad-Kinderapp
 Repository: `mrdevn4ever-sys/igame-el`, Branch `claude/ellies-entdeckerinsel`.
 
 **Vollständige Liste mit Dateinamen, Grössen und Beschreibungen:**
-- Bilder: `assets/Gartenwelt.csv` (345 Dateien)
+- Bilder: `assets/Gartenwelt.csv` (358 Dateien)
 - Klänge: `assets/Gartenwelt_Klaenge.csv` (34 Dateien)
 
 Jede Zeile der CSV ist genau eine Datei. Dateinamen exakt übernehmen. Nichts weglassen, nichts umbenennen.

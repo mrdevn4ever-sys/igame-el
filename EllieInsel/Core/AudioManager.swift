@@ -271,6 +271,59 @@ final class AudioManager: NSObject {
         player.play()
     }
 
+    // MARK: - Gartenwelt
+
+    private var sfxPlayers: [String: AVAudioPlayer] = [:]
+    private var tonePlayers: [Double: AVAudioPlayer] = [:]
+
+    /// Spielt einen mitgelieferten Klang (`gw_sfx_…`). Fehlt die Datei, erklingt ein erzeugter Ersatz.
+    /// Während Florian spricht, sind Geräusche leiser.
+    func sfx(_ name: String, fallback: SoundEffect = .tap) {
+        guard settings.effectsAudible else { return }
+        var player = sfxPlayers[name]
+        if player == nil {
+            for ext in ["m4a", "mp3", "wav", "caf"] {
+                if let url = Bundle.main.url(forResource: name, withExtension: ext), let p = try? AVAudioPlayer(contentsOf: url) {
+                    player = p
+                    sfxPlayers[name] = p
+                    break
+                }
+            }
+        }
+        guard let player else {
+            effect(fallback)
+            return
+        }
+        let speaking = synth.isSpeaking || (voicePlayer?.isPlaying ?? false)
+        player.volume = Float(settings.effectsVolume) * (speaking ? 0.4 : 1)
+        player.currentTime = 0
+        player.play()
+    }
+
+    /// Ton einer bestimmten Höhe (Klanggarten). Nutzt eine Aufnahme, falls vorhanden.
+    func tone(_ frequency: Double, file: String? = nil) {
+        guard settings.effectsAudible else { return }
+        if let file, Bundle.main.url(forResource: file, withExtension: "m4a") != nil {
+            sfx(file)
+            return
+        }
+        let player: AVAudioPlayer
+        if let existing = tonePlayers[frequency] {
+            player = existing
+        } else {
+            let data = ToneGenerator.wav(notes: [
+                ToneGenerator.Note(frequency: frequency, start: 0, duration: 0.9, gain: 0.8),
+                ToneGenerator.Note(frequency: frequency * 2, start: 0, duration: 0.5, gain: 0.15)
+            ], length: 1.0, softness: 0.4)
+            guard let p = try? AVAudioPlayer(data: data) else { return }
+            tonePlayers[frequency] = p
+            player = p
+        }
+        player.volume = Float(settings.effectsVolume)
+        player.currentTime = 0
+        player.play()
+    }
+
     // MARK: - Musik
 
     private func updateMusic() {

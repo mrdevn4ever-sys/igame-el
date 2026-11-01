@@ -232,23 +232,30 @@ struct RoundCompleteView: View {
 
             if let reward = host.pendingReward {
                 VStack(spacing: 12) {
-                    Text("Such dir etwas für deinen Garten aus:")
+                    Text("Such dir ein Geschenk für deinen Garten aus:")
                         .font(Theme.rounded(22, .semibold))
                         .foregroundStyle(Theme.darkGreen)
-                    HStack(spacing: 18) {
-                        ForEach(reward.options, id: \.self) { item in
+                    HStack(spacing: 14) {
+                        ForEach(reward.options, id: \.self) { raw in
+                            let r = WorldReward(raw)
                             Button {
                                 app.audio.effect(.snap)
-                                chosen = item
-                                app.claimReward(reward, item: item)
-                                app.audio.say("Das kommt in deinen Garten.")
+                                chosen = raw
+                                app.claimReward(reward, item: raw)
+                                app.audio.say(r.speech)
                             } label: {
-                                Pic(GardenCatalog.asset(item), item, size: 60)
-                                    .frame(width: 104, height: 104)
-                                    .background(RoundedRectangle(cornerRadius: 24).fill(Theme.meadow))
+                                VStack(spacing: 4) {
+                                    WorldPic(r.asset, r.emoji, size: 64)
+                                    Text(r.title).font(Theme.rounded(15, .bold)).lineLimit(2).multilineTextAlignment(.center).minimumScaleFactor(0.7)
+                                    Text(r.preview).font(Theme.rounded(12, .medium)).lineLimit(2).multilineTextAlignment(.center).minimumScaleFactor(0.7).opacity(0.75)
+                                }
+                                .foregroundStyle(Theme.darkGreen)
+                                .padding(8)
+                                .frame(width: 150, height: 150)
+                                .background(RoundedRectangle(cornerRadius: 24).fill(Theme.meadow))
                             }
                             .buttonStyle(PressableStyle())
-                            .accessibilityLabel("Gartenteil \(item)")
+                            .accessibilityLabel(r.title)
                         }
                     }
                     Text("Du kannst auch später im Garten wählen.")
@@ -256,9 +263,10 @@ struct RoundCompleteView: View {
                         .foregroundStyle(Theme.darkGreen.opacity(0.7))
                 }
             } else if let chosen {
+                let r = WorldReward(chosen)
                 HStack(spacing: 10) {
-                    Pic(GardenCatalog.asset(chosen), chosen, size: 50)
-                    Text("wartet in deinem Garten.")
+                    WorldPic(r.asset, r.emoji, size: 54)
+                    Text("\(r.title) wartet in deinem Garten.")
                         .font(Theme.rounded(22, .semibold))
                         .foregroundStyle(Theme.darkGreen)
                 }

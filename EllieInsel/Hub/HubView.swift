@@ -253,7 +253,7 @@ private struct BreakHintView: View {
         ZStack {
             Color.black.opacity(0.25).ignoresSafeArea()
             VStack(spacing: 22) {
-                Text("🐰💤").font(.system(size: 90))
+                Text("🦕💤").font(.system(size: 90))
                 Text("Zeit für eine kleine Pause?")
                     .font(Theme.rounded(32, .heavy))
                     .foregroundStyle(Theme.darkGreen)

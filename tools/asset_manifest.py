@@ -209,6 +209,84 @@ for n, _ in PUZZLE:
 # --- Spiel 12: Atelier ---
 for t in re.findall(r'"[^"]+", "[^"]+", "(Hilf [^"]+)"', src("Games/Atelier/AtelierPaths.swift")): add(t, "Spurenatelier")
 
+# --- Gartenwelt -----------------------------------------------------------------
+GW = os.path.join(SRC, "GardenWorld")
+def gw(f): return open(os.path.join(GW, f), encoding="utf-8").read()
+def enum_strings(text, prop):
+    i = text.index("var " + prop + ": String {")
+    j = text.index("\n    }\n", i)
+    return dict(re.findall(r'case \.(\w+): return "([^"]+)"', text[i:j]))
+LIT2 = re.compile(r'"((?:[^"\\]|\\.)*)"')
+for f in sorted(os.listdir(GW)):
+    if not f.endswith(".swift"): continue
+    for line in open(os.path.join(GW, f), encoding="utf-8"):
+        for lit in LIT2.findall(line):
+            if "\\(" in lit or len(lit) < 4: continue
+            if lit[0].isupper() and lit.rstrip()[-1] in ".!?" and " " in lit:
+                add(lit, "Gartenwelt")
+WM = gw("WorldModel.swift")
+plants = enum_strings(WM, "name")  # erste Aufzählung: Orte haben title, Pflanzen name
+games = enum_strings(open(os.path.join(SRC, "Core", "GameCatalog.swift"), encoding="utf-8").read(), "title")
+areas = enum_strings(WM, "title")
+def enum_block(start):
+    i = WM.index(start)
+    return WM[i:]
+plant_names = enum_strings(enum_block("enum PlantKind"), "name")
+harvest_names = enum_strings(enum_block("enum HarvestItem"), "name")
+build_names = enum_strings(enum_block("enum BuildKind"), "name")
+build_acc = enum_strings(enum_block("enum BuildKind"), "accusativeName")
+build_def = enum_strings(enum_block("enum BuildKind"), "definiteName")
+find_names = enum_strings(enum_block("enum FindItem"), "name")
+res_names = enum_strings(enum_block("enum Resident"), "name")
+res_art = enum_strings(enum_block("enum Resident"), "article") if "var article: String" in WM else {}
+piece_names = enum_strings(enum_block("enum WaterPiece"), "name")
+boat_names = enum_strings(enum_block("enum BoatKind"), "name")
+dish_names = enum_strings(enum_block("enum DishKind"), "name")
+chime_names = enum_strings(enum_block("enum ChimeKind"), "name")
+reaction_names = enum_strings(enum_block("enum FantasyReaction"), "name")
+A = "Gartenwelt"
+for g in games.values(): add(f"Ein Geschenk aus {g} wartet auf dich.", A)
+for a in areas.values(): add(f"Weiter geht es: {a}. Schau auf der Karte.", A)
+for r in range(1, 5):
+    for c in range(1, 7): add(f"Hier fehlt noch ein Stück: Reihe {r}, Feld {c}.", A)
+for k in build_def.values(): add(f"Wo soll {k} stehen? Tippe auf einen leuchtenden Platz.", A)
+for k in build_acc.values():
+    add(f"Ein Bausatz für {k}. Den baust du in der Werkstatt.", A)
+    add(f"Wir bauen {k}. Tippe auf die Teile, dann kommen sie an ihren Platz.", A)
+for k in build_names.values(): add(f"{k} hast du schon gebaut.", A)
+for k in ["eine bunte Feder", "eine Muschel", "einen Glücksstein", "eine Eichel", "ein leeres Schneckenhaus", "ein goldenes Blatt", "einen Tannzapfen", "eine Flaschenpost"]:
+    add(f"Das Eichhörnchen bringt dir {k}. Das kannst du in der Werkstatt verwenden.", A)
+add("Du brauchst zuerst eine Karotte. Pflanze sie im Beet und ernte sie.", A)
+for b in boat_names.values():
+    add(f"Das {b} ist im Teich angekommen!", A)
+    add(f"Ein {b} für deinen Bach.", A)
+for r in reaction_names.values(): add(f"Deine Fantasieblume {r}!", A)
+add("Es kommt ein Gast.", A)
+for n in (2, 3, 4): add(f"Es kommen {WORDS[n]} Gäste.", A)
+for p in plant_names.values(): add(f"{p}-Samen. Die kannst du im Garten pflanzen.", A)
+for w_ in piece_names.values(): add(f"{w_} für deinen Bach.", A)
+for c in chime_names.values(): add(f"Ein Klangding: {c}.", A)
+for d in dish_names.values():
+    add(f"Fertig! {d}. Du kannst damit ein Picknick machen oder es jemandem bringen.", A)
+    add(f"Gekocht: {d}.", A)
+    add(f"Das hast du in der Küche zubereitet: {d}.", A)
+# Zutatenhinweise wie in der Küche
+DK = enum_block("enum DishKind")
+ing_block = DK[DK.index("var ingredients"):DK.index("var finishing")]
+labels = {"anyFruit": "Obst", "anyFlower": "Blume"}
+for case, body in re.findall(r'case \.(\w+): return (.+)', ing_block):
+    items = re.findall(r'\.item\(\.(\w+)\)|\.(anyFruit|anyFlower)', body)
+    need = []
+    for it, anyk in items:
+        lab = labels.get(anyk) if anyk else harvest_names.get(it, it)
+        if lab not in need: need.append(lab)
+    if need: add(f"Dafür brauchst du: {', '.join(need)}. Ernte es zuerst im Garten.", A)
+for p in plant_names.values(): add(f"Das war deine erste Ernte: {p}.", A)
+for a in areas.values(): add(f"Hier hast du {a} entdeckt.", A)
+for key, n in res_names.items():
+    art = res_art.get(key, "der")
+    add(f"{art[:1].upper() + art[1:]} {n} ist bei dir eingezogen.", A)
+
 # --- Ausgabe Sprache ---
 os.makedirs(os.path.join(ROOT, "assets"), exist_ok=True)
 rows = sorted(((slug(t) + ".m4a", t, a) for t, a in lines.items()), key=lambda r: (r[2], r[0]))

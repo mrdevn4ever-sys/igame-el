@@ -44,13 +44,16 @@ Die App setzt längere Ansagen aus diesen Sätzen zusammen. Beispiel: «Zwei Äp
 2. Für alle 1064 Dateien **dieselbe Stimme mit denselben Einstellungen**. Sie werden direkt hintereinander abgespielt und müssen nahtlos zusammenpassen.
 3. **Sprache:** Hochdeutsch (de-DE oder eine neutrale de-CH-Hochdeutsch-Stimme), keine Mundart.
    Die Schreibweise ist schweizerisch (immer «ss», nie «ß»), gesprochen wird normales Hochdeutsch («gross» = «groß»).
-4. **Charakter:** Das ist der Hase, der dem Kind hilft: warm, ruhig, freundlich, geduldig, leicht lächelnd.
-   Er klingt nie hektisch, nie übertrieben kindlich, nie wie Werbung. Eine weibliche oder männliche Stimme ist beides in Ordnung, aber es muss **eine** sein.
+4. **Stimme (festgelegt): Microsoft Azure Neural TTS, `de-DE-FlorianMultilingualNeural` («Florian»), Sprache `de-DE`.**
+   Florian spricht Printatops, den kleinen grünen Dino, der dem Kind hilft: warm, ruhig, freundlich, geduldig, leicht lächelnd.
+   Er klingt nie hektisch, nie übertrieben kindlich, nie wie Werbung. Alle Dateien mit derselben Stimme und denselben Einstellungen.
+   Empfohlenes SSML pro Zeile: `<speak version="1.0" xml:lang="de-DE"><voice name="de-DE-FlorianMultilingualNeural"><prosody rate="-12%">TEXT</prosody></voice></speak>`
+   Ausgabeformat bei Azure: `audio-24khz-96kbitrate-mono-mp3` oder `riff-24khz-16bit-mono-pcm`, danach nach `.m4a` (AAC, mono) umwandeln.
 5. **Tempo:** eher langsam, etwa 10–15 % langsamer als normale Erzählgeschwindigkeit. **Zahlwörter** («eins», «zwei», «sieben») besonders deutlich.
    «eins» ist das Zahlwort zum Zählen, nicht «ein».
 6. **Betonung:** Fragen («Wie viele sind es?») klingen wie Fragen. Lob («Super!», «Geschafft!») klingt herzlich, aber nicht schrill.
 7. Einzelne Wörter wie «drei», «Fuchs» oder «Blatt» werden beim Zählen und Benennen einzeln abgespielt. Sie bekommen eine **neutrale, abschliessende** Betonung.
-8. Zeilen mit «Mjam!», «Muuuuh!», «Kikeriki!» usw. spricht der Hase **verspielt nach**. Das ist keine echte Tieraufnahme.
+8. Zeilen mit «Mjam!», «Muuuuh!», «Kikeriki!» usw. spricht Florian **verspielt nach**. Das ist keine echte Tieraufnahme.
 9. «Fertig» in einem Text ist der Name eines Knopfes und wird ganz normal «Fertig» gesprochen.
 
 **Werkzeug:** Eine hochwertige neuronale Sprachsynthese mit deutscher Stimme (z. B. ElevenLabs, Azure Neural TTS, Google Cloud TTS oder OpenAI TTS).
@@ -181,3 +184,11 @@ Gleicher Stil, gleiche Stimme, gleiche technischen Vorgaben wie oben. Zusätzlic
 - **Naturpaare (`natur_*`)**: Orte (Bienenstock, Fuchsbau, Höhle) als runde Vignette wie die bestehenden Lebensräume; Pflanzen eindeutig an Frucht/Blatt erkennbar (Eiche mit Eicheln, Löwenzahn mit gelber Blüte, Kartoffelpflanze mit Knollen an der Wurzel).
 
 Abschlussprüfung wie gehabt: `python3 tools/check_assets.py` (prüft die vollständige Liste inklusive Nachlieferungen).
+
+
+### Nachlieferung 3: Gartenwelt und Printatops (563 Sätze)
+
+Datei: `assets/Sprachaufnahmen_Nachlieferung_3.csv`. Gleiche Stimme (Florian), gleiche Einstellungen, gleicher Ordner `EllieInsel/Audio/`.
+Enthält alle Sätze der neuen Gartenwelt (Pflanzen, Ernte, Küche, Werkstatt, Bewohner, Abenteuer, Erinnerungsbuch) und die Sätze, in denen
+jetzt Printatops statt des Hasen vorkommt. «Printatops» wird «Prin-ta-tops» gesprochen, Betonung auf der ersten Silbe.
+Die vollständige Liste aller Sätze steht weiterhin in `assets/Sprachaufnahmen.csv`.

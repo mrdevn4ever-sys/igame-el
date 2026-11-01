@@ -64,9 +64,9 @@ struct MathTask: Codable, Equatable {
         case (.minus, true):
             return "\(A) \(a == 1 ? "sitzt" : "sitzen") auf dem Blatt. \(B) \(b == 1 ? "fliegt" : "fliegen") weg. Wie viele bleiben?"
         case (.minus, false):
-            return "\(A) \(a == 1 ? "liegt" : "liegen") im Korb. Der Hase nimmt \(motif.accusative(b)) heraus. Wie viele bleiben?"
+            return "\(A) \(a == 1 ? "liegt" : "liegen") im Korb. Printatops nimmt \(motif.accusative(b)) heraus. Wie viele bleiben?"
         default:
-            return "\(A) \(a == 1 ? "liegt" : "liegen") im Korb. Der Hase bringt \(motif.accusative(b)) dazu. Wie viele sind es jetzt?"
+            return "\(A) \(a == 1 ? "liegt" : "liegen") im Korb. Printatops bringt \(motif.accusative(b)) dazu. Wie viele sind es jetzt?"
         }
     }
 

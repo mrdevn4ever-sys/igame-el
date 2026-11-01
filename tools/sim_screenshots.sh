@@ -14,8 +14,10 @@ REPORT="$OUT/bericht.txt"
 codesign --force --deep --sign - "$APP" 2>&1 | tee -a "$REPORT"
 xcrun simctl install "$UDID" "$APP" 2>&1 | tee -a "$REPORT"
 
+ONLY="${ONLY:-}"   # optional: nur Durchläufe, deren Name dieses Muster enthält (z. B. «garten»)
 run() {  # run <name> <wartezeit> <zwischenbild-nach> <args...>
   local name="$1" wait="$2" mid="$3"; shift 3
+  if [ -n "$ONLY" ] && ! echo "$name" | grep -qE "$ONLY"; then return; fi
   xcrun simctl terminate "$UDID" "$BUNDLE" >/dev/null 2>&1
   local pid
   pid=$(xcrun simctl launch "$UDID" "$BUNDLE" -demo "$@" 2>>"$OUT/logs/$name.launch" | awk -F': ' '{print $2}')
@@ -101,6 +103,27 @@ run 110_memory_stufe4 6 0 -screen game -game memory -level 4
 run 111_animalSounds_stufe5_bild 8 0 -screen game -game animalSounds -level 5
 run 112_naturePairs_runde 40 0 -screen game -game naturePairs -level 3 -autoplay
 run 113_garten_bilder 5 0 -screen garden
+
+# Gartenwelt: alle Orte, Abend, Überlagerungen und ein automatischer Durchlauf
+run 120_garten_start 7 0 -screen garden -world start
+run 121_garten_haus_mitte 6 0 -screen garden -world mitte -area haus
+run 122_garten_haus_voll 6 0 -screen garden -world voll -area haus
+run 123_garten_haus_abend 6 0 -screen garden -world voll -area haus -abend
+run 124_garten_bach 6 0 -screen garden -world voll -area bach
+run 125_garten_lichtung 6 0 -screen garden -world voll -area lichtung
+run 126_garten_baumhaus 6 0 -screen garden -world voll -area baumhaus
+run 127_garten_wunder 6 0 -screen garden -world voll -area wunder
+run 128_garten_bach_mitte 6 0 -screen garden -world mitte -area bach
+run 130_garten_kueche 6 0 -screen garden -world voll -overlay kitchen
+run 131_garten_werkstatt 6 0 -screen garden -world voll -overlay workshop
+run 132_garten_karte 6 0 -screen garden -world mitte -overlay map
+run 133_garten_buch 6 0 -screen garden -world voll -overlay book
+run 134_garten_samen 6 0 -screen garden -world voll -overlay seeds
+run 135_garten_picknick 6 0 -screen garden -world voll -overlay picnic
+run 136_garten_lichtspiel 6 0 -screen garden -world voll -overlay light
+run 137_garten_fantasie 6 0 -screen garden -world voll -overlay fantasy
+run 138_garten_fest 6 0 -screen garden -world voll -overlay fest
+run 139_garten_durchlauf 75 30 -screen garden -world start -gardenplay
 
 # Absturzberichte einsammeln
 mkdir -p "$OUT/crashes"

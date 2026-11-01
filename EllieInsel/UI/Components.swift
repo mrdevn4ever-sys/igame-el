@@ -57,14 +57,14 @@ struct PressableStyle: ButtonStyle {
     }
 }
 
-/// Der Hase als Begleiter mit Sprechblase.
+/// Printatops, der grüne Dino, als Begleiter mit Sprechblase.
 struct BunnyView: View {
     var message: String?
     var size: CGFloat = 64
 
     var body: some View {
         HStack(alignment: .bottom, spacing: 8) {
-            Pic("hase_begleiter", "🐰", size: size)
+            WorldPic("gw_dino_stehen", "🦕", size: size * 1.25)
             if let message {
                 Text(message)
                     .font(Theme.rounded(22, .semibold))

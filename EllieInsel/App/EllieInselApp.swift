@@ -49,7 +49,7 @@ struct RootView: View {
                     .id(game)
                     .transition(.opacity)
             case .garden:
-                GardenView()
+                GardenWorldView()
                     .transition(.opacity)
             case .gallery:
                 GalleryView()

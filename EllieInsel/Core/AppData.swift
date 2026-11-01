@@ -29,6 +29,7 @@ struct AppData: Codable {
     var practicedItems: [String: [String]] = [:]
 
     var garden = GardenData()
+    var world = WorldData()
 
     // Automatische Anpassung
     var skills: [String: SkillState] = [:]
@@ -78,6 +79,7 @@ struct AppData: Codable {
         roundsCompleted = (try? c.decode([String: Int].self, forKey: .roundsCompleted)) ?? d.roundsCompleted
         practicedItems = (try? c.decode([String: [String]].self, forKey: .practicedItems)) ?? d.practicedItems
         garden = (try? c.decode(GardenData.self, forKey: .garden)) ?? d.garden
+        world = (try? c.decode(WorldData.self, forKey: .world)) ?? d.world
         skills = (try? c.decode([String: SkillState].self, forKey: .skills)) ?? d.skills
         adaptiveOff = (try? c.decode(Set<String>.self, forKey: .adaptiveOff)) ?? d.adaptiveOff
     }
