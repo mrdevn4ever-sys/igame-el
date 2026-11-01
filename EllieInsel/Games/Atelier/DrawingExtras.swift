@@ -6,11 +6,14 @@ import PencilKit
 /// Glitzerfarben: ein eigener Grundton für den Strich, darüber funkelnde Pünktchen.
 /// Die Grundtöne sind bewusst eigene Werte, damit Glitzerstriche in der Zeichnung erkennbar bleiben.
 enum Glitter: String, CaseIterable, Codable {
-    case gold, silber, rosa, pink, rosegold, rot, lila, blau, tuerkis, gruen, regenbogen, perlmutt
+    // Reihenfolge wie in der Leiste: Regenbogenfarben, dann Rosa/Pink, dann Metallisches
+    case rot, orange, gelb, gruen, tuerkis, blau, lila, rosa, pink, gold, silber, rosegold, perlmutt, regenbogen
 
     var name: String {
         switch self {
         case .gold: return "Goldglitzer"
+        case .orange: return "Orangeglitzer"
+        case .gelb: return "Gelbglitzer"
         case .silber: return "Silberglitzer"
         case .rosa: return "Rosaglitzer"
         case .pink: return "Pinkglitzer"
@@ -28,6 +31,8 @@ enum Glitter: String, CaseIterable, Codable {
     var rgb: (Double, Double, Double) {
         switch self {
         case .gold: return (0.851, 0.647, 0.129)
+        case .orange: return (0.973, 0.494, 0.071)
+        case .gelb: return (0.988, 0.886, 0.098)
         case .silber: return (0.702, 0.722, 0.769)
         case .rosa: return (0.957, 0.612, 0.788)
         case .pink: return (0.871, 0.161, 0.553)
