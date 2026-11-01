@@ -190,7 +190,7 @@ private struct GamesSection: View {
     var body: some View {
         Form {
             Section {
-                Text("Jedes Spiel hat einen Apfelbaum: ein Apfel pro Niveau. Mit «Automatisch» passt sich das Niveau nach jeder Runde an – nach oben, wenn fast alles sicher und zügig gelingt, nach unten, wenn es zu schwer wird. Eine Änderung gilt immer erst ab der nächsten Runde.")
+                Text("Jedes Spiel hat einen Apfelbaum: ein Apfel pro Niveau. Mit «Automatisch» passt sich das Niveau nach jeder Runde an – eine Stufe nach oben nach jeder geschafften Runde (keine Aufgabe nur mit viel Hilfe und mindestens die Hälfte ohne Fehler), nach unten, wenn es zu schwer wird. Eine Änderung gilt immer erst ab der nächsten Runde.")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }

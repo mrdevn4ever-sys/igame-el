@@ -22,7 +22,7 @@ Alternativ lässt sich das Projekt mit [XcodeGen](https://github.com/yonaskolb/X
 | Erster Start | 6-stufige Einrichtung (Begrüssung, Profil + Tieravatar, Sprache & Ton mit Hörprobe, Startniveau, 6-stelliger Elterncode, Übergabe), setzt beim offenen Schritt fort |
 | Einführung | Antippen (Schmetterling), Zuordnen (Apfel → Korb, ziehen oder tippen), Zurückfinden (Haus). «Später» überspringt |
 | Hub | 2 Seiten à 6 Kacheln mit festen Positionen, Querformat 3×2 / Hochformat 2×3, Pfeil «Mehr Spiele» + Wischen, «Weiterspielen», Ton-Schalter, Elternzugang, «Mein Garten» |
-| Spielrahmen | Haus (speichert automatisch), Anweisung nochmals hören, Hilfe in drei Stufen (Hinweis → Vorzeigen → gemeinsam lösen), Neustart nur mit Bestätigung, «Weiter», Rundenabschluss mit «Nochmals» / «Andere Spiele» |
+| Spielrahmen | Haus (speichert automatisch), Anweisung nochmals hören, Hilfe in drei Stufen (Hinweis → Vorzeigen → gemeinsam lösen), Neustart nur mit Bestätigung, «Weiter», Rundenabschluss mit «Weiter» (nächste Runde auf dem aktuellen Niveau) / «Andere Spiele» |
 | Spiele | 1 Zahlen nachzeichnen · 2 Apfel-Rechnen · 3 Tier-Memory · 4 Garten-Snake · 5 Zählgarten · 6 Formenhaus · 7 Sortiergarten · 8 Musterzug · 9 Tierstimmen · 10 Naturpaare · 11 Tierpuzzle · 12 Spurenatelier & freies Malen (PencilKit, Galerie) |
 | Schwierigkeit | Entdecken / Üben / Knobeln je Spiel, wirksam ab der nächsten Runde |
 | Garten | 12 Startdekorationen, nach jeder Runde höchstens eine Belohnung (1 aus 3, auch später wählbar), Platzieren per Tippen oder Halten+Ziehen, Verschieben, Rückgängig, Zurück in den Vorrat |

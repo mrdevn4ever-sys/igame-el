@@ -269,7 +269,13 @@ struct RoundCompleteView: View {
                     app.audio.effect(.tap)
                     host.startNewRound()
                 } label: {
-                    Label("Nochmals", systemImage: "arrow.clockwise")
+                    if let outcome = host.levelOutcome, outcome.to > outcome.from {
+                        Label("Weiter zu Niveau \(outcome.to)", systemImage: "arrow.right.circle.fill")
+                            .labelStyle(TrailingIconLabelStyle())
+                    } else {
+                        Label("Weiter", systemImage: "arrow.right.circle.fill")
+                            .labelStyle(TrailingIconLabelStyle())
+                    }
                 }
                 .buttonStyle(BigButtonStyle(color: Theme.success))
 

@@ -237,7 +237,7 @@ final class GameHost {
         app.clearGame(game)
     }
 
-    /// Neue Runde (nach «Nochmals» oder bestätigtem Neustart). Übernimmt eine geänderte Schwierigkeit.
+    /// Neue Runde (nach «Weiter» oder bestätigtem Neustart). Startet immer auf dem aktuellen Niveau.
     func startNewRound() {
         completeTask?.cancel()
         roundID = UUID().uuidString
