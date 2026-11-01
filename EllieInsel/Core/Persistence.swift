@@ -8,7 +8,7 @@ struct Artwork: Codable, Identifiable, Equatable {
     var created = Date()
     var modified = Date()
     var background: String
-    /// Bearbeitbare Striche (PencilKit-Datenrepräsentation).
+    /// Bearbeitbares Bild (PaintDoc als JSON; ältere Bilder: PencilKit-Daten).
     var drawing: Data
     /// PNG-Vorschau.
     var thumbnail: Data

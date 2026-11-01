@@ -1,5 +1,4 @@
 import SwiftUI
-import PencilKit
 
 // MARK: - Farben
 
@@ -158,17 +157,12 @@ enum FloodFill {
 
     /// Bestimmt die zusammenhängende Fläche am Punkt (begrenzt durch gemalte Linien und den Rand)
     /// und liefert sie als waagrechte Streifen.
-    static func runs(drawing: PKDrawing, size: CGSize, at point: CGPoint, step: Int = 3) -> [Run] {
+    static func runs(image: UIImage?, size: CGSize, at point: CGPoint, step: Int = 3) -> [Run] {
         let w = Int(size.width.rounded()), h = Int(size.height.rounded())
         let px = Int(point.x), py = Int(point.y)
         guard w > 10, h > 10, px >= 0, py >= 0, px < w, py < h else { return [] }
-
-        var image = UIImage()
-        UITraitCollection(userInterfaceStyle: .light).performAsCurrent {
-            image = drawing.image(from: CGRect(x: 0, y: 0, width: CGFloat(w), height: CGFloat(h)), scale: 1)
-        }
         var buf = [UInt8](repeating: 0, count: w * h * 4)
-        if let cg = image.cgImage {
+        if let cg = image?.cgImage {
             buf.withUnsafeMutableBytes { raw in
                 guard let ctx = CGContext(data: raw.baseAddress, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4,
                                           space: CGColorSpaceCreateDeviceRGB(),
@@ -229,26 +223,6 @@ enum FloodFill {
         }
         return runs
     }
-
-    /// Streifen als gleichmässig breite Striche (liegen über der Zeichnung und bleiben bearbeitbar).
-    static func strokes(_ runs: [Run], color: UIColor, step: Int = 3, rainbow: Bool = false) -> [PKStroke] {
-        let width = CGFloat(step) + 1.6
-        let plain = PKInk(.monoline, color: color)
-        let top = runs.map(\.y).min() ?? 0
-        let bottom = runs.map(\.y).max() ?? 1
-        let band = max((bottom - top) / 6, 1)
-        return runs.map { r in
-            let ink = rainbow ? PKInk(.monoline, color: Glitter.rainbowColor(min(Int((r.y - top) / band), 5))) : plain
-            let x0 = r.x0 - 1, x1 = r.x1 + 1
-            let n = max(2, Int((x1 - x0) / 30) + 2)
-            let points = (0..<n).map { k -> PKStrokePoint in
-                let t = CGFloat(k) / CGFloat(n - 1)
-                return PKStrokePoint(location: CGPoint(x: x0 + (x1 - x0) * t, y: r.y), timeOffset: TimeInterval(t) * 0.1,
-                                     size: CGSize(width: width, height: width), opacity: 1, force: 1, azimuth: 0, altitude: .pi / 2)
-            }
-            return PKStroke(ink: ink, path: PKStrokePath(controlPoints: points, creationDate: Date()))
-        }
-    }
 }
 
 // MARK: - Glitzer
@@ -259,39 +233,6 @@ struct Sparkle {
     var phase: Double
     var color: Color
     var star: Bool
-}
-
-enum GlitterField {
-    /// Funken entlang aller Glitzerstriche (gleich bleibend, damit nichts springt).
-    static func sparkles(for drawing: PKDrawing, limit: Int = 4000) -> [Sparkle] {
-        var out: [Sparkle] = []
-        var rng = SeededGenerator(seed: 4711)
-        for stroke in drawing.strokes {
-            guard let g = Glitter.match(stroke.ink.color) else { continue }
-            let colors = g.sparkleColors
-            for pt in stroke.path.interpolatedPoints(by: .distance(6)) {
-                let width = max(pt.size.width, 3)
-                let expected = 6 * width / 45
-                var n = Int(expected)
-                if Double.random(in: 0..<1, using: &rng) < expected - Double(n) { n += 1 }
-                guard n > 0 else { continue }
-                let center = pt.location.applying(stroke.transform)
-                for _ in 0..<n {
-                    let dx = CGFloat.random(in: -0.45...0.45, using: &rng) * width
-                    let dy = CGFloat.random(in: -0.45...0.45, using: &rng) * width
-                    out.append(Sparkle(
-                        p: CGPoint(x: center.x + dx, y: center.y + dy),
-                        r: CGFloat.random(in: 1.0...2.6, using: &rng),
-                        phase: Double.random(in: 0..<(2 * .pi), using: &rng),
-                        color: colors.randomElement(using: &rng) ?? .white,
-                        star: Int.random(in: 0..<9, using: &rng) == 0
-                    ))
-                    if out.count >= limit { return out }
-                }
-            }
-        }
-        return out
-    }
 }
 
 /// Zeichnet die Funken für einen Zeitpunkt.
@@ -317,17 +258,6 @@ struct GlitterCanvas: View {
             }
         }
         .allowsHitTesting(false)
-    }
-}
-
-/// Funkelnde Ebene über der Zeichenfläche.
-struct GlitterOverlay: View {
-    let sparkles: [Sparkle]
-
-    var body: some View {
-        // Ruhiger Glitzer: feste Funken, kein Dauerflackern.
-        GlitterCanvas(sparkles: sparkles, time: 0)
-            .allowsHitTesting(false)
     }
 }
 

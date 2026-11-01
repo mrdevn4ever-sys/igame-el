@@ -1,5 +1,4 @@
 import SwiftUI
-import PencilKit
 
 struct AtelierState: Codable {
     enum Mode: String, Codable { case paths, free }
@@ -117,10 +116,15 @@ private struct FreeDrawingView: View {
                 let h = w * 3 / 4
                 ZStack(alignment: .topLeading) {
                     CanvasBackgroundView(background: model.background)
-                    PencilCanvas(drawing: $model.drawing, revision: model.drawingRevision, tool: model.pkTool) { d in
-                        model.strokeFinished(d)
-                    }
-                    GlitterOverlay(sparkles: model.sparkles)
+                    PaintCanvas(layer: model.layer, live: model.liveOp, scale: model.paintScale)
+                        .frame(width: w, height: h)
+                        .contentShape(Rectangle())
+                        .gesture(
+                            DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                                .onChanged { v in model.paintDrag(v.location) }
+                                .onEnded { _ in model.paintEnd() },
+                            including: model.tool == .pen || model.tool == .eraser ? .all : .subviews
+                        )
                     if model.tool == .fill || model.tool == .sticker {
                         // Fängt Tipper ab: füllen bzw. Sticker aufkleben
                         Color.clear
@@ -309,13 +313,15 @@ final class AtelierModel {
     // Freies Malen
     enum DrawTool { case pen, fill, sticker, eraser }
     struct Snapshot {
-        var drawing: PKDrawing
+        var ops: [PaintOp]
         var stickers: [PlacedSticker]
     }
-    var drawing = PKDrawing()
-    /// Erhöht sich, wenn das Modell die Zeichnung ersetzt (Rückgängig, Füllen, Laden …).
-    /// Nur dann übernimmt die Zeichenfläche den Stand des Modells.
-    var drawingRevision = 0
+    /// Das Bild als Liste von Malaktionen (Koordinaten in der Referenzbreite `doc.width`)
+    var doc = PaintDoc(width: 800)
+    /// Fertig gerendertes Bild aller Aktionen in Zeichenflächengrösse
+    var layer: UIImage?
+    /// Strich, der gerade entsteht
+    var liveOp: PaintOp?
     var background: CanvasBackground = .leer
     var ink: InkChoice = .plain(.blue)
     var width: CGFloat = 14
@@ -323,11 +329,9 @@ final class AtelierModel {
     var stickers: [PlacedSticker] = []
     var selectedSticker = StickerCatalog.all[0]
     var stickerSizeIndex = 1
-    var sparkles: [Sparkle] = []
     var artworkID: UUID?
     @ObservationIgnored private var draggingSticker: UUID?
     @ObservationIgnored private var undoStack: [Snapshot] = []
-    @ObservationIgnored private var lastCommitted = PKDrawing()
     @ObservationIgnored private var canvasWidth: Double = 0
     var canUndo = false
 
@@ -340,15 +344,9 @@ final class AtelierModel {
         return AtelierPaths.all.first { $0.id == id }
     }
 
-    var pkTool: PKTool {
-        if tool == .eraser { return PKEraserTool(.bitmap) }
-        // Gleichmässige Linienbreite, unabhängig vom Tempo
-        let mono = PKInkingTool.InkType.monoline
-        if mono.validWidthRange.contains(width) {
-            return PKInkingTool(mono, color: ink.uiColor, width: width)
-        }
-        return PKInkingTool(.pen, color: ink.uiColor, width: width)
-    }
+    /// Faktor von Bildkoordinaten zur aktuellen Zeichenfläche
+    var paintScale: CGFloat { CGFloat(canvasWidth > 0 ? canvasWidth / max(doc.width, 1) : 1) }
+    var canvasSize: CGSize { CGSize(width: canvasWidth, height: canvasWidth * 3 / 4) }
 
     var spec: LevelCatalog.AtelierSpec { LevelCatalog.atelier(host.level) }
 
@@ -392,14 +390,10 @@ final class AtelierModel {
             case .free:
                 artworkID = saved.artworkID
                 background = saved.background
-                if let data = saved.drawing, let d = try? PKDrawing(data: data) {
-                    drawing = d
-                    drawingRevision += 1
-                    lastCommitted = d
-                }
-                stickers = saved.stickers ?? []
                 canvasWidth = saved.canvasWidth ?? 0
-                refreshSparkles()
+                doc = PaintDoc.decode(saved.drawing, fallbackWidth: canvasWidth)
+                stickers = saved.stickers ?? []
+                rerender()
                 host.setInstruction("Male weiter. Tippe auf «Fertig», wenn dein Bild fertig ist.")
             case .none:
                 chooseInstruction()
@@ -426,11 +420,10 @@ final class AtelierModel {
             pathIndex = 0
             loadPath(keeping: nil)
         case .free:
-            drawing = PKDrawing()
-            drawingRevision += 1
-            lastCommitted = drawing
+            doc = PaintDoc(width: canvasWidth > 0 ? canvasWidth : 800)
+            layer = nil
+            liveOp = nil
             stickers = []
-            sparkles = []
             artworkID = nil
             undoStack = []
             canUndo = false
@@ -454,7 +447,7 @@ final class AtelierModel {
         state.pathIndex = pathIndex
         state.progress = mode == .paths ? progress : nil
         state.artworkID = artworkID
-        state.drawing = mode == .free ? drawing.dataRepresentation() : nil
+        state.drawing = mode == .free ? doc.encoded() : nil
         state.background = background
         state.canvasWidth = canvasWidth
         state.stickers = mode == .free ? stickers : nil
@@ -519,96 +512,72 @@ final class AtelierModel {
     func canvasWidthChanged(_ w: CGFloat) {
         let newWidth = Double(w)
         guard newWidth > 0 else { return }
-        if canvasWidth > 0, abs(canvasWidth - newWidth) > 1, !drawing.strokes.isEmpty {
-            // Nach einer Drehung die Zeichnung an die neue Fläche anpassen.
-            let s = newWidth / canvasWidth
-            drawing = drawing.transformed(using: CGAffineTransform(scaleX: s, y: s))
-            drawingRevision += 1
-            lastCommitted = drawing
-            undoStack = []
-            canUndo = false
-            refreshSparkles()
+        if doc.ops.isEmpty { doc.width = newWidth }
+        if abs(canvasWidth - newWidth) > 0.5 || layer == nil {
+            // Nach einer Drehung einfach neu zeichnen; die Koordinaten skalieren mit.
+            canvasWidth = newWidth
+            rerender()
         }
-        canvasWidth = newWidth
     }
 
-    var isBlank: Bool { drawing.strokes.isEmpty && stickers.isEmpty }
+    var isBlank: Bool { doc.ops.isEmpty && stickers.isEmpty }
 
     private func pushUndo() {
-        undoStack.append(Snapshot(drawing: lastCommitted, stickers: stickers))
+        undoStack.append(Snapshot(ops: doc.ops, stickers: stickers))
         if undoStack.count > 40 { undoStack.removeFirst() }
         canUndo = true
     }
 
-    func strokeFinished(_ d: PKDrawing) {
-        guard d != lastCommitted else { return }
+    /// Ganzes Bild neu rendern (nach Laden, Drehen, Rückgängig).
+    private func rerender() {
+        guard canvasWidth > 0 else { return }
+        layer = doc.ops.isEmpty ? nil : PaintRenderer.render(doc.ops, base: nil, size: canvasSize, scale: paintScale)
+    }
+
+    /// Eine fertige Aktion übernehmen: nur sie wird auf das bestehende Bild gezeichnet.
+    private func commit(_ op: PaintOp) {
         pushUndo()
-        var d = d
-        if tool == .pen, d.strokes.count > lastCommitted.strokes.count {
-            // Neue Striche auf die gewählte Breite bringen (schnelles Malen machte sie sonst dicker).
-            var fresh: [PKStroke] = []
-            for i in lastCommitted.strokes.count..<d.strokes.count {
-                let s = uniform(d.strokes[i], width: width)
-                // Regenbogenglitzer: der Strich wird in Farbabschnitte geteilt
-                fresh += ink == .glitter(.regenbogen) ? rainbowSegments(s) : [s]
-            }
-            d.strokes = Array(d.strokes.prefix(lastCommitted.strokes.count)) + fresh
-            drawing = d
-            drawingRevision += 1
-        }
-        lastCommitted = d
-        if d.strokes.contains(where: { Glitter.match($0.ink.color) != nil }) || !sparkles.isEmpty {
-            refreshSparkles(d)
-        }
+        doc.ops.append(op)
+        layer = PaintRenderer.render([op], base: layer, size: canvasSize, scale: paintScale) ?? layer
         save()
     }
 
-    /// Teilt einen Strich in Abschnitte von etwa 45 Punkten Länge, jeder in der nächsten Regenbogenfarbe.
-    private func rainbowSegments(_ s: PKStroke) -> [PKStroke] {
-        let pts = Array(s.path)
-        guard pts.count > 2 else { return [s] }
-        var result: [PKStroke] = []
-        var current: [PKStrokePoint] = [pts[0]]
-        var length: CGFloat = 0
-        var band = 0
-        for i in 1..<pts.count {
-            current.append(pts[i])
-            length += hypot(pts[i].location.x - pts[i - 1].location.x, pts[i].location.y - pts[i - 1].location.y)
-            if length >= 45 || i == pts.count - 1 {
-                let ink = PKInk(.monoline, color: Glitter.rainbowColor(band))
-                result.append(PKStroke(ink: ink, path: PKStrokePath(controlPoints: current, creationDate: s.path.creationDate),
-                                       transform: s.transform, mask: s.mask))
-                band += 1
-                length = 0
-                current = [pts[i]]
-            }
+    // MARK: Malen mit dem Finger
+
+    func paintDrag(_ p: CGPoint) {
+        guard tool == .pen || tool == .eraser, canvasWidth > 0 else { return }
+        let s = paintScale
+        let q = CGPoint(x: p.x / s, y: p.y / s)
+        if liveOp == nil {
+            let (r, g, b, gl) = PaintOp.ink(ink)
+            liveOp = PaintOp(kind: tool == .eraser ? .erase : .line, r: r, g: g, b: b,
+                             glitter: tool == .eraser ? nil : gl,
+                             width: Double((tool == .eraser ? max(width, 24) : width) / s),
+                             pts: [Double(q.x), Double(q.y)], seed: UInt64.random(in: 1...UInt64.max))
+            return
         }
-        return result
+        guard var op = liveOp else { return }
+        let n = op.pts.count
+        let last = CGPoint(x: op.pts[n - 2], y: op.pts[n - 1])
+        guard hypot(q.x - last.x, q.y - last.y) >= 1.2 / s else { return }
+        op.pts += [Double(q.x), Double(q.y)]
+        liveOp = op
     }
 
-    private func uniform(_ s: PKStroke, width: CGFloat) -> PKStroke {
-        let points = s.path.map { p in
-            PKStrokePoint(location: p.location, timeOffset: p.timeOffset, size: CGSize(width: width, height: width),
-                          opacity: 1, force: 1, azimuth: p.azimuth, altitude: p.altitude)
-        }
-        return PKStroke(ink: s.ink, path: PKStrokePath(controlPoints: points, creationDate: s.path.creationDate),
-                        transform: s.transform, mask: s.mask)
+    func paintEnd() {
+        guard let op = liveOp else { return }
+        liveOp = nil
+        commit(op)
     }
 
     func undo() {
         guard let prev = undoStack.popLast() else { return }
         host.audio.effect(.tap)
-        drawing = prev.drawing
-        drawingRevision += 1
-        lastCommitted = prev.drawing
+        doc.ops = prev.ops
         stickers = prev.stickers
         canUndo = !undoStack.isEmpty
-        refreshSparkles()
+        rerender()
         save()
-    }
-
-    func refreshSparkles(_ d: PKDrawing? = nil) {
-        sparkles = GlitterField.sparkles(for: d ?? drawing)
     }
 
     func selectInk(_ i: InkChoice) {
@@ -644,17 +613,15 @@ final class AtelierModel {
     }
 
     private func fill(at p: CGPoint, size: CGSize) {
-        let runs = FloodFill.runs(drawing: drawing, size: size, at: p)
+        let runs = FloodFill.runs(image: layer, size: size, at: p)
         guard !runs.isEmpty else { return }
-        pushUndo()
-        var d = drawing
-        d.strokes.append(contentsOf: FloodFill.strokes(runs, color: ink.uiColor, rainbow: ink == .glitter(.regenbogen)))
-        drawing = d
-        drawingRevision += 1
-        lastCommitted = d
+        let s = Double(paintScale)
+        var flat: [Double] = []
+        flat.reserveCapacity(runs.count * 3)
+        for r in runs { flat += [Double(r.y) / s, Double(r.x0) / s, Double(r.x1) / s] }
+        let (r, g, b, gl) = PaintOp.ink(ink)
+        commit(PaintOp(kind: .fill, r: r, g: g, b: b, glitter: gl, runs: flat, step: 3 / s, seed: UInt64.random(in: 1...UInt64.max)))
         host.audio.effect(.snap)
-        refreshSparkles(d)
-        save()
     }
 
     func selectSticker(_ s: String) {
@@ -720,14 +687,9 @@ final class AtelierModel {
         mode = .free
         artworkID = art.id
         background = CanvasBackground(rawValue: art.background) ?? .leer
-        if let d = try? PKDrawing(data: art.drawing) {
-            drawing = d
-            drawingRevision += 1
-            lastCommitted = d
-        }
+        doc = PaintDoc.decode(art.drawing, fallbackWidth: art.canvasWidth ?? canvasWidth)
         stickers = art.stickers ?? []
-        canvasWidth = art.canvasWidth ?? 0
-        refreshSparkles()
+        rerender()
         save()
         host.setInstruction("Male weiter an deinem Bild.")
     }
@@ -744,7 +706,7 @@ final class AtelierModel {
             created: existing?.created ?? Date(),
             modified: Date(),
             background: background.rawValue,
-            drawing: drawing.dataRepresentation(),
+            drawing: doc.encoded(),
             thumbnail: thumb,
             canvasWidth: canvasWidth,
             stickers: stickers
@@ -755,16 +717,12 @@ final class AtelierModel {
     private func makeThumbnail() -> Data {
         let w = canvasWidth > 0 ? canvasWidth : 800
         let h = w * 3 / 4
-        let rect = CGRect(x: 0, y: 0, width: w, height: h)
-        var strokes = UIImage()
-        UITraitCollection(userInterfaceStyle: .light).performAsCurrent {
-            strokes = drawing.image(from: rect, scale: 1)
-        }
+        let size = CGSize(width: w, height: h)
+        let picture = layer ?? PaintRenderer.render(doc.ops, base: nil, size: size, scale: CGFloat(w / max(doc.width, 1)))
         let view = ZStack(alignment: .topLeading) {
             CanvasBackgroundView(background: background)
-            Image(uiImage: strokes).resizable()
-            GlitterCanvas(sparkles: sparkles, time: 0)
-            StickerLayer(stickers: stickers, size: CGSize(width: w, height: h))
+            if let picture { Image(uiImage: picture).resizable() }
+            StickerLayer(stickers: stickers, size: size)
         }
         .frame(width: w, height: h)
         let renderer = ImageRenderer(content: view)
@@ -785,38 +743,26 @@ final class AtelierModel {
             for p in pts { progress.feed(p, samples: samples, tolerance: 0.02, lookahead: 3) }
             if progress.isComplete { completePath() }
         case .free:
-            if drawing.strokes.isEmpty {
-                // Vorführbild: Kreis mit Goldglitzer gefüllt, Pinkglitzer-Welle, zwei Sticker
+            if doc.ops.isEmpty {
+                // Vorführbild: Kreis mit Goldglitzer gefüllt, Regenbogenglitzer-Welle, zwei Sticker
                 let w = canvasWidth > 0 ? CGFloat(canvasWidth) : 800
                 let h = w * 3 / 4
-                func line(_ pts: [CGPoint], _ color: UIColor, _ width: CGFloat) -> PKStroke {
-                    let points = pts.enumerated().map { i, p in
-                        PKStrokePoint(location: p, timeOffset: Double(i) * 0.01, size: CGSize(width: width, height: width),
-                                      opacity: 1, force: 1, azimuth: 0, altitude: .pi / 2)
-                    }
-                    return PKStroke(ink: PKInk(.pen, color: color), path: PKStrokePath(controlPoints: points, creationDate: Date()))
-                }
+                let s = paintScale
                 let c = CGPoint(x: w * 0.3, y: h * 0.45), r = h * 0.25
-                let circle = (0...60).map { i -> CGPoint in
+                let circle = (0...60).flatMap { i -> [Double] in
                     let a = Double(i) / 60 * 2 * .pi
-                    return CGPoint(x: c.x + r * CGFloat(cos(a)), y: c.y + r * CGFloat(sin(a)))
+                    return [Double((c.x + r * CGFloat(cos(a))) / s), Double((c.y + r * CGFloat(sin(a))) / s)]
                 }
-                let wave = (0..<40).map { i -> CGPoint in
+                let wave = (0..<40).flatMap { i -> [Double] in
                     let t = Double(i) / 39
-                    return CGPoint(x: w * 0.55 + w * 0.38 * CGFloat(t), y: h * 0.75 + 40 * CGFloat(sin(t * 8)))
+                    return [Double((w * 0.55 + w * 0.38 * CGFloat(t)) / s), Double((h * 0.75 + 40 * CGFloat(sin(t * 8))) / s)]
                 }
-                ink = .plain(.black)
-                width = 10
-                drawing = PKDrawing(strokes: [line(circle, Palette.black.uiColor, 10)])
-                drawingRevision += 1
-                strokeFinished(drawing)
-                ink = .glitter(.regenbogen)
-                width = 30
-                drawing = PKDrawing(strokes: drawing.strokes + [line(wave, Glitter.regenbogen.uiColor, 30)])
-                drawingRevision += 1
-                strokeFinished(drawing)
+                let (br, bg, bb, _) = PaintOp.ink(.plain(.black))
+                commit(PaintOp(kind: .line, r: br, g: bg, b: bb, width: Double(10 / s), pts: circle, seed: 3))
                 ink = .glitter(.gold)
                 fill(at: c, size: CGSize(width: w, height: h))
+                let gl = Glitter.regenbogen
+                commit(PaintOp(kind: .line, r: gl.rgb.0, g: gl.rgb.1, b: gl.rgb.2, glitter: gl, width: Double(30 / s), pts: wave, seed: 7))
                 stickers.append(PlacedSticker(sticker: "garten_schmetterling", x: 0.72, y: 0.3, size: 0.18))
                 stickers.append(PlacedSticker(sticker: "🦄", x: 0.88, y: 0.12, size: 0.12))
                 save()
