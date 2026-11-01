@@ -1,10 +1,13 @@
 name: TestFlight
 
-# Auslösen: Tag pushen, z. B.
-#   git tag testflight-1 && git push origin testflight-1
+# Auslösen: Tag pushen (git tag testflight-N && git push origin testflight-N)
+# oder die Datei release/TESTFLIGHT ändern und auf den Branch pushen.
 on:
   push:
     tags: ["testflight-*"]
+    # oder: release/TESTFLIGHT auf dem Branch ändern und pushen
+    branches: [claude/ellies-entdeckerinsel]
+    paths: ["release/TESTFLIGHT"]
 
 jobs:
   upload:
