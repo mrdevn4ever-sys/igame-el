@@ -280,17 +280,17 @@ final class AudioManager: NSObject {
     /// Während Florian spricht, sind Geräusche leiser.
     func sfx(_ name: String, fallback: SoundEffect = .tap) {
         guard settings.effectsAudible else { return }
-        var player = sfxPlayers[name]
-        if player == nil {
+        var found = sfxPlayers[name]
+        if found == nil {
             for ext in ["m4a", "mp3", "wav", "caf"] {
                 if let url = Bundle.main.url(forResource: name, withExtension: ext), let p = try? AVAudioPlayer(contentsOf: url) {
-                    player = p
+                    found = p
                     sfxPlayers[name] = p
                     break
                 }
             }
         }
-        guard let player else {
+        guard let player = found else {
             effect(fallback)
             return
         }

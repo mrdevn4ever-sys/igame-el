@@ -255,7 +255,9 @@ final class GardenWorldModel {
         if blooming && !data.visitors.contains(.schmetterling) { data.visitors.append(.schmetterling); changed = true }
 
         if changed {
-            app.update { $0.world = data }
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.65)) {
+                app.update { $0.world = data }
+            }
             if let p = newlyRipe.first, area == .haus || area == .bach {
                 audio.sfx("gw_sfx_wachsen", fallback: .success)
                 say(p.ripeText)
