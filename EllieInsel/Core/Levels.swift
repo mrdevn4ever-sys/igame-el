@@ -68,14 +68,20 @@ enum LevelEngine {
         let atLevel = state.results.filter { $0.level == state.level }
         let ratings = atLevel.map { rate($0, reference: reference) }
 
-        // Aufstieg nach jeder geschafften Runde: keine Aufgabe schwach und mindestens
-        // die Hälfte ohne Fehler und ohne Hilfe gelöst. Die Zeit spielt dafür keine Rolle.
-        let roundRatings = round.map { rate($0, reference: reference) }
-        let clean = round.filter { $0.errors == 0 && $0.help == 0 }.count
-        let passed = !round.isEmpty && !roundRatings.contains(.weak) && clean * 2 >= round.count
+        // Aufstieg: genügend Ergebnisse auf diesem Niveau, fast alle stark, keines schwach.
+        let window = tasksPerRound >= 3 ? 5 : 3
+        let needed = tasksPerRound >= 3 ? 4 : 2
+        let recent = Array(ratings.suffix(window))
+        let strong = recent.filter { $0 == .strong }.count
+        let weak = recent.filter { $0 == .weak }.count
 
-        if passed {
-            guard state.level < maxLevel else { return .none }
+        // Abstieg: 2 der letzten 4 schwach
+        let last4 = ratings.suffix(4)
+        if last4.filter({ $0 == .weak }).count >= 2 && state.level > 1 {
+            return apply(&state, to: state.level - 1, change: .down)
+        }
+
+        if recent.count >= needed && weak == 0 && strong >= needed && state.level < maxLevel {
             // Zwei Runden in Folge nur stark und deutlich schneller: zwei Stufen.
             let lastEight = ratings.suffix(8)
             let fast = atLevel.suffix(8).allSatisfy { $0.seconds <= reference * 0.8 }
@@ -84,12 +90,6 @@ enum LevelEngine {
                 return apply(&state, to: state.level + 2, change: .up(2))
             }
             return apply(&state, to: state.level + 1, change: .up(1))
-        }
-
-        // Abstieg: 2 der letzten 4 schwach
-        let last4 = ratings.suffix(4)
-        if last4.filter({ $0 == .weak }).count >= 2 && state.level > 1 {
-            return apply(&state, to: state.level - 1, change: .down)
         }
         return .none
     }

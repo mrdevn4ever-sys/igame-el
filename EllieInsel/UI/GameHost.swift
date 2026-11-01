@@ -64,9 +64,16 @@ final class GameHost {
     init(game: GameID, app: AppModel) {
         self.game = game
         self.app = app
-        let saved = app.savedGame(for: game)
+        let current = app.data.level(for: game)
+        var saved = app.savedGame(for: game)
+        // Wurde das Niveau inzwischen geändert (Elternbereich oder Anpassung), gilt es sofort:
+        // die angefangene Runde auf dem alten Niveau wird verworfen.
+        if let s = saved, (s.level ?? current) != current {
+            saved = nil
+            app.clearGame(game)
+        }
         restored = saved
-        level = saved?.level ?? app.data.level(for: game)
+        level = current
         tasksPerRound = game.tasksPerRound
         roundResults = saved?.results ?? []
         roundID = saved?.roundID ?? UUID().uuidString
