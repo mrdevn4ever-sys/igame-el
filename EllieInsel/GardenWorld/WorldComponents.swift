@@ -16,6 +16,42 @@ enum ImageCache {
         missing.insert(name)
         return nil
     }
+
+    private static var trimmedCache: [String: UIImage] = [:]
+
+    /// Bild ohne durchsichtigen Rand (für Teile, die im vollen Bauplan-Rahmen liegen).
+    static func trimmed(_ name: String) -> UIImage? {
+        if let i = trimmedCache[name] { return i }
+        guard let img = image(name), let cg = img.cgImage else { return nil }
+        let w = cg.width, h = cg.height
+        var data = [UInt8](repeating: 0, count: w * h * 4)
+        let drawn: Bool = data.withUnsafeMutableBytes { buf in
+            guard let ctx = CGContext(data: buf.baseAddress, width: w, height: h, bitsPerComponent: 8, bytesPerRow: w * 4,
+                                      space: CGColorSpaceCreateDeviceRGB(),
+                                      bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return false }
+            ctx.draw(cg, in: CGRect(x: 0, y: 0, width: w, height: h))
+            return true
+        }
+        guard drawn else { return img }
+        var minX = w, minY = h, maxX = -1, maxY = -1
+        for y in 0..<h {
+            let row = y * w
+            for x in 0..<w where data[(row + x) * 4 + 3] > 8 {
+                if x < minX { minX = x }
+                if x > maxX { maxX = x }
+                if y < minY { minY = y }
+                if y > maxY { maxY = y }
+            }
+        }
+        guard maxX >= minX, maxY >= minY else { return img }
+        let pad = max(4, (maxX - minX) / 20)
+        let rect = CGRect(x: max(0, minX - pad), y: max(0, minY - pad),
+                          width: min(w, maxX + pad + 1) - max(0, minX - pad), height: min(h, maxY + pad + 1) - max(0, minY - pad))
+        guard let cut = cg.cropping(to: rect) else { return img }
+        let out = UIImage(cgImage: cut, scale: img.scale, orientation: img.imageOrientation)
+        trimmedCache[name] = out
+        return out
+    }
 }
 
 /// Bild aus der Gartenwelt, sonst Emoji. Quadratischer Rahmen.

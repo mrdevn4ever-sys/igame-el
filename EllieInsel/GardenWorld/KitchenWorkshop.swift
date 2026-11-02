@@ -429,6 +429,7 @@ struct WorkshopView: View {
         pattern = .keins
         deco = nil
         phase = .assemble
+        if DemoMode.flag("-teile") { placed = k.parts.prefix(3).map(\.key) }
         model.say("Wir bauen \(k.accusativeName). Tippe auf die Teile, dann kommen sie an ihren Platz.")
     }
 
@@ -438,21 +439,40 @@ struct WorkshopView: View {
                 Text(k.name).font(Theme.rounded(28, .heavy)).foregroundStyle(Theme.darkGreen)
                 let all = placed.count == k.parts.count
                 ZStack {
-                    RoundedRectangle(cornerRadius: 24).fill(Color(red: 0.82, green: 0.66, blue: 0.46)).frame(height: 300)
+                    RoundedRectangle(cornerRadius: 28)
+                        .fill(LinearGradient(colors: [Color(red: 0.99, green: 0.95, blue: 0.86), Color(red: 0.93, green: 0.84, blue: 0.68)],
+                                             startPoint: .top, endPoint: .bottom))
+                        .overlay(RoundedRectangle(cornerRadius: 28).stroke(Color(red: 0.80, green: 0.64, blue: 0.44), lineWidth: 3))
                     if all {
-                        BuiltObjectView(kind: k, roof: .natur, bodyColor: .natur, size: 280)
+                        BuiltObjectView(kind: k, roof: .natur, bodyColor: .natur, size: 300)
                             .transition(.scale.combined(with: .opacity))
+                    } else if k.partsStack {
+                        // Bauplan: blasses fertiges Objekt, die Teile rasten an ihrer Stelle ein.
+                        ZStack {
+                            if let ghost = ImageCache.image(k.displayAsset) {
+                                Image(uiImage: ghost).resizable().scaledToFit()
+                                    .colorMultiply(Color(red: 0.55, green: 0.42, blue: 0.30))
+                                    .opacity(0.16)
+                            }
+                            ForEach(placed.sorted { BuildKind.layerRank($0) < BuildKind.layerRank($1) }, id: \.self) { key in
+                                if let img = ImageCache.image(k.partAsset(key)) {
+                                    Image(uiImage: img).resizable().scaledToFit()
+                                        .transition(.asymmetric(insertion: .offset(y: 60).combined(with: .opacity), removal: .opacity))
+                                }
+                            }
+                        }
+                        .frame(width: 300, height: 300)
                     } else {
                         HStack(spacing: 16) {
                             ForEach(k.parts, id: \.key) { part in
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 18)
                                         .stroke(style: StrokeStyle(lineWidth: 3, dash: [9, 7]))
-                                        .foregroundStyle(.white)
+                                        .foregroundStyle(Color(red: 0.80, green: 0.64, blue: 0.44))
                                     if placed.contains(part.key) {
-                                        WorldPic(k.partAsset(part.key), part.emoji, size: 110).transition(.scale)
+                                        PartPic(asset: k.partAsset(part.key), emoji: part.emoji, size: 110).transition(.scale)
                                     } else if builtCount(k) == 0 {
-                                        WorldPic(k.partAsset(part.key), part.emoji, size: 100).opacity(0.25)
+                                        PartPic(asset: k.partAsset(part.key), emoji: part.emoji, size: 100).opacity(0.25)
                                     }
                                 }
                                 .frame(width: 130, height: 130)
@@ -460,6 +480,7 @@ struct WorkshopView: View {
                         }
                     }
                 }
+                .frame(height: 320)
                 .padding(.horizontal, 30)
                 if all {
                     Button { phase = .paint; model.say("Jetzt bemalen wir es. Such dir Farben aus.") } label: {
@@ -478,8 +499,8 @@ struct WorkshopView: View {
                                     model.say("Zusammengebaut! Toll gemacht.")
                                 }
                             } label: {
-                                WorldPic(k.partAsset(part.key), part.emoji, size: 96)
-                                    .frame(width: 120, height: 120)
+                                PartPic(asset: k.partAsset(part.key), emoji: part.emoji, size: 100)
+                                    .frame(width: 124, height: 124)
                                     .background(RoundedRectangle(cornerRadius: 20).fill(Theme.lightYellow))
                             }
                             .buttonStyle(PressableStyle())
@@ -554,5 +575,24 @@ struct WorkshopView: View {
                 .accessibilityLabel(c.name)
             }
         }
+    }
+}
+
+/// Bauteil ohne durchsichtigen Rand, damit es in der Ablage gross genug ist.
+private struct PartPic: View {
+    let asset: String
+    let emoji: String
+    let size: CGFloat
+
+    var body: some View {
+        Group {
+            if let img = ImageCache.trimmed(asset) {
+                Image(uiImage: img).resizable().scaledToFit()
+            } else {
+                Text(emoji).font(.system(size: size * 0.62))
+            }
+        }
+        .frame(width: size, height: size)
+        .accessibilityHidden(true)
     }
 }

@@ -443,6 +443,17 @@ enum BuildKind: String, Codable, CaseIterable, Identifiable {
     var maskBody: String { "gw_bau_\(rawValue)_maske_korpus" }
     func partAsset(_ key: String) -> String { "gw_bau_\(rawValue)_\(key)" }
 
+    /// Teile liegen im gleichen Bildrahmen und ergeben übereinander das fertige Objekt.
+    var partsStack: Bool { ![.bruecke, .segelboot, .wimpelkette].contains(self) }
+
+    /// Zeichenreihenfolge der Teile (hinten zuerst).
+    static func layerRank(_ key: String) -> Int {
+        let order = ["pfahl", "stange", "beine", "pfosten", "stab", "schnur", "lehne", "boden", "rahmen", "rumpf", "topf",
+                     "boegen", "gestell", "wand_hinten", "waende", "mast", "sitz", "bretter", "schale", "fuellung", "rand",
+                     "segel", "wand_vorne", "gelaender", "glocken", "wimpel", "papier", "blaetter", "dach", "laub"]
+        return order.firstIndex(of: key) ?? order.count
+    }
+
     /// Feste Bildnamen, wo die Liste andere Namen nutzt.
     var displayAsset: String {
         switch self {

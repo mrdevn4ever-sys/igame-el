@@ -110,8 +110,8 @@ enum DemoMode {
         w.pondReached = true
         w.residents = [.vogel, .hase, .schnecke, .ente, .frosch, .fisch, .igel, .eichhoernchen, .reh, .eule]
         w.built += [BuiltObject(kind: .bruecke, area: .bach, x: 0.16, y: 0.7, roof: .braun, body: .natur),
-                    BuiltObject(kind: .igelhaus, area: .lichtung, x: 0.7, y: 0.66, roof: .gruen, body: .braun),
-                    BuiltObject(kind: .tunnel, area: .lichtung, x: 0.4, y: 0.92, roof: .gruen, body: .gruen),
+                    BuiltObject(kind: .igelhaus, area: .lichtung, x: 0.7, y: 0.66, roof: .orange, body: .natur),
+                    BuiltObject(kind: .tunnel, area: .lichtung, x: 0.4, y: 0.92, roof: .gruen, body: .natur),
                     BuiltObject(kind: .futterstelle, area: .haus, x: 0.62, y: 0.44, roof: .rot, body: .gelb),
                     BuiltObject(kind: .wimpelkette, area: .baumhaus, x: 0.34, y: 0.92, roof: .rosa, body: .tuerkis)]
         w.treehouseStage = 4

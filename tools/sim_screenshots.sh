@@ -121,6 +121,7 @@ run 128d_garten_panorama_rechts 7 0 -screen garden -world voll -area haus -panot
 run 128e_garten_bach_panorama_rechts 7 0 -screen garden -world voll -area bach -panotest -panoright
 run 130_garten_kueche 6 0 -screen garden -world voll -overlay kitchen
 run 131_garten_werkstatt 6 0 -screen garden -world voll -overlay workshop
+run 131b_garten_werkstatt_teile 6 0 -screen garden -world voll -overlay workshop -teile
 run 132_garten_karte 6 0 -screen garden -world mitte -overlay map
 run 133_garten_buch 6 0 -screen garden -world voll -overlay book
 run 134_garten_samen 6 0 -screen garden -world voll -overlay seeds
