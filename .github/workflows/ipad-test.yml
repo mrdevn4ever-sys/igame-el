@@ -52,7 +52,7 @@ jobs:
           set -o pipefail
           xcodebuild build -project EllieInsel.xcodeproj -scheme EllieInsel -configuration Debug \
             -destination "id=$UDID" -derivedDataPath dd CODE_SIGNING_ALLOWED=NO 2>&1 | tee build.log | grep -E "(error:|BUILD)" || true
-          test -d dd/Build/Products/Debug-iphonesimulator/EllieInsel.app
+          test -f dd/Build/Products/Debug-iphonesimulator/EllieInsel.app/Info.plist && ! grep -q "BUILD FAILED" build.log
 
       - name: Kompilierfehler
         if: failure()
