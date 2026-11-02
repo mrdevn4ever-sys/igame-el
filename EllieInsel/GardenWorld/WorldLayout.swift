@@ -1,9 +1,30 @@
 import CoreGraphics
 
-/// Feste Plätze in den Szenen (Koordinaten 0…1, y = Bodenlinie).
+/// Breite Orte: Mit Panoramabild wird ein Ort mehrere Bildschirme breit und lässt sich wischen.
+/// Koordinaten bleiben im Grundbild: x 0…1 ist der bisherige Bildschirm, links davon negativ, rechts > 1.
+@MainActor
+enum WorldPanorama {
+    static func isActive(_ a: WorldArea) -> Bool {
+        guard a.panoramaExtent != (0, 1) else { return false }
+        return ImageCache.image(a.panorama(evening: false)) != nil || DemoMode.flag("-panotest")
+    }
+
+    /// Sichtbarer Bereich in Grundbild-Einheiten.
+    static func extent(_ a: WorldArea) -> (min: Double, max: Double) {
+        isActive(a) ? a.panoramaExtent : (0, 1)
+    }
+
+    /// Anzahl Beete im Hausgarten (3 Beete + Baumplatz, im Panorama 3 weitere).
+    static var bedCount: Int { isActive(.haus) ? WorldLayout.beds.count : 4 }
+}
+
+/// Feste Plätze in den Szenen (Koordinaten im Grundbild, y = Bodenlinie).
+@MainActor
 enum WorldLayout {
     // Hausgarten
-    static let beds: [CGPoint] = [CGPoint(x: 0.25, y: 0.62), CGPoint(x: 0.41, y: 0.66), CGPoint(x: 0.57, y: 0.6), CGPoint(x: 0.2, y: 0.44)]
+    static let beds: [CGPoint] = [CGPoint(x: 0.25, y: 0.62), CGPoint(x: 0.41, y: 0.66), CGPoint(x: 0.57, y: 0.6), CGPoint(x: 0.2, y: 0.44),
+                                  // nur im Panorama: Obstgarten links, Blumenwiese rechts
+                                  CGPoint(x: -0.62, y: 0.62), CGPoint(x: -0.38, y: 0.66), CGPoint(x: 1.38, y: 0.62)]
     static let bedSize: Double = 0.15
     static let treeSize: Double = 0.24
     static let blanket = CGPoint(x: 0.76, y: 0.53)
@@ -14,10 +35,11 @@ enum WorldLayout {
     // Bach
     static let gridOrigin = CGPoint(x: 0.17, y: 0.3)
     static let gridCell: CGFloat = 0.105 // in Szenenbreite
-    static let gridCols = 6
+    /// Im Panorama reicht der Wasserbaukasten über zwei Bildschirme.
+    static var gridCols: Int { WorldPanorama.isActive(.bach) ? 11 : 6 }
     static let gridRows = 4
     static let bridge = CGPoint(x: 0.5, y: 0.17)
-    static let dock = CGPoint(x: 0.9, y: 0.95)
+    static var dock: CGPoint { CGPoint(x: pond.x + 0.05, y: 0.95) }
 
     // Baumhaus
     static let platform = CGPoint(x: 0.55, y: 0.38)
@@ -32,10 +54,21 @@ enum WorldLayout {
     /// Stellflächen für gebaute Dinge.
     static func spots(_ a: WorldArea) -> [CGPoint] {
         switch a {
-        case .haus: return [CGPoint(x: 0.28, y: 0.86), CGPoint(x: 0.47, y: 0.44), CGPoint(x: 0.62, y: 0.44), CGPoint(x: 0.88, y: 0.66),
-                            CGPoint(x: 0.16, y: 0.64), CGPoint(x: 0.66, y: 0.58), CGPoint(x: 0.4, y: 0.5), CGPoint(x: 0.86, y: 0.46)]
-        case .lichtung: return [CGPoint(x: 0.15, y: 0.82), CGPoint(x: 0.4, y: 0.92), CGPoint(x: 0.62, y: 0.5), CGPoint(x: 0.86, y: 0.84),
-                                CGPoint(x: 0.88, y: 0.48), CGPoint(x: 0.7, y: 0.66), CGPoint(x: 0.3, y: 0.5)]
+        case .haus:
+            var list = [CGPoint(x: 0.28, y: 0.86), CGPoint(x: 0.47, y: 0.44), CGPoint(x: 0.62, y: 0.44), CGPoint(x: 0.88, y: 0.66),
+                        CGPoint(x: 0.16, y: 0.64), CGPoint(x: 0.66, y: 0.58), CGPoint(x: 0.4, y: 0.5), CGPoint(x: 0.86, y: 0.46)]
+            if WorldPanorama.isActive(.haus) {
+                list += [CGPoint(x: -0.85, y: 0.86), CGPoint(x: -0.5, y: 0.48), CGPoint(x: -0.2, y: 0.84),
+                         CGPoint(x: 1.2, y: 0.86), CGPoint(x: 1.55, y: 0.5), CGPoint(x: 1.75, y: 0.8), CGPoint(x: 1.15, y: 0.46)]
+            }
+            return list
+        case .lichtung:
+            var list = [CGPoint(x: 0.15, y: 0.82), CGPoint(x: 0.4, y: 0.92), CGPoint(x: 0.62, y: 0.5), CGPoint(x: 0.86, y: 0.84),
+                        CGPoint(x: 0.88, y: 0.48), CGPoint(x: 0.7, y: 0.66), CGPoint(x: 0.3, y: 0.5)]
+            if WorldPanorama.isActive(.lichtung) {
+                list += [CGPoint(x: 1.2, y: 0.84), CGPoint(x: 1.45, y: 0.5), CGPoint(x: 1.7, y: 0.88), CGPoint(x: 1.85, y: 0.52)]
+            }
+            return list
         case .baumhaus: return [CGPoint(x: 0.12, y: 0.86), CGPoint(x: 0.34, y: 0.92), CGPoint(x: 0.84, y: 0.82), CGPoint(x: 0.2, y: 0.6), CGPoint(x: 0.55, y: 0.24)]
         case .bach: return [bridge, dock]
         case .wunder: return []
@@ -44,9 +77,17 @@ enum WorldLayout {
 
     /// Bereich, in dem sich Figuren bewegen (x, y, Breite, Höhe).
     static func walkArea(_ a: WorldArea, resident: Resident?) -> CGRect {
+        let ext = WorldPanorama.extent(a)
         if let r = resident {
-            if r == .ente || r == .fisch || r == .frosch { return CGRect(x: 0.74, y: 0.8, width: 0.2, height: 0.14) }
-            if r.flies { return CGRect(x: 0.08, y: 0.18, width: 0.84, height: 0.45) }
+            if r == .ente || r == .fisch || r == .frosch { return CGRect(x: pond.x - 0.1, y: 0.8, width: 0.2, height: 0.14) }
+            if r.flies { return CGRect(x: ext.min + 0.08, y: 0.18, width: ext.max - ext.min - 0.16, height: 0.45) }
+        }
+        if WorldPanorama.isActive(a) {
+            switch a {
+            case .haus: return CGRect(x: -0.85, y: 0.46, width: 2.7, height: 0.26)
+            case .lichtung: return CGRect(x: 0.08, y: 0.6, width: 1.84, height: 0.32)
+            default: break
+            }
         }
         switch a {
         case .haus: return CGRect(x: 0.16, y: 0.46, width: 0.5, height: 0.26)
@@ -67,6 +108,6 @@ enum WorldLayout {
     static var cellHeight: CGFloat { gridCell * 4 / 3 }
 
     static let source = CGPoint(x: gridOrigin.x - 0.05, y: cellCenter(col: 0, row: 0).y)
-    static let pond = CGPoint(x: gridOrigin.x + gridCell * 6 + 0.07, y: cellCenter(col: 5, row: 3).y)
-    static let streamBed = CGPoint(x: gridOrigin.x + gridCell * 6 + 0.07, y: cellCenter(col: 5, row: 0).y + 0.06)
+    static var pond: CGPoint { CGPoint(x: gridOrigin.x + gridCell * CGFloat(gridCols) + 0.07, y: cellCenter(col: 0, row: 3).y) }
+    static var streamBed: CGPoint { CGPoint(x: gridOrigin.x + gridCell * CGFloat(gridCols) + 0.07, y: cellCenter(col: 0, row: 0).y + 0.06) }
 }

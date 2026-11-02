@@ -11,45 +11,72 @@ struct SceneLayer: View {
     private var s: CGSize { size }
     private var W: CGFloat { size.width }
 
+    private var ext: (min: Double, max: Double) { WorldPanorama.extent(model.area) }
+    private var totalWidth: CGFloat { s.width * CGFloat(ext.max - ext.min) }
+
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            SceneBackground(area: model.area, evening: model.w.evening)
-                .frame(width: s.width, height: s.height)
-                .contentShape(Rectangle())
-                .onTapGesture(coordinateSpace: .local) { p in backgroundTap(p) }
+        ScrollView(.horizontal, showsIndicators: ext.max - ext.min > 1) {
+            ZStack(alignment: .topLeading) {
+                SceneBackground(area: model.area, evening: model.w.evening, extent: ext)
+                    .frame(width: totalWidth, height: s.height)
+                    .contentShape(Rectangle())
+                    .onTapGesture(coordinateSpace: .local) { p in backgroundTap(p) }
 
-            switch model.area {
-            case .haus: homeContent
-            case .bach: streamContent
-            case .lichtung: EmptyView()
-            case .baumhaus: treehouseContent
-            case .wunder: wonderContent
+                // Inhalt im Grundbild: x 0…1 ist der bisherige Bildschirm, links negativ, rechts > 1
+                ZStack(alignment: .topLeading) {
+                    switch model.area {
+                    case .haus: homeContent
+                    case .bach: streamContent
+                    case .lichtung: EmptyView()
+                    case .baumhaus: treehouseContent
+                    case .wunder: wonderContent
+                    }
+
+                    if model.area == .haus { decorations }
+                    builtObjects
+                    placementSpots
+                    hotspots
+                    ActorsLayer(model: model, size: s)
+                    if model.area == .bach { boatLayer }
+                    flyerLayer
+                }
+                .frame(width: s.width, height: s.height, alignment: .topLeading)
+                .coordinateSpace(name: "scene")
+                .offset(x: CGFloat(-ext.min) * s.width)
+
+                WeatherLayer(raining: (model.rainUntil ?? .distantPast) > Date(),
+                             rainbow: (model.rainbowUntil ?? .distantPast) > Date() && (model.rainUntil ?? .distantPast) < Date(),
+                             evening: model.w.evening)
+                    .frame(width: totalWidth, height: s.height)
             }
-
-            if model.area == .haus { decorations }
-            builtObjects
-            placementSpots
-            hotspots
-            ActorsLayer(model: model, size: s)
-            if model.area == .bach { boatLayer }
-            flyerLayer
-            WeatherLayer(raining: (model.rainUntil ?? .distantPast) > Date(),
-                         rainbow: (model.rainbowUntil ?? .distantPast) > Date() && (model.rainUntil ?? .distantPast) < Date(),
-                         evening: model.w.evening)
-                .frame(width: s.width, height: s.height)
-            speechBubble
+            .frame(width: totalWidth, height: s.height)
+        }
+        .scrollDisabled(ext.max - ext.min <= 1)
+        .defaultScrollAnchor(DemoMode.flag("-panoleft") ? .leading : DemoMode.flag("-panoright") ? .trailing : (ext.min < 0 ? .center : .leading))
+        .frame(width: s.width, height: s.height)
+        .overlay(alignment: .topLeading) { speechBubble }
+        .overlay(alignment: .topTrailing) {
             if model.building {
                 Text("Umbauen").font(Theme.rounded(18, .heavy)).foregroundStyle(.white)
                     .padding(.horizontal, 14).padding(.vertical, 6)
                     .background(Capsule().fill(Theme.darkGreen))
-                    .position(x: s.width - 80, y: 26)
+                    .padding(14)
             }
         }
-        .frame(width: s.width, height: s.height)
-        .coordinateSpace(name: "scene")
+        .overlay(alignment: .bottom) {
+            if ext.max - ext.min > 1 {
+                Label("Wischen", systemImage: "hand.draw.fill")
+                    .font(Theme.rounded(14, .heavy)).foregroundStyle(.white)
+                    .padding(.horizontal, 10).padding(.vertical, 4)
+                    .background(Capsule().fill(Theme.darkGreen.opacity(0.55)))
+                    .padding(.bottom, 10)
+                    .allowsHitTesting(false)
+            }
+        }
     }
 
-    private func norm(_ p: CGPoint) -> CGPoint { CGPoint(x: p.x / s.width, y: p.y / s.height) }
+    /// Tippen auf den Hintergrund (ganzes Panorama) in Grundbild-Koordinaten.
+    private func norm(_ p: CGPoint) -> CGPoint { CGPoint(x: p.x / s.width + CGFloat(ext.min), y: p.y / s.height) }
 
     private func backgroundTap(_ p: CGPoint) {
         if model.building, let item = selectedDeco, model.area == .haus {
@@ -113,7 +140,7 @@ struct SceneLayer: View {
             // Picknickdecke
             picnicView(model.w.picnic, at: WorldLayout.blanket) { model.overlay = .picnic }
 
-            ForEach(0..<4, id: \.self) { i in
+            ForEach(0..<WorldPanorama.bedCount, id: \.self) { i in
                 let bs = i == 3 ? WorldLayout.treeSize : WorldLayout.bedSize
                 BedView(model: model, index: i, size: W * bs)
                     .feet(WorldLayout.beds[i], size: W * bs, in: s)

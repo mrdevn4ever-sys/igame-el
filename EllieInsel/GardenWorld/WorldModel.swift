@@ -41,6 +41,25 @@ enum WorldArea: String, Codable, CaseIterable, Identifiable {
         return evening ? base + "_abend" : base
     }
 
+    /// Breites Panoramabild (mehrere Bildschirme), falls vorhanden.
+    func panorama(evening: Bool) -> String {
+        switch self {
+        case .haus: return evening ? "gw_szene_hausgarten_panorama_abend" : "gw_szene_hausgarten_panorama_tag"
+        case .bach: return evening ? "gw_szene_bach_teich_panorama_abend" : "gw_szene_bach_teich_panorama"
+        case .lichtung: return evening ? "gw_szene_tierlichtung_panorama_abend" : "gw_szene_tierlichtung_panorama"
+        default: return ""
+        }
+    }
+
+    /// Ausdehnung im Panorama (Grundbild = 0…1): Hausgarten links und rechts je ein Bildschirm, Bach und Lichtung rechts einer.
+    var panoramaExtent: (Double, Double) {
+        switch self {
+        case .haus: return (-1, 2)
+        case .bach, .lichtung: return (0, 2)
+        default: return (0, 1)
+        }
+    }
+
     /// Ersatzfarben, solange die Szenenbilder fehlen.
     var fallbackColors: [Color] {
         switch self {
@@ -1096,7 +1115,7 @@ struct WorldMemory: Codable, Equatable, Identifiable {
 // MARK: - Gesamter Zustand
 
 struct WorldData: Codable, Equatable {
-    var beds: [BedState] = Array(repeating: BedState(), count: 4)
+    var beds: [BedState] = Array(repeating: BedState(), count: 7)
     /// Beet am Bach, das über den Wasserlauf bewässert wird
     var streamBed = BedState()
     var basket: [String: Int] = [:]
@@ -1145,7 +1164,7 @@ struct WorldData: Codable, Equatable {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         let d = WorldData()
         beds = (try? c.decode([BedState].self, forKey: .beds)) ?? d.beds
-        if beds.count < 4 { beds += Array(repeating: BedState(), count: 4 - beds.count) }
+        if beds.count < 7 { beds += Array(repeating: BedState(), count: 7 - beds.count) }
         streamBed = (try? c.decode(BedState.self, forKey: .streamBed)) ?? d.streamBed
         basket = (try? c.decode([String: Int].self, forKey: .basket)) ?? d.basket
         seeds = (try? c.decode([PlantKind].self, forKey: .seeds)) ?? d.seeds

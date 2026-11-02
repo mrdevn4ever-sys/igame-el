@@ -187,9 +187,10 @@ final class GardenWorldModel {
     func contextHint() -> String {
         switch area {
         case .haus:
-            if w.beds.contains(where: { $0.isRipe }) { return "Etwas ist reif! Tippe darauf und ernte es." }
-            if w.beds.contains(where: { $0.plant != nil && $0.needsWater && $0.stage < 4 }) { return "Deine Pflanzen haben Durst. Tippe auf das Beet zum Giessen." }
-            if w.beds.contains(where: { $0.isEmpty }) { return "Tippe auf ein freies Beet und such dir einen Samen aus." }
+            let beds = w.beds.prefix(WorldPanorama.bedCount)
+            if beds.contains(where: { $0.isRipe }) { return "Etwas ist reif! Tippe darauf und ernte es." }
+            if beds.contains(where: { $0.plant != nil && $0.needsWater && $0.stage < 4 }) { return "Deine Pflanzen haben Durst. Tippe auf das Beet zum Giessen." }
+            if beds.contains(where: { $0.isEmpty }) { return "Tippe auf ein freies Beet und such dir einen Samen aus." }
             if w.basket.values.reduce(0, +) > 2 { return "Dein Korb ist voll. In der Küche kannst du etwas zubereiten." }
             if !w.pantry.isEmpty && w.picnic == nil { return "Tippe auf die Picknickdecke und mach ein Picknick." }
             return "Schau, was in deinem Garten wächst."
@@ -371,7 +372,7 @@ final class GardenWorldModel {
         bed.remaining -= 1
         if let piece, piece < bed.fallen.count { bed.fallen.remove(at: piece) }
         let first = !w.harvestedOnce.contains(item.rawValue)
-        let base = index == 99 ? WorldLayout.streamBed : WorldLayout.beds[min(index, 3)]
+        let base = index == 99 ? WorldLayout.streamBed : WorldLayout.beds[min(index, WorldLayout.beds.count - 1)]
         flyers.append(Flyer(asset: item.asset, emoji: item.emoji, from: point ?? CGPoint(x: base.x, y: base.y - 0.1)))
         switch plant.style {
         case .pull: audio.sfx("gw_sfx_ziehen", fallback: .snap)
@@ -577,7 +578,8 @@ final class GardenWorldModel {
     func moveBuilt(_ id: UUID, to p: CGPoint) {
         edit { d in
             guard let i = d.built.firstIndex(where: { $0.id == id }) else { return }
-            d.built[i].x = min(max(p.x, 0.04), 0.96)
+            let ext = WorldPanorama.extent(d.built[i].area)
+            d.built[i].x = min(max(Double(p.x), ext.min + 0.04), ext.max - 0.04)
             d.built[i].y = min(max(p.y, 0.2), 0.97)
         }
     }
@@ -638,7 +640,7 @@ final class GardenWorldModel {
                 if let o = liked.randomElement(), Int.random(in: 0..<2) == 0 {
                     target = CGPoint(x: o.x + Double.random(in: -0.03...0.03), y: r.flies ? o.y - 0.13 : o.y + 0.01)
                     pose = r.actionPose
-                } else if r == .schmetterling, let bi = w.beds.indices.first(where: { (w.beds[$0].plant?.isFlower ?? false) && w.beds[$0].stage >= 3 }) {
+                } else if r == .schmetterling, let bi = w.beds.indices.prefix(WorldPanorama.bedCount).first(where: { (w.beds[$0].plant?.isFlower ?? false) && w.beds[$0].stage >= 3 }) {
                     let b = WorldLayout.beds[bi]
                     target = CGPoint(x: b.x, y: b.y - 0.16)
                     pose = "sitzen"
@@ -1059,7 +1061,8 @@ final class GardenWorldModel {
     func moveDecoration(_ id: UUID, to p: CGPoint) {
         app.update { d in
             guard let i = d.garden.placed.firstIndex(where: { $0.id == id }) else { return }
-            d.garden.placed[i].x = min(max(p.x, 0.03), 0.97)
+            let ext = WorldPanorama.extent(.haus)
+            d.garden.placed[i].x = min(max(Double(p.x), ext.min + 0.03), ext.max - 0.03)
             d.garden.placed[i].y = min(max(p.y, 0.15), 0.97)
         }
     }

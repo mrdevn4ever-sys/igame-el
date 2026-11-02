@@ -92,6 +92,10 @@ enum DemoMode {
                       WorldMemory(kind: .ort, detail: "bach")]
         guard stage == "voll" else { return w }
         w.beds[3] = BedState(plant: .apfelbaum, stage: 4, needsWater: false, remaining: 7)
+        w.beds[4] = BedState(plant: .tomate, stage: 4, needsWater: false, remaining: 6)
+        w.beds[5] = BedState(plant: .tulpe, stage: 3, needsWater: false, growingSince: now)
+        w.beds[6] = BedState(plant: .kuerbis, stage: 4, needsWater: false, remaining: 1)
+        w.built.append(BuiltObject(kind: .insektenhotel, area: .haus, x: 1.55, y: 0.5, roof: .rot, body: .natur))
         w.unlocked = WorldArea.allCases
         w.kits = BuildKind.allCases
         w.pieces = WaterPiece.allCases

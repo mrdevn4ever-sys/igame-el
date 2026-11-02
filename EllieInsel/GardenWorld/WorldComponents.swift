@@ -98,12 +98,15 @@ struct GroundShadow: View {
 struct SceneBackground: View {
     let area: WorldArea
     let evening: Bool
+    var extent: (min: Double, max: Double) = (0, 1)
 
     var body: some View {
         GeometryReader { geo in
             let s = geo.size
             ZStack {
-                if let img = ImageCache.image(area.scene(evening: evening)) {
+                if extent.max - extent.min > 1 {
+                    panorama(s)
+                } else if let img = ImageCache.image(area.scene(evening: evening)) {
                     Image(uiImage: img).resizable().scaledToFill().frame(width: s.width, height: s.height).clipped()
                 } else if evening, let img = ImageCache.image(area.scene(evening: false)) {
                     Image(uiImage: img).resizable().scaledToFill().frame(width: s.width, height: s.height).clipped()
@@ -113,6 +116,27 @@ struct SceneBackground: View {
                     if evening { Color(red: 0.08, green: 0.12, blue: 0.35).opacity(0.45).blendMode(.multiply) }
                 }
             }
+        }
+    }
+
+    /// Panorama: eigenes Bild; im Simulator-Test ein Ersatz aus dem Grundbild (Seiten gespiegelt).
+    @ViewBuilder
+    private func panorama(_ s: CGSize) -> some View {
+        if let img = ImageCache.image(area.panorama(evening: evening)) ?? ImageCache.image(area.panorama(evening: false)) {
+            Image(uiImage: img).resizable().scaledToFill().frame(width: s.width, height: s.height).clipped()
+            if ImageCache.image(area.panorama(evening: evening)) == nil && evening {
+                Color(red: 0.08, green: 0.12, blue: 0.35).opacity(0.45).blendMode(.multiply)
+            }
+        } else if let base = ImageCache.image(area.scene(evening: evening)) ?? ImageCache.image(area.scene(evening: false)) {
+            let unit = s.width / CGFloat(extent.max - extent.min)
+            HStack(spacing: 0) {
+                ForEach(Int(extent.min)..<Int(extent.max), id: \.self) { i in
+                    Image(uiImage: base).resizable().scaledToFill().frame(width: unit, height: s.height).clipped()
+                        .scaleEffect(x: i == 0 ? 1 : -1, y: 1)
+                }
+            }
+        } else {
+            fallback(s)
         }
     }
 

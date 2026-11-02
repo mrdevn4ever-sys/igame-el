@@ -115,6 +115,10 @@ run 125_garten_lichtung 6 0 -screen garden -world voll -area lichtung
 run 126_garten_baumhaus 6 0 -screen garden -world voll -area baumhaus
 run 127_garten_wunder 6 0 -screen garden -world voll -area wunder
 run 128_garten_bach_mitte 6 0 -screen garden -world mitte -area bach
+run 128b_garten_panorama_mitte 7 0 -screen garden -world voll -area haus -panotest
+run 128c_garten_panorama_links 7 0 -screen garden -world voll -area haus -panotest -panoleft
+run 128d_garten_panorama_rechts 7 0 -screen garden -world voll -area haus -panotest -panoright
+run 128e_garten_bach_panorama_rechts 7 0 -screen garden -world voll -area bach -panotest -panoright
 run 130_garten_kueche 6 0 -screen garden -world voll -overlay kitchen
 run 131_garten_werkstatt 6 0 -screen garden -world voll -overlay workshop
 run 132_garten_karte 6 0 -screen garden -world mitte -overlay map
