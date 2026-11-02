@@ -112,6 +112,7 @@ for a in gross klein anlaut paar wo wort wortfrei legen; do
 done
 run 151_abc_runde_stufe1 50 15 -screen game -game abc -abctest -level 1 -autoplay
 run 152_abc_stufe7 8 0 -screen game -game abc -abctest -level 7
+run 153_abc_hub 5 0 -screen hub -page 2
 
 # Spiel 13: Mein Körper (Bilder von Hermes; -koerpertest zeigt es auch ohne Bilder)
 run 140_koerper_hub 5 0 -screen hub -page 2 -koerpertest
