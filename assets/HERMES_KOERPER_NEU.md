@@ -1,46 +1,80 @@
-# Auftrag an Hermes: «Mein Körper» komplett neu (erst nach ABC)
+# Auftrag an Hermes: «Mein Körper» – alle Bilder neu, anatomisch genau (nach ABC)
 
-Die erste Fassung wird verworfen. Gründe:
-- der geisterhafte, blasse Körper wirkt unheimlich;
-- die Zöpfe waren hautfarben;
-- die Muskel-Ebene war grob;
-- Printatops war orange;
-- Arm und Bein als Einzelbild waren schwach.
+Die erste Fassung wird komplett ersetzt. Das Prinzip bleibt gleich:
+- Das Kind sieht mit der Zauberlupe durch den Körper.
+- Die Ebenen Organe, Knochen, Adern und Muskeln liegen deckungsgleich übereinander.
+- Dateinamen, Grössen und Ablage bleiben wie in `assets/Koerper.csv`.
 
-**Massstab ist Gartenwelt-Paket 1a. Nichts darf gruselig, blass oder halb durchsichtig wirken.**
+**Arbeite penibel genau.** Jedes Bild muss anatomisch stimmen, schön sein und kindgerecht wirken. Massstab ist Gartenwelt-Paket 1a. Lieber ein Bild fünfmal neu erzeugen als ein falsches abgeben.
 
-## Neues Grundprinzip
+## Was in der ersten Fassung falsch war (darf nicht wieder vorkommen)
 
-- Das Mädchen ist **immer das fertige, schöne 3D-Mädchen**: Gesicht, Haare, Augen und Hautfarbe sind voll gerendert wie in `koerper_aussen`.
-- Ins Innere schaut man nur durch ein **rundes Fenster**: die Zauberlupe, oder ein «Bauchfenster» im Rumpf.
-- Es gibt **keine Ganzkörper-Geisterbilder mehr**. Die App zeigt die Innenansicht nur im Fenster. Der Rest bleibt das normale Mädchen.
+1. **Gehirn über den Haaren.** Das Gehirn lag wie ein Hut auf dem Kopf. Richtig: Das Gehirn liegt **im Schädel**, ganz innerhalb des Kopfes, unter der Schädeldecke. Es ist kleiner als der Kopf, und rundherum ist Kopf bzw. Schädel sichtbar.
+2. **Monsterhände.** Die Hände waren riesig, mit gespreizten Fingern. Richtig: Eine Kinderhand ist etwa so gross wie das Gesicht vom Kinn bis zur Augenbraue. Die Finger liegen locker beieinander.
+3. **Falsche Proportionen.** Arme, Hände und Organe passten nicht zum Körper. Die Organe schwebten. Die Haare waren auf den Innen-Ebenen hautfarbene Flächen.
+4. **Grobe Muskel-Ebene.** Die Muskeln waren nur rote Flecken.
+5. **Printatops orange.** Er ist immer mintgrün wie in der Referenz (`EllieInsel/Images/gw_dino_stehen.png`).
+6. **Einzelbilder Arm und Bein** waren abgetrennte, dünne Glieder.
 
-## Bilder
+## Proportionen der Figur (5-jähriges Mädchen, freundlich, leicht kindlich stilisiert)
 
-### 1. Mädchen
-`koerper_aussen.png` (1536 × 2048, transparent): wie bisher, sie ist gelungen. Behalte genau dieses Mädchen.
+- **Körperhöhe = 4,5 Kopfhöhen.** Kopf vom Scheitel bis zum Kinn ca. 21 % der Figurhöhe.
+- **Haltung:** aufrecht, von vorne, Arme **locker hängend**, ca. 15–20° vom Körper weg. Handflächen leicht nach vorne, Finger zusammen, Beine leicht auseinander.
+- **Lage (Anteil von Bildbreite x und Bildhöhe y), bitte genau einhalten:**
+  - Kopf: Scheitel y 3 %, Kinn y 24 %, Augen y 14 %
+  - Schultern y 29 %
+  - Ellbogen y 43 %, bei x 31 % und 69 %
+  - Handgelenk y 54 %; Handmitte y 58 %, bei x 28 % und 72 %
+  - Hüfte y 55 %, Knie y 73 %, Fusssohlen y 97 %
+- **Hand:** Länge ca. 9 % der Figurhöhe, Breite ca. 5 % der Bildbreite. Nicht grösser.
+- **Füsse:** Länge ca. 8 % der Figurhöhe.
 
-### 2. Innenansichten
-`koerper_innen_organe`, `koerper_innen_knochen` und `koerper_innen_adern` (je 1536 × 2048, transparent, pixelgenau deckungsgleich mit `koerper_aussen`):
-- Alles ist **deckend**, nichts halb durchsichtig.
-- Die Haut ist eine warme, satte Pfirsichfläche mit weichem 3D-Schatten, wie ein Schnitt durch eine Knetfigur.
-- Darin liegen die Organe, die Knochen oder die Adern in derselben Knete-Qualität wie die Einzelbilder.
-- Kopf, Gesicht und Haare sind identisch mit `koerper_aussen`, also voll gerendert. Ausnahme: Bei den Knochen darf im Schädelbereich der freundliche Schädel sichtbar sein, das Gesicht bleibt aber erkennbar.
-- Die Lageangaben aus `assets/Koerper.csv` gelten weiter: Das Herz liegt auf unserer rechten Seite.
+## Die Innen-Ebenen
 
-### 3. Puzzle
-`koerper_puzzle_rumpf.png`: das Mädchen in Unterwäsche-freier, puppenhaft glatter Haut, Kleidung weggelassen. Im Rumpf ist ein leeres, warmes «Fenster» mit sanft vertiefter Fläche, in das die Organe gelegt werden. Gesicht und Haare voll gerendert.
+Für `koerper_organe`, `koerper_knochen`, `koerper_adern`, `koerper_muskeln` und `koerper_umriss` gilt:
 
-### 4. Muskel-Ebene
-Entfällt. Statt der Muskel-Ebene gibt es nur das Einzelbild `koerper_teil_muskeln` (bleibt).
+- Exakt derselbe Umriss wie `koerper_aussen`. Prüfung: 50 % Deckkraft übereinanderlegen, Abweichung höchstens 1 % der Bildbreite.
+- **Haut:** zart durchscheinend wie bisher, aber sauber und warm, nicht geisterhaft. Das Gesicht ist freundlich und deutlich gezeichnet.
+- **Haare:** echte braune Haare und Zöpfe, leicht durchscheinend, damit man den Kopfinhalt sieht. Niemals hautfarbene Zopf-Flächen.
+- **Organe in natürlicher Grösse und Lage**, kindgerecht vereinfacht:
 
-### 5. Einzelbilder neu
-`koerper_teil_arm` und `koerper_teil_bein`: das ganze Kind von vorne, Arm bzw. Bein leuchtend hervorgehoben. **Kein abgetrenntes Körperteil.**
+| Organ | Lage und Grösse |
+|---|---|
+| Gehirn | füllt den oberen Teil des Schädels (y ca. 5–13 %), liegt vollständig innerhalb des Kopfumrisses, rundherum Abstand zur Kopfkante |
+| Lunge | zwei Flügel, füllen den Brustkorb von y 29 % bis 43 %; der linke Flügel des Kindes (unsere rechte Seite) ist etwas kleiner wegen des Herzens |
+| Herz | Grösse einer Kinderfaust (ca. 6 % der Bildbreite), Mitte leicht links im Körper des Kindes = unsere rechte Seite (x 53 %, y 37 %), liegt zwischen den Lungenflügeln |
+| Speiseröhre | dünn, hinter dem Herzen vom Hals zum Magen |
+| Magen | unter dem linken Rippenbogen des Kindes (unsere rechte Seite, x 55 %, y 45 %) |
+| Leber | rotbraun, unter dem rechten Rippenbogen des Kindes (unsere linke Seite, x 44 %, y 44 %), damit der Bauch nicht leer wirkt |
+| Darm | Dünndarm in der Bauchmitte, umrahmt vom Dickdarm, innerhalb des Beckens (y 48–58 %) |
 
-### 6. Printatops
-Printatops (alle `koerper_dino_*`, `spiel_koerper`) ist **mintgrün wie in der Referenz**, nie orange.
+- **Knochen:** Skelett exakt in den Körper eingepasst.
+  - Schädel = Kopfform.
+  - Brustkorb mit 12 Rippenpaaren, Wirbelsäule durchgehend vom Schädel bis zum Becken, Becken auf Hüfthöhe.
+  - Arm-, Bein-, Hand- und Fussknochen in richtiger Länge. Die Handknochen sind so klein wie die Hand.
+  - Freundlich, nie gruselig: der Schädel sanft und lächelnd.
+- **Adern:** Herz in der Mitte (wie oben). Rote Arterien und blaue Venen verzweigen sich gleichmässig in Kopf, Arme bis in die Finger und Beine bis in die Zehen, klar und nicht zu dicht.
+- **Muskeln:** schöne, glatte Muskelstränge in der richtigen Form, nicht nur Flecken:
+  - Bizeps und Trizeps;
+  - Schulter- und Brustmuskel, Bauchmuskeln;
+  - Oberschenkel- und Wadenmuskeln.
 
-## Prüfen vor dem Push
+  Rosa-rot, weich, wie Knete, kindgerecht und nicht blutig.
+- **`koerper_umriss`:** leerer, durchscheinender Körper mit Gesicht und echten Haaren. Darin werden im Puzzle die Organe abgelegt.
 
-1. Jede Innenansicht mit 50 % Deckkraft über `koerper_aussen` legen. Der Umriss muss deckungsgleich sein.
-2. Bei jedem Bild fragen: Würde ein 5-jähriges Kind das gerne anschauen? Wirkt nichts unheimlich?
+## Einzelbilder
+
+- **`koerper_teil_*`:** Grösse und Form passend zu den Organen in `koerper_organe`. Die App legt sie im Puzzle genau dorthin.
+  - `koerper_teil_arm` und `koerper_teil_bein`: das ganze Mädchen, der Arm bzw. das Bein leuchtet hervorgehoben. Kein abgetrenntes Glied.
+  - `koerper_teil_hand`: normale Kinderhand, Finger zusammen.
+- **`koerper_dino_*` und `spiel_koerper`:** Printatops mintgrün, exakt wie `gw_dino_stehen.png`.
+- Alle übrigen Funktions-, Sinnes- und Symbolbilder ebenfalls neu, in derselben Sorgfalt.
+
+## Prüfung vor jedem Push (Pflicht)
+
+1. Alle 6 Figur-Ebenen nebeneinander und mit 50 % Deckkraft übereinander ansehen: deckungsgleich?
+2. Proportionen nachmessen: Kopf ca. 21 %, Hand ca. 9 % der Höhe, Herz faustgross, Gehirn ganz im Kopf.
+3. Jedes Bild mit den Augen eines 5-jährigen Kindes und seiner Eltern ansehen: schön, freundlich, nichts unheimlich?
+4. Fehlerhafte Bilder neu erzeugen, nicht nachbessern.
+
+Ablage und Commits wie bisher: `Körper neu Paket <n>: … [skip ci]`.
