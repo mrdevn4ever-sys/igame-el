@@ -1,0 +1,108 @@
+{
+  "schema": "ellie-body-package1-provenance/v1",
+  "createdAtUtc": "2026-11-02T20:33:10.077228+00:00",
+  "package": 1,
+  "count": 7,
+  "originCounts": {
+    "generated": 2,
+    "deterministicallyComposed": 5
+  },
+  "generationProvider": "OpenAI image generation through Hermes ChatGPT/Codex OAuth adapter",
+  "generationModel": "gpt-image-2",
+  "technicalQa": "7/7 PASS",
+  "visualQa": "7/7 PASS on cream and #202020",
+  "figureRegistration": "six 1536x2048 figure layers have byte-identical alpha silhouettes; 0 differing alpha pixels",
+  "files": [
+    {
+      "filename": "koerper_aussen.png",
+      "sha256": "0a012c7f950c7878c3eb3bcbc20ef1ef07b2cdb0817bef37f10f5e35c7f17315",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "mode": "RGBA",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS",
+      "registrationStatus": "PASS",
+      "origin": "generated"
+    },
+    {
+      "filename": "koerper_organe.png",
+      "sha256": "00e133ab8dc2870cbf8e33df26fa6b3c871d34f550b1c79d6ddb6d96fc247f0d",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "mode": "RGBA",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS",
+      "registrationStatus": "PASS",
+      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+    },
+    {
+      "filename": "koerper_knochen.png",
+      "sha256": "e7150c075a0cde70c3c5251cbbb62ebb5e3bd4096bc0b3e50b1b61c0fff11130",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "mode": "RGBA",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS",
+      "registrationStatus": "PASS",
+      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+    },
+    {
+      "filename": "koerper_adern.png",
+      "sha256": "b3ad9ec6f7b3bc45a66a6ddfeb1ddfdfc3c32c7cb402d6e4d436f31408632a49",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "mode": "RGBA",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS",
+      "registrationStatus": "PASS",
+      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+    },
+    {
+      "filename": "koerper_muskeln.png",
+      "sha256": "14e2ccb91f6a97eefcbb92e4a37393661bc513753b99d924e130cf13eb53dd4d",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "mode": "RGBA",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS",
+      "registrationStatus": "PASS",
+      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+    },
+    {
+      "filename": "koerper_umriss.png",
+      "sha256": "fc26838542d49893f63c6b8c8960e901322623ede81a6c0848f5166f2a595f4d",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "mode": "RGBA",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS",
+      "registrationStatus": "PASS",
+      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+    },
+    {
+      "filename": "spiel_koerper.png",
+      "sha256": "44665311b9bccfac1ad7ba271f2444a25e1688e2ed86e1c2f7e50ddc2d2a944c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "technicalStatus": "PASS",
+      "visualStatus": "PASS",
+      "registrationStatus": "NOT_APPLICABLE",
+      "origin": "generated"
+    }
+  ]
+}

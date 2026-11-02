@@ -4,7 +4,7 @@ Stand: 2. November 2026
 
 ## Bilder
 
-Alle 246 Bilddateien unter `EllieInsel/Images/` wurden für «Ellies Entdeckerinsel» neu erzeugt oder aus freigegebenen Projektassets technisch abgeleitet. Es wurden keine fremden Illustrationen, Fotos, Logos oder Markenassets übernommen.
+Dieser Stand enthält 309 Bilddateien unter `EllieInsel/Images/`. Sie wurden für «Ellies Entdeckerinsel» neu erzeugt oder aus freigegebenen Projektassets technisch abgeleitet. Es wurden keine fremden Illustrationen, Fotos, Logos oder Markenassets übernommen.
 
 ### Generierung
 
@@ -30,6 +30,10 @@ Die generierten PNG-Dateien wurden ausschließlich technisch nachbearbeitet: Hin
 
 Die genannten Open-Source-Werkzeuge wurden nur zur Verarbeitung eingesetzt; ihre Projektlogos oder Beispieldaten sind nicht Bestandteil der App-Assets.
 
+### «Mein Körper» – Paket 1
+
+Am 2. November 2026 wurden sieben transparente Paket-1-Illustrationen gemäß `assets/Koerper.csv` ergänzt: sechs pixelgenau registrierte Ebenen derselben Kinderfigur sowie die Spielkachel. Zwei Dateien wurden mit `gpt-image-2` über den Hermes-Adapter für ChatGPT/Codex OAuth neu erzeugt; fünf Ebenen wurden deterministisch aus den projekteigenen Paket-1-Generierungen und Anatomiekomponenten zusammengesetzt. Alle sieben Dateien bestanden die technische und visuelle Prüfung. Die sechs Figur-Ebenen sind 1536 × 2048 Pixel groß und besitzen exakt dieselbe Alpha-Silhouette mit null abweichenden Pixeln. Einzelhashes, Herkunft und Prüfstatus stehen in `assets/Koerper_Paket1_Provenienz.json`.
+
 ### «Mein Körper» – Paket 2
 
 Am 2. November 2026 wurden 22 transparente Körperteil-Illustrationen gemäß `assets/Koerper.csv` ergänzt. Davon wurden 15 deterministisch aus den freigegebenen Paket-1-Figur- und Anatomiekomponenten abgeleitet, sechs mit `gpt-image-2` über den Hermes-Adapter für ChatGPT/Codex OAuth neu erzeugt und eine Illustration kontrolliert aus einer neu erzeugten Hautpose plus freigegebener Anatomiekomponente zusammengesetzt. Als Stilreferenzen dienten ausschließlich freigegebene, projekteigene Gartenwelt-Paket-1a- und «Mein Körper»-Paket-1-Assets. Alle 22 Dateien bestanden die technische Prüfung sowie die visuelle Prüfung auf Creme und `#202020`; korrigierte Grenzfälle wurden zusätzlich bei der vorgesehenen Darstellungsgröße von 150 px geprüft. Einzelhashes, Herkunftsklasse und Prüfstatus stehen in `assets/Koerper_Paket2_Provenienz.json`.
@@ -37,6 +41,16 @@ Am 2. November 2026 wurden 22 transparente Körperteil-Illustrationen gemäß `a
 ### «Mein Körper» – Paket 3
 
 Ebenfalls am 2. November 2026 wurden 34 transparente Illustrationen für Körperfunktionen, Sinne, Dino-Animationen und Bedienelemente gemäß `assets/Koerper.csv` ergänzt. 29 Dateien wurden mit `gpt-image-2` über denselben Hermes-Adapter neu erzeugt; fünf Bedienelemente wurden deterministisch aus freigegebenen Paket-1-Komponenten abgeleitet. Verwendet wurden ausschließlich projekteigene Stil- und Identitätsreferenzen. Alle 34 Dateien bestanden die technische und visuelle Prüfung auf Creme und `#202020`; Dino-, Symbol- und Bedienelemente wurden zusätzlich bei ihren vorgesehenen Darstellungsgrößen geprüft. Einzelhashes, Herkunftsklasse und Prüfstatus stehen in `assets/Koerper_Paket3_Provenienz.json`.
+
+## Audio: «Mein Körper»
+
+Dieser Stand enthält sechs gehörte und vom App-Eigentümer freigegebene Körperklänge gemäß `assets/Koerper_Klaenge.csv`. Alle Dateien liegen als M4A/AAC-LC, mono und mit 44,1 kHz vor; die finalen Hashes, technischen Messwerte und Entscheidungen stehen in `assets/Koerper_Audiofreigabe.json`, die Quellenzuordnung in `assets/Koerper_Quellen.csv`.
+
+- Drei Herzschlag-Ziele verwenden bearbeitete Ausschnitte aus **SW002_Stethoscope_Chest_Heart_Heartbeat_Clean_At_Heart.wav** von shapingwaves, <https://freesound.org/people/shapingwaves/sounds/362374/>, lizenziert unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Änderungen: Auswahl unterschiedlicher Ausschnitte, Filterung, Puls-/Kadenzschnitt, Fades, Lautheitsnormalisierung und AAC-Kodierung. Keine Unterstützung oder Empfehlung durch den Urheber wird behauptet.
+- `koerper_sfx_atmen.m4a` verwendet einen bearbeiteten Ausschnitt aus **Girl, female, inhale, exhale, sigh, breathing.wav** von SpliceSound, <https://freesound.org/people/SpliceSound/sounds/218309/>, freigegeben unter [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/). Änderungen: Zuschnitt, sanfte tempoerhaltende Anpassung, Filterung, Fades, Lautheitsnormalisierung und AAC-Kodierung. Die Quelle beschreibt eine Jugendliche; der App-Eigentümer hat den finalen Klang nach Anhören freigegeben.
+- `koerper_sfx_schlucken.m4a` verwendet einen bearbeiteten Ausschnitt aus **Drinking and swallow** von dersuperanton, <https://freesound.org/people/dersuperanton/sounds/433645/>, lizenziert unter [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Änderungen: Zuschnitt, Filterung, Fades, Lautheitsnormalisierung und AAC-Kodierung. Keine Unterstützung oder Empfehlung durch den Urheber wird behauptet.
+- `koerper_sfx_zauber.m4a` ist eine projekteigene lokale, deterministische Python-/NumPy-/SciPy-Synthese (Seed 31006) ohne fremdes Audiosample. Die bereits in Runde 1 freigegebene Datei wurde byteidentisch übernommen.
+- Hörfreigabe: fünf korrigierte Dateien in Runde 2 und der unveränderte Zauberklang aus Runde 1; insgesamt 6/6 freigegeben, keine Beanstandung und keine offene Entscheidung.
 
 ## Audio: Tierlaute und Gartenwelt
 
