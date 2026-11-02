@@ -217,7 +217,7 @@ struct IslandMapView: View {
                                     Circle().fill(.white).frame(width: 96, height: 96)
                                         .overlay(Circle().stroke(model.area == a ? Theme.highlight : .clear, lineWidth: 6))
                                     if open {
-                                        Text(a.emoji).font(.system(size: 50))
+                                        WorldPic("gw_karte_ort_\(a.rawValue)", a.emoji, size: 88)
                                     } else {
                                         WorldPic("gw_karte_nebel", "☁️", size: 90)
                                         Image(systemName: "questionmark").font(.system(size: 30, weight: .heavy)).foregroundStyle(Theme.darkGreen.opacity(0.6))

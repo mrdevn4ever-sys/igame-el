@@ -87,6 +87,12 @@ struct SceneLayer: View {
 
     // MARK: Sprechblase
 
+    /// Sprechblase von Hermes, auf ein Viertel skaliert, damit die Ränder beim Dehnen erhalten bleiben.
+    private var bubbleImage: UIImage? {
+        guard let img = ImageCache.image("gw_sprechblase"), let cg = img.cgImage else { return nil }
+        return UIImage(cgImage: cg, scale: 4, orientation: .up)
+    }
+
     @ViewBuilder
     private var speechBubble: some View {
         if let text = model.dinoText {
@@ -97,9 +103,20 @@ struct SceneLayer: View {
                     .foregroundStyle(Theme.darkGreen)
                     .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(.horizontal, 14).padding(.vertical, 10)
-            .frame(maxWidth: s.width * 0.62, alignment: .leading)
-            .background(RoundedRectangle(cornerRadius: 20).fill(.white.opacity(0.95)).shadow(color: .black.opacity(0.15), radius: 6, y: 2))
+            .padding(.leading, bubbleImage == nil ? 14 : 40)
+            .padding(.trailing, bubbleImage == nil ? 14 : 34)
+            .padding(.top, bubbleImage == nil ? 10 : 24)
+            .padding(.bottom, bubbleImage == nil ? 10 : 40)
+            .frame(maxWidth: s.width * 0.66, alignment: .leading)
+            .background {
+                if let img = bubbleImage {
+                    Image(uiImage: img)
+                        .resizable(capInsets: EdgeInsets(top: 30, leading: 75, bottom: 40, trailing: 35), resizingMode: .stretch)
+                        .shadow(color: .black.opacity(0.12), radius: 5, y: 2)
+                } else {
+                    RoundedRectangle(cornerRadius: 20).fill(.white.opacity(0.95)).shadow(color: .black.opacity(0.15), radius: 6, y: 2)
+                }
+            }
             .padding(14)
             .onTapGesture { model.dinoText = nil }
             .transition(.opacity.combined(with: .scale(scale: 0.9, anchor: .topLeading)))
@@ -128,13 +145,13 @@ struct SceneLayer: View {
             if model.w.workshopOpen {
                 Button { model.openWorkshop() } label: {
                     VStack(spacing: 2) {
-                        WorldPic("gw_werkbank_hammer", "🛠️", size: W * 0.09)
+                        WorldPic("gw_werkbank", "🛠️", size: W * 0.11)
                         Text("Werkbank").font(Theme.rounded(15, .heavy)).foregroundStyle(Theme.darkGreen)
                             .padding(.horizontal, 8).background(Capsule().fill(.white.opacity(0.85)))
                     }
                 }
                 .buttonStyle(PressableStyle())
-                .feet(WorldLayout.workbench, size: W * 0.09, in: s)
+                .feet(WorldLayout.workbench, size: W * 0.11, in: s)
             }
 
             // Picknickdecke
@@ -225,11 +242,15 @@ struct SceneLayer: View {
     private func cellView(_ c: Int, _ r: Int) -> some View {
         let wet = model.lastWaterResult.wet.contains(WaterFlow.key(c, r))
         ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(style: StrokeStyle(lineWidth: 2, dash: [6, 5]))
-                .foregroundStyle(.white.opacity(0.7))
-                .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 0.55, green: 0.42, blue: 0.3).opacity(0.18)))
-                .padding(3)
+            if ImageCache.image("gw_bauplatz_erde") != nil {
+                WorldPic("gw_bauplatz_erde", "", size: min(cellW, cellH) * 0.98)
+            } else {
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(style: StrokeStyle(lineWidth: 2, dash: [6, 5]))
+                    .foregroundStyle(.white.opacity(0.7))
+                    .background(RoundedRectangle(cornerRadius: 10).fill(Color(red: 0.55, green: 0.42, blue: 0.3).opacity(0.18)))
+                    .padding(3)
+            }
             if let t = model.tileAt(c, r) {
                 TileView(tile: t, wet: wet, size: min(cellW, cellH))
             }
@@ -308,7 +329,7 @@ struct SceneLayer: View {
             .feet(WorldLayout.crystal, size: W * 0.09, in: s)
             Button { model.startRain() } label: {
                 VStack(spacing: 0) {
-                    Text("🌦️").font(.system(size: W * 0.06))
+                    WorldPic("gw_wetterwolke", "🌦️", size: W * 0.08)
                     Text("Wetter").font(Theme.rounded(14, .heavy)).foregroundStyle(.white)
                         .padding(.horizontal, 8).background(Capsule().fill(Theme.darkGreen.opacity(0.75)))
                 }
@@ -322,7 +343,11 @@ struct SceneLayer: View {
         let kind = model.w.chimes[i]
         let glowing = (model.chimeGlow[i] ?? .distantPast).timeIntervalSinceNow > -0.45
         return ZStack {
-            Ellipse().fill(.white.opacity(0.35)).frame(width: W * 0.09, height: W * 0.03).offset(y: W * 0.04)
+            if ImageCache.image("gw_klang_sockel") != nil {
+                WorldPic("gw_klang_sockel", "", size: W * 0.1).offset(y: W * 0.035)
+            } else {
+                Ellipse().fill(.white.opacity(0.35)).frame(width: W * 0.09, height: W * 0.03).offset(y: W * 0.04)
+            }
             if let kind {
                 WorldPic(glowing ? kind.glowAsset : kind.asset, kind.emoji, size: W * 0.11)
                     .scaleEffect(glowing ? 1.15 : 1)
@@ -351,8 +376,11 @@ struct SceneLayer: View {
     private func fantasySlot(_ i: Int) -> some View {
         let flower = model.w.fantasy.first { $0.slot == i }
         return ZStack {
+            WorldPic("gw_fantasie_beet", "", size: W * 0.13).offset(y: W * 0.04)
             if let f = flower {
                 FantasyFlowerView(flower: f, size: W * 0.14, pulse: model.fantasyPulse[f.id])
+            } else if ImageCache.image("gw_fantasie_beet") != nil {
+                Image(systemName: "sparkles").font(.system(size: W * 0.03)).foregroundStyle(.white).offset(y: -W * 0.02)
             } else {
                 VStack(spacing: 2) {
                     Image(systemName: "sparkles").font(.system(size: W * 0.035)).foregroundStyle(.white)
@@ -521,11 +549,15 @@ struct BedView: View {
             ZStack(alignment: .bottom) {
                 if isTree {
                     if bed.plant == nil {
-                        Ellipse().fill(Color(red: 0.45, green: 0.32, blue: 0.22).opacity(0.6))
-                            .frame(width: size * 0.4, height: size * 0.1).padding(.bottom, size * 0.06)
-                        Text("Baumplatz").font(Theme.rounded(13, .heavy)).foregroundStyle(.white)
-                            .padding(.horizontal, 8).background(Capsule().fill(Theme.darkGreen.opacity(0.7)))
-                            .padding(.bottom, size * 0.2)
+                        if ImageCache.image("gw_baumplatz") != nil {
+                            WorldPic("gw_baumplatz", "", size: size * 0.55)
+                        } else {
+                            Ellipse().fill(Color(red: 0.45, green: 0.32, blue: 0.22).opacity(0.6))
+                                .frame(width: size * 0.4, height: size * 0.1).padding(.bottom, size * 0.06)
+                            Text("Baumplatz").font(Theme.rounded(13, .heavy)).foregroundStyle(.white)
+                                .padding(.horizontal, 8).background(Capsule().fill(Theme.darkGreen.opacity(0.7)))
+                                .padding(.bottom, size * 0.2)
+                        }
                     }
                 } else {
                     WorldPic(bedAsset(bed, now: now), "🟫", size: size)
