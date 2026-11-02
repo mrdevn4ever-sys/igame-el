@@ -1,0 +1,194 @@
+{
+  "schema": "ellie-body-package2-provenance/v1",
+  "created_at_utc": "2026-11-02T20:22:20.573726+00:00",
+  "package": 2,
+  "count": 22,
+  "origin_counts": {
+    "generated": 6,
+    "deterministically_derived": 15,
+    "hybrid": 1
+  },
+  "generation_provider": "OpenAI image generation through Hermes ChatGPT/Codex OAuth adapter",
+  "generation_model": "gpt-image-2",
+  "style_references": "approved project-owned Gartenwelt package-1a and Mein-Körper package-1 assets",
+  "technical_qa": "22/22 PASS",
+  "visual_qa": "22/22 PASS on cream and #202020; corrected blockers additionally checked at 150px",
+  "files": [
+    {
+      "filename": "koerper_teil_kopf.png",
+      "sha256": "8b6092fdf3ddf3e69c025c6e534e509a526f68686bf788006f40b7034182a585",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_bauch.png",
+      "sha256": "be2888e5eb0aef2c8ca0a48fe29129ae13c5623a53885d5a9b301eb2c8470aff",
+      "origin": "generated",
+      "method": "controlled_generation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_hand.png",
+      "sha256": "57e4fb70347158f4ba0516d33af4ecec7f4ccfe16d6f70aeb484826edfd5d9ad",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_fuss.png",
+      "sha256": "f5ab7eb331e32a8e36d171b7e3baf0055aebc4c5423fffe15bca5179dd5c971e",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_arm.png",
+      "sha256": "a02bd02db1089901c984674a7cebece9e66b813fafeb7121d7e129d3335d86fe",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_bein.png",
+      "sha256": "071ecd4baf292f923225f58ef9e6df9c01a8b359d9c3472e4915b4da21419bd0",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_knie.png",
+      "sha256": "d4cbde17b9b604379127fe95ed2acaf4a8b29ba6e1cdf61bf520e88203837661",
+      "origin": "generated",
+      "method": "controlled_generation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_augen.png",
+      "sha256": "f4f1b29874d5e093974ff488ac18ef94d178b42fbf37d13876e0fa56efa1f994",
+      "origin": "deterministically_derived",
+      "method": "derivation_with_manifest_lash_completion",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_ohren.png",
+      "sha256": "dc0c72398b8df1ba7f35211cb4ef6bc37cc287993d8f56c82a170195262ff048",
+      "origin": "generated",
+      "method": "controlled_generation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_nase.png",
+      "sha256": "503c0f7a57a343c6a375ff2333f31a94f214a4a9187f1bd00973c2d225926b16",
+      "origin": "generated",
+      "method": "controlled_generation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_mund.png",
+      "sha256": "40bd942b39afaf86c00c0829d3baba0090d6485aa8dadceac98d1d8db7120f1c",
+      "origin": "generated",
+      "method": "controlled_generation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_gehirn.png",
+      "sha256": "3e5efa9af27af48f8b33442773156a203dbad8fc13697f89906b62a0f5f9be29",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_herz.png",
+      "sha256": "7b2719cf5f1c37775bef92de74459a318b3dc01763347ed24aec462fa9ce7ee2",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_lunge.png",
+      "sha256": "99f623a3be28acaca39451d584f3e33d662625b269ec9bb9e4d9fabed841c372",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_magen.png",
+      "sha256": "fa0b29ebcc28a586770e3e172309f38c90390316c0aa370b46246fd64889b858",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_darm.png",
+      "sha256": "13dda45d79dc5beee238912344d573a5aca9086790dd8e2b4e81522608c20bee",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_schaedel.png",
+      "sha256": "981038bc3b741ac58e6955cb163ffc859af2115ee48d3e6e4a6257f9a2df434a",
+      "origin": "deterministically_derived",
+      "method": "derivation_with_analytic_outer_cranium_repair",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_rippen.png",
+      "sha256": "66e03d4ca059166afddf44ef8e6bb3f2a8e51d6899d2634420d0294529e534c0",
+      "origin": "deterministically_derived",
+      "method": "derivation_with_residue_alpha_cleanup",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_wirbelsaeule.png",
+      "sha256": "d27de955155e01a31e1a0c6e6d39de9cc40f0dcc2d07f2818c477a4f8f95dad0",
+      "origin": "generated",
+      "method": "generation_edit_then_edge_key",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_oberschenkel.png",
+      "sha256": "d666b09b4563d33b98427b41b35142921132d4a246f42ab3fb5e288839d8743d",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_adern.png",
+      "sha256": "25501ece72249fac09fc5c62364ee1a54ec5cb9a645a65947b21f72a05a0eaab",
+      "origin": "deterministically_derived",
+      "method": "derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    },
+    {
+      "filename": "koerper_teil_muskeln.png",
+      "sha256": "1b7d270bc2c658ff601ba9f89e2059ffb05ab3fe1f27952562f1e4cc64210b2a",
+      "origin": "hybrid",
+      "method": "hybrid_controlled_skin_pose_plus_exact_component_derivation",
+      "technical_status": "PASS",
+      "visual_status": "PASS"
+    }
+  ]
+}

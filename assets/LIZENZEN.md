@@ -30,6 +30,10 @@ Die generierten PNG-Dateien wurden ausschließlich technisch nachbearbeitet: Hin
 
 Die genannten Open-Source-Werkzeuge wurden nur zur Verarbeitung eingesetzt; ihre Projektlogos oder Beispieldaten sind nicht Bestandteil der App-Assets.
 
+### «Mein Körper» – Paket 2
+
+Am 2. November 2026 wurden 22 transparente Körperteil-Illustrationen gemäß `assets/Koerper.csv` ergänzt. Davon wurden 15 deterministisch aus den freigegebenen Paket-1-Figur- und Anatomiekomponenten abgeleitet, sechs mit `gpt-image-2` über den Hermes-Adapter für ChatGPT/Codex OAuth neu erzeugt und eine Illustration kontrolliert aus einer neu erzeugten Hautpose plus freigegebener Anatomiekomponente zusammengesetzt. Als Stilreferenzen dienten ausschließlich freigegebene, projekteigene Gartenwelt-Paket-1a- und «Mein Körper»-Paket-1-Assets. Alle 22 Dateien bestanden die technische Prüfung sowie die visuelle Prüfung auf Creme und `#202020`; korrigierte Grenzfälle wurden zusätzlich bei der vorgesehenen Darstellungsgröße von 150 px geprüft. Einzelhashes, Herkunftsklasse und Prüfstatus stehen in `assets/Koerper_Paket2_Provenienz.json`.
+
 ## Audio: Tierlaute und Gartenwelt
 
 Dieser Stand enthält **66 gehörte und freigegebene Audiodateien** unter `EllieInsel/Audio/`: 32 Tierlaute sowie 34 Effekte, Tonfolgen und Musikstücke für die Gartenwelt. Alle Dateien liegen als M4A/AAC-LC, mono und mit 44,1 kHz vor. Die finalen Hashes und Entscheidungen stehen in `assets/Gartenwelt_Audiofreigabe.json`; jede Quellenzuordnung steht in `assets/Gartenwelt_Quellen.csv`.
