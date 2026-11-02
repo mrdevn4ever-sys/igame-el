@@ -1,0 +1,41 @@
+Datei;Paket;Bereich;Grösse;Beschreibung
+spiel_abc.png;1;Spielkachel;1024x1024 transparent;Kachel für den Hub im Stil der anderen spiel_*-Bilder: Printatops hält einen grossen Buntstift und schreibt ein grosses A; daneben ein kleines b als Holzbuchstabe. Buchstaben A und b sind hier ausnahmsweise erlaubt (sonst kein Text).
+abc_apfel.png;1;Bild;1024x1024 transparent;roter Apfel mit Blatt – Bild für das Wort «Apfel». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_ball.png;1;Bild;1024x1024 transparent;bunter Kinderball – Bild für das Wort «Ball». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_clown.png;1;Bild;1024x1024 transparent;freundlicher Clown (Kopf und Oberkörper), nicht gruselig, lachend – Bild für das Wort «Clown». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_dino.png;1;Bild;1024x1024 transparent;Printatops, der grüne Baby-Triceratops (exakt wie Referenz) – Bild für das Wort «Dino». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_esel.png;1;Bild;1024x1024 transparent;grauer Esel, niedlich – Bild für das Wort «Esel». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_fisch.png;1;Bild;1024x1024 transparent;orange-gelber Fisch – Bild für das Wort «Fisch». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_gabel.png;1;Bild;1024x1024 transparent;silberne Gabel – Bild für das Wort «Gabel». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_hund.png;1;Bild;1024x1024 transparent;brauner Hund, sitzend – Bild für das Wort «Hund». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_igel.png;1;Bild;1024x1024 transparent;Igel – Bild für das Wort «Igel». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_jacke.png;1;Bild;1024x1024 transparent;rote Kinderjacke mit Kapuze – Bild für das Wort «Jacke». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_katze.png;1;Bild;1024x1024 transparent;getigerte Katze, sitzend – Bild für das Wort «Katze». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_loewe.png;1;Bild;1024x1024 transparent;Löwe mit Mähne, freundlich – Bild für das Wort «Löwe». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_maus.png;1;Bild;1024x1024 transparent;graue Maus – Bild für das Wort «Maus». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_nase.png;1;Bild;1024x1024 transparent;Kindernase (Gesichtsausschnitt, freundlich) – Bild für das Wort «Nase». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_ohr.png;1;Bild;1024x1024 transparent;Kinderohr – Bild für das Wort «Ohr». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_pinguin.png;1;Bild;1024x1024 transparent;Pinguin – Bild für das Wort «Pinguin». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_qualle.png;1;Bild;1024x1024 transparent;rosa Qualle, freundlich – Bild für das Wort «Qualle». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_rakete.png;1;Bild;1024x1024 transparent;rot-weisse Spielzeugrakete – Bild für das Wort «Rakete». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_sonne.png;1;Bild;1024x1024 transparent;lachende Sonne – Bild für das Wort «Sonne». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_tomate.png;1;Bild;1024x1024 transparent;rote Tomate mit grünem Stiel – Bild für das Wort «Tomate». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_uhr.png;1;Bild;1024x1024 transparent;runder Wecker – Bild für das Wort «Uhr». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_vogel.png;1;Bild;1024x1024 transparent;Rotkehlchen – Bild für das Wort «Vogel». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_wal.png;1;Bild;1024x1024 transparent;blauer Wal mit Wasserfontäne – Bild für das Wort «Wal». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_xylofon.png;1;Bild;1024x1024 transparent;buntes Kinder-Xylofon mit Schlegeln – Bild für das Wort «Xylofon». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_yak.png;1;Bild;1024x1024 transparent;zotteliges Yak, freundlich – Bild für das Wort «Yak». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_zebra.png;1;Bild;1024x1024 transparent;Zebra – Bild für das Wort «Zebra». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_mama.png;1;Bild;1024x1024 transparent;freundliche Mama (Oberkörper), lächelnd – Bild für das Wort «Mama». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_papa.png;1;Bild;1024x1024 transparent;freundlicher Papa (Oberkörper), lächelnd – Bild für das Wort «Papa». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_oma.png;1;Bild;1024x1024 transparent;freundliche Oma mit Brille – Bild für das Wort «Oma». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_opa.png;1;Bild;1024x1024 transparent;freundlicher Opa mit Bart – Bild für das Wort «Opa». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_auto.png;1;Bild;1024x1024 transparent;kleines rotes Auto – Bild für das Wort «Auto». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_eis.png;1;Bild;1024x1024 transparent;Eiswaffel mit zwei Kugeln – Bild für das Wort «Eis». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_ast.png;1;Bild;1024x1024 transparent;Ast mit Blättern – Bild für das Wort «Ast». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_bus.png;1;Bild;1024x1024 transparent;gelber Bus – Bild für das Wort «Bus». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_zoo.png;1;Bild;1024x1024 transparent;Zoo-Eingangstor mit Giraffe dahinter (ohne Schrift) – Bild für das Wort «Zoo». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_rose.png;1;Bild;1024x1024 transparent;rote Rose – Bild für das Wort «Rose». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_baum.png;1;Bild;1024x1024 transparent;grüner Laubbaum – Bild für das Wort «Baum». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_haus.png;1;Bild;1024x1024 transparent;kleines Haus mit rotem Dach – Bild für das Wort «Haus». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.
+abc_banane.png;1;Bild;1024x1024 transparent;gelbe Banane – Bild für das Wort «Banane». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.

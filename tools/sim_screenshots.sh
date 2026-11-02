@@ -106,6 +106,13 @@ run 112_naturePairs_runde 40 0 -screen game -game naturePairs -level 3 -autoplay
 run 113_garten_bilder 5 0 -screen garden
 
 # Gartenwelt: alle Orte, Abend, Überlagerungen und ein automatischer Durchlauf
+# Spiel 14: ABC lernen (-abctest zeigt es auch ohne Bilder)
+for a in gross klein anlaut paar wo wort wortfrei legen; do
+  run 150_abc_$a 6 0 -screen game -game abc -abctest -abcaufgabe $a
+done
+run 151_abc_runde_stufe1 50 15 -screen game -game abc -abctest -level 1 -autoplay
+run 152_abc_stufe7 8 0 -screen game -game abc -abctest -level 7
+
 # Spiel 13: Mein Körper (Bilder von Hermes; -koerpertest zeigt es auch ohne Bilder)
 run 140_koerper_hub 5 0 -screen hub -page 2 -koerpertest
 for a in zeigen suchen entdecken funktion sinn herz weg puzzle; do

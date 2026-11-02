@@ -209,6 +209,28 @@ for n, _ in PUZZLE:
 # --- Spiel 12: Atelier ---
 for t in re.findall(r'"[^"]+", "[^"]+", "(Hilf [^"]+)"', src("Games/Atelier/AtelierPaths.swift")): add(t, "Spurenatelier")
 
+# --- Spiel 14: ABC lernen ---
+LETDIR = os.path.join(SRC, "Games", "Letters")
+abc = open(os.path.join(LETDIR, "LetterCatalog.swift"), encoding="utf-8").read()
+for f in sorted(os.listdir(LETDIR)):
+    if not f.endswith(".swift"): continue
+    for line in open(os.path.join(LETDIR, f), encoding="utf-8"):
+        for lit in re.findall(r'"((?:[^"\\]|\\.)*)"', line):
+            if "\\(" in lit or len(lit) < 4: continue
+            if lit[0].isupper() and lit.rstrip()[-1] in ".!?" and " " in lit:
+                add(lit, "ABC lernen")
+for U, w in re.findall(r'L\("([A-Z])", "([^"]+)", "[^"]+"\)', abc):
+    l = U.lower()
+    add(f"Das ist das {U}. {U} wie {w}.", "ABC lernen")
+    add(f"Das ist das kleine {l}. {U} wie {w}.", "ABC lernen")
+    add(f"Womit beginnt {w}?", "ABC lernen"); add(f"Ja! {w} beginnt mit {U}.", "ABC lernen")
+    add(f"Wo ist das {U}?", "ABC lernen")
+    add(f"Welcher kleine Buchstabe gehört zum grossen {U}?", "ABC lernen")
+    add(f"Genau, das grosse {U} und das kleine {l} gehören zusammen.", "ABC lernen")
+for w in re.findall(r'W\("([^"]+)", "[^"]+"\)', abc):
+    add(f"Schreib das Wort {w}.", "ABC lernen"); add(f"Leg das Wort {w}.", "ABC lernen")
+    add(f"Toll, du hast {w} geschrieben!", "ABC lernen")
+
 # --- Spiel 13: Mein Körper ---
 BODY = os.path.join(SRC, "Games", "Body")
 for f in sorted(os.listdir(BODY)):

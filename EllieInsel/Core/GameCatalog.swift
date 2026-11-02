@@ -18,6 +18,7 @@ enum GameID: String, Codable, CaseIterable, Identifiable, Hashable {
     case sorting
     case atelier
     // Seite 3
+    case abc
     case koerper
 
     var id: String { rawValue }
@@ -36,6 +37,7 @@ enum GameID: String, Codable, CaseIterable, Identifiable, Hashable {
         case .naturePairs: return "Naturpaare"
         case .sorting: return "Sortiergarten"
         case .atelier: return "Spurenatelier"
+        case .abc: return "ABC lernen"
         case .koerper: return "Mein Körper"
         }
     }
@@ -54,6 +56,7 @@ enum GameID: String, Codable, CaseIterable, Identifiable, Hashable {
         case .naturePairs: return "🐿️"
         case .sorting: return "🧺"
         case .atelier: return "🎨"
+        case .abc: return "🔤"
         case .koerper: return "🫀"
         }
     }
@@ -73,6 +76,7 @@ enum GameID: String, Codable, CaseIterable, Identifiable, Hashable {
         case .naturePairs: return "🌰"
         case .sorting: return "🍂"
         case .atelier: return "🐝"
+        case .abc: return "A b"
         case .koerper: return "🔍"
         }
     }
@@ -84,6 +88,7 @@ enum GameID: String, Codable, CaseIterable, Identifiable, Hashable {
         case .memory, .puzzle: return Theme.lightBlue
         case .counting, .pattern, .sorting: return Theme.lilac
         case .snake, .atelier: return Theme.lightYellow
+        case .abc: return Theme.lightBlue
         case .koerper: return Theme.apricot
         }
     }
@@ -91,10 +96,16 @@ enum GameID: String, Codable, CaseIterable, Identifiable, Hashable {
     @MainActor
     var page: Int { (GameID.available.firstIndex(of: self) ?? 0) / 6 }
 
-    /// Spiele, die im Hub erscheinen. «Mein Körper» erst, wenn seine Bilder in der App sind.
+    /// Spiele, die im Hub erscheinen. Neue Spiele erst, wenn ihre Bilder in der App sind.
     @MainActor
     static var available: [GameID] {
-        allCases.filter { $0 != .koerper || UIImage(named: "koerper_aussen") != nil || DemoMode.flag("-koerpertest") }
+        allCases.filter { g in
+            switch g {
+            case .koerper: return UIImage(named: "koerper_aussen") != nil || DemoMode.flag("-koerpertest")
+            case .abc: return UIImage(named: "abc_apfel") != nil || DemoMode.flag("-abctest")
+            default: return true
+            }
+        }
     }
 
     /// Kurze Begrüssung beim Öffnen eines Spiels.
@@ -112,6 +123,7 @@ enum GameID: String, Codable, CaseIterable, Identifiable, Hashable {
         case .naturePairs: return "Was gehört zusammen?"
         case .sorting: return "Wir sortieren im Garten."
         case .atelier: return "Willkommen im Atelier."
+        case .abc: return "Wir lernen Buchstaben."
         case .koerper: return "Wir entdecken unseren Körper."
         }
     }

@@ -16,6 +16,7 @@ enum LevelCatalog {
         case .naturePairs: return 5
         case .sorting: return 7
         case .atelier: return 6
+        case .abc: return 9
         case .koerper: return 6
         }
     }
@@ -35,6 +36,7 @@ enum LevelCatalog {
         case .naturePairs: return 9
         case .sorting: return Double(sorting(level).items) * 3
         case .atelier: return 12 + Double(level) * 2
+        case .abc: return 14 + Double(level) * 2
         case .koerper: return 14
         }
     }
@@ -83,12 +85,28 @@ enum LevelCatalog {
             return "\(s.baskets) Körbe, \(s.items) Dinge\(s.fine ? ", feine Unterschiede" : "")"
         case .atelier:
             return "Wege \(atelier(level).pathLevel.title), Spurbreite \(Int(atelier(level).width * 100))"
+        case .abc:
+            return abc(level)
         case .koerper:
             return koerper(level)
         }
     }
 
     // MARK: - Werte pro Spiel
+
+    static func abc(_ l: Int) -> String {
+        switch l {
+        case ...1: return "Grossbuchstaben mit geraden Strichen nachzeichnen"
+        case 2: return "Grossbuchstaben mit Bögen"
+        case 3: return "Alle Grossbuchstaben, Anlaute hören"
+        case 4: return "Grossbuchstaben ohne Pfeile, Buchstaben erkennen"
+        case 5: return "Einfache Kleinbuchstaben, gross und klein zuordnen"
+        case 6: return "Alle Kleinbuchstaben ohne Pfeile"
+        case 7: return "Kurze Wörter schreiben (mit Spur), eigener Name"
+        case 8: return "Wörter ohne Spur schreiben, Wörter legen"
+        default: return "Wörter hören, legen und richtig gross/klein schreiben"
+        }
+    }
 
     static func koerper(_ l: Int) -> String {
         switch l {
