@@ -58,6 +58,17 @@ struct GardenWorldContent: View {
         .overlay(alignment: .bottomTrailing) {
             if showBasket { BasketPopover(model: model, close: { showBasket = false }).padding(.trailing, 24).padding(.bottom, 110) }
         }
+        .onAppear { updateMusic() }
+        .onChange(of: model.area) { _, _ in updateMusic() }
+        .onChange(of: model.w.evening) { _, _ in updateMusic() }
+        .onDisappear { app.audio.setMusicTrack(nil) }
+    }
+
+    /// Gartenmusik: Tag, Abend oder Wunderlichtung (nur wenn Musik eingeschaltet ist).
+    private func updateMusic() {
+        let track = model.area == .wunder ? "gw_musik_wunderlichtung"
+            : (model.w.evening ? "gw_musik_garten_abend" : "gw_musik_garten_tag")
+        app.audio.setMusicTrack(track)
     }
 
     // MARK: Obere Leiste

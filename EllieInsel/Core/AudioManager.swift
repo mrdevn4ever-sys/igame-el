@@ -326,10 +326,31 @@ final class AudioManager: NSObject {
 
     // MARK: - Musik
 
+    /// Eigenes Musikstück (z. B. Gartenmusik). nil = Standardmelodie.
+    private var musicTrack: String?
+    private var playingTrack: String?
+
+    /// Wechselt das Musikstück (nur hörbar, wenn Musik in den Einstellungen an ist).
+    func setMusicTrack(_ name: String?) {
+        let available = name.flatMap { Bundle.main.url(forResource: $0, withExtension: "m4a") != nil ? $0 : nil }
+        guard available != musicTrack else { return }
+        musicTrack = available
+        updateMusic()
+    }
+
     private func updateMusic() {
         if settings.musicAudible {
+            if musicPlayer != nil && playingTrack != musicTrack {
+                musicPlayer?.stop()
+                musicPlayer = nil
+            }
             if musicPlayer == nil {
-                musicPlayer = try? AVAudioPlayer(data: ToneGenerator.music)
+                if let track = musicTrack, let url = Bundle.main.url(forResource: track, withExtension: "m4a") {
+                    musicPlayer = try? AVAudioPlayer(contentsOf: url)
+                } else {
+                    musicPlayer = try? AVAudioPlayer(data: ToneGenerator.music)
+                }
+                playingTrack = musicTrack
                 musicPlayer?.numberOfLoops = -1
             }
             musicPlayer?.volume = Float(settings.musicVolume)
