@@ -109,7 +109,7 @@ enum DemoMode {
         w.streamBed = BedState(plant: .tomate, stage: 3, needsWater: false, growingSince: now)
         w.pondReached = true
         w.residents = [.vogel, .hase, .schnecke, .ente, .frosch, .fisch, .igel, .eichhoernchen, .reh, .eule]
-        w.built += [BuiltObject(kind: .bruecke, area: .bach, x: 0.5, y: 0.17, roof: .braun, body: .natur),
+        w.built += [BuiltObject(kind: .bruecke, area: .bach, x: 0.16, y: 0.7, roof: .braun, body: .natur),
                     BuiltObject(kind: .igelhaus, area: .lichtung, x: 0.7, y: 0.66, roof: .gruen, body: .braun),
                     BuiltObject(kind: .tunnel, area: .lichtung, x: 0.4, y: 0.92, roof: .gruen, body: .gruen),
                     BuiltObject(kind: .futterstelle, area: .haus, x: 0.62, y: 0.44, roof: .rot, body: .gelb),

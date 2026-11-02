@@ -111,9 +111,9 @@ enum AdventureCatalog {
             id: "boot", title: "Das Blattboot",
             available: { w in w.isUnlocked(.bach) && !w.pondReached },
             steps: [
-                AdventureStep(area: .bach, x: 0.13, y: 0.3, asset: "gw_boot_blatt", emoji: "🍃",
+                AdventureStep(area: .bach, x: 0.19, y: 0.28, asset: "gw_boot_blatt", emoji: "🍃",
                               say: "An der Quelle wartet ein Blattboot. Tippe es an."),
-                AdventureStep(area: .bach, x: 0.86, y: 0.86, kind: .boatToPond, asset: "gw_ziel_teich", emoji: "🏝️",
+                AdventureStep(area: .bach, x: 0.84, y: 0.84, kind: .boatToPond, asset: "gw_ziel_teich", emoji: "🏝️",
                               say: "Bau einen Wasserweg von der Quelle bis zum Teich. Dann lass das Boot fahren.")
             ],
             finishText: "Das Boot ist im Teich angekommen! An der Anlegestelle liegt eine Muschel.",
@@ -126,7 +126,7 @@ enum AdventureCatalog {
             id: "frosch", title: "Auf dem Seerosenblatt",
             available: { w in w.pondReached && !w.has(.frosch) },
             steps: [
-                AdventureStep(area: .bach, x: 0.78, y: 0.74, asset: "gw_seerose", emoji: "🪷",
+                AdventureStep(area: .bach, x: 0.88, y: 0.74, asset: "gw_seerose", emoji: "🪷",
                               say: "Auf dem Seerosenblatt sitzt jemand. Tippe ihn an.")
             ],
             finishText: "Ein Frosch! Er wohnt jetzt am Teich.",
@@ -139,12 +139,12 @@ enum AdventureCatalog {
             id: "bruecke", title: "Die Brücke",
             available: { w in w.isUnlocked(.bach) && !w.isUnlocked(.lichtung) },
             steps: [
-                AdventureStep(area: .bach, x: 0.5, y: 0.17, asset: "gw_szene_hausgarten_gesperrt_weg", emoji: "🪵",
+                AdventureStep(area: .bach, x: 0.16, y: 0.7, asset: "gw_szene_hausgarten_gesperrt_weg", emoji: "🪵",
                               say: "Hier fehlt eine Brücke. Tippe darauf.",
                               onComplete: { w in if !w.kits.contains(.bruecke) { w.kits.append(.bruecke) } }),
-                AdventureStep(area: .bach, x: 0.5, y: 0.17, kind: .build(.bruecke), asset: "gw_bau_bruecke_fertig", emoji: "🌉",
+                AdventureStep(area: .bach, x: 0.16, y: 0.7, kind: .build(.bruecke), asset: "gw_bau_bruecke_fertig", emoji: "🌉",
                               say: "In der Werkstatt liegen die Teile für eine Brücke. Bau sie zusammen."),
-                AdventureStep(area: .bach, x: 0.5, y: 0.1, asset: "gw_dino_zeigen", emoji: "🦕",
+                AdventureStep(area: .bach, x: 0.16, y: 0.6, asset: "gw_dino_zeigen", emoji: "🦕",
                               say: "Die Brücke ist fertig! Printatops geht als Erster hinüber. Komm mit!")
             ],
             finishText: "Auf der anderen Seite liegt die Tierlichtung!",
@@ -181,7 +181,7 @@ enum AdventureCatalog {
             id: "eichhoernchen", title: "Das Eichhörnchen",
             available: { w in w.isUnlocked(.lichtung) && !w.isUnlocked(.baumhaus) },
             steps: [
-                AdventureStep(area: .lichtung, x: 0.14, y: 0.52, asset: "gw_tier_eichhoernchen_sitzen", emoji: "🐿️",
+                AdventureStep(area: .lichtung, x: 0.15, y: 0.44, asset: "gw_tier_eichhoernchen_sitzen", emoji: "🐿️",
                               say: "Im hohlen Baumstamm sitzt jemand. Tippe ihn an."),
                 AdventureStep(area: .lichtung, x: 0.46, y: 0.36, asset: "gw_tier_eichhoernchen_springen", emoji: "🐿️",
                               say: "Das Eichhörnchen hüpft weiter. Folge ihm!"),

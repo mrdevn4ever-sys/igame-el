@@ -211,11 +211,18 @@ struct SceneLayer: View {
 
     private var streamContent: some View {
         ZStack(alignment: .topLeading) {
-            WorldPic("gw_quelle", "⛲️", size: cellW * 1.1)
+            // Zulauf vom gemalten Wasserfall zum ersten Feld
+            Group {
+                if ImageCache.image(model.area.scene(evening: false)) != nil {
+                    TileView(tile: WaterTile(col: -1, row: 0, piece: .gerade), wet: true, size: min(cellW, cellH))
+                } else {
+                    WorldPic("gw_quelle", "⛲️", size: cellW * 1.1)
+                }
+            }
                 .at(WorldLayout.source, in: s)
                 .onTapGesture { model.say("Das ist die Quelle. Hier beginnt das Wasser.") }
             WorldPic("gw_ziel_teich", "🏝️", size: cellW * 1.3)
-                .at(WorldLayout.pond, in: s)
+                .at(WorldLayout.pondInlet, in: s)
                 .onTapGesture { model.say(model.lastWaterResult.pond ? "Das Wasser fliesst in den Teich." : "Hierher soll das Wasser fliessen.") }
             StreamBedView(model: model, size: cellW * 1.2)
                 .at(WorldLayout.streamBed, in: s)
@@ -242,7 +249,10 @@ struct SceneLayer: View {
     private func cellView(_ c: Int, _ r: Int) -> some View {
         let wet = model.lastWaterResult.wet.contains(WaterFlow.key(c, r))
         ZStack {
-            if ImageCache.image("gw_bauplatz_erde") != nil {
+            if ImageCache.image(WorldArea.bach.scene(evening: false)) != nil && !WorldPanorama.isActive(.bach) {
+                // Die Erdfelder sind im Hintergrund gemalt
+                Color.clear
+            } else if ImageCache.image("gw_bauplatz_erde") != nil {
                 WorldPic("gw_bauplatz_erde", "", size: min(cellW, cellH) * 0.98)
             } else {
                 RoundedRectangle(cornerRadius: 10)
