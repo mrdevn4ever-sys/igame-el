@@ -36,9 +36,11 @@ struct SceneLayer: View {
                     builtObjects
                     placementSpots
                     hotspots
+                    // Figuren vor allem, was weiter hinten steht (Bodenlinie oberhalb 0.75)
                     ActorsLayer(model: model, size: s)
-                    if model.area == .bach { boatLayer }
-                    flyerLayer
+                        .zIndex(0.75)
+                    if model.area == .bach { boatLayer.zIndex(0.9) }
+                    flyerLayer.zIndex(30)
                 }
                 .frame(width: s.width, height: s.height, alignment: .topLeading)
                 .coordinateSpace(name: "scene")
@@ -88,10 +90,8 @@ struct SceneLayer: View {
     // MARK: Sprechblase
 
     /// Sprechblase von Hermes, auf ein Viertel skaliert, damit die Ränder beim Dehnen erhalten bleiben.
-    private var bubbleImage: UIImage? {
-        guard let img = ImageCache.image("gw_sprechblase"), let cg = img.cgImage else { return nil }
-        return UIImage(cgImage: cg, scale: 4, orientation: .up)
-    }
+    /// Gedehnt wirkt die gemalte Sprechblase blass; die weisse Blase bleibt besser lesbar.
+    private var bubbleImage: UIImage? { nil }
 
     @ViewBuilder
     private var speechBubble: some View {
