@@ -739,10 +739,11 @@ enum Resident: String, Codable, CaseIterable, Identifiable {
     /// Tierlaut-Datei aus dem Tierstimmen-Spiel (falls vorhanden).
     var soundFile: String? {
         switch self {
-        case .ente: return "tier_ente_1"
-        case .frosch: return "tier_frosch_1"
-        case .eule: return "tier_eule_1"
+        case .ente: return "gw_sfx_ente"
+        case .frosch: return "gw_sfx_frosch"
+        case .eule: return "gw_sfx_eule"
         case .vogel: return "gw_sfx_vogel"
+        case .schmetterling: return "gw_sfx_schmetterling"
         default: return nil
         }
     }
