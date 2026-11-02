@@ -33,6 +33,8 @@ struct AppData: Codable {
 
     /// ABC: wie sicher jeder Buchstabe sitzt (Punkte; ab 3 gilt er als gekonnt). Schlüssel «A» bzw. «a».
     var letters: [String: Int] = [:]
+    /// ABC: Buchstaben, die mindestens einmal ganz nachgezeichnet wurden.
+    var lettersDone: Set<String> = []
 
     // Automatische Anpassung
     var skills: [String: SkillState] = [:]
@@ -84,6 +86,7 @@ struct AppData: Codable {
         garden = (try? c.decode(GardenData.self, forKey: .garden)) ?? d.garden
         world = (try? c.decode(WorldData.self, forKey: .world)) ?? d.world
         letters = (try? c.decode([String: Int].self, forKey: .letters)) ?? d.letters
+        lettersDone = (try? c.decode(Set<String>.self, forKey: .lettersDone)) ?? d.lettersDone
         skills = (try? c.decode([String: SkillState].self, forKey: .skills)) ?? d.skills
         adaptiveOff = (try? c.decode(Set<String>.self, forKey: .adaptiveOff)) ?? d.adaptiveOff
     }

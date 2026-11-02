@@ -57,7 +57,7 @@ enum LevelEngine {
     ///   - tasksPerRound: Aufgaben pro Runde (bestimmt, wie viele Ergebnisse für einen Aufstieg nötig sind)
     ///   - targetSeconds: Startwert für «zügig» auf dem aktuellen Niveau
     static func finishRound(state: inout SkillState, round: [TaskResult], maxLevel: Int,
-                            tasksPerRound: Int, targetSeconds: Double) -> LevelChange {
+                            tasksPerRound: Int, targetSeconds: Double, canAdvance: Bool = true) -> LevelChange {
         state.abortStreak = 0
         // Bewertung mit der Referenz vor dieser Runde (sonst würde sich die Runde selbst messen)
         let reference = referenceSeconds(state, level: state.level, fallback: targetSeconds)
@@ -81,7 +81,8 @@ enum LevelEngine {
             return apply(&state, to: state.level - 1, change: .down)
         }
 
-        if recent.count >= needed && weak == 0 && strong >= needed && state.level < maxLevel {
+        // Manche Spiele verlangen zuerst, dass alles auf diesem Niveau einmal geübt wurde (ABC: jeder Buchstabe).
+        if canAdvance && recent.count >= needed && weak == 0 && strong >= needed && state.level < maxLevel {
             // Zwei Runden in Folge nur stark und deutlich schneller: zwei Stufen.
             let lastEight = ratings.suffix(8)
             let fast = atLevel.suffix(8).allSatisfy { $0.seconds <= reference * 0.8 }

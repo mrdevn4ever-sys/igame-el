@@ -182,7 +182,8 @@ final class AppModel {
         }
         let change = LevelEngine.finishRound(
             state: &state, round: results, maxLevel: LevelCatalog.maxLevel(game),
-            tasksPerRound: tasksPerRound, targetSeconds: LevelCatalog.targetSeconds(game, level: from)
+            tasksPerRound: tasksPerRound, targetSeconds: LevelCatalog.targetSeconds(game, level: from),
+            canAdvance: game != .abc || LetterTasks.missing(level: from, done: data.lettersDone).isEmpty
         )
         let to = state.level
         update { d in

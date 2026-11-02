@@ -44,10 +44,26 @@ enum LetterTasks {
         }
     }
 
-    /// Wählt bevorzugt Buchstaben, die noch nicht sicher sitzen.
-    static func pick(_ pool: [String], count: Int, known: [String: Int]) -> [String] {
-        var rest = pool
-        var out: [String] = []
+    /// Buchstaben, die auf diesem Niveau alle einmal nachgezeichnet sein müssen, bevor es weitergeht.
+    static func coveragePool(level: Int) -> [String] {
+        switch level {
+        case ...1: return LetterCatalog.straight
+        case 2: return LetterCatalog.straight + LetterCatalog.curved
+        case 3, 4: return LetterCatalog.allUpper
+        case 5: return LetterCatalog.easyLower
+        case 6: return LetterCatalog.allLower
+        default: return []
+        }
+    }
+
+    static func missing(level: Int, done: Set<String>) -> [String] {
+        coveragePool(level: level).filter { !done.contains($0) }
+    }
+
+    /// Zuerst Buchstaben, die noch nie gemacht wurden; danach bevorzugt die, die noch nicht sicher sitzen.
+    static func pick(_ pool: [String], count: Int, known: [String: Int], done: Set<String> = []) -> [String] {
+        var out = Array(pool.filter { !done.contains($0) }.shuffled().prefix(count))
+        var rest = pool.filter { !out.contains($0) }
         while out.count < count, !rest.isEmpty {
             let weights = rest.map { 1.0 / Double(1 + min(known[$0] ?? 0, 4) * 2) }
             var r = Double.random(in: 0..<weights.reduce(0, +))
@@ -69,7 +85,10 @@ enum LetterTasks {
         return WordInfo(word: n.prefix(1).uppercased() + n.dropFirst().lowercased(), emoji: "⭐️")
     }
 
-    static func round(level: Int, known: [String: Int], name: String) -> [LetterTask] {
+    static func round(level: Int, known: [String: Int], done: Set<String> = [], name: String) -> [LetterTask] {
+        func pick(_ pool: [String], count: Int, known: [String: Int]) -> [String] {
+            LetterTasks.pick(pool, count: count, known: known, done: done)
+        }
         let upper = LetterCatalog.allUpper
         switch level {
         case ...1:
@@ -132,7 +151,7 @@ struct LettersGameView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            LetterStrip(letters: model.stripLetters, known: host.app.data.letters, current: model.currentLetter)
+            LetterStrip(letters: model.stripLetters, known: host.app.data.letters, done: host.app.data.lettersDone, current: model.currentLetter)
             Group {
                 if let task = model.task {
                     switch task {
@@ -343,13 +362,15 @@ struct WritingLines: View {
 struct LetterStrip: View {
     let letters: [String]
     let known: [String: Int]
+    let done: Set<String>
     let current: String?
 
     var body: some View {
         HStack(spacing: 2) {
             ForEach(letters, id: \.self) { l in
                 let score = known[l] ?? 0
-                LetterGlyph(letter: l, color: score >= LettersModel.masteredScore ? Theme.success : Theme.darkGreen.opacity(score > 0 ? 0.45 : 0.18))
+                LetterGlyph(letter: l, color: score >= LettersModel.masteredScore ? Theme.success
+                                                : Theme.darkGreen.opacity(done.contains(l) ? 0.55 : 0.16))
                     .frame(width: 30, height: 30)
                     .background(Circle().fill(l == current ? Theme.lightYellow : .clear).frame(width: 34, height: 34))
             }
@@ -426,7 +447,11 @@ final class LettersModel {
         host.summaryProvider = { [weak self] in
             guard let self else { return RoundSummary(text: "Buchstaben geübt.") }
             let items = self.tasks.map(self.subject)
-            return RoundSummary(text: "Geübt: \(items.joined(separator: ", ")).", practiced: items)
+            let missing = LetterTasks.missing(level: self.host.level, done: self.host.app.data.lettersDone)
+            let pool = LetterTasks.coveragePool(level: self.host.level)
+            let extra = pool.isEmpty ? "" : (missing.isEmpty ? " Alle Buchstaben dieses Niveaus hast du schon geschrieben."
+                                                           : " Noch \(missing.count) von \(pool.count) Buchstaben bis zum nächsten Niveau.")
+            return RoundSummary(text: "Geübt: \(items.joined(separator: ", ")).\(extra)", practiced: items)
         }
         if DemoMode.flag("-abctest"), let demo = DemoMode.value("-abcaufgabe") {
             tasks = Self.demoTasks(demo)
@@ -437,7 +462,8 @@ final class LettersModel {
             if host.tasksDone >= host.tasksPerRound { host.resumeIfNeeded(); return }
             if host.awaitingNext { host.next(); return }
         } else {
-            tasks = LetterTasks.round(level: host.level, known: host.app.data.letters, name: host.app.data.profile.name)
+            tasks = LetterTasks.round(level: host.level, known: host.app.data.letters, done: host.app.data.lettersDone,
+                                     name: host.app.data.profile.name)
         }
         host.setTasksPerRound(tasks.count)
         present()
@@ -541,7 +567,10 @@ final class LettersModel {
     private func letterDone() {
         guard let task else { return }
         host.audio.effect(.snap)
-        if let l = currentLetter, !helped { learn(l, +1) }
+        if let l = currentLetter {
+            if !helped { learn(l, +1) }
+            if !host.app.data.lettersDone.contains(l) { host.app.update { $0.lettersDone.insert(l) } }
+        }
         switch task {
         case .trace(let l):
             solved = true
