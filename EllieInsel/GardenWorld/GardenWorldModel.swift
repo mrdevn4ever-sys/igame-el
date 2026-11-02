@@ -594,7 +594,7 @@ final class GardenWorldModel {
     func resetActors() {
         let now = Date()
         var list: [WorldActor] = []
-        let dinoHome: CGPoint = area == .haus ? CGPoint(x: 0.66, y: 0.8) : CGPoint(x: 0.5, y: 0.86)
+        let dinoHome: CGPoint = area == .haus ? CGPoint(x: 0.34, y: 0.74) : CGPoint(x: 0.5, y: 0.86)
         list.append(WorldActor(id: "dino", resident: nil, from: dinoHome, to: dinoHome, start: now, duration: 0,
                                restUntil: now.addingTimeInterval(4)))
         for (i, r) in presentResidents(area).enumerated() {

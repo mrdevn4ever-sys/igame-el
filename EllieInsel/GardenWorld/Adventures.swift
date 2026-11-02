@@ -53,7 +53,7 @@ enum AdventureCatalog {
             steps: [
                 AdventureStep(area: .haus, x: 0.42, y: 0.42, asset: "gw_tier_schmetterling_sitzen", emoji: "🦋",
                               say: "Ein Schmetterling sitzt auf deiner Blume. Tippe ihn an."),
-                AdventureStep(area: .haus, x: 0.94, y: 0.6, asset: "gw_busch_2", emoji: "🌳",
+                AdventureStep(area: .haus, x: 0.94, y: 0.58, asset: "gw_busch_2", emoji: "🌳",
                               say: "Er fliegt zum Busch. Was ist dahinter?")
             ],
             finishText: "Hinter dem Busch ist ein Weg! Er führt zum Bach.",
@@ -83,9 +83,9 @@ enum AdventureCatalog {
             id: "hase", title: "Der hungrige Hase",
             available: { w in w.harvestedOnce.contains(HarvestItem.karotte.rawValue) && !w.has(.hase) },
             steps: [
-                AdventureStep(area: .haus, x: 0.06, y: 0.58, asset: "gw_busch_2", emoji: "🌿",
+                AdventureStep(area: .haus, x: 0.08, y: 0.5, asset: "gw_busch_2", emoji: "🌿",
                               say: "Da raschelt etwas im Busch. Tippe auf den Busch."),
-                AdventureStep(area: .haus, x: 0.12, y: 0.66, kind: .item(.karotte), asset: "gw_tier_hase_verstecken", emoji: "🐇",
+                AdventureStep(area: .haus, x: 0.18, y: 0.66, kind: .item(.karotte), asset: "gw_tier_hase_verstecken", emoji: "🐇",
                               say: "Ein Hase! Er schnuppert. Hast du eine Karotte für ihn?")
             ],
             finishText: "Der Hase knabbert die Karotte. Jetzt besucht er deinen Garten.",
@@ -292,13 +292,13 @@ enum AdventureCatalog {
             id: "fest", title: "Das Gartenfest",
             available: { w in w.isUnlocked(.wunder) && !w.festDone },
             steps: [
-                AdventureStep(area: .haus, x: 0.76, y: 0.56, kind: .dish(nil), asset: "gw_kueche_kuchen_fertig", emoji: "🥧",
+                AdventureStep(area: .haus, x: 0.72, y: 0.5, kind: .dish(nil), asset: "gw_kueche_kuchen_fertig", emoji: "🥧",
                               say: "Wir feiern ein Gartenfest! Bereite in der Küche etwas Feines zu und bring es her."),
-                AdventureStep(area: .haus, x: 0.68, y: 0.5, kind: .dish(.blumenstrauss), asset: "gw_kueche_vase_strauss", emoji: "💐",
+                AdventureStep(area: .haus, x: 0.64, y: 0.46, kind: .dish(.blumenstrauss), asset: "gw_kueche_vase_strauss", emoji: "💐",
                               say: "Für den Festtisch brauchen wir einen Blumenstrauss aus der Küche."),
-                AdventureStep(area: .haus, x: 0.78, y: 0.34, kind: .build(.wimpelkette), asset: "gw_wimpelkette", emoji: "🎏",
+                AdventureStep(area: .haus, x: 0.72, y: 0.34, kind: .build(.wimpelkette), asset: "gw_wimpelkette", emoji: "🎏",
                               say: "Jetzt fehlt noch eine Wimpelkette. Bau sie in der Werkstatt."),
-                AdventureStep(area: .haus, x: 0.76, y: 0.6, asset: "gw_fest_girlande", emoji: "🎉",
+                AdventureStep(area: .haus, x: 0.8, y: 0.56, asset: "gw_fest_girlande", emoji: "🎉",
                               say: "Alles ist bereit. Tippe hier, dann beginnt das Fest!")
             ],
             finishText: "Das Gartenfest beginnt! Alle deine Freunde sind gekommen.",

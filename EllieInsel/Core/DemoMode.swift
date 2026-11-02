@@ -46,9 +46,7 @@ enum DemoMode {
         }
         d.lastGame = GameID.memory.rawValue
         d.garden.placed = [
-            PlacedDecoration(item: "🌳", x: 0.15, y: 0.45), PlacedDecoration(item: "🌷", x: 0.3, y: 0.7),
-            PlacedDecoration(item: "🏡", x: 0.55, y: 0.4), PlacedDecoration(item: "🦋", x: 0.7, y: 0.25),
-            PlacedDecoration(item: "🌻", x: 0.45, y: 0.75)
+            PlacedDecoration(item: "🌷", x: 0.33, y: 0.74), PlacedDecoration(item: "🌻", x: 0.5, y: 0.52)
         ]
         d.garden.inventory = Array(d.garden.inventory.dropFirst(3))
         d.garden.pendingRewards = value("-world") == nil ? [PendingReward(id: "demo", game: .memory, options: ["saat:tomate", "bau:bank", "🦔"])] : []
@@ -81,7 +79,7 @@ enum DemoMode {
         w.kits = [.vogelhaus, .bank, .futterstelle]
         w.picnic = PicnicState(area: .haus, blanket: 0, dishes: [.erdbeerschale], plates: 2)
         w.built = [BuiltObject(kind: .vogelhaus, area: .haus, x: 0.47, y: 0.44, roof: .gelb, body: .blau, pattern: .punkte),
-                   BuiltObject(kind: .bank, area: .haus, x: 0.3, y: 0.92, roof: .rot, body: .rosa)]
+                   BuiltObject(kind: .bank, area: .haus, x: 0.28, y: 0.86, roof: .rot, body: .rosa)]
         w.residents = [.vogel, .hase]
         w.visitors = [.schmetterling]
         w.unlocked = [.haus, .bach]
@@ -110,7 +108,7 @@ enum DemoMode {
         w.built += [BuiltObject(kind: .bruecke, area: .bach, x: 0.5, y: 0.17, roof: .braun, body: .natur),
                     BuiltObject(kind: .igelhaus, area: .lichtung, x: 0.7, y: 0.66, roof: .gruen, body: .braun),
                     BuiltObject(kind: .tunnel, area: .lichtung, x: 0.4, y: 0.92, roof: .gruen, body: .gruen),
-                    BuiltObject(kind: .futterstelle, area: .haus, x: 0.64, y: 0.42, roof: .rot, body: .gelb),
+                    BuiltObject(kind: .futterstelle, area: .haus, x: 0.62, y: 0.44, roof: .rot, body: .gelb),
                     BuiltObject(kind: .wimpelkette, area: .baumhaus, x: 0.34, y: 0.92, roof: .rosa, body: .tuerkis)]
         w.treehouseStage = 4
         w.treeHousePicnic = PicnicState(area: .baumhaus, blanket: 1, dishes: [.kuchen], plates: 3)

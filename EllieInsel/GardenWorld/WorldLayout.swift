@@ -3,13 +3,13 @@ import CoreGraphics
 /// Feste Plätze in den Szenen (Koordinaten 0…1, y = Bodenlinie).
 enum WorldLayout {
     // Hausgarten
-    static let beds: [CGPoint] = [CGPoint(x: 0.25, y: 0.66), CGPoint(x: 0.41, y: 0.7), CGPoint(x: 0.57, y: 0.66), CGPoint(x: 0.11, y: 0.46)]
+    static let beds: [CGPoint] = [CGPoint(x: 0.25, y: 0.62), CGPoint(x: 0.41, y: 0.66), CGPoint(x: 0.57, y: 0.6), CGPoint(x: 0.2, y: 0.44)]
     static let bedSize: Double = 0.15
     static let treeSize: Double = 0.24
-    static let blanket = CGPoint(x: 0.79, y: 0.68)
-    static let kitchenDoor = CGPoint(x: 0.88, y: 0.4)
-    static let workbench = CGPoint(x: 0.22, y: 0.32)
-    static let basket = CGPoint(x: 0.94, y: 0.92)
+    static let blanket = CGPoint(x: 0.76, y: 0.53)
+    static let kitchenDoor = CGPoint(x: 0.8, y: 0.38)
+    static let workbench = CGPoint(x: 0.36, y: 0.37)
+    static let basket = CGPoint(x: 0.92, y: 0.62)
 
     // Bach
     static let gridOrigin = CGPoint(x: 0.17, y: 0.3)
@@ -32,8 +32,8 @@ enum WorldLayout {
     /// Stellflächen für gebaute Dinge.
     static func spots(_ a: WorldArea) -> [CGPoint] {
         switch a {
-        case .haus: return [CGPoint(x: 0.07, y: 0.88), CGPoint(x: 0.3, y: 0.92), CGPoint(x: 0.47, y: 0.44), CGPoint(x: 0.64, y: 0.42),
-                            CGPoint(x: 0.66, y: 0.92), CGPoint(x: 0.94, y: 0.56), CGPoint(x: 0.36, y: 0.42), CGPoint(x: 0.78, y: 0.34)]
+        case .haus: return [CGPoint(x: 0.28, y: 0.86), CGPoint(x: 0.47, y: 0.44), CGPoint(x: 0.62, y: 0.44), CGPoint(x: 0.88, y: 0.66),
+                            CGPoint(x: 0.16, y: 0.64), CGPoint(x: 0.66, y: 0.58), CGPoint(x: 0.4, y: 0.5), CGPoint(x: 0.86, y: 0.46)]
         case .lichtung: return [CGPoint(x: 0.15, y: 0.82), CGPoint(x: 0.4, y: 0.92), CGPoint(x: 0.62, y: 0.5), CGPoint(x: 0.86, y: 0.84),
                                 CGPoint(x: 0.88, y: 0.48), CGPoint(x: 0.7, y: 0.66), CGPoint(x: 0.3, y: 0.5)]
         case .baumhaus: return [CGPoint(x: 0.12, y: 0.86), CGPoint(x: 0.34, y: 0.92), CGPoint(x: 0.84, y: 0.82), CGPoint(x: 0.2, y: 0.6), CGPoint(x: 0.55, y: 0.24)]
@@ -49,7 +49,7 @@ enum WorldLayout {
             if r.flies { return CGRect(x: 0.08, y: 0.18, width: 0.84, height: 0.45) }
         }
         switch a {
-        case .haus: return CGRect(x: 0.06, y: 0.74, width: 0.62, height: 0.2)
+        case .haus: return CGRect(x: 0.16, y: 0.46, width: 0.5, height: 0.26)
         case .bach: return CGRect(x: 0.04, y: 0.86, width: 0.1, height: 0.1)
         case .lichtung: return CGRect(x: 0.08, y: 0.6, width: 0.84, height: 0.32)
         case .baumhaus: return CGRect(x: 0.08, y: 0.78, width: 0.8, height: 0.16)
