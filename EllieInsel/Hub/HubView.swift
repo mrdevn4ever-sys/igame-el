@@ -11,7 +11,7 @@ struct HubView: View {
                 header
                 titleRow
                 TabView(selection: $app.hubPage) {
-                    ForEach(0..<2, id: \.self) { page in
+                    ForEach(0..<((GameID.available.count + 5) / 6), id: \.self) { page in
                         HubPage(page: page, landscape: landscape)
                             .tag(page)
                             .padding(.horizontal, 28)
@@ -89,6 +89,8 @@ struct HubView: View {
         .padding(.horizontal, 28)
     }
 
+    private var pageCount: Int { max(1, (GameID.available.count + 5) / 6) }
+
     private var footer: some View {
         HStack(spacing: 18) {
             Button {
@@ -109,21 +111,21 @@ struct HubView: View {
             Spacer()
 
             HStack(spacing: 12) {
-                ForEach(0..<2, id: \.self) { p in
+                ForEach(0..<pageCount, id: \.self) { p in
                     Circle()
                         .fill(p == app.hubPage ? Theme.darkGreen : Theme.darkGreen.opacity(0.25))
                         .frame(width: 18, height: 18)
                 }
             }
-            .accessibilityLabel("Seite \(app.hubPage + 1) von 2")
+            .accessibilityLabel("Seite \(app.hubPage + 1) von \(pageCount)")
 
             Spacer()
 
             Button {
                 app.audio.effect(.tap)
-                withAnimation(.easeInOut) { app.hubPage = app.hubPage == 0 ? 1 : 0 }
+                withAnimation(.easeInOut) { app.hubPage = (app.hubPage + 1) % pageCount }
             } label: {
-                if app.hubPage == 0 {
+                if app.hubPage < pageCount - 1 {
                     Label("Mehr Spiele", systemImage: "arrow.right.circle.fill")
                         .labelStyle(TrailingIconLabelStyle())
                 } else {
@@ -151,7 +153,8 @@ private struct HubPage: View {
     let landscape: Bool
 
     var body: some View {
-        let games = Array(GameID.allCases[(page * 6)..<(page * 6 + 6)])
+        let all = GameID.available
+        let games = Array(all[min(page * 6, all.count)..<min(page * 6 + 6, all.count)])
         let columns = landscape ? 3 : 2
         let rows = landscape ? 2 : 3
         GeometryReader { geo in

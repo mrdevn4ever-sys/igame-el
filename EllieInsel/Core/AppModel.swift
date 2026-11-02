@@ -109,7 +109,7 @@ final class AppModel {
     }
 
     var visibleGames: [GameID] {
-        GameID.allCases.filter { data.isVisible($0) }
+        GameID.available.filter { data.isVisible($0) }
     }
 
     var continueGame: GameID? {

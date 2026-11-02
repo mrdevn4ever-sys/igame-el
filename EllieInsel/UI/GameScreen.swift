@@ -195,6 +195,7 @@ private struct GameFrame: View {
         case .naturePairs: NaturePairsGameView(host: host)
         case .sorting: SortingGameView(host: host)
         case .atelier: AtelierGameView(host: host)
+        case .koerper: BodyGameView(host: host)
         }
     }
 }

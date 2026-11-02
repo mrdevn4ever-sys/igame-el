@@ -16,6 +16,7 @@ enum LevelCatalog {
         case .naturePairs: return 5
         case .sorting: return 7
         case .atelier: return 6
+        case .koerper: return 6
         }
     }
 
@@ -34,6 +35,7 @@ enum LevelCatalog {
         case .naturePairs: return 9
         case .sorting: return Double(sorting(level).items) * 3
         case .atelier: return 12 + Double(level) * 2
+        case .koerper: return 14
         }
     }
 
@@ -81,10 +83,23 @@ enum LevelCatalog {
             return "\(s.baskets) Körbe, \(s.items) Dinge\(s.fine ? ", feine Unterschiede" : "")"
         case .atelier:
             return "Wege \(atelier(level).pathLevel.title), Spurbreite \(Int(atelier(level).width * 100))"
+        case .koerper:
+            return koerper(level)
         }
     }
 
     // MARK: - Werte pro Spiel
+
+    static func koerper(_ l: Int) -> String {
+        switch l {
+        case ...1: return "Körperteile von aussen zeigen"
+        case 2: return "Gesicht und die fünf Sinne"
+        case 3: return "Zauberlupe: Gehirn, Herz, Lunge, Magen"
+        case 4: return "Zauberlupe: Knochen, Adern, Muskeln, Herzschlag"
+        case 5: return "Was macht es? Weg des Essens, Herzschlag, Sinne"
+        default: return "Organe einsetzen und alles gemischt"
+        }
+    }
 
     struct TracingSpec {
         var numbers: [Int]

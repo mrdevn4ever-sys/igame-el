@@ -194,7 +194,7 @@ private struct GamesSection: View {
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
-            ForEach(GameID.allCases) { game in
+            ForEach(GameID.available) { game in
                 Section {
                     Toggle("Im Hub anzeigen", isOn: Binding(
                         get: { app.data.isVisible(game) },

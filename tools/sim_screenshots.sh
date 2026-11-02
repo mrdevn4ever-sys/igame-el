@@ -106,6 +106,15 @@ run 112_naturePairs_runde 40 0 -screen game -game naturePairs -level 3 -autoplay
 run 113_garten_bilder 5 0 -screen garden
 
 # Gartenwelt: alle Orte, Abend, Überlagerungen und ein automatischer Durchlauf
+# Spiel 13: Mein Körper (Bilder von Hermes; -koerpertest zeigt es auch ohne Bilder)
+run 140_koerper_hub 5 0 -screen hub -page 2 -koerpertest
+for a in zeigen suchen entdecken funktion sinn herz weg puzzle; do
+  run 141_koerper_$a 6 0 -screen game -game koerper -koerpertest -koerperaufgabe $a
+done
+run 142_koerper_suchen_gefunden 14 0 -screen game -game koerper -koerpertest -koerperaufgabe suchen -autoplay
+run 143_koerper_puzzle_fertig 14 0 -screen game -game koerper -koerpertest -koerperaufgabe puzzle -autoplay
+run 144_koerper_runde 60 20 -screen game -game koerper -koerpertest -level 3 -autoplay
+
 run 120_garten_start 7 0 -screen garden -world start
 run 121_garten_haus_mitte 6 0 -screen garden -world mitte -area haus
 run 122_garten_haus_voll 6 0 -screen garden -world voll -area haus
