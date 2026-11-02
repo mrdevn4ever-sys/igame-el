@@ -1,0 +1,64 @@
+Datei;Paket;Bereich;Grösse;Beschreibung
+koerper_aussen.png;1;Figur;1536x2048 transparent;Hauptfigur: freundliches Mädchen, ca. 5 Jahre, von vorne, schaut uns lächelnd an. Zwei kurze Zöpfe, gelbes T-Shirt, blaue kurze Hose, barfuss (Zehen sichtbar). Stehend, Arme leicht vom Körper weg und schräg nach unten, Handflächen nach vorne, Beine leicht gespreizt. LAGE (Anteil von Bildbreite x / Bildhöhe y, die App rechnet damit): Scheitel 2 %, Augen y 14 % bei x 45 % und 55 %, Nasenspitze y 17,5 %, Mund y 20,5 %, Ohren y 15,5 % bei x 37 % und 63 %, Kinn 24 %, Schultern 29 %, Bauchnabelhöhe 50 %, Hüfte 58 %, Knie y 73 % bei x 43 % und 57 %, Fusssohlen 97 %, Füsse bei x 42 % und 58 %. Ellbogen y 43 % bei x 27 % und 73 %, Handmitte y 57 % bei x 20 % und 80 %. Figur waagrecht zentriert.
+koerper_organe.png;1;Figur;1536x2048 transparent;Dieselbe Kinderfigur und exakt derselbe Bildrahmen wie koerper_aussen: gleiche Umrisslinie, gleiche Haltung, gleiche Grösse, pixelgenau deckungsgleich (die App legt die Ebenen übereinander und zeigt sie durch eine runde Zauberlupe). Haut als blasser, leicht durchscheinender Pfirsich-Glaskörper ohne Kleidung, puppenhaft glatt (keine Geschlechtsmerkmale, kein Bauchnabel), Gesicht nur zart angedeutet. Darin klar und farbig: Gehirn (rosa, Mitte bei x 50 % / y 8,5 %), zwei Lungenflügel (hellrosa, Mitten bei x 44 % / y 36 % und x 57,5 % / y 35 %, mit Luftröhre), Herz (rot, Mitte bei x 53,5 % / y 37 %, also auf UNSERER rechten Seite = linke Körperseite des Kindes, liegt vor den Lungen), Magen (orange-rosa, J-förmig, Mitte bei x 54,5 % / y 45 %), Darm (gewundener Dünndarm, umrahmt vom Dickdarm, Mitte bei x 50 % / y 53 %), Speiseröhre vom Mund zum Magen als dünner Schlauch. KEINE Leber, keine Nieren, nichts Blutiges. Freundlich, sauber, wie ein Kinder-Sachbuch.
+koerper_knochen.png;1;Figur;1536x2048 transparent;Dieselbe Kinderfigur und exakt derselbe Bildrahmen wie koerper_aussen: gleiche Umrisslinie, gleiche Haltung, gleiche Grösse, pixelgenau deckungsgleich (die App legt die Ebenen übereinander und zeigt sie durch eine runde Zauberlupe). Skelett in derselben Körperform, cremeweisse runde Knochen, freundlich und NICHT gruselig (keine dunklen Augenhöhlen, sondern sanft schattiert, leichtes Lächeln am Kiefer erlaubt). Körperumriss als blasser durchscheinender Pfirsich-Schatten. Schädel Mitte x 50 % / y 11 %, Brustkorb mit Rippen Mitte y 38 % (29–46 %), Wirbelsäule sichtbar von y 27 % bis 57 % bei x 50 %, Becken y 55–60 %, Oberschenkelknochen bei x 44 % und 56 % von y 60 % bis 72 %, Arm-, Hand-, Bein- und Fussknochen vollständig.
+koerper_adern.png;1;Figur;1536x2048 transparent;Dieselbe Kinderfigur und exakt derselbe Bildrahmen wie koerper_aussen: gleiche Umrisslinie, gleiche Haltung, gleiche Grösse, pixelgenau deckungsgleich (die App legt die Ebenen übereinander und zeigt sie durch eine runde Zauberlupe). Blutgefässe: rote Adern (Arterien) und blaue Adern (Venen) verzweigen sich vom Herz (x 53,5 % / y 37 %) in Kopf, Arme bis in die Finger und Beine bis in die Zehen. Herz rot und deutlich. Körperumriss als blasser durchscheinender Pfirsich-Schatten. Klar, nicht zu dicht, kindgerecht.
+koerper_muskeln.png;1;Figur;1536x2048 transparent;Dieselbe Kinderfigur und exakt derselbe Bildrahmen wie koerper_aussen: gleiche Umrisslinie, gleiche Haltung, gleiche Grösse, pixelgenau deckungsgleich (die App legt die Ebenen übereinander und zeigt sie durch eine runde Zauberlupe). Muskeln als weiche, rot-rosa Stränge in Kinder-Sachbuch-Optik (wie Knete), gut erkennbar: Oberarmmuskel bei x 28 % und 72 % / y 40 %, Oberschenkelmuskeln bei x 43 % und 57 % / y 66 %, Bauch-, Brust-, Schulter- und Wadenmuskeln. Gesicht freundlich angedeutet. Nichts Blutiges.
+koerper_umriss.png;1;Figur;1536x2048 transparent;Dieselbe Kinderfigur und exakt derselbe Bildrahmen wie koerper_aussen: gleiche Umrisslinie, gleiche Haltung, gleiche Grösse, pixelgenau deckungsgleich (die App legt die Ebenen übereinander und zeigt sie durch eine runde Zauberlupe). Leerer Körper für das Organ-Puzzle: blasser, durchscheinender Pfirsich-Körper mit freundlich angedeutetem Gesicht, OHNE Organe, ohne Knochen. Innen leicht heller, damit die eingesetzten Organe gut sichtbar sind.
+koerper_teil_kopf.png;2;Körperteil;1024x1024 transparent;Kopf des Mädchens von vorne (dasselbe Mädchen wie koerper_aussen), fröhlich. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_bauch.png;2;Körperteil;1024x1024 transparent;Bauch-Ausschnitt des Mädchens im gelben T-Shirt, Hände auf dem Bauch, zufrieden. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_hand.png;2;Körperteil;1024x1024 transparent;offene Kinderhand von vorne, fünf Finger deutlich. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_fuss.png;2;Körperteil;1024x1024 transparent;nackter Kinderfuss von schräg oben, fünf Zehen deutlich. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_arm.png;2;Körperteil;1024x1024 transparent;Kinderarm im gelben T-Shirt-Ärmel, leicht gebeugt, Ellbogen erkennbar. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_bein.png;2;Körperteil;1024x1024 transparent;Kinderbein mit blauer Hose, barfuss, stehend. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_knie.png;2;Körperteil;1024x1024 transparent;gebeugtes Kinderknie von der Seite, in blauer kurzer Hose. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_augen.png;2;Körperteil;1024x1024 transparent;zwei grosse freundliche Kinderaugen mit Wimpern und Augenbrauen. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_ohren.png;2;Körperteil;1024x1024 transparent;Kinderohr von der Seite, rund und freundlich. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_nase.png;2;Körperteil;1024x1024 transparent;kleine runde Kindernase von vorne-seitlich. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_mund.png;2;Körperteil;1024x1024 transparent;lachender Kindermund, Zunge leicht sichtbar. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_gehirn.png;2;Körperteil;1024x1024 transparent;Gehirn, rosa mit weichen Windungen, von der Seite, freundlich glänzend. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_herz.png;2;Körperteil;1024x1024 transparent;echtes (anatomisches, vereinfachtes) Herz, kräftig rot, mit Hauptschlagader oben, rund und freundlich – KEIN Herz-Symbol. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_lunge.png;2;Körperteil;1024x1024 transparent;zwei rosa Lungenflügel mit Luftröhre in der Mitte, symmetrisch, von vorne. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_magen.png;2;Körperteil;1024x1024 transparent;Magen, J-förmig, orange-rosa, mit Speiseröhre oben. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_darm.png;2;Körperteil;1024x1024 transparent;Darm: gewundener Dünndarm, umrahmt vom Dickdarm, rosa-orange, ordentlich und freundlich. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_schaedel.png;2;Körperteil;1024x1024 transparent;freundlicher Schädel, cremeweiss, sanfte Formen, NICHT gruselig, keine schwarzen Löcher. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_rippen.png;2;Körperteil;1024x1024 transparent;Brustkorb mit Rippen und Brustbein, cremeweiss, von vorne. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_wirbelsaeule.png;2;Körperteil;1024x1024 transparent;Wirbelsäule, cremeweiss, leicht S-förmig, von der Seite. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_oberschenkel.png;2;Körperteil;1024x1024 transparent;Oberschenkelknochen, cremeweiss, freundlich glänzend. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_adern.png;2;Körperteil;1024x1024 transparent;Kinderarm und Hand mit roten und blauen verzweigten Adern, leicht durchscheinende Haut. Einzeln, mittig, füllt ca. 80 %.
+koerper_teil_muskeln.png;2;Körperteil;1024x1024 transparent;Kinderarm angespannt (Muskelpose), der Oberarmmuskel rot-rosa sichtbar. Einzeln, mittig, füllt ca. 80 %.
+koerper_funktion_pumpen.png;3;Funktion;1024x1024 transparent;Herz (gleiches Herz wie koerper_teil_herz) mit kleinen roten Bluttropfen, die im Kreis herumfliessen (Pfeile aus Tropfen). Mittig, füllt ca. 80 %.
+koerper_funktion_atmen.png;3;Funktion;1024x1024 transparent;Mädchen pustet in eine Pusteblume, die Samen fliegen. Mittig, füllt ca. 80 %.
+koerper_funktion_denken.png;3;Funktion;1024x1024 transparent;Mädchen mit Hand am Kinn, darüber eine Gedankenblase mit Sternen und Glühbirne (kein Text). Mittig, füllt ca. 80 %.
+koerper_funktion_verdauen.png;3;Funktion;1024x1024 transparent;Magen (wie koerper_teil_magen) mit kleinen Essensstücken (Apfel, Brot) darin. Mittig, füllt ca. 80 %.
+koerper_funktion_sehen.png;3;Funktion;1024x1024 transparent;grosses Kinderauge, im Auge spiegelt sich ein Regenbogen. Mittig, füllt ca. 80 %.
+koerper_funktion_hoeren.png;3;Funktion;1024x1024 transparent;Kinderohr mit bunten Musiknoten. Mittig, füllt ca. 80 %.
+koerper_funktion_riechen.png;3;Funktion;1024x1024 transparent;Kindernase schnuppert an einer rosa Blume, Duftwölkchen. Mittig, füllt ca. 80 %.
+koerper_funktion_schmecken.png;3;Funktion;1024x1024 transparent;Kinderzunge leckt an einer Eiswaffel. Mittig, füllt ca. 80 %.
+koerper_funktion_fuehlen.png;3;Funktion;1024x1024 transparent;Kinderhand streichelt ein flauschiges Kätzchen. Mittig, füllt ca. 80 %.
+koerper_funktion_stuetzen.png;3;Funktion;1024x1024 transparent;freundliches Skelett steht aufrecht und stolz. Mittig, füllt ca. 80 %.
+koerper_funktion_schuetzen.png;3;Funktion;1024x1024 transparent;Brustkorb aus Rippen, darin ein kleines rotes Herz, wie beschützt. Mittig, füllt ca. 80 %.
+koerper_funktion_bewegen.png;3;Funktion;1024x1024 transparent;Mädchen macht einen fröhlichen Hampelmann-Sprung. Mittig, füllt ca. 80 %.
+koerper_sinn_blume.png;3;Sinne;1024x1024 transparent;rosa Blume. Mittig, füllt ca. 80 %.
+koerper_sinn_kuchen.png;3;Sinne;1024x1024 transparent;frischer Kuchen mit Dampfwölkchen. Mittig, füllt ca. 80 %.
+koerper_sinn_glocke.png;3;Sinne;1024x1024 transparent;goldene Glocke mit Klangbögen. Mittig, füllt ca. 80 %.
+koerper_sinn_vogel.png;3;Sinne;1024x1024 transparent;singender Vogel mit Musiknoten. Mittig, füllt ca. 80 %.
+koerper_sinn_zitrone.png;3;Sinne;1024x1024 transparent;gelbe Zitrone, halb aufgeschnitten. Mittig, füllt ca. 80 %.
+koerper_sinn_eis.png;3;Sinne;1024x1024 transparent;Eiswaffel mit Erdbeer- und Vanillekugel. Mittig, füllt ca. 80 %.
+koerper_sinn_regenbogen.png;3;Sinne;1024x1024 transparent;Regenbogen mit Wölkchen. Mittig, füllt ca. 80 %.
+koerper_sinn_sterne.png;3;Sinne;1024x1024 transparent;leuchtende Sterne und Mond. Mittig, füllt ca. 80 %.
+koerper_sinn_katze.png;3;Sinne;1024x1024 transparent;flauschiges Kätzchen. Mittig, füllt ca. 80 %.
+koerper_sinn_wasser.png;3;Sinne;1024x1024 transparent;Schale mit warmem Wasser und zartem Dampf. Mittig, füllt ca. 80 %.
+koerper_dino_rennen.png;3;Herzschlag;1024x1024 transparent;Printatops rennt ganz schnell, Staubwölkchen, verschwitzt-fröhlich. Exakt derselbe Dino wie in der Referenz. Grundlinie 92 %.
+koerper_dino_huepfen.png;3;Herzschlag;1024x1024 transparent;Printatops hüpft und tanzt fröhlich. Exakt derselbe Dino wie in der Referenz. Grundlinie 92 %.
+koerper_dino_schlafen.png;3;Herzschlag;1024x1024 transparent;Printatops schläft zusammengerollt mit Kissen und Decke, Zzz-Wölkchen ohne Buchstaben (nur Bläschen). Exakt derselbe Dino wie in der Referenz. Grundlinie 92 %.
+koerper_dino_ausruhen.png;3;Herzschlag;1024x1024 transparent;Printatops liegt ruhig auf einer Decke und schaut ein Bilderbuch an. Exakt derselbe Dino wie in der Referenz. Grundlinie 92 %.
+koerper_knopf_aussen.png;3;Knopf;512x512 transparent;Rundes Symbol für den Lupen-Knopf: Mädchenkopf. Einfach, gut lesbar auf kleiner Grösse.
+koerper_knopf_organe.png;3;Knopf;512x512 transparent;Rundes Symbol für den Lupen-Knopf: rotes Herz und rosa Lunge. Einfach, gut lesbar auf kleiner Grösse.
+koerper_knopf_knochen.png;3;Knopf;512x512 transparent;Rundes Symbol für den Lupen-Knopf: gekreuzte Knochen, freundlich. Einfach, gut lesbar auf kleiner Grösse.
+koerper_knopf_adern.png;3;Knopf;512x512 transparent;Rundes Symbol für den Lupen-Knopf: roter Blutstropfen. Einfach, gut lesbar auf kleiner Grösse.
+koerper_knopf_muskeln.png;3;Knopf;512x512 transparent;Rundes Symbol für den Lupen-Knopf: angespannter Arm. Einfach, gut lesbar auf kleiner Grösse.
+koerper_zauberlupe.png;3;Symbol;512x512 transparent;Goldene Zauberlupe mit Holzgriff und kleinen Glitzersternen.
+koerper_essen_apfel.png;3;Symbol;512x512 transparent;Roter Apfel mit einem Biss.
+koerper_essen_bissen.png;3;Symbol;256x256 transparent;Kleiner runder Essensbissen (hellbraun-rötlich), wie ein Krümel-Bällchen.
+spiel_koerper.png;1;Spielkachel;1024x1024 transparent;Kachel für den Hub, im Stil der anderen spiel_*-Bilder (z. B. spiel_memory.png): Printatops hält eine goldene Zauberlupe, durch die man ein rotes Herz sieht. Kein Text.

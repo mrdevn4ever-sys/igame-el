@@ -209,6 +209,16 @@ for n, _ in PUZZLE:
 # --- Spiel 12: Atelier ---
 for t in re.findall(r'"[^"]+", "[^"]+", "(Hilf [^"]+)"', src("Games/Atelier/AtelierPaths.swift")): add(t, "Spurenatelier")
 
+# --- Spiel 13: Mein Körper ---
+BODY = os.path.join(SRC, "Games", "Body")
+for f in sorted(os.listdir(BODY)):
+    if not f.endswith(".swift"): continue
+    for line in open(os.path.join(BODY, f), encoding="utf-8"):
+        for lit in re.findall(r'"((?:[^"\\]|\\.)*)"', line):
+            if "\\(" in lit or len(lit) < 4: continue
+            if lit[0].isupper() and lit.rstrip()[-1] in ".!?" and " " in lit:
+                add(lit, "Mein Körper")
+
 # --- Gartenwelt -----------------------------------------------------------------
 GW = os.path.join(SRC, "GardenWorld")
 def gw(f): return open(os.path.join(GW, f), encoding="utf-8").read()
