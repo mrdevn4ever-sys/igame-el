@@ -613,14 +613,14 @@ final class AtelierModel {
     }
 
     private func fill(at p: CGPoint, size: CGSize) {
-        let runs = FloodFill.runs(image: layer, size: size, at: p)
+        let runs = FloodFill.runs(image: layer, size: size, at: p, step: 2)
         guard !runs.isEmpty else { return }
         let s = Double(paintScale)
         var flat: [Double] = []
         flat.reserveCapacity(runs.count * 3)
         for r in runs { flat += [Double(r.y) / s, Double(r.x0) / s, Double(r.x1) / s] }
         let (r, g, b, gl) = PaintOp.ink(ink)
-        commit(PaintOp(kind: .fill, r: r, g: g, b: b, glitter: gl, runs: flat, step: 3 / s, seed: UInt64.random(in: 1...UInt64.max)))
+        commit(PaintOp(kind: .fill, r: r, g: g, b: b, glitter: gl, runs: flat, step: 2 / s, seed: UInt64.random(in: 1...UInt64.max)))
         host.audio.effect(.snap)
     }
 
