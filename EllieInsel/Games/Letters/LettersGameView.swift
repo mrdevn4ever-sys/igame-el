@@ -142,7 +142,15 @@ struct LettersGameView: View {
                         choiceView(header: AnyView(pictureCard(info.picture, info.emoji, info.word)),
                                    options: options, answer: info.upper) { model.chooseLetter($0, answer: info.upper) }
                     case .whereIs(let letter, let options):
-                        choiceView(header: AnyView(Text("?").font(Theme.rounded(120, .heavy)).foregroundStyle(Theme.darkGreen.opacity(0.3))),
+                        choiceView(header: AnyView(Button { host.repeatInstruction() } label: {
+                                       VStack(spacing: 10) {
+                                           Image(systemName: "speaker.wave.3.fill").font(.system(size: 80, weight: .bold))
+                                           Text("Nochmals hören").font(Theme.rounded(22, .bold))
+                                       }
+                                       .foregroundStyle(Theme.darkGreen)
+                                       .padding(30)
+                                       .background(RoundedRectangle(cornerRadius: 30).fill(.white))
+                                   }.buttonStyle(PressableStyle())),
                                    options: options, answer: letter) { model.chooseLetter($0, answer: letter) }
                     case .pair(let upper, let options):
                         choiceView(header: AnyView(LetterGlyph(letter: upper, color: Theme.darkGreen).frame(width: 170, height: 170)),
@@ -386,9 +394,11 @@ final class LettersModel {
     var spec: LetterLevelSpec { LetterTasks.spec(host.level) }
 
     var style: TraceStyle {
-        TraceStyle(trackWidth: spec.width, showCenterLine: spec.centerLine && !trackFaded,
+        TraceStyle(trackWidth: spec.width * (isLower ? 0.72 : 1), showCenterLine: spec.centerLine && !trackFaded,
                    showArrows: spec.arrows && !trackFaded, trackOpacity: trackFaded ? 0.1 : 1.1)
     }
+
+    private var isLower: Bool { currentLetter.map { $0 == $0.lowercased() } ?? false }
 
     /// Buchstabe, der gerade geschrieben wird.
     var currentLetter: String? {
@@ -519,7 +529,8 @@ final class LettersModel {
         }
         lastPoint = p
         let strokeBefore = progress.currentStroke
-        for q in points { progress.feed(q, samples: samples, tolerance: spec.tolerance, lookahead: 9) }
+        let tol = spec.tolerance * (isLower ? 0.8 : 1)
+        for q in points { progress.feed(q, samples: samples, tolerance: tol, lookahead: 9) }
         if progress.currentStroke != strokeBefore {
             host.audio.effect(.tap)
             lastPoint = nil

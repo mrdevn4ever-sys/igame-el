@@ -76,7 +76,9 @@ struct BodyGameView: View {
     }
 
     var body: some View {
-        Group {
+        ZStack {
+            // Immer vorhanden, damit onAppear sicher auslöst (vor dem Start gibt es noch keine Aufgabe).
+            Color.clear
             if let task = model.task {
                 switch task {
                 case .zeigen, .suchen, .entdecken, .weg:
@@ -96,6 +98,7 @@ struct BodyGameView: View {
                 }
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .animation(.spring(response: 0.4), value: model.solved)
         .onAppear { model.start() }
     }
