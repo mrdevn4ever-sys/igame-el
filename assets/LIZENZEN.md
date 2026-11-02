@@ -4,7 +4,7 @@ Stand: 2. November 2026
 
 ## Bilder
 
-Dieser Stand enthält 309 Bilddateien unter `EllieInsel/Images/`. Sie wurden für «Ellies Entdeckerinsel» neu erzeugt oder aus freigegebenen Projektassets technisch abgeleitet. Es wurden keine fremden Illustrationen, Fotos, Logos oder Markenassets übernommen.
+Dieser Stand enthält 349 Bilddateien unter `EllieInsel/Images/`. Sie wurden für «Ellies Entdeckerinsel» neu erzeugt oder aus freigegebenen Projektassets technisch abgeleitet. Es wurden keine fremden Illustrationen, Fotos, Logos oder Markenassets übernommen.
 
 ### Generierung
 
@@ -29,6 +29,10 @@ Die generierten PNG-Dateien wurden ausschließlich technisch nachbearbeitet: Hin
 - SciPy 1.17.1 — BSD-3-Clause: <https://github.com/scipy/scipy/blob/main/LICENSE.txt>
 
 Die genannten Open-Source-Werkzeuge wurden nur zur Verarbeitung eingesetzt; ihre Projektlogos oder Beispieldaten sind nicht Bestandteil der App-Assets.
+
+### «ABC lernen»
+
+Am 2. November 2026 wurden 40 transparente Illustrationen gemäß `assets/Abc.csv` ergänzt. 28 Dateien wurden mit `gpt-image-2` über den Hermes-Adapter für ChatGPT/Codex OAuth und ausschließlich mit freigegebenen, projekteigenen Gartenwelt- und «Mein Körper»-Referenzen erzeugt; 12 Motive wurden deterministisch aus bereits freigegebenen Projektassets abgeleitet. Bei den 28 Generierungen wurde die hohe Qualitätsstufe angefordert; der Server meldete für 26 Originale `low` und für zwei `medium`. Diese tatsächlich gemeldeten Werte werden nicht als ausgelieferte hohe Qualität dargestellt. Alle finalen Dateien wurden lokal zu 1024 × 1024 Pixel großen RGBA-PNGs mit transparentem Hintergrund verarbeitet und bestanden die technische sowie vollständige visuelle Prüfung auf Creme und `#202020`. Einzelhashes, Herkunft, Provider-Metadaten und Prüfstatus stehen in `assets/Abc_Provenienz.json`.
 
 ### «Mein Körper» – Paket 1
 
