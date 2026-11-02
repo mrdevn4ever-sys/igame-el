@@ -1,6 +1,6 @@
 # Lizenzen und Herkunft der Assets
 
-Stand: 29. Oktober 2026
+Stand: 2. November 2026
 
 ## Bilder
 
@@ -30,11 +30,26 @@ Die generierten PNG-Dateien wurden ausschließlich technisch nachbearbeitet: Hin
 
 Die genannten Open-Source-Werkzeuge wurden nur zur Verarbeitung eingesetzt; ihre Projektlogos oder Beispieldaten sind nicht Bestandteil der App-Assets.
 
-## Sprache und Tierlaute
+## Audio: Tierlaute und Gartenwelt
 
-In diesem Bild-Commit sind **keine Audioassets enthalten**. Die 1064 Sprachaufnahmen und 16 Tierlaute werden separat produziert und vor dem finalen Audio-Commit hier ergänzt:
+Dieser Stand enthält **66 gehörte und freigegebene Audiodateien** unter `EllieInsel/Audio/`: 32 Tierlaute sowie 34 Effekte, Tonfolgen und Musikstücke für die Gartenwelt. Alle Dateien liegen als M4A/AAC-LC, mono und mit 44,1 kHz vor. Die finalen Hashes und Entscheidungen stehen in `assets/Gartenwelt_Audiofreigabe.json`; jede Quellenzuordnung steht in `assets/Gartenwelt_Quellen.csv`.
 
-- Sprachdienst, Stimme, Tarif und Nutzungsbedingungen
-- Kennzeichnung der synthetischen Stimme
-- Quelle und konkrete Lizenz jeder Tierlautdatei
-- gegebenenfalls erforderliche Namensnennungen
+### Pixabay-Aufnahmen
+
+- 47 Zieldateien verwenden 44 verschiedene Pixabay-Audioquellen.
+- Lizenz: [Pixabay Content License](https://pixabay.com/service/terms/#license); [Lizenzzusammenfassung](https://pixabay.com/service/license-summary/).
+- Einzel-URL, angezeigter Titel und Urheber sind je Datei in `assets/Gartenwelt_Quellen.csv` dokumentiert. Bei über `freesound_community` bereitgestellten Dateien wird zusätzlich der von Pixabay genannte ursprüngliche Künstler aufgeführt.
+- Die Aufnahmen werden zugeschnitten, normalisiert und als Bestandteil der kreativen App verwendet. Sie werden nicht als eigenständige Soundbibliothek veröffentlicht oder weiterverkauft.
+- Pixabay-Metadaten und diese Dokumentation ersetzen keine individuelle Rechtsberatung. Rohdownloads und interne Bearbeitungsdateien sind nicht Bestandteil des Repositories.
+
+### Lokal erzeugte Klänge und Musik
+
+19 Dateien wurden eigens für dieses Projekt lokal mit Python, NumPy, SciPy und FFmpeg erzeugt. Verwendet wurden mathematische Oszillatoren, Resonanzmodelle, gefilterte prozedurale Foley-Anteile und eigene pentatonische Tonfolgen. Es wurden keine fremden Audiosamples, keine Sprach- oder Gesangssynthese, keine externen Instrument-Samplebibliotheken und kein kostenpflichtiger Generierungsdienst eingesetzt.
+
+### Hörfreigabe
+
+- 66/66 Dateien wurden vom App-Eigentümer freigegeben; 50 Freigaben stammen aus Runde 1 und 16 korrigierte Dateien aus Runde 2.
+- Die fünf Loop-Dateien wurden in der Review-App mit aktivierter Wiederholung und dem Prüfhinweis abgespielt, mindestens zwei Übergänge auf Klick, Sprung oder Loch zu kontrollieren.
+- Der Export führte `tier_katze_1.m4a` als freigegeben, enthielt jedoch noch die Notiz „Klingt falsch“. Der Eigentümer bestätigte danach ausdrücklich die Freigabe; diese Auflösung ist in `assets/Gartenwelt_Audiofreigabe.json` dokumentiert.
+
+Die noch nicht gelieferten synthetischen Sprachaufnahmen folgen separat. Dafür gelten weiterhin die im Auftrag festgelegten Azure-Sprach-, Tarif- und Offenlegungsanforderungen.
