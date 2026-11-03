@@ -1,0 +1,715 @@
+{
+  "schema": "ellie-body-owner-release-approval/v1",
+  "created_at": "2026-11-03T21:10:58.464265+00:00",
+  "owner_statement": "Bro alles auf github pushen alles approved falls was scheisse is seh ichs dann",
+  "approval_interpretation": "Release authorization for the complete currently delivered body game, voices and optimized images. This does not claim that the owner individually listened to or inspected every file before release.",
+  "body_release_enabled": true,
+  "body_release_manifest": "assets/Koerper_V2_Final.json",
+  "body_manifest": "assets/Koerper.csv",
+  "body_asset_count": 63,
+  "body_assets_all_current_hashes_verified": true,
+  "body_packages": {
+    "1": 7,
+    "2": 22,
+    "3": 34
+  },
+  "body_sound_approval": "assets/Koerper_Audiofreigabe.json",
+  "complete_voice_provenance": "assets/Azure_Florian_2616_Provenienz.json",
+  "image_optimization_provenance": "assets/Bildoptimierung_Provenienz.json",
+  "approved_source_commit": "5051cc0c6267a1444f4651e0619e5eb35a4caa30",
+  "files": [
+    {
+      "filename": "koerper_aussen.png",
+      "package": 1,
+      "pre_optimization_sha256": "a9b1fad6f72b66b9687e2ac8e65662b407c89fa9b7c6fc0f8fc539239966e16f",
+      "approved_release_sha256": "87099dea72f4663d0d80963de02c11d9317c62a2c923f8ee88bae4ac23f1a073",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "optimization_method": "pngquant --quality 90-100 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_organe.png",
+      "package": 1,
+      "pre_optimization_sha256": "66bae1526f934829b5e9b670f4b5e9046a681bc13637421ce5a6633956eac591",
+      "approved_release_sha256": "bba53dea5811c02ae795538bc40a2b38285a179e91d3aad08ce3ebee1a7ee3ae",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "optimization_method": "pngquant --quality 90-100 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_knochen.png",
+      "package": 1,
+      "pre_optimization_sha256": "29bdeb48a3363851bbb0fb870e91b8eb428a02dc27e4f0a57e21bf142efb60f6",
+      "approved_release_sha256": "8faa04045da1427a70e2b72168a3fc068721cf8a87b59ef2a4083468032b387e",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "optimization_method": "pngquant --quality 90-100 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_adern.png",
+      "package": 1,
+      "pre_optimization_sha256": "ff6514fb8de6e203844cb981770cfbc0ed5d5ad453ff3a58caa5c11fdf5f3302",
+      "approved_release_sha256": "23f6f9c4be283a5c222b357fa664e1bdd32c021e52e4f3188b8edfd5ec8929c8",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "optimization_method": "pngquant --quality 90-100 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_muskeln.png",
+      "package": 1,
+      "pre_optimization_sha256": "f56311d15d4ecdc04872d6d29fec98adc4c734bdc01798209eb0c7fa7d35401b",
+      "approved_release_sha256": "3cacc27b0545ca08ce8641be498ff9ab14e7eab0cb806df38f8a1580acb2ab8b",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "optimization_method": "pngquant --quality 90-100 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_umriss.png",
+      "package": 1,
+      "pre_optimization_sha256": "23a1e58542b083c452451911fcf4130404c27e14aafcea8ce39af93cc67929b0",
+      "approved_release_sha256": "a48202f9b27982e69a1c0d6f61797bf60915edd5c060d29378f37d794ec9cbcd",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "optimization_method": "pngquant --quality 90-100 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_kopf.png",
+      "package": 2,
+      "pre_optimization_sha256": "1c3d03ba9e5b911c5f6f53da25528a96c8497197574dd65c92a042e236da91ef",
+      "approved_release_sha256": "35e996a24fae9974397da471234182ebbd2680d056efa5f0d8b16f9a036de55c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_bauch.png",
+      "package": 2,
+      "pre_optimization_sha256": "ad19ffb58fdee49a22cd453e84b1eff4f6209060e472f2fc28f336226959064b",
+      "approved_release_sha256": "ed8ab17115d1aadea4bbb142bae00007a7a9cffeedf2a6f500e8cea1cddf3226",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_hand.png",
+      "package": 2,
+      "pre_optimization_sha256": "f3d2deb99b7f140f784d36c8cbe1331c8071b7d1d8e4146b311de22f44a317b0",
+      "approved_release_sha256": "00003753b56e27227990fb8edb5fca9085147d115f5c3343c217a67228b74639",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_fuss.png",
+      "package": 2,
+      "pre_optimization_sha256": "2de6798e0efc8b15727e34478e16ef5f1807c8ab834cdd94c4ccffb26f7fa908",
+      "approved_release_sha256": "5902aafb631518d85077f88213853789eb77442db20c063e1ffb59efc9660406",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_arm.png",
+      "package": 2,
+      "pre_optimization_sha256": "fb4661fb024ade9faea3c4ff6912e36d1ed49162eaecda7879317ee1639577d5",
+      "approved_release_sha256": "3bb64fc17dd33564de9049bf152c15dc418551cac0b55b5053782dc191a52b2c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_bein.png",
+      "package": 2,
+      "pre_optimization_sha256": "b37c343abe1f266723c47260daefbb56f7bb6dbbb10d461dcc70f7709711f130",
+      "approved_release_sha256": "d027e89cc5c95867cd8b076525272bd951b3b201d32a36daa852b9b1bb994837",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_knie.png",
+      "package": 2,
+      "pre_optimization_sha256": "ab7dd8cd923b80c4c4cf4d383588b5c0fd50db9800735ad34a92def9c97c8bfb",
+      "approved_release_sha256": "a6053f50ce52505ac7bc0f45370a3f5c8c08121523679c6b82e9470c917a716f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_augen.png",
+      "package": 2,
+      "pre_optimization_sha256": "f51147c78be0fbc80bd26d2b30b1327cf9bfbb43a55232e03552ead8a61ed017",
+      "approved_release_sha256": "dea8cccad5f725cc020c645ef155b4b72a407d46e9ea0524292d5ab084d3459f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_ohren.png",
+      "package": 2,
+      "pre_optimization_sha256": "834cfa8145a734a10de89fd8f8337cd5ed7502384d1e773030b11e1799f379cf",
+      "approved_release_sha256": "85903bc407efddc8a804f91b573b9c7ee6ef29e5578ce142989b3fc05b2f029d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_nase.png",
+      "package": 2,
+      "pre_optimization_sha256": "67e5baf861ca26a58dc80c35752b35587e5e7ea0bf797573b0d4bd1ecac79c1e",
+      "approved_release_sha256": "7fb6a3de1922465812853117628447f4e8770ab4be2845134599510d550b359f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_mund.png",
+      "package": 2,
+      "pre_optimization_sha256": "73d3b51b4c44292010b5b5d825b04f22f39c21c2edd4373bcdcff7ef67b721e9",
+      "approved_release_sha256": "c0c97cf3f7af1840d7ef72e9f69ad2e13d06e25f6c8dbad628a00fe56780b5a8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_gehirn.png",
+      "package": 2,
+      "pre_optimization_sha256": "d2667205f1adf3c513ea57363ec94dd3a9a36fc7549730601eb0f5f7b1792391",
+      "approved_release_sha256": "13a5913b14f88729eca5397f3602464f06c678ea8de2bab9193c4e7823e5b967",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_herz.png",
+      "package": 2,
+      "pre_optimization_sha256": "6fc29af1d8f7207155e789c37a8c02a3bdc242ffc9eb060a3d38cee73841894f",
+      "approved_release_sha256": "3ab9307a23f150d08ffb782153654f15a2353aa535d2601144ca906a4eb949af",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_lunge.png",
+      "package": 2,
+      "pre_optimization_sha256": "d1896925661e2ddbbb8d4d9cbeb41c36ce474c33fab8729956f358bd3f80f814",
+      "approved_release_sha256": "26f8b47bd22ddc8cf38ad5d44f9d9b9ee5f6cb249ac10d697dc69cd734d851f5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_magen.png",
+      "package": 2,
+      "pre_optimization_sha256": "ba4874b23836509d505349f1a46895243971b13bc847247623b9e57020bc79b5",
+      "approved_release_sha256": "f68e9ded7fc1ba3093d4ee9e97246d4691c303e7b8755a81dd1790e241f54c22",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_darm.png",
+      "package": 2,
+      "pre_optimization_sha256": "147df43df0d40d6e0b8b8d289e68034c23bb069c6a4b3e596f2b3fca76134cc2",
+      "approved_release_sha256": "d9f8fea74f98bdc11ecf24fd58288fbab1735d2023d5d67d9af32b14a4b7f0f3",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_schaedel.png",
+      "package": 2,
+      "pre_optimization_sha256": "782168128e5f50202f1c23e31d7ad0fa678c8278b881eb4485dd5c6465b762dd",
+      "approved_release_sha256": "cbe5539b40c9bece586a812c55e4251beaf4bf83c518fa547981f4385a26c6ee",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_rippen.png",
+      "package": 2,
+      "pre_optimization_sha256": "fca17aa7b4083c37aa294137b8d10002fd3d3105c0013acfa6bcafd4bfbd448e",
+      "approved_release_sha256": "2e72122c30cd1d7b0c49daf44d9e44800f502556b91f8400a60c3c3b9024a8a8",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_wirbelsaeule.png",
+      "package": 2,
+      "pre_optimization_sha256": "650264d5db31751db110fec0d1d2c3ca7912763b04573e4600c50d20d0722c66",
+      "approved_release_sha256": "3cf02b972bd9e85a2593ea054b036af12a5224fda9d04564eec865a730cd61fa",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_oberschenkel.png",
+      "package": 2,
+      "pre_optimization_sha256": "6433a96ac9f1ad3b95501654292b9f2989d38f1f3bf92a5afd7ca29c60c1eae0",
+      "approved_release_sha256": "4584c05f116a5b4a68d3359493b1eaee513efe6903f001cf0a615e02c8cf1594",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_adern.png",
+      "package": 2,
+      "pre_optimization_sha256": "54351db0394723be9f0a9de86efeb85b5e4a78a5522129e1c42166dddf17e155",
+      "approved_release_sha256": "061c0e063d011e9eceaa6330922bcf1be9ff20039cb66847022ca459da0ec056",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_teil_muskeln.png",
+      "package": 2,
+      "pre_optimization_sha256": "874582a65a0b99d448000d17f0951d6defa2730d80b7c8bd279726e24a6e17ce",
+      "approved_release_sha256": "80687e1231d6a510449cba4e858a809ffca1bc8b606eecfcd1408e0eb34197ce",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_pumpen.png",
+      "package": 3,
+      "pre_optimization_sha256": "fce9b6aa217343b4e2f9c970116ffb838cdb8d8c16ed165666e5ad9c9901b3f7",
+      "approved_release_sha256": "104925a6f92881a454f0b58cea76a0f3fdf2aaf60eb206249e09b531294c714e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_atmen.png",
+      "package": 3,
+      "pre_optimization_sha256": "88777aeffd4131266fe67f22c673552fca3f7ffd97f75b4bea16f2ebaaf94754",
+      "approved_release_sha256": "b0a8312316267cd43acf6dd5daa3e8729581af0ed4ea246cad85f1623cdf9670",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_denken.png",
+      "package": 3,
+      "pre_optimization_sha256": "505852a3e4d3785ab61c14387cc77f77645999f92320b436c98433cf34cf41d0",
+      "approved_release_sha256": "663af9baddfa8df2fee11f0579ea2d7a74498969ee345311fd91529def0559c6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_verdauen.png",
+      "package": 3,
+      "pre_optimization_sha256": "0307cc751026d621c7c93a1ea4a5728bea61a0d3ae448831e7eefb44fe218db4",
+      "approved_release_sha256": "088b2b081452e54e0fddc09fad964a30404aa85c69081a073d6974826ce71410",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_sehen.png",
+      "package": 3,
+      "pre_optimization_sha256": "85f9ecfbc6ec8e64c1ea9ccc5ac97ada3ef2f221515d27085b2faaa18079776f",
+      "approved_release_sha256": "e55576a23ec1be078cba480db7ac70afa8eb08838f7cdcea6dca9f305e8944d1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_hoeren.png",
+      "package": 3,
+      "pre_optimization_sha256": "4d28b614d54ae0a7fb9c238df8297965c233cb98eefbac2959409f60d6923a97",
+      "approved_release_sha256": "e33ee9e95aa522bb468cdb44d2220167e98e76a16133e9ac5f4061a9cc9485de",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_riechen.png",
+      "package": 3,
+      "pre_optimization_sha256": "c4ff1d3f484819b73d64ed33330b4ef2d20c649d6e4daa2b0add2049b4ad6bfd",
+      "approved_release_sha256": "b29765ebbf3b5f99b63952c2ee8c2cbd96ff5403491df58d97bde1edeb85036e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_schmecken.png",
+      "package": 3,
+      "pre_optimization_sha256": "44a21dec7e647f7b8221f82ab113b0e7df029f1089e2c0846aa3ce1f442f32ee",
+      "approved_release_sha256": "1e034ee452322cd00b69b91319c4b709e20fee3e8a1755952c622ca7a712a11b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_fuehlen.png",
+      "package": 3,
+      "pre_optimization_sha256": "a6fa40bd5dbc2e9b030ac3a2bfd58152f870176a1d69c242aeee77b0c361a448",
+      "approved_release_sha256": "3785d4a3b37d9b2b606f5a759c397c7bba5455c14f1480fa47a61ce2f3abc7e3",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_stuetzen.png",
+      "package": 3,
+      "pre_optimization_sha256": "62f94bec12592a99d69b9b619ffb1b8c56b3098645a6e45afe33f604e4c5a88a",
+      "approved_release_sha256": "bd1b4d7fea981f07ef9e6cfea8fa30af237bcbf6a1e9a9b1451527910a5f547e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_schuetzen.png",
+      "package": 3,
+      "pre_optimization_sha256": "0e4c4fd5821e318f0dd7debb823cdd981c90cd3369e217c8fccc7ac5eab671d3",
+      "approved_release_sha256": "cf0954d6d67fe561f636a846348a833a500712bdf45f1a115ef0bcd8cdd1d60d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_funktion_bewegen.png",
+      "package": 3,
+      "pre_optimization_sha256": "c07ce434de9b1a2c6fe9162047e3e5fef1f16fde4ea3c77bc7b20669eb252073",
+      "approved_release_sha256": "7a06c8681a9e1be823d1b1921bcabaa0dd6dbe76abddd9cad5d7c97651a9d0e4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_blume.png",
+      "package": 3,
+      "pre_optimization_sha256": "10692f68e01629b94a52c9e9c54122d634a6f031fcbaac0c2c27cb64fbe914ec",
+      "approved_release_sha256": "4fdc34a5301127d199343801055c5590865b8c70353efdba9602052cfc1d1cbf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_kuchen.png",
+      "package": 3,
+      "pre_optimization_sha256": "5e13cc57ed1c2469f4b5a91f33bd2fd312ecc7be2e771fd78e1bd3765cc675af",
+      "approved_release_sha256": "154ca4577b47ab2adbe86bb8683ee0de1b3583b7c304654372afe5943378bfad",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_glocke.png",
+      "package": 3,
+      "pre_optimization_sha256": "8f55a914cc289edc150259a11fcc7cf3bf51dacf145bff0e7c1814a1e0854446",
+      "approved_release_sha256": "a2c69a607c1b47cf7cd7432c6ffa49fc9930a0fef3ad3863b39002d4cb2cb564",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_vogel.png",
+      "package": 3,
+      "pre_optimization_sha256": "9cb920ad28c2e1f1ce667cf28e981e8674daefaff4608f2876023614fc8c18eb",
+      "approved_release_sha256": "1cfe541f96cd0d02d8b9c65f1ededf02bd7c896053159d9329ccfa665625512d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 75-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_zitrone.png",
+      "package": 3,
+      "pre_optimization_sha256": "704029bf7fdb006f75032159aa34c2b0777355b159c2b7fe5948a5d34e79cca6",
+      "approved_release_sha256": "a8b9b4c563501312f462bf731ddc0ea1b91d97dceaf02fd416a64dc1d7faeb8e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_eis.png",
+      "package": 3,
+      "pre_optimization_sha256": "3a70f30521f63743b28e3d4d5b9639dca7b9619a1d3b06064163dccd27f2d4f0",
+      "approved_release_sha256": "9d109c8b8ed0ff1289ea697a037af36d292ac496f3925463e75380ce92b51ba4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_regenbogen.png",
+      "package": 3,
+      "pre_optimization_sha256": "65f3d7042a54809d78b8347610e414dd387a601d6788672fb40ad5a734cca959",
+      "approved_release_sha256": "cb63505c150f7845bc30c44f90f4bb0f519a8600717c6eca7b55aae34d005fbd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_sterne.png",
+      "package": 3,
+      "pre_optimization_sha256": "577737e6e2fccfbad958d0be76ffe78bbf6aa61bbd401ead6a3731a894b9a418",
+      "approved_release_sha256": "b359a9adbad9b1682f6a1d7d58bd5e360432e7fc673d24bf9d40c1297ba880b6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_katze.png",
+      "package": 3,
+      "pre_optimization_sha256": "dc1175fedb0c13b4f0731ab90358e8eae625e3a41451ed165fca0c6b7ef17471",
+      "approved_release_sha256": "619334cf72740757d03b924eaf40cbc6c9c8499906c7c8aa2fe40711e293af22",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_sinn_wasser.png",
+      "package": 3,
+      "pre_optimization_sha256": "c1a82d731033017f209d23dd86e5c0f6f2735fb4a4692c38977ff23f74336ff5",
+      "approved_release_sha256": "8a53ad0be3647a86bd254b0f1a266f15c8899f054ab9b2b729cb4266a1b2809b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_dino_rennen.png",
+      "package": 3,
+      "pre_optimization_sha256": "bcd1b8c0716e5ce4df844dc9304ca8412b824ab73f8d7fdc84b43cd8e7db8863",
+      "approved_release_sha256": "39578ae59297e35ebdf830679681a39ef3ebb4cf9d493b7e42cbb55ee1e6dcb9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 75-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_dino_huepfen.png",
+      "package": 3,
+      "pre_optimization_sha256": "4ef6d573753c69fa4520b7aec71b95025f89c8a91a723bdb59291ae0a0f40dd9",
+      "approved_release_sha256": "1842334ca8ba31b5abba18c1e4650aedb40d2a74162b80214081d2b1e805a0bc",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_dino_schlafen.png",
+      "package": 3,
+      "pre_optimization_sha256": "b6f04977ef89a1cbd03b173871431845bbf9381a17678686d8e42ff7aab259be",
+      "approved_release_sha256": "47a4cbb148a0ba1a716a3c048c35665bf51a0838575114f5d720245112a1f7d4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_dino_ausruhen.png",
+      "package": 3,
+      "pre_optimization_sha256": "2262c1e76b11e71f65b6cb6336bb4c4b33b9d42e41086edca748e934f3f44b51",
+      "approved_release_sha256": "3dba894407e63a7c4a05ba9d2f51fb86150191825a9075dd5b71b548289aa07e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant --quality 75-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_knopf_aussen.png",
+      "package": 3,
+      "pre_optimization_sha256": "6039b232af53533ada378c608cfb4eeee1d8dd991a263ef3ea1ce82b8c1e5be9",
+      "approved_release_sha256": "34a68f0e964b0dc3550cf0ab6ec082563bc07af0e694ca9938acbc489437918c",
+      "dimensions": [
+        512,
+        512
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_knopf_organe.png",
+      "package": 3,
+      "pre_optimization_sha256": "e6a90dea2c841dc051030d6b90f1a356608d4b76e39392b539e4428e03a0e5a8",
+      "approved_release_sha256": "fe112e77870a3483d13d07359394eec568cda28c164e778d020abe1909f46dba",
+      "dimensions": [
+        512,
+        512
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_knopf_knochen.png",
+      "package": 3,
+      "pre_optimization_sha256": "7cb813ba763258add001557a80dd3a9a5105006e84f43a49f77c758436cd4f05",
+      "approved_release_sha256": "45ef1484a13b202d85e3d6d924603ae3af49a5c3c069af2e93a22ab187787a55",
+      "dimensions": [
+        512,
+        512
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_knopf_adern.png",
+      "package": 3,
+      "pre_optimization_sha256": "3ee4b949a088e84997d65e03c38e9a61109b510a606bfe0c5c5282ebcca7bbb5",
+      "approved_release_sha256": "0695daae05d85b5f16f4079622dd3e2c881a55d5070159c62ea8a91aec57952a",
+      "dimensions": [
+        512,
+        512
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_knopf_muskeln.png",
+      "package": 3,
+      "pre_optimization_sha256": "0e6d7fb5b0d56ec408089317701cd5b3e765ce1c426b0d892da5207848607e5d",
+      "approved_release_sha256": "b1da28891b136d3822c3a94976e6c0ad89ee24c5aa1f408eace4eb734874f654",
+      "dimensions": [
+        512,
+        512
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_zauberlupe.png",
+      "package": 3,
+      "pre_optimization_sha256": "cdbc50d280177a70876a97b627b911f08294b425b56381db1c169852f3774b32",
+      "approved_release_sha256": "a700e5adf729bcfb6428ff439fbb32d3b0e7d722caa9095aad48e21b66e89bad",
+      "dimensions": [
+        512,
+        512
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_essen_apfel.png",
+      "package": 3,
+      "pre_optimization_sha256": "3be5f916081d0911dd93c6e0a99cf42d09648e9e0fd44e6a8fe3faa731d4773e",
+      "approved_release_sha256": "5e46804801aa5575369fca5e9be5ba116055531e74d6cd2365059df861d8345b",
+      "dimensions": [
+        512,
+        512
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "koerper_essen_bissen.png",
+      "package": 3,
+      "pre_optimization_sha256": "c861d5f39596f281cc59e6ca708d4642abac32b266d37f8ea683aa234845433a",
+      "approved_release_sha256": "b6aa4be83401195a863c08b0f5b748a725e38a9366410df9de15c298b27ccecb",
+      "dimensions": [
+        256,
+        256
+      ],
+      "optimization_method": "pngquant --quality 82-98 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+    },
+    {
+      "filename": "spiel_koerper.png",
+      "package": 1,
+      "pre_optimization_sha256": "691dd131f7eda491c34892642ea75b75a8699ad6b09c6f40ef13a425834f523f",
+      "approved_release_sha256": "5d81a969d926ec7f753ec8b758469d2b6283fde69c7a53b6a0f07f830235da0a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "optimization_method": "pngquant attempted at 90-100 and skipped; oxipng -o 4"
+    }
+  ]
+}

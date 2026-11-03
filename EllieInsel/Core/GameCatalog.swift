@@ -101,8 +101,8 @@ enum GameID: String, Codable, CaseIterable, Identifiable, Hashable {
     static var available: [GameID] {
         allCases.filter { g in
             switch g {
-            // Bilder werden neu gemacht: erst wieder zeigen, wenn die neue Fassung abgenommen ist.
-            case .koerper: return UIImage.app("koerper_freigabe") != nil || DemoMode.flag("-koerpertest")
+            // Nach Eigentümerfreigabe sichtbar, sobald die geprüfte Körperfigur im Bundle liegt.
+            case .koerper: return UIImage.app("koerper_aussen") != nil || DemoMode.flag("-koerpertest")
             case .abc: return UIImage.app("abc_apfel") != nil || DemoMode.flag("-abctest")
             default: return true
             }
