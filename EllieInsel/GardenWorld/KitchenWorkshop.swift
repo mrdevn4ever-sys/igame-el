@@ -20,9 +20,9 @@ struct KitchenView: View {
                 Group {
                     switch phase {
                     case .choose: recipeGrid
-                    case .place: placeArea
-                    case .finish: finishArea
-                    case .done: doneArea
+                    case .place: FitHeight { placeArea }
+                    case .finish: FitHeight { finishArea }
+                    case .done: FitHeight { doneArea }
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -33,6 +33,11 @@ struct KitchenView: View {
             .padding(.bottom, 12)
         }
         .onAppear {
+            if let raw = DemoMode.value("-rezept"), let d = DishKind(rawValue: raw) {
+                choose(d, ok: true)
+                if DemoMode.flag("-fertig") { phase = .done }
+                return
+            }
             model.say(model.w.basket.isEmpty ? "Dein Korb ist noch leer. Ernte zuerst etwas im Garten." : "Was möchtest du zubereiten? Tippe auf ein Rezept.")
         }
     }
@@ -377,8 +382,8 @@ struct WorkshopView: View {
             Group {
                 switch phase {
                 case .choose: kitGrid
-                case .assemble: assembleArea
-                case .paint: paintArea
+                case .assemble: FitHeight { assembleArea }
+                case .paint: FitHeight { paintArea }
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)

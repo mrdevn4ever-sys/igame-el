@@ -59,8 +59,25 @@ struct RootView: View {
                     .transition(.opacity)
             }
         }
+        .demoSurface()
         .onAppear { DemoMode.applyOrientation() }
         .statusBarHidden(true)
         .persistentSystemOverlays(.hidden)
+    }
+}
+
+private extension View {
+    /// Simulator: «-flaeche 1133x744» zeigt die App in der Grösse eines kleineren iPads (für Layout-Prüfungen).
+    @ViewBuilder
+    func demoSurface() -> some View {
+        if let raw = DemoMode.value("-flaeche"), let x = raw.firstIndex(of: "x"),
+           let w = Double(raw[..<x]), let h = Double(raw[raw.index(after: x)...]) {
+            ZStack {
+                Color.black.ignoresSafeArea()
+                self.frame(width: w, height: h).clipped()
+            }
+        } else {
+            self
+        }
     }
 }

@@ -248,3 +248,29 @@ struct Pic: View {
         }
     }
 }
+
+/// Verkleinert Inhalt mit fester Höhe, bis er in den verfügbaren Platz passt (nie grösser als 1:1).
+/// Für Arbeitsflächen, die auf kleineren iPads im Querformat sonst oben und unten abgeschnitten würden.
+struct FitHeight<Content: View>: View {
+    @ViewBuilder let content: () -> Content
+    @State private var natural: CGSize = .zero
+
+    var body: some View {
+        GeometryReader { geo in
+            let scale = natural.height > 0 ? min(1, geo.size.height / natural.height) : 1
+            content()
+                .fixedSize(horizontal: false, vertical: true)
+                .background(GeometryReader { g in
+                    Color.clear.preference(key: FitHeightKey.self, value: g.size)
+                })
+                .onPreferenceChange(FitHeightKey.self) { natural = $0 }
+                .scaleEffect(scale)
+                .frame(width: geo.size.width, height: geo.size.height)
+        }
+    }
+}
+
+private struct FitHeightKey: PreferenceKey {
+    static let defaultValue: CGSize = .zero
+    static func reduce(value: inout CGSize, nextValue: () -> CGSize) { value = nextValue() }
+}
