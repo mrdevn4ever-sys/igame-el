@@ -78,4 +78,25 @@ Dieser Stand enthält **66 gehörte und freigegebene Audiodateien** unter `Ellie
 - Die fünf Loop-Dateien wurden in der Review-App mit aktivierter Wiederholung und dem Prüfhinweis abgespielt, mindestens zwei Übergänge auf Klick, Sprung oder Loch zu kontrollieren.
 - Der Export führte `tier_katze_1.m4a` als freigegeben, enthielt jedoch noch die Notiz „Klingt falsch“. Der Eigentümer bestätigte danach ausdrücklich die Freigabe; diese Auflösung ist in `assets/Gartenwelt_Audiofreigabe.json` dokumentiert.
 
-Die noch nicht gelieferten synthetischen Sprachaufnahmen folgen separat. Dafür gelten weiterhin die im Auftrag festgelegten Azure-Sprach-, Tarif- und Offenlegungsanforderungen.
+## Synthetische Sprachaufnahmen: «Mein Körper» und Buchstaben
+
+Am 3. November 2026 wurden **166 synthetische Sprachdateien** aus den Bereichen `Body`, `Mein Körper` und `Letters` der bindenden Datei `assets/Sprachaufnahmen_Nachlieferung_4.csv` ergänzt.
+
+- **Anbieter und Werkzeug:** Microsoft Azure AI Speech über die offizielle Azure Speech SDK
+- **Azure-Ressource:** `ellie-entdeckerinsel-speech`, Typ `SpeechServices`, Region `switzerlandnorth`, Tarif **S0**
+- **Abonnementhinweis:** Die Ressource wurde in einem Azure-Testabonnement betrieben; der Speech-Ressourcentarif blieb S0. Testabonnement und Ressourcentarif sind getrennte Ebenen.
+- **Stimme:** vorgefertigte neuronale Microsoft-Stimme `de-DE-FlorianMultilingualNeural`, Sprache `de-DE`, Tempo `-8 %`, neutrale Tonhöhe
+- **Aussprache:** `Printatops` wurde im SSML mit der dokumentierten IPA-Aussprache `ˈpʁɪntaˌtɔps` erzeugt.
+- **Verarbeitung:** verlustfreie Azure-Ausgabe `Riff24Khz16BitMonoPcm`; daraus AAC-LC/M4A, mono, 44,1 kHz und ungefähr 112 kbit/s. Lautheitsziel −16 LUFS; die finalen Dateien bestanden die dokumentierte True-Peak- und Formatprüfung. Anfangs- und Endstille wurden aus den unveränderten verlustfreien Azure-WAVs auf höchstens 0,1 Sekunden bei −45 dBFS gekürzt; gemessen wurden maximal 0,048413 Sekunden am Anfang und 0,064444 Sekunden am Ende.
+- **Prüfung und Freigabe:** 166/166 Dateien bestanden die technische Endprüfung. Der App-Eigentümer bestätigte ausdrücklich „Alles approved“. Danach wurde ausschließlich die bindende Randstille aus den unveränderten verlustfreien Azure-WAVs technisch gekürzt; Text, Stimme und SSML blieben unverändert. Die neuen finalen Hashes und diese technische Überleitung sind im Freigabebeleg dokumentiert.
+- **Offenlegung:** Sämtliche hier genannten Sprachaufnahmen sind synthetisch mit der oben genannten Microsoft-Azure-Stimme erzeugt. Sie dürfen nicht als menschliche Sprachaufnahme dargestellt werden.
+- **Nachweise:** Einzeltexte, Azure-Request-IDs, Text-/SSML-/Roh-/Finalhashes und Messwerte stehen in `assets/Azure_Florian_166_Provenienz.json`; die hashgebundene Hörfreigabe steht in `assets/Azure_Florian_166_Audiofreigabe.json`.
+
+Maßgebliche Microsoft-Dokumentation und Vertragsseiten zum Zeitpunkt der Erzeugung:
+
+- [Microsoft Product Terms – Online Services](https://www.microsoft.com/licensing/terms/product/ForOnlineServices/all)
+- [Microsoft Azure Legal Information](https://azure.microsoft.com/support/legal/)
+- [Azure AI Speech – Text to Speech](https://learn.microsoft.com/azure/ai-services/speech-service/text-to-speech)
+- [Azure AI Speech pricing](https://azure.microsoft.com/pricing/details/speech/)
+
+Diese Dokumentation hält Anbieter, Dienst, Ressourcentarif und synthetische Herkunft fest und ersetzt keine individuelle Rechtsberatung.

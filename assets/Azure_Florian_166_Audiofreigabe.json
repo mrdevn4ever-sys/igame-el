@@ -1,0 +1,689 @@
+{
+  "schema": "ellie-azure-florian-audiofreigabe/v1",
+  "approved_at": "2026-11-03T19:08:49.100750+00:00",
+  "owner_statement": "Alles approved",
+  "scope": "all_166_final_files",
+  "count": 166,
+  "manifest_sha256": "dfa6d1e4311a2b94cd7afe89bba9912a49352cb31abc7e9b7bd44ce4692de00f",
+  "voice": "de-DE-FlorianMultilingualNeural",
+  "rate": "-8%",
+  "pitch": "0%",
+  "decision": "PASS",
+  "repository_promotion_authorized": true,
+  "technical_reprocess_after_statement": {
+    "applied": true,
+    "reason": "Binding edge-silence correction from unchanged lossless Azure WAV masters",
+    "speech_text_voice_ssml_changed": false,
+    "final_hashes_rebound_after_correction": true,
+    "edge_silence_passed": 166,
+    "edge_silence_failed": 0,
+    "max_leading_seconds": 0.048413,
+    "max_trailing_seconds": 0.064444
+  },
+  "items": [
+    {
+      "filename": "das_gehoert_an_einen_anderen_platz.m4a",
+      "final_sha256": "398ff4baa262d73d67ac04ac3f3ce59b3064adca11719f77b9ab7976087cfecf"
+    },
+    {
+      "filename": "das_passt_nicht_ganz.m4a",
+      "final_sha256": "1f8d4f8bd480f552f046d0349a2fd9fffa08a65f35a794b6ec6aca264b08d138"
+    },
+    {
+      "filename": "die_gestrichelten_kreise_zeigen_die_plaetze.m4a",
+      "final_sha256": "c058fe9cdf098c79aed2707db878e4b799efcdbaa5bc8a5ad45f75a335b8af0e"
+    },
+    {
+      "filename": "diese_karte_leuchtet.m4a",
+      "final_sha256": "978c216ac9dad626cc6c9b7cfee01c11b015660bbe330e680be57c0deef0151c"
+    },
+    {
+      "filename": "fahr_mit_der_lupe_zum_leuchtenden_kreis.m4a",
+      "final_sha256": "b74e2f21cfedec415f7159c12b25e469dda0c9aea42a057d6f17d54310110d72"
+    },
+    {
+      "filename": "fahr_mit_der_zauberlupe_ueber_den_koerper.m4a",
+      "final_sha256": "c156a731ea1f1312c156aba02594fc29bc789da00fadbf7e40cd612b2d9c9d26"
+    },
+    {
+      "filename": "gehirn_lunge_herz_und_magen_arbeiten_jetzt_zusammen.m4a",
+      "final_sha256": "688b9aea590eda653862dc71e91321264d55c389253ae2a8db71cd59d346b104"
+    },
+    {
+      "filename": "hmm_schau_nochmals_was_printatops_gerade_macht.m4a",
+      "final_sha256": "2d02fe98373c801c7930810227845e571662579923e0987b731d2b5123e2edf9"
+    },
+    {
+      "filename": "hoer_dir_die_frage_nochmals_genau_an.m4a",
+      "final_sha256": "0a938e76d5ff0a44d45cf2b5403ed210eb96a4a59562ef950167f26716f0bd94"
+    },
+    {
+      "filename": "leg_die_organe_an_ihren_platz_im_koerper.m4a",
+      "final_sha256": "c416ea9c4673b6de08c729a71112208f6e7239d7d901bad80117bbc750fe11a6"
+    },
+    {
+      "filename": "schau_hier_ist_es.m4a",
+      "final_sha256": "a20972818c71e6d032209fb153b3b1e643d1bb13c3d13fcddcb309f8acc38723"
+    },
+    {
+      "filename": "sie_passt.m4a",
+      "final_sha256": "81b584f4d796ee26e278bc14c16d8b2fc6a332fcae0a7b9152e6b9557ade721a"
+    },
+    {
+      "filename": "super_alles_ist_an_seinem_platz.m4a",
+      "final_sha256": "e69ffadc29ae56c266bd816562a5ee9e9e3e12c5d1c677464339eac181984f2e"
+    },
+    {
+      "filename": "versuch_es_nochmals.m4a",
+      "final_sha256": "94cfc0d18d1ab1c64f6cf74693d8567e4cfaa99dcda3ea8abc247d862a2b3b54"
+    },
+    {
+      "filename": "was_findest_du.m4a",
+      "final_sha256": "43a7b4ac59be4421e241f2602c2b08f9340f7b058b9279b947436961a1951c1f"
+    },
+    {
+      "filename": "was_macht_das.m4a",
+      "final_sha256": "e2252d3e1b5baeb9689b52348d54a9931fb0523d154d101e636ffa9be208c03a"
+    },
+    {
+      "filename": "toll_das_ist_dein_name.m4a",
+      "final_sha256": "6b14d03369d54c7677b1e4eb2a57632a4edb723448c0e1b4a38144dbfd8a28e2"
+    },
+    {
+      "filename": "auf_bildern_malt_man_manche_adern_blau_das_blut_ist_aber_immer_rot.m4a",
+      "final_sha256": "4073b7773e1076d664f352712efa1b6277aa258dc8ba699d1e8c39a0a7926a41"
+    },
+    {
+      "filename": "auf_deinen_fuessen_stehst_und_gehst_du.m4a",
+      "final_sha256": "a997a82b2bc97bed9687b5f35fd9068eece98a21a5f52f2490767a5841791422"
+    },
+    {
+      "filename": "beim_rennen_braucht_dein_koerper_mehr_blut.m4a",
+      "final_sha256": "bec1338a81f05205f8c052a47fd23fe6855ea5c787a93ac9fab1ba44cddc2c9e"
+    },
+    {
+      "filename": "beim_schlafen_ruht_dein_koerper_aus.m4a",
+      "final_sha256": "29a1bf568383a740e22ad73a535ecf59aab2bf9de8780ef7ad9a885d1f8f8330"
+    },
+    {
+      "filename": "damit_denkst_lernst_und_traeumst_du.m4a",
+      "final_sha256": "d0348a21b4df6350a204ba042a88e114a40413d08237a7a86c513b7907683e4b"
+    },
+    {
+      "filename": "damit_kannst_du_dein_bein_beugen.m4a",
+      "final_sha256": "7e1c73f8b92bb12e71976159b85d71a8d880cd8d39c82270978c604dbea78327"
+    },
+    {
+      "filename": "darum_schlaegt_das_herz_langsam.m4a",
+      "final_sha256": "a5f39a82fc8d0cf9aa1e49a1091a31c9f91c9190702fb3c0d070d73339138889"
+    },
+    {
+      "filename": "darum_schlaegt_das_herz_schneller.m4a",
+      "final_sha256": "3e23294ae88f38b2f8ef9f0d8e6b959abc21857a265a7e550b90e35edce8e4f8"
+    },
+    {
+      "filename": "das_essen_kommt_zuerst_in_den_mund.m4a",
+      "final_sha256": "a4c95cef498c7693aec49e3c86027d33d19c66e2d1c8246f5b6b2b00d8436af3"
+    },
+    {
+      "filename": "das_gehirn_ist_im_kopf.m4a",
+      "final_sha256": "473d52639617ed5322587bf6a0af324edfac0ec5335f86efb7973f4cde171c6b"
+    },
+    {
+      "filename": "das_ist_dein_arm.m4a",
+      "final_sha256": "767570561dd0d2c1b5f4086c5300982fa2ea9e6b58f4cb561cfbedb64701d154"
+    },
+    {
+      "filename": "das_ist_dein_bauch.m4a",
+      "final_sha256": "4cd5d0be34db5c3362ff3bcc7fa75bfbf3bdda6f94ad990b0c7777633472aef1"
+    },
+    {
+      "filename": "das_ist_dein_bein.m4a",
+      "final_sha256": "465ece15b4fa6502dd36b159d95e337aa9ee64daa060fe8b9e6c2c909689c549"
+    },
+    {
+      "filename": "das_ist_dein_darm.m4a",
+      "final_sha256": "f4233a8590d8a023ee7a71319d925458152bfc00c05e28278f18a76020d53604"
+    },
+    {
+      "filename": "das_ist_dein_fuss.m4a",
+      "final_sha256": "5c302d4a50f973bf8738b057f07bc7c9180341fff511454c63520b0117e3503c"
+    },
+    {
+      "filename": "das_ist_dein_gehirn.m4a",
+      "final_sha256": "def6b50c1e2074fde0130a1b9b21705e764743282e5327b9e358ce2dc583e2a3"
+    },
+    {
+      "filename": "das_ist_dein_herz.m4a",
+      "final_sha256": "6e3cae944f6e3c9a554710af3bda844a2bb9716f1f5208e7ca0bf11b246edabe"
+    },
+    {
+      "filename": "das_ist_dein_knie.m4a",
+      "final_sha256": "e918b1e9b6ef135d2b1b6cf306255c2d795af5eef5e1e99c180c2d38fe64a21d"
+    },
+    {
+      "filename": "das_ist_dein_kopf.m4a",
+      "final_sha256": "4b2de26e77828ca87a14442cc006ec6c8884f0a5059ca3bf19130015131fe9f2"
+    },
+    {
+      "filename": "das_ist_dein_magen.m4a",
+      "final_sha256": "8b83c621f826ceaa6100b30613a5d978da75bfdce4664b4b7e97c85a2def7e6d"
+    },
+    {
+      "filename": "das_ist_dein_mund.m4a",
+      "final_sha256": "885bbf3f430026fdaf59569cdaf2a5828e65479607a85578ed45e86dde9c9eb5"
+    },
+    {
+      "filename": "das_ist_dein_oberschenkelknochen.m4a",
+      "final_sha256": "fb87304df7a41977992b06606641eadb0441b57515b8c7a2487e8a334847f8b1"
+    },
+    {
+      "filename": "das_ist_dein_schaedel.m4a",
+      "final_sha256": "ec48c2fbceca009b73da43894a2b7021cf762b1cee0a8bc050915574f35b95cc"
+    },
+    {
+      "filename": "das_ist_deine_hand.m4a",
+      "final_sha256": "1a56555c17cd43c547213514163b77ae466b1ec6fd35988ba5be289abae21635"
+    },
+    {
+      "filename": "das_ist_deine_lunge.m4a",
+      "final_sha256": "5e26c26bebb597c039f52dd8e9d1cc01de301b626711d8742ed1d29ef542ee1c"
+    },
+    {
+      "filename": "das_ist_deine_nase.m4a",
+      "final_sha256": "5b85bab5ea325a60229b75a2d5e11e55f714b57676213a2b6801f05988771e0a"
+    },
+    {
+      "filename": "das_ist_deine_wirbelsaeule.m4a",
+      "final_sha256": "c49d9fa779dcfb3ad74d2889e5b28800b5f8eee38da3fa7f3f1e818d0128bb30"
+    },
+    {
+      "filename": "das_knie_ist_ein_gelenk.m4a",
+      "final_sha256": "9a1947f00b41c5a97ac6a338502e8706eaa8a4d85136e4f49d018ac860095520"
+    },
+    {
+      "filename": "das_sind_deine_adern.m4a",
+      "final_sha256": "1510ca8ad9cccb732fc45483063e49cb2be7653b3d2dd7e192235e7abcbd0204"
+    },
+    {
+      "filename": "das_sind_deine_augen.m4a",
+      "final_sha256": "f2bfbbf9cfba7343dd6fc2b8354ea32a5c9e688b5e5fc254001e7f16f806b2c3"
+    },
+    {
+      "filename": "das_sind_deine_muskeln.m4a",
+      "final_sha256": "88ad759b7d0a2043220b6cb96b326374ba1f0386b8d6eea17880296c03b1e3c7"
+    },
+    {
+      "filename": "das_sind_deine_ohren.m4a",
+      "final_sha256": "fa95c2c1519f71a545703b174fda6803bbeb1d3f796faab323ef1a4528b2a76a"
+    },
+    {
+      "filename": "das_sind_deine_rippen.m4a",
+      "final_sha256": "5cbb0f485f07fb0c00e0e528feb9f4a606d8b744e08e6d15ccaf98210676989e"
+    },
+    {
+      "filename": "dein_herz_ist_ein_starker_muskel_und_etwa_so_gross_wie_deine_faust.m4a",
+      "final_sha256": "c07ee939dc6f2735d3b28718ea1d0cf8e162703abe14077392186ff6ffb06d7c"
+    },
+    {
+      "filename": "deine_arme_koennen_sich_beugen_und_strecken.m4a",
+      "final_sha256": "6a481a1b333f123495c6e5b7ddada1d8f4c9c0f6732afd357dd20b765e9bfa4d"
+    },
+    {
+      "filename": "deine_augen_sehen_die_sterne_am_himmel.m4a",
+      "final_sha256": "a973231fb87d4228ef5033c27bfac838c28e27e6e3ab4f0ff31683f262a04bf4"
+    },
+    {
+      "filename": "deine_haut_spuert_ob_etwas_warm_oder_kalt_ist.m4a",
+      "final_sha256": "177f77bb711c210e56e855a1864e43d02e2365097ab67a60463c72a74809de2d"
+    },
+    {
+      "filename": "deine_ohren_hoeren_das_lied_des_vogels.m4a",
+      "final_sha256": "e6bba573d0918000b780744336ae88349b10796cbc867613cbb67c0160e6ab78"
+    },
+    {
+      "filename": "deine_zunge_schmeckt_dass_das_eis_suess_ist.m4a",
+      "final_sha256": "4f8fbfde65f6ac7b72d13c63712a8e4d7f19d4612406f25aaca6c01fafb75eae"
+    },
+    {
+      "filename": "den_koerper_entdeckt.m4a",
+      "final_sha256": "140c1a0128089152a5ffd7705d3304b54ab0d9c1904125e2410977b951ce7334"
+    },
+    {
+      "filename": "der_darm_ist_ein_ganz_langer_schlauch_im_bauch.m4a",
+      "final_sha256": "c44c307060d529aaed24702f9aff1c3b6ff0cc02aae8fe473d569ce34d358a02"
+    },
+    {
+      "filename": "der_magen_ist_wie_ein_kleiner_sack.m4a",
+      "final_sha256": "37ba504cd87dd1f6ab702ed1c5546664b97861bccca46bcb79e006c687191cea"
+    },
+    {
+      "filename": "der_oberschenkelknochen_ist_der_laengste_knochen_in_deinem_koerper.m4a",
+      "final_sha256": "53f5e5959f51c79ba87f2ffc8fbfb8d4468bc64b41561d5b2bc3f6dc031511b1"
+    },
+    {
+      "filename": "der_schaedel_ist_wie_ein_harter_helm.m4a",
+      "final_sha256": "d3d606ead7417af1695c4df7bf194a2f9d27d48064d0a538922460e7f6eab636"
+    },
+    {
+      "filename": "die_nase_riecht_den_feinen_duft_schon_von_weitem.m4a",
+      "final_sha256": "3a87054c469caf6a1910bcd7bf0bbb7432f11c1c5f6fcf03971171e0a6b757de"
+    },
+    {
+      "filename": "die_rippen_sind_wie_ein_kaefig_aus_knochen.m4a",
+      "final_sha256": "5fdbbbf9f07fe6470263bbfba6c082fd3d0ec4bb18857dc38bb8b9d847c40e36"
+    },
+    {
+      "filename": "die_wirbelsaeule_geht_durch_deinen_ruecken.m4a",
+      "final_sha256": "d8c516824c3de758c487a2d07a7b40f2c7100c6caff82f9ca9805eaa1d563e31"
+    },
+    {
+      "filename": "die_zauberlupe_zeigt_jetzt_die_adern.m4a",
+      "final_sha256": "561c6784fd88d7211880adfaaf3c56ed13ce3fd968f7e14427516c1e4baedbac"
+    },
+    {
+      "filename": "die_zauberlupe_zeigt_jetzt_die_knochen.m4a",
+      "final_sha256": "6a3292368ce09723d425ea8094548179bc1a5f78650db7facf3fb2c0ed426639"
+    },
+    {
+      "filename": "die_zauberlupe_zeigt_jetzt_die_muskeln.m4a",
+      "final_sha256": "eeb269efb33fe8afcdf205c032c645149d07a2b295bef0501e95ee88eca5a667"
+    },
+    {
+      "filename": "die_zauberlupe_zeigt_jetzt_die_organe.m4a",
+      "final_sha256": "5655de1c744d815a30df6bf35d6c75a91028f19b390e48bb58f62bccb2a34165"
+    },
+    {
+      "filename": "dort_holt_dein_koerper_die_guten_sachen_aus_dem_essen.m4a",
+      "final_sha256": "122b0f21122c5ddddd7f05e6586ca55a93286bf454be55e03455b4ce0131d2b1"
+    },
+    {
+      "filename": "dort_wird_dein_essen_verdaut.m4a",
+      "final_sha256": "09accdf74d6533fb2f69b369cef90590d82889833d87896a2ad1d2f1713a9f7a"
+    },
+    {
+      "filename": "dort_wird_dein_essen_zu_einem_weichen_brei_geknetet.m4a",
+      "final_sha256": "506912ed5d7ff077cd9f865d783356c86f2ff69e167c699c2942f0da40e74ace"
+    },
+    {
+      "filename": "du_hast_zwei_lungenfluegel_in_der_brust.m4a",
+      "final_sha256": "3b21aede8aec94208b2d8b46b15e69f3b499e8a040ca2c0a96e30d12b33869af"
+    },
+    {
+      "filename": "er_beschuetzt_dein_gehirn.m4a",
+      "final_sha256": "eadd8a191a657b4c55d228f711d8da01ca4d5bc52beae571f9ecdeb8b12e09ac"
+    },
+    {
+      "filename": "es_ist_im_bauch.m4a",
+      "final_sha256": "585a08f9c590d347f0871ec657bd4f9303612ca71ed80ddf98906afdb024cfae"
+    },
+    {
+      "filename": "es_ist_im_gesicht_oder_am_kopf.m4a",
+      "final_sha256": "0d4d0333f1c7fbd3b250ff4acf84ee650b5e98a225c5a10f070cad54615422a1"
+    },
+    {
+      "filename": "es_ist_im_kopf.m4a",
+      "final_sha256": "30e21918c0d4193e8fca362f8be47b52e5e084aefc64fdd0fc327afaa88d5bcf"
+    },
+    {
+      "filename": "es_ist_in_der_brust.m4a",
+      "final_sha256": "aa7046f09c8a1bb0f2ff6be4b090161c737e706498a1db49c6bbd00df9945403"
+    },
+    {
+      "filename": "es_pumpt_das_blut_durch_deinen_ganzen_koerper.m4a",
+      "final_sha256": "c2b1fcd13202a31f6b8932b48eb48a4f013ccc2b40a539502cad0e3982fd9b23"
+    },
+    {
+      "filename": "es_sagt_deinem_koerper_was_er_tun_soll.m4a",
+      "final_sha256": "9486761c4e47264ed51e734c591e4958e6f29e1ff0bb5a7c07e14e2ea6860f65"
+    },
+    {
+      "filename": "fahr_langsam_mit_der_lupe_ueber_den_koerper.m4a",
+      "final_sha256": "8b19a780234c7564875a5356dc8014e91ad7b8f8c6eb07c65b72ebdbfcfe452f"
+    },
+    {
+      "filename": "genau_durch_die_speiseroehre_rutscht_das_essen_in_den_magen.m4a",
+      "final_sha256": "231c075e64d737bdd3893d1204cde184f8e343834cb4965dbdeffe62af39c761"
+    },
+    {
+      "filename": "im_kopf_sind_dein_gehirn_deine_augen_deine_ohren_deine_nase_und_dein_mund.m4a",
+      "final_sha256": "430e051a0a97cbffda9e1010eca3c18737cdebf63828dc31636444f939b66fda"
+    },
+    {
+      "filename": "in_deinem_bauch_liegen_der_magen_und_der_darm.m4a",
+      "final_sha256": "8a31d907984cc6e71762766cf3d85d24327937b24aa8fbdac93e0d1dd50ff46f"
+    },
+    {
+      "filename": "in_den_adern_fliesst_dein_blut_durch_den_ganzen_koerper_bis__a37b365c.m4a",
+      "final_sha256": "6316cba98998f813736eb72381bcbac36a907a53205a739525e4ecc0cdbe667b"
+    },
+    {
+      "filename": "in_der_mitte_ist_der_ellbogen.m4a",
+      "final_sha256": "33c0e44c4312d09dea1ba0900c115997abe0089ab015bfcb5d67157823cd82a9"
+    },
+    {
+      "filename": "ja_zuerst_kaust_du_das_essen_im_mund.m4a",
+      "final_sha256": "f1dd9e2991d8e1bae151d8f0a6492cd2bdbbfe8803532c591238047260134e38"
+    },
+    {
+      "filename": "jede_hand_hat_fuenf_finger.m4a",
+      "final_sha256": "274cb7153061f217715e7190b06890cbeadf7ebb01cfce819562439e0fe706b0"
+    },
+    {
+      "filename": "jeder_fuss_hat_fuenf_zehen.m4a",
+      "final_sha256": "f7cd72fbe0e2ebfd15d4563b8995803c188dae0bf8130b7f4196e9a566e5011c"
+    },
+    {
+      "filename": "jetzt_siehst_du_wieder_die_haut.m4a",
+      "final_sha256": "7af314ddc4256c9142f71f184cea83029a5c53f12650ecca2647993f8a5fd28a"
+    },
+    {
+      "filename": "mit_deinen_augen_siehst_du_farben_formen_und_alles_um_dich_herum.m4a",
+      "final_sha256": "7cbf55755bcb9a86f3ab63cdb79995359e3afc4325f3fe3b4ee4a10488c907f3"
+    },
+    {
+      "filename": "mit_deinen_beinen_gehst_rennst_und_huepfst_du.m4a",
+      "final_sha256": "b1d8e2fa2f80fd7efd90e3224c173a4aa53be6d6e487123083b152730675166b"
+    },
+    {
+      "filename": "mit_deinen_muskeln_bewegst_du_dich.m4a",
+      "final_sha256": "d74267fb32d198a11b2fc005a033169262426818f1dc04d370f9bcfafdf8d050"
+    },
+    {
+      "filename": "mit_deinen_ohren_hoerst_du_stimmen_musik_und_geraeusche.m4a",
+      "final_sha256": "ad24a138ab97afee560e025d864bc32ac0de4f2e2c96332d2c376f7ccc3bd207"
+    },
+    {
+      "filename": "mit_deiner_nase_riechst_du.m4a",
+      "final_sha256": "223ea417e6dd286f6005a41ec5f0896de98393d8344c3e2533c0d21e72abcfa7"
+    },
+    {
+      "filename": "mit_dem_mund_isst_und_sprichst_du.m4a",
+      "final_sha256": "41c86e16614e6ec092e431cadccdf4455a0fecbf8aca8cc4e15e9043c696866e"
+    },
+    {
+      "filename": "mit_den_augen_siehst_du_die_farben_des_regenbogens.m4a",
+      "final_sha256": "8b319b4de1bfef9275898880cf2026c7d605106e5a3fb3673c44079e4c52ce2d"
+    },
+    {
+      "filename": "mit_den_ohren_hoerst_du_wie_die_glocke_klingt.m4a",
+      "final_sha256": "ebaf430bbdb926003383b0f0e99c8279285d95d5eaffbb9d18b32c1b41bb0f82"
+    },
+    {
+      "filename": "mit_der_hand_kannst_du_greifen_malen_und_winken.m4a",
+      "final_sha256": "71b1cea98c52ad1653107925aafdb1bb27f04714a35a870bede2adfc522cbfd4"
+    },
+    {
+      "filename": "mit_der_haut_an_deinen_haenden_fuehlst_du_wie_weich_das_fell_ist.m4a",
+      "final_sha256": "6ab6f8895eb385a5d168261f88ad51ba70c02742e12ada6c25ed064ec19823de"
+    },
+    {
+      "filename": "mit_der_nase_riechst_du_wie_gut_die_blume_duftet.m4a",
+      "final_sha256": "a78cba57ff45f148c6de930ace6175715e83904d50f0f0dcc01deb8cce0c5436"
+    },
+    {
+      "filename": "mit_der_zunge_im_mund_schmeckst_du_dass_die_zitrone_sauer_ist.m4a",
+      "final_sha256": "0eab95e589f1c59f6f625204f659b5f5eee61a41c2de039b1e55efd2268af161"
+    },
+    {
+      "filename": "mit_der_zunge_im_mund_schmeckst_du_ob_etwas_suess_oder_sauer_ist.m4a",
+      "final_sha256": "7b15b15aa8df7d23453e05ee8d3efb9ea8fe6d78be7b7da37567db70abdd7a09"
+    },
+    {
+      "filename": "nach_dem_magen_kommt_der_darm.m4a",
+      "final_sha256": "99f922d0fdb224b17990e72ae3fc85da3d13a5c1b5e9d163e3eb6bbd036fa9ee"
+    },
+    {
+      "filename": "nach_dem_mund_kommt_der_magen.m4a",
+      "final_sha256": "b32aa59e34143b20a574c4879de5e8a8157438e8891cedf11c88338f1946353c"
+    },
+    {
+      "filename": "printatops_huepft_und_tanzt.m4a",
+      "final_sha256": "c44bf18ab59d41b96f25091c221c5cc8981afe7223978ee970cdd37b97f6d692"
+    },
+    {
+      "filename": "printatops_ist_ganz_schnell_gerannt.m4a",
+      "final_sha256": "5c6020a90f957f2924d8b7f0a09b3b14919cd5b031eb0b0f59f1dc418c39d144"
+    },
+    {
+      "filename": "printatops_liegt_ganz_ruhig_da.m4a",
+      "final_sha256": "42e21df4f10bdd3d03e7a52c4e740758304385eb392a21d2e7ed9a7255ee8164"
+    },
+    {
+      "filename": "printatops_schlaeft_tief_und_fest.m4a",
+      "final_sha256": "0a9b767210da46113490942536d148f73210299d5f603495d852236fe478d09a"
+    },
+    {
+      "filename": "schau_dir_den_koerper_genau_an.m4a",
+      "final_sha256": "2b437dfab5d096e6f2df29fc147701b26a9822bfaa2ae297b8c9949b4f118f7d"
+    },
+    {
+      "filename": "sie_beschuetzen_dein_herz_und_deine_lunge.m4a",
+      "final_sha256": "4ef9986b96c969652bcda12f9b2a67573a464701d189d0f66cd8b57b9fc8585b"
+    },
+    {
+      "filename": "sie_haelt_dich_aufrecht_und_du_kannst_dich_mit_ihr_buecken_und_drehen.m4a",
+      "final_sha256": "34627af677bbf7f282ec40bafd862ba5c13d6fda406fcf106c901fcc80357f66"
+    },
+    {
+      "filename": "sie_ziehen_an_den_knochen.m4a",
+      "final_sha256": "ce41549a21854a8eb0e74f04336285aa6b989a945c6829b7599e1bbe95458bca"
+    },
+    {
+      "filename": "so_sieht_es_aus.m4a",
+      "final_sha256": "e475be1ebfa9e1b66ee4758f87a78c77df2c05e138403edf91fe0c00f34a4fbc"
+    },
+    {
+      "filename": "such_dein_gehirn_mit_der_zauberlupe.m4a",
+      "final_sha256": "63a08e9d784fa5dd0c80643adc8ba0723f67de3d13df0f96ba6f66c58e3450a9"
+    },
+    {
+      "filename": "such_dein_herz_mit_der_zauberlupe.m4a",
+      "final_sha256": "08b5d3ba1c90a0a2c25a2e9c3b8662cf59fd26252d3c43c382edb776071960e9"
+    },
+    {
+      "filename": "such_deine_adern_mit_der_zauberlupe.m4a",
+      "final_sha256": "9ebbaa20b64c43d842e99d86511edf0e07d977efcc1723a90f01442cf40b73f6"
+    },
+    {
+      "filename": "such_deine_lunge_mit_der_zauberlupe.m4a",
+      "final_sha256": "c2d4f9d06c4865f23615f1961a16afb96a34e4fa61c85e0be3992b48dd2f0c66"
+    },
+    {
+      "filename": "such_deine_muskeln_mit_der_zauberlupe.m4a",
+      "final_sha256": "2b77f70599c925b683c33c425ea3ab3942f3f1a6e615e23c9741817487ffe4d1"
+    },
+    {
+      "filename": "such_deine_rippen_mit_der_zauberlupe.m4a",
+      "final_sha256": "d9bf39b5cb6311399de2acffb180c47154d67f3c1695eeac937368e377f3ec65"
+    },
+    {
+      "filename": "such_deine_wirbelsaeule_mit_der_zauberlupe.m4a",
+      "final_sha256": "02b9ec1e8d1968d1b44412ff1d784c9720bdcbe2e297ddbe9b73c9693c3ace89"
+    },
+    {
+      "filename": "such_deinen_darm_mit_der_zauberlupe.m4a",
+      "final_sha256": "ac5331a0ce72c2efb0f19eeb80835246fd1eefd5237a1e0d96df99c113af2f97"
+    },
+    {
+      "filename": "such_deinen_magen_mit_der_zauberlupe.m4a",
+      "final_sha256": "90eedd59b72bec755bb4c5274ecd2eecf542b53b4e7a3cd14e205674392da465"
+    },
+    {
+      "filename": "such_deinen_oberschenkelknochen_mit_der_zauberlupe.m4a",
+      "final_sha256": "c2a60be6f8aec76a5b6b97c4da7338640a998a2ce78153cf2e47bd9dd51cbe53"
+    },
+    {
+      "filename": "such_deinen_schaedel_mit_der_zauberlupe.m4a",
+      "final_sha256": "60cded07041abc61ab52a55e9a6302258924dbc99a374145516d88a06c5a4aec"
+    },
+    {
+      "filename": "super_zum_schluss_geht_es_in_den_langen_darm.m4a",
+      "final_sha256": "30d09c9dd948ead5d46ce419ceec9a732769872d4bf887f538d986bdf02479c6"
+    },
+    {
+      "filename": "tippe_auf_die_richtige_stelle.m4a",
+      "final_sha256": "5ab1287cc5764eb8e5643a793db9baaba05cf66724553822159f5baa2b879e21"
+    },
+    {
+      "filename": "tippe_zuerst_auf_den_ort_wo_das_essen_hineinkommt.m4a",
+      "final_sha256": "960d442c428d50e8cddc07f13201db2de3014565b7b38411e54fef17e028703c"
+    },
+    {
+      "filename": "und_danach.m4a",
+      "final_sha256": "81e95d32061fdd2ef84f1221fe2f1a87af27a6147d70770d120ec6844f4414f7"
+    },
+    {
+      "filename": "und_du_atmest_durch_die_nase.m4a",
+      "final_sha256": "f03e260abc6d0a99ef7ec6cf5769aeb405756dff312fa61a6fd25301c0b7ab26"
+    },
+    {
+      "filename": "was_machen_deine_muskeln.m4a",
+      "final_sha256": "6d821fb0d9cd1acb05cccfaa2c49afdd3f8bb3432d19c7c8e28550adfe78614d"
+    },
+    {
+      "filename": "was_machen_deine_rippen.m4a",
+      "final_sha256": "7002f488bf880c7b8cca4c4b6c93568198638c2835c31876eeeb4f949b505b46"
+    },
+    {
+      "filename": "was_machst_du_mit_den_augen.m4a",
+      "final_sha256": "c130221a94e7daf6e15303581fb36421681df49b7091cf9114fe1102d8c7ae3c"
+    },
+    {
+      "filename": "was_machst_du_mit_den_ohren.m4a",
+      "final_sha256": "f1e44e4a0e4b8f9033fb07670ccf4dd4e799d818427fec840429c8c5eaccf2be"
+    },
+    {
+      "filename": "was_macht_dein_gehirn.m4a",
+      "final_sha256": "2a38df73495833cd8f16adf09afc641f1128108adbb5265fd24909cfc5953fe4"
+    },
+    {
+      "filename": "was_macht_dein_herz.m4a",
+      "final_sha256": "a5e85f4674cc1894bd0f833d58077813dd185ecb594d720a5cdb915369d5ec94"
+    },
+    {
+      "filename": "was_macht_dein_magen.m4a",
+      "final_sha256": "b5588527a42b56ff0418aaec2e20d123193e185569a1c8ea4f6ad6b6c0bdfd74"
+    },
+    {
+      "filename": "was_macht_dein_schaedel.m4a",
+      "final_sha256": "b74cd704ee792b1514e2f3adb9d8cf33760d1ffb4724bb898e10a9de3df32140"
+    },
+    {
+      "filename": "was_macht_deine_lunge.m4a",
+      "final_sha256": "f728f920856301faf8c681a4ac8060fde8d1012433405c4d58e7d9d4723d4baa"
+    },
+    {
+      "filename": "was_macht_deine_wirbelsaeule.m4a",
+      "final_sha256": "520b0d600f7e7d6804034508fa30b6ec76f82d73ccde5efd3bca2e4bdf5391a9"
+    },
+    {
+      "filename": "welches_herz_schlaegt_jetzt.m4a",
+      "final_sha256": "052b163d1538d812b3dbcc2bca9b9bb2606519688e439a0d3a36cc1335908d75"
+    },
+    {
+      "filename": "wenn_du_dich_viel_bewegst_pumpt_dein_herz_schneller.m4a",
+      "final_sha256": "c77d4f805c68b3767825db02fd845c404160919cd73ac43ea82e61b37ff6592f"
+    },
+    {
+      "filename": "wenn_du_einatmest_fuellen_sie_sich_mit_luft_wie_ein_ballon.m4a",
+      "final_sha256": "b89b5b8fe3e0c63f918f6f32a0160cb36e6571750b6f240cbd081d3412aee7fc"
+    },
+    {
+      "filename": "wenn_du_ruhig_bist_schlaegt_dein_herz_langsam_und_gleichmaessig.m4a",
+      "final_sha256": "496d8affad93a92e7038b13c57f427927910284409c81c5e8b469322bce19637"
+    },
+    {
+      "filename": "wo_ist_dein_arm.m4a",
+      "final_sha256": "dfde31359e5dbfebf09635660544361bab081080cfe9dd21a2640cec3e8d150d"
+    },
+    {
+      "filename": "wo_ist_dein_bauch.m4a",
+      "final_sha256": "c2a6f100c7b012ba4f075e38f44f6ccea63d0365e1562d925a33013251bad420"
+    },
+    {
+      "filename": "wo_ist_dein_bein.m4a",
+      "final_sha256": "c9186bf0da29ff77ec68cff9159fab9e022ef44444e2b4d6211856f48a239895"
+    },
+    {
+      "filename": "wo_ist_dein_fuss.m4a",
+      "final_sha256": "e3c7cce6471de8178aebd0793e81454238677c4e23f99ca530b3b29fe3f90da4"
+    },
+    {
+      "filename": "wo_ist_dein_knie.m4a",
+      "final_sha256": "cff51f9dd381da45e66b64cbbee37bcf89ab8b5b7561a0c8a530f0440662463f"
+    },
+    {
+      "filename": "wo_ist_dein_kopf.m4a",
+      "final_sha256": "ca78de7d2c6e23634017a69f8ff79ac92b00304a680bad8956da39406a3c5826"
+    },
+    {
+      "filename": "wo_ist_dein_mund.m4a",
+      "final_sha256": "e40174387de914367812c28f714a637bfb480ad44541527e18da4f08e61039bd"
+    },
+    {
+      "filename": "wo_ist_deine_hand.m4a",
+      "final_sha256": "63b6e88b8ac735b984f3f146ce7e97b85478b623aa136e12f87cc68452f8da63"
+    },
+    {
+      "filename": "wo_ist_deine_nase.m4a",
+      "final_sha256": "45111a69dfe69c05a9ab9a948b03bd81a5f1792a293556ab1e109c2e61b6180f"
+    },
+    {
+      "filename": "wo_sind_deine_augen.m4a",
+      "final_sha256": "9dc9120ba1f1c77c4d5124141b89ad139608099cd5734acec6bfe1075723aa68"
+    },
+    {
+      "filename": "wo_sind_deine_ohren.m4a",
+      "final_sha256": "26fa1cf884b9e277c7d416003b5453a44cef8bd7fc747e270e073135b026ed92"
+    },
+    {
+      "filename": "wohin_rutscht_es_dann.m4a",
+      "final_sha256": "ad76b0c5b131d03d89eb757d5a9efd379d34d85f1bd75beba14124f50b8e7e82"
+    },
+    {
+      "filename": "wohin_wandert_dein_essen.m4a",
+      "final_sha256": "b9d97d9160b6fe366db1d9df68e274a4847b39391207c74ff504ea4fc8c5a8ce"
+    },
+    {
+      "filename": "womit_fuehlst_du_das_weiche_fell.m4a",
+      "final_sha256": "56905b08cdf69e04859ba8bd69001a8ed4ece3b32b810f2455c7098ffd1fcf3d"
+    },
+    {
+      "filename": "womit_hoerst_du_den_vogel_singen.m4a",
+      "final_sha256": "a645815599735dd4c8719918b2abb8c7599c8a305631bb8fc6c6c92771c211b1"
+    },
+    {
+      "filename": "womit_hoerst_du_die_glocke.m4a",
+      "final_sha256": "700ee1b0b08c8258a9dc6668e9ac82018fcfea752249f8db7388808c729bc673"
+    },
+    {
+      "filename": "womit_riechst_du_an_der_blume.m4a",
+      "final_sha256": "4ae45e834ed5759440d3b5e5e57734878c857d9a8ae197144893468794bb4f57"
+    },
+    {
+      "filename": "womit_riechst_du_den_frischen_kuchen.m4a",
+      "final_sha256": "fad1032fa923742df1b5539473cd6aa54885d13591ad1bc4e9136bb1b975c770"
+    },
+    {
+      "filename": "womit_schmeckst_du_das_suesse_eis.m4a",
+      "final_sha256": "7a92ede5f47b19ae0cfd9fb4d4e9263fe7b8aa7d58aa0e485f1ad116c0fe6f92"
+    },
+    {
+      "filename": "womit_schmeckst_du_die_saure_zitrone.m4a",
+      "final_sha256": "73ce3329838f540f5fcfb755c76a8630ebea99114c4e59199d9be1d845a5c4ad"
+    },
+    {
+      "filename": "womit_siehst_du_den_regenbogen.m4a",
+      "final_sha256": "3b8644f355cfe672e864f8b9a440ab0c0a651307612d5a1fe1cfbbcd34b4ba55"
+    },
+    {
+      "filename": "womit_siehst_du_die_sterne.m4a",
+      "final_sha256": "37d077ea24fcae12d0c1f3ccb99d9a698b3e5fbb77b970895867ed5f4782b978"
+    },
+    {
+      "filename": "womit_spuerst_du_ob_das_wasser_warm_ist.m4a",
+      "final_sha256": "779c5076b749d1a08b4cd2bba2c109ec7dc12130b72fbdf58fd6066c2c59c2e1"
+    }
+  ]
+}
