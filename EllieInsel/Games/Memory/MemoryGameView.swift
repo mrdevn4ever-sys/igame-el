@@ -19,12 +19,6 @@ enum MemoryCatalog {
             MemoryMotif(emoji: "🐛", name: "Raupe"), MemoryMotif(emoji: "🐇", name: "Hase"),
             MemoryMotif(emoji: "🐸", name: "Frosch"), MemoryMotif(emoji: "🦗", name: "Grashüpfer")
         ]),
-        ("Naturmotive", [
-            MemoryMotif(emoji: "🌻", name: "Sonnenblume"), MemoryMotif(emoji: "🌷", name: "Tulpe"),
-            MemoryMotif(emoji: "🍄", name: "Pilz"), MemoryMotif(emoji: "🌲", name: "Tanne"),
-            MemoryMotif(emoji: "🍁", name: "Ahornblatt"), MemoryMotif(emoji: "🌰", name: "Kastanie"),
-            MemoryMotif(emoji: "🌈", name: "Regenbogen"), MemoryMotif(emoji: "🌸", name: "Kirschblüte")
-        ]),
         ("Bauernhof", [
             MemoryMotif(emoji: "🐎", name: "Pferd"), MemoryMotif(emoji: "🐐", name: "Ziege"),
             MemoryMotif(emoji: "🦆", name: "Ente"), MemoryMotif(emoji: "🪿", name: "Gans"),
@@ -35,13 +29,7 @@ enum MemoryCatalog {
             MemoryMotif(emoji: "🐟", name: "Fisch"), MemoryMotif(emoji: "🦢", name: "Schwan"),
             MemoryMotif(emoji: "🦦", name: "Otter"), MemoryMotif(emoji: "🦀", name: "Krebs"),
             MemoryMotif(emoji: "⭐️", name: "Seestern"), MemoryMotif(emoji: "🪲", name: "Libelle"),
-            MemoryMotif(emoji: "🐚", name: "Muschel"), MemoryMotif(emoji: "🪷", name: "Seerose")
-        ]),
-        ("Garten", [
-            MemoryMotif(emoji: "🎃", name: "Kürbis"), MemoryMotif(emoji: "🌶️", name: "Radieschen"),
-            MemoryMotif(emoji: "🍒", name: "Kirsche"), MemoryMotif(emoji: "🍐", name: "Birne"),
-            MemoryMotif(emoji: "🥬", name: "Salat"), MemoryMotif(emoji: "🚿", name: "Giesskanne"),
-            MemoryMotif(emoji: "🛒", name: "Schubkarre"), MemoryMotif(emoji: "🏠", name: "Vogelhaus")
+            MemoryMotif(emoji: "🐚", name: "Muschel")
         ])
     ]
 }
@@ -205,7 +193,7 @@ final class MemoryModel {
         if pairs > pool.count {
             // Mehr Paare als eine Themengruppe hat: Gruppen mischen.
             pool += MemoryCatalog.groups.filter { $0.title != g.title }.flatMap { $0.motifs }.shuffled()
-            group = "Tiere und Natur"
+            group = "Tiere"
         }
         let motifs = Array(pool.prefix(pairs))
         var list: [MemoryCard] = []
