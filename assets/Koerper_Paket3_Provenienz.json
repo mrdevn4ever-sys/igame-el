@@ -1,302 +1,679 @@
 {
-  "schema": "ellie-body-package3-provenance/v1",
-  "created_at_utc": "2026-11-02T20:25:09.884848+00:00",
+  "schema": "ellie-body-package3-provenance/v2",
+  "createdAtUtc": "2026-11-03T07:29:14.335342+00:00",
   "package": 3,
   "count": 34,
-  "origin_counts": {
-    "generated": 29,
-    "deterministically_derived": 5
+  "originCounts": {
+    "fresh_deterministic_procedural": 10,
+    "new_oauth_render": 24
   },
-  "generation_provider": "OpenAI image generation through Hermes ChatGPT/Codex OAuth adapter",
-  "generation_model": "gpt-image-2",
-  "style_references": "approved project-owned Gartenwelt package-1a and Mein-Körper package-1 assets",
-  "technical_qa": "34/34 PASS",
-  "visual_qa": "34/34 PASS on cream and #202020; Dino/UI assets additionally checked at their actual display sizes",
-  "source_reference_mismatches": 0,
+  "manifest": "assets/Koerper.csv",
+  "manifestSha256": "0dd0798690bb12384f847ce42b232d4ab404c1625e3b332b05529cde344803ca",
+  "technicalQa": "34/34 PASS",
+  "parentVisualQa": "34/34 PASS on cream/#202020 plus binding actual-size probes",
+  "providerDisclosure": {
+    "newOAuthRenders": 24,
+    "requested": "gpt-image-2/high via Hermes ChatGPT/Codex OAuth",
+    "selectedServerReportedQualityCounts": {
+      "medium": 3,
+      "low": 21
+    },
+    "reportedOriginals": "1254x1254 opaque RGB",
+    "exactEngineRevision": "unreported",
+    "localProcessing": "nonsemantic matte removal, alpha cleanup, sRGB conversion and exact resizing"
+  },
+  "proceduralDisclosure": "Ten targets (four anatomy-function scenes, five layer buttons, and the breathing scene) are fresh deterministic source renders with no prior raster inputs. The breathing scene passed literal70/80px cream/dark action gates.",
+  "specificGates": {
+    "atmen70And80CreamDark": "PASS",
+    "dinosActualAppSize": "PASS",
+    "buttonsActual30px": "PASS",
+    "functionScenesActual80px": "PASS",
+    "symbols70pxOrSpecifiedAppSize": "PASS"
+  },
   "files": [
     {
       "filename": "koerper_funktion_pumpen.png",
-      "sha256": "bfa8c6dc7c7c069e24b8b50ba1ed4a6520fdadfce3a8fbb5e055824fffe786f5",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; anatomical red canonical heart and clockwise red-drop circulation. Canonical comparison PASS."
+      "sha256": "fce9b6aa217343b4e2f9c970116ffb838cdb8d8c16ed165666e5ad9c9901b3f7",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-anatomy-buttons"
     },
     {
       "filename": "koerper_funktion_atmen.png",
-      "sha256": "500a8550faa3074742ecbdf4e46a5764df60c7ed296df2507724b4ecf6fb126e",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; same girl blows white dandelion seeds with pursed lips. Canonical identity comparison PASS."
+      "sha256": "88777aeffd4131266fe67f22c673552fca3f7ffd97f75b4bea16f2ebaaf94754",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-atmen-procedural"
     },
     {
       "filename": "koerper_funktion_denken.png",
-      "sha256": "7f01182092bbe97751f213fb3898c53435f7d1aa34c3e12a4af45108677f64a4",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; same girl hand at chin with stars and bulb inside overhead thought bubble. Canonical identity comparison PASS."
+      "sha256": "505852a3e4d3785ab61c14387cc77f77645999f92320b436c98433cf34cf41d0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-functions-scenes",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "medium",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_funktion_verdauen.png",
-      "sha256": "7ac1a262ea00c428703575f05026ed06bea0f8d1564fb37b65da99993add841f",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; same J-shaped stomach with apple and bread pieces inside cutaway. Canonical comparison PASS."
+      "sha256": "0307cc751026d621c7c93a1ea4a5728bea61a0d3ae448831e7eefb44fe218db4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-anatomy-buttons"
     },
     {
       "filename": "koerper_funktion_sehen.png",
-      "sha256": "2aafdee8b845c5a719e84561fc5f731a49fc02e94dcc98760a94927b74394e0a",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; one friendly child eye, rainbow reflected entirely within iris."
+      "sha256": "85f9ecfbc6ec8e64c1ea9ccc5ac97ada3ef2f221515d27085b2faaa18079776f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-functions-scenes",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_funktion_hoeren.png",
-      "sha256": "d076cc8874f0e5249bb4ffe475b7d0cd902c35877b6c892363d3ed387b175157",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; rounded child ear and colorful musical notes, intact fills."
+      "sha256": "4d28b614d54ae0a7fb9c238df8297965c233cb98eefbac2959409f60d6923a97",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-functions-scenes",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_funktion_riechen.png",
-      "sha256": "63770dfc1677b0df19b6750c34d1c792f2801263bcfd95c88f115eec2396f558",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; child nose, pink flower and aroma curls toward nostrils, no blue key damage."
+      "sha256": "c4ff1d3f484819b73d64ed33330b4ef2d20c649d6e4daa2b0add2049b4ad6bfd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-functions-scenes",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_funktion_schmecken.png",
-      "sha256": "1bee0dc2cfdcb0521a027b05b77b2f3ef059fff403d6957e0ddebdd282786394",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; tongue visibly attached inside mouth and touching ice-cream scoop in cone."
+      "sha256": "44a21dec7e647f7b8221f82ab113b0e7df029f1089e2c0846aa3ce1f442f32ee",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-functions-scenes",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "medium",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_funktion_fuehlen.png",
-      "sha256": "b9060c0a90e950feba21fafdbf65240ab40e7c35a50d297cbe8579c476338375",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; natural child hand makes petting contact with fluffy kitten; intact fur/whiskers and connected limbs."
+      "sha256": "a6fa40bd5dbc2e9b030ac3a2bfd58152f870176a1d69c242aeee77b0c361a448",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-functions-scenes",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_funktion_stuetzen.png",
-      "sha256": "ec0484a450c401d2d803a0a57aa9fb13cb0627dbb82cc8cd8623f6688ac9ff6f",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark plus native anatomy review; friendly complete upright skeleton, connected major bones, five hand digits and five toes each, plausible stylized joint gaps."
+      "sha256": "62f94bec12592a99d69b9b619ffb1b8c56b3098645a6e45afe33f604e4c5a88a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-anatomy-buttons"
     },
     {
       "filename": "koerper_funktion_schuetzen.png",
-      "sha256": "3b14a1d0782ca8e774d075cfff9fbd5a58eff37bb44cc23187a129cf8efdaeaa",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; ribcage surrounds small canonical anatomical red heart, slightly viewer-right, behind ribs. Canonical comparison PASS."
+      "sha256": "0e4c4fd5821e318f0dd7debb823cdd981c90cd3369e217c8fccc7ac5eab671d3",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-anatomy-buttons"
     },
     {
       "filename": "koerper_funktion_bewegen.png",
-      "sha256": "9e149138d626c5d9913652cfa3390a770e2aa41d5247c5b256abf1b8e14b6bb8",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark plus native anatomy review; canonical girl joyful airborne jumping jack, intact complete limbs, five digits each hand and five toes each foot."
+      "sha256": "c07ce434de9b1a2c6fe9162047e3e5fef1f16fde4ea3c77bc7b20669eb252073",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-functions-scenes",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_blume.png",
-      "sha256": "45178b9027a328d9be31e5e49843e7cd927f1aa51e345a4b3734b4c6bf248831",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark after regeneration on blue; one pink six-petaled flower with intact petal fills, stem and two leaves."
+      "sha256": "10692f68e01629b94a52c9e9c54122d634a6f031fcbaac0c2c27cb64fbe914ec",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_kuchen.png",
-      "sha256": "593e5b0b178ed8c0a4a770afbbe695423065e857ab7f689b21d9f3ef49a00bdf",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; recognizable fresh cake with three soft steam curls, no plate or unrelated props."
+      "sha256": "5e13cc57ed1c2469f4b5a91f33bd2fd312ecc7be2e771fd78e1bd3765cc675af",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_glocke.png",
-      "sha256": "9fb76fe3043c7ba41c6835f3892e61f0d4907616a172b5909d4ab36eac583dc1",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; golden bell with clapper and clear ringing arcs."
+      "sha256": "8f55a914cc289edc150259a11fcc7cf3bf51dacf145bff0e7c1814a1e0854446",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_vogel.png",
-      "sha256": "33e1f2a9eee5ebfb29ec821112b435f98872e13bbba90c6b273f03af8905610f",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; open-beaked singing bird with colorful musical notes."
+      "sha256": "9cb920ad28c2e1f1ce667cf28e981e8674daefaff4608f2876023614fc8c18eb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_zitrone.png",
-      "sha256": "d8c5aa67e888fd36d92f55a84cb31b6e495a6465ac6e73168441c0fbb92bbe10",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; cut yellow lemon with intact segmented flesh, rind and leaf."
+      "sha256": "704029bf7fdb006f75032159aa34c2b0777355b159c2b7fe5948a5d34e79cca6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_eis.png",
-      "sha256": "b623ab946f25fcadbd58c1dc3c9c1270583becc24ed57882a5afdcb042619943",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; waffle cone with separate strawberry-pink and creamy vanilla scoops."
+      "sha256": "3a70f30521f63743b28e3d4d5b9639dca7b9619a1d3b06064163dccd27f2d4f0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_regenbogen.png",
-      "sha256": "71aa068c9c689e83f5dde8332a6789282c7a7328aa6cd56ce4b71e4f6d49ad97",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark after regeneration on black; all rainbow bands continuous including blue/indigo/violet, both cloud fills intact."
+      "sha256": "65f3d7042a54809d78b8347610e414dd387a601d6788672fb40ad5a734cca959",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_sterne.png",
-      "sha256": "1a5e525a05a6e878236b85012fe0fabe7fb432ac5e11e7645a20415b0d5e809d",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark after regeneration on blue; glowing yellow crescent and three stars, no remaining colored matte edge."
+      "sha256": "577737e6e2fccfbad958d0be76ffe78bbf6aa61bbd401ead6a3731a894b9a418",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_katze.png",
-      "sha256": "fe8ea8fd75060675e6202d84b2957fd8cf4210df3ca5f190cc848437a66d973c",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; one complete fluffy cream-and-ginger kitten with connected seated limbs and one tail, intact eye/pale fills."
+      "sha256": "dc1175fedb0c13b4f0731ab90358e8eae625e3a41451ed165fca0c6b7ef17471",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_sinn_wasser.png",
-      "sha256": "c4298395c9f347d40aa6ea48465a707f22efce160ca1f554962f358a4090e650",
-      "origin": "generated",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_notes": "PASS on cream/dark; one bowl of visibly blue rippling water with delicate steam; reads as warm water, no food/props."
+      "sha256": "c1a82d731033017f209d23dd86e5c0f6f2735fb4a4692c38977ff23f74336ff5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_dino_rennen.png",
-      "sha256": "b45acfab3fbacea876594b41f5e8b81dc141a99ab82ba03925992f7c45fc5ea3",
-      "origin": "generated",
-      "provenance_kind": "generated_then_keyed_and_registered",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "canonical coral identity and running pose PASS at 200px on cream/#202020"
+      "sha256": "bcd1b8c0716e5ce4df844dc9304ca8412b824ab73f8d7fdc84b43cd8e7db8863",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-dino",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_dino_huepfen.png",
-      "sha256": "aa192aadad64d160c5b52702c3bbc684b86ad60a3d1ac0728e8de43b6a718e8f",
-      "origin": "generated",
-      "provenance_kind": "generated_then_keyed_and_registered",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "canonical coral identity and hopping pose PASS at 200px on cream/#202020"
+      "sha256": "4ef6d573753c69fa4520b7aec71b95025f89c8a91a723bdb59291ae0a0f40dd9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-dino",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_dino_schlafen.png",
-      "sha256": "f26a1696c405ca19802474dc65c3261b9a0c7a958886c89ab3467a0900f6d608",
-      "origin": "generated",
-      "provenance_kind": "generated_then_keyed_and_registered",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "canonical coral identity and sleeping pose PASS at 200px on cream/#202020"
+      "sha256": "b6f04977ef89a1cbd03b173871431845bbf9381a17678686d8e42ff7aab259be",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-dino",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_dino_ausruhen.png",
-      "sha256": "19e31d3bd31ca1068ab29e2cfe30a3b77430df78d1ea8e81d3fa112c081a2841",
-      "origin": "generated",
-      "provenance_kind": "generated_then_keyed_and_registered",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "canonical coral identity and resting/reading pose PASS at 200px on cream/#202020"
+      "sha256": "2262c1e76b11e71f65b6cb6336bb4c4b33b9d42e41086edca748e934f3f44b51",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-dino",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_knopf_aussen.png",
-      "sha256": "6a8b0e8ed79afd52645645882fcc104b1f5e3a6f46d211732d328e01860bc01c",
-      "origin": "deterministically_derived",
-      "provenance_kind": "deterministic_derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "girl head remains recognizable at 30px; exact package-1 crop"
+      "sha256": "6039b232af53533ada378c608cfb4eeee1d8dd991a263ef3ea1ce82b8c1e5be9",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-anatomy-buttons"
     },
     {
       "filename": "koerper_knopf_organe.png",
-      "sha256": "732c1faf1b1ee9efc945e9e4e48b3cd1f24d63a1498635c1ac9961344b8c1c1f",
-      "origin": "deterministically_derived",
-      "provenance_kind": "deterministic_derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "heart/lungs remain recognizable at 30px; exact package-1 components"
+      "sha256": "e6a90dea2c841dc051030d6b90f1a356608d4b76e39392b539e4428e03a0e5a8",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-anatomy-buttons"
     },
     {
       "filename": "koerper_knopf_knochen.png",
-      "sha256": "530c290d6bc65df6bdd7e0ece8e0f2c7d60272a25bb921628b43be08786e1803",
-      "origin": "deterministically_derived",
-      "provenance_kind": "deterministic_derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "crossed bones remain recognizable at 30px; exact femur components"
+      "sha256": "7cb813ba763258add001557a80dd3a9a5105006e84f43a49f77c758436cd4f05",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-anatomy-buttons"
     },
     {
       "filename": "koerper_knopf_adern.png",
-      "sha256": "dd8c2b65f76c1db68e44f1111fd0dfe59b536358a49bc957d0f2c5559fcf6178",
-      "origin": "deterministically_derived",
-      "provenance_kind": "deterministic_derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "CSV-required red blood-drop symbol is recognizable at 30px; package-1 arterial material/color abstraction disclosed because no discrete drop exists in package 1"
+      "sha256": "3ee4b949a088e84997d65e03c38e9a61109b510a606bfe0c5c5282ebcca7bbb5",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-anatomy-buttons"
     },
     {
       "filename": "koerper_knopf_muskeln.png",
-      "sha256": "361512e30344d0cf1b98c4d675fd3a4159497d91977921f6cac04794ae5552fa",
-      "origin": "deterministically_derived",
-      "provenance_kind": "deterministic_derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "flexed muscle arm remains recognizable at 30px; package-1 muscle components retained"
+      "sha256": "0e6d7fb5b0d56ec408089317701cd5b3e765ce1c426b0d892da5207848607e5d",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-anatomy-buttons"
     },
     {
       "filename": "koerper_zauberlupe.png",
-      "sha256": "4f9aa9a25c25c510414e88ad19859d5e98172f804c4e53a5abeff83686c93463",
-      "origin": "generated",
-      "provenance_kind": "generated_then_keyed_and_registered",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "gold magic magnifier with wooden handle and sparkle PASS at 110px"
+      "sha256": "cdbc50d280177a70876a97b627b911f08294b425b56381db1c169852f3774b32",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "medium",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_essen_apfel.png",
-      "sha256": "69c82098c5443c05bac87aced43cc6fdd85b02ae62b40d9b29d4d0bb05668e90",
-      "origin": "generated",
-      "provenance_kind": "generated_then_keyed_and_registered",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "red apple with one readable pale-flesh bite PASS at 70px"
+      "sha256": "3be5f916081d0911dd93c6e0a99cf42d09648e9e0fd44e6a8fe3faa731d4773e",
+      "dimensions": [
+        512,
+        512
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     },
     {
       "filename": "koerper_essen_bissen.png",
-      "sha256": "bfe16d233cbd8e98c25c92229dc96f66fa780dc3cf2b55f91332822f511c5250",
-      "origin": "generated",
-      "provenance_kind": "generated_then_keyed_and_registered",
-      "technical_status": "PASS",
-      "visual_status": "PASS",
-      "visual_evidence": "small round light-brown morsel/crumb PASS at 24px"
+      "sha256": "c861d5f39596f281cc59e6ca708d4642abac32b266d37f8ea683aa234845433a",
+      "dimensions": [
+        256,
+        256
+      ],
+      "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic transparency/export processing",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package3-senses-symbols",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     }
   ]
 }

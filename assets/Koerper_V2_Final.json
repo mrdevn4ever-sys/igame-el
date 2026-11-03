@@ -1,0 +1,651 @@
+{
+  "schema": "ellie-body-v2-release/v1",
+  "createdAtUtc": "2026-11-03T07:29:14.335342+00:00",
+  "manifest": "assets/Koerper.csv",
+  "manifestSha256": "0dd0798690bb12384f847ce42b232d4ab404c1625e3b332b05529cde344803ca",
+  "count": 63,
+  "status": "PASS",
+  "packages": {
+    "1": 7,
+    "2": 22,
+    "3": 34
+  },
+  "allTechnicalPass": true,
+  "allParentVisualPass": true,
+  "sixLayerRegistrationPass": true,
+  "allRepositoryTargetHashesVerifiedBeforeCommit": true,
+  "finalReconciliationSha256": "92f41e1bb99816464b6abc795dcc7adc0bfead693ea42ebfb51ef55159d6f3d5",
+  "sha256SumsSha256": "1fda4ee14f191cd715adde7ab6998325c1683b5fb1e6ec26ae8ad07dfeef0abf",
+  "files": [
+    {
+      "filename": "koerper_aussen.png",
+      "package": 1,
+      "sha256": "a9b1fad6f72b66b9687e2ac8e65662b407c89fa9b7c6fc0f8fc539239966e16f",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sourceGroup": "package1-procedural-v2"
+    },
+    {
+      "filename": "koerper_organe.png",
+      "package": 1,
+      "sha256": "66bae1526f934829b5e9b670f4b5e9046a681bc13637421ce5a6633956eac591",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sourceGroup": "package1-procedural-v2"
+    },
+    {
+      "filename": "koerper_knochen.png",
+      "package": 1,
+      "sha256": "29bdeb48a3363851bbb0fb870e91b8eb428a02dc27e4f0a57e21bf142efb60f6",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sourceGroup": "package1-procedural-v2"
+    },
+    {
+      "filename": "koerper_adern.png",
+      "package": 1,
+      "sha256": "ff6514fb8de6e203844cb981770cfbc0ed5d5ad453ff3a58caa5c11fdf5f3302",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sourceGroup": "package1-procedural-v2"
+    },
+    {
+      "filename": "koerper_muskeln.png",
+      "package": 1,
+      "sha256": "f56311d15d4ecdc04872d6d29fec98adc4c734bdc01798209eb0c7fa7d35401b",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sourceGroup": "package1-procedural-v2"
+    },
+    {
+      "filename": "koerper_umriss.png",
+      "package": 1,
+      "sha256": "23a1e58542b083c452451911fcf4130404c27e14aafcea8ce39af93cc67929b0",
+      "dimensions": [
+        1536,
+        2048
+      ],
+      "sourceGroup": "package1-procedural-v2"
+    },
+    {
+      "filename": "koerper_teil_kopf.png",
+      "package": 2,
+      "sha256": "1c3d03ba9e5b911c5f6f53da25528a96c8497197574dd65c92a042e236da91ef",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_bauch.png",
+      "package": 2,
+      "sha256": "ad19ffb58fdee49a22cd453e84b1eff4f6209060e472f2fc28f336226959064b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_hand.png",
+      "package": 2,
+      "sha256": "f3d2deb99b7f140f784d36c8cbe1331c8071b7d1d8e4146b311de22f44a317b0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_fuss.png",
+      "package": 2,
+      "sha256": "2de6798e0efc8b15727e34478e16ef5f1807c8ab834cdd94c4ccffb26f7fa908",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_arm.png",
+      "package": 2,
+      "sha256": "fb4661fb024ade9faea3c4ff6912e36d1ed49162eaecda7879317ee1639577d5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_bein.png",
+      "package": 2,
+      "sha256": "b37c343abe1f266723c47260daefbb56f7bb6dbbb10d461dcc70f7709711f130",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_knie.png",
+      "package": 2,
+      "sha256": "ab7dd8cd923b80c4c4cf4d383588b5c0fd50db9800735ad34a92def9c97c8bfb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_augen.png",
+      "package": 2,
+      "sha256": "f51147c78be0fbc80bd26d2b30b1327cf9bfbb43a55232e03552ead8a61ed017",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_ohren.png",
+      "package": 2,
+      "sha256": "834cfa8145a734a10de89fd8f8337cd5ed7502384d1e773030b11e1799f379cf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_nase.png",
+      "package": 2,
+      "sha256": "67e5baf861ca26a58dc80c35752b35587e5e7ea0bf797573b0d4bd1ecac79c1e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_mund.png",
+      "package": 2,
+      "sha256": "73d3b51b4c44292010b5b5d825b04f22f39c21c2edd4373bcdcff7ef67b721e9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-external"
+    },
+    {
+      "filename": "koerper_teil_gehirn.png",
+      "package": 2,
+      "sha256": "d2667205f1adf3c513ea57363ec94dd3a9a36fc7549730601eb0f5f7b1792391",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_herz.png",
+      "package": 2,
+      "sha256": "6fc29af1d8f7207155e789c37a8c02a3bdc242ffc9eb060a3d38cee73841894f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_lunge.png",
+      "package": 2,
+      "sha256": "d1896925661e2ddbbb8d4d9cbeb41c36ce474c33fab8729956f358bd3f80f814",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_magen.png",
+      "package": 2,
+      "sha256": "ba4874b23836509d505349f1a46895243971b13bc847247623b9e57020bc79b5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_darm.png",
+      "package": 2,
+      "sha256": "147df43df0d40d6e0b8b8d289e68034c23bb069c6a4b3e596f2b3fca76134cc2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_schaedel.png",
+      "package": 2,
+      "sha256": "782168128e5f50202f1c23e31d7ad0fa678c8278b881eb4485dd5c6465b762dd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_rippen.png",
+      "package": 2,
+      "sha256": "fca17aa7b4083c37aa294137b8d10002fd3d3105c0013acfa6bcafd4bfbd448e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_wirbelsaeule.png",
+      "package": 2,
+      "sha256": "650264d5db31751db110fec0d1d2c3ca7912763b04573e4600c50d20d0722c66",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_oberschenkel.png",
+      "package": 2,
+      "sha256": "6433a96ac9f1ad3b95501654292b9f2989d38f1f3bf92a5afd7ca29c60c1eae0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_adern.png",
+      "package": 2,
+      "sha256": "54351db0394723be9f0a9de86efeb85b5e4a78a5522129e1c42166dddf17e155",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_teil_muskeln.png",
+      "package": 2,
+      "sha256": "874582a65a0b99d448000d17f0951d6defa2730d80b7c8bd279726e24a6e17ce",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package2-anatomy-v2"
+    },
+    {
+      "filename": "koerper_funktion_pumpen.png",
+      "package": 3,
+      "sha256": "fce9b6aa217343b4e2f9c970116ffb838cdb8d8c16ed165666e5ad9c9901b3f7",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-anatomy-buttons"
+    },
+    {
+      "filename": "koerper_funktion_atmen.png",
+      "package": 3,
+      "sha256": "88777aeffd4131266fe67f22c673552fca3f7ffd97f75b4bea16f2ebaaf94754",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-atmen-procedural"
+    },
+    {
+      "filename": "koerper_funktion_denken.png",
+      "package": 3,
+      "sha256": "505852a3e4d3785ab61c14387cc77f77645999f92320b436c98433cf34cf41d0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-functions-scenes"
+    },
+    {
+      "filename": "koerper_funktion_verdauen.png",
+      "package": 3,
+      "sha256": "0307cc751026d621c7c93a1ea4a5728bea61a0d3ae448831e7eefb44fe218db4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-anatomy-buttons"
+    },
+    {
+      "filename": "koerper_funktion_sehen.png",
+      "package": 3,
+      "sha256": "85f9ecfbc6ec8e64c1ea9ccc5ac97ada3ef2f221515d27085b2faaa18079776f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-functions-scenes"
+    },
+    {
+      "filename": "koerper_funktion_hoeren.png",
+      "package": 3,
+      "sha256": "4d28b614d54ae0a7fb9c238df8297965c233cb98eefbac2959409f60d6923a97",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-functions-scenes"
+    },
+    {
+      "filename": "koerper_funktion_riechen.png",
+      "package": 3,
+      "sha256": "c4ff1d3f484819b73d64ed33330b4ef2d20c649d6e4daa2b0add2049b4ad6bfd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-functions-scenes"
+    },
+    {
+      "filename": "koerper_funktion_schmecken.png",
+      "package": 3,
+      "sha256": "44a21dec7e647f7b8221f82ab113b0e7df029f1089e2c0846aa3ce1f442f32ee",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-functions-scenes"
+    },
+    {
+      "filename": "koerper_funktion_fuehlen.png",
+      "package": 3,
+      "sha256": "a6fa40bd5dbc2e9b030ac3a2bfd58152f870176a1d69c242aeee77b0c361a448",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-functions-scenes"
+    },
+    {
+      "filename": "koerper_funktion_stuetzen.png",
+      "package": 3,
+      "sha256": "62f94bec12592a99d69b9b619ffb1b8c56b3098645a6e45afe33f604e4c5a88a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-anatomy-buttons"
+    },
+    {
+      "filename": "koerper_funktion_schuetzen.png",
+      "package": 3,
+      "sha256": "0e4c4fd5821e318f0dd7debb823cdd981c90cd3369e217c8fccc7ac5eab671d3",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-anatomy-buttons"
+    },
+    {
+      "filename": "koerper_funktion_bewegen.png",
+      "package": 3,
+      "sha256": "c07ce434de9b1a2c6fe9162047e3e5fef1f16fde4ea3c77bc7b20669eb252073",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-functions-scenes"
+    },
+    {
+      "filename": "koerper_sinn_blume.png",
+      "package": 3,
+      "sha256": "10692f68e01629b94a52c9e9c54122d634a6f031fcbaac0c2c27cb64fbe914ec",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_sinn_kuchen.png",
+      "package": 3,
+      "sha256": "5e13cc57ed1c2469f4b5a91f33bd2fd312ecc7be2e771fd78e1bd3765cc675af",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_sinn_glocke.png",
+      "package": 3,
+      "sha256": "8f55a914cc289edc150259a11fcc7cf3bf51dacf145bff0e7c1814a1e0854446",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_sinn_vogel.png",
+      "package": 3,
+      "sha256": "9cb920ad28c2e1f1ce667cf28e981e8674daefaff4608f2876023614fc8c18eb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_sinn_zitrone.png",
+      "package": 3,
+      "sha256": "704029bf7fdb006f75032159aa34c2b0777355b159c2b7fe5948a5d34e79cca6",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_sinn_eis.png",
+      "package": 3,
+      "sha256": "3a70f30521f63743b28e3d4d5b9639dca7b9619a1d3b06064163dccd27f2d4f0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_sinn_regenbogen.png",
+      "package": 3,
+      "sha256": "65f3d7042a54809d78b8347610e414dd387a601d6788672fb40ad5a734cca959",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_sinn_sterne.png",
+      "package": 3,
+      "sha256": "577737e6e2fccfbad958d0be76ffe78bbf6aa61bbd401ead6a3731a894b9a418",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_sinn_katze.png",
+      "package": 3,
+      "sha256": "dc1175fedb0c13b4f0731ab90358e8eae625e3a41451ed165fca0c6b7ef17471",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_sinn_wasser.png",
+      "package": 3,
+      "sha256": "c1a82d731033017f209d23dd86e5c0f6f2735fb4a4692c38977ff23f74336ff5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_dino_rennen.png",
+      "package": 3,
+      "sha256": "bcd1b8c0716e5ce4df844dc9304ca8412b824ab73f8d7fdc84b43cd8e7db8863",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-dino"
+    },
+    {
+      "filename": "koerper_dino_huepfen.png",
+      "package": 3,
+      "sha256": "4ef6d573753c69fa4520b7aec71b95025f89c8a91a723bdb59291ae0a0f40dd9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-dino"
+    },
+    {
+      "filename": "koerper_dino_schlafen.png",
+      "package": 3,
+      "sha256": "b6f04977ef89a1cbd03b173871431845bbf9381a17678686d8e42ff7aab259be",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-dino"
+    },
+    {
+      "filename": "koerper_dino_ausruhen.png",
+      "package": 3,
+      "sha256": "2262c1e76b11e71f65b6cb6336bb4c4b33b9d42e41086edca748e934f3f44b51",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package3-dino"
+    },
+    {
+      "filename": "koerper_knopf_aussen.png",
+      "package": 3,
+      "sha256": "6039b232af53533ada378c608cfb4eeee1d8dd991a263ef3ea1ce82b8c1e5be9",
+      "dimensions": [
+        512,
+        512
+      ],
+      "sourceGroup": "package3-anatomy-buttons"
+    },
+    {
+      "filename": "koerper_knopf_organe.png",
+      "package": 3,
+      "sha256": "e6a90dea2c841dc051030d6b90f1a356608d4b76e39392b539e4428e03a0e5a8",
+      "dimensions": [
+        512,
+        512
+      ],
+      "sourceGroup": "package3-anatomy-buttons"
+    },
+    {
+      "filename": "koerper_knopf_knochen.png",
+      "package": 3,
+      "sha256": "7cb813ba763258add001557a80dd3a9a5105006e84f43a49f77c758436cd4f05",
+      "dimensions": [
+        512,
+        512
+      ],
+      "sourceGroup": "package3-anatomy-buttons"
+    },
+    {
+      "filename": "koerper_knopf_adern.png",
+      "package": 3,
+      "sha256": "3ee4b949a088e84997d65e03c38e9a61109b510a606bfe0c5c5282ebcca7bbb5",
+      "dimensions": [
+        512,
+        512
+      ],
+      "sourceGroup": "package3-anatomy-buttons"
+    },
+    {
+      "filename": "koerper_knopf_muskeln.png",
+      "package": 3,
+      "sha256": "0e6d7fb5b0d56ec408089317701cd5b3e765ce1c426b0d892da5207848607e5d",
+      "dimensions": [
+        512,
+        512
+      ],
+      "sourceGroup": "package3-anatomy-buttons"
+    },
+    {
+      "filename": "koerper_zauberlupe.png",
+      "package": 3,
+      "sha256": "cdbc50d280177a70876a97b627b911f08294b425b56381db1c169852f3774b32",
+      "dimensions": [
+        512,
+        512
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_essen_apfel.png",
+      "package": 3,
+      "sha256": "3be5f916081d0911dd93c6e0a99cf42d09648e9e0fd44e6a8fe3faa731d4773e",
+      "dimensions": [
+        512,
+        512
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "koerper_essen_bissen.png",
+      "package": 3,
+      "sha256": "c861d5f39596f281cc59e6ca708d4642abac32b266d37f8ea683aa234845433a",
+      "dimensions": [
+        256,
+        256
+      ],
+      "sourceGroup": "package3-senses-symbols"
+    },
+    {
+      "filename": "spiel_koerper.png",
+      "package": 1,
+      "sha256": "691dd131f7eda491c34892642ea75b75a8699ad6b09c6f40ef13a425834f523f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sourceGroup": "package1-procedural-v2"
+    }
+  ]
+}

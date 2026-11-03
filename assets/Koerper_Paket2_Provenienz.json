@@ -1,194 +1,332 @@
 {
-  "schema": "ellie-body-package2-provenance/v1",
-  "created_at_utc": "2026-11-02T20:22:20.573726+00:00",
+  "schema": "ellie-body-package2-provenance/v2",
+  "createdAtUtc": "2026-11-03T07:29:14.335342+00:00",
   "package": 2,
   "count": 22,
-  "origin_counts": {
-    "generated": 6,
-    "deterministically_derived": 15,
-    "hybrid": 1
+  "originCounts": {
+    "freshDeterministicProcedural": 22
   },
-  "generation_provider": "OpenAI image generation through Hermes ChatGPT/Codex OAuth adapter",
-  "generation_model": "gpt-image-2",
-  "style_references": "approved project-owned Gartenwelt package-1a and Mein-Körper package-1 assets",
-  "technical_qa": "22/22 PASS",
-  "visual_qa": "22/22 PASS on cream and #202020; corrected blockers additionally checked at 150px",
+  "manifest": "assets/Koerper.csv",
+  "manifestSha256": "0dd0798690bb12384f847ce42b232d4ab404c1625e3b332b05529cde344803ca",
+  "technicalQa": "22/22 PASS",
+  "parentVisualQa": "22/22 PASS on cream/#202020 and actual app probes",
+  "method": "All 22 targets were freshly rasterized from deterministic analytic source at 4x supersampling; no old/rejected target PNG pixels were read or reused.",
+  "specificGates": {
+    "wholeGirlHighlightedArmAndLeg": "PASS",
+    "normalFiveDigitHandAndFiveToeFoot": "PASS",
+    "femurHeadNeckShaftTwoDistalCondyles": "PASS",
+    "vesselArmRedAndBlueEachOneConnectedComponentToFiveDigits": "PASS",
+    "ribPairs": 12
+  },
+  "determinism": "22/22 byte- and pixel-identical across two complete clean builds",
   "files": [
     {
       "filename": "koerper_teil_kopf.png",
-      "sha256": "8b6092fdf3ddf3e69c025c6e534e509a526f68686bf788006f40b7034182a585",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "1c3d03ba9e5b911c5f6f53da25528a96c8497197574dd65c92a042e236da91ef",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_bauch.png",
-      "sha256": "be2888e5eb0aef2c8ca0a48fe29129ae13c5623a53885d5a9b301eb2c8470aff",
-      "origin": "generated",
-      "method": "controlled_generation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "ad19ffb58fdee49a22cd453e84b1eff4f6209060e472f2fc28f336226959064b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_hand.png",
-      "sha256": "57e4fb70347158f4ba0516d33af4ecec7f4ccfe16d6f70aeb484826edfd5d9ad",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "f3d2deb99b7f140f784d36c8cbe1331c8071b7d1d8e4146b311de22f44a317b0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_fuss.png",
-      "sha256": "f5ab7eb331e32a8e36d171b7e3baf0055aebc4c5423fffe15bca5179dd5c971e",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "2de6798e0efc8b15727e34478e16ef5f1807c8ab834cdd94c4ccffb26f7fa908",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_arm.png",
-      "sha256": "a02bd02db1089901c984674a7cebece9e66b813fafeb7121d7e129d3335d86fe",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "fb4661fb024ade9faea3c4ff6912e36d1ed49162eaecda7879317ee1639577d5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_bein.png",
-      "sha256": "071ecd4baf292f923225f58ef9e6df9c01a8b359d9c3472e4915b4da21419bd0",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "b37c343abe1f266723c47260daefbb56f7bb6dbbb10d461dcc70f7709711f130",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_knie.png",
-      "sha256": "d4cbde17b9b604379127fe95ed2acaf4a8b29ba6e1cdf61bf520e88203837661",
-      "origin": "generated",
-      "method": "controlled_generation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "ab7dd8cd923b80c4c4cf4d383588b5c0fd50db9800735ad34a92def9c97c8bfb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_augen.png",
-      "sha256": "f4f1b29874d5e093974ff488ac18ef94d178b42fbf37d13876e0fa56efa1f994",
-      "origin": "deterministically_derived",
-      "method": "derivation_with_manifest_lash_completion",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "f51147c78be0fbc80bd26d2b30b1327cf9bfbb43a55232e03552ead8a61ed017",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_ohren.png",
-      "sha256": "dc0c72398b8df1ba7f35211cb4ef6bc37cc287993d8f56c82a170195262ff048",
-      "origin": "generated",
-      "method": "controlled_generation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "834cfa8145a734a10de89fd8f8337cd5ed7502384d1e773030b11e1799f379cf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_nase.png",
-      "sha256": "503c0f7a57a343c6a375ff2333f31a94f214a4a9187f1bd00973c2d225926b16",
-      "origin": "generated",
-      "method": "controlled_generation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "67e5baf861ca26a58dc80c35752b35587e5e7ea0bf797573b0d4bd1ecac79c1e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_mund.png",
-      "sha256": "40bd942b39afaf86c00c0829d3baba0090d6485aa8dadceac98d1d8db7120f1c",
-      "origin": "generated",
-      "method": "controlled_generation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "73d3b51b4c44292010b5b5d825b04f22f39c21c2edd4373bcdcff7ef67b721e9",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic vector render at 4x supersampling from accepted canonical girl source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-external"
     },
     {
       "filename": "koerper_teil_gehirn.png",
-      "sha256": "3e5efa9af27af48f8b33442773156a203dbad8fc13697f89906b62a0f5f9be29",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "d2667205f1adf3c513ea57363ec94dd3a9a36fc7549730601eb0f5f7b1792391",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_herz.png",
-      "sha256": "7b2719cf5f1c37775bef92de74459a318b3dc01763347ed24aec462fa9ce7ee2",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "6fc29af1d8f7207155e789c37a8c02a3bdc242ffc9eb060a3d38cee73841894f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_lunge.png",
-      "sha256": "99f623a3be28acaca39451d584f3e33d662625b269ec9bb9e4d9fabed841c372",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "d1896925661e2ddbbb8d4d9cbeb41c36ce474c33fab8729956f358bd3f80f814",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_magen.png",
-      "sha256": "fa0b29ebcc28a586770e3e172309f38c90390316c0aa370b46246fd64889b858",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "ba4874b23836509d505349f1a46895243971b13bc847247623b9e57020bc79b5",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_darm.png",
-      "sha256": "13dda45d79dc5beee238912344d573a5aca9086790dd8e2b4e81522608c20bee",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "147df43df0d40d6e0b8b8d289e68034c23bb069c6a4b3e596f2b3fca76134cc2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_schaedel.png",
-      "sha256": "981038bc3b741ac58e6955cb163ffc859af2115ee48d3e6e4a6257f9a2df434a",
-      "origin": "deterministically_derived",
-      "method": "derivation_with_analytic_outer_cranium_repair",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "782168128e5f50202f1c23e31d7ad0fa678c8278b881eb4485dd5c6465b762dd",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_rippen.png",
-      "sha256": "66e03d4ca059166afddf44ef8e6bb3f2a8e51d6899d2634420d0294529e534c0",
-      "origin": "deterministically_derived",
-      "method": "derivation_with_residue_alpha_cleanup",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "fca17aa7b4083c37aa294137b8d10002fd3d3105c0013acfa6bcafd4bfbd448e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_wirbelsaeule.png",
-      "sha256": "d27de955155e01a31e1a0c6e6d39de9cc40f0dcc2d07f2818c477a4f8f95dad0",
-      "origin": "generated",
-      "method": "generation_edit_then_edge_key",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "650264d5db31751db110fec0d1d2c3ca7912763b04573e4600c50d20d0722c66",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_oberschenkel.png",
-      "sha256": "d666b09b4563d33b98427b41b35142921132d4a246f42ab3fb5e288839d8743d",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "6433a96ac9f1ad3b95501654292b9f2989d38f1f3bf92a5afd7ca29c60c1eae0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_adern.png",
-      "sha256": "25501ece72249fac09fc5c62364ee1a54ec5cb9a645a65947b21f72a05a0eaab",
-      "origin": "deterministically_derived",
-      "method": "derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "54351db0394723be9f0a9de86efeb85b5e4a78a5522129e1c42166dddf17e155",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     },
     {
       "filename": "koerper_teil_muskeln.png",
-      "sha256": "1b7d270bc2c658ff601ba9f89e2059ffb05ab3fe1f27952562f1e4cc64210b2a",
-      "origin": "hybrid",
-      "method": "hybrid_controlled_skin_pose_plus_exact_component_derivation",
-      "technical_status": "PASS",
-      "visual_status": "PASS"
+      "sha256": "874582a65a0b99d448000d17f0951d6defa2730d80b7c8bd279726e24a6e17ce",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic anatomy render at 4x supersampling from accepted Package-1 source; no prior target pixels",
+      "technicalStatus": "PASS",
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package2-anatomy-v2"
     }
   ]
 }

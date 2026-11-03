@@ -1,108 +1,140 @@
 {
-  "schema": "ellie-body-package1-provenance/v1",
-  "createdAtUtc": "2026-11-02T20:33:10.077228+00:00",
+  "schema": "ellie-body-package1-provenance/v2",
+  "createdAtUtc": "2026-11-03T07:29:14.335342+00:00",
   "package": 1,
   "count": 7,
   "originCounts": {
-    "generated": 2,
-    "deterministicallyComposed": 5
+    "freshDeterministicProcedural": 6,
+    "newOAuthRender": 1
   },
-  "generationProvider": "OpenAI image generation through Hermes ChatGPT/Codex OAuth adapter",
-  "generationModel": "gpt-image-2",
+  "manifest": "assets/Koerper.csv",
+  "manifestSha256": "0dd0798690bb12384f847ce42b232d4ab404c1625e3b332b05529cde344803ca",
   "technicalQa": "7/7 PASS",
-  "visualQa": "7/7 PASS on cream and #202020",
-  "figureRegistration": "six 1536x2048 figure layers have byte-identical alpha silhouettes; 0 differing alpha pixels",
+  "parentVisualQa": "7/7 PASS",
+  "registration": {
+    "registeredLayers": 6,
+    "sameNonzeroSilhouetteSupport": true,
+    "maximumOuterContourDeviationPx": 0,
+    "pairwise50PercentOverlays": 15,
+    "backgrounds": [
+      "#FFF8EC",
+      "#202020"
+    ],
+    "status": "PASS"
+  },
+  "measurements": {
+    "bodyHeadHeights": 4.466,
+    "handLengthPercentFigureHeight": 8.987,
+    "handWidthPercentCanvas": 4.6875,
+    "status": "PASS"
+  },
+  "determinism": "six procedural layers reproduced byte-identically across two complete clean builds; tile hash bound",
+  "providerDisclosure": "Only spiel_koerper.png used gpt-image-2. High requested; server reported low, 1254x1254 opaque; exact engine revision unreported. The six girl layers are local analytic renders.",
   "files": [
     {
       "filename": "koerper_aussen.png",
-      "sha256": "0a012c7f950c7878c3eb3bcbc20ef1ef07b2cdb0817bef37f10f5e35c7f17315",
+      "sha256": "a9b1fad6f72b66b9687e2ac8e65662b407c89fa9b7c6fc0f8fc539239966e16f",
       "dimensions": [
         1536,
         2048
       ],
       "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic Bezier/vector render at 3x supersampling from new source; no prior target pixels",
       "technicalStatus": "PASS",
-      "visualStatus": "PASS",
-      "registrationStatus": "PASS",
-      "origin": "generated"
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package1-procedural-v2"
     },
     {
       "filename": "koerper_organe.png",
-      "sha256": "00e133ab8dc2870cbf8e33df26fa6b3c871d34f550b1c79d6ddb6d96fc247f0d",
+      "sha256": "66bae1526f934829b5e9b670f4b5e9046a681bc13637421ce5a6633956eac591",
       "dimensions": [
         1536,
         2048
       ],
       "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic Bezier/vector render at 3x supersampling from new source; no prior target pixels",
       "technicalStatus": "PASS",
-      "visualStatus": "PASS",
-      "registrationStatus": "PASS",
-      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package1-procedural-v2"
     },
     {
       "filename": "koerper_knochen.png",
-      "sha256": "e7150c075a0cde70c3c5251cbbb62ebb5e3bd4096bc0b3e50b1b61c0fff11130",
+      "sha256": "29bdeb48a3363851bbb0fb870e91b8eb428a02dc27e4f0a57e21bf142efb60f6",
       "dimensions": [
         1536,
         2048
       ],
       "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic Bezier/vector render at 3x supersampling from new source; no prior target pixels",
       "technicalStatus": "PASS",
-      "visualStatus": "PASS",
-      "registrationStatus": "PASS",
-      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package1-procedural-v2"
     },
     {
       "filename": "koerper_adern.png",
-      "sha256": "b3ad9ec6f7b3bc45a66a6ddfeb1ddfdfc3c32c7cb402d6e4d436f31408632a49",
+      "sha256": "ff6514fb8de6e203844cb981770cfbc0ed5d5ad453ff3a58caa5c11fdf5f3302",
       "dimensions": [
         1536,
         2048
       ],
       "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic Bezier/vector render at 3x supersampling from new source; no prior target pixels",
       "technicalStatus": "PASS",
-      "visualStatus": "PASS",
-      "registrationStatus": "PASS",
-      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package1-procedural-v2"
     },
     {
       "filename": "koerper_muskeln.png",
-      "sha256": "14e2ccb91f6a97eefcbb92e4a37393661bc513753b99d924e130cf13eb53dd4d",
+      "sha256": "f56311d15d4ecdc04872d6d29fec98adc4c734bdc01798209eb0c7fa7d35401b",
       "dimensions": [
         1536,
         2048
       ],
       "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic Bezier/vector render at 3x supersampling from new source; no prior target pixels",
       "technicalStatus": "PASS",
-      "visualStatus": "PASS",
-      "registrationStatus": "PASS",
-      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package1-procedural-v2"
     },
     {
       "filename": "koerper_umriss.png",
-      "sha256": "fc26838542d49893f63c6b8c8960e901322623ede81a6c0848f5166f2a595f4d",
+      "sha256": "23a1e58542b083c452451911fcf4130404c27e14aafcea8ce39af93cc67929b0",
       "dimensions": [
         1536,
         2048
       ],
       "mode": "RGBA",
+      "origin": "fresh_deterministic_procedural",
+      "method": "analytic Bezier/vector render at 3x supersampling from new source; no prior target pixels",
       "technicalStatus": "PASS",
-      "visualStatus": "PASS",
-      "registrationStatus": "PASS",
-      "origin": "deterministically_composed_from_project_generated_package1_inputs"
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package1-procedural-v2"
     },
     {
       "filename": "spiel_koerper.png",
-      "sha256": "44665311b9bccfac1ad7ba271f2444a25e1688e2ed86e1c2f7e50ddc2d2a944c",
+      "sha256": "691dd131f7eda491c34892642ea75b75a8699ad6b09c6f40ef13a425834f523f",
       "dimensions": [
         1024,
         1024
       ],
       "mode": "RGBA",
+      "origin": "new_oauth_render",
+      "method": "gpt-image-2 via Hermes ChatGPT/Codex OAuth; local nonsemantic matte removal and exact export",
       "technicalStatus": "PASS",
-      "visualStatus": "PASS",
-      "registrationStatus": "NOT_APPLICABLE",
-      "origin": "generated"
+      "parentVisualStatus": "PASS",
+      "sourceGroup": "package1-procedural-v2",
+      "provider": "openai-codex",
+      "requestedApiModel": "gpt-image-2",
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "serverReportedBackground": "opaque",
+      "exactEngineRevision": "unreported"
     }
   ]
 }

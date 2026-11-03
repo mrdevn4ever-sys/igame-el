@@ -206,15 +206,21 @@
     },
     {
       "filename": "abc_nase.png",
-      "sha256": "a21508b3a325eccb08512c546927a505b5afae8da98357657a74c7701c28eae2",
+      "sha256": "3bfd6ab1b179bfbdd3fc7f69208ecc5b25ca79b8e386b5ca6166a75bcf426d1b",
       "origin": "generated",
-      "sourceSet": "recovery-six",
+      "sourceSet": "body-v2-replacement",
       "technicalStatus": "PASS",
       "visualStatus": "PASS",
-      "description": "Kindernase (Gesichtsausschnitt, freundlich) – Bild für das Wort «Nase». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.",
+      "smallSizeStatus": "PASS at70px",
+      "description": "Kindernase (vollständiges rundes freundliches Kindergesicht mit klarer Nase, ohne quadratischen Ausschnitt) – Bild für das Wort «Nase». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.",
       "provider": "openai-codex",
       "requestedApiModel": "gpt-image-2",
-      "serverReportedQuality": "low"
+      "requestedQuality": "high",
+      "serverReportedQuality": "low",
+      "serverReportedSize": "1254x1254",
+      "exactEngineRevision": "unreported",
+      "replacementCreatedAtUtc": "2026-11-02T22:35:28.669809+00:00",
+      "parentVisualEvidence": "body-v2/package3-senses-symbols/qa/parent-visual-approval.json (external work evidence; final hash bound)"
     },
     {
       "filename": "abc_ohr.png",
@@ -507,6 +513,15 @@
       "description": "gelbe Banane – Bild für das Wort «Banane». Einzeln, mittig, füllt ca. 80 %, KEIN Text, keine Buchstaben.",
       "source": "EllieInsel/Images/natur_banane.png",
       "sourceSha256": "97b826e3c6bdf9be8b8b001dc97c0bd32147f08e9aef7bc691dfe513dd5e62a8"
+    }
+  ],
+  "updatedAtUtc": "2026-11-03T07:29:14.335342+00:00",
+  "revisions": [
+    {
+      "filename": "abc_nase.png",
+      "reason": "Complete new rounded child face with recognizable nose; no square crop",
+      "sha256": "3bfd6ab1b179bfbdd3fc7f69208ecc5b25ca79b8e386b5ca6166a75bcf426d1b",
+      "status": "PASS"
     }
   ]
 }
