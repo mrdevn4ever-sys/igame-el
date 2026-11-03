@@ -57,6 +57,8 @@ enum DemoMode {
             ActivityEntry(date: Date().addingTimeInterval(-3600), game: .memory, difficulty: .ueben, text: "Memory mit sechs Paaren (Waldtiere) gelöst.", stats: HelpStats())
         ]
         d.roundsCompleted = [GameID.tracing.rawValue: 3, GameID.memory.rawValue: 2]
+        // Erste Demo-Runde bringt ein Gartengeschenk (sonst erst jede dritte Runde).
+        d.garden.learningRoundsSinceGift = GardenData.roundsPerGift - 1
         if let raw = value("-treasures"), let n = Int(raw) {
             d.atelierTreasures = Array(AtelierTreasures.all.prefix(max(0, n)).map(\.id))
         }

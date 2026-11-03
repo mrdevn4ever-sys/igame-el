@@ -90,7 +90,15 @@ final class GardenWorldModel {
     @ObservationIgnored private var factIndex: [Resident: Int] = [:]
     @ObservationIgnored private var squirrelTaps = 0
 
-    static var growSeconds: Double { DemoMode.isActive ? 1.5 : 6 }
+    /// Wartezeit im Simulator-Durchlauf.
+    static var growSeconds: Double { DemoMode.isActive ? 1.5 : 3600 }
+
+    /// Nach dem Giessen wächst die Pflanze ein bis zwei Stunden ohne neues Wasser, dann hat sie wieder Durst.
+    /// Die Dauer hängt fest vom Giesszeitpunkt ab, damit sie nach dem Neustart der App gleich bleibt.
+    static func growDuration(since: Date) -> Double {
+        if DemoMode.isActive { return 1.5 }
+        return 3600 + Double(UInt64(max(since.timeIntervalSince1970, 0)) % 3600)
+    }
 
     init(app: AppModel) {
         self.app = app
@@ -219,7 +227,7 @@ final class GardenWorldModel {
                 bed.growingSince = now
                 changed = true
             }
-            if let since = bed.growingSince, now.timeIntervalSince(since) >= Self.growSeconds {
+            if let since = bed.growingSince, now.timeIntervalSince(since) >= Self.growDuration(since: since) {
                 bed.stage += 1
                 bed.growingSince = nil
                 if bed.stage >= 4 {
@@ -296,7 +304,7 @@ final class GardenWorldModel {
         } else if bed.needsWater {
             water(index)
         } else {
-            say("Es wächst gerade. Schau zu!")
+            say("Es wächst gerade. Komm später wieder, dann hat die Pflanze wieder Durst.")
         }
     }
 
@@ -329,7 +337,7 @@ final class GardenWorldModel {
             d.beds[index].growingSince = now
             d.beds[index].wetUntil = now.addingTimeInterval(3)
         }
-        if w.beds[index].stage == 0 { say("Gut gegossen! Schau, gleich wächst etwas.") }
+        if w.beds[index].stage == 0 { say("Gut gegossen! Jetzt braucht die Pflanze Zeit zum Wachsen.") }
     }
 
     func waterAll() {

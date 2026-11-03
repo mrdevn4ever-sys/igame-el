@@ -135,7 +135,7 @@ final class AppModel {
 
     // MARK: - Fortschritt
 
-    func logRound(game: GameID, difficulty: Difficulty?, text: String, stats: HelpStats, roundID: String, practiced: [String]) {
+    func logRound(game: GameID, difficulty: Difficulty?, text: String, stats: HelpStats, roundID: String, practiced: [String], learning: Bool = true) {
         update { d in
             d.activities.insert(ActivityEntry(date: Date(), game: game, difficulty: difficulty, text: text, stats: stats), at: 0)
             if d.activities.count > 400 { d.activities.removeLast(d.activities.count - 400) }
@@ -143,11 +143,17 @@ final class AppModel {
             var items = d.practicedItems[game.rawValue] ?? []
             for p in practiced where !items.contains(p) { items.append(p) }
             d.practicedItems[game.rawValue] = items
-            // Höchstens eine Gartenvergabe pro Runde.
-            if !d.garden.rewardedRounds.contains(roundID),
-               !d.garden.pendingRewards.contains(where: { $0.id == roundID }) {
+            // Gartengeschenk nur nach jeder dritten Lernrunde, höchstens eines pro Runde.
+            guard learning,
+                  !d.garden.rewardedRounds.contains(roundID),
+                  !d.garden.pendingRewards.contains(where: { $0.id == roundID }) else { return }
+            let count = (d.garden.learningRoundsSinceGift ?? 0) + 1
+            if count >= GardenData.roundsPerGift {
+                d.garden.learningRoundsSinceGift = 0
                 let options = WorldReward.options(roundID: roundID, data: d)
                 d.garden.pendingRewards.append(PendingReward(id: roundID, game: game, options: options))
+            } else {
+                d.garden.learningRoundsSinceGift = count
             }
         }
     }

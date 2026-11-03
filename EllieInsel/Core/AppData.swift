@@ -222,6 +222,11 @@ struct GardenData: Codable, Equatable {
     var pendingRewards: [PendingReward] = []
     var rewardedRounds: Set<String> = []
     var undoStack: [GardenUndo] = []
+    /// Lernrunden seit dem letzten Gartengeschenk (optional, damit ältere Spielstände lesbar bleiben).
+    var learningRoundsSinceGift: Int?
+
+    /// Ein Gartengeschenk gibt es nach jeder dritten Lernrunde.
+    static let roundsPerGift = 3
 }
 
 struct PlacedDecoration: Codable, Equatable, Identifiable {

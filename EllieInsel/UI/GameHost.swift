@@ -251,7 +251,8 @@ final class GameHost {
             text: summary.text,
             stats: stats,
             roundID: roundID,
-            practiced: summary.practiced
+            practiced: summary.practiced,
+            learning: summary.learning
         )
         app.clearGame(game)
     }

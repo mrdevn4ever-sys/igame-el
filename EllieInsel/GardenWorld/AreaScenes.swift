@@ -641,7 +641,7 @@ struct BedView: View {
                 Image(systemName: "drop.fill").font(.system(size: size * 0.12)).foregroundStyle(Palette.blue.color)
                     .padding(6).background(Circle().fill(.white.opacity(0.9)))
             } else if let since = bed.growingSince {
-                let f = min(now.timeIntervalSince(since) / GardenWorldModel.growSeconds, 1)
+                let f = min(now.timeIntervalSince(since) / GardenWorldModel.growDuration(since: since), 1)
                 Circle().trim(from: 0, to: f).stroke(Theme.success, style: StrokeStyle(lineWidth: 5, lineCap: .round))
                     .rotationEffect(.degrees(-90))
                     .frame(width: size * 0.12, height: size * 0.12)
