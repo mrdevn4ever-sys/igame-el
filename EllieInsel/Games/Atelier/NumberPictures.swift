@@ -30,7 +30,7 @@ struct NumberPicture: Identifiable {
 }
 
 /// Bausteine in Einheitskoordinaten. Kreise berücksichtigen das Seitenverhältnis, damit sie rund bleiben.
-private enum P {
+private enum NPGeo {
     static let aspect: CGFloat = 4.0 / 3.0
 
     static func rect(_ x: CGFloat, _ y: CGFloat, _ w: CGFloat, _ h: CGFloat) -> Path {
@@ -96,16 +96,16 @@ enum NumberPictures {
         id: "ballon", title: "Ballone",
         colors: [.blue, .red, .green],
         regions: [
-            P.region(0, 0.12, 0.14, P.rect(0, 0, 1, 0.78)),
-            P.region(2, 0.12, 0.89, P.rect(0, 0.78, 1, 0.22)),
-            P.region(1, 0.5, 0.36, P.circle(0.5, 0.36, 0.15)),
-            P.region(1, 0.24, 0.44, P.circle(0.24, 0.44, 0.08)),
-            P.region(1, 0.78, 0.3, P.circle(0.78, 0.3, 0.09))
+            NPGeo.region(0, 0.12, 0.14, NPGeo.rect(0, 0, 1, 0.78)),
+            NPGeo.region(2, 0.12, 0.89, NPGeo.rect(0, 0.78, 1, 0.22)),
+            NPGeo.region(1, 0.5, 0.36, NPGeo.circle(0.5, 0.36, 0.15)),
+            NPGeo.region(1, 0.24, 0.44, NPGeo.circle(0.24, 0.44, 0.08)),
+            NPGeo.region(1, 0.78, 0.3, NPGeo.circle(0.78, 0.3, 0.09))
         ],
         decor: [
-            NumberDecor(path: P.line([(0.5, 0.56), (0.48, 0.68), (0.5, 0.82)]), fill: false, width: 3),
-            NumberDecor(path: P.line([(0.24, 0.547), (0.26, 0.66), (0.25, 0.8)]), fill: false, width: 3),
-            NumberDecor(path: P.line([(0.78, 0.42), (0.76, 0.6), (0.77, 0.8)]), fill: false, width: 3)
+            NumberDecor(path: NPGeo.line([(0.5, 0.56), (0.48, 0.68), (0.5, 0.82)]), fill: false, width: 3),
+            NumberDecor(path: NPGeo.line([(0.24, 0.547), (0.26, 0.66), (0.25, 0.8)]), fill: false, width: 3),
+            NumberDecor(path: NPGeo.line([(0.78, 0.42), (0.76, 0.6), (0.77, 0.8)]), fill: false, width: 3)
         ]
     )
 
@@ -113,11 +113,11 @@ enum NumberPictures {
         id: "pilz", title: "Pilze",
         colors: [.green, .red, .yellow],
         regions: [
-            P.region(0, 0.1, 0.13, P.rect(0, 0, 1, 1)),
-            P.region(2, 0.5, 0.72, P.rect(0.41, 0.5, 0.18, 0.36)),
-            P.region(1, 0.5, 0.36, P.dome(0.5, 0.52, 0.28, 0.32)),
-            P.region(2, 0.8, 0.79, P.rect(0.76, 0.67, 0.08, 0.2)),
-            P.region(1, 0.8, 0.6, P.dome(0.8, 0.68, 0.12, 0.15))
+            NPGeo.region(0, 0.1, 0.13, NPGeo.rect(0, 0, 1, 1)),
+            NPGeo.region(2, 0.5, 0.72, NPGeo.rect(0.41, 0.5, 0.18, 0.36)),
+            NPGeo.region(1, 0.5, 0.36, NPGeo.dome(0.5, 0.52, 0.28, 0.32)),
+            NPGeo.region(2, 0.8, 0.79, NPGeo.rect(0.76, 0.67, 0.08, 0.2)),
+            NPGeo.region(1, 0.8, 0.6, NPGeo.dome(0.8, 0.68, 0.12, 0.15))
         ]
     )
 
@@ -125,25 +125,25 @@ enum NumberPictures {
         id: "apfel", title: "Apfel",
         colors: [.yellow, .red, .green],
         regions: [
-            P.region(0, 0.1, 0.13, P.rect(0, 0, 1, 1)),
-            P.region(1, 0.5, 0.58, P.circle(0.5, 0.58, 0.24)),
-            P.region(2, 0.63, 0.2, P.ellipse(0.63, 0.2, 0.1, 0.065)),
-            P.region(1, 0.84, 0.8, P.circle(0.84, 0.8, 0.08))
+            NPGeo.region(0, 0.1, 0.13, NPGeo.rect(0, 0, 1, 1)),
+            NPGeo.region(1, 0.5, 0.58, NPGeo.circle(0.5, 0.58, 0.24)),
+            NPGeo.region(2, 0.63, 0.2, NPGeo.ellipse(0.63, 0.2, 0.1, 0.065)),
+            NPGeo.region(1, 0.84, 0.8, NPGeo.circle(0.84, 0.8, 0.08))
         ],
-        decor: [NumberDecor(path: P.line([(0.5, 0.27), (0.51, 0.16)]), fill: false, width: 7)]
+        decor: [NumberDecor(path: NPGeo.line([(0.5, 0.27), (0.51, 0.16)]), fill: false, width: 7)]
     )
 
     static let haus = NumberPicture(
         id: "haus", title: "Haus",
         colors: [.blue, .green, .yellow, .red, .brown],
         regions: [
-            P.region(0, 0.1, 0.12, P.rect(0, 0, 1, 0.76)),
-            P.region(1, 0.1, 0.88, P.rect(0, 0.76, 1, 0.24)),
-            P.region(2, 0.85, 0.17, P.circle(0.85, 0.17, 0.07)),
-            P.region(2, 0.37, 0.52, P.rect(0.3, 0.42, 0.4, 0.37)),
-            P.region(3, 0.5, 0.34, P.poly([(0.25, 0.43), (0.5, 0.17), (0.75, 0.43)])),
-            P.region(4, 0.51, 0.69, P.rect(0.45, 0.58, 0.12, 0.21)),
-            P.region(0, 0.64, 0.555, P.rect(0.6, 0.5, 0.08, 0.11))
+            NPGeo.region(0, 0.1, 0.12, NPGeo.rect(0, 0, 1, 0.76)),
+            NPGeo.region(1, 0.1, 0.88, NPGeo.rect(0, 0.76, 1, 0.24)),
+            NPGeo.region(2, 0.85, 0.17, NPGeo.circle(0.85, 0.17, 0.07)),
+            NPGeo.region(2, 0.37, 0.52, NPGeo.rect(0.3, 0.42, 0.4, 0.37)),
+            NPGeo.region(3, 0.5, 0.34, NPGeo.poly([(0.25, 0.43), (0.5, 0.17), (0.75, 0.43)])),
+            NPGeo.region(4, 0.51, 0.69, NPGeo.rect(0.45, 0.58, 0.12, 0.21)),
+            NPGeo.region(0, 0.64, 0.555, NPGeo.rect(0.6, 0.5, 0.08, 0.11))
         ]
     )
 
@@ -151,18 +151,18 @@ enum NumberPictures {
         id: "fisch", title: "Fisch",
         colors: [.blue, .orange, .yellow, .green],
         regions: [
-            P.region(0, 0.1, 0.12, P.rect(0, 0, 1, 0.8)),
-            P.region(2, 0.5, 0.9, P.rect(0, 0.8, 1, 0.2)),
-            P.region(3, 0.135, 0.72, P.poly([(0.09, 0.82), (0.07, 0.52), (0.17, 0.6), (0.19, 0.82)])),
-            P.region(3, 0.87, 0.71, P.poly([(0.82, 0.82), (0.85, 0.48), (0.93, 0.58), (0.92, 0.82)])),
-            P.region(1, 0.47, 0.26, P.poly([(0.36, 0.33), (0.48, 0.2), (0.56, 0.33)])),
-            P.region(1, 0.73, 0.45, P.poly([(0.6, 0.45), (0.79, 0.29), (0.79, 0.61)])),
-            P.region(1, 0.45, 0.47, P.ellipse(0.44, 0.45, 0.2, 0.17))
+            NPGeo.region(0, 0.1, 0.12, NPGeo.rect(0, 0, 1, 0.8)),
+            NPGeo.region(2, 0.5, 0.9, NPGeo.rect(0, 0.8, 1, 0.2)),
+            NPGeo.region(3, 0.135, 0.72, NPGeo.poly([(0.09, 0.82), (0.07, 0.52), (0.17, 0.6), (0.19, 0.82)])),
+            NPGeo.region(3, 0.87, 0.71, NPGeo.poly([(0.82, 0.82), (0.85, 0.48), (0.93, 0.58), (0.92, 0.82)])),
+            NPGeo.region(1, 0.47, 0.26, NPGeo.poly([(0.36, 0.33), (0.48, 0.2), (0.56, 0.33)])),
+            NPGeo.region(1, 0.73, 0.45, NPGeo.poly([(0.6, 0.45), (0.79, 0.29), (0.79, 0.61)])),
+            NPGeo.region(1, 0.45, 0.47, NPGeo.ellipse(0.44, 0.45, 0.2, 0.17))
         ],
         decor: [
-            NumberDecor(path: P.circle(0.32, 0.42, 0.018), fill: true, width: 0),
-            NumberDecor(path: P.circle(0.2, 0.3, 0.02), fill: false, width: 3),
-            NumberDecor(path: P.circle(0.17, 0.18, 0.014), fill: false, width: 3)
+            NumberDecor(path: NPGeo.circle(0.32, 0.42, 0.018), fill: true, width: 0),
+            NumberDecor(path: NPGeo.circle(0.2, 0.3, 0.02), fill: false, width: 3),
+            NumberDecor(path: NPGeo.circle(0.17, 0.18, 0.014), fill: false, width: 3)
         ]
     )
 
@@ -170,33 +170,33 @@ enum NumberPictures {
         id: "blume", title: "Blume",
         colors: [.blue, .pink, .yellow, .green, .brown],
         regions: [
-            P.region(0, 0.1, 0.12, P.rect(0, 0, 1, 0.82)),
-            P.region(4, 0.1, 0.91, P.rect(0, 0.82, 1, 0.18)),
-            P.region(3, 0.39, 0.66, P.ellipse(0.39, 0.66, 0.09, 0.05)),
-            P.region(3, 0.61, 0.6, P.ellipse(0.61, 0.6, 0.09, 0.05))
+            NPGeo.region(0, 0.1, 0.12, NPGeo.rect(0, 0, 1, 0.82)),
+            NPGeo.region(4, 0.1, 0.91, NPGeo.rect(0, 0.82, 1, 0.18)),
+            NPGeo.region(3, 0.39, 0.66, NPGeo.ellipse(0.39, 0.66, 0.09, 0.05)),
+            NPGeo.region(3, 0.61, 0.6, NPGeo.ellipse(0.61, 0.6, 0.09, 0.05))
         ] + (0..<6).map { i -> NumberRegion in
             let a = -CGFloat.pi / 2 + CGFloat(i) * CGFloat.pi / 3
-            let cx = 0.5 + 0.115 * cos(a), cy = 0.33 + 0.115 * sin(a) * P.aspect
-            return P.region(1, 0.5 + 0.13 * cos(a), 0.33 + 0.13 * sin(a) * P.aspect, P.circle(cx, cy, 0.075))
+            let cx = 0.5 + 0.115 * cos(a), cy = 0.33 + 0.115 * sin(a) * NPGeo.aspect
+            return NPGeo.region(1, 0.5 + 0.13 * cos(a), 0.33 + 0.13 * sin(a) * NPGeo.aspect, NPGeo.circle(cx, cy, 0.075))
         } + [
-            P.region(2, 0.5, 0.33, P.circle(0.5, 0.33, 0.065))
+            NPGeo.region(2, 0.5, 0.33, NPGeo.circle(0.5, 0.33, 0.065))
         ],
-        decor: [NumberDecor(path: P.line([(0.5, 0.59), (0.5, 0.83)]), fill: false, width: 9)]
+        decor: [NumberDecor(path: NPGeo.line([(0.5, 0.59), (0.5, 0.83)]), fill: false, width: 9)]
     )
 
     static let rakete = NumberPicture(
         id: "rakete", title: "Rakete",
         colors: [.purple, .red, .blue, .orange, .yellow],
         regions: [
-            P.region(0, 0.1, 0.12, P.rect(0, 0, 1, 1)),
-            P.region(4, 0.2, 0.32, P.star(0.2, 0.32, 0.07)),
-            P.region(4, 0.82, 0.2, P.star(0.82, 0.2, 0.06)),
-            P.region(4, 0.78, 0.7, P.star(0.78, 0.7, 0.07)),
-            P.region(3, 0.5, 0.84, P.poly([(0.43, 0.78), (0.57, 0.78), (0.5, 0.96)])),
-            P.region(1, 0.385, 0.73, P.poly([(0.42, 0.58), (0.42, 0.78), (0.33, 0.78)])),
-            P.region(1, 0.615, 0.73, P.poly([(0.58, 0.58), (0.58, 0.78), (0.67, 0.78)])),
-            P.region(1, 0.5, 0.65, P.poly([(0.42, 0.78), (0.42, 0.35), (0.5, 0.14), (0.58, 0.35), (0.58, 0.78)])),
-            P.region(2, 0.5, 0.43, P.circle(0.5, 0.43, 0.045))
+            NPGeo.region(0, 0.1, 0.12, NPGeo.rect(0, 0, 1, 1)),
+            NPGeo.region(4, 0.2, 0.32, NPGeo.star(0.2, 0.32, 0.07)),
+            NPGeo.region(4, 0.82, 0.2, NPGeo.star(0.82, 0.2, 0.06)),
+            NPGeo.region(4, 0.78, 0.7, NPGeo.star(0.78, 0.7, 0.07)),
+            NPGeo.region(3, 0.5, 0.84, NPGeo.poly([(0.43, 0.78), (0.57, 0.78), (0.5, 0.96)])),
+            NPGeo.region(1, 0.385, 0.73, NPGeo.poly([(0.42, 0.58), (0.42, 0.78), (0.33, 0.78)])),
+            NPGeo.region(1, 0.615, 0.73, NPGeo.poly([(0.58, 0.58), (0.58, 0.78), (0.67, 0.78)])),
+            NPGeo.region(1, 0.5, 0.65, NPGeo.poly([(0.42, 0.78), (0.42, 0.35), (0.5, 0.14), (0.58, 0.35), (0.58, 0.78)])),
+            NPGeo.region(2, 0.5, 0.43, NPGeo.circle(0.5, 0.43, 0.045))
         ]
     )
 
@@ -204,18 +204,18 @@ enum NumberPictures {
         id: "schmetterling", title: "Schmetterling",
         colors: [.blue, .purple, .brown, .yellow],
         regions: [
-            P.region(0, 0.08, 0.12, P.rect(0, 0, 1, 1)),
-            P.region(1, 0.29, 0.3, P.ellipse(0.35, 0.37, 0.15, 0.18)),
-            P.region(1, 0.71, 0.3, P.ellipse(0.65, 0.37, 0.15, 0.18)),
-            P.region(1, 0.37, 0.69, P.ellipse(0.4, 0.65, 0.1, 0.12)),
-            P.region(1, 0.63, 0.69, P.ellipse(0.6, 0.65, 0.1, 0.12)),
-            P.region(3, 0.37, 0.44, P.circle(0.37, 0.44, 0.042)),
-            P.region(3, 0.63, 0.44, P.circle(0.63, 0.44, 0.042)),
-            P.region(2, 0.5, 0.5, P.ellipse(0.5, 0.5, 0.037, 0.25))
+            NPGeo.region(0, 0.08, 0.12, NPGeo.rect(0, 0, 1, 1)),
+            NPGeo.region(1, 0.29, 0.3, NPGeo.ellipse(0.35, 0.37, 0.15, 0.18)),
+            NPGeo.region(1, 0.71, 0.3, NPGeo.ellipse(0.65, 0.37, 0.15, 0.18)),
+            NPGeo.region(1, 0.37, 0.69, NPGeo.ellipse(0.4, 0.65, 0.1, 0.12)),
+            NPGeo.region(1, 0.63, 0.69, NPGeo.ellipse(0.6, 0.65, 0.1, 0.12)),
+            NPGeo.region(3, 0.37, 0.44, NPGeo.circle(0.37, 0.44, 0.042)),
+            NPGeo.region(3, 0.63, 0.44, NPGeo.circle(0.63, 0.44, 0.042)),
+            NPGeo.region(2, 0.5, 0.5, NPGeo.ellipse(0.5, 0.5, 0.037, 0.25))
         ],
         decor: [
-            NumberDecor(path: P.line([(0.49, 0.27), (0.44, 0.12)]), fill: false, width: 4),
-            NumberDecor(path: P.line([(0.51, 0.27), (0.56, 0.12)]), fill: false, width: 4)
+            NumberDecor(path: NPGeo.line([(0.49, 0.27), (0.44, 0.12)]), fill: false, width: 4),
+            NumberDecor(path: NPGeo.line([(0.51, 0.27), (0.56, 0.12)]), fill: false, width: 4)
         ]
     )
 }
@@ -444,12 +444,6 @@ final class NumberPaintModel {
         selectedGroup = picture.regions[i].group
         fill(i)
     }
-}
-
-/// Zahlwörter für die Ansage (passend zu den vorhandenen Aufnahmen «eins» … «zehn»).
-enum NumberWords {
-    static let words = ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun", "zehn"]
-    static func word(_ n: Int) -> String { words[safe: n] ?? "\(n)" }
 }
 
 // MARK: - Ansicht
