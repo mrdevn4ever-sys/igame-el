@@ -170,9 +170,9 @@ enum BodyPart: String, Codable, CaseIterable, Identifiable {
         switch self {
         case .kopf: return [CGPoint(x: 0.5, y: 0.14)]
         case .bauch: return [CGPoint(x: 0.5, y: 0.47)]
-        case .hand: return [CGPoint(x: 0.18, y: 0.58), CGPoint(x: 0.82, y: 0.58)]
+        case .hand: return [CGPoint(x: 0.28, y: 0.59), CGPoint(x: 0.72, y: 0.59)]
         case .fuss: return [CGPoint(x: 0.42, y: 0.95), CGPoint(x: 0.58, y: 0.95)]
-        case .arm: return [CGPoint(x: 0.25, y: 0.43), CGPoint(x: 0.75, y: 0.43)]
+        case .arm: return [CGPoint(x: 0.313, y: 0.43), CGPoint(x: 0.687, y: 0.43)]
         case .bein: return [CGPoint(x: 0.43, y: 0.8), CGPoint(x: 0.57, y: 0.8)]
         case .knie: return [CGPoint(x: 0.43, y: 0.73), CGPoint(x: 0.57, y: 0.73)]
         case .augen: return [CGPoint(x: 0.45, y: 0.14), CGPoint(x: 0.55, y: 0.14)]
@@ -188,8 +188,8 @@ enum BodyPart: String, Codable, CaseIterable, Identifiable {
         case .rippen: return [CGPoint(x: 0.44, y: 0.38), CGPoint(x: 0.56, y: 0.38)]
         case .wirbelsaeule: return [CGPoint(x: 0.5, y: 0.47), CGPoint(x: 0.5, y: 0.52)]
         case .oberschenkel: return [CGPoint(x: 0.44, y: 0.65), CGPoint(x: 0.56, y: 0.65)]
-        case .adern: return [CGPoint(x: 0.25, y: 0.46), CGPoint(x: 0.75, y: 0.46), CGPoint(x: 0.44, y: 0.8), CGPoint(x: 0.56, y: 0.8)]
-        case .muskeln: return [CGPoint(x: 0.26, y: 0.42), CGPoint(x: 0.74, y: 0.42), CGPoint(x: 0.43, y: 0.66), CGPoint(x: 0.57, y: 0.66)]
+        case .adern: return [CGPoint(x: 0.305, y: 0.46), CGPoint(x: 0.695, y: 0.46), CGPoint(x: 0.44, y: 0.8), CGPoint(x: 0.56, y: 0.8)]
+        case .muskeln: return [CGPoint(x: 0.313, y: 0.42), CGPoint(x: 0.687, y: 0.42), CGPoint(x: 0.43, y: 0.66), CGPoint(x: 0.57, y: 0.66)]
         }
     }
 
