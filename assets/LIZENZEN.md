@@ -100,3 +100,15 @@ Maßgebliche Microsoft-Dokumentation und Vertragsseiten zum Zeitpunkt der Erzeug
 - [Azure AI Speech pricing](https://azure.microsoft.com/pricing/details/speech/)
 
 Diese Dokumentation hält Anbieter, Dienst, Ressourcentarif und synthetische Herkunft fest und ersetzt keine individuelle Rechtsberatung.
+
+## Synthetische Florian-Sprachaufnahmen: vollständige Nachlieferung 2616
+
+- **Umfang:** 2.616 synthetische Sprachdateien aus `assets/Sprachaufnahmen_fehlend.csv` mit insgesamt 68.330 Textzeichen. Dateiname und gesprochener Text wurden unverändert aus der CSV übernommen.
+- **Reihenfolge und Lieferung:** Einführung, Hub/UI, Gartenwelt, ABC lernen, Zählgarten, Apfel-Rechnen und danach die übrigen Bereiche; sieben hashgebundene Git-Tranchen mit 400/400/400/400/400/400/216 Dateien.
+- **Anbieter und Ressource:** Microsoft Azure AI Speech, Ressource `ellie-entdeckerinsel-speech`, Region `switzerlandnorth`, Ressourcentarif **Standard S0**.
+- **Stimme:** `de-DE-FlorianMultilingualNeural`, Sprache `de-DE`, Tempo −8 %, neutrale Tonhöhe; ruhig, freundlich und kindgerecht.
+- **SSML-Aussprache:** „Printatops“ mit IPA `ˈpʁɪntaˌtɔps`; einzelne Buchstaben mit Azure `say-as` als Buchstabennamen; schweizerische Schreibweise blieb im Text erhalten und erhielt nur für die Aussprache passende Hochdeutsch-Aliase.
+- **Ausgabe:** verlustfreies Azure-PCM als lokaler Master; finale AAC-LC/M4A-Dateien mono, 24 kHz, Zielbitrate 48 kbit/s, Lautheitsziel −16 LUFS, Randstille höchstens 0,04 Sekunden vorne und 0,08 Sekunden hinten bei −45 dBFS.
+- **Prüfung:** 2.616/2.616 technische PASS mit Azure-Request-ID, Text-, SSML-, Roh- und Finalhash, Codec-/Lautheits-/True-Peak-/Randstille-Messung. Die Produktions- und Veröffentlichungsanweisung des Eigentümers ist dokumentiert; eine individuelle menschliche Hörkontrolle aller 2.616 Dateien wird nicht behauptet.
+- **Provenienz:** `assets/Azure_Florian_2616_Provenienz.json` sowie sieben `assets/Azure_Florian_2616_Batch_XX_Provenienz.json`.
+- **Geheimnisse:** Azure-Schlüssel und OAuth-Tokens wurden ausschließlich lokal über Windows-DPAPI verarbeitet und sind nicht Bestandteil des Repositories.
