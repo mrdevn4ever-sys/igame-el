@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 import CryptoKit
 import CoreGraphics
 
@@ -130,5 +131,14 @@ extension Collection where Element: Equatable {
             seen.append(e)
         }
         return true
+    }
+}
+
+
+extension UIImage {
+    /// Bild aus EllieInsel/Images: PNG (mit Transparenz) oder JPG (deckende Szenen und Puzzles, viel kleiner).
+    static func app(_ name: String) -> UIImage? {
+        guard !name.isEmpty else { return nil }
+        return UIImage(named: name) ?? UIImage(named: name + ".jpg")
     }
 }

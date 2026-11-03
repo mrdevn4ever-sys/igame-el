@@ -192,7 +192,7 @@ private struct GameTile: View {
         } label: {
             VStack(spacing: 8) {
                 Spacer(minLength: 0)
-                if let image = UIImage(named: "spiel_\(game.rawValue)") {
+                if let image = UIImage.app("spiel_\(game.rawValue)") {
                     // Illustration füllt die Kachel; das Zusatzzeichen entfällt.
                     Image(uiImage: image)
                         .resizable()

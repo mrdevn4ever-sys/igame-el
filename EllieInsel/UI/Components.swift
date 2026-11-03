@@ -235,7 +235,7 @@ struct Pic: View {
     }
 
     var body: some View {
-        if !asset.isEmpty, let image = UIImage(named: asset) {
+        if !asset.isEmpty, let image = UIImage.app(asset) {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFit()

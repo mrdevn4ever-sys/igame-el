@@ -296,7 +296,7 @@ struct StickerView: View {
 
     var body: some View {
         Group {
-            if let image = UIImage(named: sticker) {
+            if let image = UIImage.app(sticker) {
                 Image(uiImage: image).resizable().scaledToFit()
             } else {
                 Text(sticker).font(.system(size: size * 0.78)).fixedSize()

@@ -471,7 +471,7 @@ struct BodyFigureView: View {
     @ViewBuilder
     private func layerImage(_ layer: BodyLayer, _ rect: CGRect) -> some View {
         Group {
-            if let img = UIImage(named: layer.asset) {
+            if let img = UIImage.app(layer.asset) {
                 Image(uiImage: img).resizable().scaledToFit()
             } else {
                 // Ersatz nur für Tests ohne Bilder
@@ -553,7 +553,7 @@ struct BodyPuzzleView: View {
                 PlayfieldBackground(color: Theme.sky)
                     .frame(width: figW, height: geo.size.height)
                 Group {
-                    if let img = UIImage(named: "koerper_umriss") {
+                    if let img = UIImage.app("koerper_umriss") {
                         Image(uiImage: img).resizable().scaledToFit()
                     } else {
                         RoundedRectangle(cornerRadius: 40).fill(Theme.apricot.opacity(0.5))

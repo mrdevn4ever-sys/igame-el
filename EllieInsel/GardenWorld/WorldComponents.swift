@@ -9,7 +9,7 @@ enum ImageCache {
     static func image(_ name: String) -> UIImage? {
         if let i = cache[name] { return i }
         if missing.contains(name) || name.isEmpty { return nil }
-        if let i = UIImage(named: name) {
+        if let i = UIImage.app(name) {
             cache[name] = i
             return i
         }

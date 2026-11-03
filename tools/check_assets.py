@@ -66,8 +66,19 @@ except ImportError:
     warnings.append("Pillow fehlt – Bildgrössen/Transparenz nicht geprüft")
 for r in image_rows:
     f = r["Datei"]
+    if f not in present_img and f.endswith(".png") and f[:-4] + ".jpg" in present_img:
+        f = f[:-4] + ".jpg"   # deckende Bilder dürfen als JPG vorliegen
     if f not in present_img:
         errors.append(f"Bild fehlt: {f}")
+        continue
+    if f.endswith(".jpg"):
+        if Image is not None:
+            try:
+                im = Image.open(os.path.join(IMAGES, f))
+                if im.format != "JPEG":
+                    errors.append(f"{f}: kein JPEG ({im.format})")
+            except Exception as e:
+                errors.append(f"{f}: nicht lesbar ({e})")
         continue
     if Image is None:
         continue
@@ -95,7 +106,8 @@ for r in image_rows:
                     errors.append(f"{f}: Ecken nicht transparent – Hintergrund entfernen")
     except Exception as e:
         errors.append(f"{f}: nicht lesbar ({e})")
-extra_img = sorted(f for f in present_img - {r["Datei"] for r in image_rows} if not f.startswith("."))
+listed = {r["Datei"] for r in image_rows} | {r["Datei"][:-4] + ".jpg" for r in image_rows}
+extra_img = sorted(f for f in present_img - listed if not f.startswith("."))
 if extra_img and not ONLY_AUDIO:
     warnings.append(f"{len(extra_img)} unbekannte Dateien in EllieInsel/Images: {extra_img[:5]}")
 
