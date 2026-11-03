@@ -57,6 +57,12 @@ enum DemoMode {
             ActivityEntry(date: Date().addingTimeInterval(-3600), game: .memory, difficulty: .ueben, text: "Memory mit sechs Paaren (Waldtiere) gelöst.", stats: HelpStats())
         ]
         d.roundsCompleted = [GameID.tracing.rawValue: 3, GameID.memory.rawValue: 2]
+        if let raw = value("-treasures"), let n = Int(raw) {
+            d.atelierTreasures = Array(AtelierTreasures.all.prefix(max(0, n)).map(\.id))
+        }
+        if let raw = value("-zaehlniveau"), let l = Int(raw) {
+            d.skills[GameID.counting.rawValue] = SkillState(level: l)
+        }
         d.practicedItems = [GameID.tracing.rawValue: ["Ziffer 1", "Ziffer 2", "Ziffer 3"]]
         return d
     }

@@ -237,6 +237,7 @@ private struct GamesSection: View {
             SetToggle(title: "Pflanzenteile", key: "plantPart", keyPath: \.options.natureRelations)
         case .atelier:
             SetToggle(title: "Wege nachfahren", key: "paths", keyPath: \.options.atelierModes)
+            SetToggle(title: "Malen nach Zahlen", key: "zahlen", keyPath: \.options.atelierModes)
             SetToggle(title: "Freies Malen", key: "free", keyPath: \.options.atelierModes)
         case .animalSounds:
             Toggle("Bildermodus ohne Ton anbieten", isOn: app.binding(\.options.animalPictureModeAllowed))

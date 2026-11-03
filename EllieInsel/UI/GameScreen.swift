@@ -232,6 +232,23 @@ struct RoundCompleteView: View {
                 .foregroundStyle(Theme.darkGreen)
                 .multilineTextAlignment(.center)
 
+            if let treasure = host.newTreasure {
+                // Kleiner Hinweis: Nach jeder Lernrunde kommt im Atelier etwas dazu.
+                HStack(spacing: 10) {
+                    Text(treasure.icon).font(.system(size: 34))
+                    Text("Neu im Atelier: \(treasure.title)")
+                        .font(Theme.rounded(20, .bold))
+                        .foregroundStyle(Theme.darkGreen)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                    Text("🎨").font(.system(size: 26))
+                }
+                .padding(.horizontal, 18)
+                .padding(.vertical, 6)
+                .background(Capsule().fill(Theme.lightYellow))
+                .accessibilityElement(children: .combine)
+            }
+
             if let reward = host.pendingReward {
                 VStack(spacing: 12) {
                     Text("Such dir ein Geschenk für deinen Garten aus:")

@@ -165,6 +165,17 @@ final class AppModel {
         }
     }
 
+    // MARK: - Atelier-Schätze
+
+    /// Nach einer Lernrunde: den nächsten Atelier-Schatz entdecken (höchstens einer pro Runde).
+    func unlockAtelierTreasure() -> AtelierTreasure? {
+        guard let t = AtelierTreasures.next(after: data.atelierTreasures) else { return nil }
+        update { d in
+            if !d.atelierTreasures.contains(t.id) { d.atelierTreasures.append(t.id) }
+        }
+        return t
+    }
+
     // MARK: - Niveau
 
     struct LevelOutcome: Equatable {

@@ -59,6 +59,22 @@ done
 run 22_atelier_frei 20 8 -screen game -game atelier -atelier free -autoplay
 run 22b_atelier_glitzer 12 0 -screen game -game atelier -atelier free -autoplay -steps 2
 run 22c_atelier_live 12 0 -screen game -game atelier -atelier free -autoplay -steps 2 -livestroke
+# Atelier-Auswahl mit Schätzen, Malen nach Zahlen (alle Stufen), Schatz-Sticker und -Hintergrund
+run 23_atelier_wahl 6 0 -screen game -game atelier -treasures 4
+run 23b_atelier_wahl_hoch 6 0 -screen game -game atelier -treasures 4 -portrait
+run 24_zahlen_punkte 12 0 -screen game -game atelier -atelier zahlen -autoplay -steps 3 -zaehlniveau 1
+run 24b_zahlen_ziffern 12 0 -screen game -game atelier -atelier zahlen -autoplay -steps 4 -zaehlniveau 2
+run 24c_zahlen_gross 12 0 -screen game -game atelier -atelier zahlen -autoplay -steps 2 -zaehlniveau 4
+run 24d_zahlen_rechnen 12 0 -screen game -game atelier -atelier zahlen -autoplay -steps 2 -zaehlniveau 6
+run 24e_zahlen_hoch 12 0 -screen game -game atelier -atelier zahlen -autoplay -steps 3 -zaehlniveau 2 -portrait
+run 24f_zahlen_hilfe 14 0 -screen game -game atelier -atelier zahlen -autoplay -steps 2 -helpfirst -zaehlniveau 2
+run 25_zahlen_runde 80 20 -screen game -game atelier -atelier zahlen -autoplay -zaehlniveau 3
+run 26_schatz_sticker 10 0 -screen game -game atelier -atelier free -autoplay -steps 2 -treasures 12 -stickerpanel
+run 26b_schatz_nacht 10 0 -screen game -game atelier -atelier free -autoplay -steps 2 -treasures 12 -hintergrund nacht
+run 26c_schatz_regenbogen 10 0 -screen game -game atelier -atelier free -autoplay -steps 2 -treasures 12 -hintergrund regenbogen
+run 26d_schatz_schnee 10 0 -screen game -game atelier -atelier free -autoplay -steps 2 -treasures 12 -hintergrund schnee
+run 27_schatz_runde 45 0 -screen game -game counting -autoplay -treasures 2
+run 27b_alle_schaetze 45 0 -screen game -game shapes -autoplay -treasures 12
 # Schwierigste Stufe: Startbild jedes Spiels
 i=30
 for g in tracing appleMath memory snake counting shapes puzzle pattern animalSounds naturePairs sorting atelier; do

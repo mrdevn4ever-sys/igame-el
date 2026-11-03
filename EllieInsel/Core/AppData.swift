@@ -36,6 +36,9 @@ struct AppData: Codable {
     /// ABC: Buchstaben, die mindestens einmal ganz nachgezeichnet wurden.
     var lettersDone: Set<String> = []
 
+    /// Atelier-Schätze, die nach Lernrunden entdeckt wurden (Reihenfolge wie entdeckt).
+    var atelierTreasures: [String] = []
+
     // Automatische Anpassung
     var skills: [String: SkillState] = [:]
     var adaptiveOff: Set<String> = []
@@ -87,6 +90,7 @@ struct AppData: Codable {
         world = (try? c.decode(WorldData.self, forKey: .world)) ?? d.world
         letters = (try? c.decode([String: Int].self, forKey: .letters)) ?? d.letters
         lettersDone = (try? c.decode(Set<String>.self, forKey: .lettersDone)) ?? d.lettersDone
+        atelierTreasures = (try? c.decode([String].self, forKey: .atelierTreasures)) ?? d.atelierTreasures
         skills = (try? c.decode([String: SkillState].self, forKey: .skills)) ?? d.skills
         adaptiveOff = (try? c.decode(Set<String>.self, forKey: .adaptiveOff)) ?? d.adaptiveOff
     }
@@ -152,11 +156,13 @@ struct GameOptions: Codable, Equatable {
     var countingModes: Set<String> = ["howMany", "giveMe"]
     var sortingFeatures: Set<String> = ["color", "shape", "size"]
     var natureRelations: Set<String> = ["food", "habitat", "plantPart"]
-    var atelierModes: Set<String> = ["paths", "free"]
+    var atelierModes: Set<String> = ["paths", "free", "zahlen"]
     var mathOperations: Set<String> = ["plus", "minus"]
     var calmMemory: Bool = false
     var snakeSwipe: Bool = true
     var animalPictureModeAllowed: Bool = true
+    /// Stand der Atelier-Modi: Ab 2 gibt es «Malen nach Zahlen». Ältere Einstellungen bekommen es einmalig dazu.
+    var atelierModesVersion: Int = 2
 
     init() {}
 
@@ -171,6 +177,11 @@ struct GameOptions: Codable, Equatable {
         calmMemory = (try? c.decode(Bool.self, forKey: .calmMemory)) ?? d.calmMemory
         snakeSwipe = (try? c.decode(Bool.self, forKey: .snakeSwipe)) ?? d.snakeSwipe
         animalPictureModeAllowed = (try? c.decode(Bool.self, forKey: .animalPictureModeAllowed)) ?? d.animalPictureModeAllowed
+        atelierModesVersion = (try? c.decode(Int.self, forKey: .atelierModesVersion)) ?? 1
+        if atelierModesVersion < 2 {
+            atelierModes.insert("zahlen")
+            atelierModesVersion = 2
+        }
     }
 }
 

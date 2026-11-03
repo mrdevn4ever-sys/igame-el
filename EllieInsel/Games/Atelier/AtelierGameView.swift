@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AtelierState: Codable {
-    enum Mode: String, Codable { case paths, free }
+    enum Mode: String, Codable { case paths, free, zahlen }
     var mode: Mode?
     // Wege
     var pathIDs: [Int] = []
@@ -13,6 +13,8 @@ struct AtelierState: Codable {
     var background: CanvasBackground = .leer
     var canvasWidth: Double?
     var stickers: [PlacedSticker]?
+    // Malen nach Zahlen
+    var zahlen: NumberPaintState?
 }
 
 /// Spiel 12: Spurenatelier und freies Malen.
@@ -32,6 +34,8 @@ struct AtelierGameView: View {
             case .none: chooser
             case .paths: pathsView
             case .free: FreeDrawingView(model: model)
+            case .zahlen:
+                if let numbers = model.numbers { NumberPaintView(model: numbers) }
             }
         }
         .onAppear { model.start() }
@@ -39,27 +43,54 @@ struct AtelierGameView: View {
     }
 
     private var chooser: some View {
-        HStack(spacing: 40) {
-            if host.options.atelierModes.contains("paths") {
-                modeButton(emoji: "🐝 ➰ 🌼", title: "Wege nachfahren") { model.choose(.paths) }
+        // Querformat: alles nebeneinander; Hochformat: Modi oben, Galerie darunter.
+        ViewThatFits(in: .horizontal) {
+            HStack(spacing: 32) {
+                modeButtons
+                galleryColumn
             }
-            if host.options.atelierModes.contains("free") {
-                modeButton(emoji: "🖍️", title: "Frei malen") { model.choose(.free) }
-                VStack(spacing: 20) {
-                    Button {
-                        app.audio.effect(.tap)
-                        app.screen = .gallery
-                    } label: {
-                        Label("Meine Bilder", systemImage: "photo.on.rectangle.angled")
-                    }
-                    .buttonStyle(BigButtonStyle(color: Theme.lightYellow, foreground: Theme.darkGreen))
-                    Text(app.gallery.count == 1 ? "1 Bild" : "\(app.gallery.count) Bilder")
-                        .font(Theme.rounded(18, .medium))
-                        .foregroundStyle(Theme.darkGreen.opacity(0.7))
-                }
+            VStack(spacing: 28) {
+                HStack(spacing: 24) { modeButtons }
+                galleryColumn
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+
+    @ViewBuilder
+    private var modeButtons: some View {
+        if host.options.atelierModes.contains("paths") {
+            modeButton(emoji: "🐝 ➰ 🌼", title: "Wege nachfahren") { model.choose(.paths) }
+        }
+        if host.options.atelierModes.contains("zahlen") {
+            modeButton(emoji: "🎨 1 2 3", title: "Malen nach Zahlen") { model.choose(.zahlen) }
+        }
+        if host.options.atelierModes.contains("free") {
+            modeButton(emoji: "🖍️", title: "Frei malen") { model.choose(.free) }
+        }
+    }
+
+    @ViewBuilder
+    private var galleryColumn: some View {
+        VStack(spacing: 18) {
+            if host.options.atelierModes.contains("free") {
+                Button {
+                    app.audio.effect(.tap)
+                    app.screen = .gallery
+                } label: {
+                    Label("Meine Bilder", systemImage: "photo.on.rectangle.angled")
+                }
+                .buttonStyle(BigButtonStyle(color: Theme.lightYellow, foreground: Theme.darkGreen))
+                Text(app.gallery.count == 1 ? "1 Bild" : "\(app.gallery.count) Bilder")
+                    .font(Theme.rounded(18, .medium))
+                    .foregroundStyle(Theme.darkGreen.opacity(0.7))
+            }
+            TreasureBadge(found: app.data.atelierTreasures.count, total: AtelierTreasures.all.count) {
+                host.showBunny(app.data.atelierTreasures.count >= AtelierTreasures.all.count
+                    ? "Du hast alle Atelier-Schätze gefunden!"
+                    : "Nach jedem Lernspiel kommt im Atelier etwas Neues dazu.")
+            }
+        }
     }
 
     private func modeButton(emoji: String, title: String, action: @escaping () -> Void) -> some View {
@@ -67,11 +98,17 @@ struct AtelierGameView: View {
             app.audio.effect(.tap)
             action()
         } label: {
-            VStack(spacing: 16) {
-                Text(emoji).font(.system(size: 80))
-                Text(title).font(Theme.rounded(28, .bold)).foregroundStyle(Theme.darkGreen)
+            VStack(spacing: 14) {
+                Text(emoji).font(.system(size: 64)).lineLimit(1).minimumScaleFactor(0.6)
+                Text(title)
+                    .font(Theme.rounded(26, .bold))
+                    .foregroundStyle(Theme.darkGreen)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.8)
             }
-            .frame(width: 300, height: 300)
+            .padding(12)
+            .frame(width: 230, height: 250)
             .background(RoundedRectangle(cornerRadius: 40).fill(Theme.lightYellow).shadow(color: .black.opacity(0.12), radius: 8, y: 4))
         }
         .buttonStyle(PressableStyle())
@@ -231,7 +268,7 @@ private struct FreeDrawingView: View {
                 }
             }
             LazyVGrid(columns: grid, spacing: 6) {
-                ForEach(StickerCatalog.all, id: \.self) { s in
+                ForEach(model.availableStickers, id: \.self) { s in
                     Button { model.selectSticker(s) } label: {
                         StickerView(sticker: s, size: 44)
                             .frame(width: 56, height: 56)
@@ -266,7 +303,7 @@ private struct FreeDrawingView: View {
             }
             .opacity(model.canUndo ? 1 : 0.4)
             Menu {
-                ForEach(CanvasBackground.allCases, id: \.self) { bg in
+                ForEach(model.availableBackgrounds, id: \.self) { bg in
                     Button("\(bg.icon) \(bg.title)") { model.setBackground(bg) }
                 }
             } label: {
@@ -337,7 +374,22 @@ final class AtelierModel {
 
     @ObservationIgnored private var started = false
 
+    // Malen nach Zahlen
+    var numbers: NumberPaintModel?
+
     init(host: GameHost) { self.host = host }
+
+    /// Sticker inklusive der entdeckten Atelier-Schätze.
+    var availableStickers: [String] {
+        StickerCatalog.all + AtelierTreasures.stickers(unlocked: host.app.data.atelierTreasures)
+    }
+
+    var availableBackgrounds: [CanvasBackground] {
+        var list = AtelierTreasures.backgrounds(unlocked: host.app.data.atelierTreasures)
+        // Ein gespeichertes Bild behält seinen Hintergrund.
+        if !list.contains(background) { list.append(background) }
+        return list
+    }
 
     var currentPath: AtelierPath? {
         guard let id = pathIDs[safe: pathIndex] else { return nil }
@@ -361,11 +413,18 @@ final class AtelierModel {
         started = true
         host.debugSolveHandler = { [weak self] in self?.debugSolve() }
         host.helpHandler = { [weak self] l in self?.help(l) }
-        host.nextTaskHandler = { [weak self] in self?.nextPath() }
+        host.nextTaskHandler = { [weak self] in
+            guard let self else { return }
+            if self.mode == .zahlen { self.numbers?.nextPicture() } else { self.nextPath() }
+        }
         host.summaryProvider = { [weak self] in
             guard let self else { return RoundSummary(text: "Im Atelier gespielt.") }
             if self.mode == .free {
-                return RoundSummary(text: "Ein Bild frei gemalt.", practiced: ["frei"])
+                return RoundSummary(text: "Ein Bild frei gemalt.", practiced: ["frei"], adaptsLevel: false, learning: false)
+            }
+            if self.mode == .zahlen, let n = self.numbers {
+                let what = n.tier == .rechnen ? "mit Plusaufgaben" : n.tier == .punkte ? "mit Punkten bis 3" : "mit Zahlen bis \(n.tier.maxNumber)"
+                return RoundSummary(text: "Drei Zahlenbilder \(what) ausgemalt.", practiced: ["Zahlenbild \(n.tier.rawValue)"], adaptsLevel: false)
             }
             return RoundSummary(text: "Drei Wege nachgefahren (Niveau \(self.host.level)).", practiced: ["Wege Niveau \(self.host.level)"])
         }
@@ -387,6 +446,11 @@ final class AtelierModel {
                 if host.tasksDone >= host.tasksPerRound { host.resumeIfNeeded(); return }
                 if host.awaitingNext { host.next(); return }
                 if progress.isComplete { completePath(); return }
+            case .zahlen:
+                startNumbers(restored: saved.zahlen)
+                if host.tasksDone >= host.tasksPerRound { host.resumeIfNeeded(); return }
+                if host.awaitingNext { host.next(); return }
+                numbers?.resumeCompleted()
             case .free:
                 artworkID = saved.artworkID
                 background = saved.background
@@ -419,6 +483,8 @@ final class AtelierModel {
             pathIDs = AtelierPaths.paths(for: spec.pathLevel).shuffled().prefix(host.tasksPerRound).map(\.id)
             pathIndex = 0
             loadPath(keeping: nil)
+        case .zahlen:
+            startNumbers(restored: nil)
         case .free:
             doc = PaintDoc(width: canvasWidth > 0 ? canvasWidth : 800)
             layer = nil
@@ -427,9 +493,19 @@ final class AtelierModel {
             artworkID = nil
             undoStack = []
             canUndo = false
+            if DemoMode.flag("-stickerpanel") { tool = .sticker }
+            if let bg = DemoMode.value("-hintergrund").flatMap(CanvasBackground.init(rawValue:)) { background = bg }
             save()
             host.setInstruction("Male, was du möchtest. Tippe auf «Fertig», wenn dein Bild fertig ist.")
         }
+    }
+
+    private func startNumbers(restored: NumberPaintState?) {
+        let n = NumberPaintModel(host: host, restored: restored)
+        n.onChange = { [weak self] in self?.save() }
+        numbers = n
+        save()
+        n.instruction()
     }
 
     func leave() {
@@ -451,6 +527,7 @@ final class AtelierModel {
         state.background = background
         state.canvasWidth = canvasWidth
         state.stickers = mode == .free ? stickers : nil
+        state.zahlen = mode == .zahlen ? numbers?.state : nil
         host.persist(state)
     }
 
@@ -737,7 +814,9 @@ final class AtelierModel {
     func debugSolve() {
         switch mode {
         case .none:
-            choose(DemoMode.value("-atelier") == "free" ? .free : .paths)
+            choose(AtelierState.Mode(rawValue: DemoMode.value("-atelier") ?? "") ?? .paths)
+        case .zahlen:
+            numbers?.debugSolve()
         case .paths:
             guard !progress.isComplete, let pts = samples.first else { return }
             for p in pts { progress.feed(p, samples: samples, tolerance: 0.02, lookahead: 3) }
@@ -785,6 +864,8 @@ final class AtelierModel {
         switch mode {
         case .none:
             host.showBunny("Tippe auf eines der grossen Bilder.")
+        case .zahlen:
+            numbers?.help(level)
         case .free:
             host.showBunny("Wähle eine Farbe und male mit dem Finger. Mit dem Tropfen malst du ganze Flächen aus, mit dem Stern klebst du Sticker. Hier gibt es kein Richtig oder Falsch.")
         case .paths:
@@ -829,5 +910,28 @@ final class AtelierModel {
             try? await Task.sleep(nanoseconds: 400_000_000)
             self?.demoPoint = nil
         }
+    }
+}
+
+/// Kleine Schatztruhe im Atelier: zeigt, wie viele Atelier-Schätze schon entdeckt sind.
+private struct TreasureBadge: View {
+    let found: Int
+    let total: Int
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 8) {
+                Text("🎁").font(.system(size: 28))
+                Text("\(found) von \(total) Schätzen")
+                    .font(Theme.rounded(18, .bold))
+                    .foregroundStyle(Theme.darkGreen)
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 8)
+            .background(Capsule().fill(.white).shadow(color: .black.opacity(0.1), radius: 4, y: 2))
+        }
+        .buttonStyle(PressableStyle())
+        .accessibilityLabel("\(found) von \(total) Atelier-Schätzen entdeckt")
     }
 }

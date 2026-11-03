@@ -4,6 +4,10 @@ import Observation
 struct RoundSummary {
     var text: String
     var practiced: [String] = []
+    /// Passt das Niveau des Spiels an (freies Malen und Malen nach Zahlen nicht).
+    var adaptsLevel = true
+    /// Zählt als Lernrunde und bringt einen Atelier-Schatz (freies Malen nicht).
+    var learning = true
 }
 
 /// Gemeinsamer Rahmen eines Spiels: Anweisungen, Hilfestufen, Rundenfortschritt und Speichern.
@@ -32,6 +36,8 @@ final class GameHost {
     private(set) var tasksPerRound: Int
     /// Ergebnis der Niveau-Bewertung nach der Runde (für den wachsenden Baum).
     private(set) var levelOutcome: AppModel.LevelOutcome?
+    /// In dieser Runde neu entdeckter Atelier-Schatz.
+    private(set) var newTreasure: AtelierTreasure?
 
     var maxLevel: Int { LevelCatalog.maxLevel(game) }
 
@@ -225,17 +231,23 @@ final class GameHost {
         roundComplete = true
         awaitingNext = false
         feedback = nil
-        if !(game == .atelier && summary.practiced.contains("frei")) {
+        if summary.adaptsLevel {
             levelOutcome = app.completeRound(game: game, results: roundResults, tasksPerRound: tasksPerRound)
+        }
+        if summary.learning {
+            newTreasure = app.unlockAtelierTreasure()
         }
         audio.effect(.complete)
         audio.say("Geschafft! Das hast du toll gemacht.")
         if let outcome = levelOutcome, outcome.to > outcome.from {
             audio.enqueue("Dein Apfelbaum ist gewachsen. Jetzt wird es ein bisschen spannender.")
         }
+        if newTreasure != nil {
+            audio.enqueue("Im Atelier wartet etwas Neues auf dich.")
+        }
         app.logRound(
             game: game,
-            difficulty: game == .atelier && summary.practiced.contains("frei") ? nil : difficulty,
+            difficulty: summary.adaptsLevel ? difficulty : nil,
             text: summary.text,
             stats: stats,
             roundID: roundID,
@@ -262,6 +274,7 @@ final class GameHost {
         tasksPerRound = game.tasksPerRound
         roundResults = []
         levelOutcome = nil
+        newTreasure = nil
         startTaskClock()
         roundToken += 1
         app.clearGame(game)
