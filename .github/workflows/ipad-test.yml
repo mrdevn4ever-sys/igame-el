@@ -21,7 +21,9 @@ concurrency:
 jobs:
   simulator:
     runs-on: macos-26
-    timeout-minutes: 60
+    timeout-minutes: 75
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -62,6 +64,38 @@ jobs:
         env:
           ONLY: ${{ github.event.inputs.nur }}
         run: tools/sim_screenshots.sh dd/Build/Products/Debug-iphonesimulator/EllieInsel.app "$UDID" shots
+
+      # Verkleinerte Vorschau auf einem eigenen Branch, damit Prüfer ohne Artefakt-Download sie lesen können.
+      # Nur Screenshots und Bericht, kein Code. Jeder Lauf ersetzt den Inhalt (neuer Commit, kein Force-Push).
+      - name: Vorschau-Screenshots auf Branch ci-screenshots
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          [ -d shots ] || exit 0
+          mkdir -p preview
+          for f in shots/*.png; do
+            [ -f "$f" ] || continue
+            sips -Z 1000 -s format jpeg -s formatOptions 62 "$f" --out "preview/$(basename "${f%.png}").jpg" >/dev/null 2>&1 || true
+          done
+          cp shots/bericht.txt preview/ 2>/dev/null || true
+          [ -d shots/crashes ] && cp -R shots/crashes preview/ 2>/dev/null || true
+          printf 'Commit: %s\nRun: %s\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" > preview/LAUF.txt
+          WS="$GITHUB_WORKSPACE"
+          cd "$RUNNER_TEMP" && rm -rf pv && mkdir pv && cd pv && git init -q
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git fetch -q --depth=1 origin ci-screenshots 2>/dev/null; then
+            git checkout -q -B ci-screenshots FETCH_HEAD
+            git rm -rq --ignore-unmatch . >/dev/null
+          else
+            git checkout -q --orphan ci-screenshots
+          fi
+          cp -R "$WS/preview/." .
+          git add -A
+          git commit -qm "Screenshots ${GITHUB_SHA::7} (Run ${GITHUB_RUN_ID})" || exit 0
+          git push -q origin ci-screenshots || echo "::warning::Vorschau konnte nicht gepusht werden"
 
       - uses: actions/upload-artifact@v4
         if: always()
