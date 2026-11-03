@@ -22,6 +22,12 @@ Alle Figur-Ebenen und alle `koerper_teil_*` und `koerper_funktion_*` neu in gena
 ## 2. Figur
 
 - Arme etwas voller (nicht stockdünn), Hals etwas kürzer.
+- **Hose:** In V2 schaut unter den kurzen Hosen zwischen den Beinen ein Stück Haut hervor. Es sieht aus, als hinge der Bauch unten heraus. Richtig:
+  - eine **längere Hose** bis knapp über die Knie (Bermuda/Caprihose), Bund an der Taille;
+  - im Schritt geschlossen, zwischen den Beinen keine Haut sichtbar;
+  - das T-Shirt reicht über den Hosenbund.
+
+  Die Kniegelenke bleiben sichtbar, damit das Kind auf das Knie tippen kann.
 - Sonst Proportionen wie V2.
 
 ## 3. Knochen-Ebene
