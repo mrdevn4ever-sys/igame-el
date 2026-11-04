@@ -397,5 +397,334 @@
       "technical_status": "PASS",
       "individual_human_listening_observed": false
     }
-  ]
+  ],
+  "part_b_pronunciation_corrections": {
+    "created_at": "2026-11-04T09:37:28.629095+00:00",
+    "status": "OWNER_APPROVED_WITHOUT_LISTENING",
+    "owner_reply_exact": "Passt",
+    "listening_observed": false,
+    "note": "No local playback was started after the owner prohibited unsolicited PC playback. The owner accepted the stated IPA selection and unchanged-additional-file plan without listening; this is not a human aural PASS.",
+    "selection_basis": {
+      "mjam": "IPA /mjam/ candidate; one compact active utterance in local waveform/spectrogram evidence.",
+      "pssst": "IPA /pst/ candidate; local spectrogram shows a short high-frequency unvoiced onset followed by the requested break, unlike the superseded segmented voiced-looking opening.",
+      "limitations": "Waveform and spectrogram evidence do not prove naturalness or replace listening.",
+      "local_acoustic_report_sha256": "1375c2a72a4c35f228e1a9beffc4577da8066c2338f341e1fc96659b6945ac48",
+      "local_spectrogram_sha256": "528edbdeab487cd1569de663dddb1d92d46f0482a36469138d25eabb522cd336"
+    },
+    "corrections": [
+      {
+        "filename": "mjam.m4a",
+        "canonical_csv_text": "Mjam!",
+        "selected_variant": "mjam_ipa",
+        "synthesis_input": "<phoneme alphabet=\"ipa\" ph=\"mjam\">Mjam</phoneme>!",
+        "full_ssml_sha256": "d4bf788cb8be1ee090051a3319fbc655168bd3fadcbb7673824c8fbc3f1a85c4",
+        "voice": "de-DE-FlorianMultilingualNeural",
+        "locale": "de-DE",
+        "rate": "-12%",
+        "pitch": "0%",
+        "azure_result_id": "b3a04c58a3e241c0bf20e04124d01895",
+        "raw_sha256": "d455d643846659105f547f908897f9ae785feb2379bb7fb01b2f0be5dacab9dc",
+        "superseded_final_sha256": "8fa7e2ae4f01daa00142264e7ba2fee2ed8d275f2eed3cd351b12a8a670f8500",
+        "final_sha256": "56b3ae6bd4847e0666c9f82bbbe1365460fadd96c04963bc7f0824e6452d2742",
+        "duration_seconds": 0.522875,
+        "stream_bit_rate": 52339,
+        "integrated_lufs": -16.03,
+        "true_peak_dbtp": -3.05,
+        "leading_silence_seconds": 0.003875,
+        "trailing_silence_seconds": 0.03745833333333334,
+        "technical_status": "PASS",
+        "human_listening_observed": false
+      },
+      {
+        "filename": "pssst_der_igel_ruht_sich_in_seinem_haus_aus.m4a",
+        "canonical_csv_text": "Pssst, der Igel ruht sich in seinem Haus aus.",
+        "selected_variant": "pssst_ipa",
+        "synthesis_input": "<phoneme alphabet=\"ipa\" ph=\"pst\">Pssst</phoneme>,<break time=\"150ms\"/><prosody volume=\"soft\"> der Igel ruht sich in seinem Haus aus.</prosody>",
+        "full_ssml_sha256": "85d4e4fc0761bf736ecdaa3f0d0fc67cc30c44055f9cc5156a0e9ddd3d959ad9",
+        "voice": "de-DE-FlorianMultilingualNeural",
+        "locale": "de-DE",
+        "rate": "-12%",
+        "pitch": "0%",
+        "azure_result_id": "e8f17273653d40d99982831691075b35",
+        "raw_sha256": "97de8a6755d4ccfb486743478e880a52618d25aa301e21a46a2749a4e9b79d95",
+        "superseded_final_sha256": "e1778d2e62285a2dd973ff85c80610274ae52d05c5c2c9c3ad77c45a89762a4d",
+        "final_sha256": "179af8da6e15ac03c7a2e124a5603c6eed8e6f88ef9f8f39490451f695ec14d2",
+        "duration_seconds": 2.81025,
+        "stream_bit_rate": 53567,
+        "integrated_lufs": -16.97,
+        "true_peak_dbtp": -2.0,
+        "leading_silence_seconds": 0.00020833333333333335,
+        "trailing_silence_seconds": 4.1666666666666665e-05,
+        "technical_status": "PASS",
+        "human_listening_observed": false
+      }
+    ],
+    "additional_named_files": [
+      {
+        "filename": "klingeling.m4a",
+        "final_sha256": "387cfe164d30c82849610f16007b83a4b5b0f540a77c05f62555711ec987355a",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "50095"
+            }
+          ],
+          "format": {
+            "duration": "0.637000"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "quak_quak.m4a",
+        "final_sha256": "9f9dd135d9e1efc70715e0d6a24942eb59ffe13c86214ab1e8b9f754578c8c3d",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "50496"
+            }
+          ],
+          "format": {
+            "duration": "0.876375"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "grunz_grunz.m4a",
+        "final_sha256": "480105548db05413b45b22724b02a145fc5784f6ab79b27736652d7c1124d81c",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "49236"
+            }
+          ],
+          "format": {
+            "duration": "1.286583"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "i_aah_i_aah.m4a",
+        "final_sha256": "f3462b7a0365994153e37fe7ceedba851dbaaa2cb1f91ef88906ce727722c01e",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "49039"
+            }
+          ],
+          "format": {
+            "duration": "1.179208"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "kikeriki.m4a",
+        "final_sha256": "1787b686bacb8733ef8fa3282b7a98be3515003d1696d9618aebea340ada5cbd",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "50210"
+            }
+          ],
+          "format": {
+            "duration": "0.841125"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "kuckuck_kuckuck.m4a",
+        "final_sha256": "126093e5f2552be8eb67b0b489d8c224f717bb2efcb1cb758813ddbbeaf8b48c",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "49573"
+            }
+          ],
+          "format": {
+            "duration": "1.371167"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "maeh_maeh.m4a",
+        "final_sha256": "4a4b8109625fcadcefc6f5d42f97d270d86c5a436365523f1cf77c97e9d2cdcb",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "48018"
+            }
+          ],
+          "format": {
+            "duration": "0.951792"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "miau.m4a",
+        "final_sha256": "1d2fdcb47984789cf9c0b11a520931c67e3ef56207d6bd382b6f793b8a2f1fcc",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "51902"
+            }
+          ],
+          "format": {
+            "duration": "0.519000"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "muuuuh.m4a",
+        "final_sha256": "fdd91c4b44a1bd8e1d21ab89e5f854db6db5159aaae844ef6851993bd5469f7b",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "53121"
+            }
+          ],
+          "format": {
+            "duration": "0.525542"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "summ_summ_summ.m4a",
+        "final_sha256": "12f9fa2506e1b2e64803d2c7dc6cbcc55a8237f04ee419935364658227ee336b",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "48980"
+            }
+          ],
+          "format": {
+            "duration": "1.519750"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "wau_wau.m4a",
+        "final_sha256": "62ed6888ccb50f4210596c24a23602e7e58d06184d4119c9e75efe09c186d378",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "24000",
+              "channels": 1,
+              "bit_rate": "49709"
+            }
+          ],
+          "format": {
+            "duration": "0.772625"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      },
+      {
+        "filename": "hmm_schau_nochmals_was_printatops_gerade_macht.m4a",
+        "final_sha256": "2d02fe98373c801c7930810227845e571662579923e0987b731d2b5123e2edf9",
+        "technical_probe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "44100",
+              "channels": 1,
+              "bit_rate": "111947"
+            }
+          ],
+          "format": {
+            "duration": "3.500000"
+          }
+        },
+        "action": "UNCHANGED",
+        "additional_regeneration": false,
+        "human_listening_observed": false
+      }
+    ],
+    "additional_regenerated_files": []
+  }
 }
