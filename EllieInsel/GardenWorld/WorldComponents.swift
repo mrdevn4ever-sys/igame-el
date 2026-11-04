@@ -239,16 +239,9 @@ struct BuiltObjectView: View {
                 if let m = ImageCache.image(kind.maskBody) {
                     Image(uiImage: m).resizable().scaledToFit().colorMultiply(bodyColor.color).blendMode(.multiply)
                     if pattern != .keins {
-                        Group {
-                            if let p = ImageCache.image(pattern.asset) {
-                                Image(uiImage: p).resizable(resizingMode: .tile)
-                            } else {
-                                // Muster ohne Bilddatei werden gezeichnet
-                                DrawnPattern(pattern: pattern)
-                            }
-                        }
-                        .mask(Image(uiImage: m).resizable().scaledToFit())
-                        .opacity(0.85)
+                        // Gezeichnet statt Kachelbild: Grösse passt sich dem Bauwerk an.
+                        DrawnPattern(pattern: pattern, size: size)
+                            .mask(Image(uiImage: m).resizable().scaledToFit())
                     }
                 }
                 if let m = ImageCache.image(kind.maskRoof) {
@@ -310,35 +303,72 @@ struct BuildSparkles: View {
     }
 }
 
-/// Muster, für die es kein Overlay-Bild gibt.
+/// Muster auf Bauwerken, passend zur Grösse gezeichnet (etwa neun Motive über die Breite),
+/// versetzt angeordnet und halb durchscheinend, damit sie zur Farbe darunter passen.
 struct DrawnPattern: View {
     let pattern: WorldPattern
+    let size: CGFloat
 
     var body: some View {
         Canvas { ctx, sz in
+            let step = max(size / 9, 5)
+            let ink = Color.white.opacity(0.62)
             switch pattern {
+            case .keins:
+                break
             case .regenbogen:
                 let bands = Glitter.rainbowBands
-                let h = sz.height / CGFloat(bands.count)
-                for (i, c) in bands.enumerated() {
-                    ctx.fill(Path(CGRect(x: 0, y: CGFloat(i) * h, width: sz.width, height: h + 1)),
-                             with: .color(Color(red: c.0, green: c.1, blue: c.2).opacity(0.75)))
+                let h = step * 0.9
+                var y: CGFloat = 0, i = 0
+                while y < sz.height {
+                    let c = bands[i % bands.count]
+                    ctx.fill(Path(CGRect(x: 0, y: y, width: sz.width, height: h)),
+                             with: .color(Color(red: c.0, green: c.1, blue: c.2).opacity(0.7)))
+                    y += h; i += 1
                 }
+            case .streifen:
+                var p = Path()
+                var x = -sz.height
+                while x < sz.width {
+                    p.move(to: CGPoint(x: x, y: sz.height)); p.addLine(to: CGPoint(x: x + sz.height, y: 0))
+                    x += step
+                }
+                ctx.stroke(p, with: .color(ink), lineWidth: step * 0.3)
             case .karos:
-                let step = max(sz.width / 8, 6)
                 var y: CGFloat = 0, row = 0
                 while y < sz.height {
                     var x: CGFloat = row % 2 == 0 ? 0 : step
                     while x < sz.width {
-                        ctx.fill(Path(CGRect(x: x, y: y, width: step, height: step)), with: .color(.white.opacity(0.55)))
+                        ctx.fill(Path(CGRect(x: x, y: y, width: step, height: step)), with: .color(Color.white.opacity(0.4)))
                         x += step * 2
                     }
                     y += step; row += 1
                 }
             default:
-                break
+                let symbol: String
+                switch pattern {
+                case .herzen: symbol = "heart.fill"
+                case .sterne: symbol = "star.fill"
+                case .blumen: symbol = "camera.macro"
+                default: symbol = "circle.fill"
+                }
+                var motif = ctx.resolve(Image(systemName: symbol))
+                motif.shading = .color(.white)
+                let d = step * (pattern == .punkte ? 0.45 : 0.6)
+                var y = step / 2, row = 0
+                while y < sz.height + step {
+                    var x = row % 2 == 0 ? step / 2 : step
+                    while x < sz.width + step {
+                        var c = ctx
+                        c.opacity = 0.62
+                        c.draw(motif, in: CGRect(x: x - d / 2, y: y - d / 2, width: d, height: d))
+                        x += step
+                    }
+                    y += step * 0.9; row += 1
+                }
             }
         }
+        .foregroundStyle(.white)
     }
 }
 
