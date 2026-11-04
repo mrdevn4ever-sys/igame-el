@@ -21,13 +21,19 @@
     {
       "filename": "koerper_aussen.png",
       "package": 1,
-      "pre_optimization_sha256": "a9b1fad6f72b66b9687e2ac8e65662b407c89fa9b7c6fc0f8fc539239966e16f",
-      "approved_release_sha256": "87099dea72f4663d0d80963de02c11d9317c62a2c923f8ee88bae4ac23f1a073",
+      "pre_optimization_sha256": "e0459d8d732e0c0449d495abd179dcbce4ead6fd7ec27a7470d7e4e2d9fb5e5e",
+      "approved_release_sha256": "8c6a507be233ee733c48eb85a42f687dc1a3453d6369a859febee244b921a2c2",
       "dimensions": [
         1536,
         2048
       ],
-      "optimization_method": "pngquant --quality 90-100 --speed 1 --strip --skip-if-larger; oxipng -o 4"
+      "optimization_method": "pngquant 90-100 attempted and rejected because pixel-lock/alpha changed; oxipng -o 4 --strip safe (decoded RGBA unchanged)",
+      "superseded_package1_pre_optimization_sha256": "a9b1fad6f72b66b9687e2ac8e65662b407c89fa9b7c6fc0f8fc539239966e16f",
+      "superseded_approved_release_sha256": "87099dea72f4663d0d80963de02c11d9317c62a2c923f8ee88bae4ac23f1a073",
+      "note": "lange Hose, Nachlieferung 5",
+      "correction_provenance": "assets/Koerper_Nachlieferung_5_Provenienz.json",
+      "owner_approval_statement": "Passt",
+      "mode": "RGBA"
     },
     {
       "filename": "koerper_organe.png",
@@ -711,5 +717,12 @@
       ],
       "optimization_method": "pngquant attempted at 90-100 and skipped; oxipng -o 4"
     }
-  ]
+  ],
+  "nachlieferung_5_correction": {
+    "target": "koerper_aussen.png",
+    "note": "lange Hose, Nachlieferung 5",
+    "approved_release_sha256": "8c6a507be233ee733c48eb85a42f687dc1a3453d6369a859febee244b921a2c2",
+    "provenance": "assets/Koerper_Nachlieferung_5_Provenienz.json",
+    "owner_statement": "Passt"
+  }
 }

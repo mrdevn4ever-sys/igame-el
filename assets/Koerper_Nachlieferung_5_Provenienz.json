@@ -1,0 +1,329 @@
+{
+  "schema": "ellie-body-nachlieferung-5-provenance/v1",
+  "createdAtUtc": "2026-11-04T09:42:36.628834+00:00",
+  "scope": "lange Hose, Nachlieferung 5",
+  "target": "EllieInsel/Images/koerper_aussen.png",
+  "count": 1,
+  "origin": "deterministic_local_rgb_edit_of_optimized_release",
+  "method": "Frozen current optimized raster; declared lower-clothing paint mask; RGB-only deterministic recolor inside the mask; complete baseline alpha and every protected RGBA pixel preserved.",
+  "dimensions": [
+    1536,
+    2048
+  ],
+  "mode": "RGBA",
+  "transparent": true,
+  "hashTransition": {
+    "supersededApprovedReleaseSha256": "87099dea72f4663d0d80963de02c11d9317c62a2c923f8ee88bae4ac23f1a073",
+    "preOptimizationCandidateSha256": "e0459d8d732e0c0449d495abd179dcbce4ead6fd7ec27a7470d7e4e2d9fb5e5e",
+    "approvedReleaseSha256": "8c6a507be233ee733c48eb85a42f687dc1a3453d6369a859febee244b921a2c2",
+    "decodedRgbaSha256": "411953b939c5bfd99c47d652e0d7656fd39ae7ba4cef96db35104c1560b22c76"
+  },
+  "paintMask": {
+    "fileSha256": "d4c0de60a4a28c03db5d3c1d8dce40212171c3b276e988c1a9b377f7e7045ba7",
+    "pixelSha256": "67b04fb1abd3ce0d19b05567f58820a6caee1bc22004bfdee7f7b4b0cbd362fa",
+    "selectedPixels": 167415,
+    "authorizationBoxHalfOpen": [
+      560,
+      1180,
+      976,
+      1832
+    ],
+    "changedPixels": 156866,
+    "changedBboxXyxy": [
+      582,
+      1180,
+      954,
+      1828
+    ]
+  },
+  "pixelProtection": {
+    "alphaChangedPixels": 0,
+    "changedOutsidePaintMask": 0,
+    "transparentRgbaChanged": 0,
+    "upperRowsYlt1180Changed": 0,
+    "status": "PASS"
+  },
+  "registration": {
+    "baselineSupportXor": 0,
+    "baselineMaximumContourDeviationPx": 0.0,
+    "siblingLayers": {
+      "organe": {
+        "threshold": 0,
+        "support_xor": 2079,
+        "max_contour_distance_px": 3.0,
+        "p95_contour_distance_px": 1.0
+      },
+      "knochen": {
+        "threshold": 0,
+        "support_xor": 185,
+        "max_contour_distance_px": 2.0,
+        "p95_contour_distance_px": 0.0
+      },
+      "adern": {
+        "threshold": 0,
+        "support_xor": 2062,
+        "max_contour_distance_px": 3.0,
+        "p95_contour_distance_px": 1.0
+      },
+      "muskeln": {
+        "threshold": 0,
+        "support_xor": 193,
+        "max_contour_distance_px": 2.0,
+        "p95_contour_distance_px": 0.0
+      },
+      "umriss": {
+        "threshold": 0,
+        "support_xor": 159,
+        "max_contour_distance_px": 2.0,
+        "p95_contour_distance_px": 0.0
+      }
+    },
+    "maximumSiblingContourDeviationPx": 3.0,
+    "requiredMaximumPx": 8,
+    "status": "PASS"
+  },
+  "requiredHitPoints": [
+    {
+      "name": "Hand links",
+      "normalized": [
+        0.28,
+        0.59
+      ],
+      "native_float": [
+        430.08000000000004,
+        1208.32
+      ],
+      "floor_pixel": [
+        430,
+        1208
+      ],
+      "rgba": [
+        231,
+        171,
+        127,
+        255
+      ],
+      "opaque": true
+    },
+    {
+      "name": "Hand rechts",
+      "normalized": [
+        0.72,
+        0.59
+      ],
+      "native_float": [
+        1105.92,
+        1208.32
+      ],
+      "floor_pixel": [
+        1105,
+        1208
+      ],
+      "rgba": [
+        227,
+        165,
+        122,
+        255
+      ],
+      "opaque": true
+    },
+    {
+      "name": "Knie links",
+      "normalized": [
+        0.43,
+        0.73
+      ],
+      "native_float": [
+        660.48,
+        1495.04
+      ],
+      "floor_pixel": [
+        660,
+        1495
+      ],
+      "rgba": [
+        116,
+        163,
+        193,
+        255
+      ],
+      "opaque": true
+    },
+    {
+      "name": "Knie rechts",
+      "normalized": [
+        0.57,
+        0.73
+      ],
+      "native_float": [
+        875.52,
+        1495.04
+      ],
+      "floor_pixel": [
+        875,
+        1495
+      ],
+      "rgba": [
+        116,
+        163,
+        193,
+        255
+      ],
+      "opaque": true
+    },
+    {
+      "name": "Bein links",
+      "normalized": [
+        0.43,
+        0.8
+      ],
+      "native_float": [
+        660.48,
+        1638.4
+      ],
+      "floor_pixel": [
+        660,
+        1638
+      ],
+      "rgba": [
+        116,
+        165,
+        196,
+        255
+      ],
+      "opaque": true
+    },
+    {
+      "name": "Bein rechts",
+      "normalized": [
+        0.57,
+        0.8
+      ],
+      "native_float": [
+        875.52,
+        1638.4
+      ],
+      "floor_pixel": [
+        875,
+        1638
+      ],
+      "rgba": [
+        115,
+        164,
+        195,
+        255
+      ],
+      "opaque": true
+    },
+    {
+      "name": "Fuss links",
+      "normalized": [
+        0.42,
+        0.95
+      ],
+      "native_float": [
+        645.12,
+        1945.6
+      ],
+      "floor_pixel": [
+        645,
+        1945
+      ],
+      "rgba": [
+        231,
+        171,
+        127,
+        255
+      ],
+      "opaque": true
+    },
+    {
+      "name": "Fuss rechts",
+      "normalized": [
+        0.58,
+        0.95
+      ],
+      "native_float": [
+        890.8799999999999,
+        1945.6
+      ],
+      "floor_pixel": [
+        890,
+        1945
+      ],
+      "rgba": [
+        230,
+        169,
+        125,
+        255
+      ],
+      "opaque": true
+    }
+  ],
+  "requiredHitPointsStatus": "8/8 PASS",
+  "determinism": {
+    "buildASha256": "e0459d8d732e0c0449d495abd179dcbce4ead6fd7ec27a7470d7e4e2d9fb5e5e",
+    "buildBSha256": "e0459d8d732e0c0449d495abd179dcbce4ead6fd7ec27a7470d7e4e2d9fb5e5e",
+    "byteIdentical": true,
+    "status": "PASS"
+  },
+  "optimization": {
+    "pngquantCommand": "pngquant --quality 90-100 --speed 1 --strip --skip-if-larger",
+    "pngquantResult": "REJECTED_NOT_PROMOTED because it changed protected pixels and alpha",
+    "pngquantOutputBytes": 159802,
+    "pngquantChangedOutsidePaintMask": 92776,
+    "pngquantAlphaChangedPixels": 5731,
+    "oxipngCommand": "oxipng -o 4 --strip safe",
+    "preOptimizationBytes": 368909,
+    "approvedReleaseBytes": 240491,
+    "decodedRgbaIdenticalAfterOxipng": true,
+    "status": "PASS"
+  },
+  "technicalQa": {
+    "mechanicalStatus": "PASS",
+    "allGates": {
+      "dimensions": true,
+      "alpha_byte_exact": true,
+      "all_protected_rgba_exact": true,
+      "transparent_rgba_exact": true,
+      "nonempty_edit": true,
+      "all_catalog_hit_neighborhoods_opaque": true,
+      "all_five_registration_max_le_8": true,
+      "corners_alpha_zero": true
+    },
+    "status": "PASS"
+  },
+  "parentVisualQa": {
+    "creamAppAndNative": "PASS",
+    "darkApp": "PASS",
+    "oldShortsHemRemoved": "PASS",
+    "continuousPants": "PASS",
+    "kneesReadable": "PASS",
+    "bareFeet": "PASS",
+    "ownerPreviewSha256": "cc407db7d37c5b7673b2e340b9f2fbb0b3354afc46c6260f91b53ebd2652db92",
+    "darkPreviewSha256": "fc1b844707ea6cc40f5747d83c6271bda324c41fa46ffcf647cdcafa8300ff20",
+    "nativeLegCropSha256": "7747d4e034522529583575bea346926c57369f365a8525135e60ebe12f54138d",
+    "reviewedPixelsMatchFinalDecodedRgba": true,
+    "status": "PASS"
+  },
+  "ownerApproval": {
+    "statement": "Passt",
+    "status": "APPROVED",
+    "approvedPreviewSha256": "cc407db7d37c5b7673b2e340b9f2fbb0b3354afc46c6260f91b53ebd2652db92",
+    "approvedPreOptimizationCandidateSha256": "e0459d8d732e0c0449d495abd179dcbce4ead6fd7ec27a7470d7e4e2d9fb5e5e",
+    "approvedReleaseSha256": "8c6a507be233ee733c48eb85a42f687dc1a3453d6369a859febee244b921a2c2",
+    "losslessOptimizationLink": "Owner-reviewed candidate and final oxipng export have byte-identical decoded RGBA pixels."
+  },
+  "localTools": {
+    "makePantsSha256": "d38360224d3c9079eae610d5a11e06403956475cf5ab5287e5f27489c9007140",
+    "compositorSha256": "cd0be4053a8bd138d85ec381d97007e0c4517b9cf3ccd6d2e19155d3bd89296a",
+    "auditSha256": "301020005287f4d65ce0dedc368d560fcf1c23b2c3a4427f7336d514f7f4c9e0",
+    "pillow": "12.3.0",
+    "oxipng": "10.1.1"
+  },
+  "providerDisclosure": "No external image provider used; local deterministic raster correction only.",
+  "historicalProvenancePreserved": [
+    "assets/Koerper_Paket1_Provenienz.json",
+    "assets/Bildoptimierung_Provenienz.json"
+  ]
+}
