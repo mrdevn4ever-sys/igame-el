@@ -46,7 +46,8 @@ enum SortFactory {
 
     /// 24 Aufgaben pro Niveau: je acht für Farbe, Form und Grösse.
     static func catalog(level: Int) -> [SortTask] {
-        var rng = SeededGenerator(seed: 700 + UInt64(level))
+        // Jede Runde neu gemischt; die gewählten Aufgaben werden im Spielstand gespeichert.
+        var rng = SeededGenerator(seed: UInt64.random(in: 1...UInt64.max))
         var tasks: [SortTask] = []
         for feature in [SortTask.Feature.color, .shape, .size] {
             for v in 0..<8 {

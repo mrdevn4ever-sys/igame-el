@@ -16,10 +16,11 @@ enum PatternCatalog {
         PatternMotif(emoji: "🪨", name: "Stein"), PatternMotif(emoji: "🍓", name: "Erdbeere")
     ]
 
-    /// Zwölf geprüfte Musteraufgaben pro Niveau. Vor der Lücke stehen immer zwei vollständige Wiederholungen.
+    /// Zwölf Musteraufgaben pro Niveau. Vor der Lücke stehen immer zwei vollständige Wiederholungen.
     static func tasks(level: Int) -> [PatternTask] {
         let spec = LevelCatalog.pattern(level)
-        var rng = SeededGenerator(seed: 4000 + UInt64(level))
+        // Jede Runde neue Motive; die Aufgaben werden im Spielstand gespeichert.
+        var rng = SeededGenerator(seed: UInt64.random(in: 1...UInt64.max))
         var result: [PatternTask] = []
         var attempts = 0
         while result.count < 12 && attempts < 400 {

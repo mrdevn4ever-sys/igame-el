@@ -103,8 +103,12 @@ enum MathTaskFactory {
         let allowPlus = operations.contains("plus") || !allowMinus
         var kind = spec.kind
         if kind == .twoStep && !allowMinus { kind = .basic }
+        // Höhere Stufen sollen keine Mini-Aufgaben wie 1 + 1 bringen.
+        let minTotal = spec.maxTotal >= 20 ? 8 : spec.maxTotal >= 10 ? 4 : 2
         var curatedPool = curated.filter { c in
-            spec.kind == .basic && (c.2 == .plus ? allowPlus && c.0 + c.1 <= spec.maxTotal : allowMinus && c.0 <= spec.maxTotal)
+            let top = c.2 == .plus ? c.0 + c.1 : c.0
+            return spec.kind == .basic && top >= minTotal
+                && (c.2 == .plus ? allowPlus && top <= spec.maxTotal : allowMinus && top <= spec.maxTotal)
         }.shuffled()
         var tasks: [MathTask] = []
         var lastAnswerIndex = -1
@@ -121,22 +125,22 @@ enum MathTaskFactory {
                 } else {
                     let useMinus = allowMinus && (!allowPlus || Bool.random())
                     if useMinus {
-                        a = Int.random(in: 2...spec.maxTotal)
+                        a = Int.random(in: max(2, minTotal)...spec.maxTotal)
                         b = Int.random(in: 1...(a - 1))
                         op = .minus
                     } else {
-                        let total = Int.random(in: 2...spec.maxTotal)
+                        let total = Int.random(in: minTotal...spec.maxTotal)
                         a = Int.random(in: 1...(total - 1))
                         b = total - a
                     }
                 }
             case .missing:
-                let total = Int.random(in: 3...spec.maxTotal)
+                let total = Int.random(in: max(3, minTotal)...spec.maxTotal)
                 a = Int.random(in: 1...(total - 1))
                 b = total - a
                 op = .missing
             case .twoStep:
-                let total = Int.random(in: 3...spec.maxTotal)
+                let total = Int.random(in: max(3, minTotal)...spec.maxTotal)
                 a = Int.random(in: 1...(total - 1))
                 b = total - a
                 c = Int.random(in: 1...(total - 1))
@@ -157,7 +161,7 @@ enum MathTaskFactory {
     static func options(for task: MathTask, count: Int, maxValue: Int, avoidIndex: Int) -> [Int] {
         let answer = task.answer
         var options = [answer]
-        var candidates = [answer + 1, answer - 1, answer + 2, answer - 2, answer + 3, answer - 3].filter { $0 >= 0 && $0 <= maxValue }
+        var candidates = [answer + 1, answer - 1, answer + 2, answer - 2, answer + 3, answer - 3].filter { $0 >= 1 && $0 <= maxValue }
         candidates.shuffle()
         // Typische Fehler als Ablenker: Ausgangswert bei Minus, Gesamtmenge beim Ergänzen.
         if task.op == .minus, task.a != answer, task.a <= maxValue { candidates.insert(task.a, at: 0) }
