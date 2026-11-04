@@ -300,7 +300,7 @@ struct BodyGameView: View {
                             BeatingHeart(period: fast ? 0.42 : 1.35, size: 110)
                             // Für Kinder, die noch nicht lesen: Hase = schnell, Schnecke = langsam
                             HStack(spacing: 8) {
-                                Pic(fast ? "garten_hase" : "garten_schnecke", fast ? "🐇" : "🐌", size: 46)
+                                Pic(fast ? "garten_hase" : "garten_schnecke", fast ? "🐇" : "🐌", size: 70)
                                 Text(fast ? "Schnell" : "Langsam")
                                     .font(Theme.rounded(22, .bold))
                                     .foregroundStyle(Theme.darkGreen)
