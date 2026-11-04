@@ -81,8 +81,21 @@ struct WorldPic: View {
 
 extension View {
     /// Setzt ein quadratisches Bild so, dass seine Bodenlinie (92 % Höhe) auf dem Punkt steht.
-    func feet(_ p: CGPoint, size: CGFloat, in s: CGSize) -> some View {
-        position(x: p.x * s.width, y: p.y * s.height - size * 0.42)
+    /// Setzt ein Ding mit den Füssen auf den Punkt und gibt ihm einen weichen Bodenschatten,
+    /// damit es im Gras steht statt zu schweben.
+    func feet(_ p: CGPoint, size: CGFloat, in s: CGSize, shadow: Bool = true) -> some View {
+        self
+            .background(alignment: .bottom) {
+                if shadow {
+                    Ellipse()
+                        .fill(Color.black.opacity(0.16))
+                        .frame(width: size * 0.62, height: size * 0.12)
+                        .blur(radius: size * 0.025)
+                        .offset(y: size * 0.03)
+                        .allowsHitTesting(false)
+                }
+            }
+            .position(x: p.x * s.width, y: p.y * s.height - size * 0.42)
     }
 
     func at(_ p: CGPoint, in s: CGSize) -> some View {

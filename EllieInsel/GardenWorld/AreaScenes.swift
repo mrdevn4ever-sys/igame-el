@@ -132,11 +132,7 @@ struct SceneLayer: View {
                 app.audio.sfx("gw_sfx_teller", fallback: .tap)
                 model.overlay = .kitchen
             } label: {
-                VStack(spacing: 2) {
-                    WorldPic("gw_tisch_terrasse", "🍳", size: W * 0.12)
-                    Text("Küche").font(Theme.rounded(15, .heavy)).foregroundStyle(Theme.darkGreen)
-                        .padding(.horizontal, 8).background(Capsule().fill(.white.opacity(0.85)))
-                }
+                WorldPic("gw_tisch_terrasse", "🍳", size: W * 0.12)
             }
             .buttonStyle(PressableStyle())
             .feet(WorldLayout.kitchenDoor, size: W * 0.12, in: s)
@@ -144,18 +140,20 @@ struct SceneLayer: View {
             // Werkbank
             if model.w.workshopOpen {
                 Button { model.openWorkshop() } label: {
-                    VStack(spacing: 2) {
-                        WorldPic("gw_werkbank", "🛠️", size: W * 0.11)
-                        Text("Werkbank").font(Theme.rounded(15, .heavy)).foregroundStyle(Theme.darkGreen)
-                            .padding(.horizontal, 8).background(Capsule().fill(.white.opacity(0.85)))
-                    }
+                    WorldPic("gw_werkbank", "🛠️", size: W * 0.11)
                 }
                 .buttonStyle(PressableStyle())
                 .feet(WorldLayout.workbench, size: W * 0.11, in: s)
             }
 
-            // Picknickdecke
-            picnicView(model.w.picnic, at: WorldLayout.blanket) { model.overlay = .picnic }
+            // Picknickdecke (einziger Eingang zum Picknick)
+            picnicView(model.w.picnic, at: WorldLayout.blanket) {
+                if model.w.picnic != nil || model.w.pantry.values.contains(where: { $0 > 0 }) {
+                    model.overlay = .picnic
+                } else {
+                    model.say("Für ein Picknick brauchst du zuerst etwas aus der Küche.")
+                }
+            }
 
             ForEach(0..<WorldPanorama.bedCount, id: \.self) { i in
                 let bs = i == 3 ? WorldLayout.treeSize : WorldLayout.bedSize
@@ -194,9 +192,6 @@ struct SceneLayer: View {
                     }
                 }
                 .offset(y: -size * 0.05)
-            } else {
-                Text("Picknick").font(Theme.rounded(14, .heavy)).foregroundStyle(.white)
-                    .padding(.horizontal, 8).background(Capsule().fill(Theme.darkGreen.opacity(0.7)))
             }
         }
         .contentShape(Rectangle())
@@ -301,7 +296,7 @@ struct SceneLayer: View {
             }
             if model.w.treehouseStage >= 4 {
                 WorldPic("gw_korbaufzug_seil", "🪢", size: W * 0.08)
-                    .feet(WorldLayout.lift, size: W * 0.08, in: s)
+                    .feet(WorldLayout.lift, size: W * 0.08, in: s, shadow: false)
                 if let p = model.w.treeHousePicnic {
                     HStack(spacing: 2) {
                         ForEach(p.dishes.indices, id: \.self) { i in WorldPic(p.dishes[i].asset, p.dishes[i].emoji, size: W * 0.05) }
@@ -329,20 +324,12 @@ struct SceneLayer: View {
                 app.audio.sfx("gw_sfx_zauber", fallback: .tap)
                 model.overlay = .light
             } label: {
-                VStack(spacing: 0) {
-                    WorldPic("gw_licht_prisma", "🔮", size: W * 0.09)
-                    Text("Lichtspiel").font(Theme.rounded(14, .heavy)).foregroundStyle(.white)
-                        .padding(.horizontal, 8).background(Capsule().fill(Theme.darkGreen.opacity(0.75)))
-                }
+                WorldPic("gw_licht_prisma", "🔮", size: W * 0.09)
             }
             .buttonStyle(PressableStyle())
             .feet(WorldLayout.crystal, size: W * 0.09, in: s)
             Button { model.startRain() } label: {
-                VStack(spacing: 0) {
-                    WorldPic("gw_wetterwolke", "🌦️", size: W * 0.08)
-                    Text("Wetter").font(Theme.rounded(14, .heavy)).foregroundStyle(.white)
-                        .padding(.horizontal, 8).background(Capsule().fill(Theme.darkGreen.opacity(0.75)))
-                }
+                WorldPic("gw_wetterwolke", "🌦️", size: W * 0.08)
             }
             .buttonStyle(PressableStyle())
             .at(WorldLayout.cloud, in: s)
@@ -903,7 +890,7 @@ struct ActorsLayer: View {
             .onTapGesture {
                 if let r = a.resident { model.residentTapped(r) } else { model.dinoTapped() }
             }
-            .feet(pos, size: sz, in: size)
+            .feet(pos, size: sz, in: size, shadow: false)
             .zIndex(pos.y + 0.001)
             .accessibilityLabel(a.resident?.name ?? "Printatops")
     }

@@ -120,30 +120,23 @@ struct GardenWorldContent: View {
     }
 
     private func rewardBanner(_ reward: PendingReward) -> some View {
-        HStack(spacing: 12) {
-            Text("🎁").font(.system(size: 34))
-            Text("Geschenk aus \(reward.game.title):").font(Theme.rounded(18, .semibold)).foregroundStyle(Theme.darkGreen)
+        // Schlank: Geschenk-Symbol und drei Bilder, ohne Textzeilen (das Kind wählt nach Bild).
+        HStack(spacing: 10) {
+            Text("🎁").font(.system(size: 30))
             ForEach(reward.options, id: \.self) { raw in
                 let r = WorldReward(raw)
                 Button { model.claim(reward, raw) } label: {
-                    HStack(spacing: 8) {
-                        WorldPic(r.asset, r.emoji, size: 46)
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(r.title).font(Theme.rounded(15, .bold)).lineLimit(1).minimumScaleFactor(0.7)
-                            Text(r.preview).font(Theme.rounded(12, .medium)).lineLimit(1).minimumScaleFactor(0.7).opacity(0.75)
-                        }
-                        .foregroundStyle(Theme.darkGreen)
-                    }
-                    .padding(.horizontal, 10).padding(.vertical, 6)
-                    .frame(maxWidth: 230)
-                    .background(RoundedRectangle(cornerRadius: 16).fill(.white))
+                    WorldPic(r.asset, r.emoji, size: 44)
+                        .frame(width: 56, height: 56)
+                        .background(Circle().fill(.white))
                 }
                 .buttonStyle(PressableStyle())
+                .accessibilityLabel(r.title)
             }
-            Spacer(minLength: 0)
         }
-        .padding(10)
-        .background(RoundedRectangle(cornerRadius: 22).fill(Theme.lightYellow))
+        .padding(.horizontal, 12).padding(.vertical, 6)
+        .background(Capsule().fill(Theme.lightYellow))
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16)
     }
 
@@ -182,15 +175,6 @@ struct GardenWorldContent: View {
                 model.openWorkshop()
             }
             Spacer()
-            if model.area == .haus {
-                toolChip(asset: "gw_picknickdecke_rot", emoji: "🧺", title: "Picknick", badge: 0, dimmed: model.w.pantry.isEmpty) {
-                    if model.w.pantry.values.contains(where: { $0 > 0 }) {
-                        model.overlay = .picnic
-                    } else {
-                        model.say("Für ein Picknick brauchst du zuerst etwas aus der Küche.")
-                    }
-                }
-            }
         }
     }
 
