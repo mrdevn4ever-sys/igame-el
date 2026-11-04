@@ -443,6 +443,27 @@ enum BuildKind: String, Codable, CaseIterable, Identifiable {
     var maskBody: String { "gw_bau_\(rawValue)_maske_korpus" }
     func partAsset(_ key: String) -> String { "gw_bau_\(rawValue)_\(key)" }
 
+    // MARK: Modell-Varianten (v2, v3 …), erscheinen nur, wenn ihre Bilder im Bundle liegen
+
+    func displayAsset(variant: Int?) -> String {
+        guard let v = variant, v > 1 else { return displayAsset }
+        return "gw_bau_\(rawValue)_v\(v)_fertig"
+    }
+    func maskRoof(variant: Int?) -> String {
+        guard let v = variant, v > 1 else { return maskRoof }
+        return "gw_bau_\(rawValue)_v\(v)_maske_dach"
+    }
+    func maskBody(variant: Int?) -> String {
+        guard let v = variant, v > 1 else { return maskBody }
+        return "gw_bau_\(rawValue)_v\(v)_maske_korpus"
+    }
+
+    /// Verfügbare Modelle: immer das Grundmodell, dazu jede Variante mit vorhandenem Bild.
+    @MainActor
+    var variants: [Int] {
+        [1] + (2...4).filter { ImageCache.image("gw_bau_\(rawValue)_v\($0)_fertig") != nil }
+    }
+
     /// Teile liegen im gleichen Bildrahmen und ergeben übereinander das fertige Objekt.
     var partsStack: Bool { ![.bruecke, .segelboot, .wimpelkette].contains(self) }
 
@@ -495,6 +516,8 @@ struct BuiltObject: Codable, Equatable, Identifiable {
     var created = Date()
     /// Glitzer aus der Werkstatt (optional, damit ältere Gärten lesbar bleiben)
     var glitter: BuildGlitter?
+    /// Modell-Variante aus der Werkstatt (nil oder 1 = Grundmodell)
+    var variant: Int?
 }
 
 /// Glitzer für Bauwerke: funkelnde Pünktchen auf dem ganzen Bauwerk.

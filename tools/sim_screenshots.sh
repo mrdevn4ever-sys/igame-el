@@ -156,6 +156,8 @@ run 130_garten_kueche 6 0 -screen garden -world voll -overlay kitchen
 run 131_garten_werkstatt 6 0 -screen garden -world voll -overlay workshop
 run 131b_garten_werkstatt_teile 6 0 -screen garden -world voll -overlay workshop -teile
 run 131c_garten_werkstatt_bemalen 6 0 -screen garden -world voll -overlay workshop -bemalen
+run 131e_werkstatt_modell2 6 0 -screen garden -world voll -overlay workshop -bemalen -ohneglitzer -muster keins -modell 2
+run 131f_werkstatt_modell3 6 0 -screen garden -world voll -overlay workshop -bemalen -ohneglitzer -muster keins -modell 3
 for m in punkte herzen streifen sterne blumen karos; do
   run "131d_werkstatt_muster_$m" 6 0 -screen garden -world voll -overlay workshop -bemalen -ohneglitzer -muster $m
 done

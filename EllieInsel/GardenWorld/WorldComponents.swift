@@ -230,13 +230,14 @@ struct BuiltObjectView: View {
     var pattern: WorldPattern = .keins
     var decoration: FindItem?
     var glitter: BuildGlitter?
+    var variant: Int?
     let size: CGFloat
 
     var body: some View {
         ZStack {
-            if let base = ImageCache.image(kind.displayAsset) {
+            if let base = ImageCache.image(kind.displayAsset(variant: variant)) {
                 Image(uiImage: base).resizable().scaledToFit()
-                if let m = ImageCache.image(kind.maskBody) {
+                if let m = ImageCache.image(kind.maskBody(variant: variant)) {
                     Image(uiImage: m).resizable().scaledToFit().colorMultiply(bodyColor.color).blendMode(.multiply)
                     if pattern != .keins {
                         // Gezeichnet statt Kachelbild: Grösse passt sich dem Bauwerk an.
@@ -244,7 +245,7 @@ struct BuiltObjectView: View {
                             .mask(Image(uiImage: m).resizable().scaledToFit())
                     }
                 }
-                if let m = ImageCache.image(kind.maskRoof) {
+                if let m = ImageCache.image(kind.maskRoof(variant: variant)) {
                     Image(uiImage: m).resizable().scaledToFit().colorMultiply(roof.color).blendMode(.multiply)
                 }
             } else {
@@ -259,7 +260,7 @@ struct BuiltObjectView: View {
                 .frame(width: size, height: size, alignment: .bottom)
                 .padding(.bottom, size * 0.08)
             }
-            if let glitter, let base = ImageCache.image(kind.displayAsset) {
+            if let glitter, let base = ImageCache.image(kind.displayAsset(variant: variant)) {
                 BuildSparkles(glitter: glitter, size: size)
                     .mask(Image(uiImage: base).resizable().scaledToFit())
                     .allowsHitTesting(false)
@@ -376,7 +377,7 @@ struct BuiltObjectImage: View {
     let obj: BuiltObject
     let size: CGFloat
     var body: some View {
-        BuiltObjectView(kind: obj.kind, roof: obj.roof, bodyColor: obj.body, pattern: obj.pattern, decoration: obj.decoration, glitter: obj.glitter, size: size)
+        BuiltObjectView(kind: obj.kind, roof: obj.roof, bodyColor: obj.body, pattern: obj.pattern, decoration: obj.decoration, glitter: obj.glitter, variant: obj.variant, size: size)
     }
 }
 

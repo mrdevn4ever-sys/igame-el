@@ -378,6 +378,7 @@ struct WorkshopView: View {
     @State private var pattern: WorldPattern = .keins
     @State private var deco: FindItem?
     @State private var glitter: BuildGlitter?
+    @State private var variant = 1
 
     var body: some View {
         WorldPanel(title: "Werkstatt", background: "gw_szene_werkstatt_innen", close: { model.overlay = nil }) {
@@ -436,6 +437,7 @@ struct WorkshopView: View {
         pattern = .keins
         deco = nil
         glitter = nil
+        variant = 1
         phase = .assemble
         if DemoMode.flag("-teile") { placed = k.parts.prefix(3).map(\.key) }
         if DemoMode.flag("-bemalen") {
@@ -445,6 +447,7 @@ struct WorkshopView: View {
             glitter = DemoMode.flag("-ohneglitzer") ? nil : .regenbogen
             pattern = DemoMode.value("-muster").flatMap(WorldPattern.init(rawValue:)) ?? .regenbogen
             if pattern != .regenbogen { bodyColor = .blau }
+            if let v = Int(DemoMode.value("-modell") ?? ""), k.variants.contains(v) { variant = v }
             return
         }
         model.say("Wir bauen \(k.accusativeName). Tippe auf die Teile, dann kommen sie an ihren Platz.")
@@ -533,17 +536,33 @@ struct WorkshopView: View {
         HStack(spacing: 30) {
             if let k = kind {
                 VStack {
-                    BuiltObjectView(kind: k, roof: roof, bodyColor: bodyColor, pattern: pattern, decoration: deco, glitter: glitter, size: 300)
+                    BuiltObjectView(kind: k, roof: roof, bodyColor: bodyColor, pattern: pattern, decoration: deco, glitter: glitter, variant: variant, size: 300)
                         .animation(.easeInOut(duration: 0.2), value: roof)
                     Button {
                         if let d = deco { model.edit { $0.finds[d.rawValue, default: 1] -= 1; if ($0.finds[d.rawValue] ?? 0) <= 0 { $0.finds[d.rawValue] = nil } } }
-                        model.finishBuild(BuiltObject(kind: k, area: model.area, x: 0.5, y: 0.8, roof: roof, body: bodyColor, pattern: pattern, decoration: deco, glitter: glitter))
+                        model.finishBuild(BuiltObject(kind: k, area: model.area, x: 0.5, y: 0.8, roof: roof, body: bodyColor, pattern: pattern, decoration: deco, glitter: glitter,
+                                                     variant: variant > 1 ? variant : nil))
                     } label: {
                         Label("Aufstellen", systemImage: "checkmark.circle.fill")
                     }
                     .buttonStyle(BigButtonStyle(color: Theme.success))
                 }
                 VStack(alignment: .leading, spacing: 16) {
+                    if k.variants.count > 1 {
+                        // Andere Modelle desselben Bausatzes (nur wenn Bilder vorhanden sind)
+                        HStack(spacing: 8) {
+                            Text("Modell").font(Theme.rounded(18, .bold)).frame(width: 96, alignment: .leading)
+                            ForEach(k.variants, id: \.self) { v in
+                                Button { variant = v; model.app.audio.sfx("gw_sfx_hammer", fallback: .tap) } label: {
+                                    BuiltObjectView(kind: k, roof: roof, bodyColor: bodyColor, variant: v, size: 58)
+                                        .frame(width: 64, height: 64)
+                                        .background(RoundedRectangle(cornerRadius: 14).fill(variant == v ? Theme.highlight.opacity(0.6) : .white))
+                                }
+                                .buttonStyle(PressableStyle())
+                                .accessibilityLabel("Modell \(v)")
+                            }
+                        }
+                    }
                     colorRow("Dach", selection: $roof)
                     colorRow("Wände", selection: $bodyColor)
                     HStack(spacing: 8) {
