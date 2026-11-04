@@ -547,7 +547,7 @@ struct WorkshopView: View {
                     colorRow("Dach", selection: $roof)
                     colorRow("Wände", selection: $bodyColor)
                     HStack(spacing: 8) {
-                        Text("Muster").font(Theme.rounded(18, .bold)).frame(width: 90, alignment: .leading)
+                        Text("Muster").font(Theme.rounded(18, .bold)).frame(width: 96, alignment: .leading)
                         ForEach(WorldPattern.allCases) { p in
                             Button { pattern = p; model.app.audio.sfx("gw_sfx_pinsel", fallback: .tap) } label: {
                                 Text(p.symbol).font(.system(size: 26, weight: .bold))
@@ -558,7 +558,7 @@ struct WorkshopView: View {
                         }
                     }
                     HStack(spacing: 8) {
-                        Text("Glitzer").font(Theme.rounded(18, .bold)).frame(width: 90, alignment: .leading)
+                        Text("Glitzer").font(Theme.rounded(18, .bold)).frame(width: 96, alignment: .leading)
                         Button { glitter = nil; model.app.audio.effect(.tap) } label: {
                             Text("–").font(.system(size: 26, weight: .bold))
                                 .frame(width: 50, height: 50)
@@ -578,7 +578,7 @@ struct WorkshopView: View {
                     let finds = FindItem.allCases.filter { (model.w.finds[$0.rawValue] ?? 0) > 0 }
                     if !finds.isEmpty {
                         HStack(spacing: 8) {
-                            Text("Verzierung").font(Theme.rounded(18, .bold)).frame(width: 90, alignment: .leading)
+                            Text("Verzierung").font(Theme.rounded(18, .bold)).lineLimit(1).minimumScaleFactor(0.7).frame(width: 96, alignment: .leading)
                             ForEach(finds) { f in
                                 Button { deco = deco == f ? nil : f; model.app.audio.effect(.tap) } label: {
                                     WorldPic(f.asset, f.emoji, size: 40)
@@ -596,21 +596,27 @@ struct WorkshopView: View {
     }
 
     private func colorRow(_ title: String, selection: Binding<WorldColor>) -> some View {
-        HStack(alignment: .top, spacing: 6) {
-            Text(title).font(Theme.rounded(18, .bold)).frame(width: 90, alignment: .leading).padding(.top, 12)
-            // Zwei Reihen, damit auch Gold und Silber Platz haben
-            LazyVGrid(columns: Array(repeating: GridItem(.fixed(48), spacing: 4), count: 7), spacing: 4) {
-            ForEach(WorldColor.allCases) { c in
-                Button {
-                    selection.wrappedValue = c
-                    model.app.audio.sfx("gw_sfx_pinsel", fallback: .tap)
-                } label: {
-                    Circle().fill(c.color).frame(width: 40, height: 40)
-                        .overlay(Circle().stroke(Theme.darkGreen, lineWidth: selection.wrappedValue == c ? 4 : 1).padding(-3))
-                        .frame(width: 48, height: 48)
+        let all = WorldColor.allCases
+        let rows = [Array(all.prefix(7)), Array(all.dropFirst(7))]
+        return HStack(alignment: .top, spacing: 6) {
+            Text(title).font(Theme.rounded(18, .bold)).frame(width: 96, alignment: .leading).padding(.top, 12)
+            // Zwei feste Reihen, damit auch Gold und Silber Platz haben
+            VStack(alignment: .leading, spacing: 4) {
+                ForEach(rows.indices, id: \.self) { r in
+                    HStack(spacing: 4) {
+                        ForEach(rows[r]) { c in
+                            Button {
+                                selection.wrappedValue = c
+                                model.app.audio.sfx("gw_sfx_pinsel", fallback: .tap)
+                            } label: {
+                                Circle().fill(c.color).frame(width: 40, height: 40)
+                                    .overlay(Circle().stroke(Theme.darkGreen, lineWidth: selection.wrappedValue == c ? 4 : 1).padding(-3))
+                                    .frame(width: 48, height: 48)
+                            }
+                            .accessibilityLabel(c.name)
+                        }
+                    }
                 }
-                .accessibilityLabel(c.name)
-            }
             }
         }
     }
