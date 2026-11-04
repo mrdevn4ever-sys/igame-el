@@ -442,8 +442,9 @@ struct WorkshopView: View {
             placed = k.parts.map(\.key)
             phase = .paint
             roof = .gold
-            glitter = .regenbogen
-            pattern = .regenbogen
+            glitter = DemoMode.flag("-ohneglitzer") ? nil : .regenbogen
+            pattern = DemoMode.value("-muster").flatMap(WorldPattern.init(rawValue:)) ?? .regenbogen
+            if pattern != .regenbogen { bodyColor = .blau }
             return
         }
         model.say("Wir bauen \(k.accusativeName). Tippe auf die Teile, dann kommen sie an ihren Platz.")

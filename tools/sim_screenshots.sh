@@ -156,6 +156,9 @@ run 130_garten_kueche 6 0 -screen garden -world voll -overlay kitchen
 run 131_garten_werkstatt 6 0 -screen garden -world voll -overlay workshop
 run 131b_garten_werkstatt_teile 6 0 -screen garden -world voll -overlay workshop -teile
 run 131c_garten_werkstatt_bemalen 6 0 -screen garden -world voll -overlay workshop -bemalen
+for m in punkte herzen streifen sterne blumen karos; do
+  run "131d_werkstatt_muster_$m" 6 0 -screen garden -world voll -overlay workshop -bemalen -ohneglitzer -muster $m
+done
 # Küche: Zutaten- und Fertigschritt
 run 160_kueche_zutaten 6 0 -screen garden -world voll -overlay kitchen -rezept salatteller
 run 160b_kueche_fertig 6 0 -screen garden -world voll -overlay kitchen -rezept erdbeerschale -fertig
