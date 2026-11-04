@@ -473,7 +473,9 @@ final class AtelierModel {
     }
 
     private func chooseInstruction() {
-        host.setInstruction("Möchtest du Wege nachfahren oder frei malen?")
+        host.setInstruction(host.options.atelierModes.contains("zahlen")
+            ? "Möchtest du Wege nachfahren, nach Zahlen malen oder frei malen?"
+            : "Möchtest du Wege nachfahren oder frei malen?")
     }
 
     func choose(_ m: AtelierState.Mode) {

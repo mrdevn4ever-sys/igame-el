@@ -155,7 +155,7 @@ enum NumberPictures {
             NPGeo.region(2, 0.5, 0.9, NPGeo.rect(0, 0.8, 1, 0.2)),
             NPGeo.region(3, 0.135, 0.72, NPGeo.poly([(0.09, 0.82), (0.07, 0.52), (0.17, 0.6), (0.19, 0.82)])),
             NPGeo.region(3, 0.87, 0.71, NPGeo.poly([(0.82, 0.82), (0.85, 0.48), (0.93, 0.58), (0.92, 0.82)])),
-            NPGeo.region(1, 0.47, 0.26, NPGeo.poly([(0.36, 0.33), (0.48, 0.2), (0.56, 0.33)])),
+            NPGeo.region(1, 0.47, 0.235, NPGeo.poly([(0.33, 0.34), (0.48, 0.15), (0.59, 0.34)])),
             NPGeo.region(1, 0.73, 0.45, NPGeo.poly([(0.6, 0.45), (0.79, 0.29), (0.79, 0.61)])),
             NPGeo.region(1, 0.45, 0.47, NPGeo.ellipse(0.44, 0.45, 0.2, 0.17))
         ],
@@ -176,12 +176,12 @@ enum NumberPictures {
             NPGeo.region(3, 0.61, 0.6, NPGeo.ellipse(0.61, 0.6, 0.09, 0.05))
         ] + (0..<6).map { i -> NumberRegion in
             let a = -CGFloat.pi / 2 + CGFloat(i) * CGFloat.pi / 3
-            let cx = 0.5 + 0.115 * cos(a), cy = 0.33 + 0.115 * sin(a) * NPGeo.aspect
-            return NPGeo.region(1, 0.5 + 0.13 * cos(a), 0.33 + 0.13 * sin(a) * NPGeo.aspect, NPGeo.circle(cx, cy, 0.075))
+            let cx = 0.5 + 0.128 * cos(a), cy = 0.33 + 0.128 * sin(a) * NPGeo.aspect
+            return NPGeo.region(1, cx, cy, NPGeo.circle(cx, cy, 0.062))
         } + [
-            NPGeo.region(2, 0.5, 0.33, NPGeo.circle(0.5, 0.33, 0.065))
+            NPGeo.region(2, 0.5, 0.33, NPGeo.circle(0.5, 0.33, 0.064))
         ],
-        decor: [NumberDecor(path: NPGeo.line([(0.5, 0.59), (0.5, 0.83)]), fill: false, width: 9)]
+        decor: [NumberDecor(path: NPGeo.line([(0.5, 0.58), (0.5, 0.83)]), fill: false, width: 9)]
     )
 
     static let rakete = NumberPicture(
@@ -512,12 +512,25 @@ struct NumberPaintView: View {
     private func regionLabel(_ i: Int, width: CGFloat) -> some View {
         let text = model.label(forRegion: i)
         let base = max(min(width / 22, 40), 22)
+        if model.tier == .punkte {
+            // Punkte zum Zählen: grosse, deutliche Kreise
+            let n = model.number(ofGroup: model.picture.regions[i].group)
+            HStack(spacing: base * 0.22) {
+                ForEach(0..<n, id: \.self) { _ in
+                    Circle().fill(Theme.darkGreen).frame(width: base * 0.5, height: base * 0.5)
+                }
+            }
+            .padding(.horizontal, 8).padding(.vertical, 5)
+            .background(Capsule().fill(.white.opacity(0.75)))
+            .fixedSize()
+        } else {
         Text(text)
             .font(Theme.rounded(model.tier == .punkte ? base * 1.1 : (model.tier == .rechnen ? base * 0.8 : base), .heavy))
             .foregroundStyle(Theme.darkGreen)
             .padding(.horizontal, 6)
             .background(Capsule().fill(.white.opacity(0.75)))
             .fixedSize()
+        }
     }
 
     private var pots: some View {

@@ -155,19 +155,9 @@ run 128e_garten_bach_panorama_rechts 7 0 -screen garden -world voll -area bach -
 run 130_garten_kueche 6 0 -screen garden -world voll -overlay kitchen
 run 131_garten_werkstatt 6 0 -screen garden -world voll -overlay workshop
 run 131b_garten_werkstatt_teile 6 0 -screen garden -world voll -overlay workshop -teile
-# Kleinere iPad-Fläche (iPad mini quer): nichts darf abgeschnitten sein
-K="-flaeche 1133x744"
-run 160_klein_kueche_rezepte 6 0 -screen garden -world voll -overlay kitchen $K
-run 160b_klein_kueche_zutaten 6 0 -screen garden -world voll -overlay kitchen -rezept salatteller $K
-run 160c_klein_kueche_fertig 6 0 -screen garden -world voll -overlay kitchen -rezept erdbeerschale -fertig $K
-run 161_klein_werkstatt 6 0 -screen garden -world voll -overlay workshop $K
-run 161b_klein_werkstatt_teile 6 0 -screen garden -world voll -overlay workshop -teile $K
-run 162_klein_hub 5 0 -screen hub -page 0 $K
-run 163_klein_atelier_wahl 6 0 -screen game -game atelier $K
-run 164_klein_zahlen 12 0 -screen game -game atelier -atelier zahlen -autoplay -steps 3 -zaehlniveau 2 $K
-run 165_klein_koerper 8 0 -screen game -game koerper $K
-run 166_klein_runde 45 0 -screen game -game counting -autoplay $K
-run 167_klein_garten 6 0 -screen garden -world voll $K
+# Küche: Zutaten- und Fertigschritt
+run 160_kueche_zutaten 6 0 -screen garden -world voll -overlay kitchen -rezept salatteller
+run 160b_kueche_fertig 6 0 -screen garden -world voll -overlay kitchen -rezept erdbeerschale -fertig
 run 132_garten_karte 6 0 -screen garden -world mitte -overlay map
 run 133_garten_buch 6 0 -screen garden -world voll -overlay book
 run 134_garten_samen 6 0 -screen garden -world voll -overlay seeds

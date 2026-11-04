@@ -67,6 +67,7 @@ struct KitchenView: View {
                         VStack(spacing: 6) {
                             WorldPic(d.asset, d.emoji, size: 90)
                             Text(d.name).font(Theme.rounded(18, .heavy)).foregroundStyle(Theme.darkGreen)
+                                .lineLimit(2).multilineTextAlignment(.center).minimumScaleFactor(0.75)
                             HStack(spacing: 2) {
                                 if d == .eigenerTeller {
                                     Text("Alles, was du magst").font(Theme.rounded(13, .medium)).foregroundStyle(Theme.darkGreen.opacity(0.7))
