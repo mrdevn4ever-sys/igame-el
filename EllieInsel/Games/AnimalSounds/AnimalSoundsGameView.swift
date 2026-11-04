@@ -293,7 +293,9 @@ final class AnimalSoundsModel {
     }
 
     private func makeTasks() -> [AnimalTask] {
-        var animals = SoundAnimal.allCases.shuffled()
+        // Abwechslung: Tiere, die am längsten nicht dran waren, zuerst
+        var animals = Variety.freshFirst(SoundAnimal.allCases, recent: host.app.recent(.animalSounds), key: \.rawValue)
+        host.app.remember(.animalSounds, animals.prefix(host.tasksPerRound).map(\.rawValue))
         var result: [AnimalTask] = []
         for _ in 0..<host.tasksPerRound {
             let target = animals.removeFirst()

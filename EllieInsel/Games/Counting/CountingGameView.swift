@@ -38,7 +38,9 @@ enum CountingFactory {
         return pts
     }
 
-    static func round(level: Int, modes: Set<String>, count: Int) -> [CountingTask] {
+    static func key(_ t: CountingTask) -> String { "\(t.mode)\(t.count)\(t.motif)" }
+
+    static func round(level: Int, modes: Set<String>, count: Int, recent: [String] = []) -> [CountingTask] {
         let r = range(level: level)
         let optionCount = LevelCatalog.counting(level).options
         var allowed: [CountingTask.Mode] = []
@@ -49,11 +51,19 @@ enum CountingFactory {
         var lastCount = -1
         for i in 0..<count {
             let mode = allowed[i % allowed.count]
+            // Menge und Motiv so wählen, dass die Kombination in den letzten sechs Runden nicht dran war
             var n = Int.random(in: r)
+            var motif = motifs.randomElement()!
+            for _ in 0..<40 {
+                let k = "\(mode)\(n)\(motif)"
+                let inRound = tasks.contains { $0.count == n && $0.motif == motif }
+                if n != lastCount && !inRound && !Variety.isRecent(k, in: recent, perRound: count) { break }
+                n = Int.random(in: r)
+                motif = motifs.randomElement()!
+            }
             if n == lastCount { n = n == r.upperBound ? n - 1 : n + 1 }
             n = max(r.lowerBound, n)
             lastCount = n
-            let motif = motifs.randomElement()!
             switch mode {
             case .howMany:
                 let positions = arrangement(count: n, seed: UInt64.random(in: 1...UInt64.max))
@@ -277,7 +287,9 @@ final class CountingModel {
             if host.awaitingNext { host.next(); return }
             instruct()
         } else {
-            tasks = CountingFactory.round(level: host.level, modes: host.options.countingModes, count: host.tasksPerRound)
+            tasks = CountingFactory.round(level: host.level, modes: host.options.countingModes, count: host.tasksPerRound,
+                                          recent: host.app.recent(.counting))
+            host.app.remember(.counting, tasks.map(CountingFactory.key))
             index = 0
             present()
         }

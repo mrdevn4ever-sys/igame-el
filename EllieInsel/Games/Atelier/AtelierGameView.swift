@@ -482,7 +482,10 @@ final class AtelierModel {
         mode = m
         switch m {
         case .paths:
-            pathIDs = AtelierPaths.paths(for: spec.pathLevel).shuffled().prefix(host.tasksPerRound).map(\.id)
+            // Abwechslung: Wege, die am längsten nicht dran waren, zuerst
+            pathIDs = Variety.freshFirst(AtelierPaths.paths(for: spec.pathLevel), recent: host.app.recent(.atelier), key: { "weg\($0.id)" })
+                .prefix(host.tasksPerRound).map(\.id)
+            host.app.remember(.atelier, pathIDs.map { "weg\($0)" })
             pathIndex = 0
             loadPath(keeping: nil)
         case .zahlen:

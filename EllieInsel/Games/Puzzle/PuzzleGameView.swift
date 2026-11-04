@@ -281,8 +281,9 @@ final class PuzzleModel {
             if showingPreview { runPreview() } else { host.setInstruction("Setz das Bild wieder zusammen.") }
         } else {
             pieces = LevelCatalog.puzzle(host.level).pieces
-            let done = host.app.data.roundsCompleted[GameID.puzzle.rawValue] ?? 0
-            sceneIndex = (done + Int.random(in: 0..<3)) % PuzzleCatalog.scenes.count
+            // Abwechslung: das Bild, das am längsten nicht dran war
+            sceneIndex = Variety.freshFirst(Array(PuzzleCatalog.scenes.indices), recent: host.app.recent(.puzzle), key: { "bild\($0)" })[0]
+            host.app.remember(.puzzle, ["bild\(sceneIndex)"])
             placed = []
             trayOrder = Array(0..<pieces).shuffled()
             showingPreview = true

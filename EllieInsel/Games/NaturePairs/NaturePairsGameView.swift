@@ -294,11 +294,15 @@ final class NaturePairsModel {
             var pool = NatureCatalog.questions.filter { allowed.contains($0.relation) }
             if pool.isEmpty { pool = NatureCatalog.questions }
             // Eine Runde verwendet eine klar bezeichnete Beziehung, wenn genügend Fragen vorhanden sind.
-            let relation = Set(pool.map(\.relation)).randomElement()!
-            var picked = pool.filter { $0.relation == relation }.shuffled()
+            // Abwechslung: Fragen, die am längsten nicht dran waren, zuerst.
+            let recent = host.app.recent(.naturePairs)
+            let ordered = Variety.freshFirst(pool, recent: recent, key: { $0.relation + ":" + $0.subject.name })
+            let relation = ordered[0].relation
+            var picked = ordered.filter { $0.relation == relation }
             if picked.count < host.tasksPerRound {
-                picked += pool.filter { $0.relation != relation }.shuffled()
+                picked += ordered.filter { $0.relation != relation }
             }
+            host.app.remember(.naturePairs, picked.prefix(host.tasksPerRound).map { $0.relation + ":" + $0.subject.name })
             tasks = picked.prefix(host.tasksPerRound).map {
                 NatureCatalog.variant(of: $0, level: host.level, seed: UInt64.random(in: 1...UInt64.max))
             }

@@ -281,6 +281,7 @@ final class TracingModel {
             introduce()
         } else {
             digits = makeDigits()
+            host.app.remember(.tracing, digits.map { "\($0)" })
             index = 0
             loadDigit()
         }
@@ -298,7 +299,8 @@ final class TracingModel {
         if pool.contains(3), (host.app.data.roundsCompleted[GameID.tracing.rawValue] ?? 0) == 0 {
             return [3] + Array(pool.filter { $0 != 3 }.shuffled().prefix(host.tasksPerRound - 1))
         }
-        return Array(pool.shuffled().prefix(host.tasksPerRound))
+        // Ziffern, die am längsten nicht dran waren, zuerst
+        return Array(Variety.freshFirst(pool, recent: host.app.recent(.tracing), key: { "\($0)" }).prefix(host.tasksPerRound)).shuffled()
     }
 
     private func loadDigit() {

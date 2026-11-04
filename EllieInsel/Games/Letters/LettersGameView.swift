@@ -70,31 +70,16 @@ enum LetterTasks {
         coveragePool(level: level).filter { !done.contains($0) }
     }
 
-    /// Auswahl für eine Runde, in dieser Reihenfolge:
-    /// 1. noch nie geschriebene Buchstaben, die in der letzten Runde nicht dran waren,
-    /// 2. andere Buchstaben, die in der letzten Runde nicht dran waren (unsichere leicht bevorzugt),
-    /// 3. erst dann Wiederholungen aus der letzten Runde (noch nie geschriebene zuerst).
-    /// So kommt nie dieselbe Runde zweimal hintereinander; die Reihenfolge wird gemischt.
-    static func pick(_ pool: [String], count: Int, known: [String: Int], done: Set<String> = [], avoid: [String] = []) -> [String] {
-        let fresh = pool.filter { !avoid.contains($0) }
-        let repeats = pool.filter { avoid.contains($0) }
-        var out: [String] = []
-        func take(_ list: [String]) {
-            var rest = list.filter { !out.contains($0) }
-            while out.count < count, !rest.isEmpty {
-                // Unsichere Buchstaben höchstens dreimal so oft wie sichere
-                let weights = rest.map { 1.0 / (1 + Double(min(known[$0] ?? 0, 4)) * 0.5) }
-                var r = Double.random(in: 0..<weights.reduce(0, +))
-                var i = 0
-                while i < weights.count - 1, r >= weights[i] { r -= weights[i]; i += 1 }
-                out.append(rest.remove(at: i))
-            }
+    /// Auswahl für eine Runde: zuerst Buchstaben, die am längsten nicht mehr dran waren
+    /// (über die letzten Runden gemerkt); bei gleichem Abstand noch nie geschriebene zuerst.
+    /// So kommt innerhalb von sechs Runden nichts doppelt, solange der Vorrat reicht; die Reihenfolge ist gemischt.
+    static func pick(_ pool: [String], count: Int, known: [String: Int], done: Set<String> = [], avoid recent: [String] = []) -> [String] {
+        let ordered = pool.shuffled().sorted { a, b in
+            let ageA = Variety.age(a, in: recent), ageB = Variety.age(b, in: recent)
+            if ageA != ageB { return ageA > ageB }
+            return !done.contains(a) && done.contains(b)
         }
-        take(fresh.filter { !done.contains($0) })
-        take(fresh)
-        take(repeats.filter { !done.contains($0) })
-        take(repeats)
-        return out.shuffled()
+        return Array(ordered.prefix(count)).shuffled()
     }
 
     static func options(_ answer: String, from pool: [String], count: Int) -> [String] {
@@ -114,8 +99,7 @@ enum LetterTasks {
         }
         /// Wörter: zuerst solche, die in der letzten Runde nicht dran waren.
         func freshWords(_ list: [WordInfo]) -> [WordInfo] {
-            let s = list.shuffled()
-            return s.filter { !avoid.contains($0.word) } + s.filter { avoid.contains($0.word) }
+            Variety.freshFirst(list, recent: avoid, key: \.word)
         }
         let upper = LetterCatalog.allUpper
         switch level {
@@ -491,9 +475,8 @@ final class LettersModel {
             if host.awaitingNext { host.next(); return }
         } else {
             tasks = LetterTasks.round(level: host.level, known: host.app.data.letters, done: host.app.data.lettersDone,
-                                     name: host.app.data.profile.name, avoid: host.app.data.lettersLastRound)
-            let used = tasks.map(\.subjectKey)
-            host.app.update { $0.lettersLastRound = used }
+                                     name: host.app.data.profile.name, avoid: host.app.recent(.abc))
+            host.app.remember(.abc, tasks.map(\.subjectKey))
         }
         host.setTasksPerRound(tasks.count)
         present()

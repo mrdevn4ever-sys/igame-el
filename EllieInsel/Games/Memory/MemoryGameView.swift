@@ -187,15 +187,18 @@ final class MemoryModel {
     func stop() { flipTask?.cancel() }
 
     private func newBoard() {
-        let g = MemoryCatalog.groups.randomElement()!
-        var pool = g.motifs.shuffled()
+        // Abwechslung: Gruppe und Tiere, die am längsten nicht dran waren, zuerst
+        let recent = host.app.recent(.memory)
+        let g = Variety.freshFirst(MemoryCatalog.groups, recent: recent, key: { "gruppe:" + $0.title })[0]
+        var pool = Variety.freshFirst(g.motifs, recent: recent, key: \.name)
         group = g.title
         if pairs > pool.count {
             // Mehr Paare als eine Themengruppe hat: Gruppen mischen.
-            pool += MemoryCatalog.groups.filter { $0.title != g.title }.flatMap { $0.motifs }.shuffled()
+            pool += Variety.freshFirst(MemoryCatalog.groups.filter { $0.title != g.title }.flatMap { $0.motifs }, recent: recent, key: \.name)
             group = "Tiere"
         }
         let motifs = Array(pool.prefix(pairs))
+        host.app.remember(.memory, ["gruppe:" + g.title] + motifs.map(\.name))
         var list: [MemoryCard] = []
         for (i, m) in (motifs + motifs).enumerated() {
             list.append(MemoryCard(id: i, motif: m))

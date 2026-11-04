@@ -19,32 +19,47 @@ struct BodyState: Codable {
 }
 
 enum BodyTasks {
-    /// Vier Aufgaben pro Runde, je nach Niveau.
-    static func round(level: Int) -> [BodyTaskKind] {
+    /// Schlüssel für «kam kürzlich schon» (Körperteil, Sinnesfrage, Herzszene).
+    static func keys(_ tasks: [BodyTaskKind]) -> [String] {
+        tasks.compactMap { t in
+            switch t {
+            case .zeigen(let p), .suchen(let p): return "p:" + p.rawValue
+            case .funktion(let p, _): return "f:" + p.rawValue
+            case .sinn(let q, _): return "s:" + q.question
+            case .herz(let s, _): return "h:" + s.image
+            default: return nil
+            }
+        }
+    }
+
+    /// Vier Aufgaben pro Runde, je nach Niveau. Was in den letzten Runden dran war, kommt zuletzt.
+    static func round(level: Int, recent: [String] = []) -> [BodyTaskKind] {
         let organSearch: [BodyPart] = [.gehirn, .herz, .lunge, .magen]
         let withFunction = BodyPart.allCases.filter { $0.functionQuestion != nil }
+        func parts(_ list: [BodyPart]) -> [BodyPart] { Variety.freshFirst(list, recent: recent, key: { "p:" + $0.rawValue }) }
+        func funcs(_ list: [BodyPart]) -> [BodyPart] { Variety.freshFirst(list, recent: recent, key: { "f:" + $0.rawValue }) }
+        let senses = Variety.freshFirst(SenseCatalog.questions, recent: recent, key: { "s:" + $0.question })
         switch level {
         case ...1:
-            return BodyPart.outer.shuffled().prefix(4).map { BodyTaskKind.zeigen($0) }
+            return parts(BodyPart.outer).prefix(4).map { BodyTaskKind.zeigen($0) }
         case 2:
-            let face = BodyPart.face.shuffled().prefix(2).map { BodyTaskKind.zeigen($0) }
-            let senses = SenseCatalog.questions.shuffled().prefix(2).map { sense($0, options: 3) }
-            return [face[0], senses[0], face[1], senses[1]]
+            let face = parts(BodyPart.face).prefix(2).map { BodyTaskKind.zeigen($0) }
+            let s = senses.prefix(2).map { sense($0, options: 3) }
+            return [face[0], s[0], face[1], s[1]]
         case 3:
-            let parts = organSearch.shuffled()
-            return [.entdecken([.organe]), .suchen(parts[0]), function(parts[2], options: 3), .suchen(parts[1])]
+            let p = parts(organSearch)
+            return [.entdecken([.organe]), .suchen(p[0]), function(funcs([p[2], p[3]])[0], options: 3), .suchen(p[1])]
         case 4:
             return [.entdecken([.organe, .knochen, .adern, .muskeln]),
-                    .suchen(BodyPart.bones.randomElement()!),
-                    heart(),
-                    function(withFunction.randomElement()!, options: 3)]
+                    .suchen(parts(BodyPart.bones)[0]),
+                    heart(recent),
+                    function(funcs(withFunction)[0], options: 3)]
         case 5:
-            return [function(withFunction.randomElement()!, options: 4), .weg, heart(),
-                    sense(SenseCatalog.questions.randomElement()!, options: 5)]
+            return [function(funcs(withFunction)[0], options: 4), .weg, heart(recent),
+                    sense(senses[0], options: 5)]
         default:
-            let search = (organSearch + BodyPart.bones).randomElement()!
-            return [.puzzle([.gehirn, .lunge, .herz, .magen]), .weg, .suchen(search),
-                    function(withFunction.randomElement()!, options: 4)]
+            return [.puzzle([.gehirn, .lunge, .herz, .magen]), .weg, .suchen(parts(organSearch + BodyPart.bones)[0]),
+                    function(funcs(withFunction)[0], options: 4)]
         }
     }
 
@@ -58,8 +73,8 @@ enum BodyTasks {
         return .sinn(q, ([q.answer] + others.prefix(options - 1)).shuffled())
     }
 
-    static func heart() -> BodyTaskKind {
-        .herz(HeartCatalog.scenes.randomElement()!, fastLeft: Bool.random())
+    static func heart(_ recent: [String] = []) -> BodyTaskKind {
+        .herz(Variety.freshFirst(HeartCatalog.scenes, recent: recent, key: { "h:" + $0.image })[0], fastLeft: Bool.random())
     }
 }
 
@@ -677,7 +692,8 @@ final class BodyModel {
             if host.awaitingNext { host.next(); return }
             present()
         } else {
-            tasks = BodyTasks.round(level: host.level)
+            tasks = BodyTasks.round(level: host.level, recent: host.app.recent(.koerper))
+            host.app.remember(.koerper, BodyTasks.keys(tasks))
             index = 0
             present()
         }

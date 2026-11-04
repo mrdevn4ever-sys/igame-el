@@ -171,6 +171,24 @@ final class AppModel {
         }
     }
 
+    // MARK: - Abwechslung
+
+    /// Inhalte der letzten Runden dieses Spiels (neueste zuerst).
+    func recent(_ game: GameID) -> [String] {
+        data.recentContent[game.rawValue] ?? []
+    }
+
+    /// Merkt sich die Inhalte einer neuen Runde, damit sie in den nächsten Runden nicht gleich wiederkommen.
+    func remember(_ game: GameID, _ keys: [String]) {
+        guard !keys.isEmpty else { return }
+        update { d in
+            var list = d.recentContent[game.rawValue] ?? []
+            list.removeAll { keys.contains($0) }
+            list.insert(contentsOf: keys, at: 0)
+            d.recentContent[game.rawValue] = Array(list.prefix(Variety.memory))
+        }
+    }
+
     // MARK: - Atelier-Schätze
 
     /// Nach einer Lernrunde: den nächsten Atelier-Schatz entdecken (höchstens einer pro Runde).

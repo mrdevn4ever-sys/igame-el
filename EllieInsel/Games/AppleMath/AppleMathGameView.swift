@@ -97,7 +97,10 @@ enum MathTaskFactory {
     /// Motive beim Rechnen: Äpfel, Karotten und Käfer.
     static let motifs: [CountMotif] = [.apfel, .karotte, .kaefer]
 
-    static func round(level: Int, operations: Set<String>, count: Int) -> [MathTask] {
+    /// Schlüssel für «diese Aufgabe kam kürzlich schon».
+    static func key(_ t: MathTask) -> String { "\(t.op.rawValue)\(t.a)_\(t.b)_\(t.c ?? 0)" }
+
+    static func round(level: Int, operations: Set<String>, count: Int, recent: [String] = []) -> [MathTask] {
         let spec = LevelCatalog.math(level)
         let allowMinus = spec.allowMinus && operations.contains("minus")
         let allowPlus = operations.contains("plus") || !allowMinus
@@ -107,7 +110,8 @@ enum MathTaskFactory {
         let minTotal = spec.maxTotal >= 20 ? 8 : spec.maxTotal >= 10 ? 4 : 2
         var curatedPool = curated.filter { c in
             let top = c.2 == .plus ? c.0 + c.1 : c.0
-            return spec.kind == .basic && top >= minTotal
+            let k = "\(c.2.rawValue)\(c.0)_\(c.1)_0"
+            return spec.kind == .basic && top >= minTotal && !Variety.isRecent(k, in: recent, perRound: count)
                 && (c.2 == .plus ? allowPlus && top <= spec.maxTotal : allowMinus && top <= spec.maxTotal)
         }.shuffled()
         var tasks: [MathTask] = []
@@ -150,6 +154,8 @@ enum MathTaskFactory {
                                 story: spec.story && (op == .plus || op == .minus), options: [],
                                 c: c, symbols: kind == .symbols ? true : nil)
             if tasks.contains(where: { $0.a == task.a && $0.b == task.b && $0.op == task.op && $0.c == task.c }) { continue }
+            // Aufgaben der letzten sechs Runden auslassen (solange es genug andere gibt)
+            if attempts < 220, Variety.isRecent(key(task), in: recent, perRound: count) { continue }
             task.options = options(for: task, count: spec.options, maxValue: spec.maxTotal + 2, avoidIndex: lastAnswerIndex)
             lastAnswerIndex = task.options.firstIndex(of: task.answer) ?? -1
             tasks.append(task)
@@ -385,7 +391,9 @@ final class AppleMathModel {
             if host.awaitingNext { host.next(); return }
             present()
         } else {
-            tasks = MathTaskFactory.round(level: host.level, operations: host.options.mathOperations, count: host.tasksPerRound)
+            tasks = MathTaskFactory.round(level: host.level, operations: host.options.mathOperations, count: host.tasksPerRound,
+                                          recent: host.app.recent(.appleMath))
+            host.app.remember(.appleMath, tasks.map(MathTaskFactory.key))
             index = 0
             present()
         }

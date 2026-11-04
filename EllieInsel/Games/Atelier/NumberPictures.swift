@@ -289,7 +289,9 @@ final class NumberPaintModel {
             state = restored
         } else {
             let tier = NumberTier.forCountingLevel(host.app.data.level(for: .counting))
-            let ids = Array(tier.pictures.shuffled().prefix(host.tasksPerRound))
+            // Abwechslung: Bilder, die am längsten nicht dran waren, zuerst
+            let ids = Array(Variety.freshFirst(tier.pictures, recent: host.app.recent(.atelier), key: { "bild:" + $0 }).prefix(host.tasksPerRound))
+            host.app.remember(.atelier, ids.map { "bild:" + $0 })
             state = NumberPaintState(tier: tier, pictureIDs: ids, index: 0, numbers: [], addends: [], filled: [])
             prepare()
         }

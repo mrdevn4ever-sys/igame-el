@@ -232,7 +232,11 @@ final class ShapesModel {
             if host.awaitingNext { host.next(); return }
             host.setInstruction("Welche Form passt hier hinein?")
         } else {
-            boards = Array(ShapeBoards.boards(level: host.level).shuffled().prefix(host.tasksPerRound))
+            // Abwechslung: Formenhäuser, die am längsten nicht dran waren, zuerst
+            let all = Array(ShapeBoards.boards(level: host.level).enumerated())
+            let chosen = Variety.freshFirst(all, recent: host.app.recent(.shapes), key: { "h\(host.level)_\($0.offset)" }).prefix(host.tasksPerRound)
+            boards = chosen.map { $0.element }
+            host.app.remember(.shapes, chosen.map { "h\(host.level)_\($0.offset)" })
             index = 0
             present()
         }
