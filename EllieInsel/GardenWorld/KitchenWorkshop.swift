@@ -377,6 +377,7 @@ struct WorkshopView: View {
     @State private var bodyColor: WorldColor = .natur
     @State private var pattern: WorldPattern = .keins
     @State private var deco: FindItem?
+    @State private var glitter: BuildGlitter?
 
     var body: some View {
         WorldPanel(title: "Werkstatt", background: "gw_szene_werkstatt_innen", close: { model.overlay = nil }) {
@@ -434,8 +435,17 @@ struct WorkshopView: View {
         bodyColor = .natur
         pattern = .keins
         deco = nil
+        glitter = nil
         phase = .assemble
         if DemoMode.flag("-teile") { placed = k.parts.prefix(3).map(\.key) }
+        if DemoMode.flag("-bemalen") {
+            placed = k.parts.map(\.key)
+            phase = .paint
+            roof = .gold
+            glitter = .regenbogen
+            pattern = .regenbogen
+            return
+        }
         model.say("Wir bauen \(k.accusativeName). Tippe auf die Teile, dann kommen sie an ihren Platz.")
     }
 
@@ -522,11 +532,11 @@ struct WorkshopView: View {
         HStack(spacing: 30) {
             if let k = kind {
                 VStack {
-                    BuiltObjectView(kind: k, roof: roof, bodyColor: bodyColor, pattern: pattern, decoration: deco, size: 320)
+                    BuiltObjectView(kind: k, roof: roof, bodyColor: bodyColor, pattern: pattern, decoration: deco, glitter: glitter, size: 300)
                         .animation(.easeInOut(duration: 0.2), value: roof)
                     Button {
                         if let d = deco { model.edit { $0.finds[d.rawValue, default: 1] -= 1; if ($0.finds[d.rawValue] ?? 0) <= 0 { $0.finds[d.rawValue] = nil } } }
-                        model.finishBuild(BuiltObject(kind: k, area: model.area, x: 0.5, y: 0.8, roof: roof, body: bodyColor, pattern: pattern, decoration: deco))
+                        model.finishBuild(BuiltObject(kind: k, area: model.area, x: 0.5, y: 0.8, roof: roof, body: bodyColor, pattern: pattern, decoration: deco, glitter: glitter))
                     } label: {
                         Label("Aufstellen", systemImage: "checkmark.circle.fill")
                     }
@@ -544,6 +554,24 @@ struct WorkshopView: View {
                                     .background(RoundedRectangle(cornerRadius: 12).fill(pattern == p ? Theme.highlight.opacity(0.6) : .white))
                             }
                             .accessibilityLabel(p.name)
+                        }
+                    }
+                    HStack(spacing: 8) {
+                        Text("Glitzer").font(Theme.rounded(18, .bold)).frame(width: 90, alignment: .leading)
+                        Button { glitter = nil; model.app.audio.effect(.tap) } label: {
+                            Text("–").font(.system(size: 26, weight: .bold))
+                                .frame(width: 50, height: 50)
+                                .background(RoundedRectangle(cornerRadius: 12).fill(glitter == nil ? Theme.highlight.opacity(0.6) : .white))
+                        }
+                        .accessibilityLabel("ohne Glitzer")
+                        ForEach(BuildGlitter.allCases) { g in
+                            Button { glitter = g; model.app.audio.sfx("gw_sfx_zauber", fallback: .tap) } label: {
+                                Circle().fill(g.swatch).frame(width: 40, height: 40)
+                                    .overlay(Image(systemName: "sparkles").font(.system(size: 18, weight: .bold)).foregroundStyle(.white).shadow(radius: 1))
+                                    .overlay(Circle().stroke(Theme.darkGreen, lineWidth: glitter == g ? 4 : 1).padding(-3))
+                                    .frame(width: 50, height: 50)
+                            }
+                            .accessibilityLabel(g.name)
                         }
                     }
                     let finds = FindItem.allCases.filter { (model.w.finds[$0.rawValue] ?? 0) > 0 }
@@ -567,8 +595,10 @@ struct WorkshopView: View {
     }
 
     private func colorRow(_ title: String, selection: Binding<WorldColor>) -> some View {
-        HStack(spacing: 6) {
-            Text(title).font(Theme.rounded(18, .bold)).frame(width: 90, alignment: .leading)
+        HStack(alignment: .top, spacing: 6) {
+            Text(title).font(Theme.rounded(18, .bold)).frame(width: 90, alignment: .leading).padding(.top, 12)
+            // Zwei Reihen, damit auch Gold und Silber Platz haben
+            LazyVGrid(columns: Array(repeating: GridItem(.fixed(48), spacing: 4), count: 7), spacing: 4) {
             ForEach(WorldColor.allCases) { c in
                 Button {
                     selection.wrappedValue = c
@@ -579,6 +609,7 @@ struct WorkshopView: View {
                         .frame(width: 48, height: 48)
                 }
                 .accessibilityLabel(c.name)
+            }
             }
         }
     }

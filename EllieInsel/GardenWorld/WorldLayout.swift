@@ -22,9 +22,10 @@ enum WorldPanorama {
 @MainActor
 enum WorldLayout {
     // Hausgarten
-    static let beds: [CGPoint] = [CGPoint(x: 0.25, y: 0.62), CGPoint(x: 0.41, y: 0.66), CGPoint(x: 0.57, y: 0.6), CGPoint(x: 0.2, y: 0.44),
+    // Die drei Beete stehen ordentlich in einer Reihe (gleiche Bodenlinie, gleiche Abstände).
+    static let beds: [CGPoint] = [CGPoint(x: 0.25, y: 0.63), CGPoint(x: 0.42, y: 0.63), CGPoint(x: 0.59, y: 0.63), CGPoint(x: 0.2, y: 0.44),
                                   // nur im Panorama: Obstgarten links, Blumenwiese rechts
-                                  CGPoint(x: -0.62, y: 0.62), CGPoint(x: -0.38, y: 0.66), CGPoint(x: 1.38, y: 0.62)]
+                                  CGPoint(x: -0.62, y: 0.63), CGPoint(x: -0.42, y: 0.63), CGPoint(x: 1.38, y: 0.63)]
     static let bedSize: Double = 0.15
     static let treeSize: Double = 0.24
     static let blanket = CGPoint(x: 0.76, y: 0.53)

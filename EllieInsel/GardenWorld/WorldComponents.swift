@@ -229,6 +229,7 @@ struct BuiltObjectView: View {
     var bodyColor: WorldColor = .natur
     var pattern: WorldPattern = .keins
     var decoration: FindItem?
+    var glitter: BuildGlitter?
     let size: CGFloat
 
     var body: some View {
@@ -237,10 +238,17 @@ struct BuiltObjectView: View {
                 Image(uiImage: base).resizable().scaledToFit()
                 if let m = ImageCache.image(kind.maskBody) {
                     Image(uiImage: m).resizable().scaledToFit().colorMultiply(bodyColor.color).blendMode(.multiply)
-                    if pattern != .keins, let p = ImageCache.image(pattern.asset) {
-                        Image(uiImage: p).resizable(resizingMode: .tile)
-                            .mask(Image(uiImage: m).resizable().scaledToFit())
-                            .opacity(0.85)
+                    if pattern != .keins {
+                        Group {
+                            if let p = ImageCache.image(pattern.asset) {
+                                Image(uiImage: p).resizable(resizingMode: .tile)
+                            } else {
+                                // Muster ohne Bilddatei werden gezeichnet
+                                DrawnPattern(pattern: pattern)
+                            }
+                        }
+                        .mask(Image(uiImage: m).resizable().scaledToFit())
+                        .opacity(0.85)
                     }
                 }
                 if let m = ImageCache.image(kind.maskRoof) {
@@ -258,6 +266,11 @@ struct BuiltObjectView: View {
                 .frame(width: size, height: size, alignment: .bottom)
                 .padding(.bottom, size * 0.08)
             }
+            if let glitter, let base = ImageCache.image(kind.displayAsset) {
+                BuildSparkles(glitter: glitter, size: size)
+                    .mask(Image(uiImage: base).resizable().scaledToFit())
+                    .allowsHitTesting(false)
+            }
             if let decoration {
                 WorldPic(decoration.asset, decoration.emoji, size: size * 0.22)
                     .offset(x: size * 0.22, y: size * 0.1)
@@ -267,11 +280,73 @@ struct BuiltObjectView: View {
     }
 }
 
+/// Funkelnde Pünktchen für Glitzer-Bauwerke (feste Positionen, sanftes Blinken).
+struct BuildSparkles: View {
+    let glitter: BuildGlitter
+    let size: CGFloat
+
+    var body: some View {
+        TimelineView(.animation(minimumInterval: 1.0 / 12)) { tl in
+            Canvas { ctx, sz in
+                let t = tl.date.timeIntervalSinceReferenceDate
+                let colors = glitter.sparkleColors
+                for i in 0..<70 {
+                    // Pseudo-zufällig, aber bei jedem Zeichnen gleich
+                    let x = Double((i * 7919) % 1000) / 1000 * sz.width
+                    let y = Double((i * 104_729) % 1000) / 1000 * sz.height
+                    let o = 0.25 + 0.75 * (0.5 + 0.5 * sin(t * 3 + Double(i) * 1.7))
+                    let r = (i % 4 == 0 ? 2.6 : 1.5) * Double(size) / 200
+                    ctx.fill(Path(ellipseIn: CGRect(x: x - r, y: y - r, width: r * 2, height: r * 2)),
+                             with: .color(colors[i % colors.count].opacity(o)))
+                    if i % 6 == 0 && o > 0.85 {
+                        var cross = Path()
+                        cross.move(to: CGPoint(x: x - r * 3, y: y)); cross.addLine(to: CGPoint(x: x + r * 3, y: y))
+                        cross.move(to: CGPoint(x: x, y: y - r * 3)); cross.addLine(to: CGPoint(x: x, y: y + r * 3))
+                        ctx.stroke(cross, with: .color(.white.opacity(o)), lineWidth: 1)
+                    }
+                }
+            }
+        }
+    }
+}
+
+/// Muster, für die es kein Overlay-Bild gibt.
+struct DrawnPattern: View {
+    let pattern: WorldPattern
+
+    var body: some View {
+        Canvas { ctx, sz in
+            switch pattern {
+            case .regenbogen:
+                let bands = Glitter.rainbowBands
+                let h = sz.height / CGFloat(bands.count)
+                for (i, c) in bands.enumerated() {
+                    ctx.fill(Path(CGRect(x: 0, y: CGFloat(i) * h, width: sz.width, height: h + 1)),
+                             with: .color(Color(red: c.0, green: c.1, blue: c.2).opacity(0.75)))
+                }
+            case .karos:
+                let step = max(sz.width / 8, 6)
+                var y: CGFloat = 0, row = 0
+                while y < sz.height {
+                    var x: CGFloat = row % 2 == 0 ? 0 : step
+                    while x < sz.width {
+                        ctx.fill(Path(CGRect(x: x, y: y, width: step, height: step)), with: .color(.white.opacity(0.55)))
+                        x += step * 2
+                    }
+                    y += step; row += 1
+                }
+            default:
+                break
+            }
+        }
+    }
+}
+
 struct BuiltObjectImage: View {
     let obj: BuiltObject
     let size: CGFloat
     var body: some View {
-        BuiltObjectView(kind: obj.kind, roof: obj.roof, bodyColor: obj.body, pattern: obj.pattern, decoration: obj.decoration, size: size)
+        BuiltObjectView(kind: obj.kind, roof: obj.roof, bodyColor: obj.body, pattern: obj.pattern, decoration: obj.decoration, glitter: obj.glitter, size: size)
     }
 }
 

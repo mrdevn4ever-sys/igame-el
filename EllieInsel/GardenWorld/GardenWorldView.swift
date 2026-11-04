@@ -206,13 +206,13 @@ struct GardenWorldContent: View {
                     model.selectedPiece = model.selectedPiece == p ? nil : p
                 } label: {
                     Group {
-                        if ImageCache.image(p.asset) != nil {
+                        if p == .wasserrad || p == .schleuse, ImageCache.image(p.asset) != nil {
                             WorldPic(p.asset, "", size: 54)
                         } else {
+                            // Gleiche Rinne wie im Bach, damit die Leiste zum Bild passt
                             ZStack {
-                                ChannelShape(openings: p.baseOpenings)
-                                    .stroke(Color(red: 0.55, green: 0.38, blue: 0.22), style: StrokeStyle(lineWidth: 12, lineCap: .butt, lineJoin: .round))
-                                    .frame(width: 44, height: 44)
+                                ChannelTileView(openings: p.baseOpenings, wet: false)
+                                    .frame(width: 50, height: 50)
                                 if p == .schleuse { Rectangle().fill(Theme.darkGreen).frame(width: 6, height: 26) }
                                 if p == .wasserrad { Image(systemName: "gearshape.fill").font(.system(size: 22)).foregroundStyle(Theme.darkGreen) }
                             }

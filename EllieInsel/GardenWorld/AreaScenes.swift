@@ -209,7 +209,8 @@ struct SceneLayer: View {
             // Zulauf vom gemalten Wasserfall zum ersten Feld
             Group {
                 if ImageCache.image(model.area.scene(evening: false)) != nil {
-                    TileView(tile: WaterTile(col: -1, row: 0, piece: .gerade), wet: true, size: min(cellW, cellH))
+                    ChannelTileView(openings: [0, 2], wet: true)
+                        .frame(width: cellW, height: cellH)
                 } else {
                     WorldPic("gw_quelle", "⛲️", size: cellW * 1.1)
                 }
@@ -257,7 +258,12 @@ struct SceneLayer: View {
                     .padding(3)
             }
             if let t = model.tileAt(c, r) {
-                TileView(tile: t, wet: wet, size: min(cellW, cellH))
+                // Rinne bis an die Kachelkante gezeichnet, damit sie nahtlos an die Nachbarn anschliesst.
+                ChannelTileView(openings: t.openings, wet: wet && t.open)
+                    .frame(width: cellW, height: cellH)
+                if t.piece == .wasserrad || t.piece == .schleuse {
+                    TileView(tile: t, wet: wet, size: min(cellW, cellH) * 0.8)
+                }
             }
         }
         .contentShape(Rectangle())
@@ -893,5 +899,74 @@ struct ActorsLayer: View {
             .feet(pos, size: sz, in: size, shadow: false)
             .zIndex(pos.y + 0.001)
             .accessibilityLabel(a.resident?.name ?? "Printatops")
+    }
+}
+
+/// Gezeichnete Holzrinne bis genau an die Kachelkante: Nachbarteile gehen lückenlos ineinander über.
+/// Kurven sind echte Bögen; nasse Rinnen zeigen fliessendes Wasser.
+struct ChannelTileView: View {
+    let openings: [Int]
+    let wet: Bool
+
+    var body: some View {
+        TimelineView(.animation(minimumInterval: 1.0 / 15, paused: !wet)) { tl in
+            Canvas { ctx, size in
+                let rect = CGRect(origin: .zero, size: size)
+                let path = Self.path(openings, in: rect)
+                let w = min(size.width, size.height)
+                ctx.stroke(path, with: .color(Color(red: 0.45, green: 0.30, blue: 0.17)),
+                           style: StrokeStyle(lineWidth: w * 0.5, lineCap: .butt, lineJoin: .round))
+                ctx.stroke(path, with: .color(Color(red: 0.72, green: 0.52, blue: 0.32)),
+                           style: StrokeStyle(lineWidth: w * 0.4, lineCap: .butt, lineJoin: .round))
+                if wet {
+                    ctx.stroke(path, with: .color(Color(red: 0.30, green: 0.62, blue: 0.92)),
+                               style: StrokeStyle(lineWidth: w * 0.28, lineCap: .butt, lineJoin: .round))
+                    let phase = -tl.date.timeIntervalSinceReferenceDate * Double(w) * 0.5
+                    ctx.stroke(path, with: .color(.white.opacity(0.55)),
+                               style: StrokeStyle(lineWidth: w * 0.05, lineCap: .round, dash: [w * 0.1, w * 0.22], dashPhase: phase))
+                } else {
+                    ctx.stroke(path, with: .color(Color(red: 0.55, green: 0.40, blue: 0.26)),
+                               style: StrokeStyle(lineWidth: w * 0.28, lineCap: .butt, lineJoin: .round))
+                }
+                if openings.count > 2 {
+                    // Mitte von Verzweigung und Kreuz ausfüllen
+                    let c = CGPoint(x: rect.midX, y: rect.midY)
+                    let r = w * 0.14
+                    ctx.fill(Path(ellipseIn: CGRect(x: c.x - r, y: c.y - r, width: r * 2, height: r * 2)),
+                             with: .color(wet ? Color(red: 0.30, green: 0.62, blue: 0.92) : Color(red: 0.55, green: 0.40, blue: 0.26)))
+                }
+            }
+        }
+        .allowsHitTesting(false)
+    }
+
+    /// 0 = rechts, 1 = oben, 2 = links, 3 = unten
+    static func edge(_ o: Int, _ r: CGRect) -> CGPoint {
+        switch o {
+        case 0: return CGPoint(x: r.maxX, y: r.midY)
+        case 1: return CGPoint(x: r.midX, y: r.minY)
+        case 2: return CGPoint(x: r.minX, y: r.midY)
+        default: return CGPoint(x: r.midX, y: r.maxY)
+        }
+    }
+
+    static func path(_ openings: [Int], in r: CGRect) -> Path {
+        var p = Path()
+        let c = CGPoint(x: r.midX, y: r.midY)
+        let o = Array(Set(openings)).sorted()
+        if o.count == 2, (o[1] - o[0]) % 2 == 1 {
+            // Kurve: Bogen von Kante zu Kante
+            p.move(to: edge(o[0], r))
+            p.addQuadCurve(to: edge(o[1], r), control: c)
+        } else if o.count == 2 {
+            p.move(to: edge(o[0], r))
+            p.addLine(to: edge(o[1], r))
+        } else {
+            for e in o {
+                p.move(to: c)
+                p.addLine(to: edge(e, r))
+            }
+        }
+        return p
     }
 }

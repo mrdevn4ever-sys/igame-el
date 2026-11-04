@@ -493,10 +493,44 @@ struct BuiltObject: Codable, Equatable, Identifiable {
     var pattern: WorldPattern = .keins
     var decoration: FindItem?
     var created = Date()
+    /// Glitzer aus der Werkstatt (optional, damit ältere Gärten lesbar bleiben)
+    var glitter: BuildGlitter?
+}
+
+/// Glitzer für Bauwerke: funkelnde Pünktchen auf dem ganzen Bauwerk.
+enum BuildGlitter: String, Codable, CaseIterable, Identifiable {
+    case gold, silber, regenbogen
+
+    var id: String { rawValue }
+
+    var name: String {
+        switch self {
+        case .gold: return "Goldglitzer"
+        case .silber: return "Silberglitzer"
+        case .regenbogen: return "Regenbogenglitzer"
+        }
+    }
+
+    var sparkleColors: [Color] {
+        switch self {
+        case .gold: return [.white, Color(red: 1, green: 0.9, blue: 0.5), Color(red: 0.95, green: 0.75, blue: 0.25)]
+        case .silber: return [.white, Color(red: 0.88, green: 0.9, blue: 0.95), Color(red: 0.75, green: 0.8, blue: 0.9)]
+        case .regenbogen: return Glitter.rainbowBands.map { Color(red: $0.0, green: $0.1, blue: $0.2) } + [.white]
+        }
+    }
+
+    /// Farbe des Knopfs in der Werkstatt
+    var swatch: AnyShapeStyle {
+        switch self {
+        case .gold: return AnyShapeStyle(LinearGradient(colors: [Color(red: 1, green: 0.88, blue: 0.45), Color(red: 0.85, green: 0.64, blue: 0.13)], startPoint: .topLeading, endPoint: .bottomTrailing))
+        case .silber: return AnyShapeStyle(LinearGradient(colors: [.white, Color(red: 0.7, green: 0.72, blue: 0.77)], startPoint: .topLeading, endPoint: .bottomTrailing))
+        case .regenbogen: return AnyShapeStyle(AngularGradient(colors: Glitter.rainbowBands.map { Color(red: $0.0, green: $0.1, blue: $0.2) } + [Color(red: Glitter.rainbowBands[0].0, green: Glitter.rainbowBands[0].1, blue: Glitter.rainbowBands[0].2)], center: .center))
+        }
+    }
 }
 
 enum WorldColor: String, Codable, CaseIterable, Identifiable {
-    case natur, rot, orange, gelb, gruen, tuerkis, blau, lila, rosa, weiss, braun
+    case natur, rot, orange, gelb, gruen, tuerkis, blau, lila, rosa, weiss, braun, gold, silber
 
     var id: String { rawValue }
 
@@ -513,6 +547,8 @@ enum WorldColor: String, Codable, CaseIterable, Identifiable {
         case .rosa: return Color(red: 0.96, green: 0.58, blue: 0.75)
         case .weiss: return Color(red: 0.98, green: 0.98, blue: 0.96)
         case .braun: return Color(red: 0.60, green: 0.42, blue: 0.27)
+        case .gold: return Color(red: 0.90, green: 0.72, blue: 0.28)
+        case .silber: return Color(red: 0.80, green: 0.82, blue: 0.86)
         }
     }
 
@@ -529,12 +565,14 @@ enum WorldColor: String, Codable, CaseIterable, Identifiable {
         case .rosa: return "Rosa"
         case .weiss: return "Weiss"
         case .braun: return "Braun"
+        case .gold: return "Gold"
+        case .silber: return "Silber"
         }
     }
 }
 
 enum WorldPattern: String, Codable, CaseIterable, Identifiable {
-    case keins, punkte, streifen, herzen, sterne, blumen
+    case keins, punkte, streifen, herzen, sterne, blumen, regenbogen, karos
 
     var id: String { rawValue }
     var asset: String { "gw_muster_overlay_\(rawValue)" }
@@ -547,6 +585,8 @@ enum WorldPattern: String, Codable, CaseIterable, Identifiable {
         case .herzen: return "♥"
         case .sterne: return "★"
         case .blumen: return "✿"
+        case .regenbogen: return "🌈"
+        case .karos: return "▦"
         }
     }
 
@@ -558,6 +598,8 @@ enum WorldPattern: String, Codable, CaseIterable, Identifiable {
         case .herzen: return "Herzen"
         case .sterne: return "Sterne"
         case .blumen: return "Blümchen"
+        case .regenbogen: return "Regenbogen"
+        case .karos: return "Karos"
         }
     }
 }
