@@ -643,9 +643,12 @@ final class LettersModel {
             if laid.count == word.upper.count {
                 solved = true
                 host.taskSolved(word.done)
+            } else {
+                // Für Kinder, die noch nicht lesen: jeder gelegte Buchstabe wird genannt.
+                host.audio.say("Das ist das \(letter).")
             }
         } else {
-            host.wrong(LetterCatalog.wordWrong)
+            host.wrong("Das ist das \(letter). \(LetterCatalog.wordWrong)")
         }
     }
 

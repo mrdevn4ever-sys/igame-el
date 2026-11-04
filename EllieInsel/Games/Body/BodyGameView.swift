@@ -298,13 +298,18 @@ struct BodyGameView: View {
                     } content: {
                         VStack(spacing: 8) {
                             BeatingHeart(period: fast ? 0.42 : 1.35, size: 110)
-                            Text(fast ? "Schnell" : "Langsam")
-                                .font(Theme.rounded(22, .bold))
-                                .foregroundStyle(Theme.darkGreen)
+                            // Für Kinder, die noch nicht lesen: Hase = schnell, Schnecke = langsam
+                            HStack(spacing: 8) {
+                                Pic(fast ? "garten_hase" : "garten_schnecke", fast ? "🐇" : "🐌", size: 46)
+                                Text(fast ? "Schnell" : "Langsam")
+                                    .font(Theme.rounded(22, .bold))
+                                    .foregroundStyle(Theme.darkGreen)
+                            }
                         }
                         .frame(width: 220)
                     }
-                    .pulseHighlight(model.highlightAnswer && fast == scene.fast)
+                    .pulseHighlight((model.highlightAnswer && fast == scene.fast) || model.previewHeart == fast)
+                    .accessibilityLabel(fast ? "Schnelles Herz" : "Langsames Herz")
                 }
             }
             .padding(.bottom, 6)
@@ -348,7 +353,8 @@ struct BeatingHeart: View {
     let size: CGFloat
 
     var body: some View {
-        BeatingImage(asset: "koerper_teil_herz", emoji: "❤️", period: period, size: size)
+        // Kräftiger als beim Einzelbild, damit der Tempo-Unterschied sofort auffällt.
+        BeatingImage(asset: "koerper_teil_herz", emoji: "❤️", period: period, size: size, amplitude: 0.22)
     }
 }
 
@@ -357,12 +363,13 @@ struct BeatingImage: View {
     let emoji: String
     let period: Double
     let size: CGFloat
+    var amplitude: Double = 0.12
 
     var body: some View {
         TimelineView(.animation) { ctx in
             let t = ctx.date.timeIntervalSinceReferenceDate.truncatingRemainder(dividingBy: period) / period
             Pic(asset, emoji, size: size * 0.85)
-                .scaleEffect(1 + 0.12 * Self.beat(t))
+                .scaleEffect(1 + amplitude * Self.beat(t))
                 .frame(width: size, height: size)
         }
     }
@@ -619,6 +626,8 @@ final class BodyModel {
     var tried: Set<String> = []
     var chosen: String?
     var highlightAnswer = false
+    /// Herzschlag-Aufgabe: Welches Herz gerade vorgespielt wird (true = schnell).
+    var previewHeart: Bool?
     var highlights: [BodyPart] = []
     var info: BodyPart?
     var found: [BodyPart] = []
@@ -714,7 +723,9 @@ final class BodyModel {
         case .entdecken: host.setInstruction("Fahr mit der Zauberlupe über den Körper. Was findest du?")
         case .funktion(let p, _): host.setInstruction(p.functionQuestion ?? "Was macht das?")
         case .sinn(let q, _): host.setInstruction(q.question)
-        case .herz(let s, _): host.setInstruction(s.question)
+        case .herz(let s, _):
+            host.setInstruction(s.question)
+            previewHearts()
         case .weg: host.setInstruction(FoodPath.start)
         case .puzzle: host.setInstruction("Leg die Organe an ihren Platz im Körper.")
         }
@@ -857,8 +868,23 @@ final class BodyModel {
         }
     }
 
+    /// Spielt nach der Frage beide Herzschläge vor; das passende Herz leuchtet dabei auf.
+    private func previewHearts() {
+        Task { @MainActor [weak self] in
+            await self?.host.audio.waitUntilQuiet()
+            for fast in [true, false] {
+                guard let self, !self.solved, case .herz = self.task else { return }
+                self.previewHeart = fast
+                self.host.audio.sfx(fast ? "koerper_sfx_herz_schnell" : "koerper_sfx_herz_langsam", fallback: .tap)
+                try? await Task.sleep(nanoseconds: 1_900_000_000)
+            }
+            self?.previewHeart = nil
+        }
+    }
+
     func chooseHeart(fast: Bool, scene: HeartScene) {
         guard !solved else { return }
+        previewHeart = nil
         let key = fast ? "schnell" : "langsam"
         host.audio.sfx(fast ? "koerper_sfx_herz_schnell" : "koerper_sfx_herz_langsam", fallback: .tap)
         if fast == scene.fast {
