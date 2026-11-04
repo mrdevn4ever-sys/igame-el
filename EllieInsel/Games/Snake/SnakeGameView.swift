@@ -32,12 +32,12 @@ enum SnakeLayouts {
 
     /// Sechs geprüfte Hindernisanordnungen für «Knobeln» (lassen Start und Mitte frei).
     static let obstacles: [[GridPoint]] = [
-        [GridPoint(x: 3, y: 3), GridPoint(x: 3, y: 4), GridPoint(x: 8, y: 7), GridPoint(x: 8, y: 8)],
+        [GridPoint(x: 3, y: 3), GridPoint(x: 3, y: 4), GridPoint(x: 8, y: 8), GridPoint(x: 8, y: 9)],
         [GridPoint(x: 2, y: 9), GridPoint(x: 3, y: 9), GridPoint(x: 4, y: 9), GridPoint(x: 8, y: 2), GridPoint(x: 9, y: 2)],
         [GridPoint(x: 6, y: 2), GridPoint(x: 6, y: 3), GridPoint(x: 6, y: 9), GridPoint(x: 6, y: 10)],
         [GridPoint(x: 2, y: 2), GridPoint(x: 9, y: 2), GridPoint(x: 2, y: 9), GridPoint(x: 9, y: 9)],
         [GridPoint(x: 4, y: 2), GridPoint(x: 5, y: 2), GridPoint(x: 6, y: 2), GridPoint(x: 9, y: 8), GridPoint(x: 9, y: 9)],
-        [GridPoint(x: 1, y: 6), GridPoint(x: 2, y: 6), GridPoint(x: 9, y: 4), GridPoint(x: 10, y: 4), GridPoint(x: 5, y: 10)]
+        [GridPoint(x: 1, y: 3), GridPoint(x: 2, y: 3), GridPoint(x: 9, y: 4), GridPoint(x: 10, y: 4), GridPoint(x: 5, y: 10)]
     ]
 }
 
