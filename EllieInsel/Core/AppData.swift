@@ -35,6 +35,8 @@ struct AppData: Codable {
     var letters: [String: Int] = [:]
     /// ABC: Buchstaben, die mindestens einmal ganz nachgezeichnet wurden.
     var lettersDone: Set<String> = []
+    /// ABC: Buchstaben und Wörter der letzten Runde (damit die nächste Runde anders ist).
+    var lettersLastRound: [String] = []
 
     /// Atelier-Schätze, die nach Lernrunden entdeckt wurden (Reihenfolge wie entdeckt).
     var atelierTreasures: [String] = []
@@ -90,6 +92,7 @@ struct AppData: Codable {
         world = (try? c.decode(WorldData.self, forKey: .world)) ?? d.world
         letters = (try? c.decode([String: Int].self, forKey: .letters)) ?? d.letters
         lettersDone = (try? c.decode(Set<String>.self, forKey: .lettersDone)) ?? d.lettersDone
+        lettersLastRound = (try? c.decode([String].self, forKey: .lettersLastRound)) ?? d.lettersLastRound
         atelierTreasures = (try? c.decode([String].self, forKey: .atelierTreasures)) ?? d.atelierTreasures
         skills = (try? c.decode([String: SkillState].self, forKey: .skills)) ?? d.skills
         adaptiveOff = (try? c.decode(Set<String>.self, forKey: .adaptiveOff)) ?? d.adaptiveOff

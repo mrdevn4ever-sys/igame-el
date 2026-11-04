@@ -10,6 +10,16 @@ enum LetterTask: Codable, Equatable {
     case word(WordInfo, faded: Bool, mixedCase: Bool)   // Wort Buchstabe für Buchstabe schreiben
     case lay(WordInfo, [String])                        // Wort aus Buchstabenkärtchen legen
 
+    /// Buchstabe bzw. Wort der Aufgabe (für «nicht gleich wie letzte Runde»).
+    var subjectKey: String {
+        switch self {
+        case .trace(let l), .whereIs(let l, _): return l
+        case .startsWith(let info, _): return info.upper
+        case .pair(let u, _): return u.lowercased()
+        case .word(let w, _, _), .lay(let w, _): return w.word
+        }
+    }
+
     var isWriting: Bool {
         switch self {
         case .trace, .word: return true
@@ -60,18 +70,31 @@ enum LetterTasks {
         coveragePool(level: level).filter { !done.contains($0) }
     }
 
-    /// Zuerst Buchstaben, die noch nie gemacht wurden; danach bevorzugt die, die noch nicht sicher sitzen.
-    static func pick(_ pool: [String], count: Int, known: [String: Int], done: Set<String> = []) -> [String] {
-        var out = Array(pool.filter { !done.contains($0) }.shuffled().prefix(count))
-        var rest = pool.filter { !out.contains($0) }
-        while out.count < count, !rest.isEmpty {
-            let weights = rest.map { 1.0 / Double(1 + min(known[$0] ?? 0, 4) * 2) }
-            var r = Double.random(in: 0..<weights.reduce(0, +))
-            var i = 0
-            while i < weights.count - 1, r >= weights[i] { r -= weights[i]; i += 1 }
-            out.append(rest.remove(at: i))
+    /// Auswahl für eine Runde, in dieser Reihenfolge:
+    /// 1. noch nie geschriebene Buchstaben, die in der letzten Runde nicht dran waren,
+    /// 2. andere Buchstaben, die in der letzten Runde nicht dran waren (unsichere leicht bevorzugt),
+    /// 3. erst dann Wiederholungen aus der letzten Runde (noch nie geschriebene zuerst).
+    /// So kommt nie dieselbe Runde zweimal hintereinander; die Reihenfolge wird gemischt.
+    static func pick(_ pool: [String], count: Int, known: [String: Int], done: Set<String> = [], avoid: [String] = []) -> [String] {
+        let fresh = pool.filter { !avoid.contains($0) }
+        let repeats = pool.filter { avoid.contains($0) }
+        var out: [String] = []
+        func take(_ list: [String]) {
+            var rest = list.filter { !out.contains($0) }
+            while out.count < count, !rest.isEmpty {
+                // Unsichere Buchstaben höchstens dreimal so oft wie sichere
+                let weights = rest.map { 1.0 / (1 + Double(min(known[$0] ?? 0, 4)) * 0.5) }
+                var r = Double.random(in: 0..<weights.reduce(0, +))
+                var i = 0
+                while i < weights.count - 1, r >= weights[i] { r -= weights[i]; i += 1 }
+                out.append(rest.remove(at: i))
+            }
         }
-        return out
+        take(fresh.filter { !done.contains($0) })
+        take(fresh)
+        take(repeats.filter { !done.contains($0) })
+        take(repeats)
+        return out.shuffled()
     }
 
     static func options(_ answer: String, from pool: [String], count: Int) -> [String] {
@@ -85,9 +108,14 @@ enum LetterTasks {
         return WordInfo(word: n.prefix(1).uppercased() + n.dropFirst().lowercased(), emoji: "⭐️")
     }
 
-    static func round(level: Int, known: [String: Int], done: Set<String> = [], name: String) -> [LetterTask] {
+    static func round(level: Int, known: [String: Int], done: Set<String> = [], name: String, avoid: [String] = []) -> [LetterTask] {
         func pick(_ pool: [String], count: Int, known: [String: Int]) -> [String] {
-            LetterTasks.pick(pool, count: count, known: known, done: done)
+            LetterTasks.pick(pool, count: count, known: known, done: done, avoid: avoid)
+        }
+        /// Wörter: zuerst solche, die in der letzten Runde nicht dran waren.
+        func freshWords(_ list: [WordInfo]) -> [WordInfo] {
+            let s = list.shuffled()
+            return s.filter { !avoid.contains($0.word) } + s.filter { avoid.contains($0.word) }
         }
         let upper = LetterCatalog.allUpper
         switch level {
@@ -116,15 +144,15 @@ enum LetterTasks {
             return [.trace(t[0]), .pair(t[2].uppercased(), options(t[2], from: LetterCatalog.allLower, count: 4)),
                     .trace(t[1]), .startsWith(info, options(info.upper, from: upper, count: 4))]
         case 7:
-            var words = LetterCatalog.shortWords.shuffled().prefix(3).map { LetterTask.word($0, faded: false, mixedCase: false) }
+            var words = freshWords(LetterCatalog.shortWords).prefix(3).map { LetterTask.word($0, faded: false, mixedCase: false) }
             if let n = nameWord(name) { words[0] = .word(n, faded: false, mixedCase: false) }
             return words
         case 8:
-            let w = LetterCatalog.shortWords.shuffled()
-            let lay = LetterCatalog.longerWords.randomElement()!
+            let w = freshWords(LetterCatalog.shortWords)
+            let lay = freshWords(LetterCatalog.longerWords)[0]
             return [.word(w[0], faded: true, mixedCase: false), .lay(lay, tiles(for: lay)), .word(w[1], faded: true, mixedCase: false)]
         default:
-            let w = LetterCatalog.longerWords.shuffled()
+            let w = freshWords(LetterCatalog.longerWords)
             return [.lay(w[0], tiles(for: w[0])), .word(w[1], faded: true, mixedCase: true), .word(w[2], faded: true, mixedCase: true)]
         }
     }
@@ -463,7 +491,9 @@ final class LettersModel {
             if host.awaitingNext { host.next(); return }
         } else {
             tasks = LetterTasks.round(level: host.level, known: host.app.data.letters, done: host.app.data.lettersDone,
-                                     name: host.app.data.profile.name)
+                                     name: host.app.data.profile.name, avoid: host.app.data.lettersLastRound)
+            let used = tasks.map(\.subjectKey)
+            host.app.update { $0.lettersLastRound = used }
         }
         host.setTasksPerRound(tasks.count)
         present()
