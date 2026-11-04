@@ -418,7 +418,7 @@ struct SceneLayer: View {
                     including: model.building ? .all : .subviews
                 )
                 .onTapGesture { builtTapped(obj) }
-                .feet(CGPoint(x: obj.x, y: obj.y), size: size, in: s)
+                .feet(CGPoint(x: obj.x, y: obj.y), size: size, in: s, shadow: false)
                 .zIndex(obj.y)
         }
     }
@@ -473,7 +473,7 @@ struct SceneLayer: View {
             let p = placementPoints[i]
             HotspotView(asset: "gw_werkbank_umriss", emoji: "⭐️", size: W * 0.07)
                 .onTapGesture { model.placeAt(p) }
-                .feet(p, size: W * 0.07, in: s)
+                .feet(p, size: W * 0.07, in: s, shadow: false)
                 .zIndex(10)
         }
     }
