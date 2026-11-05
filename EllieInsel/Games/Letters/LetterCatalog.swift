@@ -55,6 +55,12 @@ enum LetterCatalog {
     static let diagonal = ["A", "V", "M", "N", "W", "K", "X", "Y", "Z", "Q"]
     static var allUpper: [String] { straight + curved + diagonal }
 
+    /// Niveau 1: alle Grossbuchstaben nur aus geraden Strichen (auch schräge), 15 Stück –
+    /// genug, damit aufeinanderfolgende Runden nie dieselben Buchstaben haben.
+    static var lineLetters: [String] { straight + diagonal.filter { $0 != "Q" } }
+    /// Niveau 2: alle Grossbuchstaben mit Bögen (11 Stück).
+    static var roundLetters: [String] { curved + ["Q"] }
+
     // Kleinbuchstaben: zuerst die einfachen.
     static let easyLower = ["l", "i", "o", "c", "a", "e", "u", "n", "m", "h", "r", "s", "t"]
     static let hardLower = ["b", "d", "p", "q", "g", "j", "k", "f", "v", "w", "x", "y", "z"]

@@ -57,8 +57,8 @@ enum LetterTasks {
     /// Buchstaben, die auf diesem Niveau alle einmal nachgezeichnet sein müssen, bevor es weitergeht.
     static func coveragePool(level: Int) -> [String] {
         switch level {
-        case ...1: return LetterCatalog.straight
-        case 2: return LetterCatalog.straight + LetterCatalog.curved
+        case ...1: return LetterCatalog.lineLetters
+        case 2: return LetterCatalog.allUpper
         case 3, 4: return LetterCatalog.allUpper
         case 5: return LetterCatalog.easyLower
         case 6: return LetterCatalog.allLower
@@ -104,10 +104,10 @@ enum LetterTasks {
         let upper = LetterCatalog.allUpper
         switch level {
         case ...1:
-            return pick(LetterCatalog.straight, count: 4, known: known).map { LetterTask.trace($0) }
+            return pick(LetterCatalog.lineLetters, count: 4, known: known).map { LetterTask.trace($0) }
         case 2:
-            let curved = pick(LetterCatalog.curved, count: 3, known: known)
-            let straight = pick(LetterCatalog.straight, count: 1, known: known)
+            let curved = pick(LetterCatalog.roundLetters, count: 3, known: known)
+            let straight = pick(LetterCatalog.lineLetters, count: 1, known: known)
             return (curved + straight).shuffled().map { LetterTask.trace($0) }
         case 3:
             let t = pick(upper, count: 4, known: known)
