@@ -447,7 +447,7 @@ struct SceneLayer: View {
 
     private var decorations: some View {
         ForEach(app.data.garden.placed) { deco in
-            let size = W * 0.07
+            let size = W * 0.07 * GardenCatalog.scale(deco.item)
             Pic(GardenCatalog.asset(deco.item), deco.item, size: size / 1.2)
                 .frame(width: size, height: size)
                 .overlay(alignment: .topTrailing) {

@@ -25,6 +25,18 @@ enum GardenCatalog {
         "🪁": "drachen", "🐑": "schaf", "🐓": "hahn", "🐈": "katze", "🐕": "hund", "🦢": "schwan"
     ]
 
+    /// Grösse im Garten relativ zur Standardgrösse, damit Tiere und Pflanzen zueinander passen
+    /// (Hermes-Prüfung Garten 2: kleine Tiere waren zu gross, Sonnenblume zu klein).
+    static func scale(_ item: String) -> Double {
+        switch names[item] {
+        case "marienkaefer", "biene", "schnecke": return 0.5
+        case "igel", "frosch", "vogel": return 0.7
+        case "gaensebluemchen": return 0.7
+        case "sonnenblume": return 1.3
+        default: return 1
+        }
+    }
+
     static func asset(_ item: String) -> String {
         names[item].map { "garten_" + $0 } ?? ""
     }
