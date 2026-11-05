@@ -41,6 +41,8 @@ enum WorldLayout {
     static var gridCols: Int { WorldPanorama.isActive(.bach) ? 11 : 6 }
     static let gridRows = 4
     static let bridge = CGPoint(x: 0.16, y: 0.7)
+    /// Freie Wiese oben links beim Wasserfall (unter der Quellrinne, links vom Raster).
+    static let bachUpperMeadow = CGRect(x: 0.07, y: 0.32, width: 0.2, height: 0.24)
     static var dock: CGPoint { WorldPanorama.isActive(.bach) ? CGPoint(x: pond.x + 0.05, y: 0.95) : CGPoint(x: 0.77, y: 0.82) }
 
     // Baumhaus

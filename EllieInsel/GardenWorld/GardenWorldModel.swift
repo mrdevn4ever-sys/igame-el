@@ -621,7 +621,12 @@ final class GardenWorldModel {
     }
 
     private func randomPoint(for r: Resident?, seed: Int = 0) -> CGPoint {
-        let rect = WorldLayout.walkArea(area, resident: r)
+        var rect = WorldLayout.walkArea(area, resident: r)
+        // Am Bach auch oben links auf der Wiese beim Wasserfall laufen (links vom Wasserbaukasten).
+        if area == .bach, !WorldPanorama.isActive(.bach), r == nil || !(r!.flies || r == .ente || r == .fisch || r == .frosch),
+           Bool.random() {
+            rect = WorldLayout.bachUpperMeadow
+        }
         return CGPoint(x: rect.minX + Double.random(in: 0...1) * rect.width, y: rect.minY + Double.random(in: 0...1) * rect.height)
     }
 
