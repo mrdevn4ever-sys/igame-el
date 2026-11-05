@@ -1,0 +1,54 @@
+{
+  "schema": "ellie-garten2-a-provenance/v1",
+  "createdAt": "2026-11-05T18:28:40+01:00",
+  "sourceGitHead": "3eb5b909f7777b0b2c3be5f5abcaeedbdcd1aee1",
+  "bindingSpecification": "assets/HERMES_GARTEN_2.md",
+  "scope": "Garten 2 Part A: replace the day and evening Bach/Teich scenes",
+  "origin": "deterministic_local_blender_geometry_and_pixel_locked_composite",
+  "method": "Blender 4.5.1 LTS terrain/basin geometry plus same-scene terrain restoration and exact protected DCT-block compositing; two isolated builds produced identical final JPEGs.",
+  "providerDisclosure": "No external image-generation provider was used.",
+  "targets": [
+    {
+      "path": "EllieInsel/Images/gw_szene_bach_teich.jpg",
+      "supersededSha256": "2414c0e2ce71dbffd156dfbb57a34e490e5d14522e90c0968a48d588c7042a27",
+      "finalSha256": "1b1126b8fff9a0ccca3c184184423b92b9f63e93f423d02109898a4e090011bb",
+      "bytes": 911090,
+      "dimensions": [2732, 2048],
+      "mode": "RGB",
+      "format": "progressive JPEG Q85 4:4:4"
+    },
+    {
+      "path": "EllieInsel/Images/gw_szene_bach_teich_abend.jpg",
+      "supersededSha256": "5279cd6af9a1ae60f88ec1224d3491d09605be0aa2edf4064dff0498ef29fb5e",
+      "finalSha256": "c7457bab1525c7c6aad078ae04a6bcdf1973b6d79587a78e577c0513085e5a66",
+      "bytes": 638412,
+      "dimensions": [2732, 2048],
+      "mode": "RGB",
+      "format": "progressive JPEG Q85 4:4:4"
+    }
+  ],
+  "technicalQa": {
+    "status": "PASS",
+    "twoFreshBuildsByteIdentical": true,
+    "allProtectedMasterAndDecodedJpegPixelsIdentical": true,
+    "quietMeadowChangedPixels": 0,
+    "protectedObjectChangedPixels": 0,
+    "eveningGradeExact": true,
+    "sourceReport": "F:/Projects/igame-el-asset-work/garten2/A/blender-interface-v2/final/qa/mechanical_qa.json"
+  },
+  "visualQa": {
+    "workerStatus": "FAIL_RETAINED_AS_HISTORY",
+    "ownerStatus": "APPROVED_OVERRIDE",
+    "note": "The owner explicitly approved the most recently generated candidate and authorized promotion. The earlier worker visual FAIL remains recorded and is not relabeled as PASS."
+  },
+  "ownerApproval": {
+    "statement": "A approved von mir mach einfach die letzte option wo du erstellt hast",
+    "platform": "telegram",
+    "messageId": "83903",
+    "approvedAt": "2026-11-05T18:28:40+01:00",
+    "approvalRecordSha256": "1e919aa673d2775aea49abf8ecdba66f3d385249a39ee47cf1a2fd68563e7e9a",
+    "scope": "Exact finalSha256 values above only"
+  },
+  "noPlayback": true,
+  "testFlight": false
+}
