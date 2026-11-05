@@ -1,0 +1,43 @@
+{
+  "schema": "ellie-garten2-d-provenance/v1",
+  "createdAt": "2026-11-05T18:33:07+01:00",
+  "sourceGitHead": "1025a94ec3f723dc1a6861f8e82d899dcd32cf26",
+  "bindingSpecification": "assets/HERMES_GARTEN_2.md plus owner-requested Part D",
+  "scope": "Replace gw_pflanze_karotte_1_keimling.png with a small two-cotyledon seedling",
+  "origin": "deterministic_local_derivative_of_existing_garden_carrot",
+  "method": "Continuous monotone full-raster warp with premultiplied-alpha supersampling, bounded organic asymmetry, source-derived blade body refinement, pngquant quality 82-98, then oxipng lossless optimization.",
+  "providerDisclosure": "No external image-generation provider was used.",
+  "target": {
+    "path": "EllieInsel/Images/gw_pflanze_karotte_1_keimling.png",
+    "supersededSha256": "243319b7fefa815c85ee59a75d20ad1cf59071726ed229e11473cbb965ed20ba",
+    "finalSha256": "0341708a8a5d729b310c543821ba32701213153f8126b48b86d53c735168c9db",
+    "bytes": 11958,
+    "dimensions": [1024, 1024],
+    "decodedMode": "RGBA",
+    "footlineLastAlpha128PixelY": 941,
+    "footCenterX": 511.5,
+    "connectedComponents": 1
+  },
+  "technicalQa": {
+    "status": "PASS_12_OF_12",
+    "twoCotyledons": true,
+    "smallerThanStrawberryAndSunflowerStage1": true,
+    "transparentClearCorners": true,
+    "deterministicRawAndOptimizedBuilds": true,
+    "optimizerSequence": "pngquant --quality 82-98; oxipng -o 4 --strip safe",
+    "sourceReport": "F:/Projects/igame-el-asset-work/garten2/D/qa/technical_qa.json"
+  },
+  "visualQa": {
+    "workerStatus": "PASS_WITH_70PX_STRESS_CAVEAT",
+    "parentStatus": "PASS",
+    "gardenDisplaySizes": "PASS at 131, 152 and 174 px",
+    "stress70": "Two tips and connected stem remain identifiable; rich clay microdetail is intentionally not required.",
+    "evidence": [
+      "F:/Projects/igame-el-asset-work/garten2/D/qa/candidate_native_cream_dark.png",
+      "F:/Projects/igame-el-asset-work/garten2/D/qa/comparison_cream.png",
+      "F:/Projects/igame-el-asset-work/garten2/D/qa/app_sizes_dark.png"
+    ]
+  },
+  "noPlayback": true,
+  "testFlight": false
+}
