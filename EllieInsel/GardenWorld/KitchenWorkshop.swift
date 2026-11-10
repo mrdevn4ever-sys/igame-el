@@ -26,7 +26,8 @@ struct KitchenView: View {
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(0.88)))
+                // Nur die Rezeptauswahl liegt auf einer hellen Tafel; gekocht wird direkt auf dem Küchentisch.
+                .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(phase == .choose ? 0.7 : 0.25)))
                 basketColumn
             }
             .padding(.horizontal, 24)
@@ -390,7 +391,8 @@ struct WorkshopView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(0.88)))
+            // Gebaut und bemalt wird direkt auf der Werkbank; nur die Auswahl liegt auf einer hellen Tafel.
+            .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(phase == .choose ? 0.7 : 0.25)))
             .padding(.horizontal, 24)
             .padding(.bottom, 12)
         }

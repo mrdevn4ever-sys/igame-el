@@ -559,7 +559,7 @@ struct WorldPanel<Content: View>: View {
     var body: some View {
         ZStack {
             if let img = ImageCache.image(background) {
-                Image(uiImage: img).resizable().scaledToFill().ignoresSafeArea().opacity(0.95)
+                Image(uiImage: img).resizable().scaledToFill().ignoresSafeArea()
             } else {
                 Theme.cream.ignoresSafeArea()
             }

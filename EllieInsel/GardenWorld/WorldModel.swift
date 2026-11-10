@@ -1285,3 +1285,26 @@ struct WorldData: Codable, Equatable {
     func isBuilt(_ k: BuildKind) -> Bool { built.contains { $0.kind == k } }
     var totalFinds: Int { finds.values.reduce(0, +) }
 }
+
+extension WorldData {
+    /// Eine abgeschlossene Lernrunde lässt jede Pflanze eine Stufe wachsen und giesst sie dabei.
+    /// So lohnt sich das Lernen im Garten sofort, auch wenn gerade kein Geschenk fällig ist.
+    mutating func growByLearning(now: Date = Date()) {
+        func step(_ bed: inout BedState) {
+            guard bed.plant != nil, bed.stage < 4 else { return }
+            bed.stage += 1
+            if bed.stage >= 4 {
+                bed.stage = 4
+                bed.needsWater = false
+                bed.growingSince = nil
+                bed.remaining = bed.plant?.yield ?? 1
+                bed.fallen = []
+            } else {
+                bed.needsWater = false
+                bed.growingSince = now
+            }
+        }
+        for i in beds.indices { step(&beds[i]) }
+        step(&streamBed)
+    }
+}

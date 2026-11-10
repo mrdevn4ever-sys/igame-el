@@ -143,6 +143,8 @@ final class AppModel {
             var items = d.practicedItems[game.rawValue] ?? []
             for p in practiced where !items.contains(p) { items.append(p) }
             d.practicedItems[game.rawValue] = items
+            // Lernen lässt den Garten wachsen: jede Lernrunde bringt alle Pflanzen eine Stufe weiter.
+            if learning { d.world.growByLearning() }
             // Gartengeschenk nur nach jeder dritten Lernrunde, höchstens eines pro Runde.
             guard learning,
                   !d.garden.rewardedRounds.contains(roundID),

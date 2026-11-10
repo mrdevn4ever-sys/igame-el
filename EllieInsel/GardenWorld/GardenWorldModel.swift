@@ -83,6 +83,8 @@ final class GardenWorldModel {
     var fantasyPulse: [UUID: Date] = [:]
     var melodyPlaying = false
     var selectedPiece: WaterPiece?
+    /// Schaufel am Bach: Antippen nimmt eine Rinne wieder weg.
+    var removingTiles = false
     var lastWaterResult = WaterFlow()
 
     @ObservationIgnored private var loop: Task<Void, Never>?
@@ -91,14 +93,20 @@ final class GardenWorldModel {
     @ObservationIgnored private var squirrelTaps = 0
 
     /// Wartezeit im Simulator-Durchlauf.
-    static var growSeconds: Double { DemoMode.isActive ? 1.5 : 3600 }
+    static var growSeconds: Double { stageSeconds(firstHarvestDone: true) }
 
-    /// Nach dem Giessen wächst die Pflanze ein bis zwei Stunden ohne neues Wasser, dann hat sie wieder Durst.
-    /// Die Dauer hängt fest vom Giesszeitpunkt ab, damit sie nach dem Neustart der App gleich bleibt.
-    static func growDuration(since: Date) -> Double {
+    /// Dauer einer Wachstumsstufe. Bis zur allerersten Ernte wächst alles sehr schnell, damit das Kind
+    /// den ganzen Kreislauf (säen, giessen, ernten) in der ersten Sitzung erlebt. Danach dauert eine Stufe
+    /// wenige Minuten; jede abgeschlossene Lernrunde lässt zusätzlich alles eine Stufe wachsen.
+    static func stageSeconds(firstHarvestDone: Bool) -> Double {
         if DemoMode.isActive { return 1.5 }
-        return 3600 + Double(UInt64(max(since.timeIntervalSince1970, 0)) % 3600)
+        return firstHarvestDone ? 180 : 20
     }
+
+    var stageSeconds: Double { Self.stageSeconds(firstHarvestDone: !w.harvestedOnce.isEmpty) }
+
+    /// Stufe, bei der eine Pflanze noch einmal Durst bekommt (einmal nachgiessen bis zur Ernte).
+    static let thirstStage = 2
 
     init(app: AppModel) {
         self.app = app
@@ -154,6 +162,8 @@ final class GardenWorldModel {
             overlay = nil
         }
         building = false
+        removingTiles = false
+        selectedPiece = nil
         resetActors()
         say(arrivalText(a))
     }
@@ -220,6 +230,7 @@ final class GardenWorldModel {
         var newlyRipe: [PlantKind] = []
         var data = w
         let raining = (rainUntil ?? .distantPast) > now
+        let stageTime = stageSeconds
         func grow(_ bed: inout BedState, index: Int) {
             guard bed.plant != nil else { return }
             if raining, bed.needsWater, bed.stage < 4 {
@@ -227,21 +238,31 @@ final class GardenWorldModel {
                 bed.growingSince = now
                 changed = true
             }
-            if let since = bed.growingSince, now.timeIntervalSince(since) >= Self.growDuration(since: since) {
+            guard var since = bed.growingSince else { return }
+            // Auch mehrere Stufen auf einmal, wenn die App länger zu war.
+            var advanced = false
+            while bed.stage < 4, now.timeIntervalSince(since) >= stageTime {
                 bed.stage += 1
-                bed.growingSince = nil
-                if bed.stage >= 4 {
-                    bed.stage = 4
-                    bed.needsWater = false
-                    bed.remaining = bed.plant?.yield ?? 1
-                    bed.fallen = []
-                    if let p = bed.plant { newlyRipe.append(p) }
-                } else {
-                    bed.needsWater = true
-                }
-                growAnim[index] = now
-                changed = true
+                since = since.addingTimeInterval(stageTime)
+                advanced = true
+                if bed.stage == Self.thirstStage && !raining { break }
             }
+            guard advanced else { return }
+            if bed.stage >= 4 {
+                bed.stage = 4
+                bed.needsWater = false
+                bed.growingSince = nil
+                bed.remaining = bed.plant?.yield ?? 1
+                bed.fallen = []
+                if let p = bed.plant { newlyRipe.append(p) }
+            } else if bed.stage == Self.thirstStage && !raining {
+                bed.needsWater = true
+                bed.growingSince = nil
+            } else {
+                bed.growingSince = since
+            }
+            growAnim[index] = now
+            changed = true
         }
         for i in data.beds.indices { grow(&data.beds[i], index: i) }
         // Bachbeet: wird vom Wasserlauf gegossen
@@ -304,7 +325,7 @@ final class GardenWorldModel {
         } else if bed.needsWater {
             water(index)
         } else {
-            say("Es wächst gerade. Komm später wieder, dann hat die Pflanze wieder Durst.")
+            say("Es wächst gerade.")
         }
     }
 
@@ -337,7 +358,7 @@ final class GardenWorldModel {
             d.beds[index].growingSince = now
             d.beds[index].wetUntil = now.addingTimeInterval(3)
         }
-        if w.beds[index].stage == 0 { say("Gut gegossen! Jetzt braucht die Pflanze Zeit zum Wachsen.") }
+        if w.beds[index].stage == 0 { say("Gut gegossen! Schau, gleich wächst etwas.") }
     }
 
     func waterAll() {
@@ -852,6 +873,10 @@ final class GardenWorldModel {
     func tileAt(_ c: Int, _ r: Int) -> WaterTile? { w.tiles.first { $0.col == c && $0.row == r } }
 
     func cellTapped(_ c: Int, _ r: Int) {
+        if removingTiles {
+            if tileAt(c, r) != nil { removeTile(c, r) }
+            return
+        }
         if let t = tileAt(c, r) {
             if t.piece == .schleuse && selectedPiece == nil {
                 edit { d in if let i = d.tiles.firstIndex(where: { $0.id == t.id }) { d.tiles[i].open.toggle() } }

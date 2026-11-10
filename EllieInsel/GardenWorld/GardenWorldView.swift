@@ -203,6 +203,7 @@ struct GardenWorldContent: View {
             ForEach(model.w.pieces) { p in
                 Button {
                     app.audio.effect(.tap)
+                    model.removingTiles = false
                     model.selectedPiece = model.selectedPiece == p ? nil : p
                 } label: {
                     Group {
@@ -224,6 +225,19 @@ struct GardenWorldContent: View {
                 .buttonStyle(PressableStyle())
                 .accessibilityLabel(p.name)
             }
+            // Schaufel: Rinne antippen und sie ist wieder weg (ohne langes Drücken).
+            Button {
+                app.audio.effect(.tap)
+                model.selectedPiece = nil
+                model.removingTiles.toggle()
+                if model.removingTiles { model.say("Tippe auf eine Rinne, dann nehme ich sie weg.") }
+            } label: {
+                WorldPic("gw_schaufel", "🧹", size: 50)
+                    .frame(width: 66, height: 66)
+                    .background(RoundedRectangle(cornerRadius: 16).fill(model.removingTiles ? Theme.gentleRed.opacity(0.45) : .white))
+            }
+            .buttonStyle(PressableStyle())
+            .accessibilityLabel("Rinne wegnehmen")
             Spacer()
             ForEach(model.w.boats) { b in
                 Button {

@@ -45,7 +45,7 @@ struct SeedPickerView: View {
                         Button {
                             model.plant(p, in: bed)
                         } label: {
-                            WorldCard(asset: p.seedAsset, emoji: p.emoji, title: p.name, subtitle: harvestHint(p), size: 140)
+                            WorldCard(asset: p.seedAsset, emoji: p.emoji, title: p.name, size: 150)
                         }
                         .buttonStyle(PressableStyle())
                     }
@@ -56,16 +56,6 @@ struct SeedPickerView: View {
         }
         .onAppear {
             if seeds.count > 0 { model.say("Such dir einen Samen aus.") }
-        }
-    }
-
-    private func harvestHint(_ p: PlantKind) -> String {
-        switch p.style {
-        case .pick: return p.isFlower ? "Blüten pflücken" : "Einzeln pflücken"
-        case .pull: return "Aus der Erde ziehen"
-        case .heavy: return "Gross und schwer"
-        case .shake: return "Baum schütteln"
-        case .seeds: return "Kerne für Vögel"
         }
     }
 }
@@ -223,8 +213,11 @@ struct IslandMapView: View {
                                         Image(systemName: "questionmark").font(.system(size: 30, weight: .heavy)).foregroundStyle(Theme.darkGreen.opacity(0.6))
                                     }
                                 }
-                                Text(open ? a.title : "Noch nicht entdeckt").font(Theme.rounded(16, .heavy)).foregroundStyle(Theme.darkGreen)
-                                    .padding(.horizontal, 10).padding(.vertical, 3).background(Capsule().fill(.white.opacity(0.9)))
+                                // Gesperrte Orte zeigen nur Nebel und Fragezeichen (das Kind liest nicht).
+                                if open {
+                                    Text(a.title).font(Theme.rounded(16, .heavy)).foregroundStyle(Theme.darkGreen)
+                                        .padding(.horizontal, 10).padding(.vertical, 3).background(Capsule().fill(.white.opacity(0.9)))
+                                }
                             }
                         }
                         .buttonStyle(PressableStyle())

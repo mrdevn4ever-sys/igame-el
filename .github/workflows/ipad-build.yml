@@ -2,7 +2,7 @@ name: iPad Build
 
 on:
   push:
-    branches: [claude/ellies-entdeckerinsel]
+    branches: [claude/ellies-entdeckerinsel, claude/eloquent-galileo-0bwpqo]
     paths:
       - "EllieInsel/**"
       - "EllieInsel.xcodeproj/**"

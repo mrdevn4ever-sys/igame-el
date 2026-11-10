@@ -55,6 +55,13 @@ enum WorldLayout {
     static let crystal = CGPoint(x: 0.72, y: 0.38)
     static let cloud = CGPoint(x: 0.32, y: 0.2)
 
+    /// Tiefenstaffelung: Was weiter hinten steht (kleineres y), erscheint kleiner, was vorne steht, grösser.
+    /// Bezugslinie ist die Beetreihe (y = 0,63, Faktor 1). Der Bach wird von oben gesehen und staffelt nicht.
+    static func depthScale(_ a: WorldArea, y: Double) -> CGFloat {
+        guard a != .bach else { return 1 }
+        return CGFloat(min(max(1 + (y - 0.63) * 0.8, 0.72), 1.25))
+    }
+
     /// Stellflächen für gebaute Dinge.
     static func spots(_ a: WorldArea) -> [CGPoint] {
         switch a {

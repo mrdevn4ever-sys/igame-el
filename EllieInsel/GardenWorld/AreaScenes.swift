@@ -404,7 +404,9 @@ struct SceneLayer: View {
 
     private var builtObjects: some View {
         ForEach(model.w.built.filter { $0.area == model.area }) { obj in
-            let size = W * obj.kind.sceneSize
+            // Hängendes (Wimpelkette) staffelt nicht mit der Tiefe.
+            let depth: CGFloat = obj.kind == .wimpelkette ? 1 : WorldLayout.depthScale(model.area, y: obj.y)
+            let size = W * CGFloat(obj.kind.sceneSize) * depth
             BuiltObjectImage(obj: obj, size: size)
                 .overlay(alignment: .topTrailing) {
                     if model.building && !obj.kind.unique {
@@ -447,7 +449,7 @@ struct SceneLayer: View {
 
     private var decorations: some View {
         ForEach(app.data.garden.placed) { deco in
-            let size = W * 0.07 * GardenCatalog.scale(deco.item)
+            let size = W * 0.07 * CGFloat(GardenCatalog.scale(deco.item)) * WorldLayout.depthScale(.haus, y: deco.y)
             Pic(GardenCatalog.asset(deco.item), deco.item, size: size / 1.2)
                 .frame(width: size, height: size)
                 .overlay(alignment: .topTrailing) {
@@ -634,7 +636,7 @@ struct BedView: View {
                 Image(systemName: "drop.fill").font(.system(size: size * 0.12)).foregroundStyle(Palette.blue.color)
                     .padding(6).background(Circle().fill(.white.opacity(0.9)))
             } else if let since = bed.growingSince {
-                let f = min(now.timeIntervalSince(since) / GardenWorldModel.growDuration(since: since), 1)
+                let f = min(now.timeIntervalSince(since) / model.stageSeconds, 1)
                 Circle().trim(from: 0, to: f).stroke(Theme.success, style: StrokeStyle(lineWidth: 5, lineCap: .round))
                     .rotationEffect(.degrees(-90))
                     .frame(width: size * 0.12, height: size * 0.12)
@@ -879,9 +881,11 @@ struct ActorsLayer: View {
 
     private func actorView(_ a: WorldActor, now: Date) -> some View {
         let pos = a.position(at: now)
-        let sz = size.width * (a.resident?.size ?? 0.12)
-        let (asset, emoji) = pose(a, now: now)
         let flies = a.resident?.flies ?? false
+        // Printatops etwas kleiner als bisher; am Boden wird nach Tiefe gestaffelt, Flieger nicht.
+        let depth: CGFloat = flies ? 1 : WorldLayout.depthScale(model.area, y: Double(pos.y))
+        let sz = size.width * CGFloat(a.resident?.size ?? 0.105) * depth
+        let (asset, emoji) = pose(a, now: now)
         let bob = flies ? sin(now.timeIntervalSinceReferenceDate * 4 + Double(a.id.count)) * sz * 0.08 : 0
         let hop = (a.resident == .hase || a.resident == .frosch) && a.moving(at: now)
             ? -abs(sin(now.timeIntervalSinceReferenceDate * 8)) * sz * 0.25 : 0
@@ -919,11 +923,15 @@ struct ChannelTileView: View {
                 ctx.stroke(path, with: .color(Color(red: 0.72, green: 0.52, blue: 0.32)),
                            style: StrokeStyle(lineWidth: w * 0.4, lineCap: .butt, lineJoin: .round))
                 if wet {
-                    ctx.stroke(path, with: .color(Color(red: 0.30, green: 0.62, blue: 0.92)),
+                    // Dunkler Wasserrand, heller Wasserlauf, darauf wandernde Lichtpunkte
+                    // (keine Mittelstriche: die sahen aus wie eine Strasse).
+                    ctx.stroke(path, with: .color(Color(red: 0.16, green: 0.45, blue: 0.78)),
                                style: StrokeStyle(lineWidth: w * 0.28, lineCap: .butt, lineJoin: .round))
+                    ctx.stroke(path, with: .color(Color(red: 0.36, green: 0.68, blue: 0.95)),
+                               style: StrokeStyle(lineWidth: w * 0.21, lineCap: .butt, lineJoin: .round))
                     let phase = -tl.date.timeIntervalSinceReferenceDate * Double(w) * 0.5
-                    ctx.stroke(path, with: .color(.white.opacity(0.55)),
-                               style: StrokeStyle(lineWidth: w * 0.05, lineCap: .round, dash: [w * 0.1, w * 0.22], dashPhase: phase))
+                    ctx.stroke(path, with: .color(.white.opacity(0.5)),
+                               style: StrokeStyle(lineWidth: w * 0.06, lineCap: .round, dash: [w * 0.015, w * 0.37], dashPhase: phase))
                 } else {
                     ctx.stroke(path, with: .color(Color(red: 0.55, green: 0.40, blue: 0.26)),
                                style: StrokeStyle(lineWidth: w * 0.28, lineCap: .butt, lineJoin: .round))
