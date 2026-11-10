@@ -119,6 +119,8 @@ struct KitchenView: View {
         VStack(spacing: 18) {
             if let d = dish {
                 Text(d.name).font(Theme.rounded(28, .heavy)).foregroundStyle(Theme.darkGreen)
+                    .padding(.horizontal, 18).padding(.vertical, 6)
+                    .background(Capsule().fill(.white.opacity(0.85)))
                 ZStack {
                     WorldPic(d == .blumenstrauss ? "gw_kueche_vase" : (d == .kuerbissuppe ? "gw_kueche_topf" : "gw_kueche_schneidebrett"), "🪵", size: 300)
                         .opacity(0.9)
@@ -320,6 +322,8 @@ struct KitchenView: View {
             if let d = dish {
                 WorldPic(d.asset, d.emoji, size: 260)
                 Text(d.name).font(Theme.rounded(32, .heavy)).foregroundStyle(Theme.darkGreen)
+                    .padding(.horizontal, 18).padding(.vertical, 6)
+                    .background(Capsule().fill(.white.opacity(0.85)))
                 HStack(spacing: 16) {
                     Button { phase = .choose; dish = nil; slots = [] } label: { Label("Noch etwas kochen", systemImage: "fork.knife") }
                         .buttonStyle(BigButtonStyle(color: Theme.lightYellow, foreground: Theme.darkGreen))
@@ -392,7 +396,7 @@ struct WorkshopView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             // Gebaut und bemalt wird direkt auf der Werkbank; nur die Auswahl liegt auf einer hellen Tafel.
-            .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(phase == .choose ? 0.7 : 0.25)))
+            .background(RoundedRectangle(cornerRadius: 30).fill(.white.opacity(phase == .assemble ? 0.25 : 0.7)))
             .padding(.horizontal, 24)
             .padding(.bottom, 12)
         }
@@ -459,6 +463,8 @@ struct WorkshopView: View {
         VStack(spacing: 18) {
             if let k = kind {
                 Text(k.name).font(Theme.rounded(28, .heavy)).foregroundStyle(Theme.darkGreen)
+                    .padding(.horizontal, 18).padding(.vertical, 6)
+                    .background(Capsule().fill(.white.opacity(0.85)))
                 let all = placed.count == k.parts.count
                 ZStack {
                     RoundedRectangle(cornerRadius: 28)
