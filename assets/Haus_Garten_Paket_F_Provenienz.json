@@ -1,7 +1,7 @@
 {
   "schema": "ellie-haus-garten-package-f-provenienz/v1",
-  "created_at": "2026-11-11T19:17:45.279845+00:00",
-  "status": "PASS_RELEASE_OWNER_FINALIZATION",
+  "created_at": "2026-11-11T20:23:21.519828+00:00",
+  "status": "PASS_RELEASE_AGENT_FINAL_V6",
   "count": 9,
   "corrected_manifest_contract": {
     "waterwheel_and_sluice_component_only": true,
@@ -14,24 +14,31 @@
       22.5,
       45,
       67.5
-    ]
+    ],
+    "wheel_complete_double_rim": true,
+    "wheel_boards_contained_inside_rim": true,
+    "reviewed_candidate": "component-v6"
   },
   "independent_visual_gates": {
     "isolated_wheel_components": "PASS",
     "app_scale_wheel_geometry": "PASS; synthetic QA underlay excluded from asset bytes",
-    "no_swastika_hakenkreuz_hooked_cross_pinwheel_or_hate_symbol_resemblance": "PASS",
+    "no_swastika_hakenkreuz_hooked_cross_pinwheel_or_hate_symbol_resemblance": "PASS_ALL_FOUR_FRAMES_AND_SET",
     "isolated_sluice_components": "PASS",
-    "no_baked_channel_water_banks_terrain_or_ports": "PASS"
+    "no_baked_channel_water_banks_terrain_or_ports": "PASS",
+    "native_component_v6": "PASS",
+    "literal_80pct_component_v6": "PASS"
   },
   "repeatability": {
-    "component_files_byte_identical_on_fresh_rerender": true,
-    "renderer_sha256": "23a7035ceaaf06f4ea5c88d9d5b1fcfdb2e35e132ad7d3e0573e5190ddd34e3b"
+    "component_files_byte_identical_on_two_fresh_rerenders": true,
+    "renderer_sha256": "4b69c8c7bdaf899048d0569c311f94b688f969af7b9047eaf04c93680402acb5",
+    "technical_qa": "PASS 71/71",
+    "protected_pixels_outside_radius_164_identical": 177683
   },
   "records": [
     {
       "filename": "gw_wasserrad_1.png",
-      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v5/frames/gw_wasserrad_1.png",
-      "source_sha256": "28a8c8440e23793fed706e55e8fad18d80127b6c646a875bd35da062799ab435",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v6/frames/gw_wasserrad_1.png",
+      "source_sha256": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
       "source_size": [
         512,
         512
@@ -41,17 +48,17 @@
         512
       ],
       "resize": "none",
-      "optimizer": "preserved verified component bytes",
-      "final_sha256": "28a8c8440e23793fed706e55e8fad18d80127b6c646a875bd35da062799ab435",
-      "bytes": 72354,
-      "technical_verdict": "PASS",
-      "visual_verdict": "PASS_ISOLATED_COMPONENT",
-      "symbol_safety_verdict": "PASS_NO_HATE_SYMBOL_RESEMBLANCE"
+      "optimizer": "preserved exact hash-bound component-v6 bytes",
+      "final_sha256": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+      "bytes": 73377,
+      "technical_verdict": "PASS_71_OF_71_SET",
+      "visual_verdict": "PASS_NATIVE_AND_LITERAL_80PCT",
+      "symbol_safety_verdict": "PASS_NO_HATE_OR_POLITICAL_SYMBOL_RESEMBLANCE"
     },
     {
       "filename": "gw_wasserrad_2.png",
-      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v5/frames/gw_wasserrad_2.png",
-      "source_sha256": "882f6ac6fb4622c17fb1ea516545cd095eeee15530b9e906879a204aa9eb9cf4",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v6/frames/gw_wasserrad_2.png",
+      "source_sha256": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
       "source_size": [
         512,
         512
@@ -61,17 +68,17 @@
         512
       ],
       "resize": "none",
-      "optimizer": "preserved verified component bytes",
-      "final_sha256": "882f6ac6fb4622c17fb1ea516545cd095eeee15530b9e906879a204aa9eb9cf4",
-      "bytes": 99314,
-      "technical_verdict": "PASS",
-      "visual_verdict": "PASS_ISOLATED_COMPONENT",
-      "symbol_safety_verdict": "PASS_NO_HATE_SYMBOL_RESEMBLANCE"
+      "optimizer": "preserved exact hash-bound component-v6 bytes",
+      "final_sha256": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+      "bytes": 101951,
+      "technical_verdict": "PASS_71_OF_71_SET",
+      "visual_verdict": "PASS_NATIVE_AND_LITERAL_80PCT",
+      "symbol_safety_verdict": "PASS_NO_HATE_OR_POLITICAL_SYMBOL_RESEMBLANCE"
     },
     {
       "filename": "gw_wasserrad_3.png",
-      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v5/frames/gw_wasserrad_3.png",
-      "source_sha256": "408195e9f75adf725be3401f387bc48962fa93e18f840f9720575df30f04e571",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v6/frames/gw_wasserrad_3.png",
+      "source_sha256": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
       "source_size": [
         512,
         512
@@ -81,17 +88,17 @@
         512
       ],
       "resize": "none",
-      "optimizer": "preserved verified component bytes",
-      "final_sha256": "408195e9f75adf725be3401f387bc48962fa93e18f840f9720575df30f04e571",
-      "bytes": 72317,
-      "technical_verdict": "PASS",
-      "visual_verdict": "PASS_ISOLATED_COMPONENT",
-      "symbol_safety_verdict": "PASS_NO_HATE_SYMBOL_RESEMBLANCE"
+      "optimizer": "preserved exact hash-bound component-v6 bytes",
+      "final_sha256": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+      "bytes": 73409,
+      "technical_verdict": "PASS_71_OF_71_SET",
+      "visual_verdict": "PASS_NATIVE_AND_LITERAL_80PCT",
+      "symbol_safety_verdict": "PASS_NO_HATE_OR_POLITICAL_SYMBOL_RESEMBLANCE"
     },
     {
       "filename": "gw_wasserrad_4.png",
-      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v5/frames/gw_wasserrad_4.png",
-      "source_sha256": "8d9865d4b54dd1af6f52ee5c1ee5898ebc04de68cb5c2db2722a6412bf1947b6",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v6/frames/gw_wasserrad_4.png",
+      "source_sha256": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e",
       "source_size": [
         512,
         512
@@ -101,16 +108,16 @@
         512
       ],
       "resize": "none",
-      "optimizer": "preserved verified component bytes",
-      "final_sha256": "8d9865d4b54dd1af6f52ee5c1ee5898ebc04de68cb5c2db2722a6412bf1947b6",
-      "bytes": 99355,
-      "technical_verdict": "PASS",
-      "visual_verdict": "PASS_ISOLATED_COMPONENT",
-      "symbol_safety_verdict": "PASS_NO_HATE_SYMBOL_RESEMBLANCE"
+      "optimizer": "preserved exact hash-bound component-v6 bytes",
+      "final_sha256": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e",
+      "bytes": 102120,
+      "technical_verdict": "PASS_71_OF_71_SET",
+      "visual_verdict": "PASS_NATIVE_AND_LITERAL_80PCT",
+      "symbol_safety_verdict": "PASS_NO_HATE_OR_POLITICAL_SYMBOL_RESEMBLANCE"
     },
     {
       "filename": "gw_schleuse_offen.png",
-      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v5/frames/gw_schleuse_offen.png",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v6/frames/gw_schleuse_offen.png",
       "source_sha256": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
       "source_size": [
         512,
@@ -121,16 +128,16 @@
         512
       ],
       "resize": "none",
-      "optimizer": "preserved verified component bytes",
+      "optimizer": "preserved exact hash-bound component-v6 bytes",
       "final_sha256": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
       "bytes": 8545,
-      "technical_verdict": "PASS",
-      "visual_verdict": "PASS_ISOLATED_COMPONENT",
+      "technical_verdict": "PASS_71_OF_71_SET",
+      "visual_verdict": "PASS_NATIVE_AND_LITERAL_80PCT",
       "symbol_safety_verdict": null
     },
     {
       "filename": "gw_schleuse_zu.png",
-      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v5/frames/gw_schleuse_zu.png",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-F/qa/iterations/component-v6/frames/gw_schleuse_zu.png",
       "source_sha256": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
       "source_size": [
         512,
@@ -141,11 +148,11 @@
         512
       ],
       "resize": "none",
-      "optimizer": "preserved verified component bytes",
+      "optimizer": "preserved exact hash-bound component-v6 bytes",
       "final_sha256": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
       "bytes": 9384,
-      "technical_verdict": "PASS",
-      "visual_verdict": "PASS_ISOLATED_COMPONENT",
+      "technical_verdict": "PASS_71_OF_71_SET",
+      "visual_verdict": "PASS_NATIVE_AND_LITERAL_80PCT",
       "symbol_safety_verdict": null
     },
     {
@@ -237,10 +244,34 @@
     }
   ],
   "contact_sheet": {
-    "path": "F:/Projects/igame-el-asset-work/garten3/release-pkg-F/qa/release_contact_80pct.png",
-    "sha256": "de66ea567fa181434fa6f384b37b9ec2b0d09bee7aee4344b33d5ff6726753ff"
+    "native_path": "assets/Haus_Garten_Paket_F_Visuelle_QA.json",
+    "native_sha256": "bc11739951f283b34ff3f255db69883346ab3724836d488336cf9ca6b533d262",
+    "component_v6_wheel_native_sha256": "f20278e9aa35ed7af4d82b0eb3d6fadd8fa8346fc6bb96fe82794c77a978c7d2",
+    "component_v6_wheel_80pct_sha256": "e51705de82a01a24de735be0a84c742cccb9c6e2f387e13369aa2e9a6c348fac"
   },
   "blockers": [],
-  "repository_promotion_at_receipt_creation": false,
-  "superseded_iterations": "All prior channel/water and hooked/scoop/pinwheel wheel candidates are rejected and excluded."
+  "repository_promotion_at_receipt_creation": true,
+  "superseded_iterations": "Candidate 8, all channel/water candidates, and component-v5 are excluded; component-v6 is the committed final.",
+  "agent_completion_receipts": {
+    "Haus_Garten_Paket_F_Abschluss.json": {
+      "path": "assets/Haus_Garten_Paket_F_Abschluss.json",
+      "sha256": "412daa8d706797e1c05f4e4b6b3632ebed8cb03fc99f096e4a555f864125e2d5"
+    },
+    "Haus_Garten_Paket_F_QA.json": {
+      "path": "assets/Haus_Garten_Paket_F_QA.json",
+      "sha256": "0751896d889ae075b430395b867d901f94d7e75a14d3d3f4bf43f13d50ee77a3"
+    },
+    "Haus_Garten_Paket_F_Visuelle_QA.json": {
+      "path": "assets/Haus_Garten_Paket_F_Visuelle_QA.json",
+      "sha256": "bc11739951f283b34ff3f255db69883346ab3724836d488336cf9ca6b533d262"
+    },
+    "Haus_Garten_Paket_F_Wiederholbarkeit.json": {
+      "path": "assets/Haus_Garten_Paket_F_Wiederholbarkeit.json",
+      "sha256": "cf3ac918fb44ee130b896e831c6c752317fd144cd4d3bbf4e210fdcc52f1bbaf"
+    },
+    "Haus_Garten_Paket_F_Promotion.json": {
+      "path": "assets/Haus_Garten_Paket_F_Promotion.json",
+      "sha256": "5fa13673804339bb3fe34425109d0dd4db8833f90ca6863a409ffab4b2243774"
+    }
+  }
 }

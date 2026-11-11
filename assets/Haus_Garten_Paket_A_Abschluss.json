@@ -1,0 +1,117 @@
+{
+  "artifacts": {
+    "candidate": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/garden-window-chimney-v1/candidate/gw_szene_garten_tag_window_chimney_native.png",
+    "evidence_manifest": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/garden-window-chimney-v1/qa/evidence_manifest.json",
+    "final": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/garden-window-chimney-v1/final/gw_szene_garten_tag.jpg",
+    "mask_declaration": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/garden-window-chimney-v1/masks/mask_declaration.json",
+    "provenance": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/garden-window-chimney-v1/provenance/provenance.json",
+    "regression_report": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/garden-window-chimney-v1/reports/regression_report.json",
+    "visual_review": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/garden-window-chimney-v1/reports/visual_review.json",
+    "zero_diff_report": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/garden-window-chimney-v1/reports/zero_diff_report.json"
+  },
+  "blockers": [],
+  "candidate_contract": {
+    "mode": "RGB",
+    "size": [
+      1448,
+      1086
+    ]
+  },
+  "checks": {
+    "all_layer_alpha_is_inside_its_declared_mask": true,
+    "all_named_frozen_rois_byte_identical": true,
+    "build_report_hashes_match_outputs": true,
+    "each_declared_addition_changes_pixels": true,
+    "facade_pixels_unchanged_outside_two_window_masks": true,
+    "final_encoder_setting_is_q85": true,
+    "final_is_2732x2048_rgb": true,
+    "final_is_4_2_0": true,
+    "final_is_progressive": true,
+    "gate_masks_and_hit_areas_byte_identical": true,
+    "independent_visual_review_passes_exact_candidate": true,
+    "mask_declaration_preceded_canonical_outputs": true,
+    "native_candidate_is_1448x1086_rgb_png": true,
+    "no_evening_asset_produced": true,
+    "outside_source_candidate_rgb_hashes_equal": true,
+    "preexisting_roof_pixels_unchanged_outside_chimney_mask": true,
+    "previous_gate_source_is_current_frozen_source": true,
+    "previous_gate_verification_was_pass": true,
+    "semantic_contract_is_exactly_two_windows_one_chimney_no_smoke": true,
+    "serialized_union_equals_exact_or_of_three_masks": true,
+    "source_hash_matches_frozen_acceptance": true,
+    "three_masks_pairwise_disjoint": true,
+    "two_fresh_builds_match_canonical_candidate_final_and_layers": true,
+    "zero_changed_pixels_outside_exact_union": true
+  },
+  "final_contract": {
+    "bytes": 817069,
+    "jpeg_quality": 85,
+    "mode": "RGB",
+    "pillow_sampling_code": 2,
+    "progressive": true,
+    "sha256": "52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6",
+    "size": [
+      2732,
+      2048
+    ],
+    "subsampling": "4:2:0"
+  },
+  "hashes": {
+    "build_script_sha256": "a00722814e04dd83408ba15afd30807905f1094c396a61372a0d3b0f9bfcabb4",
+    "candidate_sha256": "74a31829bdd4b088d87442df3c42fa26b06c5fec5d152549bdc34399063da5ae",
+    "evidence_manifest_sha256": "7f9da5cbbdff9d53a559a0d2cb56b400b5724837086a15f184d2a3b69a3608d8",
+    "final_jpeg_sha256": "52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6",
+    "mask_declaration_sha256": "d0a086501afd4804873124bd97f8e132d9effc273fd8e6ef5295378fa5728196",
+    "provenance_sha256": "c02e7d6ffe97aa268861a84e9b51f3f26bf222aa4b3111acfd7ded579d41d43c",
+    "regression_report_sha256": "86623f2509c00ca4c7f2bc283927cf92f4fce058fc5ef9e0e5ec152ddb782b84",
+    "source_sha256": "b6bb41dc227363da78bc1481afbb699d98e5e1083e09fc89907d3b75b42ebbb8",
+    "union_mask_sha256": "4bbfe3c0ccea5868ac06f88af7768a1550fc17f8d84a572aed95266df22893c5",
+    "verify_script_sha256": "9012378ab46b4fede61dee5049bd9c7f037428874c9f25b6c7082caf9056f27d",
+    "visual_review_sha256": "22235a614881e5cab52fd7cbd728e211ab958212b80e2e75a86d5b9760b92f08",
+    "zero_diff_report_sha256": "dd5b78a45e3191e06d5a1f550a20da91c53ae66123e29686c6a836a38dd9c020"
+  },
+  "native_diff_summary": {
+    "changed_bbox_inclusive": {
+      "x_max": 561,
+      "x_min": 117,
+      "y_max": 443,
+      "y_min": 63
+    },
+    "changed_channel_count": 101855,
+    "changed_pixel_count": 34362,
+    "outside_candidate_rgb_sha256": "4a78eda4d4e7d76be9c5feda8e0fed1d81758613420ab9c8d23498d142468b2f",
+    "outside_source_rgb_sha256": "4a78eda4d4e7d76be9c5feda8e0fed1d81758613420ab9c8d23498d142468b2f",
+    "outside_union_changed_pixel_count": 0,
+    "outside_union_rgb_byte_count": 4601874
+  },
+  "repeatability": {
+    "build_1": {
+      "candidate_sha256": "74a31829bdd4b088d87442df3c42fa26b06c5fec5d152549bdc34399063da5ae",
+      "final_sha256": "52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6",
+      "layer_sha256": {
+        "chimney": "77162b83f0d4fc2bceda119f82c9d1a4ea1b8416a8761a83a717da8f5504ed73",
+        "left_window": "589a6161038d2d8db6ac79e2b70215ea3fefc915a24d2bbead7911f94b356da6",
+        "right_window": "5c5c417b9f585868387fab51755ea3392ddae42828acba4e01547c9baeee1e3a"
+      },
+      "stdout": "{\"candidate\": \"F:\\\\Projects\\\\igame-el-asset-work\\\\garten3\\\\pkg-A-deterministic\\\\garden-window-chimney-v1\\\\repeatability\\\\build_1\\\\candidate\\\\gw_szene_garten_tag_window_chimney_native.png\", \"candidate_sha256\": \"74a31829bdd4b088d87442df3c42fa26b06c5fec5d152549bdc34399063da5ae\", \"final\": \"F:\\\\Projects\\\\igame-el-asset-work\\\\garten3\\\\pkg-A-deterministic\\\\garden-window-chimney-v1\\\\repeatability\\\\build_1\\\\final\\\\gw_szene_garten_tag.jpg\", \"final_sha256\": \"52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6\", \"report\": \"F:\\\\Projects\\\\igame-el-asset-work\\\\garten3\\\\pkg-A-deterministic\\\\garden-window-chimney-v1\\\\repeatability\\\\build_1\\\\reports\\\\build_report.json\", \"status\": \"BUILT_FROM_PREDECLARED_MASKS\"}"
+    },
+    "build_2": {
+      "candidate_sha256": "74a31829bdd4b088d87442df3c42fa26b06c5fec5d152549bdc34399063da5ae",
+      "final_sha256": "52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6",
+      "layer_sha256": {
+        "chimney": "77162b83f0d4fc2bceda119f82c9d1a4ea1b8416a8761a83a717da8f5504ed73",
+        "left_window": "589a6161038d2d8db6ac79e2b70215ea3fefc915a24d2bbead7911f94b356da6",
+        "right_window": "5c5c417b9f585868387fab51755ea3392ddae42828acba4e01547c9baeee1e3a"
+      },
+      "stdout": "{\"candidate\": \"F:\\\\Projects\\\\igame-el-asset-work\\\\garten3\\\\pkg-A-deterministic\\\\garden-window-chimney-v1\\\\repeatability\\\\build_2\\\\candidate\\\\gw_szene_garten_tag_window_chimney_native.png\", \"candidate_sha256\": \"74a31829bdd4b088d87442df3c42fa26b06c5fec5d152549bdc34399063da5ae\", \"final\": \"F:\\\\Projects\\\\igame-el-asset-work\\\\garten3\\\\pkg-A-deterministic\\\\garden-window-chimney-v1\\\\repeatability\\\\build_2\\\\final\\\\gw_szene_garten_tag.jpg\", \"final_sha256\": \"52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6\", \"report\": \"F:\\\\Projects\\\\igame-el-asset-work\\\\garten3\\\\pkg-A-deterministic\\\\garden-window-chimney-v1\\\\repeatability\\\\build_2\\\\reports\\\\build_report.json\", \"status\": \"BUILT_FROM_PREDECLARED_MASKS\"}"
+    }
+  },
+  "schema": "garten3-window-chimney-verification/v1",
+  "semantic_counts": {
+    "chimney": 1,
+    "smoke": 0,
+    "total_additions": 3,
+    "window": 2
+  },
+  "status": "PASS"
+}

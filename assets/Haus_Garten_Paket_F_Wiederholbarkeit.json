@@ -1,0 +1,105 @@
+{
+  "all_six_reviewed_candidate_run_a_run_b_byte_identical": true,
+  "directory_sets": {
+    "reviewed_candidate": [
+      "gw_schleuse_offen.png",
+      "gw_schleuse_zu.png",
+      "gw_wasserrad_1.png",
+      "gw_wasserrad_2.png",
+      "gw_wasserrad_3.png",
+      "gw_wasserrad_4.png"
+    ],
+    "run_a": [
+      "gw_schleuse_offen.png",
+      "gw_schleuse_zu.png",
+      "gw_wasserrad_1.png",
+      "gw_wasserrad_2.png",
+      "gw_wasserrad_3.png",
+      "gw_wasserrad_4.png"
+    ],
+    "run_b": [
+      "gw_schleuse_offen.png",
+      "gw_schleuse_zu.png",
+      "gw_wasserrad_1.png",
+      "gw_wasserrad_2.png",
+      "gw_wasserrad_3.png",
+      "gw_wasserrad_4.png"
+    ]
+  },
+  "expected_assets": [
+    "gw_wasserrad_1.png",
+    "gw_wasserrad_2.png",
+    "gw_wasserrad_3.png",
+    "gw_wasserrad_4.png",
+    "gw_schleuse_offen.png",
+    "gw_schleuse_zu.png"
+  ],
+  "promoted_final_equals_reviewed_candidate": true,
+  "promoted_final_hashes": {
+    "gw_schleuse_offen.png": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
+    "gw_schleuse_zu.png": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
+    "gw_wasserrad_1.png": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+    "gw_wasserrad_2.png": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+    "gw_wasserrad_3.png": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+    "gw_wasserrad_4.png": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e"
+  },
+  "renderer_sha256": "4b69c8c7bdaf899048d0569c311f94b688f969af7b9047eaf04c93680402acb5",
+  "result": "PASS",
+  "runs": [
+    {
+      "byte_identity": true,
+      "filename": "gw_wasserrad_1.png",
+      "sha256": {
+        "reviewed_candidate": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+        "run_a": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+        "run_b": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454"
+      }
+    },
+    {
+      "byte_identity": true,
+      "filename": "gw_wasserrad_2.png",
+      "sha256": {
+        "reviewed_candidate": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+        "run_a": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+        "run_b": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78"
+      }
+    },
+    {
+      "byte_identity": true,
+      "filename": "gw_wasserrad_3.png",
+      "sha256": {
+        "reviewed_candidate": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+        "run_a": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+        "run_b": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19"
+      }
+    },
+    {
+      "byte_identity": true,
+      "filename": "gw_wasserrad_4.png",
+      "sha256": {
+        "reviewed_candidate": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e",
+        "run_a": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e",
+        "run_b": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e"
+      }
+    },
+    {
+      "byte_identity": true,
+      "filename": "gw_schleuse_offen.png",
+      "sha256": {
+        "reviewed_candidate": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
+        "run_a": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
+        "run_b": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a"
+      }
+    },
+    {
+      "byte_identity": true,
+      "filename": "gw_schleuse_zu.png",
+      "sha256": {
+        "reviewed_candidate": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
+        "run_a": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
+        "run_b": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd"
+      }
+    }
+  ],
+  "schema": "igame-el.package-f.repeatability.v2"
+}

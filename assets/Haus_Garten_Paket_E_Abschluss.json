@@ -1,0 +1,113 @@
+{
+  "schema": "pkg-e-correction-v2-parent-handoff-v1",
+  "created_utc": "2026-11-11T18:35:30.287620Z",
+  "status": "COMPLETE",
+  "finals": {
+    "gw_tier_reh_stehen.png": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/final/gw_tier_reh_stehen.png",
+      "sha256": "a8cf20e132ae22fea11bbd506f8924831790a8291c6cc2c71afe71a8465777e2"
+    },
+    "gw_tier_reh_grasen.png": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/final/gw_tier_reh_grasen.png",
+      "sha256": "d9124c0ebda10cd8f8103357d3ccf5e5db2bbfb0f41f337c14852e3d31f8fa3f"
+    },
+    "gw_baumhaus_stufe_1.png": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/final/gw_baumhaus_stufe_1.png",
+      "sha256": "f49032acea12f0a9562908884045a0a6333a22e7a717015aa7787ca64f661de9"
+    },
+    "gw_baumhaus_stufe_2.png": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/final/gw_baumhaus_stufe_2.png",
+      "sha256": "d59ee7cfe7bd439272cac1b19fd7ad4261e27db712ab68b9493b71e677e1acfa"
+    },
+    "gw_baumhaus_stufe_3.png": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/final/gw_baumhaus_stufe_3.png",
+      "sha256": "957935992eef7d28e310846c2e7f67dea10a55d92fc553ddfba7eb3e16c6c2df"
+    },
+    "gw_baumhaus_stufe_4.png": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/final/gw_baumhaus_stufe_4.png",
+      "sha256": "8568ced909400e745e8dd6357300365efafb9e454adaf0df7ec18bdd17499f90"
+    }
+  },
+  "reports": {
+    "technical_qa.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/qa/technical_qa.json",
+      "sha256": "78ad7df844bf3279408d9a1fe8c7df1e325ae23937bb4668dfd356240d968c5b"
+    },
+    "visual_qa.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/qa/visual_qa.json",
+      "sha256": "ea0e568542a9e9a2b5f965ed3ba7aaaa29e04c01e8e74b2cc52152c1d6d4729e"
+    },
+    "registration_report.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/qa/registration_report.json",
+      "sha256": "c00fbbe2b66651999e7c9b95468b99ae8265583ac4153b756169ca9718b92874"
+    },
+    "per_file_verdicts.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/qa/per_file_verdicts.json",
+      "sha256": "d06a32e915cb2dfb5384f566dafc944976df3f46d51a743b88b8f0e07f9dfaeb"
+    },
+    "provenance/final_hashes.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/provenance/final_hashes.json",
+      "sha256": "6e32f27ceed9cdff6a436777efcf2a0d02f7abb4462e620cb18108abe84bff09"
+    },
+    "provenance/derivative_manifest.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/provenance/derivative_manifest.json",
+      "sha256": "1e153c1ed5543bb60c9109838d691eb422006129926618700ef0dea4e2679614"
+    },
+    "provenance/hash_provenance_report.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/provenance/hash_provenance_report.json",
+      "sha256": "d39d03b063565fcaff96207a9be0f86c03491424d62326063142f8bf84e20363"
+    },
+    "provenance/correction-v2/standing_deer_locality.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/provenance/correction-v2/standing_deer_locality.json",
+      "sha256": "fd79247fe9e36dda3097ca7e564e1a0a3c1df5473416c8986cea81ad7fe17d73"
+    },
+    "provenance/correction-v2/treehouse_source_rebuild.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/provenance/correction-v2/treehouse_source_rebuild.json",
+      "sha256": "589af0dffda1cf614b463f4b6c29110905aa9557ae1a3d89a75b48f7b9f70ef3"
+    },
+    "provenance/correction-v2/reproducibility.json": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/provenance/correction-v2/reproducibility.json",
+      "sha256": "048df9fb4157d948decea67040ad855b7cf2bc83709936817413c70338930586"
+    }
+  },
+  "visual_evidence": {
+    "standing_deer_native_app": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/contact-sheets/correction-v2/final_standing_deer_signal-16-56_native_app.png",
+      "sha256": "620991c9a6a8a21ab2c3399208fdc477433ffdd35c0b548c28a9980b669d949e"
+    },
+    "standing_deer_source_before_after": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/contact-sheets/correction-v2/final_standing_deer_source_before_after.png",
+      "sha256": "f84cde2353909e8ee16ccf6498006393ff0eb912292be564393cb83426fd838b"
+    },
+    "treehouse_progression_app": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/contact-sheets/correction-v2/final_treehouse_progression_registered_app.png",
+      "sha256": "95d81dc23c4d496a0f8e9e0aab49bfd2e627244894b355632696fd18e5eba623"
+    },
+    "treehouse_no_bunting_source": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/contact-sheets/correction-v2/final_treehouse_stage3_no_bunting_source.png",
+      "sha256": "748b469671e0d1acd64ff3702ed1b9a7e141830918f66f69de0c6e1cb9eb9418"
+    },
+    "treehouse_native_cream_dark": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/contact-sheets/correction-v2/final_treehouse_stage2_stage3_cream_202020.png",
+      "sha256": "4ead59761af1cbf44f144fcee80cc0aa61255dbe99b69c56b16f561e49c7ec02"
+    },
+    "treehouse_legacy_registration": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/pkg-E/contact-sheets/correction-v2/final_treehouse_legacy_registration.png",
+      "sha256": "1839abf31c7e5513ec98bbdd8a0684963fcb6a4961caca3d5d27247406a89781"
+    }
+  },
+  "invariants": {
+    "all_technical_pass": true,
+    "all_visual_pass": true,
+    "all_registration_deltas_zero": true,
+    "deer_outside_envelope_identity": true,
+    "stage3_no_bunting_construction_invariant": true,
+    "accepted_files_byte_identical": true,
+    "repository_read_only_preserved": true
+  },
+  "owner_approval_scope": {
+    "recorded_direction": "E treehouse and deer accepted in principle; standing deer signal-16-56 selected; current registered v2 treehouse progression selected; stage 3 must contain no bunting/flag string; external promotion only; repository read-only.",
+    "scope_limit": "Recorded as owner acceptance in principle and exact visual direction, not as listening approval or human pixel-by-pixel approval."
+  },
+  "blockers": []
+}

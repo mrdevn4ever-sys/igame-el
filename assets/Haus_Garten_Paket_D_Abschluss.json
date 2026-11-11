@@ -1,0 +1,74 @@
+{
+  "schema": "garten3-package-d-final-closure/v1",
+  "created_at": "2026-11-11T20:23:21.519086+00:00",
+  "status": "PASS_RELEASE",
+  "source_completion": {
+    "schema": "garten3-package-d-completion-summary-v2",
+    "generated_at": "2026-11-11T16:30:38.705893+00:00",
+    "status": "PARENT_QA_READY_WITH_1_UNRELATED_PENDING_ITEM",
+    "final_dir": "F:\\Projects\\igame-el-asset-work\\garten3\\pkg-D\\final",
+    "count": 24,
+    "final_manifest_sha256": "923e5122d104a73f0794e60761951c97ed58aed96bf26a51a27d885127c54f05",
+    "request_count": 26,
+    "successful_service_posts": 26,
+    "unique_request_id_count": 26,
+    "request_accounting": {
+      "initial_package_successful_service_posts": 24,
+      "lavender_v5_successful_service_posts": 2,
+      "total_successful_service_posts": 26,
+      "lavender_v5_zero_post_preflight_failures": 1,
+      "total_recorded_launch_attempts_including_zero_post_failure": 27,
+      "unique_request_id_count": 26,
+      "lavender_v5_request_ids": [
+        "22484cda-2be5-49a8-af8b-99965b1e7d44",
+        "6d5c783f-0775-48bf-a360-00439aadbbfe"
+      ],
+      "provider_posts_after_blender_switch": 0,
+      "all_26_posts_used_exact_ordered_four_reference_hashes": true
+    },
+    "provider": "openai-codex / gpt-image-2 (catalog gpt-image-2-high; server reported low=21, medium=5 across 26 posts)",
+    "report": "F:\\Projects\\igame-el-asset-work\\garten3\\pkg-D\\REPORT.md",
+    "parent_qa_handoff": "F:\\Projects\\igame-el-asset-work\\garten3\\pkg-D\\PARENT_QA_HANDOFF.md",
+    "provenance": "F:\\Projects\\igame-el-asset-work\\garten3\\pkg-D\\reconciled_provenance_report.json",
+    "technical_qa": "F:\\Projects\\igame-el-asset-work\\garten3\\pkg-D\\qa\\technical_qa.json",
+    "per_file_verdicts": "F:\\Projects\\igame-el-asset-work\\garten3\\pkg-D\\qa\\per_file_verdicts.json",
+    "lavender": {
+      "status": "PARENT_QA_READY",
+      "final_path": "F:\\Projects\\igame-el-asset-work\\garten3\\pkg-D\\final\\garten2_lavendelbusch.png",
+      "final_sha256": "1bbf8baeeddd914d5a138aac0f85127302b00bf43dafc097ab7fc98eb27bf555",
+      "final_bytes": 1055994,
+      "candidate_path": "F:\\Projects\\igame-el-asset-work\\garten3\\pkg-D\\lavender-rework-v5\\processed\\preview-v3-normalized.png",
+      "candidate_final_byte_identical": true,
+      "source_method": "deterministic full source-level Blender regeneration; no prior raster used",
+      "source_correction": "Removed deterministic base leaf 26 in Blender source after native v1 exposed it as a detached component.",
+      "mechanical_verdict": "PASS",
+      "native_cream_verdict": "PASS",
+      "native_dark_verdict": "PASS",
+      "exact_96px_cream_dark_verdict": "PASS",
+      "reviewer_labels": {
+        "native_cream": "PASS_WITH_NOTE",
+        "native_dark": "PASS_WITH_NOTE",
+        "exact_96px_cream_dark": "PASS_WITH_NOTE"
+      },
+      "reviewer_notes_non_blocking": [
+        "mild fine-detail softness",
+        "low-set framing at required baseline"
+      ],
+      "blockers": [],
+      "human_approval_claimed": false,
+      "promotion_receipt": "F:\\Projects\\igame-el-asset-work\\garten3\\pkg-D\\lavender-rework-v5\\metadata\\lavender_rework_v5_promotion.json"
+    },
+    "target_blockers": [],
+    "blockers": [
+      "garten2_gaensebluemchen.png (d76deba18ec2ef067b01a15e09fc84768202faf4f9f73ddd8c94987b0dee51b7): fresh hash-bound Parent-QA remains pending; unrelated to lavender promotion."
+    ]
+  },
+  "resolution_of_source_pending_note": {
+    "garten2_gaensebluemchen.png": "PASS on exact 1024 release bytes",
+    "exact_release_parent_qa": "24 PASS / 0 REWORK / 0 REJECT",
+    "release_inventory_digest_sha256": "216182f429eab5cd5a261edb71bc5c45a87a4420806c8357128714bf9deecd52",
+    "blockers": []
+  },
+  "repository_release_provenance": "assets/Haus_Garten_Paket_D_Provenienz.json",
+  "blockers": []
+}

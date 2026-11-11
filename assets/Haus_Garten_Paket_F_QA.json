@@ -1,0 +1,784 @@
+{
+  "assets": {
+    "gw_schleuse_offen.png": {
+      "alpha_bbox": [
+        114,
+        39,
+        398,
+        447
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bbox_height_fraction": 0.796875,
+      "bbox_width_fraction": 0.5546875,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "edge_alpha_count": 0,
+      "foreground_component_count_at_alpha_32": 2,
+      "mode": "RGBA",
+      "opaque_pixel_count": 17965,
+      "partial_alpha_pixel_count": 1988,
+      "sha256": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
+      "size": [
+        512,
+        512
+      ],
+      "transparent_pixel_count": 242191,
+      "transparent_rgb_nonzero_count": 0,
+      "water_like_opaque_pixel_count": 0
+    },
+    "gw_schleuse_zu.png": {
+      "alpha_bbox": [
+        174,
+        66,
+        339,
+        447
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bbox_height_fraction": 0.744140625,
+      "bbox_width_fraction": 0.322265625,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "edge_alpha_count": 0,
+      "foreground_component_count_at_alpha_32": 1,
+      "mode": "RGBA",
+      "opaque_pixel_count": 18545,
+      "partial_alpha_pixel_count": 2315,
+      "sha256": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
+      "size": [
+        512,
+        512
+      ],
+      "transparent_pixel_count": 241284,
+      "transparent_rgb_nonzero_count": 0,
+      "water_like_opaque_pixel_count": 0
+    },
+    "gw_wasserrad_1.png": {
+      "alpha_bbox": [
+        100,
+        65,
+        413,
+        448
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bbox_height_fraction": 0.748046875,
+      "bbox_width_fraction": 0.611328125,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "edge_alpha_count": 0,
+      "foreground_component_count_at_alpha_32": 1,
+      "mode": "RGBA",
+      "opaque_pixel_count": 55983,
+      "partial_alpha_pixel_count": 6853,
+      "sha256": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+      "size": [
+        512,
+        512
+      ],
+      "transparent_pixel_count": 199308,
+      "transparent_rgb_nonzero_count": 0,
+      "water_like_opaque_pixel_count": 0
+    },
+    "gw_wasserrad_2.png": {
+      "alpha_bbox": [
+        100,
+        65,
+        413,
+        448
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bbox_height_fraction": 0.748046875,
+      "bbox_width_fraction": 0.611328125,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "edge_alpha_count": 0,
+      "foreground_component_count_at_alpha_32": 1,
+      "mode": "RGBA",
+      "opaque_pixel_count": 58137,
+      "partial_alpha_pixel_count": 6808,
+      "sha256": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+      "size": [
+        512,
+        512
+      ],
+      "transparent_pixel_count": 197199,
+      "transparent_rgb_nonzero_count": 0,
+      "water_like_opaque_pixel_count": 0
+    },
+    "gw_wasserrad_3.png": {
+      "alpha_bbox": [
+        100,
+        65,
+        413,
+        448
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bbox_height_fraction": 0.748046875,
+      "bbox_width_fraction": 0.611328125,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "edge_alpha_count": 0,
+      "foreground_component_count_at_alpha_32": 1,
+      "mode": "RGBA",
+      "opaque_pixel_count": 55983,
+      "partial_alpha_pixel_count": 6851,
+      "sha256": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+      "size": [
+        512,
+        512
+      ],
+      "transparent_pixel_count": 199310,
+      "transparent_rgb_nonzero_count": 0,
+      "water_like_opaque_pixel_count": 0
+    },
+    "gw_wasserrad_4.png": {
+      "alpha_bbox": [
+        100,
+        65,
+        413,
+        448
+      ],
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "bbox_height_fraction": 0.748046875,
+      "bbox_width_fraction": 0.611328125,
+      "corner_alpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "edge_alpha_count": 0,
+      "foreground_component_count_at_alpha_32": 1,
+      "mode": "RGBA",
+      "opaque_pixel_count": 58137,
+      "partial_alpha_pixel_count": 6808,
+      "sha256": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e",
+      "size": [
+        512,
+        512
+      ],
+      "transparent_pixel_count": 197199,
+      "transparent_rgb_nonzero_count": 0,
+      "water_like_opaque_pixel_count": 0
+    }
+  },
+  "checks": [
+    {
+      "detail": [
+        "gw_quelle.png",
+        "gw_schleuse_offen.png",
+        "gw_schleuse_zu.png",
+        "gw_wasserrad_1.png",
+        "gw_wasserrad_2.png",
+        "gw_wasserrad_3.png",
+        "gw_wasserrad_4.png",
+        "gw_ziel_beet.png",
+        "gw_ziel_teich.png"
+      ],
+      "name": "corrected output set present with no unexpected PNGs",
+      "passed": true
+    },
+    {
+      "detail": "RGBA",
+      "name": "gw_wasserrad_1.png: PNG mode RGBA",
+      "passed": true
+    },
+    {
+      "detail": [
+        512,
+        512
+      ],
+      "name": "gw_wasserrad_1.png: 512x512",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        255
+      ],
+      "name": "gw_wasserrad_1.png: true transparent and opaque pixels",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_1.png: transparent RGB sanitized",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "gw_wasserrad_1.png: all corners transparent",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_1.png: no canvas-edge foreground",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_1.png: no turquoise/channel-like component pixels",
+      "passed": true
+    },
+    {
+      "detail": 1,
+      "name": "gw_wasserrad_1.png: compact connected component geometry",
+      "passed": true
+    },
+    {
+      "detail": 0.611328125,
+      "name": "gw_wasserrad_1.png: visible width <= 62% canvas",
+      "passed": true
+    },
+    {
+      "detail": "RGBA",
+      "name": "gw_wasserrad_2.png: PNG mode RGBA",
+      "passed": true
+    },
+    {
+      "detail": [
+        512,
+        512
+      ],
+      "name": "gw_wasserrad_2.png: 512x512",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        255
+      ],
+      "name": "gw_wasserrad_2.png: true transparent and opaque pixels",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_2.png: transparent RGB sanitized",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "gw_wasserrad_2.png: all corners transparent",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_2.png: no canvas-edge foreground",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_2.png: no turquoise/channel-like component pixels",
+      "passed": true
+    },
+    {
+      "detail": 1,
+      "name": "gw_wasserrad_2.png: compact connected component geometry",
+      "passed": true
+    },
+    {
+      "detail": 0.611328125,
+      "name": "gw_wasserrad_2.png: visible width <= 62% canvas",
+      "passed": true
+    },
+    {
+      "detail": "RGBA",
+      "name": "gw_wasserrad_3.png: PNG mode RGBA",
+      "passed": true
+    },
+    {
+      "detail": [
+        512,
+        512
+      ],
+      "name": "gw_wasserrad_3.png: 512x512",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        255
+      ],
+      "name": "gw_wasserrad_3.png: true transparent and opaque pixels",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_3.png: transparent RGB sanitized",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "gw_wasserrad_3.png: all corners transparent",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_3.png: no canvas-edge foreground",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_3.png: no turquoise/channel-like component pixels",
+      "passed": true
+    },
+    {
+      "detail": 1,
+      "name": "gw_wasserrad_3.png: compact connected component geometry",
+      "passed": true
+    },
+    {
+      "detail": 0.611328125,
+      "name": "gw_wasserrad_3.png: visible width <= 62% canvas",
+      "passed": true
+    },
+    {
+      "detail": "RGBA",
+      "name": "gw_wasserrad_4.png: PNG mode RGBA",
+      "passed": true
+    },
+    {
+      "detail": [
+        512,
+        512
+      ],
+      "name": "gw_wasserrad_4.png: 512x512",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        255
+      ],
+      "name": "gw_wasserrad_4.png: true transparent and opaque pixels",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_4.png: transparent RGB sanitized",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "gw_wasserrad_4.png: all corners transparent",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_4.png: no canvas-edge foreground",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_wasserrad_4.png: no turquoise/channel-like component pixels",
+      "passed": true
+    },
+    {
+      "detail": 1,
+      "name": "gw_wasserrad_4.png: compact connected component geometry",
+      "passed": true
+    },
+    {
+      "detail": 0.611328125,
+      "name": "gw_wasserrad_4.png: visible width <= 62% canvas",
+      "passed": true
+    },
+    {
+      "detail": "RGBA",
+      "name": "gw_schleuse_offen.png: PNG mode RGBA",
+      "passed": true
+    },
+    {
+      "detail": [
+        512,
+        512
+      ],
+      "name": "gw_schleuse_offen.png: 512x512",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        255
+      ],
+      "name": "gw_schleuse_offen.png: true transparent and opaque pixels",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_schleuse_offen.png: transparent RGB sanitized",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "gw_schleuse_offen.png: all corners transparent",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_schleuse_offen.png: no canvas-edge foreground",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_schleuse_offen.png: no turquoise/channel-like component pixels",
+      "passed": true
+    },
+    {
+      "detail": 2,
+      "name": "gw_schleuse_offen.png: compact connected component geometry",
+      "passed": true
+    },
+    {
+      "detail": "RGBA",
+      "name": "gw_schleuse_zu.png: PNG mode RGBA",
+      "passed": true
+    },
+    {
+      "detail": [
+        512,
+        512
+      ],
+      "name": "gw_schleuse_zu.png: 512x512",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        255
+      ],
+      "name": "gw_schleuse_zu.png: true transparent and opaque pixels",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_schleuse_zu.png: transparent RGB sanitized",
+      "passed": true
+    },
+    {
+      "detail": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "gw_schleuse_zu.png: all corners transparent",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_schleuse_zu.png: no canvas-edge foreground",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "gw_schleuse_zu.png: no turquoise/channel-like component pixels",
+      "passed": true
+    },
+    {
+      "detail": 1,
+      "name": "gw_schleuse_zu.png: compact connected component geometry",
+      "passed": true
+    },
+    {
+      "detail": [
+        "gw_wasserrad_1.png",
+        "gw_wasserrad_2.png",
+        "gw_wasserrad_3.png",
+        "gw_wasserrad_4.png",
+        "gw_schleuse_offen.png",
+        "gw_schleuse_zu.png"
+      ],
+      "name": "renderer names match corrected contract",
+      "passed": true
+    },
+    {
+      "detail": {
+        "gw_wasserrad_1.png": 0.0,
+        "gw_wasserrad_2.png": 22.5,
+        "gw_wasserrad_3.png": 45.0,
+        "gw_wasserrad_4.png": 67.5
+      },
+      "name": "wheel phase constants exact",
+      "passed": true
+    },
+    {
+      "detail": 8,
+      "name": "wheel has exactly 8 straight-spoke source instances",
+      "passed": true
+    },
+    {
+      "detail": [
+        154.0,
+        136.0
+      ],
+      "name": "wheel complete-rim radii valid",
+      "passed": true
+    },
+    {
+      "detail": 8,
+      "name": "wheel paddle source count equals spoke count",
+      "passed": true
+    },
+    {
+      "detail": 164.0,
+      "name": "wheel dynamic radius bounded",
+      "passed": true
+    },
+    {
+      "detail": [
+        92,
+        420
+      ],
+      "name": "wheel bearing positions exact",
+      "passed": true
+    },
+    {
+      "detail": [
+        92,
+        420
+      ],
+      "name": "sluice post positions exact",
+      "passed": true
+    },
+    {
+      "detail": {
+        "definition": "pixels with Euclidean radius > 164 from (256,256)",
+        "diff_bboxes_vs_frame_1": [
+          [
+            111,
+            111,
+            409,
+            402
+          ],
+          [
+            116,
+            115,
+            409,
+            398
+          ],
+          [
+            111,
+            111,
+            409,
+            409
+          ]
+        ],
+        "outside_changed_counts_vs_frame_1": [
+          0,
+          0,
+          0
+        ],
+        "pixel_count": 177683,
+        "state_hashes": [
+          "f13cc2f8e350cab99a65a9b21a6912c33e75f47c40059e70d6acbfac9e3d825a",
+          "f13cc2f8e350cab99a65a9b21a6912c33e75f47c40059e70d6acbfac9e3d825a",
+          "f13cc2f8e350cab99a65a9b21a6912c33e75f47c40059e70d6acbfac9e3d825a",
+          "f13cc2f8e350cab99a65a9b21a6912c33e75f47c40059e70d6acbfac9e3d825a"
+        ]
+      },
+      "name": "wheel protected outside-region bytes identical across all states",
+      "passed": true
+    },
+    {
+      "detail": [
+        "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+        "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+        "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+        "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e"
+      ],
+      "name": "four wheel frames are byte-distinct",
+      "passed": true
+    },
+    {
+      "detail": "8d510313d54e79c1522fa495b40e8418a210e4b75f9b4d3d24a32d75b2924365",
+      "name": "wheel fixed support renderer is byte-deterministic",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "sluice OPEN center is clear",
+      "passed": true
+    },
+    {
+      "detail": 0.7307692307692307,
+      "name": "sluice CLOSED center is blocked",
+      "passed": true
+    },
+    {
+      "detail": 0,
+      "name": "sluice states differ only in board-occupied region",
+      "passed": true
+    },
+    {
+      "detail": "894cc2faa6b3c72d5c31db7bf5c5c39932fff03272b1b5d7f1cfc2076c267ae9",
+      "name": "sluice fixed support renderer is byte-deterministic",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual_sha256": "1d9c632c5d2a91cd1ed7aeb83d6e27b55e88765bc7ff76ce49f57acd27973456",
+        "expected_sha256": "1d9c632c5d2a91cd1ed7aeb83d6e27b55e88765bc7ff76ce49f57acd27973456",
+        "preserved": true
+      },
+      "name": "retained final byte-identical: gw_quelle.png",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual_sha256": "b38cdf66f1c709259a411394d2dc12b5b423f18b2fe1d9e5ee94a4ad2dc3f0d7",
+        "expected_sha256": "b38cdf66f1c709259a411394d2dc12b5b423f18b2fe1d9e5ee94a4ad2dc3f0d7",
+        "preserved": true
+      },
+      "name": "retained final byte-identical: gw_ziel_teich.png",
+      "passed": true
+    },
+    {
+      "detail": {
+        "actual_sha256": "c2e7ec67acba2940f26441af406333ab33480215615ee42181ded7e789b2394a",
+        "expected_sha256": "c2e7ec67acba2940f26441af406333ab33480215615ee42181ded7e789b2394a",
+        "preserved": true
+      },
+      "name": "retained final byte-identical: gw_ziel_beet.png",
+      "passed": true
+    }
+  ],
+  "renderer_sha256": "4b69c8c7bdaf899048d0569c311f94b688f969af7b9047eaf04c93680402acb5",
+  "result": "PASS",
+  "retained_final_proof": {
+    "gw_quelle.png": {
+      "actual_sha256": "1d9c632c5d2a91cd1ed7aeb83d6e27b55e88765bc7ff76ce49f57acd27973456",
+      "expected_sha256": "1d9c632c5d2a91cd1ed7aeb83d6e27b55e88765bc7ff76ce49f57acd27973456",
+      "preserved": true
+    },
+    "gw_ziel_beet.png": {
+      "actual_sha256": "c2e7ec67acba2940f26441af406333ab33480215615ee42181ded7e789b2394a",
+      "expected_sha256": "c2e7ec67acba2940f26441af406333ab33480215615ee42181ded7e789b2394a",
+      "preserved": true
+    },
+    "gw_ziel_teich.png": {
+      "actual_sha256": "b38cdf66f1c709259a411394d2dc12b5b423f18b2fe1d9e5ee94a4ad2dc3f0d7",
+      "expected_sha256": "b38cdf66f1c709259a411394d2dc12b5b423f18b2fe1d9e5ee94a4ad2dc3f0d7",
+      "preserved": true
+    }
+  },
+  "schema": "igame-el.package-f.corrected-component-qa.v2",
+  "scope": {
+    "component_only": true,
+    "corrected_assets": [
+      "gw_wasserrad_1.png",
+      "gw_wasserrad_2.png",
+      "gw_wasserrad_3.png",
+      "gw_wasserrad_4.png",
+      "gw_schleuse_offen.png",
+      "gw_schleuse_zu.png"
+    ],
+    "environment_pixels_allowed": false,
+    "retained_assets": [
+      "gw_quelle.png",
+      "gw_ziel_teich.png",
+      "gw_ziel_beet.png"
+    ]
+  },
+  "summary": {
+    "failed": 0,
+    "passed": 71,
+    "total": 71
+  },
+  "wheel_protected_region": {
+    "definition": "pixels with Euclidean radius > 164 from (256,256)",
+    "diff_bboxes_vs_frame_1": [
+      [
+        111,
+        111,
+        409,
+        402
+      ],
+      [
+        116,
+        115,
+        409,
+        398
+      ],
+      [
+        111,
+        111,
+        409,
+        409
+      ]
+    ],
+    "outside_changed_counts_vs_frame_1": [
+      0,
+      0,
+      0
+    ],
+    "pixel_count": 177683,
+    "state_hashes": [
+      "f13cc2f8e350cab99a65a9b21a6912c33e75f47c40059e70d6acbfac9e3d825a",
+      "f13cc2f8e350cab99a65a9b21a6912c33e75f47c40059e70d6acbfac9e3d825a",
+      "f13cc2f8e350cab99a65a9b21a6912c33e75f47c40059e70d6acbfac9e3d825a",
+      "f13cc2f8e350cab99a65a9b21a6912c33e75f47c40059e70d6acbfac9e3d825a"
+    ]
+  }
+}

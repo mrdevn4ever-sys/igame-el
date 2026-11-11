@@ -1,0 +1,84 @@
+{
+  "candidate": "component-v6",
+  "evidence": {
+    "sluice_app_80pct": {
+      "findings": [
+        "OPEN and CLOSED remain immediately distinguishable over the QA-only app underlay.",
+        "Fixed supports remain coherent and no confusing symbol/emblem appears."
+      ],
+      "path": "qa/iterations/component-v6/gate-app-80pct.png",
+      "result": "PASS",
+      "sha256": "46b586eed962d29c6c0a9325e6ca1709581fe68075ff3d9d031f32630e9b8caa"
+    },
+    "sluice_native": {
+      "findings": [
+        "OPEN is visibly parked on the upper crossbar with the center clear.",
+        "CLOSED uses the same straight board across the implied horizontal channel with the center blocked.",
+        "No environment or accidental emblem is visible."
+      ],
+      "path": "qa/iterations/component-v6/gate-native-components.png",
+      "result": "PASS",
+      "sha256": "975efc22f99dc553f37a66511b64a6eded8245709f1bdbd2f4c5c58b90457e7e"
+    },
+    "wheel_app_80pct": {
+      "findings": [
+        "At literal app size, all four states preserve the ringed-waterwheel read, eight-spoke/eight-board counts, fixed support/bearings, and trackable phases.",
+        "Every frame and the set explicitly passed the no-swastika, no-pinwheel, no-hooked-cross, no-hate-symbol, and no-political-symbol hard gate."
+      ],
+      "path": "qa/iterations/component-v6/wheel-app-80pct.png",
+      "result": "PASS",
+      "sha256": "e51705de82a01a24de735be0a84c742cccb9c6e2f387e13369aa2e9a6c348fac"
+    },
+    "wheel_native": {
+      "findings": [
+        "All four frames read as conventional complete double-rim waterwheels.",
+        "Each frame visibly has a concentric round hub, eight straight radial spokes, eight separate straight transverse boards, and a differentiated fixed gray support with two bearing housings.",
+        "The moving rim marker makes all 0/22.5/45/67.5-degree phases trackable.",
+        "Every frame and the four-frame set explicitly passed: no swastika, Hakenkreuz, hooked-cross, pinwheel/windmill replacement read, bent/L/C/hooked arms, broken ring, hate symbol, or political symbol."
+      ],
+      "path": "qa/iterations/component-v6/wheel-native-components.png",
+      "result": "PASS",
+      "sha256": "f20278e9aa35ed7af4d82b0eb3d6fadd8fa8346fc6bb96fe82794c77a978c7d2"
+    }
+  },
+  "frozen_renderer_sha256": "4b69c8c7bdaf899048d0569c311f94b688f969af7b9047eaf04c93680402acb5",
+  "human_approval_claimed": false,
+  "overall_result": "PASS",
+  "owner_waived_noncritical_cosmetic_notes": [
+    "Long labels in the QA app-size contact sheets are crowded or clipped at the right edge; this is evidence-sheet typography only and does not affect component pixels."
+  ],
+  "promotion_binding": {
+    "final_hashes": {
+      "gw_schleuse_offen.png": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
+      "gw_schleuse_zu.png": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
+      "gw_wasserrad_1.png": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+      "gw_wasserrad_2.png": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+      "gw_wasserrad_3.png": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+      "gw_wasserrad_4.png": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e"
+    },
+    "promotion_report": "qa/promotion_report.json",
+    "result": "PASS",
+    "reviewed_hashes_equal_promoted_hashes": true
+  },
+  "review_scope": {
+    "sluice_app": "independent bounded visual review at literal 80% of a 256px tile",
+    "sluice_native": "independent bounded visual review at 512px component scale",
+    "wheel_app": "independent visual hard gate at literal 80% of a 256px tile",
+    "wheel_native": "independent visual hard gate at 512px component scale"
+  },
+  "reviewed_frames": {
+    "gw_schleuse_offen.png": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
+    "gw_schleuse_zu.png": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
+    "gw_wasserrad_1.png": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+    "gw_wasserrad_2.png": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+    "gw_wasserrad_3.png": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+    "gw_wasserrad_4.png": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e"
+  },
+  "schema": "igame-el.package-f.hash-bound-visual-review.v2",
+  "technical_alpha_evidence": {
+    "gate_alpha_contact_sha256": "ecd06b2a95dc58cc831bb50e4de69325b5e1191496d245ad3d88c6004a708629",
+    "qa_report": "qa/iterations/component-v6/qa_report.json",
+    "qa_result": "PASS 71/71",
+    "wheel_alpha_contact_sha256": "df8af62eea44cecf59b84b90dd9a0cbfc94b42f0aa823b3647d0be140a6f2b23"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "candidate_8_promoted": false,
+  "channel_based_candidate_promoted": false,
+  "corrected_assets_promoted": {
+    "gw_schleuse_offen.png": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
+    "gw_schleuse_zu.png": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
+    "gw_wasserrad_1.png": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+    "gw_wasserrad_2.png": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+    "gw_wasserrad_3.png": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+    "gw_wasserrad_4.png": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e"
+  },
+  "final_set": [
+    "gw_quelle.png",
+    "gw_schleuse_offen.png",
+    "gw_schleuse_zu.png",
+    "gw_wasserrad_1.png",
+    "gw_wasserrad_2.png",
+    "gw_wasserrad_3.png",
+    "gw_wasserrad_4.png",
+    "gw_ziel_beet.png",
+    "gw_ziel_teich.png"
+  ],
+  "post_promotion_final_hashes": {
+    "gw_quelle.png": "1d9c632c5d2a91cd1ed7aeb83d6e27b55e88765bc7ff76ce49f57acd27973456",
+    "gw_schleuse_offen.png": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
+    "gw_schleuse_zu.png": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
+    "gw_wasserrad_1.png": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+    "gw_wasserrad_2.png": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+    "gw_wasserrad_3.png": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+    "gw_wasserrad_4.png": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e",
+    "gw_ziel_beet.png": "c2e7ec67acba2940f26441af406333ab33480215615ee42181ded7e789b2394a",
+    "gw_ziel_teich.png": "b38cdf66f1c709259a411394d2dc12b5b423f18b2fe1d9e5ee94a4ad2dc3f0d7"
+  },
+  "pre_promotion_backup_hashes": {
+    "gw_quelle.png": "1d9c632c5d2a91cd1ed7aeb83d6e27b55e88765bc7ff76ce49f57acd27973456",
+    "gw_schleuse_offen.png": "ad5abd100a3f912612e1c6ac305e525da26daf7bff2c1ff63cbace08d2ce9ad1",
+    "gw_schleuse_zu.png": "7acc7412ba7bc48338f35c68cac575d4189aba64eb567ee7685c0298244531f7",
+    "gw_wasserrad_1.png": "0f7c2fc5a9d057ad0caa2d3599024357d37c46439007e8b5ea36a97a43bf627c",
+    "gw_wasserrad_2.png": "49ea343ab58a6598d582c9bee52cb59a8ee69ef60f149ff9c1496a72b5138b60",
+    "gw_wasserrad_3.png": "ca69695d72eaf4ca21489b8da079e0d1daa588073cbcc82c76223ac5080fd79b",
+    "gw_wasserrad_4.png": "b27ca88ebff8c7d8ac1e4e59eb9e2ca26bd6bbab94f5ad694396f49973d40386",
+    "gw_ziel_beet.png": "c2e7ec67acba2940f26441af406333ab33480215615ee42181ded7e789b2394a",
+    "gw_ziel_teich.png": "b38cdf66f1c709259a411394d2dc12b5b423f18b2fe1d9e5ee94a4ad2dc3f0d7"
+  },
+  "pre_promotion_final_hashes": {
+    "gw_quelle.png": "1d9c632c5d2a91cd1ed7aeb83d6e27b55e88765bc7ff76ce49f57acd27973456",
+    "gw_schleuse_offen.png": "ad5abd100a3f912612e1c6ac305e525da26daf7bff2c1ff63cbace08d2ce9ad1",
+    "gw_schleuse_zu.png": "7acc7412ba7bc48338f35c68cac575d4189aba64eb567ee7685c0298244531f7",
+    "gw_wasserrad_1.png": "0f7c2fc5a9d057ad0caa2d3599024357d37c46439007e8b5ea36a97a43bf627c",
+    "gw_wasserrad_2.png": "49ea343ab58a6598d582c9bee52cb59a8ee69ef60f149ff9c1496a72b5138b60",
+    "gw_wasserrad_3.png": "ca69695d72eaf4ca21489b8da079e0d1daa588073cbcc82c76223ac5080fd79b",
+    "gw_wasserrad_4.png": "b27ca88ebff8c7d8ac1e4e59eb9e2ca26bd6bbab94f5ad694396f49973d40386",
+    "gw_ziel_beet.png": "c2e7ec67acba2940f26441af406333ab33480215615ee42181ded7e789b2394a",
+    "gw_ziel_teich.png": "b38cdf66f1c709259a411394d2dc12b5b423f18b2fe1d9e5ee94a4ad2dc3f0d7"
+  },
+  "result": "PASS",
+  "retained_assets_verified_byte_identical": {
+    "gw_quelle.png": "1d9c632c5d2a91cd1ed7aeb83d6e27b55e88765bc7ff76ce49f57acd27973456",
+    "gw_ziel_beet.png": "c2e7ec67acba2940f26441af406333ab33480215615ee42181ded7e789b2394a",
+    "gw_ziel_teich.png": "b38cdf66f1c709259a411394d2dc12b5b423f18b2fe1d9e5ee94a4ad2dc3f0d7"
+  },
+  "schema": "igame-el.package-f.hash-bound-promotion.v2",
+  "source_candidate": "qa/iterations/component-v6/frames"
+}

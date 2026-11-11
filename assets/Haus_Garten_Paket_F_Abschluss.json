@@ -1,0 +1,112 @@
+{
+  "binding_inputs": {
+    "F:/Projects/igame-el/EllieInsel/GardenWorld/AreaScenes.swift": {
+      "exists": true,
+      "sha256": "ddf717ca159e3de0794fd846d4ebd1a94b510ed8b476262355f461f79ebfb90e"
+    },
+    "F:/Projects/igame-el/EllieInsel/GardenWorld/WorldComponents.swift": {
+      "exists": true,
+      "sha256": "8a1f7978b4d5ce8c99a748d0bf8f3f597ce74e72f804199664c546dbe6d9a62a"
+    },
+    "F:/Projects/igame-el/EllieInsel/GardenWorld/WorldModel.swift": {
+      "exists": true,
+      "sha256": "2b3594ef05ee864ce5a865afffa3996c283ee94cfcbbdcc44545cc28fa32689d"
+    },
+    "F:/Projects/igame-el/assets/AGENT_PROMPT.md": {
+      "exists": true,
+      "sha256": "94c91c2d5ddccfc99ce5067e07b0a7a4417d127d7cbc1e98a553f5509fec4d28"
+    },
+    "F:/Projects/igame-el/assets/HERMES_GARTENWELT.md": {
+      "exists": true,
+      "sha256": "5a465ae7766f5edbd2a0a61de4d1efeb81a090a8ae9da00fc58593dc344de27c"
+    },
+    "F:/Projects/igame-el/assets/HERMES_HAUS_GARTEN.md": {
+      "exists": true,
+      "sha256": "6c712d778cf77b60e3cf31d43df0271610edcd113085ff7e49af180139b62a60"
+    },
+    "F:/Projects/igame-el/assets/Haus_Garten.csv": {
+      "exists": true,
+      "sha256": "d4cb0f6f3a30ad39018607d9eccfffc44d14fec305fc0090002c36af50d3cdfd"
+    }
+  },
+  "candidate_8_never_promote_record": "qa/owner_override_no_hate_symbol.json",
+  "contract": {
+    "path": "inputs/package_f_contract.json",
+    "sha256": "ae86cb25ca09aa95d0aa136cb2a71500265193f92cf6eb89563ee3df474b5758"
+  },
+  "final_hashes": {
+    "gw_quelle.png": "1d9c632c5d2a91cd1ed7aeb83d6e27b55e88765bc7ff76ce49f57acd27973456",
+    "gw_schleuse_offen.png": "7f3136752f092a0f396e71f66f8995b0efcf0adeb59a8350b483930291f8d53a",
+    "gw_schleuse_zu.png": "ff0018ecaa839d44ff017b93f9486b7a803610f54eebc6960bd679ae790962bd",
+    "gw_wasserrad_1.png": "3e53d446910c3414934df2e54ea42ed5358c65aae75a3b2b3776f9d23680e454",
+    "gw_wasserrad_2.png": "fcf97a4a63cfb355eb206d6abd729faac61da9031bb2d98101cca25f213a2d78",
+    "gw_wasserrad_3.png": "df81dc9d4cd19a8029e02d55a0bffbc349e4bff96acc54c191ff6e3b84755b19",
+    "gw_wasserrad_4.png": "766a8c1ec10eb3848930fae25d1fdd1c3e472d17a355f3c6e603d67161c86f4e",
+    "gw_ziel_beet.png": "c2e7ec67acba2940f26441af406333ab33480215615ee42181ded7e789b2394a",
+    "gw_ziel_teich.png": "b38cdf66f1c709259a411394d2dc12b5b423f18b2fe1d9e5ee94a4ad2dc3f0d7"
+  },
+  "human_approval_claimed": false,
+  "promotion": "qa/promotion_report.json",
+  "rejected_archive": "qa/prior_rework/superseded-owner-spec-channel-candidates",
+  "renderer": {
+    "final_pixel_patching": false,
+    "path": "renderer/package_f_renderer.py",
+    "pixel_sources": [],
+    "randomness": "none",
+    "sha256": "4b69c8c7bdaf899048d0569c311f94b688f969af7b9047eaf04c93680402acb5",
+    "source_image_pixels_reused": false
+  },
+  "repository_binding": {
+    "branch": "claude/eloquent-galileo-0bwpqo",
+    "commit": "02c080bff4342e3f10ccd25cb04a44ab20f6400d",
+    "manifest_rows": {
+      "gw_schleuse_offen.png": [
+        {
+          "content": "gw_schleuse_offen.png;F;Wasserbau;512x512 transparent;ERSETZT. NUR die Schleuse, Draufsicht, transparent, OHNE Rinne und OHNE Wasser (zeichnet die App darunter): zwei Holzpfosten (bei 18 % und 82 % der Bildh\u00f6he, Bildmitte waagrecht) mit Querbalken, das Schleusenbrett ist hochgezogen und liegt sichtbar auf dem Querbalken, die Mitte ist frei. H\u00f6chstens 62 % der Bildbreite. Knete-3D-Stil, warmes Holz.",
+          "line": 147
+        },
+        {
+          "content": "gw_schleuse_zu.png;F;Wasserbau;512x512 transparent;ERSETZT. Wie gw_schleuse_offen.png (deckungsgleiche Pfosten und Querbalken), aber das Schleusenbrett steckt quer in der Rinne und sperrt sie. OHNE Rinne und OHNE Wasser.",
+          "line": 148
+        }
+      ],
+      "gw_schleuse_zu.png": [
+        {
+          "content": "gw_schleuse_zu.png;F;Wasserbau;512x512 transparent;ERSETZT. Wie gw_schleuse_offen.png (deckungsgleiche Pfosten und Querbalken), aber das Schleusenbrett steckt quer in der Rinne und sperrt sie. OHNE Rinne und OHNE Wasser.",
+          "line": 148
+        }
+      ],
+      "gw_wasserrad_1.png": [
+        {
+          "content": "gw_wasserrad_1.png;F;Wasserbau;512x512 transparent;ERSETZT. NUR das Wasserrad, Bild 1 von 4 (je 22,5\u00b0 weitergedreht), Draufsicht, transparent, OHNE Rinne und OHNE Wasser (beides zeichnet die App darunter). Rad mittig, h\u00f6chstens 62 % der Bildbreite: runde Nabe, 8 GERADE, gleich lange Speichen mit je einem geraden, quer stehenden Schaufelbrett am Ende (drehsymmetrisch wie ein M\u00fchlrad). KEINE abgewinkelten oder hakenf\u00f6rmigen Schaufeln, kein Windrad-/Wirbelmuster. Dazu eine Achse quer zur Rinne mit zwei kleinen Lagerkl\u00f6tzen (bei 18 % und 82 % der Bildh\u00f6he). Knete-3D-Stil, warmes Holz wie gw_werkbank.png.",
+          "line": 143
+        }
+      ],
+      "gw_wasserrad_2.png": [
+        {
+          "content": "gw_wasserrad_2.png;F;Wasserbau;512x512 transparent;ERSETZT. NUR das Wasserrad, Bild 2 von 4 (je 22,5\u00b0 weitergedreht), Draufsicht, transparent, OHNE Rinne und OHNE Wasser (beides zeichnet die App darunter). Rad mittig, h\u00f6chstens 62 % der Bildbreite: runde Nabe, 8 GERADE, gleich lange Speichen mit je einem geraden, quer stehenden Schaufelbrett am Ende (drehsymmetrisch wie ein M\u00fchlrad). KEINE abgewinkelten oder hakenf\u00f6rmigen Schaufeln, kein Windrad-/Wirbelmuster. Dazu eine Achse quer zur Rinne mit zwei kleinen Lagerkl\u00f6tzen (bei 18 % und 82 % der Bildh\u00f6he). Knete-3D-Stil, warmes Holz wie gw_werkbank.png.",
+          "line": 144
+        }
+      ],
+      "gw_wasserrad_3.png": [
+        {
+          "content": "gw_wasserrad_3.png;F;Wasserbau;512x512 transparent;ERSETZT. NUR das Wasserrad, Bild 3 von 4 (je 22,5\u00b0 weitergedreht), Draufsicht, transparent, OHNE Rinne und OHNE Wasser (beides zeichnet die App darunter). Rad mittig, h\u00f6chstens 62 % der Bildbreite: runde Nabe, 8 GERADE, gleich lange Speichen mit je einem geraden, quer stehenden Schaufelbrett am Ende (drehsymmetrisch wie ein M\u00fchlrad). KEINE abgewinkelten oder hakenf\u00f6rmigen Schaufeln, kein Windrad-/Wirbelmuster. Dazu eine Achse quer zur Rinne mit zwei kleinen Lagerkl\u00f6tzen (bei 18 % und 82 % der Bildh\u00f6he). Knete-3D-Stil, warmes Holz wie gw_werkbank.png.",
+          "line": 145
+        }
+      ],
+      "gw_wasserrad_4.png": [
+        {
+          "content": "gw_wasserrad_4.png;F;Wasserbau;512x512 transparent;ERSETZT. NUR das Wasserrad, Bild 4 von 4 (je 22,5\u00b0 weitergedreht), Draufsicht, transparent, OHNE Rinne und OHNE Wasser (beides zeichnet die App darunter). Rad mittig, h\u00f6chstens 62 % der Bildbreite: runde Nabe, 8 GERADE, gleich lange Speichen mit je einem geraden, quer stehenden Schaufelbrett am Ende (drehsymmetrisch wie ein M\u00fchlrad). KEINE abgewinkelten oder hakenf\u00f6rmigen Schaufeln, kein Windrad-/Wirbelmuster. Dazu eine Achse quer zur Rinne mit zwei kleinen Lagerkl\u00f6tzen (bei 18 % und 82 % der Bildh\u00f6he). Knete-3D-Stil, warmes Holz wie gw_werkbank.png.",
+          "line": 146
+        }
+      ]
+    },
+    "path": "F:/Projects/igame-el",
+    "read_only": true,
+    "remote": "https://github.com/mrdevn4ever-sys/igame-el.git",
+    "status_porcelain": ""
+  },
+  "result": "PASS",
+  "reviewed_candidate": "qa/iterations/component-v6",
+  "schema": "igame-el.package-f.corrected-component-provenance.v2"
+}
