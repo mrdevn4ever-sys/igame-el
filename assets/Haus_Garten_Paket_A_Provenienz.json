@@ -1,0 +1,102 @@
+{
+  "schema": "ellie-haus-garten-package-a-provenienz/v1",
+  "created_at": "2026-11-11T19:09:11.840313+00:00",
+  "status": "PASS_RELEASE",
+  "base_git_revision": "02c080bff4342e3f10ccd25cb04a44ab20f6400d",
+  "manifest_rows_in_package": 6,
+  "delivered_count": 5,
+  "intentionally_absent": [
+    "gw_szene_garten_abend.jpg"
+  ],
+  "absence_contract": {
+    "placeholder_committed": false,
+    "reason": "Owner confirmed app darkens gw_szene_garten_tag.jpg when evening asset is absent."
+  },
+  "garden_day_correction": {
+    "exactly_two_windows": true,
+    "exactly_one_chimney": true,
+    "no_smoke": true,
+    "zero_changes_outside_declared_native_masks": true,
+    "native_candidate_sha256": "74a31829bdd4b088d87442df3c42fa26b06c5fec5d152549bdc34399063da5ae",
+    "verification": "pkg-A-deterministic/garden-window-chimney-v1/reports/verification_report.json"
+  },
+  "records": [
+    {
+      "filename": "gw_szene_garten_tag.jpg",
+      "sha256": "52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6",
+      "bytes": 817069,
+      "dimensions": [
+        2732,
+        2048
+      ],
+      "mode": "RGB",
+      "progressive": true,
+      "visual_verdict": "PASS",
+      "technical_verdict": "PASS",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/garden-window-chimney-v1/final/gw_szene_garten_tag.jpg"
+    },
+    {
+      "filename": "gw_szene_haus_innen.jpg",
+      "sha256": "54cf71162a72b2b797cf8df7b95adc370ae9cb388ca1c14b3351a868717d0536",
+      "bytes": 270429,
+      "dimensions": [
+        2732,
+        2048
+      ],
+      "mode": "RGB",
+      "progressive": true,
+      "visual_verdict": "PASS",
+      "technical_verdict": "PASS",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/final/gw_szene_haus_innen.jpg"
+    },
+    {
+      "filename": "gw_szene_haus_innen_abend.jpg",
+      "sha256": "fc004d541fe01482ca304843e428b7b9d147213199636e8c528aacdbaa76d1dd",
+      "bytes": 260187,
+      "dimensions": [
+        2732,
+        2048
+      ],
+      "mode": "RGB",
+      "progressive": true,
+      "visual_verdict": "PASS",
+      "technical_verdict": "PASS",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/final/gw_szene_haus_innen_abend.jpg"
+    },
+    {
+      "filename": "gw_szene_bach_teich.jpg",
+      "sha256": "f795847121eb3d308d4548b1282e18e233569ea145ff7389b81f0490f2bdbded",
+      "bytes": 738112,
+      "dimensions": [
+        2732,
+        2048
+      ],
+      "mode": "RGB",
+      "progressive": true,
+      "visual_verdict": "PASS",
+      "technical_verdict": "PASS",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/final/gw_szene_bach_teich.jpg"
+    },
+    {
+      "filename": "gw_szene_bach_teich_abend.jpg",
+      "sha256": "3d080788def2634663977e6f548cb1964d73b05a2f71f5c3912e9a22d7d724fb",
+      "bytes": 659955,
+      "dimensions": [
+        2732,
+        2048
+      ],
+      "mode": "RGB",
+      "progressive": true,
+      "visual_verdict": "PASS",
+      "technical_verdict": "PASS",
+      "source": "F:/Projects/igame-el-asset-work/garten3/pkg-A-deterministic/final/gw_szene_bach_teich_abend.jpg"
+    }
+  ],
+  "blockers": [],
+  "production": {
+    "garden_day": "Accepted deterministic geometry source plus exact mask-bounded local rendering of two windows and one chimney.",
+    "other_scenes": "Deterministic accepted package-A scene candidates and registered evening variants.",
+    "provider_calls_after_owner_finalization": 0
+  },
+  "repository_promotion_at_receipt_creation": false
+}
