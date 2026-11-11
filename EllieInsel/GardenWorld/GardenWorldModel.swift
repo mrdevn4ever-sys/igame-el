@@ -87,6 +87,8 @@ final class GardenWorldModel {
     var selectedPiece: WaterPiece?
     /// Schaufel am Bach: Antippen nimmt eine Rinne wieder weg.
     var removingTiles = false
+    /// Im Selbsttest: die Ergebnis-Notiz bleibt in der Sprechblase stehen.
+    @ObservationIgnored private var noteShown = false
     /// Küche oder Erinnerungsbuch wurden aus dem Haus geöffnet: Schliessen führt zurück in die Wohnstube.
     var fromHouse = false
     var lastWaterResult = WaterFlow()
@@ -256,7 +258,8 @@ final class GardenWorldModel {
     }
 
     func say(_ text: String) {
-        guard !text.isEmpty else { return }
+        // Eine bleibende Notiz (Selbsttest) wird nicht von späteren Ansagen überschrieben.
+        guard !text.isEmpty, !noteShown else { return }
         audio.say(text)
         withAnimation(.spring(response: 0.3)) { dinoText = text }
         dinoTask?.cancel()
@@ -272,6 +275,7 @@ final class GardenWorldModel {
     /// Ergebnis auf dem Screenshot steht).
     func showNote(_ text: String) {
         dinoTask?.cancel()
+        noteShown = true
         dinoText = text
     }
 
