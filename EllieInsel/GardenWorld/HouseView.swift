@@ -17,7 +17,8 @@ enum HouseLayout {
     static func shelfCell(_ index: Int) -> CGRect {
         let col = index % shelfColumns
         let row = index / shelfColumns
-        return CGRect(x: 0.255 + Double(col) * 0.071, y: 0.14 + Double(row) * 0.15, width: 0.062, height: 0.135)
+        // Masse aus gw_szene_haus_innen.jpg (Fächer 7,2 % breit, 16,5 % hoch)
+        return CGRect(x: 0.2535 + Double(col) * 0.0722, y: 0.105 + Double(row) * 0.165, width: 0.062, height: 0.14)
     }
 }
 
