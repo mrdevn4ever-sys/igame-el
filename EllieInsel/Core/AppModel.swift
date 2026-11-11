@@ -308,6 +308,7 @@ final class AppModel {
         data = AppData()
         gallery = []
         audio.apply(data.sound)
+        Persistence.clearBackups()
         Persistence.write(data)
         Persistence.write(gallery)
         screen = .setup

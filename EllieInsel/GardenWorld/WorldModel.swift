@@ -1290,6 +1290,11 @@ struct WorldData: Codable, Equatable {
 }
 
 extension WorldData {
+    /// Es gibt Pflanzen, die noch nicht reif sind (eine Lernrunde lässt sie wachsen).
+    var hasGrowingPlants: Bool {
+        beds.contains { $0.plant != nil && $0.stage < 4 } || (streamBed.plant != nil && streamBed.stage < 4)
+    }
+
     /// Eine abgeschlossene Lernrunde lässt jede Pflanze eine Stufe wachsen und giesst sie dabei.
     /// So lohnt sich das Lernen im Garten sofort, auch wenn gerade kein Geschenk fällig ist.
     mutating func growByLearning(now: Date = Date()) {

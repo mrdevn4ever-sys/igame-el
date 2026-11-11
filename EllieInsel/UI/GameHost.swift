@@ -38,6 +38,8 @@ final class GameHost {
     private(set) var levelOutcome: AppModel.LevelOutcome?
     /// In dieser Runde neu entdeckter Atelier-Schatz.
     private(set) var newTreasure: AtelierTreasure?
+    /// Diese Lernrunde hat Pflanzen im Garten wachsen lassen.
+    private(set) var gardenGrew = false
 
     var maxLevel: Int { LevelCatalog.maxLevel(game) }
 
@@ -245,6 +247,11 @@ final class GameHost {
         if newTreasure != nil {
             audio.enqueue("Im Atelier wartet etwas Neues auf dich.")
         }
+        // Lernen lässt den Garten wachsen (siehe AppModel.logRound).
+        gardenGrew = summary.learning && app.data.world.hasGrowingPlants
+        if gardenGrew {
+            audio.enqueue("Dein Garten ist gewachsen!")
+        }
         app.logRound(
             game: game,
             difficulty: summary.adaptsLevel ? difficulty : nil,
@@ -276,6 +283,7 @@ final class GameHost {
         roundResults = []
         levelOutcome = nil
         newTreasure = nil
+        gardenGrew = false
         startTaskClock()
         roundToken += 1
         app.clearGame(game)

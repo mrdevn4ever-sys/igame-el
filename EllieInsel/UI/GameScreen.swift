@@ -227,10 +227,22 @@ struct RoundCompleteView: View {
             Text("Geschafft!")
                 .font(Theme.rounded(44, .heavy))
                 .foregroundStyle(Theme.darkGreen)
-            Text(host.completionText)
-                .font(Theme.rounded(24, .medium))
-                .foregroundStyle(Theme.darkGreen)
-                .multilineTextAlignment(.center)
+            // Die Beschreibung der Runde steht für die Eltern im Elternbereich; das Kind liest hier nicht.
+
+            if host.gardenGrew {
+                HStack(spacing: 10) {
+                    WorldPic("gw_pflanze_erdbeere_2_jungpflanze", "🌱", size: 44)
+                    Text("Dein Garten ist gewachsen!")
+                        .font(Theme.rounded(20, .bold))
+                        .foregroundStyle(Theme.darkGreen)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                }
+                .padding(.horizontal, 18)
+                .padding(.vertical, 4)
+                .background(Capsule().fill(Theme.softGreen))
+                .accessibilityElement(children: .combine)
+            }
 
             if let treasure = host.newTreasure {
                 // Kleiner Hinweis: Nach jeder Lernrunde kommt im Atelier etwas dazu.
@@ -263,12 +275,8 @@ struct RoundCompleteView: View {
                                 app.claimReward(reward, item: raw)
                                 app.audio.say(r.speech)
                             } label: {
-                                VStack(spacing: 4) {
-                                    WorldPic(r.asset, r.emoji, size: 64)
-                                    Text(r.title).font(Theme.rounded(15, .bold)).lineLimit(2).multilineTextAlignment(.center).minimumScaleFactor(0.7)
-                                    Text(r.preview).font(Theme.rounded(12, .medium)).lineLimit(2).multilineTextAlignment(.center).minimumScaleFactor(0.7).opacity(0.75)
-                                }
-                                .foregroundStyle(Theme.darkGreen)
+                                // Nur das Bild, gross: das Kind wählt nach Bild, der Name wird beim Antippen angesagt.
+                                WorldPic(r.asset, r.emoji, size: 112)
                                 .padding(8)
                                 .frame(width: 150, height: 150)
                                 .background(RoundedRectangle(cornerRadius: 24).fill(Theme.meadow))
@@ -277,9 +285,6 @@ struct RoundCompleteView: View {
                             .accessibilityLabel(r.title)
                         }
                     }
-                    Text("Du kannst auch später im Garten wählen.")
-                        .font(Theme.rounded(17, .medium))
-                        .foregroundStyle(Theme.darkGreen.opacity(0.7))
                 }
             } else if let chosen {
                 let r = WorldReward(chosen)
@@ -310,7 +315,11 @@ struct RoundCompleteView: View {
                     app.audio.effect(.tap)
                     app.goHome()
                 } label: {
-                    Label("Andere Spiele", systemImage: "square.grid.2x2.fill")
+                    if app.returnToHouse {
+                        Label("Nach Hause", systemImage: "house.fill")
+                    } else {
+                        Label("Andere Spiele", systemImage: "square.grid.2x2.fill")
+                    }
                 }
                 .buttonStyle(BigButtonStyle())
             }
