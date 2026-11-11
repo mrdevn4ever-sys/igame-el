@@ -1,0 +1,190 @@
+{
+  "schema": "ellie-haus-garten-package-b-provenienz/v1",
+  "created_at": "2026-11-11T19:08:16.468558+00:00",
+  "status": "PASS_RELEASE",
+  "package": "B",
+  "base_git_revision": "02c080bff4342e3f10ccd25cb04a44ab20f6400d",
+  "binding_documents": {
+    "assets/HERMES_HAUS_GARTEN.md": "6c712d778cf77b60e3cf31d43df0271610edcd113085ff7e49af180139b62a60",
+    "assets/AGENT_PROMPT.md": "94c91c2d5ddccfc99ce5067e07b0a7a4417d127d7cbc1e98a553f5509fec4d28",
+    "assets/HERMES_GARTENWELT.md": "5a465ae7766f5edbd2a0a61de4d1efeb81a090a8ae9da00fc58593dc344de27c",
+    "assets/Haus_Garten.csv": "d4cb0f6f3a30ad39018607d9eccfffc44d14fec305fc0090002c36af50d3cdfd"
+  },
+  "mandatory_style_references": [
+    {
+      "path": "EllieInsel/Images/gw_dino_stehen.png",
+      "sha256": "7500b970afe845d07247a66d24c786c234eca7e703c3e81d28dbb1561d3c9847"
+    },
+    {
+      "path": "EllieInsel/Images/gw_szene_tierlichtung.jpg",
+      "sha256": "0e35e903a2a8043f2836f68894da54ffaef2d1604b7023be71195233e7380b50"
+    },
+    {
+      "path": "EllieInsel/Images/gw_szene_kueche_innen.jpg",
+      "sha256": "5993ff14e7a732e0d7c8ee0a898d889e951c375082574a03ec82e19230dd050c"
+    },
+    {
+      "path": "EllieInsel/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      "sha256": "bc109b432228ae6ed8f98b83f5f5ffa19dd6e01279bdc3b96c772b520cba3331"
+    }
+  ],
+  "production": {
+    "type": "7 provider generations plus deterministic local processing",
+    "provider": {
+      "name": "OpenAI via Codex OAuth image adapter",
+      "model_requested": "gpt-image-2",
+      "quality_requested": "high",
+      "successful_requests": 7,
+      "quality_reported": {
+        "low": 7
+      },
+      "mandatory_four_references_every_request": true
+    },
+    "source_qa": "pkg-B/qa/package_b_handoff.json"
+  },
+  "release_transform": {
+    "manifest_exact_dimensions": true,
+    "alpha_preserving": true,
+    "pngquant_quality_floor": "82-98; lossless fallback retained when floor could not be met",
+    "oxipng": "-o 4 --strip safe",
+    "semantic_masks_lossless_only": false
+  },
+  "qa": {
+    "status": "PASS",
+    "covered": 7,
+    "pass": 7,
+    "rework": 0,
+    "reject": 0,
+    "blockers": [],
+    "inventory_digest_sha256": "a83a22a84137f24cbca4b2d39b5cdeee6ad11e130ac34a35c4826f36f3b35042",
+    "independent_model_qa": true,
+    "human_approval_claimed": false,
+    "completed_at": "2026-11-11T19:07:38.915403+00:00"
+  },
+  "count": 7,
+  "items": [
+    {
+      "filename": "gw_erde_leer.png",
+      "sha256": "bc0fc5a2e6088b8496cb87b0a56fa006d07402c9734a4e5ab2388e4239542d75",
+      "bytes": 34843,
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_sha256": "49e82804639ed854b2fabe26109381aeeadc4d9a916a8b2b89a2640b99de75a1",
+      "source_dimensions": [
+        512,
+        512
+      ],
+      "transformation": "none",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_erde_gesaet.png",
+      "sha256": "5bf37477280b4cb86211f204b29ec0413992d612c10a5865ddc810aeeb7dda1b",
+      "bytes": 33334,
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_sha256": "a8884c3524d98861dec5801e0811596f78c6a5f5c19102138c1343307da7aa92",
+      "source_dimensions": [
+        512,
+        512
+      ],
+      "transformation": "none",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_erde_nass.png",
+      "sha256": "1b80d86f69ab91e9be531b44f4a3100b3183da8d4e3de484f3527c3ee3d1b8c6",
+      "bytes": 33333,
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_sha256": "4504390a78d57d8d0e4e17dd1af4c43ab63c6f32cebda1ea2d1bda1783e7d20a",
+      "source_dimensions": [
+        512,
+        512
+      ],
+      "transformation": "none",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_erde_trocken.png",
+      "sha256": "14e652acac7359f4eb31998b4dcb9f38c0558961615d15d8cdf33c68c3dae58b",
+      "bytes": 35854,
+      "dimensions": [
+        512,
+        512
+      ],
+      "source_sha256": "f67a728b35dd35f0bdafab128dd392676300c26ec44f09f07d8cf14cd8c03547",
+      "source_dimensions": [
+        512,
+        512
+      ],
+      "transformation": "none",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_picknickdecke_rot.png",
+      "sha256": "9de76884f6936097e40ec72151f1f32a9500a81bbd79bab2cc111392213b54d8",
+      "bytes": 118759,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "141840ecbc24a1301fe7f441d12d65239133caf3433b7a878107308118d9b65d",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "transformation": "none",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_picknickdecke_blau.png",
+      "sha256": "561f8ac7f2e811b6c204a249f9a4863a3f6e1fa3ad5565f238941f53c055a462",
+      "bytes": 119991,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "d3b688e901d1616ce2fef67cd6a28a1199eee8de97a4d0ade3761b113160cd63",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "transformation": "none",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_picknickdecke_blumen.png",
+      "sha256": "aa571f7eadc048dcfe0ffc38e17c5bdaeac7193d09a427aeabb49ebe9bd0df30",
+      "bytes": 154517,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "4c5b681a427f81daa3468c56cc0791f3ddbbdd1b7138071a6d4e55c4f725a17e",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "transformation": "none",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    }
+  ],
+  "human_approval_claimed": false,
+  "human_approval_scope": null,
+  "repository_promotion_at_receipt_creation": false,
+  "blockers": []
+}
