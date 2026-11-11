@@ -152,7 +152,7 @@ final class GardenWorldModel {
             let xs: [Double] = [0.27, 0.5, 0.7, 0.9, 0.06, 0.33, 0.55, 0.74, 0.21]
             for i in d.garden.placed.indices {
                 d.garden.placed[i].x = xs[i % xs.count]
-                d.garden.placed[i].y = (i / xs.count) % 2 == 0 ? 0.905 : 0.99
+                d.garden.placed[i].y = (i / xs.count) % 2 == 0 ? 0.945 : 0.995
             }
             d.world.garden3Placed = true
         }
