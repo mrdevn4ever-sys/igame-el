@@ -46,6 +46,19 @@ Am 3. November 2026 wurden alle 22 Körperteil-Illustrationen gemäß `assets/Ko
 
 Ebenfalls am 3. November 2026 wurden alle 34 Illustrationen für Körperfunktionen, Sinne, Dino-Animationen und Bedienelemente gemäß `assets/Koerper.csv` vollständig ersetzt. 24 Dateien sind neue `gpt-image-2`-Renderings über den Hermes-Adapter für ChatGPT/Codex OAuth; `high` wurde angefordert, für die ausgewählten Originale meldete der Server 21-mal `low` und dreimal `medium`, jeweils 1254 × 1254 und opak. Zehn Dateien sind frische lokale, deterministische Renderings aus der akzeptierten analytischen Paket-1-Quelle: vier Anatomie-Funktionsszenen, fünf Ebenenknöpfe und die Atmen-Szene. Die Atmen-Szene wurde ohne alte Rasterpixel vollständig aus Quellgeometrie aufgebaut und bestand die bindende Bedeutungsprüfung bei echten 70 und 80 px auf Creme und `#202020`. Alle 34 Dateien bestanden technische und visuelle Prüfungen; Szenen, Dinos, Symbole und Knöpfe zusätzlich in ihren vorgesehenen Darstellungsgrößen. Einzelhashes, tatsächliche Provider-Metadaten, Herkunft und Prüfstatus stehen in `assets/Koerper_Paket3_Provenienz.json` und zusammengefasst in `assets/Koerper_V2_Final.json`.
 
+### Haus und Garten – Nachlieferung
+
+Die Bildnachlieferung gemäß `assets/Haus_Garten.csv` umfasst 149 ausgelieferte Bilddateien in sechs Paketen. `gw_szene_garten_abend.jpg` wird auf ausdrückliche Eigentümeranweisung nicht ausgeliefert: Wenn die Datei fehlt, erzeugt die App die Abenddarstellung deckungsgleich durch Abdunkeln von `gw_szene_garten_tag.jpg`; es wurde kein Platzhalter erzeugt.
+
+- **Paket A:** gemischte synthetische Ausgangsbilder und lokale, deterministische Geometrie-/Lichtkorrekturen. Das Garten-Tagbild ergänzt ausschließlich zwei Fenster und einen Kamin innerhalb vorab deklarierter Masken; außerhalb dieser Masken blieben die nativen Pixel unverändert.
+- **Paket B:** sieben neue `gpt-image-2`-Generierungen über den Hermes-Adapter für ChatGPT/Codex OAuth. `high` wurde angefordert, der Server meldete für alle sieben ausgewählten Originale `low`. Die vier verbindlichen Projekt-Stilreferenzen wurden in jedem Request verwendet.
+- **Paket C:** 98 lokale, deterministische Blender-Renderings einschließlich 44 semantischer weißer Masken. Die kanonischen Kandidaten wurden byteidentisch reproduziert und auf die Manifestgröße transformiert.
+- **Paket D:** 24 Motive aus dokumentierten `gpt-image-2`-Generierungen und lokaler technischer Verarbeitung; für 26 erfolgreiche Service-Requests einschließlich verworfener Lavendel-Zwischenstände meldete der Server 21-mal `low` und fünfmal `medium`. Der ausgelieferte Lavendel wurde anschließend lokal in Blender neu aufgebaut.
+- **Paket E:** sechs Tier-/Baumhausmotive mit registrierten lokalen Korrekturen. Das stehende Reh verwendet die ausgewählte Augenvariante `signal-16-56`; Baumhaus-Stufe 3 enthält keine Wimpelkette.
+- **Paket F:** neun lokale, deterministische Python-/Pillow-/NumPy-/SciPy-Renderings beziehungsweise technische Ableitungen. Wasserrad und Schleuse sind reine transparente Bauteile ohne mitgemalte Rinne oder Wasser. Das Rad besitzt einen geschlossenen Außenring, acht gerade Speichen und acht gerade Schaufelbretter; frühere hakenförmige Entwürfe wurden verworfen und sind nicht Bestandteil des Repositories.
+
+Alle ausgelieferten Dateien bestanden die dokumentierte technische Endprüfung; die bild- und hashgebundene Herkunft steht in `assets/Haus_Garten_Paket_A_Provenienz.json` bis `assets/Haus_Garten_Paket_F_Provenienz.json`. Die synthetische Herkunft wird nicht als Fotografie oder menschliche Illustration dargestellt.
+
 ## Audio: «Mein Körper»
 
 Dieser Stand enthält sechs gehörte und vom App-Eigentümer freigegebene Körperklänge gemäß `assets/Koerper_Klaenge.csv`. Alle Dateien liegen als M4A/AAC-LC, mono und mit 44,1 kHz vor; die finalen Hashes, technischen Messwerte und Entscheidungen stehen in `assets/Koerper_Audiofreigabe.json`, die Quellenzuordnung in `assets/Koerper_Quellen.csv`.
