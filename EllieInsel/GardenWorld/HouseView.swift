@@ -93,7 +93,7 @@ struct HouseView: View {
             }
             .buttonStyle(PressableStyle())
             .accessibilityLabel("Erinnerungsbuch")
-            .position(x: HouseLayout.table.midX * s.width, y: (HouseLayout.table.minY + 0.01) * s.height)
+            .position(x: HouseLayout.table.midX * s.width, y: (HouseLayout.table.minY + 0.035) * s.height)
 
             shelf(s)
 

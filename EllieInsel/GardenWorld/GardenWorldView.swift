@@ -24,6 +24,7 @@ struct GardenWorldView: View {
                     m.overlay = .house
                 }
                 m.start(quiet: backInHouse)
+                SelfTest.run(m)
                 if let o = DemoMode.value("-overlay") { m.openDemoOverlay(o) }
                 if DemoMode.flag("-gardenplay") { m.runDemoPlay() }
             }

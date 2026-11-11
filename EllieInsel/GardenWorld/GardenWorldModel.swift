@@ -126,8 +126,37 @@ final class GardenWorldModel {
 
     // MARK: - Ablauf
 
+    /// Erster Start im neuen Garten: Gebautes und Gartenschmuck stehen noch an Plätzen des alten Gartens,
+    /// wo jetzt Haus, Schuppen oder Gemüsebeet sind. Einmalig auf die freie Wiese umstellen.
+    private func moveIntoNewGarden() {
+        guard WorldLayout.garden3, !w.garden3Placed else { return }
+        var spots = WorldLayout.spots(.haus)
+        app.update { d in
+            var extra = 0
+            for i in d.world.built.indices where d.world.built[i].area == .haus {
+                if spots.isEmpty {
+                    // Mehr Bauten als Stellplätze: der Rest kommt in eine Reihe ganz vorne.
+                    d.world.built[i].x = 0.22 + 0.14 * Double(extra % 5)
+                    d.world.built[i].y = 0.995
+                    extra += 1
+                } else {
+                    let p = spots.removeFirst()
+                    d.world.built[i].x = Double(p.x)
+                    d.world.built[i].y = Double(p.y)
+                }
+            }
+            // Gartenschmuck in zwei Reihen auf die Wiese vorne
+            for i in d.garden.placed.indices {
+                d.garden.placed[i].x = 0.1 + 0.8 * Double(i % 9) / 8
+                d.garden.placed[i].y = i % 2 == 0 ? 0.915 : 0.985
+            }
+            d.world.garden3Placed = true
+        }
+    }
+
     /// `quiet`: ohne Begrüssung (Rückkehr aus einem Spiel direkt in die Wohnstube).
     func start(quiet: Bool = false) {
+        moveIntoNewGarden()
         if quiet {
             // nichts ansagen
         } else if !w.introDone {

@@ -177,6 +177,8 @@ run 170_haus_wohnstube 6 0 -screen garden -world voll -overlay house
 run 170b_haus_abend 6 0 -screen garden -world voll -overlay house -abend
 run 171_garten3_start 7 0 -screen garden -world start -garten3
 run 172_garten3_voll 7 0 -screen garden -world voll -area haus -garten3
+# Selbsttest der Spiellogik (Wachstum, Wasserweg, Geschenke, Spielstand): bei einem Fehler ABSTURZ im Bericht
+run 900_selbsttest 6 0 -screen garden -world voll -selbsttest
 
 # Absturzberichte einsammeln
 mkdir -p "$OUT/crashes"
