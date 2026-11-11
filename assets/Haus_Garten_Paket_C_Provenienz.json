@@ -1,0 +1,1715 @@
+{
+  "schema": "ellie-haus-garten-package-c-provenienz/v1",
+  "created_at": "2026-11-11T19:08:16.468558+00:00",
+  "status": "PASS_RELEASE",
+  "package": "C",
+  "base_git_revision": "02c080bff4342e3f10ccd25cb04a44ab20f6400d",
+  "binding_documents": {
+    "assets/HERMES_HAUS_GARTEN.md": "6c712d778cf77b60e3cf31d43df0271610edcd113085ff7e49af180139b62a60",
+    "assets/AGENT_PROMPT.md": "94c91c2d5ddccfc99ce5067e07b0a7a4417d127d7cbc1e98a553f5509fec4d28",
+    "assets/HERMES_GARTENWELT.md": "5a465ae7766f5edbd2a0a61de4d1efeb81a090a8ae9da00fc58593dc344de27c",
+    "assets/Haus_Garten.csv": "d4cb0f6f3a30ad39018607d9eccfffc44d14fec305fc0090002c36af50d3cdfd"
+  },
+  "mandatory_style_references": [],
+  "production": {
+    "type": "deterministic local Blender rendering and registered semantic-mask pipeline",
+    "provider": null,
+    "renderer": "pkg-C/render_package_c_blender.py",
+    "blender": "4.5.15 LTS",
+    "source_candidate_set_sha256": "65ea11ac33ca45dd328ee20cca96c00105663f870c8b79ebb496f31ee92e32ce",
+    "repeatability": "98/98 canonical candidates byte-identical; 98/98 raw alpha/geometry planes identical",
+    "source_qa": "pkg-C/qa-final/REPORT.md"
+  },
+  "release_transform": {
+    "manifest_exact_dimensions": true,
+    "alpha_preserving": true,
+    "pngquant_quality_floor": "82-98; lossless fallback retained when floor could not be met",
+    "oxipng": "-o 4 --strip safe",
+    "semantic_masks_lossless_only": true
+  },
+  "qa": {
+    "status": "PASS",
+    "covered": 98,
+    "pass": 98,
+    "rework": 0,
+    "reject": 0,
+    "blockers": [],
+    "inventory_digest_sha256": "3e7c5dfb2977f7b53d5f1962f64ba04a8e8c33ed92799a121ed4dcddde3fb65a",
+    "independent_model_qa": true,
+    "human_approval_claimed": false,
+    "completed_at": "2026-11-11T19:07:38.920468+00:00"
+  },
+  "count": 98,
+  "items": [
+    {
+      "filename": "gw_bau_vogelhaus_fertig.png",
+      "sha256": "e71120b0f4efc138ba20d76ea260e8e05527514322c2b40a7be8c76f4568bc1f",
+      "bytes": 154776,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "23129cd9dd61967ec70365a57963ded308a4f4d7a7ef042ef449520e75db5793",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_maske_dach.png",
+      "sha256": "4a2a5663038e960072627e0a678dcfd31c7f186cbd4924b7c4c18973bf095cd1",
+      "bytes": 8324,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "d0ade6201f86859ef302f830bb392f6a4144ee3e173a424fd8a1956ddce06b8f",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_maske_korpus.png",
+      "sha256": "bc9a7064187988a5435ea0bb545ef027d2d3b7401f3e82dfb82a9849d7d238bc",
+      "bytes": 11443,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "4d79345ea0f694c5376fdc2cfe357aa96ea022a598973e20a1a6766dd8d4397e",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_boden.png",
+      "sha256": "316c79c648435ce1bbbdf6c08c365f57d66fccaa4fdda9044813134c791b8481",
+      "bytes": 58476,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "09dc4bf459b739f477c274a50ccca4b88804c6727a79e75e7e32c7cd0215967a",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_wand_hinten.png",
+      "sha256": "4cc1a9c4d5030c728f9f2f037c6dface1e6e67ea9cea90788f7afdb65169e54e",
+      "bytes": 104319,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "4de5385ed8374ad270bec8354080b9e6098ced9530425fa088c0860c0ef6826d",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_wand_vorne.png",
+      "sha256": "9b3cf9bb1586bb235c54e3728578bd35f9df018a3233cbdbca8bf9a60d26e6f8",
+      "bytes": 74955,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "f234052a8c8dada4795d401f752d41862091150723293668241b7cf1801e813a",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_dach.png",
+      "sha256": "05737c8c63178499e5018f736a261c93afdd63b1b884034fb914c300bb65b658",
+      "bytes": 58026,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "aa7cca5ee4578bae83633647382f152ecd5f2a92b9f7beb7b95f26fefd53b600",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_pfahl.png",
+      "sha256": "23e778943c903a0ff37d57cadc980b9ed1de2cde298da1035c219ee8a3edf24c",
+      "bytes": 22460,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "b66fe83ef701525e5383ea6f7882d8939bf3377fe835885cf5b86348328835ce",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_v2_fertig.png",
+      "sha256": "b8c66679f0989cf8365173f566f70cc296df0b3f282eec37f7a8c448c7ca9204",
+      "bytes": 136155,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "f9a6bdb4654584594fe28ecba6d5f48a1f8b8fae6e3bc4c6220d335845d35088",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_v2_maske_dach.png",
+      "sha256": "f3a2059de51cd91ba9cef06cbcb19e7b926df31e508f98dd74122c3cb9ebd570",
+      "bytes": 6886,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "3486764ad578cb69670fc29f9ed3bfa5bb6194049590f523efa3c08f10225271",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_v2_maske_korpus.png",
+      "sha256": "fbb4e91cae60b1330c6f1fb22c6844efcdbc1b4a0a51f6dff8223654b75142ca",
+      "bytes": 8366,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "69e74608646cb679d94d43db961a69cf74a87edddf5a20160ce3240dd185d6fd",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_v3_fertig.png",
+      "sha256": "0da092b44fe384c2f8985aeb54d600d401af9f96ec182eafb242fb919adc7a38",
+      "bytes": 109440,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "840d6fe9efe546819557f1f61db346ef8e0eee3ceb67b0579ca4d390587205ad",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_v3_maske_dach.png",
+      "sha256": "c5902a4694811ae3313e8fca14732f0f44f7842ee679bee95125463599b6ada1",
+      "bytes": 6246,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "e71ac51963dd8fb8b0a08f517b3a4f516687633f88bb6161cbb86809c11a48a7",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_vogelhaus_v3_maske_korpus.png",
+      "sha256": "521aed1fbb3070050c59212e55875338a46df6ae3b40457d10053cf5b1eb281e",
+      "bytes": 7662,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "94d5a431b7f9dce6f258a9f9d56cddb436a33920bd662626de097b2391bfb075",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_igelhaus_fertig.png",
+      "sha256": "fa3cec718c2c17d905926048af5cce7b2012111ec15ffae0a5ecaf10fefb797b",
+      "bytes": 286492,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "8f17d1dfab5678a86f70ef9517d1d2acfcccbda006f97c5f5f86022258d676c5",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_igelhaus_maske_dach.png",
+      "sha256": "79fe87473a41de901aec76ca0783f6e7f530e455dd393185a0387889227552a2",
+      "bytes": 15829,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "efc536d13014177563b22551661521c45b8e187d2e17a509daf1afe2b9d59585",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_igelhaus_maske_korpus.png",
+      "sha256": "99c05a05e315ac3f6e9cf903e025a9215701783a9fb90f54ba35fff39a04389b",
+      "bytes": 11628,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "1c3ec2285b16a5330c1c37748f75ce249f4fb8244393d13d89c6f8863b71555c",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_igelhaus_boden.png",
+      "sha256": "f1583a177d461bc074ccfad5fb092544b2c6eec8674b25705ef328ed699abd01",
+      "bytes": 120160,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "26511badb5f2d96843c20dfb4cd371d436ea7b650408b83ab037ff3f7adb32c7",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_igelhaus_waende.png",
+      "sha256": "60b654bfe82e13c25fbd1feaf3c39821479ae32a896c0a9f3be03db04389f9bd",
+      "bytes": 194428,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "f97648549b0068d1ae40ff922233be2f54763c3c03b9fe07d65d97a50c155372",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_igelhaus_dach.png",
+      "sha256": "ac44380ce6ee2e98b18bb256733c60d9a9753bf546e47225699cae7a45aa2403",
+      "bytes": 108944,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "22005f3f6131b35d138099e0655e47ba564ced0c47504e5dfbbcbf4ebacf3df8",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_igelhaus_laub.png",
+      "sha256": "7de07989ff2669882a40ece962ad4164b43360fa42cc9c8198151cfa86c302f7",
+      "bytes": 45429,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "587247b753e31e52a37d5940c73bc35f07139410519e63411a1651a8a73904df",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_fertig.png",
+      "sha256": "f265a56bad28785d0edb1fc69a513b70699ef77cfedaebe5d7b72660a4c8390a",
+      "bytes": 170802,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "192790867125d6929040487adca655ac555c0cfc78df37cf43ae6f9c8591a843",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_maske_dach.png",
+      "sha256": "42c07da905afb1d3ada921d50aace37d4b7b6936fda0fe0df853944e4d5f09fa",
+      "bytes": 12659,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "fd180b8dfcaa7d684f48fe23a89aa5b013c59d542ecf6cb851c1e5bcffd2b79a",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_maske_korpus.png",
+      "sha256": "7a4dacce0cd05f3818707dffe705606ea03f14f8c4097dd9632c39a686a967d6",
+      "bytes": 12250,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "2949ee260a22f643f946572f0d73c70d7502e9a900e2e0539bd37e788e5eced8",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_sitz.png",
+      "sha256": "9e02543decccdd0e23ab6f777c3014e220a98660c81cef06287743ec06c9ca3f",
+      "bytes": 64356,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "6e53a15ea904f668f543dd4071424983ef367c9b22cbee8f82406be0f8813534",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_lehne.png",
+      "sha256": "045fabb2f61e5c546681a512f3d5634ccb7b7e44430b29500e9b803cd8ac4c54",
+      "bytes": 95260,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "6e7353280239e830967fad43f3bc89826850aedacb04cfb9d0c16a9a9b273cbd",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_beine.png",
+      "sha256": "2413c79120880508e1e4e244d1666edd8c3bbae26697ba1894d8bf7b5c542a26",
+      "bytes": 49598,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "e3f7ff39995b9b05479c7b5371d3ecdb5109e154f8a4bf6602bbfe172fb16b07",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_v2_fertig.png",
+      "sha256": "16a471ff7f0193b8588fa6d632748c53ddb78ee609a92ef05ff349397e98baec",
+      "bytes": 200683,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "eacb27b986a7310218dd1e90959d48bbc622218dd93c26c903f896eec83f6f43",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_v2_maske_dach.png",
+      "sha256": "8dd6264157110534449621a49cb35f7e0e492a4f5978f88746bac5511bb20485",
+      "bytes": 13589,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "cc3486e85786f0c93d2844e7f98f40de5ab2000749704d817a7b9ac1b1e9acd0",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_v2_maske_korpus.png",
+      "sha256": "de03c21126bf4480c10d1cc8056925f07efd6e1e61286b95191556ab79be7c54",
+      "bytes": 31294,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "c9f5b0442376bc7ddb3fe9d882aa9e18ab73dc65522f7c56467093728275689f",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_v3_fertig.png",
+      "sha256": "1f45b7a1db65d18cd1dc405a93d0633283376b59292d52a25a003a2037bd21ba",
+      "bytes": 154082,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "9857e8add29176d653318ecab410d58201bb63a029bd728b04b8c2ffce6c8330",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_v3_maske_dach.png",
+      "sha256": "57abf6be1f02463d0d3b75269dc87157b2717ef6e3afd9f8bad9b9ebb4d63e3e",
+      "bytes": 6948,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "22d470b162226d3b0700d3efe7fa2b135b0c1ec66d17f739748da270eeb3d991",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bank_v3_maske_korpus.png",
+      "sha256": "b3e43e9c4e658bbfcb2344af83d70a803688dbad720877954061dfb19e19c608",
+      "bytes": 9421,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "5535ee2f474e030c975b761c40f2a37cd6eac6b3b5450be75a566bf98c2c4a39",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_fertig.png",
+      "sha256": "dc1948cb86670b2c8f3a423ebe06dab1174937cdaa71e418e0c3415e7730f708",
+      "bytes": 132418,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "f55b1783405ce9d928d660273f5605b3b64c409fdab2b3184e2d5114ccc44e2b",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_maske_dach.png",
+      "sha256": "0bb694dc5130a6ac6d9b73f89b1873713844ff1aeaa48e12b60f46c3e43c4ac8",
+      "bytes": 8012,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "8fe6405591dd5cf7f0ffa10fb4a72df60dbb0298367cfdc8b807151579817a85",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_maske_korpus.png",
+      "sha256": "602fff82a9a2a1906cea0542937f0630452d57d870986453777a67ecf0ea473d",
+      "bytes": 8966,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "054a4a835be3802664f442558b9b5d4b81a6383f2b83fa5b34e49e7a2ff24a5f",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_schale.png",
+      "sha256": "7bc6ef077abc675f035ea7abfc947b74650d2ef5ac3e5af50f756ff4a672c22f",
+      "bytes": 67345,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "0bc7049676f747762836d70ee4f3b2704d376886a1709c3cfac899b94164de38",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_dach.png",
+      "sha256": "bca7acbc424781a0ab00cdd148dccf3580270784d78b95aa32e11b9b3f7e1c8a",
+      "bytes": 73737,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "d096788284c4b62a352f79c05e8ea0d444bc01d1081c8fdb32a5827d1418766b",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_stange.png",
+      "sha256": "b08bd6118a46809fb8c34e5d165f13752733b4f47e80f809e1bfb5d4aa9ce8ec",
+      "bytes": 20495,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "7439b8eaad333ee7ef7f88a30f717e62c877e2a138df12af3f2605dfae21a020",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_v2_fertig.png",
+      "sha256": "2d3503c797bd1b3b4535a30f6d511bcaf40cda40769e52e97b58296d15152e80",
+      "bytes": 109543,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "9cf8fd344a65e2bca7feb124ac24a909a5ed284f15e18d1f8fac4c719936a7ba",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_v2_maske_dach.png",
+      "sha256": "dd328910be2efcfaa866725bba8a5b804b695b3634685c8d12669af7291a4cad",
+      "bytes": 6587,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "1a6f24acc91e092a2a3f8af244dbcaf991d3820dfe1f30b521ddcac5df341cf9",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_v2_maske_korpus.png",
+      "sha256": "90b0e312b9c26b214e933b54a8bac8a304be3d9997445beaedaf413443628fd5",
+      "bytes": 7519,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "ce5d25570f514eff0deb2494d7699481647fb4e8ddbb4477e215b10c8e76c28f",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_v3_fertig.png",
+      "sha256": "0b6640cec8b4f60b4279a5a18afa32919ccc62e675d5647c7b8999cd2dbd3ab9",
+      "bytes": 87986,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "40b504a9590e33b45b7200a276e900b1cf72f0b6ed95f674ea3ad6a92dd9f671",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_v3_maske_dach.png",
+      "sha256": "9c946930f647bbe041336496d1d46f2fff1341a1fa3ddeb1971aeaffe9923b2e",
+      "bytes": 4943,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "ab19798e60b02a3f1c56b766e754645bedaffca5c693e326bd7b6679e6e96287",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_futterstelle_v3_maske_korpus.png",
+      "sha256": "a3da3dba6ebdf2addd594416c07288afff5b0b96ebfa7ed0d281c19b61f7e133",
+      "bytes": 9849,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "77d9d2d4ac3cc23721585730ee7e4787d5308d6dc506845bfb1247cbd92712e9",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_fertig.png",
+      "sha256": "a2282f733e51427caeb674996114ea10fb0ee22e5cbd53cfa1de7be239296177",
+      "bytes": 242972,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "cb6b588951e378815f92f62197f94a7690390d9f56065da2d07b1ed5b9fb91b1",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_maske_dach.png",
+      "sha256": "ec62546f7c9bf4b631b58ebe475004e00617b08b960e7bcc5e102108a36f3c0d",
+      "bytes": 7724,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "05a3250919012905284a4e4a808470a2ac6a6a8571cb1f482a2bb2b4c8fc3456",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_maske_korpus.png",
+      "sha256": "e6ff55f01b676946ad0fd2cbb13e449fd29c16237724a5f44de4701bc6fa14b4",
+      "bytes": 26693,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "9bd2ce3f01335a177e489466b8bd917b7060987531b8f8d8c439d2064502dd65",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_rahmen.png",
+      "sha256": "fb7abce6389fb88042b3e761c6bc2aac7a2333926283978a3c6d143b6fdc63f2",
+      "bytes": 201881,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "4b7f28e618deba143000a9bdc0c5af6680ffce7508da7841a722e88f76e918ef",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_fuellung.png",
+      "sha256": "97778898dac8ea875d4da4c8415f60b50f423b5bfa0bf4a4b11f5b73b6812b17",
+      "bytes": 107495,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "053e931fc9b54eb4fdbc2d71aa1827c485bd72a65aca19424e6c622926235064",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_v2_fertig.png",
+      "sha256": "0be52523ebb33ebf4347399c49caa32f896a0cd8734202a763de25843bc96aaf",
+      "bytes": 260458,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "a3b89aab219a6609b134308a717f4a353d7610836951eb623c26943fbb1b1bd5",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_v2_maske_dach.png",
+      "sha256": "d50413b508adff8008b50c33d300a5b4fd152438fbff511b8eb15b861ea2e3c9",
+      "bytes": 9599,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "41abaaee1546fd37e7a19397af34e06f7deb4afa0d3ea683b50518d9d789bfc2",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_v2_maske_korpus.png",
+      "sha256": "f23caf2dab8a1fb09c82cb0edccddfb0cef36cfb16b22522e5584c2d23a1778b",
+      "bytes": 29930,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "8e611c6b88c85e2e0a381af1eed6113837496e54da3ec300f1dabc488b57edc9",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_v3_fertig.png",
+      "sha256": "ec04d3082192e726e442d84c11225732d472d333b3a2942d43c432215b66f93b",
+      "bytes": 175657,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "303132da07cefd861ae91528b36953cc4f03be182ac19aca2a066c3ea234b32e",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_v3_maske_dach.png",
+      "sha256": "8478c52549de94a6fd1c9cc9f97cf484dcf4fe6a5348a931f5be84c3ea2d5423",
+      "bytes": 7574,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "84f40f9a818ac8b22315d807010ff342f99dbcac471bc9dc37f47fb178620cce",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_insektenhotel_v3_maske_korpus.png",
+      "sha256": "2103dc923bba3c2c506ff1d39ed43c0f9a487cf0e2604ab778348e5332ea8788",
+      "bytes": 25157,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "de3ab1ca708b18870c78dd06ca89848e51274db0a6e4c591d3d263b549ccf7b6",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_fertig.png",
+      "sha256": "e81822cec15a91c681d0c8480defc2585821e16ecf1fd975c9eb7cc497d5ebba",
+      "bytes": 190336,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "3e5421d93944b135b4463ad7c23c74b2648f865df53ecf71e2c791514f057a29",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_maske_dach.png",
+      "sha256": "76dac15361cc671e0328db82a1d46cb43ab2bb7ac3573908f83a28fbea1a85af",
+      "bytes": 10280,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "8a972219494926c6f069daaf780be8105b31260f2f57a23e1f72ae2344ff11ee",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_maske_korpus.png",
+      "sha256": "cf9a6eae888c86c64f8111cd254e8406b81cd4efe00189750cb42bbd6f9a519f",
+      "bytes": 10724,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "697547414b628214ef11642617cbf0a6f2f6cd685627718eb5c45dd85ec1b76f",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_topf.png",
+      "sha256": "9cd4b733e38062f8a7a2bddf321ace620c4c57ec365e546f267e2a39cb3fce62",
+      "bytes": 179223,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "149781c320e7ff6b59f38840df127de4972dffc5a957cacafa396d4c1fe07262",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_rand.png",
+      "sha256": "954d029468c28ce6d0f7007a2abd4a7b9f55abb1db9484e071a5ccb1c55e4e65",
+      "bytes": 61387,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "497a79022a931f59af35828d184e1b8892d9d9f65ab0c20184b593d1ebaf3c31",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_v2_fertig.png",
+      "sha256": "7e18e8e8e89c286d947e8c58f5aba424819de63374492d8ab278e849f3a102bc",
+      "bytes": 102370,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "94037e1edb5ccdb385b33d80e87ae2779a45fbd6e3cb81866e31bfb4e654bea8",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_v2_maske_dach.png",
+      "sha256": "e52e3472619423476c6db70de646287d0907cbb75f696f74b7df2945d8b04c17",
+      "bytes": 11994,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "dd7704e03e71156485882fd1b0b9156262430286027878c69c18883c95675a0b",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_v2_maske_korpus.png",
+      "sha256": "c9b56bd9a17b5b1c20317809b92a5f76bc11811abfa2da1d75c49e685feabe11",
+      "bytes": 7254,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "c8c8323ac17c9f603047723e37a0aab750c9ae693f857e3e4ed2a9da493ca89e",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_v3_fertig.png",
+      "sha256": "f61c4eda010c6c274140d8023ae2a3fe09c3531db97ecd8502a29f4b0bb33354",
+      "bytes": 171044,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "9c8813ee312ca4687a6850f341902897f680ef1ed8463e2f87da0dc06572d398",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_v3_maske_dach.png",
+      "sha256": "7c09fbf612c16afe764d8f653aded2d3cb5e5d813d9374e89e1c5f6974bda119",
+      "bytes": 14711,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "8a3f179bc7338f4c28d7171c0c701a485e709b43eba85378fc846bd3c17a8795",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_blumentopf_v3_maske_korpus.png",
+      "sha256": "723c0d9e3c5bd3ec3f885590b00e5c72fb189b102b7107bf976cb117bf34ba40",
+      "bytes": 16091,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "1a312f32c73b22ecd11f6be8915fbd3f65b1f5a266298fd9c33a5e4d4a98d447",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bruecke_fertig.png",
+      "sha256": "78abdeaa51a9fd4baf60d60e1580ff54791f8602ad55a99ed67eaccdcb0cbad8",
+      "bytes": 184529,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "3204acc05a77f3d685587976c3162864d86cbcdbd4be1234a05c3e3bad36587c",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bruecke_maske_dach.png",
+      "sha256": "817eedb015d2b08dea76308f74ffab71aa1c499b3a5744537addbc49cb85f1ae",
+      "bytes": 16411,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "bcf7cc0f6ab154a419f311ea551fd60fe25c82e0f79945e5a5e70fea95c320dd",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bruecke_maske_korpus.png",
+      "sha256": "d1e1e2a9d9f58380c1309a40cee44b59aa29ac9029c357d5c53859aff327ba95",
+      "bytes": 24214,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "653d82c0419b21a4785bf96069147f3dad8e9e46bf91546956aa762da8aa3603",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bruecke_pfosten.png",
+      "sha256": "c496743f7cb06876ba43f24b7be4b5857fa66cc2ba2773eed99f79b036887cd8",
+      "bytes": 54276,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "a668e39caf853d756032c17bb22b9b67d755fa895d2da29171f45c53d4b9da98",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bruecke_bretter.png",
+      "sha256": "a99ca26116ea10c93e0308c8e1c9d72edc407be56b35041c0ab8aed989ef5fff",
+      "bytes": 126471,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "5d0c52b9385502cac9e8b1e0d91d9f91a0448b61e0e76b4a6b9c1a578d4cfc37",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_bruecke_gelaender.png",
+      "sha256": "940c887248b866619fe4e118aaa94b7aa4be11d7e2ac0d32d446fe41cc41b53c",
+      "bytes": 76550,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "73d1d87f56a46e184007f138ff2aed0ae2772c14796cddeaa7ef91204d40df1f",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_tunnel_fertig.png",
+      "sha256": "e637d5533e2bc69a202dc767141220812eec6416bd25d7ce2aeae354e8ced234",
+      "bytes": 142629,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "18dd3a992fb45e26af96b3d069f6d688f973ee37bbb7a9bed732be956d77a2c3",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_tunnel_maske_dach.png",
+      "sha256": "195d0bdcf581ed5165ffbb21d3c5d23b338e81500917ded3a5bc7d229ded2f2a",
+      "bytes": 52546,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "31a776ec4a907e48b8aec263b1b944f3ee98e16953db90001193c2f221277fed",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_tunnel_maske_korpus.png",
+      "sha256": "2997b8641456783fe07631f418bf724b8e4271b380c9238addf6f30ddf25a542",
+      "bytes": 63354,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "a39188df909bc0b08fd8736399c44854ff12db499c685ad9f1e81f5c21b652a1",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_tunnel_boegen.png",
+      "sha256": "e881790e46253a958ca6e2a8af85847edebeffb4097852b4dbaacdfa548483ab",
+      "bytes": 132893,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "9dca169f881dcf1b3336255122174abb5c7c84dc921e0ba381af1ae7b4874bba",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_tunnel_blaetter.png",
+      "sha256": "88ec20d0894bfb13de56d4e0ab3310b2f5c62c4f719d665868ea9c54f6f94899",
+      "bytes": 96005,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "c9e92ba7b2358fd6a4216d9a1013755fef46af42c8329401118f9181fd08b072",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_windspiel_fertig.png",
+      "sha256": "8a86e9cc60ed166188a1ffcd754d19832749607181e3c2163c7179aec0bf5389",
+      "bytes": 88688,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "1e8688791dfaa1e8430fe62bd594bcdf29b8cec6abf0c9b6fe171ede4f2f5a0a",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_windspiel_maske_dach.png",
+      "sha256": "035a4fddb49acf7145b486f76c5367b74141cef9c85fbf3b765aa0adfc387c5a",
+      "bytes": 7591,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "dc7252cacf34e7ae08aad96357fd7bb242061309c603ee6dd5b6caf24fd7b23b",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_windspiel_maske_korpus.png",
+      "sha256": "d41b3782f9347c14dc5d36c2e750f432ce33bfab76e40ba4199522023bdaa3cc",
+      "bytes": 6227,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "2ee47e6f9b3d0fe2274e9e321389e6dacc968f79bb84b8c840e74306cf9a86a6",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_windspiel_stab.png",
+      "sha256": "800bc35656806700adcf59a1e8b44cbe33930cd5f54e4927e18ef8b3c79f05f3",
+      "bytes": 57507,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "fc2fcc973471e6caf729f4d6a1985578c5f7706d62a923281404aef40f360f7e",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_windspiel_glocken.png",
+      "sha256": "d85964fe8695d8774239d4e0ab29055953362055b9d771107a57ee0dcd469cf8",
+      "bytes": 35142,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "1fb574f40213405db8fbcc10a922d4fd6279f92c0c44cc1c123a2026002bdbe1",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_segelboot_maske_dach.png",
+      "sha256": "9dddf8a17c4f6db5563caa4c059bad47d638f740fee762ede574c78b37b06415",
+      "bytes": 8582,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "b11152cd8fbed7eec551310ceb2f347922ebfe6c3744d2e5b1a67fa41591472c",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_segelboot_maske_korpus.png",
+      "sha256": "e29d2b6bb26976fc3cf51650a0063852bd1a7a41f322300186b628490777c91f",
+      "bytes": 10600,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "7d8c082c945d5e456f4eff3c936b8b841b7a22cf5873f83bf118982ebd55a0b0",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_segelboot_rumpf.png",
+      "sha256": "d8f8d6df14a0b0195ac311f0a4b37b44f45902742b618727dc950a3d65695d6a",
+      "bytes": 73028,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "e103e970cb2b35b391b2f818243e35f26516c426679d5e00deb489bc39bf1dec",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_segelboot_mast.png",
+      "sha256": "374c06afbfbd3edc508f7e0cbc5e4d8c53e500e0a4a1cf62bbc34147950d9bb8",
+      "bytes": 32925,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "d7f6e68a9f7bf21ffcac99c682b133a2c73236261ae1dfd21ffe0d62c67e279e",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_segelboot_segel.png",
+      "sha256": "37a5e14e83f0995b565ccb86640dc4ddd39d260dc2b315039720948a87c01ce4",
+      "bytes": 68586,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "35edd8ba5ddff6d248a0cd2fed7cc4a0abf0fc19830415f645a7a54ab283d9a4",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_wimpelkette_maske_dach.png",
+      "sha256": "2be55af92d03e0d0c7c6288a9232d1d3671d40abee2fd22c9b6f3aa0cb4dd4d3",
+      "bytes": 8451,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "f03500e01faae522821b3f894494ec91d52dcbf365f9e24fe6a70aaf50dcb160",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_wimpelkette_maske_korpus.png",
+      "sha256": "20ffd058e57c416446c19efc14cef088e3f8ad72e7eb9d35a8bced32acd0ff36",
+      "bytes": 14193,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "30373059dba7b15a82e33d25b1f967c984f7748b838f3a9ef65d89ebf8aacd46",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_wimpelkette_schnur.png",
+      "sha256": "a68691ec5eee0f6d52cddd13b66a219565a556158a8fbac97a95e037c7c09bf6",
+      "bytes": 15994,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "2cc29466f9c9fc2bea079fcc8ebcc828127f3dd3e2a70ca79adf576cd396bd6a",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_wimpelkette_wimpel.png",
+      "sha256": "491aec483b8b5fbf0c5844bfb831b39b0595c73fdf54fa3571f7990c877be87f",
+      "bytes": 37552,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "b43e1c324be2a986253a68613deb137da008d6e6a81e2518981c9a6d15f6cf73",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_laterne_maske_dach.png",
+      "sha256": "d1724db801c81135bba67972c4e2afd40243f805719f336d28a60cfe4654fc36",
+      "bytes": 9448,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "8619265027d4f35edba923514293735544b551ea0e928014caa9ea9c23c9d2ef",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_laterne_maske_korpus.png",
+      "sha256": "84239998e3abdea23c07268cd36eb6d4a8b4ee0fd976316b554ffda438d1b4e3",
+      "bytes": 7568,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "97655fb22355282c91ecf535274267c56d53a2766899cbd90957fa9f195f159c",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_laterne_gestell.png",
+      "sha256": "21bead79a2a4bb6e161aa25e1be2730605d3f2b6e8f54ec1626c11ec78108a45",
+      "bytes": 132651,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "6fb6774edd17426370f731c28e692c0e7c7f02d4e16d5f1cf53e6e55470dc56e",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_bau_laterne_papier.png",
+      "sha256": "fc496c6f6a640aa43368cd4491982972e7f95104c2fa159ed6cdc09da13fd93b",
+      "bytes": 121987,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "ae39f5f7494840cec5e2ba533f5eedce1f28f1599a542830dbfd3f2e808cb4e4",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_wimpelkette.png",
+      "sha256": "4badd1eb127a416b6ca8a41c4cd571b78a3153803340871660cb49ba035babce",
+      "bytes": 45785,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "99f72daa7583e93443d87691490784f63dab2fb9b82ad470fd7c52370f32acbb",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "gw_laterne_papier.png",
+      "sha256": "4dc4018c1f31436b5f8ca942b71ab781c28952dbbbf72e29df173ae0e74a39bb",
+      "bytes": 190627,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "c98ad32cf5f3767c20d851babac61988194b35b2601f4afe23d7553376826ce8",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    }
+  ],
+  "human_approval_claimed": false,
+  "human_approval_scope": null,
+  "repository_promotion_at_receipt_creation": false,
+  "blockers": []
+}
