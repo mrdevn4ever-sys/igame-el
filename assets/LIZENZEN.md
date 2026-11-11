@@ -125,3 +125,13 @@ Diese Dokumentation hält Anbieter, Dienst, Ressourcentarif und synthetische Her
 - **Prüfung:** 2.616/2.616 technische PASS mit Azure-Request-ID, Text-, SSML-, Roh- und Finalhash, Codec-/Lautheits-/True-Peak-/Randstille-Messung. Die Produktions- und Veröffentlichungsanweisung des Eigentümers ist dokumentiert; eine individuelle menschliche Hörkontrolle aller 2.616 Dateien wird nicht behauptet.
 - **Provenienz:** `assets/Azure_Florian_2616_Provenienz.json` sowie sieben `assets/Azure_Florian_2616_Batch_XX_Provenienz.json`.
 - **Geheimnisse:** Azure-Schlüssel und OAuth-Tokens wurden ausschließlich lokal über Windows-DPAPI verarbeitet und sind nicht Bestandteil des Repositories.
+
+## Synthetische Florian-Sprachaufnahmen: Haus und Garten – Nachlieferung 6
+
+- **Umfang:** 37 synthetische Sprachdateien aus `assets/Sprachaufnahmen_Nachlieferung_6.csv`, 37 erfolgreiche Syntheseaufrufe und 840 berechnete Textzeichen; keine fehlgeschlagenen oder unklaren Versuche.
+- **Anbieter und Ressource:** Microsoft Azure AI Speech, Ressource `ellie-entdeckerinsel-speech`, Region `switzerlandnorth`, Ressourcentarif **Standard S0**.
+- **Stimme:** `de-DE-FlorianMultilingualNeural`, Sprache `de-DE`, Tempo −12 %, neutrale Tonhöhe. Die 14 Spielnamen wurden als ruhige Titel synthetisiert.
+- **Ausgabe:** AAC-LC/M4A, mono, 24 kHz und Zielbitrate 48 kbit/s; Lautheitsziel −16 LUFS, True Peak höchstens −1 dBTP und Randstille höchstens 0,1 Sekunden. 37/37 Dateien bestanden die technische Endprüfung.
+- **Hörstatus:** Die finalen Hashes wurden nicht abgespielt. Der Eigentümer wies die Fertigstellung ohne weitere Korrekturen an; eine menschliche Hörfreigabe wird deshalb nicht behauptet.
+- **Kostenstatus:** Die Verwendung von S0 war bis maximal 3.000 berechnete Zeichen ausdrücklich autorisiert. Tatsächlicher Rechnungsbetrag, eventuell genutztes Freikontingent und verbleibendes Freikontingent sind nicht gemessen; Nullkosten werden nicht behauptet.
+- **Provenienz:** `assets/Azure_Florian_Nachlieferung_6_Provenienz.json` enthält Einzeltexte, Request-IDs, Hashes und technische Messwerte. Geheimnisse sind nicht enthalten.
