@@ -165,4 +165,5 @@ OK      170_haus_wohnstube
 OK      170b_haus_abend
 OK      171_garten3_start
 OK      172_garten3_voll
+OK      900_selbsttest
 Absturzberichte:        0
