@@ -1,0 +1,142 @@
+{
+  "schema": "ellie-haus-garten-package-e-provenienz/v1",
+  "created_at": "2026-11-11T19:08:16.468558+00:00",
+  "status": "PASS_RELEASE",
+  "package": "E",
+  "base_git_revision": "02c080bff4342e3f10ccd25cb04a44ab20f6400d",
+  "binding_documents": {
+    "assets/HERMES_HAUS_GARTEN.md": "6c712d778cf77b60e3cf31d43df0271610edcd113085ff7e49af180139b62a60",
+    "assets/AGENT_PROMPT.md": "94c91c2d5ddccfc99ce5067e07b0a7a4417d127d7cbc1e98a553f5509fec4d28",
+    "assets/HERMES_GARTENWELT.md": "5a465ae7766f5edbd2a0a61de4d1efeb81a090a8ae9da00fc58593dc344de27c",
+    "assets/Haus_Garten.csv": "d4cb0f6f3a30ad39018607d9eccfffc44d14fec305fc0090002c36af50d3cdfd"
+  },
+  "mandatory_style_references": [],
+  "production": {
+    "type": "provider-derived accepted package with deterministic registered local corrections for selected deer eyes and treehouse stages",
+    "provider": "Recorded in pkg-E/provenance/hash_provenance_report.json",
+    "selected_deer_variant": "signal-16-56",
+    "treehouse_stage_3_bunting": false,
+    "owner_visual_direction": "Baumhaus and deer accepted; middle deer variant selected; stage 3 bunting removed",
+    "source_qa": "pkg-E/correction-v2/PARENT_HANDOFF.json"
+  },
+  "release_transform": {
+    "manifest_exact_dimensions": true,
+    "alpha_preserving": true,
+    "pngquant_quality_floor": "82-98; lossless fallback retained when floor could not be met",
+    "oxipng": "-o 4 --strip safe",
+    "semantic_masks_lossless_only": false
+  },
+  "qa": {
+    "status": "PASS_OWNER_FINALIZATION",
+    "owner_finalization_no_more_corrections": true
+  },
+  "count": 6,
+  "items": [
+    {
+      "filename": "gw_tier_reh_stehen.png",
+      "sha256": "a305497a6386348278502fca8ebcad3c464e06f2f1d0f27bccbb15479190c9bb",
+      "bytes": 138539,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "a8cf20e132ae22fea11bbd506f8924831790a8291c6cc2c71afe71a8465777e2",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "transformation": "none",
+      "technical_verdict": "PASS",
+      "visual_verdict": "OWNER_ACCEPTED_NO_FURTHER_CORRECTIONS"
+    },
+    {
+      "filename": "gw_tier_reh_grasen.png",
+      "sha256": "c9cf1636e022f0aab59522095583ceba38b5b06866db8f6a450d256f304161f1",
+      "bytes": 151505,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "d9124c0ebda10cd8f8103357d3ccf5e5db2bbfb0f41f337c14852e3d31f8fa3f",
+      "source_dimensions": [
+        1024,
+        1024
+      ],
+      "transformation": "none",
+      "technical_verdict": "PASS",
+      "visual_verdict": "OWNER_ACCEPTED_NO_FURTHER_CORRECTIONS"
+    },
+    {
+      "filename": "gw_baumhaus_stufe_1.png",
+      "sha256": "dbedec0395bbac9b052e0b56ca5f650860c44660faab5546d3eca83158959a91",
+      "bytes": 45651,
+      "dimensions": [
+        1536,
+        1536
+      ],
+      "source_sha256": "f49032acea12f0a9562908884045a0a6333a22e7a717015aa7787ca64f661de9",
+      "source_dimensions": [
+        2732,
+        2048
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "OWNER_ACCEPTED_NO_FURTHER_CORRECTIONS"
+    },
+    {
+      "filename": "gw_baumhaus_stufe_2.png",
+      "sha256": "4d6c8f90c52ce531f4de96e093982bcea5cc6495e96fe420b9cbcaeb67db330d",
+      "bytes": 73137,
+      "dimensions": [
+        1536,
+        1536
+      ],
+      "source_sha256": "d59ee7cfe7bd439272cac1b19fd7ad4261e27db712ab68b9493b71e677e1acfa",
+      "source_dimensions": [
+        2732,
+        2048
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "OWNER_ACCEPTED_NO_FURTHER_CORRECTIONS"
+    },
+    {
+      "filename": "gw_baumhaus_stufe_3.png",
+      "sha256": "a2cd5236cfe690f86a0a25ea2281ddf0802fc404565062e8ec0ce1c33ef9dc65",
+      "bytes": 110379,
+      "dimensions": [
+        1536,
+        1536
+      ],
+      "source_sha256": "957935992eef7d28e310846c2e7f67dea10a55d92fc553ddfba7eb3e16c6c2df",
+      "source_dimensions": [
+        2732,
+        2048
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "OWNER_ACCEPTED_NO_FURTHER_CORRECTIONS"
+    },
+    {
+      "filename": "gw_baumhaus_stufe_4.png",
+      "sha256": "489fc0cd0b690b115b1a55981206b1d4dd2fe2eeed96a3caf0f9e2dfb4aa4d9f",
+      "bytes": 115024,
+      "dimensions": [
+        1536,
+        1536
+      ],
+      "source_sha256": "8568ced909400e745e8dd6357300365efafb9e454adaf0df7ec18bdd17499f90",
+      "source_dimensions": [
+        2732,
+        2048
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "OWNER_ACCEPTED_NO_FURTHER_CORRECTIONS"
+    }
+  ],
+  "human_approval_claimed": true,
+  "human_approval_scope": "Owner accepted Baumhaus and deer and directed no further corrections.",
+  "repository_promotion_at_receipt_creation": false,
+  "blockers": []
+}
