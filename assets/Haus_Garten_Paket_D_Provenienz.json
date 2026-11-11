@@ -1,0 +1,480 @@
+{
+  "schema": "ellie-haus-garten-package-d-provenienz/v1",
+  "created_at": "2026-11-11T19:08:16.468558+00:00",
+  "status": "PASS_RELEASE",
+  "package": "D",
+  "base_git_revision": "02c080bff4342e3f10ccd25cb04a44ab20f6400d",
+  "binding_documents": {
+    "assets/HERMES_HAUS_GARTEN.md": "6c712d778cf77b60e3cf31d43df0271610edcd113085ff7e49af180139b62a60",
+    "assets/AGENT_PROMPT.md": "94c91c2d5ddccfc99ce5067e07b0a7a4417d127d7cbc1e98a553f5509fec4d28",
+    "assets/HERMES_GARTENWELT.md": "5a465ae7766f5edbd2a0a61de4d1efeb81a090a8ae9da00fc58593dc344de27c",
+    "assets/Haus_Garten.csv": "d4cb0f6f3a30ad39018607d9eccfffc44d14fec305fc0090002c36af50d3cdfd"
+  },
+  "mandatory_style_references": [
+    {
+      "path": "EllieInsel/Images/gw_dino_stehen.png",
+      "sha256": "7500b970afe845d07247a66d24c786c234eca7e703c3e81d28dbb1561d3c9847"
+    },
+    {
+      "path": "EllieInsel/Images/gw_szene_tierlichtung.jpg",
+      "sha256": "0e35e903a2a8043f2836f68894da54ffaef2d1604b7023be71195233e7380b50"
+    },
+    {
+      "path": "EllieInsel/Images/gw_szene_kueche_innen.jpg",
+      "sha256": "5993ff14e7a732e0d7c8ee0a898d889e951c375082574a03ec82e19230dd050c"
+    },
+    {
+      "path": "EllieInsel/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      "sha256": "bc109b432228ae6ed8f98b83f5f5ffa19dd6e01279bdc3b96c772b520cba3331"
+    }
+  ],
+  "production": {
+    "type": "24 provider generations plus two rejected lavender provider outputs and local deterministic finishing; promoted lavender rebuilt locally in Blender",
+    "provider": {
+      "name": "OpenAI via Codex OAuth image adapter",
+      "model_requested": "gpt-image-2",
+      "quality_requested": "high",
+      "successful_service_posts": 26,
+      "quality_reported": {
+        "low": 21,
+        "medium": 5
+      },
+      "mandatory_four_references_every_request": true
+    },
+    "source_qa": "pkg-D/qa/parent_qa_final.json"
+  },
+  "release_transform": {
+    "manifest_exact_dimensions": true,
+    "alpha_preserving": true,
+    "pngquant_quality_floor": "82-98; lossless fallback retained when floor could not be met",
+    "oxipng": "-o 4 --strip safe",
+    "semantic_masks_lossless_only": false
+  },
+  "qa": {
+    "status": "PASS",
+    "covered": 24,
+    "pass": 24,
+    "rework": 0,
+    "reject": 0,
+    "blockers": [],
+    "inventory_digest_sha256": "216182f429eab5cd5a261edb71bc5c45a87a4420806c8357128714bf9deecd52",
+    "independent_model_qa": true,
+    "human_approval_claimed": false,
+    "completed_at": "2026-11-11T19:07:38.923816+00:00"
+  },
+  "count": 24,
+  "items": [
+    {
+      "filename": "garten2_gartenzwerg.png",
+      "sha256": "54829b1b646ac19a40241e653c617387783ec5743a2abc7e6e1256abf1e06434",
+      "bytes": 696951,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "c291f0a560df93044b10e318aaf7e6392ed61cf86cc32cb3a74a04fb7b6beebf",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_windrad.png",
+      "sha256": "4c7873b8b6a410e3f6d522214482440b9b515b8c97b0a24644f67de83e66d6f6",
+      "bytes": 107804,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "dcd3175b2b03b6a69bb5bcb3f96714b9db2a71bde6da538f7d4570dbe02dd811",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_vogeltraenke.png",
+      "sha256": "25c8d089302de6bb41936a79596e5a96f383ebb5547f37a818f53dc4c87dddad",
+      "bytes": 632929,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "9fe7803f08e82b0bb14e24996114915bc91b08e0afb9764a48b74fd57f47cb50",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_gartenlaterne.png",
+      "sha256": "1d139a47ce57ddaa64d8d451bde569d133d7572a6839e47c9d4e5927f2016e80",
+      "bytes": 144170,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "e40c60dc4805e92f1b3a5c0ad55d714f431163fd45ac3e99432f8eab18e54dc4",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_schubkarre.png",
+      "sha256": "25d362278f90501b0736cda7a4078a457019055a5627740f07b1dd3d33fd61b2",
+      "bytes": 578826,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "98efd42be639bde0e0e1ff10fc684e5e783d2e0938d8b901282c6cbebefe2e8e",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_giesskanne_blumen.png",
+      "sha256": "39a7aba181c16c5889b26bb3582a581e029dcf9c9a90c2c8d3320faf184878f6",
+      "bytes": 665985,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "8b68be913eab9b375c277c9b1936d8e6fde403b0b93012975e68a513612e4e6b",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_zaun.png",
+      "sha256": "d3cc2d04ebdff26f9cf0b9c809c2eaea11d4d5849c889e96d083b421793552ac",
+      "bytes": 131158,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "012e407d3063373fb1b1861ccf518e5ac5165be5ee1f46bdeb97cfe9d95d9f1d",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_steinhaufen.png",
+      "sha256": "5eac927507d628e85ed72d88d7cfadcbfd69e99a20f786c0faae1c6b1add447d",
+      "bytes": 151967,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "573e9ff191485f8601c0fa2f2c5653858db17d3512fb93c3556d65231b96ffe3",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_baumstumpf.png",
+      "sha256": "1820c8569692388a53ef5aba5741fac99c43f6d9ff923f3cd339a214fdcab3df",
+      "bytes": 215101,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "6eeeb58a39f308ebd0d37f815de8075d521f6680c7195c8ffc1677d730fe18f4",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_schaukel.png",
+      "sha256": "e6d227a6d5cdb23ec1c8b971f434b7e691a5bbffa9350605e5d3934de8169310",
+      "bytes": 489068,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "d04c19420db610096f86f8c3736211fa11b50da375906cfe3f2097aa54a8f828",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_sandkasten.png",
+      "sha256": "1ed1b099e01abc538e2f9e9f20b8b76ebe528f7816896215f5516dcd4b87c409",
+      "bytes": 130920,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "1d94acb528fdb18978831bca31a61d5ec0776684e4d883d7a547f8ce05b611be",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_pilzgruppe.png",
+      "sha256": "8733a4afcad395e5e704c8b3d35adce689d94fba136daf5e06b2581714a5c17b",
+      "bytes": 214783,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "d809a436b453efea14e00468b21ee63d9fbf55b0633e44bb77ed905e7370d8af",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_blumenkuebel.png",
+      "sha256": "4b0d864a0f2d9cdcd476ef005a656735d923815a620adc71249995da9d2083ca",
+      "bytes": 769004,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "ce8937cb27ebd169d7d374e2b97f04eab118af3975d6fcbe84d8f566fb6d47eb",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_tulpen.png",
+      "sha256": "a1df4ae3e963ae949c03c59175741114366877c58d486bfc72f42409ed4b0303",
+      "bytes": 174051,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "5b23a659f3e23e06f8519b9e0e0ac652970dfceb52f01a2d4d6b4477183f99d9",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_gaensebluemchen.png",
+      "sha256": "34e0ca1c100bb421c29f4837b70c21a4b60af74e9f160a6321def189e2a02e29",
+      "bytes": 745403,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "d76deba18ec2ef067b01a15e09fc84768202faf4f9f73ddd8c94987b0dee51b7",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_lavendelbusch.png",
+      "sha256": "f4c073d4b89e99ae3c1b84440c8ab221e91bf52d6372389811e6eefbae869ae1",
+      "bytes": 560165,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "1bbf8baeeddd914d5a138aac0f85127302b00bf43dafc097ab7fc98eb27bf555",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_rosenbusch.png",
+      "sha256": "e3ad6fa3e1ecdfe1b05a686ff3690d5d5fe61acea8ab35a81a8f0f86706bd685",
+      "bytes": 174460,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "71341cf93bc20ea6961fbb860894e491685bc5832b9bbbc4d998fcfd35143732",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_farn.png",
+      "sha256": "2a34fb57c2747f705095f2795413bc952bd83839598c4c0034fe560e96a87011",
+      "bytes": 156544,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "3af2337a27723829ba7d666d7198ce946105d42637f81a018ad752736feb035e",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_tanne.png",
+      "sha256": "0d504453c322780156d2eb7dfa372ae94893a22b80f6515bd161f57c2e3d1832",
+      "bytes": 159753,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "c799f6b8b9e85561fad19a1933f728bf44d13d50b34036bcfed62b28920cf9d5",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_obstbaum_klein.png",
+      "sha256": "ec799706774d19dfa3a8b8e6e7736e2b0f24be19d2b0fa7def1819aaf0dff737",
+      "bytes": 711016,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "56c4f2da4c772b4b395d00b32b825834bf6e14cf321e9394122e2559dd8ad74d",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_vogelscheuche.png",
+      "sha256": "e10b26ff6bdabb7cf8d2dff6ed58bbb20c15d398737df8c09eff1474fdb22f5d",
+      "bytes": 609620,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "9b15d0d270a4d381ae149eb056520e257c57a262aee7855be4d80d8fd7cbd229",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_bienenkorb.png",
+      "sha256": "df751041fceec8bd3c154ca90e9c83688546f839c12a63a9e15378709908a398",
+      "bytes": 206453,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "d14be274b7256df644de2342a3807152b71b5f27f356b00e538d57a81419c2ff",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_regenfass.png",
+      "sha256": "dcdf9273dcf46b0ae8b8fff080623678b34062fe6aaddc7585844f59d8347657",
+      "bytes": 243719,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "de266ee4682ec83a5335b7fc8b052ad6c4ed4ec6c685793c2270795ea4d73e24",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    },
+    {
+      "filename": "garten2_wegweiser.png",
+      "sha256": "0556aba802aebe5ecafd1996f0d94f64ef8c6b2a6e2c08d4ca1143345a2d48c8",
+      "bytes": 533374,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "source_sha256": "bc29cb5b09a8718e5a4962ca8c19fcd413f1a22f91d765e7604688f78762e161",
+      "source_dimensions": [
+        1536,
+        1536
+      ],
+      "transformation": "premultiplied-alpha Lanczos",
+      "technical_verdict": "PASS",
+      "visual_verdict": "PASS_PARENT_QA"
+    }
+  ],
+  "human_approval_claimed": false,
+  "human_approval_scope": null,
+  "repository_promotion_at_receipt_creation": false,
+  "blockers": []
+}
