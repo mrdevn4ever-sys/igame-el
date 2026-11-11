@@ -1,4 +1,4 @@
-# Auftrag für Hermes: Korrektur Haus und Garten (Wohnstube, Bausätze, Gartenzwerg)
+# Auftrag für Hermes: Korrektur Haus und Garten (Wohnstube, Spielwiese, Bausätze, Gartenzwerg)
 
 Repository `mrdevn4ever-sys/igame-el`, Branch `claude/eloquent-galileo-0bwpqo`. Nicht auf `main`, kein Force-Push.
 Am App-Code änderst du nichts. Regeln wie in `assets/HERMES_HAUS_GARTEN.md` und `assets/AGENT_PROMPT.md`.
@@ -94,9 +94,28 @@ Tarif der Speech-Ressource, freies Kontingent vor und nach der Tranche, verbrauc
 
 ---
 
+## 5. Spielwiese: breiter Garten zum Wischen (1 neue Datei)
+
+`gw_szene_garten_panorama_tag.jpg`, **5464 × 2048**, deckend, progressives JPG.
+
+**Warum:** Im Garten ist vorne zu wenig Platz. Bank, Vogelhäuser, Futterstellen und Gartenschmuck drängen sich vor dem Beet.
+Der Garten wird deshalb nach rechts wischbar: links der Hausgarten wie jetzt, rechts eine freie Spielwiese für alles Gebaute.
+
+- **Linke Hälfte (x 0–2732): pixelgleich `gw_szene_garten_tag.jpg`.** Nichts verschieben, nichts neu malen.
+- **Rechte Hälfte (x 2732–5464): nahtlose Fortsetzung** derselben Szene: gleiche Kamera, Horizont auf gleicher Höhe (22 %),
+  Hecke und Bäume laufen ohne Bruch weiter, gleiche Wiese, gleiches Licht. Die Naht bei x 2732 darf nicht sichtbar sein
+  (der rechte Bildrand des Hausgartens mit Baum und Hecke geht natürlich in die Wiese über).
+- Rechte Hälfte: **eine grosse, ebene, leere Wiese** von y 50 % bis 100 %. Keine Beete, keine Wege, keine Gegenstände,
+  keine Tiere. Erlaubt sind nur Randdetails ausserhalb der Fläche x 2900–5300, y 1030–2048 (z. B. ein Baum und Büsche am
+  ganz rechten Rand, Blumen an der Hecke).
+- Kein Abendbild nötig (die App dunkelt selbst ab).
+
+**Prüfen:** linke Hälfte gegen `gw_szene_garten_tag.jpg` (Differenz null); Naht in 200 % ansehen; die Fläche
+x 2900–5300, y 1030–2048 ist durchgehend Wiese.
+
 ## Reihenfolge und Commit
 
-1. Wohnstube, 2. Gartenzwerg, 3. Bausätze, 4. Kostenangabe.
+1. Wohnstube, 2. Spielwiese (Teil 5), 3. Gartenzwerg, 4. Bausätze, 5. Kostenangabe.
 Je Teil ein Commit, gezielt stagen, Provenienz-JSON `assets/Haus_Garten_Korrektur_<Teil>_Provenienz.json`.
 Medien-Commits mit `[skip ci]`, der letzte ohne. Vor dem Push `git fetch` und auf den aktuellen Branch-Stand setzen.
 `python3 tools/check_assets.py` ohne FEHLER. Kein TestFlight.

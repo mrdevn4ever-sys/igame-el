@@ -131,14 +131,19 @@ final class GardenWorldModel {
     /// Erster Start im neuen Garten: Gebautes und Gartenschmuck stehen noch an Plätzen des alten Gartens,
     /// wo jetzt Haus, Schuppen oder Gemüsebeet sind. Einmalig auf die freie Wiese umstellen.
     private func moveIntoNewGarden() {
-        guard WorldLayout.garden3, !w.garden3Placed else { return }
+        guard WorldLayout.garden3 else { return }
+        let wide = WorldPanorama.isActive(.haus)
+        let target = wide ? 2 : 1
+        guard w.gardenLayout < target else { return }
         var spots = WorldLayout.spots(.haus)
+        // Mit Spielwiese: alles auf die Wiese rechts, die Plätze am Haus bleiben frei.
+        if wide { spots.removeAll { $0.x < 1 } }
         app.update { d in
             var extra = 0
             for i in d.world.built.indices where d.world.built[i].area == .haus {
                 if spots.isEmpty {
                     // Mehr Bauten als Stellplätze: der Rest kommt in eine Reihe ganz vorne.
-                    d.world.built[i].x = 0.22 + 0.14 * Double(extra % 5)
+                    d.world.built[i].x = (wide ? 1.1 : 0.22) + 0.14 * Double(extra % 5)
                     d.world.built[i].y = 0.995
                     extra += 1
                 } else {
@@ -147,14 +152,14 @@ final class GardenWorldModel {
                     d.world.built[i].y = Double(p.y)
                 }
             }
-            // Gartenschmuck in zwei Reihen auf die Wiese vorne
-            // (zwischen den Stellplätzen der Bauten, damit nichts aufeinander steht)
-            let xs: [Double] = [0.27, 0.5, 0.7, 0.9, 0.06, 0.33, 0.55, 0.74, 0.21]
+            // Gartenschmuck zwischen den Stellplätzen der Bauten
+            let xs: [Double] = wide ? [1.05, 1.23, 1.41, 1.59, 1.77, 1.93] : [0.27, 0.5, 0.7, 0.9, 0.06, 0.33, 0.55, 0.74, 0.21]
+            let ys: [Double] = wide ? [0.86, 0.7, 0.99] : [0.945, 0.995]
             for i in d.garden.placed.indices {
                 d.garden.placed[i].x = xs[i % xs.count]
-                d.garden.placed[i].y = (i / xs.count) % 2 == 0 ? 0.945 : 0.995
+                d.garden.placed[i].y = ys[(i / xs.count) % ys.count]
             }
-            d.world.garden3Placed = true
+            d.world.gardenLayout = target
         }
     }
 

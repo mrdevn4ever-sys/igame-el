@@ -6,12 +6,21 @@ import CoreGraphics
 enum WorldPanorama {
     static func isActive(_ a: WorldArea) -> Bool {
         guard a.panoramaExtent != (0, 1) else { return false }
-        return ImageCache.image(a.panorama(evening: false)) != nil || DemoMode.flag("-panotest")
+        return ImageCache.image(name(a, evening: false)) != nil || DemoMode.flag("-panotest")
     }
 
     /// Sichtbarer Bereich in Grundbild-Einheiten.
+    /// Neuer Garten: rechts vom Hausgarten liegt eine Spielwiese für Bauten und Gartenschmuck.
     static func extent(_ a: WorldArea) -> (min: Double, max: Double) {
-        isActive(a) ? a.panoramaExtent : (0, 1)
+        guard isActive(a) else { return (0, 1) }
+        if a == .haus, WorldLayout.garden3 { return (0, 2) }
+        return a.panoramaExtent
+    }
+
+    /// Name des breiten Bildes, passend zum aktiven Garten.
+    static func name(_ a: WorldArea, evening: Bool) -> String {
+        if a == .haus, WorldLayout.garden3 { return evening ? "gw_szene_garten_panorama_abend" : "gw_szene_garten_panorama_tag" }
+        return a.panorama(evening: evening)
     }
 
     /// Anzahl Beete im Hausgarten (3 Beete + Baumplatz; im Panorama und im neuen Garten 3 weitere).
@@ -117,6 +126,14 @@ enum WorldLayout {
     static func spots(_ a: WorldArea) -> [CGPoint] {
         switch a {
         case .haus:
+            if garden3, WorldPanorama.isActive(.haus) {
+                // Mit Spielwiese: am Haus nur wenige Plätze, der Rest steht rechts auf der Wiese (3 Reihen).
+                var list = [CGPoint(x: 0.74, y: 0.575), CGPoint(x: 0.38, y: 0.575), CGPoint(x: 0.92, y: 0.82)]
+                for y in [0.94, 0.78, 0.62] {
+                    for i in 0..<5 { list.append(CGPoint(x: 1.14 + 0.18 * Double(i), y: y)) }
+                }
+                return list
+            }
             if garden3 {
                 // Freie Wiese vorne, zwischen Haus und Schuppen und rechts neben dem Beet
                 return [CGPoint(x: 0.13, y: 0.96), CGPoint(x: 0.74, y: 0.575), CGPoint(x: 0.38, y: 0.575), CGPoint(x: 0.92, y: 0.8),
@@ -153,7 +170,7 @@ enum WorldLayout {
         }
         if WorldPanorama.isActive(a) {
             switch a {
-            case .haus: return CGRect(x: -0.85, y: 0.46, width: 2.7, height: 0.26)
+            case .haus: return garden3 ? CGRect(x: 0.1, y: 0.9, width: 1.8, height: 0.08) : CGRect(x: -0.85, y: 0.46, width: 2.7, height: 0.26)
             case .lichtung: return CGRect(x: 0.08, y: 0.6, width: 1.84, height: 0.32)
             default: break
             }
@@ -183,6 +200,25 @@ enum WorldLayout {
     }
     /// Einlauf vom Raster in den Teich (rechts neben der untersten Reihe).
     static var pondInlet: CGPoint { CGPoint(x: gridOrigin.x + gridCell * (CGFloat(gridCols) + 0.5), y: cellCenter(col: 0, row: 3).y + 0.04) }
-    static var streamBed: CGPoint { CGPoint(x: gridOrigin.x + gridCell * CGFloat(gridCols) + 0.07, y: cellCenter(col: 0, row: 0).y + 0.06) }
+    /// Rechte Kante des Rasters.
+    static var gridRight: CGFloat { gridOrigin.x + gridCell * CGFloat(gridCols) }
+    /// Beet am Bach: direkt rechts neben der obersten Reihe.
+    static var streamBed: CGPoint { CGPoint(x: gridRight + 0.075, y: cellCenter(col: 0, row: 0).y) }
+    /// Zulauf: vom Becken des Wasserfalls bis zum ersten Feld.
+    static var sourceRun: [CGPoint] {
+        let y = cellCenter(col: 0, row: 0).y
+        return [CGPoint(x: 0.215, y: y), CGPoint(x: gridOrigin.x, y: y)]
+    }
+    /// Rinne von der obersten Reihe zum Beet am Bach.
+    static var bedRun: [CGPoint] {
+        let y = cellCenter(col: 0, row: 0).y
+        return [CGPoint(x: gridRight, y: y), CGPoint(x: gridRight + 0.04, y: y)]
+    }
+    /// Auslauf: von der untersten Reihe im Bogen hinunter in den Teich.
+    static var pondRun: [CGPoint] {
+        let y = cellCenter(col: 0, row: 3).y
+        return [CGPoint(x: gridRight, y: y), CGPoint(x: gridRight + 0.035, y: y), CGPoint(x: gridRight + 0.055, y: y + 0.02),
+                CGPoint(x: gridRight + 0.065, y: y + 0.055), CGPoint(x: gridRight + 0.065, y: 0.7)]
+    }
     static var source: CGPoint { CGPoint(x: gridOrigin.x - gridCell / 2, y: gridOrigin.y + cellHeight / 2) }
 }

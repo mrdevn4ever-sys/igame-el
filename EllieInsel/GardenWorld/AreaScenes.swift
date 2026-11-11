@@ -230,21 +230,15 @@ struct SceneLayer: View {
 
     private var streamContent: some View {
         ZStack(alignment: .topLeading) {
-            // Zulauf vom gemalten Wasserfall zum ersten Feld
-            Group {
-                if ImageCache.image(model.area.scene(evening: false)) != nil {
-                    ChannelTileView(openings: [0, 2], wet: true)
-                        .frame(width: cellW, height: cellH)
-                } else {
-                    WorldPic("gw_quelle", "⛲️", size: cellW * 1.1)
-                }
-            }
-                .at(WorldLayout.source, in: s)
-                .onTapGesture { model.say("Das ist die Quelle. Hier beginnt das Wasser.") }
-            WorldPic("gw_ziel_teich", "🏝️", size: cellW * 1.3)
-                .at(WorldLayout.pondInlet, in: s)
-                .onTapGesture { model.say(model.lastWaterResult.pond ? "Das Wasser fliesst in den Teich." : "Hierher soll das Wasser fliessen.") }
-            StreamBedView(model: model, size: cellW * 1.2)
+            // Zulauf vom Wasserfall, Rinne zum Beet und Auslauf in den Teich: durchgehend gezeichnet,
+            // damit das Wasser sichtbar ankommt (vorher endete der Einlauf mitten auf der Wiese).
+            ChannelRun(points: WorldLayout.sourceRun, wet: true, width: min(cellW, cellH))
+                .frame(width: s.width, height: s.height)
+            ChannelRun(points: WorldLayout.bedRun, wet: model.lastWaterResult.bed, width: min(cellW, cellH))
+                .frame(width: s.width, height: s.height)
+            ChannelRun(points: WorldLayout.pondRun, wet: model.lastWaterResult.pond, width: min(cellW, cellH))
+                .frame(width: s.width, height: s.height)
+            StreamBedView(model: model, size: cellW * 1.25)
                 .at(WorldLayout.streamBed, in: s)
 
             ForEach(0..<WorldLayout.gridRows, id: \.self) { r in
@@ -760,7 +754,7 @@ struct StreamBedView: View {
     var body: some View {
         let bed = model.w.streamBed
         ZStack(alignment: .bottom) {
-            WorldPic(model.lastWaterResult.bed ? "gw_ziel_beet" : "gw_beet_leer", "🟫", size: size)
+            WorldPic(model.lastWaterResult.bed ? "gw_beet_nass" : "gw_beet_leer", "🟫", size: size)
             if let p = bed.plant, bed.stage >= 1 {
                 WorldPic(p.asset(stage: bed.stage), p.emoji(stage: bed.stage), size: size * 0.8)
                     .offset(y: -size * 0.3)
@@ -950,6 +944,41 @@ struct ActorsLayer: View {
             .feet(pos, size: sz, in: size, shadow: false)
             .zIndex(pos.y + 0.001)
             .accessibilityLabel(a.resident?.name ?? "Printatops")
+    }
+}
+
+/// Gezeichnete Holzrinne entlang eines Linienzugs in Szenenanteilen (Zulauf, Auslauf in den Teich).
+struct ChannelRun: View {
+    let points: [CGPoint]
+    let wet: Bool
+    let width: CGFloat
+
+    var body: some View {
+        TimelineView(.animation(minimumInterval: 1.0 / 15, paused: !wet)) { tl in
+            Canvas { ctx, size in
+                guard points.count > 1 else { return }
+                var path = Path()
+                path.move(to: CGPoint(x: points[0].x * size.width, y: points[0].y * size.height))
+                for q in points.dropFirst() {
+                    path.addLine(to: CGPoint(x: q.x * size.width, y: q.y * size.height))
+                }
+                let w = width
+                let inner = wet ? Color(red: 0.16, green: 0.45, blue: 0.78) : Color(red: 0.55, green: 0.40, blue: 0.26)
+                var layers: [(Color, CGFloat)] = [(Color(red: 0.45, green: 0.30, blue: 0.17), 0.5),
+                                                  (Color(red: 0.72, green: 0.52, blue: 0.32), 0.4),
+                                                  (inner, 0.28)]
+                if wet { layers.append((Color(red: 0.36, green: 0.68, blue: 0.95), 0.21)) }
+                for layer in layers {
+                    ctx.stroke(path, with: .color(layer.0), style: StrokeStyle(lineWidth: w * layer.1, lineCap: .butt, lineJoin: .round))
+                }
+                if wet {
+                    let phase = -tl.date.timeIntervalSinceReferenceDate * Double(w) * 0.5
+                    ctx.stroke(path, with: .color(.white.opacity(0.5)),
+                               style: StrokeStyle(lineWidth: w * 0.06, lineCap: .round, dash: [w * 0.015, w * 0.37], dashPhase: phase))
+                }
+            }
+        }
+        .allowsHitTesting(false)
     }
 }
 

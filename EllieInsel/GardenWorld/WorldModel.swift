@@ -1236,8 +1236,9 @@ struct WorldData: Codable, Equatable {
     var festDone = false
     /// Das Kind war schon einmal im Haus (danach blinkt die Tür nicht mehr).
     var houseVisited = false
-    /// Gebautes und Gartenschmuck wurden einmalig auf die Plätze des neuen Gartens umgestellt.
-    var garden3Placed = false
+    /// Für welche Garten-Aufteilung Gebautes und Schmuck schon umgestellt wurden
+    /// (0 = alter Garten, 1 = neuer Garten, 2 = neuer Garten mit Spielwiese).
+    var gardenLayout = 0
 
     init() {}
 
@@ -1281,7 +1282,7 @@ struct WorldData: Codable, Equatable {
         introDone = (try? c.decode(Bool.self, forKey: .introDone)) ?? d.introDone
         festDone = (try? c.decode(Bool.self, forKey: .festDone)) ?? d.festDone
         houseVisited = (try? c.decode(Bool.self, forKey: .houseVisited)) ?? d.houseVisited
-        garden3Placed = (try? c.decode(Bool.self, forKey: .garden3Placed)) ?? d.garden3Placed
+        gardenLayout = (try? c.decode(Int.self, forKey: .gardenLayout)) ?? d.gardenLayout
     }
 
     func count(_ item: HarvestItem) -> Int { basket[item.rawValue] ?? 0 }

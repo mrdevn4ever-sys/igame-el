@@ -171,12 +171,12 @@ struct SceneBackground: View {
     /// Panorama: eigenes Bild; im Simulator-Test ein Ersatz aus dem Grundbild (Seiten gespiegelt).
     @ViewBuilder
     private func panorama(_ s: CGSize) -> some View {
-        if let img = ImageCache.image(area.panorama(evening: evening)) ?? ImageCache.image(area.panorama(evening: false)) {
+        if let img = ImageCache.image(WorldPanorama.name(area, evening: evening)) ?? ImageCache.image(WorldPanorama.name(area, evening: false)) {
             Image(uiImage: img).resizable().scaledToFill().frame(width: s.width, height: s.height).clipped()
-            if ImageCache.image(area.panorama(evening: evening)) == nil && evening {
+            if ImageCache.image(WorldPanorama.name(area, evening: evening)) == nil && evening {
                 Color(red: 0.08, green: 0.12, blue: 0.35).opacity(0.45).blendMode(.multiply)
             }
-        } else if let base = ImageCache.image(area.scene(evening: evening)) ?? ImageCache.image(area.scene(evening: false)) {
+        } else if let base = ImageCache.image(WorldLayout.sceneName(area, evening: evening)) ?? ImageCache.image(WorldLayout.sceneName(area, evening: false)) {
             let unit = s.width / CGFloat(extent.max - extent.min)
             HStack(spacing: 0) {
                 ForEach(Int(extent.min)..<Int(extent.max), id: \.self) { i in
