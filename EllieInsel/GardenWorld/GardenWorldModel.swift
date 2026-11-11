@@ -146,9 +146,11 @@ final class GardenWorldModel {
                 }
             }
             // Gartenschmuck in zwei Reihen auf die Wiese vorne
+            // (zwischen den Stellplätzen der Bauten, damit nichts aufeinander steht)
+            let xs: [Double] = [0.27, 0.5, 0.7, 0.9, 0.06, 0.33, 0.55, 0.74, 0.21]
             for i in d.garden.placed.indices {
-                d.garden.placed[i].x = 0.1 + 0.8 * Double(i % 9) / 8
-                d.garden.placed[i].y = i % 2 == 0 ? 0.915 : 0.985
+                d.garden.placed[i].x = xs[i % xs.count]
+                d.garden.placed[i].y = (i / xs.count) % 2 == 0 ? 0.905 : 0.99
             }
             d.world.garden3Placed = true
         }
@@ -264,6 +266,13 @@ final class GardenWorldModel {
             guard !Task.isCancelled else { return }
             withAnimation { self?.dinoText = nil }
         }
+    }
+
+    /// Bleibende Notiz in der Sprechblase ohne Ansage (für den Selbsttest im Simulator, damit das
+    /// Ergebnis auf dem Screenshot steht).
+    func showNote(_ text: String) {
+        dinoTask?.cancel()
+        dinoText = text
     }
 
     /// Printatops antippen: wiederholt, was gerade sinnvoll ist.

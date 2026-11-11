@@ -13,7 +13,7 @@ enum SelfTest {
         rewards()
         saveRoundTrip()
         layout()
-        model.say("Selbsttest bestanden.")
+        model.showNote("Selbsttest bestanden: Wachstum, Wasserweg, Geschenke, Spielstand, Plätze.")
     }
 
     private static func check(_ ok: Bool, _ what: String) {
