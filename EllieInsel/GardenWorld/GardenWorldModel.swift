@@ -57,6 +57,8 @@ struct WaterFlow {
 
 enum WorldOverlay: Equatable {
     case map, book, kitchen, workshop(BuildKind?), seeds(Int), sunflower(Int), picnic, light, fantasy(Int), celebration(String)
+    /// Die Wohnstube im Haus
+    case house
 }
 
 @MainActor
@@ -85,6 +87,8 @@ final class GardenWorldModel {
     var selectedPiece: WaterPiece?
     /// Schaufel am Bach: Antippen nimmt eine Rinne wieder weg.
     var removingTiles = false
+    /// Küche oder Erinnerungsbuch wurden aus dem Haus geöffnet: Schliessen führt zurück in die Wohnstube.
+    var fromHouse = false
     var lastWaterResult = WaterFlow()
 
     @ObservationIgnored private var loop: Task<Void, Never>?
@@ -122,8 +126,11 @@ final class GardenWorldModel {
 
     // MARK: - Ablauf
 
-    func start() {
-        if !w.introDone {
+    /// `quiet`: ohne Begrüssung (Rückkehr aus einem Spiel direkt in die Wohnstube).
+    func start(quiet: Bool = false) {
+        if quiet {
+            // nichts ansagen
+        } else if !w.introDone {
             edit { $0.introDone = true }
             say("Hallo, ich bin Printatops! Das ist dein Garten. Tippe auf ein Beet, dann pflanzen wir etwas zusammen.")
         } else if let r = app.data.garden.pendingRewards.first {
@@ -149,6 +156,45 @@ final class GardenWorldModel {
         loop?.cancel()
         dinoTask?.cancel()
         edit { $0.lastArea = area }
+    }
+
+    // MARK: - Haus
+
+    /// Durch die Haustür in die Wohnstube.
+    func enterHouse() {
+        audio.sfx("gw_sfx_tuer", fallback: .flip)
+        let first = !w.houseVisited
+        if first { edit { $0.houseVisited = true } }
+        building = false
+        withAnimation(.easeInOut(duration: 0.3)) { overlay = .house }
+        say(first ? "Willkommen zu Hause! Im Regal warten deine Spiele." : "Willkommen zu Hause!")
+    }
+
+    /// Zurück in den Garten.
+    func leaveHouse() {
+        audio.sfx("gw_sfx_tuer", fallback: .flip)
+        fromHouse = false
+        withAnimation(.easeInOut(duration: 0.3)) { overlay = nil }
+    }
+
+    /// Aus der Wohnstube in die Küche oder zum Erinnerungsbuch.
+    func openFromHouse(_ o: WorldOverlay) {
+        fromHouse = true
+        withAnimation(.easeInOut(duration: 0.25)) { overlay = o }
+    }
+
+    /// Schliesst Küche oder Buch: zurück dorthin, wo sie geöffnet wurden.
+    func closeOverlay() {
+        withAnimation(.easeInOut(duration: 0.25)) { overlay = fromHouse ? .house : nil }
+        fromHouse = false
+    }
+
+    /// Schlafen gehen oder aufstehen (Bett in der Wohnstube).
+    func bedTime() {
+        audio.sfx("gw_sfx_zauber", fallback: .flip)
+        edit { $0.evening.toggle() }
+        say(w.evening ? "Gute Nacht! Printatops kuschelt sich ins Bett." : "Guten Morgen! Die Sonne scheint.")
+        resetActors()
     }
 
     func go(_ a: WorldArea) {
@@ -486,7 +532,8 @@ final class GardenWorldModel {
             actors[i].restUntil = Date().addingTimeInterval(10)
         }
         if firstPicnic {
-            say("Mmh, lecker! Danke für das Picknick. Schau mal, hinten im Garten steht jetzt eine Werkbank. Dort kannst du bauen.")
+            say(WorldLayout.garden3 ? "Mmh, lecker! Danke für das Picknick. Im Schuppen ist die Werkstatt."
+                : "Mmh, lecker! Danke für das Picknick. Schau mal, hinten im Garten steht jetzt eine Werkbank. Dort kannst du bauen.")
         } else {
             say("Picknick! Printatops lässt es sich schmecken.")
         }
@@ -496,7 +543,7 @@ final class GardenWorldModel {
 
     func openWorkshop(_ kind: BuildKind? = nil) {
         guard w.workshopOpen || kind != nil else {
-            say("Die Werkbank ist noch zugedeckt. Mach zuerst ein Picknick.")
+            say(WorldLayout.garden3 ? "Der Schuppen ist noch zu. Mach zuerst ein Picknick." : "Die Werkbank ist noch zugedeckt. Mach zuerst ein Picknick.")
             return
         }
         audio.sfx("gw_sfx_hammer", fallback: .tap)
@@ -625,7 +672,7 @@ final class GardenWorldModel {
     func resetActors() {
         let now = Date()
         var list: [WorldActor] = []
-        let dinoHome: CGPoint = area == .haus ? CGPoint(x: 0.34, y: 0.74) : CGPoint(x: 0.5, y: 0.86)
+        let dinoHome: CGPoint = area == .haus ? WorldLayout.dinoHome : CGPoint(x: 0.5, y: 0.86)
         list.append(WorldActor(id: "dino", resident: nil, from: dinoHome, to: dinoHome, start: now, duration: 0,
                                restUntil: now.addingTimeInterval(4)))
         for (i, r) in presentResidents(area).enumerated() {
@@ -765,7 +812,12 @@ final class GardenWorldModel {
             guard idx < adv.steps.count else { return nil }
             // Ein noch nicht begonnenes Abenteuer erscheint nur, wenn es passt.
             if idx == 0 && !adv.available(data) { return nil }
-            return ActiveStep(adventure: adv, step: adv.steps[idx], index: idx)
+            // Im neuen Garten liegen die Stellen des Hausgartens woanders.
+            var step = adv.steps[idx]
+            let p = WorldLayout.stepPoint(adventure: adv.id, index: idx, area: step.area, fallback: CGPoint(x: step.x, y: step.y))
+            step.x = Double(p.x)
+            step.y = Double(p.y)
+            return ActiveStep(adventure: adv, step: step, index: idx)
         }
     }
 

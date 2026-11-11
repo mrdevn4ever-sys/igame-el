@@ -16,12 +16,22 @@ struct GardenWorldView: View {
             if model == nil {
                 let m = GardenWorldModel(app: app)
                 model = m
-                m.start()
+                // Ein Spiel aus dem Spielregal ist zu Ende: direkt zurück in die Wohnstube.
+                let backInHouse = app.returnToHouse
+                app.returnToHouse = false
+                if backInHouse {
+                    m.area = .haus
+                    m.overlay = .house
+                }
+                m.start(quiet: backInHouse)
                 if let o = DemoMode.value("-overlay") { m.openDemoOverlay(o) }
                 if DemoMode.flag("-gardenplay") { m.runDemoPlay() }
             }
         }
         .onDisappear { model?.stop() }
+        .overlay {
+            if app.breakHintVisible { BreakHintView() }
+        }
     }
 }
 
@@ -75,9 +85,9 @@ struct GardenWorldContent: View {
 
     private var topBar: some View {
         HStack(spacing: 12) {
-            CircleIconButton(systemName: "house.fill", label: "Zu deinen Spielen") {
+            CircleIconButton(systemName: "square.grid.2x2.fill", label: "Alle Spiele") {
                 app.audio.effect(.tap)
-                app.goHome()
+                app.goHub()
             }
             Button {
                 app.audio.effect(.tap)
@@ -345,6 +355,7 @@ struct GardenWorldContent: View {
         case .light: LightPuzzleView(model: model)
         case .fantasy(let slot): FantasyEditorView(model: model, slot: slot)
         case .celebration(let text): CelebrationView(model: model, text: text)
+        case .house: HouseView(model: model)
         }
     }
 }
@@ -362,6 +373,7 @@ extension GardenWorldModel {
         case "light": overlay = .light
         case "fantasy": overlay = .fantasy(0)
         case "fest": overlay = .celebration("Das Gartenfest beginnt! Alle deine Freunde sind gekommen.")
+        case "house": overlay = .house
         default: break
         }
     }

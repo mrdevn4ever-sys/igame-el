@@ -313,7 +313,7 @@ private struct HandoverStep: View {
             Button("Los geht's") {
                 app.audio.effect(.success)
                 app.update { $0.setupComplete = true }
-                withAnimation { app.screen = app.data.tutorialDone ? .hub : .tutorial }
+                withAnimation { app.screen = app.data.tutorialDone ? .garden : .tutorial }
             }
             .buttonStyle(BigButtonStyle(color: Theme.success))
         }

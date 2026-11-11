@@ -95,6 +95,7 @@ struct HubView: View {
         HStack(spacing: 18) {
             Button {
                 app.audio.effect(.tap)
+                app.returnToHouse = false
                 app.screen = .garden
             } label: {
                 HStack(spacing: 10) {
@@ -249,7 +250,7 @@ private struct GameTile: View {
     }
 }
 
-private struct BreakHintView: View {
+struct BreakHintView: View {
     @Environment(AppModel.self) private var app
 
     var body: some View {

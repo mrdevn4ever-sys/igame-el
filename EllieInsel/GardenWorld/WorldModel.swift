@@ -1234,6 +1234,8 @@ struct WorldData: Codable, Equatable {
     var lastArea: WorldArea = .haus
     var introDone = false
     var festDone = false
+    /// Das Kind war schon einmal im Haus (danach blinkt die Tür nicht mehr).
+    var houseVisited = false
 
     init() {}
 
@@ -1276,6 +1278,7 @@ struct WorldData: Codable, Equatable {
         lastArea = (try? c.decode(WorldArea.self, forKey: .lastArea)) ?? d.lastArea
         introDone = (try? c.decode(Bool.self, forKey: .introDone)) ?? d.introDone
         festDone = (try? c.decode(Bool.self, forKey: .festDone)) ?? d.festDone
+        houseVisited = (try? c.decode(Bool.self, forKey: .houseVisited)) ?? d.houseVisited
     }
 
     func count(_ item: HarvestItem) -> Int { basket[item.rawValue] ?? 0 }

@@ -243,7 +243,7 @@ struct MemoryBookView: View {
         let perPage = 6
         let pages = max(1, (memories.count + perPage - 1) / perPage)
         let slice = Array(memories.dropFirst(page * perPage).prefix(perPage))
-        WorldDialog(close: { model.overlay = nil }) {
+        WorldDialog(close: { model.closeOverlay() }) {
             Text("Mein Erinnerungsbuch").font(Theme.rounded(30, .heavy)).foregroundStyle(Theme.darkGreen)
             if memories.isEmpty {
                 Text("Noch leer. Pflanze, ernte, baue und entdecke – dann füllt sich das Buch.")

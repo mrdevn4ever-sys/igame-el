@@ -172,6 +172,11 @@ run 136_garten_lichtspiel 6 0 -screen garden -world voll -overlay light
 run 137_garten_fantasie 6 0 -screen garden -world voll -overlay fantasy
 run 138_garten_fest 6 0 -screen garden -world voll -overlay fest
 run 139_garten_durchlauf 75 30 -screen garden -world start -gardenplay
+# Haus und neuer Garten (Platzhalter, bis die gemalten Szenen geliefert sind)
+run 170_haus_wohnstube 6 0 -screen garden -world voll -overlay house
+run 170b_haus_abend 6 0 -screen garden -world voll -overlay house -abend
+run 171_garten3_start 7 0 -screen garden -world start -garten3
+run 172_garten3_voll 7 0 -screen garden -world voll -area haus -garten3
 
 # Absturzberichte einsammeln
 mkdir -p "$OUT/crashes"

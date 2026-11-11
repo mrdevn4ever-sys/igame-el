@@ -24,6 +24,8 @@ final class AppModel {
     var breakHintVisible = false
     /// Spiel, aus dem der Garten geöffnet wurde (für den Rückweg).
     var playStart = Date()
+    /// Das laufende Spiel wurde im Haus (Spielregal, Staffelei) gestartet: «Nach Hause» führt dorthin zurück.
+    var returnToHouse = false
 
     @ObservationIgnored let audio = AudioManager.shared
     @ObservationIgnored private var saveTask: Task<Void, Never>?
@@ -37,7 +39,8 @@ final class AppModel {
         } else if !loaded.tutorialDone {
             screen = .tutorial
         } else {
-            screen = .hub
+            // Zuhause ist der Garten mit dem Haus; das Kachel-Menü bleibt von dort erreichbar.
+            screen = .garden
         }
         if DemoMode.isActive {
             if loaded.setupComplete { screen = DemoMode.startScreen }
@@ -86,13 +89,35 @@ final class AppModel {
         withAnimation(.easeInOut(duration: 0.25)) { screen = .game(game) }
     }
 
+    /// Spiel aus der Wohnstube starten (Spielregal, Staffelei).
+    func openFromHouse(_ game: GameID) {
+        returnToHouse = true
+        open(game)
+    }
+
+    /// Zurück: ins Haus, wenn das Spiel dort gestartet wurde, sonst ins Kachel-Menü.
     func goHome() {
         audio.stopAll()
         withAnimation(.easeInOut(duration: 0.25)) {
             if case .game(let g) = screen { hubPage = g.page }
-            screen = .hub
+            screen = returnToHouse ? .garden : .hub
         }
         checkBreakReminder()
+    }
+
+    /// Kachel-Menü mit allen Spielen.
+    func goHub() {
+        audio.stopAll()
+        returnToHouse = false
+        withAnimation(.easeInOut(duration: 0.25)) { screen = .hub }
+        checkBreakReminder()
+    }
+
+    /// Nach Hause in den Garten (Start der App, Ende der Einführung).
+    func goGarden() {
+        audio.stopAll()
+        returnToHouse = false
+        withAnimation(.easeInOut(duration: 0.25)) { screen = .garden }
     }
 
     func checkBreakReminder() {

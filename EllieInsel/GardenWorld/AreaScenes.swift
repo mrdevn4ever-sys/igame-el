@@ -127,18 +127,31 @@ struct SceneLayer: View {
 
     private var homeContent: some View {
         ZStack(alignment: .topLeading) {
-            // Küche (Terrasse)
-            Button {
-                app.audio.sfx("gw_sfx_teller", fallback: .tap)
-                model.overlay = .kitchen
-            } label: {
-                WorldPic("gw_tisch_terrasse", "🍳", size: W * 0.12)
+            // Haustür: führt in die Wohnstube (Küche, Spielregal, Staffelei, Bett).
+            sceneButton(WorldLayout.houseDoor, label: "Ins Haus") {
+                guard !model.building else { return }
+                model.moveDino(to: WorldLayout.houseDoorStep, seconds: 1)
+                model.enterHouse()
             }
-            .buttonStyle(PressableStyle())
-            .feet(WorldLayout.kitchenDoor, size: W * 0.12, in: s)
+            if !model.w.houseVisited && !model.building {
+                DoorHint(size: W * 0.07)
+                    .at(CGPoint(x: WorldLayout.houseDoorStep.x, y: WorldLayout.houseDoorStep.y - 0.14), in: s)
+                    .allowsHitTesting(false)
+            }
 
-            // Werkbank
-            if model.w.workshopOpen {
+            if WorldLayout.garden3 {
+                // Schuppen = Werkstatt, Gartentor = Inselkarte
+                sceneButton(WorldLayout.shed, label: "Werkstatt im Schuppen") {
+                    guard !model.building else { return }
+                    model.openWorkshop()
+                }
+                sceneButton(WorldLayout.gate, label: "Inselkarte") {
+                    guard !model.building else { return }
+                    app.audio.effect(.tap)
+                    model.overlay = .map
+                }
+            } else if model.w.workshopOpen {
+                // Werkbank (alter Garten)
                 Button { model.openWorkshop() } label: {
                     WorldPic("gw_werkbank", "🛠️", size: W * 0.11)
                 }
@@ -166,6 +179,17 @@ struct SceneLayer: View {
                 .feet(WorldLayout.basket, size: W * 0.07, in: s)
                 .allowsHitTesting(false)
         }
+    }
+
+    /// Unsichtbare Tippfläche über einem gemalten Teil der Szene (Haustür, Schuppen, Gartentor).
+    private func sceneButton(_ r: CGRect, label: String, action: @escaping () -> Void) -> some View {
+        Color.clear
+            .frame(width: r.width * s.width, height: r.height * s.height)
+            .contentShape(Rectangle())
+            .onTapGesture(perform: action)
+            .accessibilityLabel(label)
+            .accessibilityAddTraits(.isButton)
+            .position(x: r.midX * s.width, y: r.midY * s.height)
     }
 
     @ViewBuilder
@@ -546,8 +570,10 @@ struct BedView: View {
     var body: some View {
         let bed = model.w.beds[index]
         let isTree = index == 3
-        let plantSize = isTree ? size : size * 0.85
-        let offsetY = isTree ? 0 : -0.4 * size + 0.08 * plantSize
+        let flat = WorldLayout.flatBeds
+        let plantSize = isTree ? size : size * (flat ? 1.0 : 0.85)
+        // Hochbeet: Pflanze steht oben in der Kiste. Flacher Pflanzhügel: Pflanze steht mitten auf der Erde.
+        let offsetY = isTree ? 0 : (flat ? -0.15 * size : -0.4 * size + 0.08 * plantSize)
         let centerDY = size / 2 + offsetY - plantSize / 2
         TimelineView(.animation(minimumInterval: 1.0 / 20, paused: !animating(bed))) { tl in
             let now = tl.date
@@ -618,11 +644,13 @@ struct BedView: View {
     }
 
     private func bedAsset(_ bed: BedState, now: Date) -> String {
-        if let wet = bed.wetUntil, wet > now { return "gw_beet_nass" }
-        if bed.plant == nil { return "gw_beet_leer" }
-        if bed.stage == 0 { return bed.needsWater ? "gw_beet_gesaet" : "gw_beet_nass" }
-        if bed.needsWater && bed.stage < 4 { return "gw_beet_trocken" }
-        return "gw_beet_leer"
+        // Im neuen Garten flache Pflanzhügel (gw_erde_*), sonst die Hochbeete.
+        let base = WorldLayout.flatBeds ? "gw_erde_" : "gw_beet_"
+        if let wet = bed.wetUntil, wet > now { return base + "nass" }
+        if bed.plant == nil { return base + "leer" }
+        if bed.stage == 0 { return base + (bed.needsWater ? "gesaet" : "nass") }
+        if bed.needsWater && bed.stage < 4 { return base + "trocken" }
+        return base + "leer"
     }
 
     @ViewBuilder
@@ -702,6 +730,25 @@ struct WateringEffect: View {
             }
         }
         .allowsHitTesting(false)
+    }
+}
+
+/// Leuchtender Hinweis über der Haustür, bis das Kind zum ersten Mal im Haus war.
+struct DoorHint: View {
+    let size: CGFloat
+
+    var body: some View {
+        TimelineView(.animation(minimumInterval: 1.0 / 20)) { tl in
+            let t = tl.date.timeIntervalSinceReferenceDate
+            Image(systemName: "arrowshape.down.fill")
+                .font(.system(size: size * 0.6, weight: .heavy))
+                .foregroundStyle(Theme.highlight)
+                .shadow(color: .white, radius: 6)
+                .shadow(color: .black.opacity(0.25), radius: 3, y: 2)
+                .offset(y: CGFloat(sin(t * 4)) * size * 0.18)
+        }
+        .frame(width: size, height: size)
+        .accessibilityHidden(true)
     }
 }
 

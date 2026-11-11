@@ -164,6 +164,6 @@ struct TutorialView: View {
     private func finish() {
         app.audio.effect(.tap)
         app.update { $0.tutorialDone = true }
-        app.goHome()
+        app.goGarden()
     }
 }

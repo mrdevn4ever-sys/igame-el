@@ -155,9 +155,9 @@ struct SceneBackground: View {
             ZStack {
                 if extent.max - extent.min > 1 {
                     panorama(s)
-                } else if let img = ImageCache.image(area.scene(evening: evening)) {
+                } else if let img = ImageCache.image(WorldLayout.sceneName(area, evening: evening)) {
                     Image(uiImage: img).resizable().scaledToFill().frame(width: s.width, height: s.height).clipped()
-                } else if evening, let img = ImageCache.image(area.scene(evening: false)) {
+                } else if evening, let img = ImageCache.image(WorldLayout.sceneName(area, evening: false)) {
                     Image(uiImage: img).resizable().scaledToFill().frame(width: s.width, height: s.height).clipped()
                     Color(red: 0.08, green: 0.12, blue: 0.35).opacity(0.45).blendMode(.multiply)
                 } else {
@@ -195,12 +195,16 @@ struct SceneBackground: View {
             LinearGradient(colors: area.fallbackColors, startPoint: .top, endPoint: .bottom)
             switch area {
             case .haus:
-                RoundedRectangle(cornerRadius: 24).fill(Color(red: 0.86, green: 0.72, blue: 0.55))
-                    .frame(width: s.width * 0.2, height: s.height * 0.18).position(x: s.width * 0.86, y: s.height * 0.3)
-                Text("🏡").font(.system(size: s.width * 0.12)).position(x: s.width * 0.88, y: s.height * 0.22)
-                Capsule().fill(Theme.creamDark).frame(width: s.width * 0.08, height: s.height * 0.5)
-                    .rotationEffect(.degrees(-25)).position(x: s.width * 0.72, y: s.height * 0.8)
-                Text("🌳").font(.system(size: s.width * 0.08)).position(x: s.width * 0.04, y: s.height * 0.3)
+                if WorldLayout.garden3 {
+                    Garden3Placeholder()
+                } else {
+                    RoundedRectangle(cornerRadius: 24).fill(Color(red: 0.86, green: 0.72, blue: 0.55))
+                        .frame(width: s.width * 0.2, height: s.height * 0.18).position(x: s.width * 0.86, y: s.height * 0.3)
+                    Text("🏡").font(.system(size: s.width * 0.12)).position(x: s.width * 0.88, y: s.height * 0.22)
+                    Capsule().fill(Theme.creamDark).frame(width: s.width * 0.08, height: s.height * 0.5)
+                        .rotationEffect(.degrees(-25)).position(x: s.width * 0.72, y: s.height * 0.8)
+                    Text("🌳").font(.system(size: s.width * 0.08)).position(x: s.width * 0.04, y: s.height * 0.3)
+                }
             case .bach:
                 Ellipse().fill(Theme.lightBlue).frame(width: s.width * 0.22, height: s.height * 0.22).position(x: s.width * 0.88, y: s.height * 0.86)
                 Capsule().fill(Theme.lightBlue).frame(width: s.width * 0.9, height: s.height * 0.05).position(x: s.width * 0.5, y: s.height * 0.17)
@@ -219,6 +223,55 @@ struct SceneBackground: View {
                 }
             }
         }
+    }
+}
+
+/// Gezeichneter Platzhalter für den neuen Garten, bis das gemalte Szenenbild geliefert ist
+/// (Aufteilung wie assets/skizzen/garten_layout.png).
+struct Garden3Placeholder: View {
+    var body: some View {
+        Canvas { ctx, size in
+            let w = size.width, h = size.height
+            func rect(_ x: CGFloat, _ y: CGFloat, _ x2: CGFloat, _ y2: CGFloat) -> CGRect {
+                CGRect(x: x * w, y: y * h, width: (x2 - x) * w, height: (y2 - y) * h)
+            }
+            func poly(_ pts: [(CGFloat, CGFloat)]) -> Path {
+                var p = Path()
+                for (i, pt) in pts.enumerated() {
+                    let c = CGPoint(x: pt.0 * w, y: pt.1 * h)
+                    if i == 0 { p.move(to: c) } else { p.addLine(to: c) }
+                }
+                p.closeSubpath()
+                return p
+            }
+            let wood = Color(red: 0.72, green: 0.52, blue: 0.32)
+            let darkWood = Color(red: 0.45, green: 0.30, blue: 0.17)
+            let soil = Color(red: 0.50, green: 0.34, blue: 0.22)
+            // Himmel, Hecke, Wiese
+            ctx.fill(Path(rect(0, 0, 1, 0.24)), with: .color(Theme.sky))
+            ctx.fill(Path(rect(0, 0.22, 1, 0.36)), with: .color(Color(red: 0.42, green: 0.66, blue: 0.36)))
+            ctx.fill(Path(rect(0, 0.34, 1, 1)), with: .color(Color(red: 0.62, green: 0.82, blue: 0.45)))
+            // Weg von der Haustür zum Gartentor
+            ctx.fill(poly([(0.19, 0.52), (0.28, 0.52), (0.1, 0.78), (0, 0.78), (0, 0.62)]), with: .color(Color(red: 0.90, green: 0.80, blue: 0.62)))
+            // Haus mit Dach, Tür und Fenstern
+            ctx.fill(Path(roundedRect: rect(0.06, 0.2, 0.4, 0.5), cornerRadius: w * 0.012), with: .color(Color(red: 0.97, green: 0.90, blue: 0.78)))
+            ctx.fill(poly([(0.03, 0.22), (0.23, 0.03), (0.43, 0.22)]), with: .color(Color(red: 0.84, green: 0.30, blue: 0.24)))
+            ctx.fill(Path(roundedRect: rect(0.185, 0.3, 0.275, 0.5), cornerRadius: w * 0.03), with: .color(darkWood))
+            ctx.fill(Path(ellipseIn: rect(0.255, 0.395, 0.267, 0.411)), with: .color(Theme.highlight))
+            ctx.fill(Path(roundedRect: rect(0.08, 0.27, 0.15, 0.38), cornerRadius: w * 0.01), with: .color(Theme.lightBlue))
+            ctx.fill(Path(roundedRect: rect(0.31, 0.27, 0.38, 0.38), cornerRadius: w * 0.01), with: .color(Theme.lightBlue))
+            // Schuppen mit offenem Tor
+            ctx.fill(Path(rect(0.72, 0.24, 0.94, 0.47)), with: .color(wood))
+            ctx.fill(poly([(0.7, 0.25), (0.83, 0.14), (0.96, 0.25)]), with: .color(darkWood))
+            ctx.fill(Path(rect(0.78, 0.3, 0.88, 0.47)), with: .color(Color(red: 0.25, green: 0.17, blue: 0.10)))
+            // Gartentor
+            ctx.fill(Path(roundedRect: rect(0.005, 0.58, 0.07, 0.8), cornerRadius: w * 0.008), with: .color(wood))
+            // Gemüsebeet und Baumplatz
+            ctx.fill(poly([(0.27, 0.6), (0.77, 0.6), (0.82, 0.87), (0.22, 0.87)]), with: .color(darkWood))
+            ctx.fill(poly([(0.28, 0.615), (0.76, 0.615), (0.805, 0.855), (0.235, 0.855)]), with: .color(soil))
+            ctx.fill(Path(ellipseIn: rect(0.84, 0.63, 0.94, 0.71)), with: .color(soil))
+        }
+        .accessibilityHidden(true)
     }
 }
 

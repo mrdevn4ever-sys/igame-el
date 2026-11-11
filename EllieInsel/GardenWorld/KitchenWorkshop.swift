@@ -15,7 +15,7 @@ struct KitchenView: View {
     @State private var peas = 0
 
     var body: some View {
-        WorldPanel(title: "Gartenküche", background: "gw_szene_kueche_innen", close: { model.overlay = nil }) {
+        WorldPanel(title: "Gartenküche", background: "gw_szene_kueche_innen", close: { model.closeOverlay() }) {
             HStack(alignment: .top, spacing: 20) {
                 Group {
                     switch phase {
@@ -327,7 +327,7 @@ struct KitchenView: View {
                 HStack(spacing: 16) {
                     Button { phase = .choose; dish = nil; slots = [] } label: { Label("Noch etwas kochen", systemImage: "fork.knife") }
                         .buttonStyle(BigButtonStyle(color: Theme.lightYellow, foreground: Theme.darkGreen))
-                    Button { model.overlay = nil } label: { Label("Zurück in den Garten", systemImage: "leaf.fill") }
+                    Button { model.closeOverlay() } label: { Label(model.fromHouse ? "Zurück ins Haus" : "Zurück in den Garten", systemImage: model.fromHouse ? "house.fill" : "leaf.fill") }
                         .buttonStyle(BigButtonStyle(color: Theme.success))
                 }
             }
