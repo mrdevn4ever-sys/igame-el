@@ -65,3 +65,4 @@ gw_sfx_zauber.m4a;selbst erzeugt: generate_originals.py;Ellies Gartenwelt – gw
 gw_musik_garten_tag.m4a;selbst erzeugt: generate_originals.py;Ellies Gartenwelt – gw_musik_garten_tag;Selbst erzeugt für Ellies Entdeckerinsel mit Hermes, Python, NumPy und SciPy
 gw_musik_garten_abend.m4a;selbst erzeugt: generate_originals.py;Ellies Gartenwelt – gw_musik_garten_abend;Selbst erzeugt für Ellies Entdeckerinsel mit Hermes, Python, NumPy und SciPy
 gw_musik_wunderlichtung.m4a;selbst erzeugt: generate_originals.py;Ellies Gartenwelt – gw_musik_wunderlichtung;Selbst erzeugt für Ellies Entdeckerinsel mit Hermes, Python, NumPy und SciPy
+gw_sfx_tuer.m4a;selbst erzeugt: synthesize_door.py;Ellies Gartenwelt – gw_sfx_tuer;Selbst erzeugt für Ellies Entdeckerinsel mit Hermes, Python, NumPy und FFmpeg

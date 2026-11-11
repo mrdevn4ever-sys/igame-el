@@ -1,0 +1,165 @@
+{
+  "schema": "ellie-gartenwelt-door-sfx-provenienz/v1",
+  "created_at": "2026-11-11T19:07:03.419195+00:00",
+  "status": "PASS_TECHNICAL_OWNER_RELEASE_WITHOUT_LISTENING",
+  "filename": "gw_sfx_tuer.m4a",
+  "sha256": "76689eb0d9de68cd68753e833bbfa926dbefdb414b0fcbd36a69f749200b6804",
+  "source": "Local deterministic Python/NumPy synthesis, seed 7303; filtered noise and damped wood resonances; no external samples.",
+  "processing": "FFmpeg loudness adjustment and AAC-LC encoding",
+  "technical_qa": {
+    "schema": "garten3-external-audio-qa/v1",
+    "generated_at": "2026-11-11T09:31:18+01:00",
+    "asset": "gw_sfx_tuer.m4a",
+    "status": "PASS",
+    "promotion_performed": false,
+    "repository_modified": false,
+    "final": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/sfx/gw_sfx_tuer.m4a",
+      "sha256": "76689eb0d9de68cd68753e833bbfa926dbefdb414b0fcbd36a69f749200b6804",
+      "size_bytes": 12980,
+      "container": "M4A (ISO BMFF; FFprobe format mov,mp4,m4a,3gp,3g2,mj2)",
+      "codec": "AAC",
+      "profile": "LC",
+      "codec_tag": "mp4a",
+      "sample_rate_hz": 44100,
+      "channels": 1,
+      "channel_layout": "mono",
+      "sample_format_decoded": "fltp",
+      "duration_seconds": 0.84,
+      "start_time_seconds": 0.0,
+      "aac_frames": 38,
+      "stream_bit_rate_bps": 111415,
+      "container_bit_rate_bps": 123619,
+      "decoded_sample_count": 37044
+    },
+    "loudness_and_signal": {
+      "integrated_lufs": -15.99,
+      "true_peak_dbtp": -3.54,
+      "loudness_range_lu": 0.0,
+      "loudness_gate_threshold_lufs": -25.99,
+      "decoded_sample_peak_dbfs": -3.543016,
+      "decoded_rms_dbfs": -16.210482,
+      "dc_offset": 8e-06,
+      "nan_count": 0,
+      "infinite_count": 0,
+      "denormal_count": 0
+    },
+    "edge_silence": {
+      "decoded_exact_zero": {
+        "leading_samples": 0,
+        "leading_ms": 0.0,
+        "trailing_samples": 208,
+        "trailing_ms": 4.716553
+      },
+      "ffmpeg_silencedetect_minus_60_dbfs_min_1_ms": {
+        "leading_segment_start_seconds": 0.0,
+        "leading_segment_end_seconds": 0.00721088,
+        "leading_ms": 7.21088,
+        "terminal_segment_start_seconds": 0.812608,
+        "terminal_segment_end_seconds": 0.84,
+        "trailing_ms": 27.3923
+      },
+      "ffmpeg_silencedetect_minus_45_dbfs_min_1_ms": {
+        "leading_segment_start_seconds": 0.0,
+        "leading_segment_end_seconds": 0.0113832,
+        "leading_ms": 11.3832,
+        "terminal_segment_start_seconds": 0.79712,
+        "terminal_segment_end_seconds": 0.84,
+        "trailing_ms": 42.8798
+      },
+      "interpretation": "No exact-zero leading padding is present. The short low-level onset is the designed edge fade, not a long dead-air pad. The source applies a 90 ms smooth fade-out; the final terminal low-level tail is short."
+    },
+    "source_provenance": {
+      "generator_script": {
+        "path": "F:/Projects/igame-el-asset-work/garten3/synthesize_door.py",
+        "sha256": "e5a27ba70fa056ecaf6454f8fb5e97565c664a47aefef16f72a11152a2f48e7c",
+        "language_and_dependencies": "Python with NumPy",
+        "seed": 7303
+      },
+      "lossless_master": {
+        "path": "F:/Projects/igame-el-asset-work/garten3/raw/gw_sfx_tuer_master.wav",
+        "sha256": "ff5fbb8d7211bab58d5613d832ef522b2f17bf3740180145d706765526755830",
+        "codec": "PCM signed 16-bit little-endian",
+        "sample_rate_hz": 44100,
+        "channels": 1,
+        "duration_seconds": 0.84,
+        "integrated_lufs_before_normalization": -15.27,
+        "true_peak_dbtp_before_normalization": -2.85
+      },
+      "generation_receipt": {
+        "path": "F:/Projects/igame-el-asset-work/garten3/provenance/gw_sfx_tuer_generation.json",
+        "sha256": "2b335d09c85e76d12900006427374b2cb27f909f6e64107dfb54bce15419a23c"
+      },
+      "method": "Deterministic local synthesis from filtered noise and damped wood resonances: rounded latch release, warm moving wood friction, gentle flex, and quiet end stop.",
+      "source_material": "Original local synthesis; no third-party recording or external audio sample.",
+      "distribution_statement": "The generation receipt states that the project may distribute the rendered file.",
+      "reproduction_check": {
+        "status": "PASS",
+        "method": "An unchanged temporary copy of synthesize_door.py was run under the external sfx QA directory without playback; its regenerated WAV was compared byte-for-byte with the supplied lossless master, then the temporary reproduction tree was removed.",
+        "regenerated_master_sha256": "ff5fbb8d7211bab58d5613d832ef522b2f17bf3740180145d706765526755830",
+        "byte_identical_to_supplied_master": true,
+        "receipt_byte_identical": false,
+        "receipt_difference_explanation": "Expected absolute source_master path relocation in the temporary copy; the rendered WAV itself was byte-identical."
+      }
+    },
+    "encoding": {
+      "tool": "FFmpeg n9.0.1-11-ge47273f4d9-20260831",
+      "normalization": "Two-pass EBU R128 loudnorm, linear mode, target I=-16 LUFS, TP=-1 dBTP, LRA=7 LU; first-pass master measurements supplied to the final pass.",
+      "audio_encoder": "FFmpeg native AAC encoder, AAC-LC, twoloop coder, requested 112 kbit/s",
+      "command": "ffmpeg -hide_banner -nostdin -y -i F:/Projects/igame-el-asset-work/garten3/raw/gw_sfx_tuer_master.wav -map 0:a:0 -map_metadata -1 -af loudnorm=I=-16:TP=-1:LRA=7:measured_I=-15.27:measured_LRA=0.00:measured_TP=-2.85:measured_thresh=-25.27:offset=-0.01:linear=true:print_format=summary -ar 44100 -ac 1 -c:a aac -profile:a aac_low -b:a 112k -aac_coder twoloop -movflags +faststart F:/Projects/igame-el-asset-work/garten3/sfx/gw_sfx_tuer.m4a"
+    },
+    "hash_bound_visual_qa": {
+      "binding": "Both PNG filenames contain the complete SHA-256 of the exact M4A from which FFmpeg decoded them.",
+      "waveform": {
+        "path": "F:/Projects/igame-el-asset-work/garten3/sfx/qa/gw_sfx_tuer_76689eb0d9de68cd68753e833bbfa926dbefdb414b0fcbd36a69f749200b6804_waveform.png",
+        "sha256": "485ca5be9844b6986a3c27aedb889349dac5126a525a86e4de9e35731c9ebc4f",
+        "width": 1600,
+        "height": 500,
+        "observation": "Visual-only inspection shows no substantial leading gap, no flat-topped clipping, continuous activity, and a progressive short taper into the endpoint."
+      },
+      "spectrogram": {
+        "path": "F:/Projects/igame-el-asset-work/garten3/sfx/qa/gw_sfx_tuer_76689eb0d9de68cd68753e833bbfa926dbefdb414b0fcbd36a69f749200b6804_spectrogram.png",
+        "sha256": "d8f0182779bd58680d509deb63b2ad3522f1e53ad257c69d440e2f1d68010d63",
+        "width": 1882,
+        "height": 1028,
+        "observation": "Visual-only inspection shows a predominantly sub-4-kHz textured body, narrow low-frequency resonances, and brief broadband transients near the designed latch and end-stop times; no gross rendering defect was observed."
+      }
+    },
+    "integration_snippets": {
+      "path": "F:/Projects/igame-el-asset-work/garten3/sfx/provenance/gw_sfx_tuer_integration_snippets_76689eb0d9de68cd68753e833bbfa926dbefdb414b0fcbd36a69f749200b6804.md",
+      "sha256": "92446a88cead38a0ce84de1920173a256e61bc29ec9ea76e94d31c2971ab8b4e"
+    },
+    "aural_review": {
+      "status": "OWNER_PREAUTHORIZED_WITHOUT_LISTENING",
+      "owner_instruction": "Mach alles",
+      "interpretation": "Treated as publication authorization only.",
+      "heard_or_listened": false,
+      "claim": "No human or agent aural review of this final hash is claimed."
+    },
+    "checks": {
+      "decode_without_error": true,
+      "duration_0_6_to_1_0_seconds": true,
+      "aac_lc_m4a": true,
+      "mono": true,
+      "sample_rate_44100_hz": true,
+      "bit_rate_around_112_kbit_s": true,
+      "loudness_near_minus_16_lufs": true,
+      "true_peak_at_or_below_minus_1_dbtp": true,
+      "no_exact_zero_leading_padding": true,
+      "short_natural_fade": true,
+      "original_local_synthesis": true,
+      "distributable_per_generation_receipt": true
+    },
+    "limitations": [
+      "The semantic character (soft, friendly wooden door; no slam, voice, music, or horror creak) is supported by the deterministic design and visual/technical evidence but was not independently confirmed by listening."
+    ],
+    "blockers": []
+  },
+  "aural_review": {
+    "status": "NOT_PLAYED_OWNER_DIRECTED_FINALIZATION",
+    "listening_observed": false,
+    "human_listening_pass_claimed": false
+  },
+  "license": "Project-owned generated asset; distributable with project.",
+  "blockers": []
+}

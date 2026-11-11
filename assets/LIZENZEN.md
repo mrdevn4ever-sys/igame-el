@@ -71,7 +71,7 @@ Dieser Stand enthält sechs gehörte und vom App-Eigentümer freigegebene Körpe
 
 ## Audio: Tierlaute und Gartenwelt
 
-Dieser Stand enthält **66 gehörte und freigegebene Audiodateien** unter `EllieInsel/Audio/`: 32 Tierlaute sowie 34 Effekte, Tonfolgen und Musikstücke für die Gartenwelt. Alle Dateien liegen als M4A/AAC-LC, mono und mit 44,1 kHz vor. Die finalen Hashes und Entscheidungen stehen in `assets/Gartenwelt_Audiofreigabe.json`; jede Quellenzuordnung steht in `assets/Gartenwelt_Quellen.csv`.
+Dieser Stand enthält **66 gehörte und freigegebene Audiodateien** unter `EllieInsel/Audio/`: 32 Tierlaute sowie 34 Effekte, Tonfolgen und Musikstücke für die Gartenwelt. Zusätzlich wurde `gw_sfx_tuer.m4a` technisch geprüft und auf ausdrückliche Fertigstellungsanweisung ohne Wiedergabe ergänzt; diese Datei ist nicht in der Zahl der 66 gehörten Freigaben enthalten. Alle Dateien liegen als M4A/AAC-LC und mono vor. Die älteren Gartenweltdateien verwenden 44,1 kHz; der neue Türklang ebenfalls. Die früheren finalen Hashes und Entscheidungen stehen in `assets/Gartenwelt_Audiofreigabe.json`; der Türklang ist separat in `assets/Gartenwelt_Tuerklang_Provenienz.json` dokumentiert. Jede Quellenzuordnung steht in `assets/Gartenwelt_Quellen.csv`.
 
 ### Pixabay-Aufnahmen
 
@@ -83,7 +83,9 @@ Dieser Stand enthält **66 gehörte und freigegebene Audiodateien** unter `Ellie
 
 ### Lokal erzeugte Klänge und Musik
 
-19 Dateien wurden eigens für dieses Projekt lokal mit Python, NumPy, SciPy und FFmpeg erzeugt. Verwendet wurden mathematische Oszillatoren, Resonanzmodelle, gefilterte prozedurale Foley-Anteile und eigene pentatonische Tonfolgen. Es wurden keine fremden Audiosamples, keine Sprach- oder Gesangssynthese, keine externen Instrument-Samplebibliotheken und kein kostenpflichtiger Generierungsdienst eingesetzt.
+20 Dateien wurden eigens für dieses Projekt lokal mit Python, NumPy, SciPy und FFmpeg erzeugt. Verwendet wurden mathematische Oszillatoren, Resonanzmodelle, gefilterte prozedurale Foley-Anteile und eigene pentatonische Tonfolgen. Es wurden keine fremden Audiosamples, keine Sprach- oder Gesangssynthese, keine externen Instrument-Samplebibliotheken und kein kostenpflichtiger Generierungsdienst eingesetzt.
+
+`gw_sfx_tuer.m4a` ist eine projekteigene lokale, deterministische Python-/NumPy-Synthese (Seed 7303) aus gefiltertem Rauschen und gedämpften Holzresonanzen. FFmpeg wurde ausschließlich zur Lautheitsanpassung, AAC-LC-Kodierung und technischen Prüfung eingesetzt. Finaler SHA-256: `76689eb0d9de68cd68753e833bbfa926dbefdb414b0fcbd36a69f749200b6804`. Die Datei bestand die technische Prüfung mit 0,84 Sekunden Dauer, −15,99 LUFS und −3,54 dBTP. Sie wurde nicht abgespielt; eine menschliche Hörfreigabe wird nicht behauptet.
 
 ### Hörfreigabe
 
