@@ -133,7 +133,7 @@ final class GardenWorldModel {
     private func moveIntoNewGarden() {
         guard WorldLayout.garden3 else { return }
         let wide = WorldPanorama.isActive(.haus)
-        let target = wide ? 2 : 1
+        let target = wide ? 3 : 1
         guard w.gardenLayout < target else { return }
         var spots = WorldLayout.spots(.haus)
         // Mit Spielwiese: alles auf die Wiese rechts, die Plätze am Haus bleiben frei.
@@ -153,11 +153,22 @@ final class GardenWorldModel {
                 }
             }
             // Gartenschmuck zwischen den Stellplätzen der Bauten
-            let xs: [Double] = wide ? [1.05, 1.23, 1.41, 1.59, 1.77, 1.93] : [0.27, 0.5, 0.7, 0.9, 0.06, 0.33, 0.55, 0.74, 0.21]
-            let ys: [Double] = wide ? [0.86, 0.7, 0.99] : [0.945, 0.995]
-            for i in d.garden.placed.indices {
-                d.garden.placed[i].x = xs[i % xs.count]
-                d.garden.placed[i].y = ys[(i / xs.count) % ys.count]
+            if wide {
+                // Schmuck locker über die Wiese verteilt, in den Lücken zwischen den Bauplätzen
+                let pts: [(Double, Double)] = [(1.12, 0.78), (1.4, 0.66), (1.66, 0.9), (1.97, 0.62), (1.28, 0.95), (1.58, 0.72),
+                                               (1.82, 0.84), (1.05, 0.68), (1.46, 0.86), (1.76, 0.66), (1.2, 0.64), (1.9, 0.97)]
+                for i in d.garden.placed.indices {
+                    let p = pts[i % pts.count]
+                    d.garden.placed[i].x = p.0 + 0.03 * Double(i / pts.count)
+                    d.garden.placed[i].y = p.1
+                }
+            } else {
+                let xs: [Double] = [0.27, 0.5, 0.7, 0.9, 0.06, 0.33, 0.55, 0.74, 0.21]
+                let ys: [Double] = [0.945, 0.995]
+                for i in d.garden.placed.indices {
+                    d.garden.placed[i].x = xs[i % xs.count]
+                    d.garden.placed[i].y = ys[(i / xs.count) % ys.count]
+                }
             }
             d.world.gardenLayout = target
         }

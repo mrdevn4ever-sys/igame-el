@@ -132,11 +132,12 @@ enum WorldLayout {
         case .haus:
             if garden3, WorldPanorama.isActive(.haus) {
                 // Mit Spielwiese: am Haus nur wenige Plätze, der Rest steht rechts auf der Wiese (3 Reihen).
-                var list = [CGPoint(x: 0.74, y: 0.575), CGPoint(x: 0.38, y: 0.575), CGPoint(x: 0.92, y: 0.82)]
-                for y in [0.94, 0.78, 0.62] {
-                    for i in 0..<5 { list.append(CGPoint(x: 1.14 + 0.18 * Double(i), y: y)) }
-                }
-                return list
+                // Reihenfolge so, dass schon wenige Bauten die ganze Wiese locker füllen (vorne, Mitte, hinten im Wechsel).
+                return [CGPoint(x: 0.74, y: 0.575), CGPoint(x: 0.38, y: 0.575), CGPoint(x: 0.92, y: 0.82),
+                        CGPoint(x: 1.22, y: 0.72), CGPoint(x: 1.55, y: 0.9), CGPoint(x: 1.86, y: 0.68), CGPoint(x: 1.38, y: 0.97),
+                        CGPoint(x: 1.72, y: 0.6), CGPoint(x: 1.12, y: 0.92), CGPoint(x: 1.5, y: 0.62), CGPoint(x: 1.9, y: 0.9),
+                        CGPoint(x: 1.3, y: 0.82), CGPoint(x: 1.68, y: 0.8), CGPoint(x: 1.08, y: 0.6), CGPoint(x: 1.8, y: 0.98),
+                        CGPoint(x: 1.45, y: 0.74), CGPoint(x: 1.6, y: 0.99), CGPoint(x: 1.95, y: 0.76)]
             }
             if garden3 {
                 // Freie Wiese vorne, zwischen Haus und Schuppen und rechts neben dem Beet
