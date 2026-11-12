@@ -32,7 +32,12 @@
     "billed_text_character_ledger_total": 840,
     "actual_invoice_amount": "UNKNOWN_NOT_MEASURED",
     "free_entitlement_used": "UNKNOWN_NOT_MEASURED",
-    "zero_cost_claimed": false
+    "zero_cost_claimed": false,
+    "free_quota_characters_before": "unbekannt",
+    "free_quota_characters_after": "unbekannt",
+    "consumed_text_characters": 840,
+    "cost_incurred": "unbekannt",
+    "cost_incurred_boolean_proven": false
   },
   "processing_contract": {
     "codec": "AAC-LC in M4A",
@@ -644,5 +649,46 @@
     }
   ],
   "secrets_included": false,
-  "blockers": []
+  "blockers": [],
+  "cost_accounting": {
+    "status": "PARTIAL_KNOWN_FROM_REPOSITORY_EVIDENCE_ONLY",
+    "resource_tier": {
+      "value": "Standard S0",
+      "evidence": "provider.tier in this provenance file",
+      "known": true
+    },
+    "free_quota_before_characters": {
+      "value": "unbekannt",
+      "known": false,
+      "reason": "No Azure portal quota snapshot or metering export before this tranche exists in the repository evidence."
+    },
+    "free_quota_after_characters": {
+      "value": "unbekannt",
+      "known": false,
+      "reason": "No Azure portal quota snapshot or metering export after this tranche exists in the repository evidence."
+    },
+    "consumed_text_characters": {
+      "value": 840,
+      "known": true,
+      "basis": "Sum of 37 item-level billed_text_characters entries; matches usage.billed_text_character_ledger_total."
+    },
+    "actual_invoice_amount": {
+      "value": "unbekannt",
+      "known": false,
+      "reason": "No invoice, Cost Management export, or resource billing record exists in the repository evidence."
+    },
+    "cost_incurred": {
+      "value": "unbekannt",
+      "known": false,
+      "reason": "Standard S0 and 840 ledger characters are proven, but free-quota/credit consumption and invoice data were not measured; true or false cannot be inferred."
+    },
+    "new_synthesis_performed_for_cost_correction": false,
+    "evidence_reviewed": [
+      "assets/Azure_Florian_Nachlieferung_6_Provenienz.json",
+      "assets/Azure_Florian_166_Provenienz.json",
+      "assets/LIZENZEN.md",
+      "assets/HERMES_HAUS_GARTEN.md"
+    ],
+    "updated_at": "2026-11-12T20:28:25.270701Z"
+  }
 }
