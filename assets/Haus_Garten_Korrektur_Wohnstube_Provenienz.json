@@ -1,0 +1,58 @@
+{
+  "schema": "ellie-haus-garten-korrektur-wohnstube-provenienz/v1",
+  "created_at": "2026-11-12T13:49:44Z",
+  "status": "PASS_RELEASE",
+  "base_git_revision": "4f8c7c4ef82cc235bed8e6c86affdc1c971dcffd",
+  "branch": "claude/eloquent-galileo-0bwpqo",
+  "owner_decision": {
+    "statement": "V17-Tagbild ist abgenommen. Abend nicht weiter verfolgen.",
+    "day_approved": true,
+    "evening_delivery_cancelled": true,
+    "day_evening_registration_required": false
+  },
+  "records": [
+    {
+      "filename": "gw_szene_haus_innen.jpg",
+      "sha256": "b3fc95ff867a60d413eb5acf691ee914bfaee8465dbf80bef78be65ff0d7a9a4",
+      "bytes": 466736,
+      "dimensions": [
+        2732,
+        2048
+      ],
+      "mode": "RGB",
+      "format": "JPEG",
+      "progressive": true,
+      "visual_verdict": "OWNER_APPROVED_V17_DAY; PARENT_FINAL_CONSISTENCY_PASS",
+      "technical_verdict": "PASS",
+      "tag_only_zone_qa": "PASS",
+      "source": "F:/Projects/igame-el-asset-work/haus-garten-korrektur/wohnstube-v1/final-v5/gw_szene_haus_innen.jpg",
+      "replaces_sha256": "54cf71162a72b2b797cf8df7b95adc370ae9cb388ca1c14b3351a868717d0536"
+    }
+  ],
+  "intentionally_absent": [
+    "gw_szene_haus_innen_abend.jpg"
+  ],
+  "absence_contract": {
+    "repository_action": "git rm EllieInsel/Images/gw_szene_haus_innen_abend.jpg",
+    "removed_sha256": "fc004d541fe01482ca304843e428b7b9d147213199636e8c528aacdbaa76d1dd",
+    "placeholder_committed": false,
+    "reason": "Owner cancelled the evening asset and confirmed that the app darkens the day image itself.",
+    "runtime_readback": "HouseView.background(evening:) falls back to gw_szene_haus_innen and applies the evening dim overlay when gw_szene_haus_innen_abend is absent."
+  },
+  "qa": {
+    "report": "F:/Projects/igame-el-asset-work/haus-garten-korrektur/wohnstube-v1/qa-v5-day-only/day_only_qa_report.json",
+    "report_sha256": "9f43818627500eced13eb357a231525faea4ec1b7d07a2e16711ef5e148c716f",
+    "zone_count": 7,
+    "all_zones_pass": true,
+    "semantic_gate_count": 19,
+    "all_semantic_gates_pass": true,
+    "registration": "NOT_APPLICABLE_OWNER_WAIVED_EVENING"
+  },
+  "production": {
+    "method": "Local deterministic Blender 4.5.15 LTS scene render and progressive JPEG export.",
+    "external_image_provider_requests": 0,
+    "license": "Original project artwork generated locally for Ellies Entdeckerinsel."
+  },
+  "repository_promotion_at_receipt_creation": false,
+  "blockers": []
+}
