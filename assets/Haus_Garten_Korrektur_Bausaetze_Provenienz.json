@@ -1,7 +1,7 @@
 {
   "schema": "ellie-haus-garten-korrektur-bausaetze-provenienz/v1",
   "created_at": "2026-11-12T20:18:34.835627Z",
-  "status": "OWNER_ACCEPTED_RELEASE",
+  "status": "PASS_RELEASE_WITH_FOLLOW_UP",
   "branch": "claude/eloquent-galileo-0bwpqo",
   "base_git_revision": "bd0d1f16416f26def4f9f576bea0709a63784f1c",
   "scope": {
@@ -49,7 +49,7 @@
     {
       "filename": "gw_bau_bank_fertig.png",
       "before_sha256": "f265a56bad28785d0edb1fc69a513b70699ef77cfedaebe5d7b72660a4c8390a",
-      "after_sha256": "fec3a356472f75d2c7b6e1905c04291500af1661713434fca874e702d5bd6c0e",
+      "after_sha256": "e806545b35a11f5b0957d3b4c95ea07b9ee1801485d526a48b596b36f03b1b1e",
       "dimensions": [
         1024,
         1024
@@ -79,7 +79,7 @@
     {
       "filename": "gw_bau_bank_v2_fertig.png",
       "before_sha256": "16a471ff7f0193b8588fa6d632748c53ddb78ee609a92ef05ff349397e98baec",
-      "after_sha256": "125a97d45c2275098abdb0fb2293da370499dae9bf6ec733506d6fc0352e76b7",
+      "after_sha256": "a2bc54203165d8885cb069d394669f92eb8bf229ee3861928e1e5388118f5c1a",
       "dimensions": [
         1024,
         1024
@@ -89,7 +89,7 @@
     {
       "filename": "gw_bau_bank_v3_fertig.png",
       "before_sha256": "1f45b7a1db65d18cd1dc405a93d0633283376b59292d52a25a003a2037bd21ba",
-      "after_sha256": "c0e91754d0ba7aab5fd81d2e516375d0d495af8156c584ff1035afa5b6ff9982",
+      "after_sha256": "629bddde18dabb7f802f93d493fc271ba6434647f142422b51d2037e0b675894",
       "dimensions": [
         1024,
         1024
@@ -99,7 +99,7 @@
     {
       "filename": "gw_bau_blumentopf_fertig.png",
       "before_sha256": "e81822cec15a91c681d0c8480defc2585821e16ecf1fd975c9eb7cc497d5ebba",
-      "after_sha256": "471603a8929725100ace0d8d302b67bef1c376097da07460d5c7f3dbf6b6c7a2",
+      "after_sha256": "42832037d3b6e18d2fcaee4a432203b9cb749aefcfe91810aafc1c33059a3755",
       "dimensions": [
         1024,
         1024
@@ -129,7 +129,7 @@
     {
       "filename": "gw_bau_blumentopf_v2_fertig.png",
       "before_sha256": "7e18e8e8e89c286d947e8c58f5aba424819de63374492d8ab278e849f3a102bc",
-      "after_sha256": "efe0963311815e3428a6a6e58d596c7b58e8c5b282627261fa502abbacf9f44e",
+      "after_sha256": "0215111c9e87494b168375dc4d6fd70bf1122ea1add8ab93a76d21823fa35f6c",
       "dimensions": [
         1024,
         1024
@@ -139,7 +139,7 @@
     {
       "filename": "gw_bau_blumentopf_v3_fertig.png",
       "before_sha256": "f61c4eda010c6c274140d8023ae2a3fe09c3531db97ecd8502a29f4b0bb33354",
-      "after_sha256": "af540cc98b98a9668d018d787363535950230e8a229de2081f0f2c09e0efbe3e",
+      "after_sha256": "59079c7f58046e5c61b5ba8d906d808e1e9ccba1c746720170da0611464def12",
       "dimensions": [
         1024,
         1024
@@ -576,5 +576,71 @@
       ],
       "alpha_identical": true
     }
-  ]
+  ],
+  "updated_at": "2026-11-12T20:25:49.741113Z",
+  "follow_up_improvement": {
+    "base_commit": "94935bae4413ac0ce4cfdb7a9869489f36fe1a1a",
+    "scope": [
+      "gw_bau_bank_fertig.png",
+      "gw_bau_bank_v2_fertig.png",
+      "gw_bau_bank_v3_fertig.png",
+      "gw_bau_blumentopf_fertig.png",
+      "gw_bau_blumentopf_v2_fertig.png",
+      "gw_bau_blumentopf_v3_fertig.png"
+    ],
+    "changed_region": "non-recolorable RGB only",
+    "alpha_identical": true,
+    "fully_recolorable_rgb_identical": true,
+    "visual_verdict": "PASS_COLLECTIVELY_BETTER",
+    "records": [
+      {
+        "filename": "gw_bau_bank_fertig.png",
+        "previous_sha256": "fec3a356472f75d2c7b6e1905c04291500af1661713434fca874e702d5bd6c0e",
+        "final_sha256": "e806545b35a11f5b0957d3b4c95ea07b9ee1801485d526a48b596b36f03b1b1e",
+        "alpha_identical": true,
+        "fully_recolorable_rgb_identical": true,
+        "changed_pixels": 10512
+      },
+      {
+        "filename": "gw_bau_bank_v2_fertig.png",
+        "previous_sha256": "125a97d45c2275098abdb0fb2293da370499dae9bf6ec733506d6fc0352e76b7",
+        "final_sha256": "a2bc54203165d8885cb069d394669f92eb8bf229ee3861928e1e5388118f5c1a",
+        "alpha_identical": true,
+        "fully_recolorable_rgb_identical": true,
+        "changed_pixels": 18666
+      },
+      {
+        "filename": "gw_bau_bank_v3_fertig.png",
+        "previous_sha256": "c0e91754d0ba7aab5fd81d2e516375d0d495af8156c584ff1035afa5b6ff9982",
+        "final_sha256": "629bddde18dabb7f802f93d493fc271ba6434647f142422b51d2037e0b675894",
+        "alpha_identical": true,
+        "fully_recolorable_rgb_identical": true,
+        "changed_pixels": 4471
+      },
+      {
+        "filename": "gw_bau_blumentopf_fertig.png",
+        "previous_sha256": "471603a8929725100ace0d8d302b67bef1c376097da07460d5c7f3dbf6b6c7a2",
+        "final_sha256": "42832037d3b6e18d2fcaee4a432203b9cb749aefcfe91810aafc1c33059a3755",
+        "alpha_identical": true,
+        "fully_recolorable_rgb_identical": true,
+        "changed_pixels": 56307
+      },
+      {
+        "filename": "gw_bau_blumentopf_v2_fertig.png",
+        "previous_sha256": "efe0963311815e3428a6a6e58d596c7b58e8c5b282627261fa502abbacf9f44e",
+        "final_sha256": "0215111c9e87494b168375dc4d6fd70bf1122ea1add8ab93a76d21823fa35f6c",
+        "alpha_identical": true,
+        "fully_recolorable_rgb_identical": true,
+        "changed_pixels": 17335
+      },
+      {
+        "filename": "gw_bau_blumentopf_v3_fertig.png",
+        "previous_sha256": "af540cc98b98a9668d018d787363535950230e8a229de2081f0f2c09e0efbe3e",
+        "final_sha256": "59079c7f58046e5c61b5ba8d906d808e1e9ccba1c746720170da0611464def12",
+        "alpha_identical": true,
+        "fully_recolorable_rgb_identical": true,
+        "changed_pixels": 33457
+      }
+    ]
+  }
 }
