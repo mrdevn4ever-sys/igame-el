@@ -1,0 +1,73 @@
+{
+  "schema": "ellie-haus-garten-korrektur-gartenzwerg-provenienz/v1",
+  "created_at": "2026-11-12T19:59:11.392461Z",
+  "status": "PASS_RELEASE",
+  "branch": "claude/eloquent-galileo-0bwpqo",
+  "base_git_revision": "93d1e3ded0771793ce31a3f59ed013460aa7797c",
+  "asset": {
+    "filename": "garten2_gartenzwerg.png",
+    "sha256": "4767f8c3506f830a10cf8c37341fa94af6e59b25af0a71aa2a09170e843c5e61",
+    "bytes": 552431,
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_bbox": [
+      255,
+      123,
+      769,
+      942
+    ],
+    "silhouette_height_width_ratio": 1.5934,
+    "height_occupancy": 0.7998,
+    "foot_line_fraction": 0.9199,
+    "opaque_border_pixels": 0
+  },
+  "replaces": {
+    "sha256": "54829b1b646ac19a40241e653c617387783ec5743a2abc7e6e1256abf1e06434"
+  },
+  "generation": {
+    "provider": "openai-codex",
+    "model": "gpt-image-2-high",
+    "request_id": "30df29e3-d4b6-4cd4-8f7f-34e6bd9612c7",
+    "raw_sha256": "275328a541870ff67e12dca3788c1d5e96664570d555946a16283914bb07ad6d",
+    "raw_dimensions": [
+      1254,
+      1254
+    ],
+    "third_party_assets": false
+  },
+  "references": [
+    {
+      "filename": "garten2_vogelscheuche.png",
+      "sha256": "e10b26ff6bdabb7cf8d2dff6ed58bbb20c15d398737df8c09eff1474fdb22f5d"
+    },
+    {
+      "filename": "gw_dino_stehen.png",
+      "sha256": "7500b970afe845d07247a66d24c786c234eca7e703c3e81d28dbb1561d3c9847"
+    }
+  ],
+  "processing": {
+    "background_removal": "local largest-component segmentation and de-matting",
+    "resize": "uniform premultiplied-alpha Lanczos downscale only",
+    "nonuniform_stretch": false,
+    "localized_alpha_cleanup": "viewer-right ear/hair extraction notch"
+  },
+  "requirements": {
+    "red_pointed_hat": true,
+    "ivory_beard": true,
+    "green_jacket": true,
+    "brown_trousers": true,
+    "two_visible_legs": true,
+    "two_visible_boots": true,
+    "transparent_background": true,
+    "no_props_text_or_scenery": true
+  },
+  "visual_qa": {
+    "cream_background": "PASS",
+    "dark_background_alpha_edges": "PASS",
+    "old_new_proportion_comparison": "PASS",
+    "overall": "PASS_RELEASE"
+  }
+}
