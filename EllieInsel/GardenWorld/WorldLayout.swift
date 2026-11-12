@@ -217,8 +217,9 @@ enum WorldLayout {
     /// Auslauf: von der untersten Reihe im Bogen hinunter in den Teich.
     static var pondRun: [CGPoint] {
         let y = cellCenter(col: 0, row: 3).y
-        return [CGPoint(x: gridRight, y: y), CGPoint(x: gridRight + 0.035, y: y), CGPoint(x: gridRight + 0.055, y: y + 0.02),
-                CGPoint(x: gridRight + 0.065, y: y + 0.055), CGPoint(x: gridRight + 0.065, y: 0.7)]
+        // Der Auslauf endet rechts neben dem Steg im offenen Wasser, nicht auf dem Steg.
+        return [CGPoint(x: gridRight, y: y), CGPoint(x: gridRight + 0.08, y: y), CGPoint(x: gridRight + 0.1, y: y + 0.02),
+                CGPoint(x: gridRight + 0.11, y: y + 0.055), CGPoint(x: gridRight + 0.11, y: 0.73)]
     }
     static var source: CGPoint { CGPoint(x: gridOrigin.x - gridCell / 2, y: gridOrigin.y + cellHeight / 2) }
 }
