@@ -1,0 +1,580 @@
+{
+  "schema": "ellie-haus-garten-korrektur-bausaetze-provenienz/v1",
+  "created_at": "2026-11-12T20:18:34.835627Z",
+  "status": "OWNER_ACCEPTED_RELEASE",
+  "branch": "claude/eloquent-galileo-0bwpqo",
+  "base_git_revision": "bd0d1f16416f26def4f9f576bea0709a63784f1c",
+  "scope": {
+    "edited_files": 54,
+    "unchanged_mask_files": 44,
+    "patterns": [
+      "gw_bau_*.png excluding _maske_*",
+      "gw_wimpelkette.png",
+      "gw_laterne_papier.png"
+    ]
+  },
+  "processing": {
+    "type": "deterministic RGB-only material grade",
+    "geometry_changed": false,
+    "alpha_changed": false,
+    "alpha_max_difference": 0,
+    "mask_files_changed": false
+  },
+  "visual_qa": {
+    "pass_groups": [
+      "bridge/feeders/hedgehog-house/insect-hotels",
+      "tunnel/birdhouses/wind-chime/bunting/paper-lantern"
+    ],
+    "owner_accepted_current_state": [
+      "gw_bau_bank_fertig.png",
+      "gw_bau_bank_v2_fertig.png",
+      "gw_bau_bank_v3_fertig.png",
+      "gw_bau_blumentopf_fertig.png",
+      "gw_bau_blumentopf_v2_fertig.png",
+      "gw_bau_blumentopf_v3_fertig.png"
+    ],
+    "owner_note": "App recolors these surfaces through unchanged masks; current candidates authorized for immediate publication."
+  },
+  "records": [
+    {
+      "filename": "gw_bau_bank_beine.png",
+      "before_sha256": "2413c79120880508e1e4e244d1666edd8c3bbae26697ba1894d8bf7b5c542a26",
+      "after_sha256": "7f5c0f5ee5de2f815d7e8b038471dbcd39b4609141cc24678b646cb437361f16",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_bank_fertig.png",
+      "before_sha256": "f265a56bad28785d0edb1fc69a513b70699ef77cfedaebe5d7b72660a4c8390a",
+      "after_sha256": "fec3a356472f75d2c7b6e1905c04291500af1661713434fca874e702d5bd6c0e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_bank_lehne.png",
+      "before_sha256": "045fabb2f61e5c546681a512f3d5634ccb7b7e44430b29500e9b803cd8ac4c54",
+      "after_sha256": "2c6c2f10ae280185bc0f9b562fdd3c9f673da2c521e81f5e76a274abc3acde07",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_bank_sitz.png",
+      "before_sha256": "9e02543decccdd0e23ab6f777c3014e220a98660c81cef06287743ec06c9ca3f",
+      "after_sha256": "761d6a63ad3011a906d1799a1d493174128886d21822bbde8fdb99912021ace0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_bank_v2_fertig.png",
+      "before_sha256": "16a471ff7f0193b8588fa6d632748c53ddb78ee609a92ef05ff349397e98baec",
+      "after_sha256": "125a97d45c2275098abdb0fb2293da370499dae9bf6ec733506d6fc0352e76b7",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_bank_v3_fertig.png",
+      "before_sha256": "1f45b7a1db65d18cd1dc405a93d0633283376b59292d52a25a003a2037bd21ba",
+      "after_sha256": "c0e91754d0ba7aab5fd81d2e516375d0d495af8156c584ff1035afa5b6ff9982",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_blumentopf_fertig.png",
+      "before_sha256": "e81822cec15a91c681d0c8480defc2585821e16ecf1fd975c9eb7cc497d5ebba",
+      "after_sha256": "471603a8929725100ace0d8d302b67bef1c376097da07460d5c7f3dbf6b6c7a2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_blumentopf_rand.png",
+      "before_sha256": "954d029468c28ce6d0f7007a2abd4a7b9f55abb1db9484e071a5ccb1c55e4e65",
+      "after_sha256": "c74eac39eb912b34275402c994f13148a9c71ea8e9fe10f0dcb50c1f64316679",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_blumentopf_topf.png",
+      "before_sha256": "9cd4b733e38062f8a7a2bddf321ace620c4c57ec365e546f267e2a39cb3fce62",
+      "after_sha256": "4bdac98bdb1e84c18afe1cb2b48f4e96ec2171ddc28f5d4ce3f8e0375e66dbbf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_blumentopf_v2_fertig.png",
+      "before_sha256": "7e18e8e8e89c286d947e8c58f5aba424819de63374492d8ab278e849f3a102bc",
+      "after_sha256": "efe0963311815e3428a6a6e58d596c7b58e8c5b282627261fa502abbacf9f44e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_blumentopf_v3_fertig.png",
+      "before_sha256": "f61c4eda010c6c274140d8023ae2a3fe09c3531db97ecd8502a29f4b0bb33354",
+      "after_sha256": "af540cc98b98a9668d018d787363535950230e8a229de2081f0f2c09e0efbe3e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_bruecke_bretter.png",
+      "before_sha256": "a99ca26116ea10c93e0308c8e1c9d72edc407be56b35041c0ab8aed989ef5fff",
+      "after_sha256": "7df7ba78d9125a3bf5ddfde7a7db0c02a5afefd0e6b8fbec21acfbb74362d085",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_bruecke_fertig.png",
+      "before_sha256": "78abdeaa51a9fd4baf60d60e1580ff54791f8602ad55a99ed67eaccdcb0cbad8",
+      "after_sha256": "b85e802a67a1ef03f5badd867aa26de57ec7ab5cb64399e0c373bbed480d9908",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_bruecke_gelaender.png",
+      "before_sha256": "940c887248b866619fe4e118aaa94b7aa4be11d7e2ac0d32d446fe41cc41b53c",
+      "after_sha256": "33679550115fbb2653e0ae996e647eea45c869923b722a2373a10299db7d814f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_bruecke_pfosten.png",
+      "before_sha256": "c496743f7cb06876ba43f24b7be4b5857fa66cc2ba2773eed99f79b036887cd8",
+      "after_sha256": "6c1d5346f72e2784bc327a711cc25012ff4663581a4b08ed41e1884cdb0bcfe0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_futterstelle_dach.png",
+      "before_sha256": "bca7acbc424781a0ab00cdd148dccf3580270784d78b95aa32e11b9b3f7e1c8a",
+      "after_sha256": "775fae517f4b7f4d90e00f0e98c91c85112341763fc7c16b14921abba707f201",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_futterstelle_fertig.png",
+      "before_sha256": "dc1948cb86670b2c8f3a423ebe06dab1174937cdaa71e418e0c3415e7730f708",
+      "after_sha256": "b08516d0542675889b5218b4dc90fcf63398ce9b003062a86b24b2e5b2969e39",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_futterstelle_schale.png",
+      "before_sha256": "7bc6ef077abc675f035ea7abfc947b74650d2ef5ac3e5af50f756ff4a672c22f",
+      "after_sha256": "8eeb9f79cce7edb12b1177c9f45edceb25d72e740ced3c6de2fe5aaa3cae4027",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_futterstelle_stange.png",
+      "before_sha256": "b08bd6118a46809fb8c34e5d165f13752733b4f47e80f809e1bfb5d4aa9ce8ec",
+      "after_sha256": "798e70bcbd170e8ed8eb6dad67894152e71c4b3220812589ad4176e18c530d40",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_futterstelle_v2_fertig.png",
+      "before_sha256": "2d3503c797bd1b3b4535a30f6d511bcaf40cda40769e52e97b58296d15152e80",
+      "after_sha256": "c508803459a5d8e2d2c6517d5be134374b9db425ae48ce0961e21a88a1b29283",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_futterstelle_v3_fertig.png",
+      "before_sha256": "0b6640cec8b4f60b4279a5a18afa32919ccc62e675d5647c7b8999cd2dbd3ab9",
+      "after_sha256": "e5033c6cfdedc90c95a573162f3c74154d8287cd9c420ab8d399b54632a14d91",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_igelhaus_boden.png",
+      "before_sha256": "f1583a177d461bc074ccfad5fb092544b2c6eec8674b25705ef328ed699abd01",
+      "after_sha256": "47f035dd95f1bf7b63f359c1c05a95f9086742a43f1665b92407f2089d7c6bc2",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_igelhaus_dach.png",
+      "before_sha256": "ac44380ce6ee2e98b18bb256733c60d9a9753bf546e47225699cae7a45aa2403",
+      "after_sha256": "9f89de704f2c6d64f5fb26bf7fe0e9eb7084575cc408abaa61cf48e31c56750f",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_igelhaus_fertig.png",
+      "before_sha256": "fa3cec718c2c17d905926048af5cce7b2012111ec15ffae0a5ecaf10fefb797b",
+      "after_sha256": "2fdbcbd7349029fcc42a1d8a37179343366c898dab2b3ae8031e885ede425b38",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_igelhaus_laub.png",
+      "before_sha256": "7de07989ff2669882a40ece962ad4164b43360fa42cc9c8198151cfa86c302f7",
+      "after_sha256": "dd138a1634600f0fde4209ebeaaf02417fa5c1682873b7e89b875e32062b3dfa",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_igelhaus_waende.png",
+      "before_sha256": "60b654bfe82e13c25fbd1feaf3c39821479ae32a896c0a9f3be03db04389f9bd",
+      "after_sha256": "07df07680dbbc4d81321d58f7b6a2951cc64ad338739c7823cf44063cb3a246b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_insektenhotel_fertig.png",
+      "before_sha256": "a2282f733e51427caeb674996114ea10fb0ee22e5cbd53cfa1de7be239296177",
+      "after_sha256": "34d8d542f56c00e217442143faf74e22710c532bb03e4838b5c2b0405f449203",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_insektenhotel_fuellung.png",
+      "before_sha256": "97778898dac8ea875d4da4c8415f60b50f423b5bfa0bf4a4b11f5b73b6812b17",
+      "after_sha256": "17ce68d9cf556cf5cdc38a261cd99828e8b2abb5d5dd0f6c5c84d5b7d45bce9a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_insektenhotel_rahmen.png",
+      "before_sha256": "fb7abce6389fb88042b3e761c6bc2aac7a2333926283978a3c6d143b6fdc63f2",
+      "after_sha256": "6afe969d8a3d000eaddce03ae23fb8e44731a4d36276663ae9f8133c485c47cb",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_insektenhotel_v2_fertig.png",
+      "before_sha256": "0be52523ebb33ebf4347399c49caa32f896a0cd8734202a763de25843bc96aaf",
+      "after_sha256": "e486a47d8ba76f7278b55a121a741dba0c226d2bafa45ad49f30b8662c529a05",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_insektenhotel_v3_fertig.png",
+      "before_sha256": "ec04d3082192e726e442d84c11225732d472d333b3a2942d43c432215b66f93b",
+      "after_sha256": "eadb012fd5a319abacdcf3b523caa992f4ad61e01728d456952c98481effa54b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_laterne_gestell.png",
+      "before_sha256": "21bead79a2a4bb6e161aa25e1be2730605d3f2b6e8f54ec1626c11ec78108a45",
+      "after_sha256": "85846d0a9048a9a483833786e24ec0ce00b282f23e88b5f702e98cefbe04fe2c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_laterne_papier.png",
+      "before_sha256": "fc496c6f6a640aa43368cd4491982972e7f95104c2fa159ed6cdc09da13fd93b",
+      "after_sha256": "e28b0d41c74abe00308e8e34ddf4e5242aa6fe80e20cd1c0e22e4c235566f2b1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_segelboot_mast.png",
+      "before_sha256": "374c06afbfbd3edc508f7e0cbc5e4d8c53e500e0a4a1cf62bbc34147950d9bb8",
+      "after_sha256": "2d763c6113d60422242c8e6e533e6816d0e057504c091e311d26e14540e8fefe",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_segelboot_rumpf.png",
+      "before_sha256": "d8f8d6df14a0b0195ac311f0a4b37b44f45902742b618727dc950a3d65695d6a",
+      "after_sha256": "d326eacd803e93b8b838fea04631469fe1e7f98dbeeb3234e64cb68863c8f8cf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_segelboot_segel.png",
+      "before_sha256": "37a5e14e83f0995b565ccb86640dc4ddd39d260dc2b315039720948a87c01ce4",
+      "after_sha256": "842918bb62b77f71e90ad70f4c8cd17903e8c9604fc36318cc469ead22d1c40c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_tunnel_blaetter.png",
+      "before_sha256": "88ec20d0894bfb13de56d4e0ab3310b2f5c62c4f719d665868ea9c54f6f94899",
+      "after_sha256": "41c619f51c0d713d966df70c278125cd6336bccc51b123b4f111e9df0a1d63d4",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_tunnel_boegen.png",
+      "before_sha256": "e881790e46253a958ca6e2a8af85847edebeffb4097852b4dbaacdfa548483ab",
+      "after_sha256": "a983b64c86e6f5d3eb2ae725400a2d3c8a59a656bd9155fb31e4c1134f33ea8c",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_tunnel_fertig.png",
+      "before_sha256": "e637d5533e2bc69a202dc767141220812eec6416bd25d7ce2aeae354e8ced234",
+      "after_sha256": "85ed8e2e8c510412527e01b4ee721074c6178d2bcc6410230cf720c0ba1da101",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_vogelhaus_boden.png",
+      "before_sha256": "316c79c648435ce1bbbdf6c08c365f57d66fccaa4fdda9044813134c791b8481",
+      "after_sha256": "2001c02846305943f7d484da4896cc9a4cbe66ec18e6e887cc7b3edd7b3c1e2b",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_vogelhaus_dach.png",
+      "before_sha256": "05737c8c63178499e5018f736a261c93afdd63b1b884034fb914c300bb65b658",
+      "after_sha256": "e67db6196a3f01d1b47237714fbea79ed6dfcb9f98d466a0b8ce2e9443daf8cf",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_vogelhaus_fertig.png",
+      "before_sha256": "e71120b0f4efc138ba20d76ea260e8e05527514322c2b40a7be8c76f4568bc1f",
+      "after_sha256": "63b1e5d63c9372aa0e51936be8ab803e48572af87ed7b7cefb33b07ce69a7372",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_vogelhaus_pfahl.png",
+      "before_sha256": "23e778943c903a0ff37d57cadc980b9ed1de2cde298da1035c219ee8a3edf24c",
+      "after_sha256": "fbf17794861952b5bec8734b7e0604bc37cebe5139d994772a1e8c487c0fc4ca",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_vogelhaus_v2_fertig.png",
+      "before_sha256": "b8c66679f0989cf8365173f566f70cc296df0b3f282eec37f7a8c448c7ca9204",
+      "after_sha256": "d506cfea5c1fdf9e118b204199e7a582df3ac2900d1b4d4be87b6dbc2524ed46",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_vogelhaus_v3_fertig.png",
+      "before_sha256": "0da092b44fe384c2f8985aeb54d600d401af9f96ec182eafb242fb919adc7a38",
+      "after_sha256": "0214d945a42bc115e55149740631f55f13d7bf396ac4b0b1ad644742738a0ab1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_vogelhaus_wand_hinten.png",
+      "before_sha256": "4cc1a9c4d5030c728f9f2f037c6dface1e6e67ea9cea90788f7afdb65169e54e",
+      "after_sha256": "3843c99d08c51b178f55787af73821c86b74a5dba8d4e9834ddd3245dbf0623e",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_vogelhaus_wand_vorne.png",
+      "before_sha256": "9b3cf9bb1586bb235c54e3728578bd35f9df018a3233cbdbca8bf9a60d26e6f8",
+      "after_sha256": "bdb199b5d1d5a190c9e7269ab6129ba0a59f34a5c6bef126f60a11cfe0edf3fe",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_wimpelkette_schnur.png",
+      "before_sha256": "a68691ec5eee0f6d52cddd13b66a219565a556158a8fbac97a95e037c7c09bf6",
+      "after_sha256": "a96cce6a12f04601ce1cc7daf5900e3b62c7b1299278526ea2d8ed2eb4c1857a",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_wimpelkette_wimpel.png",
+      "before_sha256": "491aec483b8b5fbf0c5844bfb831b39b0595c73fdf54fa3571f7990c877be87f",
+      "after_sha256": "6a25c6c887d42c0236341a34958e98a2f4b20227b826d7a96e6420f3e57571c1",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_windspiel_fertig.png",
+      "before_sha256": "8a86e9cc60ed166188a1ffcd754d19832749607181e3c2163c7179aec0bf5389",
+      "after_sha256": "1b9d8e26099a1d54dd0dd7acb8a50a7fd7f92eaf1bab6386f503d93f42d18a05",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_windspiel_glocken.png",
+      "before_sha256": "d85964fe8695d8774239d4e0ab29055953362055b9d771107a57ee0dcd469cf8",
+      "after_sha256": "630781b71ca1817a5a6c648f151c5c1ee908612d917ef7d7db41c296ce6f140d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_bau_windspiel_stab.png",
+      "before_sha256": "800bc35656806700adcf59a1e8b44cbe33930cd5f54e4927e18ef8b3c79f05f3",
+      "after_sha256": "9932a66994cf7cd3a8e5a8d323fc684d0b44c0abc71bbf2702ac5d15dde1f8d0",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_wimpelkette.png",
+      "before_sha256": "4badd1eb127a416b6ca8a41c4cd571b78a3153803340871660cb49ba035babce",
+      "after_sha256": "d45506cf4ca3eb4573090259d830ee5a107d0d572146d258197b3252a4308d62",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    },
+    {
+      "filename": "gw_laterne_papier.png",
+      "before_sha256": "4dc4018c1f31436b5f8ca942b71ab781c28952dbbbf72e29df173ae0e74a39bb",
+      "after_sha256": "f588483fa4a4e9b8526b8f6c22791187db1ab010d65cb77b2a8b49c6c9e1c122",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "alpha_identical": true
+    }
+  ]
+}
