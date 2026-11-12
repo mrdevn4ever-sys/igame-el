@@ -139,6 +139,17 @@ struct SceneLayer: View {
                     .allowsHitTesting(false)
             }
 
+            if WorldLayout.garden3, WorldPanorama.isActive(.haus) {
+                // Busch an der Naht zwischen Hausgarten und Spielwiese: das gemalte Bild hat dort
+                // einen halben Busch (Bildrand des ursprünglichen Gartens).
+                WorldPic("gw_busch_1", "", size: W * 0.06)
+                    .feet(WorldLayout.seamHedgeBush, size: W * 0.06, in: s, shadow: false)
+                    .allowsHitTesting(false)
+                WorldPic("gw_busch_2", "", size: W * 0.11)
+                    .feet(WorldLayout.seamBush, size: W * 0.11, in: s)
+                    .allowsHitTesting(false)
+                    .zIndex(WorldLayout.seamBush.y)
+            }
             if WorldLayout.garden3 {
                 // Schuppen = Werkstatt, Gartentor = Inselkarte
                 sceneButton(WorldLayout.shed, label: "Werkstatt im Schuppen") {

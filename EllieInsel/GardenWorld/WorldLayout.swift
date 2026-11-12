@@ -56,6 +56,10 @@ enum WorldLayout {
     static var houseDoorStep: CGPoint { garden3 ? CGPoint(x: 0.23, y: 0.53) : CGPoint(x: 0.8, y: 0.36) }
     /// Schuppen mit der Werkstatt (nur im neuen Garten).
     static let shed = CGRect(x: 0.70, y: 0.14, width: 0.25, height: 0.34)
+    /// Busch, der die Naht zwischen Hausgarten und Spielwiese verdeckt.
+    static let seamBush = CGPoint(x: 1.0, y: 0.525)
+    /// Kleiner Busch an der Hecke, wo die Hecke an der Naht abbricht.
+    static let seamHedgeBush = CGPoint(x: 0.985, y: 0.345)
     /// Gartentor zur Inselkarte (nur im neuen Garten).
     static let gate = CGRect(x: 0.0, y: 0.54, width: 0.09, height: 0.28)
 
