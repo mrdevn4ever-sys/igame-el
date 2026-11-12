@@ -1,0 +1,85 @@
+{
+  "schema": "ellie-haus-garten-korrektur-spielwiese-provenienz/v1",
+  "created_at": "2026-11-12T19:17:14.291738Z",
+  "status": "OWNER_AUTHORIZED_FALLBACK_RELEASE",
+  "branch": "claude/eloquent-galileo-0bwpqo",
+  "base_git_revision": "e003cc89032320a34b01d191005f9f0109f1c105",
+  "asset": {
+    "filename": "gw_szene_garten_panorama_tag.jpg",
+    "sha256": "354c60144a3e626d639b33e112494050feea7f2ce9d7a5273ac197844fe04fe5",
+    "bytes": 1831755,
+    "dimensions": [
+      5464,
+      2048
+    ],
+    "mode": "RGB",
+    "format": "JPEG",
+    "progressive": true
+  },
+  "source": {
+    "filename": "gw_szene_garten_tag.jpg",
+    "sha256": "52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6",
+    "dimensions": [
+      2732,
+      2048
+    ]
+  },
+  "native_outpaint": {
+    "provider": "openai-codex",
+    "model": "gpt-image-2-high",
+    "no_upscaling": true,
+    "minimum_source_context_px": 600,
+    "blend_zone_top_half_open": [
+      2660,
+      0,
+      2800,
+      1030
+    ]
+  },
+  "pixel_gates": {
+    "x0_2659_all_y": {
+      "max_channel_difference": 0,
+      "changed_pixels": 0,
+      "pass": true
+    },
+    "y1030_2047_x0_2723": {
+      "max_channel_difference": 0,
+      "changed_pixels": 0,
+      "pass": true
+    },
+    "y1030_2047_x2724_2731_owner_tolerance": {
+      "maximum_allowed": 6,
+      "actual_maximum": 4,
+      "changed_pixels": 341,
+      "pass": true
+    }
+  },
+  "protected_roi": {
+    "box_half_open": [
+      2900,
+      1030,
+      5300,
+      2048
+    ],
+    "visual_verdict": "PASS_GRASS_ONLY",
+    "content": "continuous empty lawn"
+  },
+  "visual_record": {
+    "tree": "PASS_ONE_COHERENT_TREE",
+    "hedge": "PASS_CONTINUOUS_AT_RELEASE_SIZE",
+    "known_localized_variance": "A small grass color/texture mismatch near the former seam remains in V9. It is outside the protected ROI.",
+    "release_basis": "Owner explicitly required one V10 correction attempt, then authorized V9 publication if the attempt was not clean."
+  },
+  "v10_single_attempt": {
+    "candidate_sha256": "6aa4cb4082203ac2a8a94f60cf7bb25846d1c0c2499c94b5852ae04b789ff599",
+    "mechanical_scope_identity_outside_zone": "PASS",
+    "protected_roi_identity": "PASS",
+    "display_size_verdict": "PASS",
+    "paired_100_percent_verdict": "REWORK_SOFT_TEXTURE_PATCH",
+    "promoted": false
+  },
+  "owner_decision": {
+    "fallback_v9_authorized": true,
+    "reason": "V10 remained visibly softer in the localized repair area after the single allowed attempt."
+  }
+}
