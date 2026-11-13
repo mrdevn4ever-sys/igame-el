@@ -551,7 +551,7 @@ struct SceneLayer: View {
             ZStack(alignment: .topLeading) {
                 ForEach(model.flyers) { f in
                     let t = min(tl.date.timeIntervalSince(f.start) / 0.9, 1)
-                    let target = WorldLayout.basket
+                    let target = f.to ?? WorldLayout.basket
                     let x = f.from.x + (target.x - f.from.x) * t
                     let y = f.from.y + (target.y - 0.04 - f.from.y) * t - 0.15 * sin(.pi * t)
                     WorldPic(f.asset, f.emoji, size: W * 0.05 * (1 - 0.3 * t))

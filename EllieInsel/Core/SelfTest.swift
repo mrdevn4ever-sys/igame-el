@@ -10,6 +10,7 @@ enum SelfTest {
         learningGrowth()
         timedGrowth(model)
         waterFlow(model)
+        feeding(model)
         rewards()
         saveRoundTrip()
         layout()
@@ -72,6 +73,22 @@ enum SelfTest {
         check(!broken.pond && broken.gap?.col == 2 && broken.gap?.row == 3, "Lücke im Wasserweg wird gefunden")
         model.edit { d in d.tiles = saved }
         model.refreshWater()
+    }
+
+    /// Füttern nimmt das Lieblingsfutter aus dem Korb und bringt einmal am Tag ein Dankeschön.
+    private static func feeding(_ model: GardenWorldModel) {
+        let saved = model.w
+        model.edit { d in
+            d.basket = [HarvestItem.karotte.rawValue: 2]
+            d.fedGift = [:]
+            d.finds = [:]
+        }
+        check(model.feed(.hase), "Hase frisst eine Karotte")
+        check(model.w.count(.karotte) == 1, "Karotte aus dem Korb genommen")
+        check(model.w.finds[FindItem.goldblatt.rawValue] == 1, "Dankeschön für das Lieblingsfutter")
+        check(!model.feed(.hase), "nicht sofort noch einmal füttern")
+        check(!model.feed(.fisch), "Fisch wird nicht aus dem Korb gefüttert")
+        model.edit { d in d = saved }
     }
 
     private static func rewards() {

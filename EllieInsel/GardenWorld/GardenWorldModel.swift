@@ -32,6 +32,8 @@ struct Flyer: Identifiable {
     var emoji: String
     var from: CGPoint
     var start = Date()
+    /// Ziel (nil = in den Korb). Beim Füttern fliegt das Futter vom Korb zum Tier.
+    var to: CGPoint?
 }
 
 /// Laufende Bootsfahrt am Bach.
@@ -97,6 +99,7 @@ final class GardenWorldModel {
     @ObservationIgnored private var dinoTask: Task<Void, Never>?
     @ObservationIgnored private var factIndex: [Resident: Int] = [:]
     @ObservationIgnored private var squirrelTaps = 0
+    @ObservationIgnored private var lastFed: [Resident: Date] = [:]
 
     /// Wartezeit im Simulator-Durchlauf.
     static var growSeconds: Double { stageSeconds(firstHarvestDone: true) }
@@ -267,7 +270,10 @@ final class GardenWorldModel {
         switch a {
         case .haus: return "Wir sind im Hausgarten."
         case .bach: return w.tiles.isEmpty ? "Am Bach kannst du Wasserwege bauen. Wähle unten eine Rinne und tippe auf ein Feld." : "Wir sind am Bach."
-        case .lichtung: return "Willkommen auf der Tierlichtung."
+        case .lichtung:
+            let hungry = presentResidents(.lichtung).contains { r in r.foods.contains { w.count($0) > 0 } }
+            return hungry ? "Willkommen auf der Tierlichtung. Die Tiere haben Hunger. Tippe auf ein Tier und gib ihm etwas aus deinem Korb."
+                          : "Willkommen auf der Tierlichtung."
         case .baumhaus: return w.treehouseStage < 4 ? "Hier bauen wir ein Baumhaus!" : "Wir sind beim Baumhaus."
         case .wunder: return "Die Wunderlichtung! Hier ist alles ein bisschen zauberhaft."
         }
@@ -821,7 +827,47 @@ final class GardenWorldModel {
         actors[i].actionUntil = Date().addingTimeInterval(2)
     }
 
+    /// Füttern: ein Stück aus dem Korb fliegt zum Tier, das Tier frisst.
+    /// Gibt false zurück, wenn es nichts Passendes gibt oder das Tier gerade erst gefressen hat.
+    @discardableResult
+    func feed(_ r: Resident) -> Bool {
+        guard !r.foods.isEmpty, Date().timeIntervalSince(lastFed[r] ?? .distantPast) > 20 else { return false }
+        guard let item = r.foods.first(where: { w.count($0) > 0 }) else { return false }
+        lastFed[r] = Date()
+        let favorite = item == r.foods.first
+        let pos = actors.first(where: { $0.resident == r })?.position(at: Date()) ?? CGPoint(x: 0.5, y: 0.8)
+        flyers.append(Flyer(asset: item.asset, emoji: item.emoji, from: WorldLayout.feedFrom(area),
+                            to: CGPoint(x: pos.x, y: pos.y - 0.02)))
+        if let i = actors.firstIndex(where: { $0.resident == r }) {
+            actors[i].actionPose = r.actionPose
+            actors[i].actionUntil = Date().addingTimeInterval(3)
+            actors[i].restUntil = max(actors[i].restUntil, Date().addingTimeInterval(3))
+        }
+        audio.sfx("gw_sfx_essen", fallback: .munch)
+        // Lieblingsfutter: einmal am Tag ein kleines Dankeschön
+        var gift: FindItem?
+        if favorite, let f = r.thankYouFind, !Calendar.current.isDateInToday(w.fedGift[r.rawValue] ?? .distantPast) {
+            gift = f
+        }
+        edit { d in
+            d.basket[item.rawValue, default: 1] -= 1
+            if (d.basket[item.rawValue] ?? 0) <= 0 { d.basket[item.rawValue] = nil }
+            if let gift {
+                d.finds[gift.rawValue, default: 0] += 1
+                d.fedGift[r.rawValue] = Date()
+            }
+        }
+        if let gift {
+            say("Das schmeckt! \(r.article.capitalizedFirst) \(r.name) bringt dir \(gift.name).")
+        } else {
+            say("Das schmeckt!")
+        }
+        return true
+    }
+
     func residentTapped(_ r: Resident) {
+        // Erst füttern (wenn etwas Passendes im Korb ist), sonst erzählt das Tier etwas.
+        if feed(r) { return }
         let n = factIndex[r, default: 0]
         factIndex[r] = n + 1
         if let i = actors.firstIndex(where: { $0.resident == r }) {
@@ -841,15 +887,6 @@ final class GardenWorldModel {
                 say("Das Eichhörnchen bringt dir \(f.name). Das kannst du in der Werkstatt verwenden.")
                 return
             }
-        }
-        if r == .hase, w.count(.karotte) > 0, n % 2 == 1 {
-            edit { d in
-                d.basket[HarvestItem.karotte.rawValue, default: 1] -= 1
-                if (d.basket[HarvestItem.karotte.rawValue] ?? 0) <= 0 { d.basket[HarvestItem.karotte.rawValue] = nil }
-            }
-            audio.sfx("gw_sfx_essen", fallback: .munch)
-            say("Der Hase knabbert eine Karotte aus deinem Korb.")
-            return
         }
         say(r.facts[n % r.facts.count])
     }

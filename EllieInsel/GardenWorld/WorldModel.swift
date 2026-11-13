@@ -775,6 +775,34 @@ enum Resident: String, Codable, CaseIterable, Identifiable {
 
     func asset(_ pose: String) -> String { "gw_tier_\(rawValue)_\(pose)" }
 
+    /// Was das Tier aus dem Korb frisst (Lieblingsfutter zuerst). Leer: wird nicht gefüttert.
+    var foods: [HarvestItem] {
+        switch self {
+        case .hase: return [.karotte, .salat, .radieschen, .apfel]
+        case .igel: return [.heidelbeeren, .apfel, .erdbeere]
+        case .eichhoernchen: return [.kerne, .apfel, .heidelbeeren]
+        case .reh: return [.apfel, .salat, .karotte, .erbsenschote]
+        case .vogel: return [.kerne, .heidelbeeren, .erdbeere]
+        case .ente: return [.salat, .erbsenschote]
+        case .schnecke: return [.salat, .erdbeere]
+        case .schmetterling, .frosch, .fisch, .eule: return []
+        }
+    }
+
+    /// Kleines Geschenk, wenn das Tier sein Lieblingsfutter bekommt (höchstens einmal am Tag).
+    var thankYouFind: FindItem? {
+        switch self {
+        case .hase: return .goldblatt
+        case .igel: return .schneckenhaus
+        case .eichhoernchen: return .eichel
+        case .reh: return .tannzapfen
+        case .vogel: return .feder
+        case .ente: return .muschel
+        case .schnecke: return .stein
+        default: return nil
+        }
+    }
+
     /// Geschwindigkeit in Szenenbreiten pro Sekunde.
     var speed: Double {
         switch self {
@@ -1239,6 +1267,8 @@ struct WorldData: Codable, Equatable {
     /// Für welche Garten-Aufteilung Gebautes und Schmuck schon umgestellt wurden
     /// (0 = alter Garten, 1 = neuer Garten, 2 = neuer Garten mit Spielwiese).
     var gardenLayout = 0
+    /// Tag, an dem ein Tier zuletzt sein Dankeschön gebracht hat (Bewohner → Datum).
+    var fedGift: [String: Date] = [:]
 
     init() {}
 
@@ -1283,6 +1313,7 @@ struct WorldData: Codable, Equatable {
         festDone = (try? c.decode(Bool.self, forKey: .festDone)) ?? d.festDone
         houseVisited = (try? c.decode(Bool.self, forKey: .houseVisited)) ?? d.houseVisited
         gardenLayout = (try? c.decode(Int.self, forKey: .gardenLayout)) ?? d.gardenLayout
+        fedGift = (try? c.decode([String: Date].self, forKey: .fedGift)) ?? d.fedGift
     }
 
     func count(_ item: HarvestItem) -> Int { basket[item.rawValue] ?? 0 }

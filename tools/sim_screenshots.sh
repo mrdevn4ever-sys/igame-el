@@ -179,6 +179,8 @@ run 171_garten3_start 7 0 -screen garden -world start -garten3
 run 172_garten3_voll 7 0 -screen garden -world voll -area haus -garten3
 # Neuer Garten mit Spielwiese zum Wischen (Platzhalter: gespiegeltes Gartenbild)
 run 173_garten3_spielwiese 7 0 -screen garden -world voll -area haus -panotest -panoright
+# Tierlichtung mit Futter im Korb (Ankunft mit Hinweis «Die Tiere haben Hunger»)
+run 174_lichtung_fuettern 7 0 -screen garden -world voll -area lichtung
 # Selbsttest der Spiellogik (Wachstum, Wasserweg, Geschenke, Spielstand): bei einem Fehler ABSTURZ im Bericht
 run 900_selbsttest 6 0 -screen garden -world voll -selbsttest
 
