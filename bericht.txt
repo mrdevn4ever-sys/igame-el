@@ -166,5 +166,6 @@ OK      170b_haus_abend
 OK      171_garten3_start
 OK      172_garten3_voll
 OK      173_garten3_spielwiese
+OK      174_lichtung_fuettern
 OK      900_selbsttest
 Absturzberichte:        0
