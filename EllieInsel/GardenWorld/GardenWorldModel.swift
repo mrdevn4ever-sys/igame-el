@@ -326,7 +326,11 @@ final class GardenWorldModel {
             if lastWaterResult.pond { return "Das Wasser fliesst bis zum Teich! Tippe auf das Boot an der Quelle." }
             if let g = lastWaterResult.gap { return "Hier fehlt noch ein Stück: Reihe \(g.row + 1), Feld \(g.col + 1)." }
             return "Baue mit den Rinnen einen Weg von der Quelle zum Teich."
-        case .lichtung: return "Schau dich um. Vielleicht findest du Spuren."
+        case .lichtung:
+            if presentResidents(.lichtung).contains(where: { r in r.foods.contains { w.count($0) > 0 } }) {
+                return "Die Tiere haben Hunger. Tippe auf ein Tier und gib ihm etwas aus deinem Korb."
+            }
+            return "Schau dich um. Vielleicht findest du Spuren."
         case .baumhaus: return w.treehouseStage < 4 ? "Tippe auf die Bauteile, dann wächst das Baumhaus." : "Im Baumhaus kann man wunderbar picknicken."
         case .wunder: return "Stell Klangdinge auf und tippe auf Abspielen. Oder pflanze eine Fantasieblume."
         }
