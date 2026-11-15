@@ -27,6 +27,17 @@ struct GardenWorldView: View {
                 SelfTest.run(m)
                 if let o = DemoMode.value("-overlay") { m.openDemoOverlay(o) }
                 if DemoMode.flag("-gardenplay") { m.runDemoPlay() }
+                if DemoMode.flag("-halten") {
+                    // Simulator: ein Ding aus der Leiste in der Hand zeigen (über Printatops)
+                    Task { @MainActor in
+                        try? await Task.sleep(nanoseconds: 1_500_000_000)
+                        guard let item = m.handItems(limit: 1).first?.item else { return }
+                        let v = m.sceneViewport
+                        m.held = item
+                        m.heldAt = CGPoint(x: v.minX + v.width * 0.45, y: v.minY + v.height * 0.6)
+                        m.react("❤️", at: CGPoint(x: 0.3, y: 0.8))
+                    }
+                }
             }
         }
         .onDisappear { model?.stop() }
@@ -65,6 +76,16 @@ struct GardenWorldContent: View {
         }
         .padding(.vertical, 10)
         .background(Theme.cream.ignoresSafeArea())
+        .coordinateSpace(name: "garden")
+        .overlay(alignment: .topLeading) {
+            // Das Ding in der Hand schwebt etwas über dem Finger, damit man es sieht.
+            if let item = model.held {
+                WorldPic(item.asset, item.emoji, size: 96)
+                    .shadow(color: .black.opacity(0.25), radius: 8, y: 6)
+                    .position(x: model.heldAt.x, y: model.heldAt.y - 44)
+                    .allowsHitTesting(false)
+            }
+        }
         .overlay { overlayView }
         .overlay(alignment: .bottomTrailing) {
             if showBasket { BasketPopover(model: model, close: { showBasket = false }).padding(.trailing, 24).padding(.bottom, 110) }
@@ -178,6 +199,8 @@ struct GardenWorldContent: View {
                 app.audio.effect(.tap)
                 showBasket.toggle()
             }
+            handTray
+            Spacer(minLength: 4)
             toolChip(asset: "gw_kueche_topf", emoji: "🍳", title: "Küche", badge: model.w.pantry.values.reduce(0, +)) {
                 app.audio.sfx("gw_sfx_teller", fallback: .tap)
                 model.overlay = .kitchen
@@ -185,7 +208,37 @@ struct GardenWorldContent: View {
             toolChip(asset: "gw_werkbank_hammer", emoji: "🔨", title: "Werkstatt", badge: 0, dimmed: !model.w.workshopOpen) {
                 model.openWorkshop()
             }
-            Spacer()
+        }
+    }
+
+    /// Leiste mit Ernte und Gekochtem: festhalten und in den Garten ziehen.
+    private var handTray: some View {
+        let items = model.handItems(limit: 6)
+        return HStack(spacing: 8) {
+            ForEach(items.indices, id: \.self) { i in
+                let entry = items[i]
+                WorldPic(entry.item.asset, entry.item.emoji, size: 50)
+                    .frame(width: 62, height: 62)
+                    .background(RoundedRectangle(cornerRadius: 16).fill(.white).shadow(color: .black.opacity(0.1), radius: 3, y: 2))
+                    .overlay(alignment: .topTrailing) {
+                        if entry.count > 1 {
+                            Text("\(entry.count)").font(Theme.rounded(13, .heavy)).foregroundStyle(.white)
+                                .padding(5).background(Circle().fill(Theme.darkGreen)).offset(x: 4, y: -5)
+                        }
+                    }
+                    .opacity(model.held == entry.item ? 0.35 : 1)
+                    .contentShape(Rectangle())
+                    .gesture(
+                        DragGesture(minimumDistance: 4, coordinateSpace: .named("garden"))
+                            .onChanged { v in model.dragHand(entry.item, to: v.location) }
+                            .onEnded { v in model.dropHand(entry.item, at: v.location) }
+                    )
+                    .onTapGesture {
+                        app.audio.effect(.tap)
+                        model.say(entry.item.name)
+                    }
+                    .accessibilityLabel(entry.item.name)
+            }
         }
     }
 

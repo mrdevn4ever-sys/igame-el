@@ -89,6 +89,17 @@ final class GardenWorldModel {
     var selectedPiece: WaterPiece?
     /// Schaufel am Bach: Antippen nimmt eine Rinne wieder weg.
     var removingTiles = false
+    /// Ding in der Hand (aus der Leiste gezogen) und wo der Finger gerade ist (Koordinatenraum «garden»).
+    var held: HandItem?
+    var heldAt: CGPoint = .zero
+    var reactions: [Reaction] = []
+    /// Mitwischen am Bildrand: Ziel in Viertel-Bildschirmen; der Zähler löst das Wischen aus.
+    var scrollTarget = 0
+    var scrollTick = 0
+    /// Lage der Szene und ihres sichtbaren Ausschnitts im Koordinatenraum «garden» (nur zum Rechnen).
+    @ObservationIgnored var sceneContentFrame: CGRect = .zero
+    @ObservationIgnored var sceneViewport: CGRect = .zero
+    @ObservationIgnored var lastEdgeScroll = Date.distantPast
     /// Im Selbsttest: die Ergebnis-Notiz bleibt in der Sprechblase stehen.
     @ObservationIgnored private var noteShown = false
     /// Küche oder Erinnerungsbuch wurden aus dem Haus geöffnet: Schliessen führt zurück in die Wohnstube.
@@ -422,6 +433,7 @@ final class GardenWorldModel {
         updateActors(now: now)
         if let b = boat, now.timeIntervalSince(b.start) > b.total + 0.6 { finishBoat() }
         flyers.removeAll { now.timeIntervalSince($0.start) > 1.2 }
+        if !reactions.isEmpty { reactions.removeAll { now.timeIntervalSince($0.start) > 1.5 } }
     }
 
     // MARK: - Pflanzen

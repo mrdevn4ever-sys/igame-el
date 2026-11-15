@@ -15,8 +15,51 @@ struct SceneLayer: View {
     private var totalWidth: CGFloat { s.width * CGFloat(ext.max - ext.min) }
 
     var body: some View {
+        ScrollViewReader { proxy in
+            scrollScene
+                .onChange(of: model.scrollTick) { _, _ in
+                    // Mitwischen, wenn ein getragenes Ding an den Bildrand kommt
+                    withAnimation(.easeInOut(duration: 0.4)) {
+                        proxy.scrollTo("step\(model.scrollTarget)", anchor: .leading)
+                    }
+                }
+        }
+        .frame(width: s.width, height: s.height)
+        .background(GeometryReader { g in
+            Color.clear.onChange(of: g.frame(in: .named("garden")), initial: true) { _, f in model.sceneViewport = f }
+        })
+        .overlay(alignment: .topLeading) { speechBubble }
+        .overlay(alignment: .topTrailing) {
+            if model.building {
+                Text("Umbauen").font(Theme.rounded(18, .heavy)).foregroundStyle(.white)
+                    .padding(.horizontal, 14).padding(.vertical, 6)
+                    .background(Capsule().fill(Theme.darkGreen))
+                    .padding(14)
+            }
+        }
+        .overlay(alignment: .bottom) {
+            if ext.max - ext.min > 1 {
+                Label("Wischen", systemImage: "hand.draw.fill")
+                    .font(Theme.rounded(14, .heavy)).foregroundStyle(.white)
+                    .padding(.horizontal, 10).padding(.vertical, 4)
+                    .background(Capsule().fill(Theme.darkGreen.opacity(0.55)))
+                    .padding(.bottom, 10)
+                    .allowsHitTesting(false)
+            }
+        }
+    }
+
+    private var scrollScene: some View {
         ScrollView(.horizontal, showsIndicators: ext.max - ext.min > 1) {
             ZStack(alignment: .topLeading) {
+                // Unsichtbare Marken alle Viertel-Bildschirme (Ziele fürs Mitwischen)
+                HStack(spacing: 0) {
+                    ForEach(0..<max(Int((ext.max - ext.min) * 4), 1), id: \.self) { i in
+                        Color.clear.frame(width: s.width * 0.25, height: 1).id("step\(i)")
+                    }
+                }
+                .allowsHitTesting(false)
+
                 SceneBackground(area: model.area, evening: model.w.evening, extent: ext)
                     .frame(width: totalWidth, height: s.height)
                     .contentShape(Rectangle())
@@ -41,6 +84,7 @@ struct SceneLayer: View {
                         .zIndex(0.75)
                     if model.area == .bach { boatLayer.zIndex(0.9) }
                     flyerLayer.zIndex(30)
+                    ReactionLayer(model: model, size: s).zIndex(31)
                 }
                 .frame(width: s.width, height: s.height, alignment: .topLeading)
                 .coordinateSpace(name: "scene")
@@ -52,29 +96,12 @@ struct SceneLayer: View {
                     .frame(width: totalWidth, height: s.height)
             }
             .frame(width: totalWidth, height: s.height)
+            .background(GeometryReader { g in
+                Color.clear.onChange(of: g.frame(in: .named("garden")), initial: true) { _, f in model.sceneContentFrame = f }
+            })
         }
         .scrollDisabled(ext.max - ext.min <= 1)
         .defaultScrollAnchor(DemoMode.flag("-panoleft") ? .leading : DemoMode.flag("-panoright") ? .trailing : (ext.min < 0 ? .center : .leading))
-        .frame(width: s.width, height: s.height)
-        .overlay(alignment: .topLeading) { speechBubble }
-        .overlay(alignment: .topTrailing) {
-            if model.building {
-                Text("Umbauen").font(Theme.rounded(18, .heavy)).foregroundStyle(.white)
-                    .padding(.horizontal, 14).padding(.vertical, 6)
-                    .background(Capsule().fill(Theme.darkGreen))
-                    .padding(14)
-            }
-        }
-        .overlay(alignment: .bottom) {
-            if ext.max - ext.min > 1 {
-                Label("Wischen", systemImage: "hand.draw.fill")
-                    .font(Theme.rounded(14, .heavy)).foregroundStyle(.white)
-                    .padding(.horizontal, 10).padding(.vertical, 4)
-                    .background(Capsule().fill(Theme.darkGreen.opacity(0.55)))
-                    .padding(.bottom, 10)
-                    .allowsHitTesting(false)
-            }
-        }
     }
 
     /// Tippen auf den Hintergrund (ganzes Panorama) in Grundbild-Koordinaten.

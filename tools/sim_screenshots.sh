@@ -181,6 +181,8 @@ run 172_garten3_voll 7 0 -screen garden -world voll -area haus -garten3
 run 173_garten3_spielwiese 7 0 -screen garden -world voll -area haus -panotest -panoright
 # Tierlichtung mit Futter im Korb (Ankunft mit Hinweis «Die Tiere haben Hunger»)
 run 174_lichtung_fuettern 7 0 -screen garden -world voll -area lichtung
+# Entdecken: Ding aus der Leiste in der Hand
+run 175_garten_halten 5 0 -screen garden -world voll -area haus -halten
 # Selbsttest der Spiellogik (Wachstum, Wasserweg, Geschenke, Spielstand): bei einem Fehler ABSTURZ im Bericht
 run 900_selbsttest 6 0 -screen garden -world voll -selbsttest
 
