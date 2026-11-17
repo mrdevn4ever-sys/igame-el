@@ -1,0 +1,129 @@
+{
+  "abweichungen_hinweise": [
+    "512er Overlays behalten die Koordinaten des 1024er Printatops als normalisierte, unverschobene Leinwand bei; die allgemeine Fusslinienregel gilt hier bewusst nicht für einzelne Kopfteile.",
+    "Feenflügel werden anhand der fixierten Dino-Silhouette verdeckt, damit sie hinter ihm sitzen."
+  ],
+  "dateien": {
+    "gw_kostuem_blumenkranz.png": {
+      "alpha_bbox_xyxy": [
+        134,
+        54,
+        393,
+        152
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "5d185d4f3c3a63b4c55e20638fd7e41e44a1747fc62667ba604e20d78e0d443a"
+    },
+    "gw_kostuem_feenfluegel.png": {
+      "alpha_bbox_xyxy": [
+        77,
+        234,
+        452,
+        398
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "3a197b78f165a8e76205ec2f23117906c324bb8c334c5e59c762cfdec588ac13"
+    },
+    "gw_kostuem_halskette.png": {
+      "alpha_bbox_xyxy": [
+        226,
+        294,
+        315,
+        359
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "46a26895bafe49bed4bce7e285635382668d75edae41d277adb8ebe26d8f6b01"
+    },
+    "gw_kostuem_krone.png": {
+      "alpha_bbox_xyxy": [
+        226,
+        87,
+        304,
+        161
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "7a13f6f93c4d785a695125c2ab4a5775a782ef316c011382a2116f6421e55117"
+    },
+    "gw_kostuem_schleife.png": {
+      "alpha_bbox_xyxy": [
+        331,
+        72,
+        425,
+        148
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "3484f842b340ba57e2173d395f15ceddcb5ca07ba18d0b19abc65ffb89cad870"
+    },
+    "gw_kostuem_sonnenbrille.png": {
+      "alpha_bbox_xyxy": [
+        175,
+        176,
+        374,
+        256
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "4c4eced5f3fcd0a8aaf513d049c4bec5921f2b054e4aa423ef2550f4255553a4"
+    },
+    "gw_kostuem_tutu.png": {
+      "alpha_bbox_xyxy": [
+        170,
+        383,
+        375,
+        440
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "0272fee0cb5e403aaf4d9a33f7df77517dab0da1a968344f963c686887a12e8c"
+    },
+    "gw_kostuem_zauberstab.png": {
+      "alpha_bbox_xyxy": [
+        333,
+        205,
+        440,
+        359
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "854ec663007489250009e0ce49186b69022a31d2e749b6151b7b4ff158ada2b3"
+    }
+  },
+  "herstellung": "Originale lokal modellierte 3D-Objekte mit Blender 4.5.15 LTS/Cycles; Finale per Pillow registriert/freigestellt. Keine externen Bild-/Modellanbieter oder fremden Figuren.",
+  "manifest": "assets/Entdecken.csv",
+  "manifest_sha256": "e583424d0394a246dec3bf3be0f9ade6abd4de747236f14890b2379a57b53010",
+  "paket": "C",
+  "pruefung": "Manifest, PNG/Grösse, transparente Ecken und Pixelregistrierung: PASS. Native und App-Grössen-Komposite auf Creme und #202020 assistentenseitig visuell geprüft; keine Nutzerfreigabe oder iPad-Laufzeitprüfung.",
+  "quelle_und_qa": {
+    "parent_manifest_qa_sha256": "da192d1ed701b90289caeb31c21af25eaaa2857305a3ffb643bac8f999197405",
+    "receipt": "C/package_C_receipt.json",
+    "receipt_sha256": "07891d2044dea94f8931ea027b3c6eb248c5e45f2f92530f045d969d1cb7c5fd"
+  },
+  "referenzen": {
+    "garten2_baumstumpf.png": "1820c8569692388a53ef5aba5741fac99c43f6d9ff923f3cd339a214fdcab3df",
+    "garten2_gartenzwerg.png": "4767f8c3506f830a10cf8c37341fa94af6e59b25af0a71aa2a09170e843c5e61",
+    "gw_dino_stehen.png": "7500b970afe845d07247a66d24c786c234eca7e703c3e81d28dbb1561d3c9847",
+    "gw_szene_garten_tag.jpg": "52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6"
+  },
+  "registrierung": null
+}
