@@ -168,5 +168,6 @@ OK      172_garten3_voll
 OK      173_garten3_spielwiese
 OK      174_lichtung_fuettern
 OK      175_garten_halten
+OK      176_eismaschine
 OK      900_selbsttest
 Absturzberichte:        0
