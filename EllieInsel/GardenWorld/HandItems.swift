@@ -4,11 +4,15 @@ import SwiftUI
 enum HandItem: Hashable {
     case harvest(HarvestItem)
     case dish(DishKind)
+    case ice(IceKind)
+    case costume(Costume)
 
     var asset: String {
         switch self {
         case .harvest(let h): return h.asset
         case .dish(let d): return d.asset
+        case .ice(let i): return i.asset
+        case .costume(let c): return c.asset
         }
     }
 
@@ -16,6 +20,8 @@ enum HandItem: Hashable {
         switch self {
         case .harvest(let h): return h.emoji
         case .dish(let d): return d.emoji
+        case .ice(let i): return i.emoji
+        case .costume(let c): return c.emoji
         }
     }
 
@@ -23,6 +29,8 @@ enum HandItem: Hashable {
         switch self {
         case .harvest(let h): return h.name
         case .dish(let d): return d.name
+        case .ice(let i): return i.name
+        case .costume(let c): return c.name
         }
     }
 }
@@ -39,6 +47,11 @@ extension GardenWorldModel {
     /// Was in der Leiste liegt: Ernte zuerst, dann Gekochtes (jeweils mit Anzahl).
     func handItems(limit: Int) -> [(item: HandItem, count: Int)] {
         var list: [(item: HandItem, count: Int)] = []
+        if trayCostumes {
+            return w.costumes.map { (.costume($0), 1) }
+        }
+        // Eis zuerst: das ist der Liebling
+        for i in IceKind.allCases where (w.ice[i.rawValue] ?? 0) > 0 { list.append((.ice(i), w.ice[i.rawValue] ?? 0)) }
         for h in HarvestItem.allCases where w.count(h) > 0 { list.append((.harvest(h), w.count(h))) }
         for d in DishKind.allCases where w.count(d) > 0 { list.append((.dish(d), w.count(d))) }
         return Array(list.prefix(limit))
@@ -85,6 +98,10 @@ extension GardenWorldModel {
     func dropHand(_ item: HandItem, at loc: CGPoint) {
         held = nil
         guard let p = scenePoint(loc) else { return }
+        if hitsIceMachine(p) {
+            dropIntoMachine(item)
+            return
+        }
         let now = Date()
         var best: (index: Int, distance: Double)?
         for i in actors.indices {
@@ -107,6 +124,16 @@ extension GardenWorldModel {
         let actor = actors[i]
         let pos = actor.position(at: Date())
         let above = CGPoint(x: pos.x, y: pos.y - CGFloat(actor.resident?.size ?? 0.105) * 1.3)
+
+        if case .costume(let c) = item {
+            if actor.resident == nil {
+                dress(c, actor: i)
+            } else {
+                react("🙈", at: above)
+                say("Die Verkleidung ist für Printatops.")
+            }
+            return
+        }
 
         guard let r = actor.resident else {
             // Printatops probiert alles, was man essen kann.
@@ -151,6 +178,12 @@ extension GardenWorldModel {
             } else {
                 say("Das schmeckt!")
             }
+        case .ice where !r.foods.isEmpty:
+            consume(item)
+            enjoy()
+            react("💖", at: above)
+            audio.sfx("gw_sfx_essen", fallback: .munch)
+            say("Eis! Mmh, lecker!")
         case .dish(let d) where d.isFood && !r.foods.isEmpty:
             consume(item)
             enjoy()
@@ -181,6 +214,11 @@ extension GardenWorldModel {
             case .dish(let dish):
                 d.pantry[dish.rawValue, default: 1] -= 1
                 if (d.pantry[dish.rawValue] ?? 0) <= 0 { d.pantry[dish.rawValue] = nil }
+            case .ice(let i):
+                d.ice[i.rawValue, default: 1] -= 1
+                if (d.ice[i.rawValue] ?? 0) <= 0 { d.ice[i.rawValue] = nil }
+            case .costume:
+                break
             }
         }
     }

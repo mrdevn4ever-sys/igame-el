@@ -154,6 +154,16 @@ struct SceneLayer: View {
 
     private var homeContent: some View {
         ZStack(alignment: .topLeading) {
+            // Eismaschine: Früchte hineinziehen, Eis kommt heraus
+            if ImageCache.image("gw_station_eismaschine") != nil {
+                IceMachineView(model: model, size: W * 0.1)
+                    .contentShape(Rectangle())
+                    .onTapGesture { model.iceMachineTapped() }
+                    .feet(WorldLayout.iceMachine, size: W * 0.1, in: s)
+                    .zIndex(WorldLayout.iceMachine.y)
+                    .accessibilityLabel("Eismaschine")
+            }
+
             // Haustür: führt in die Wohnstube (Küche, Spielregal, Staffelei, Bett).
             sceneButton(WorldLayout.houseDoor, label: "Ins Haus") {
                 guard !model.building else { return }
@@ -971,7 +981,13 @@ struct ActorsLayer: View {
         // Bilder schauen nach rechts; Emojis meist nach links
         let hasImage = ImageCache.image(asset) != nil
         let flip = hasImage ? a.facingLeft : !a.facingLeft
-        return WorldPic(asset, emoji, size: sz)
+        // Verkleidung liegt deckungsgleich auf «stehen»; in anderen Posen wird sie kurz ausgeblendet.
+        let costumes = a.resident == nil && asset == "gw_dino_stehen" ? model.wornCostumes : []
+        return ZStack {
+            ForEach(costumes.filter { $0 == .feenfluegel }) { c in WorldPic(c.asset, c.emoji, size: sz) }
+            WorldPic(asset, emoji, size: sz)
+            ForEach(costumes.filter { $0 != .feenfluegel }) { c in WorldPic(c.asset, c.emoji, size: sz) }
+        }
             .scaleEffect(x: flip ? -1 : 1, y: 1)
             .background(alignment: .bottom) { if !flies { GroundShadow(width: sz * 0.6).offset(y: -sz * 0.06) } }
             .offset(y: bob + hop)

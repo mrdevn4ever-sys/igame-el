@@ -7,6 +7,8 @@ enum GardenCatalog {
 
     /// Weitere Dekorationen, die nach abgeschlossenen Runden gewählt werden können.
     static let rewardItems: [String] = [
+        "g2_puppenhaus", "g2_kuscheleinhorn", "g2_spiegel", "g2_schmuckkaestchen", "g2_teeservice", "g2_kissen_herz",
+        "g2_blumenvase", "g2_lichterkette_herzen",
         "g2_gartenzwerg", "g2_vogeltraenke", "g2_gartenlaterne", "g2_schubkarre", "g2_giesskanne_blumen", "g2_schaukel",
         "g2_sandkasten", "g2_vogelscheuche", "g2_bienenkorb", "g2_regenfass", "g2_wegweiser", "g2_obstbaum_klein"
     ]
@@ -41,6 +43,8 @@ enum GardenCatalog {
             switch String(item.dropFirst(3)) {
             case "tanne", "obstbaum_klein", "schaukel", "vogelscheuche": return 1.9
             case "sandkasten", "schubkarre", "regenfass", "zaun", "wegweiser", "vogeltraenke", "bienenkorb": return 1.4
+            case "puppenhaus", "lichterkette_herzen": return 1.5
+            case "kuscheleinhorn", "spiegel", "kissen_herz": return 1.2
             case "gaensebluemchen", "tulpen", "farn", "pilzgruppe": return 0.9
             default: return 1.15
             }

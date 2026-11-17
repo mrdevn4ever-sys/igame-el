@@ -27,6 +27,15 @@ struct GardenWorldView: View {
                 SelfTest.run(m)
                 if let o = DemoMode.value("-overlay") { m.openDemoOverlay(o) }
                 if DemoMode.flag("-gardenplay") { m.runDemoPlay() }
+                if DemoMode.flag("-eis") {
+                    // Simulator: Eismaschine füllen und laufen lassen, Printatops verkleiden
+                    m.edit { d in
+                        d.worn = ["kopf": Costume.krone.rawValue, "bauch": Costume.tutu.rawValue, "ruecken": Costume.feenfluegel.rawValue]
+                        d.ice["regenbogen"] = 1
+                    }
+                    m.machineInput = [.erdbeere, .apfel, .heidelbeeren]
+                    m.machineLastDrop = Date().addingTimeInterval(2)
+                }
                 if DemoMode.flag("-halten") {
                     // Simulator: ein Ding aus der Leiste in der Hand zeigen (über Printatops)
                     Task { @MainActor in
@@ -215,6 +224,18 @@ struct GardenWorldContent: View {
     private var handTray: some View {
         let items = model.handItems(limit: 6)
         return HStack(spacing: 8) {
+            // Umschalten: Essen ↔ Verkleidungskiste
+            Button {
+                app.audio.effect(.tap)
+                model.trayCostumes.toggle()
+                model.say(model.trayCostumes ? "Die Verkleidungskiste! Zieh etwas auf Printatops." : "Dein Essen.")
+            } label: {
+                WorldPic(model.trayCostumes ? "gw_korb_voll" : "gw_kostuem_krone", model.trayCostumes ? "🧺" : "👑", size: 46)
+                    .frame(width: 62, height: 62)
+                    .background(RoundedRectangle(cornerRadius: 16).fill(Theme.lightYellow))
+            }
+            .buttonStyle(PressableStyle())
+            .accessibilityLabel(model.trayCostumes ? "Essen" : "Verkleidungskiste")
             ForEach(items.indices, id: \.self) { i in
                 let entry = items[i]
                 WorldPic(entry.item.asset, entry.item.emoji, size: 50)

@@ -9,6 +9,7 @@ enum WorldReward: Equatable {
     case boat(BoatKind)
     case chime(ChimeKind)
     case deco(String)
+    case costume(Costume)
 
     init(_ raw: String) {
         let parts = raw.split(separator: ":", maxSplits: 1).map(String.init)
@@ -19,6 +20,7 @@ enum WorldReward: Equatable {
         case "wasser": self = WaterPiece(rawValue: parts[1]).map { .piece($0) } ?? .deco("🌷")
         case "boot": self = BoatKind(rawValue: parts[1]).map { .boat($0) } ?? .deco("🌷")
         case "klang": self = ChimeKind(rawValue: parts[1]).map { .chime($0) } ?? .deco("🌷")
+        case "kostuem": self = Costume(rawValue: parts[1]).map { .costume($0) } ?? .deco("🌷")
         default: self = .deco(parts[1])
         }
     }
@@ -30,6 +32,7 @@ enum WorldReward: Equatable {
         case .piece(let w): return "wasser:\(w.rawValue)"
         case .boat(let b): return "boot:\(b.rawValue)"
         case .chime(let c): return "klang:\(c.rawValue)"
+        case .costume(let c): return "kostuem:\(c.rawValue)"
         case .deco(let e): return e
         }
     }
@@ -41,6 +44,7 @@ enum WorldReward: Equatable {
         case .piece(let w): return w.name
         case .boat(let b): return b.name
         case .chime(let c): return c.name
+        case .costume(let c): return c.name
         case .deco(let e): return GardenCatalog.names[e].map { $0.capitalizedFirst } ?? "Gartenschmuck"
         }
     }
@@ -53,6 +57,7 @@ enum WorldReward: Equatable {
         case .piece: return "Für deinen Wasserweg am Bach"
         case .boat: return "Fährt auf deinem Bach"
         case .chime: return "Klingt auf der Wunderlichtung"
+        case .costume: return "Verkleidung für Printatops"
         case .deco: return "Für deinen Garten"
         }
     }
@@ -64,6 +69,7 @@ enum WorldReward: Equatable {
         case .piece(let w): return w.asset
         case .boat(let b): return b.asset
         case .chime(let c): return c.asset
+        case .costume(let c): return c.asset
         case .deco(let e): return GardenCatalog.asset(e)
         }
     }
@@ -75,6 +81,7 @@ enum WorldReward: Equatable {
         case .piece: return "〰️"
         case .boat(let b): return b.emoji
         case .chime(let c): return c.emoji
+        case .costume(let c): return c.emoji
         case .deco(let e): return e
         }
     }
@@ -86,6 +93,7 @@ enum WorldReward: Equatable {
         case .piece(let w): return "\(w.name) für deinen Bach."
         case .boat(let b): return "Ein \(b.name) für deinen Bach."
         case .chime(let c): return "Ein Klangding: \(c.name)."
+        case .costume(let c): return "\(c.name) für Printatops! Du findest sie in der Verkleidungskiste."
         case .deco: return "Das kommt in deinen Garten."
         }
     }
@@ -98,6 +106,7 @@ enum WorldReward: Equatable {
         case .piece(let w): if !d.world.pieces.contains(w) { d.world.pieces.append(w) }
         case .boat(let b): if !d.world.boats.contains(b) { d.world.boats.append(b) }
         case .chime(let c): if !d.world.chimeKinds.contains(c) { d.world.chimeKinds.append(c) }
+        case .costume(let c): if !d.world.costumes.contains(c) { d.world.costumes.append(c) }
         case .deco(let e): d.garden.inventory.append(e)
         }
     }
@@ -107,6 +116,8 @@ enum WorldReward: Equatable {
         let w = data.world
         var rng = SeededGenerator(seed: UInt64(truncatingIfNeeded: roundID.stableHash))
         var useful: [WorldReward] = []
+        // Verkleidungen zuerst anbieten (Lieblingsthema), dann den Rest
+        useful += Costume.allCases.filter { !w.costumes.contains($0) }.map { .costume($0) }
         useful += PlantKind.allCases.filter { !w.seeds.contains($0) }.map { .seed($0) }
         if w.workshopOpen {
             var kits: [BuildKind] = [.bank, .futterstelle, .insektenhotel, .blumentopf, .windspiel, .vogelhaus]

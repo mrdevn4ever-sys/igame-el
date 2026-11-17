@@ -93,6 +93,13 @@ final class GardenWorldModel {
     var held: HandItem?
     var heldAt: CGPoint = .zero
     var reactions: [Reaction] = []
+    /// Eismaschine: eingefüllte Früchte, läuft bis, zuletzt herausgekommenes Eis.
+    var machineInput: [HarvestItem] = []
+    var machineRunUntil: Date?
+    var iceBurst: (kind: IceKind, at: Date)?
+    @ObservationIgnored var machineLastDrop = Date.distantPast
+    /// Inhalt der Leiste: Essen oder die Verkleidungskiste.
+    var trayCostumes = false
     /// Mitwischen am Bildrand: Ziel in Viertel-Bildschirmen; der Zähler löst das Wischen aus.
     var scrollTarget = 0
     var scrollTick = 0
@@ -434,6 +441,8 @@ final class GardenWorldModel {
         if let b = boat, now.timeIntervalSince(b.start) > b.total + 0.6 { finishBoat() }
         flyers.removeAll { now.timeIntervalSince($0.start) > 1.2 }
         if !reactions.isEmpty { reactions.removeAll { now.timeIntervalSince($0.start) > 1.5 } }
+        tickIceMachine(now: now)
+        if let b = iceBurst, now.timeIntervalSince(b.at) > 1.7 { iceBurst = nil }
     }
 
     // MARK: - Pflanzen
@@ -785,6 +794,11 @@ final class GardenWorldModel {
             let here = a.position(at: now)
             var target = randomPoint(for: a.resident)
             var pose: String?
+            // Verkleidet zeigt sich Printatops gern: meist bleibt er stehen.
+            if a.id == "dino", !w.worn.isEmpty, Int.random(in: 0..<3) != 0 {
+                actors[i].restUntil = now.addingTimeInterval(Double.random(in: 3...6))
+                continue
+            }
             if a.id == "dino" {
                 // Printatops besucht Bank, Brücke oder Picknick
                 if let bench = w.built.first(where: { $0.area == area && $0.kind == .bank }), Int.random(in: 0..<3) == 0 {

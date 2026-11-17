@@ -183,6 +183,8 @@ run 173_garten3_spielwiese 7 0 -screen garden -world voll -area haus -panotest -
 run 174_lichtung_fuettern 7 0 -screen garden -world voll -area lichtung
 # Entdecken: Ding aus der Leiste in der Hand
 run 175_garten_halten 5 0 -screen garden -world voll -area haus -halten
+# Eismaschine mit Früchten (läuft gleich) und verkleideter Printatops
+run 176_eismaschine 6 3 -screen garden -world voll -area haus -eis
 # Selbsttest der Spiellogik (Wachstum, Wasserweg, Geschenke, Spielstand): bei einem Fehler ABSTURZ im Bericht
 run 900_selbsttest 6 0 -screen garden -world voll -selbsttest
 

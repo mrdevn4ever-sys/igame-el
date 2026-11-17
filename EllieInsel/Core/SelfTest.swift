@@ -11,6 +11,7 @@ enum SelfTest {
         timedGrowth(model)
         waterFlow(model)
         feeding(model)
+        iceRecipes()
         rewards()
         saveRoundTrip()
         layout()
@@ -89,6 +90,17 @@ enum SelfTest {
         check(!model.feed(.hase), "nicht sofort noch einmal füttern")
         check(!model.feed(.fisch), "Fisch wird nicht aus dem Korb gefüttert")
         model.edit { d in d = saved }
+    }
+
+    /// Eis-Rezepte und Verkleidungs-Plätze.
+    private static func iceRecipes() {
+        check(IceKind.recipe([.erdbeere]) == .erdbeer, "Erdbeere gibt Erdbeereis")
+        check(IceKind.recipe([.erdbeere, .erdbeere]) == .herz, "zwei Erdbeeren geben Herz-Eis")
+        check(IceKind.recipe([.erdbeere, .heidelbeeren]) == .einhorn, "Erdbeere und Heidelbeere geben Einhorn-Eis")
+        check(IceKind.recipe([.apfel, .erdbeere, .karotte]) == .regenbogen, "drei Früchte geben Regenbogen-Eis")
+        check(IceKind.recipe([.salat]) == .schoko, "Überraschung")
+        check(!IceKind.accepts(.tulpe), "Blumen kommen nicht in die Eismaschine")
+        check(Set(Costume.allCases.map(\.slot)).count == 6, "sechs Verkleidungs-Plätze")
     }
 
     private static func rewards() {

@@ -1269,6 +1269,12 @@ struct WorldData: Codable, Equatable {
     var gardenLayout = 0
     /// Tag, an dem ein Tier zuletzt sein Dankeschön gebracht hat (Bewohner → Datum).
     var fedGift: [String: Date] = [:]
+    /// Eis aus der Eismaschine (Sorte → Anzahl) und schon entdeckte Sorten.
+    var ice: [String: Int] = [:]
+    var iceFound: [String] = []
+    /// Verkleidungen: welche das Kind hat und was Printatops trägt (Platz → Verkleidung).
+    var costumes: [Costume] = Costume.starter
+    var worn: [String: String] = [:]
 
     init() {}
 
@@ -1314,6 +1320,10 @@ struct WorldData: Codable, Equatable {
         houseVisited = (try? c.decode(Bool.self, forKey: .houseVisited)) ?? d.houseVisited
         gardenLayout = (try? c.decode(Int.self, forKey: .gardenLayout)) ?? d.gardenLayout
         fedGift = (try? c.decode([String: Date].self, forKey: .fedGift)) ?? d.fedGift
+        ice = (try? c.decode([String: Int].self, forKey: .ice)) ?? d.ice
+        iceFound = (try? c.decode([String].self, forKey: .iceFound)) ?? d.iceFound
+        costumes = (try? c.decode([Costume].self, forKey: .costumes)) ?? d.costumes
+        worn = (try? c.decode([String: String].self, forKey: .worn)) ?? d.worn
     }
 
     func count(_ item: HarvestItem) -> Int { basket[item.rawValue] ?? 0 }
