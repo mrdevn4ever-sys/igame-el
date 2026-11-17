@@ -1,0 +1,169 @@
+{
+  "abweichungen_hinweise": [
+    "Neun Eissorten plus leere Waffel; Waffel als gemeinsames Raster in alle Varianten übernommen.",
+    "Einzelne Zutaten sind ohne Kontext bei sehr kleiner Anzeige nicht eindeutig erkennbar."
+  ],
+  "dateien": {
+    "gw_eis_apfel.png": {
+      "alpha_bbox_xyxy": [
+        142,
+        71,
+        365,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "c61e6982db7b13196640c45083b753b5b4314ef7fe560cafc0368825c59a79d0"
+    },
+    "gw_eis_einhorn.png": {
+      "alpha_bbox_xyxy": [
+        142,
+        26,
+        365,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "a79da5aec5793cdfacc558d276cd37812eee713b915114a7f9b07bad01ac230d"
+    },
+    "gw_eis_erdbeer.png": {
+      "alpha_bbox_xyxy": [
+        142,
+        71,
+        365,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "29d241194177a2099fcacf9c2414923ad89a3ec54ffef11644044cd07c6c6b1d"
+    },
+    "gw_eis_heidelbeer.png": {
+      "alpha_bbox_xyxy": [
+        142,
+        71,
+        365,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "408c34f0cfa1a6a2e19467e5c14347082f66f68217fb5d4d2f85cd43d5e70e2c"
+    },
+    "gw_eis_herz.png": {
+      "alpha_bbox_xyxy": [
+        156,
+        109,
+        351,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "adef93b4c79d0826c2ac7ffae2ce09c4e64490b002d1309836c5805402b9e1d9"
+    },
+    "gw_eis_karotten.png": {
+      "alpha_bbox_xyxy": [
+        142,
+        71,
+        365,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "4e6697b46a032466c4c227ff355ba795a7e0af0eeeae0110a13212c928e3566b"
+    },
+    "gw_eis_kugel_leer.png": {
+      "alpha_bbox_xyxy": [
+        173,
+        224,
+        339,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "fb95880395fa50ded93ba5c37901b82ff9c9f05c8f1ca7052405ea59276fca57"
+    },
+    "gw_eis_regenbogen.png": {
+      "alpha_bbox_xyxy": [
+        119,
+        28,
+        384,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "5febfae418e5b18fd26f4d49bbdd549f0c5c5242f5f4af7915355dded0be4fd5"
+    },
+    "gw_eis_schoko.png": {
+      "alpha_bbox_xyxy": [
+        142,
+        71,
+        365,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "fcf01fc5f5a38561eddd55bff3c31a093ab6080ea9395c6e722b47ca5ad91f9c"
+    },
+    "gw_eis_sonnenblumen.png": {
+      "alpha_bbox_xyxy": [
+        142,
+        71,
+        365,
+        472
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "sha256": "1b9bbb4a5c210bf93f42d0e7dc638999b0f286ce160e7add8bf75adfc21ca704"
+    }
+  },
+  "herstellung": "Originale lokal modellierte 3D-Objekte mit Blender 4.5.15 LTS/Cycles; Finale per Pillow registriert/freigestellt. Keine externen Bild-/Modellanbieter oder fremden Figuren.",
+  "manifest": "assets/Entdecken.csv",
+  "manifest_sha256": "e583424d0394a246dec3bf3be0f9ade6abd4de747236f14890b2379a57b53010",
+  "paket": "B",
+  "pruefung": "Manifest, PNG/Grösse, transparente Ecken und Pixelregistrierung: PASS. Native und App-Grössen-Komposite auf Creme und #202020 assistentenseitig visuell geprüft; keine Nutzerfreigabe oder iPad-Laufzeitprüfung.",
+  "quelle_und_qa": {
+    "parent_manifest_qa_sha256": "ca95e1db130c7adf52bc0b5ec0840319a28cb229bbab34a6a3d35e83552d67b8",
+    "receipt": "B/Provenienz.json",
+    "receipt_sha256": "a6266b82f3113034dc5915ce95ceb177055fbf50ef08d01117af42d8c5e89cd2"
+  },
+  "referenzen": {
+    "garten2_baumstumpf.png": "1820c8569692388a53ef5aba5741fac99c43f6d9ff923f3cd339a214fdcab3df",
+    "garten2_gartenzwerg.png": "4767f8c3506f830a10cf8c37341fa94af6e59b25af0a71aa2a09170e843c5e61",
+    "gw_dino_stehen.png": "7500b970afe845d07247a66d24c786c234eca7e703c3e81d28dbb1561d3c9847",
+    "gw_szene_garten_tag.jpg": "52817a16314909d05f4202ba9ac37986831aacce55ee847cbab07fb8fdd77df6"
+  },
+  "registrierung": {
+    "different_rgba_pixels_by_flavor": {
+      "gw_eis_apfel.png": 0,
+      "gw_eis_einhorn.png": 0,
+      "gw_eis_erdbeer.png": 0,
+      "gw_eis_heidelbeer.png": 0,
+      "gw_eis_herz.png": 0,
+      "gw_eis_karotten.png": 0,
+      "gw_eis_regenbogen.png": 0,
+      "gw_eis_schoko.png": 0,
+      "gw_eis_sonnenblumen.png": 0
+    },
+    "empty_cone_covered_pixels": 9326,
+    "shared_lower_roi_start_y": 332
+  }
+}
