@@ -11,7 +11,7 @@ on:
 
 jobs:
   upload:
-    runs-on: macos-26
+    runs-on: xcode-27
     timeout-minutes: 60
     env:
       ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
@@ -27,15 +27,16 @@ jobs:
           done
           [ -n "${{ secrets.ASC_KEY_P8 }}" ] || { echo "::error::Secret ASC_KEY_P8 fehlt"; exit 1; }
 
-      - name: Xcode 26 wählen
+      - name: Xcode 27 wählen
         run: |
           ls -d /Applications/Xcode*.app
-          # Neueste stabile Xcode-26-Version (App Store Connect verlangt das iOS-26-SDK)
-          XC=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | grep -viE "beta|release_candidate|_rc" | sort -V | tail -1)
-          [ -n "$XC" ] || XC=$(ls -d /Applications/Xcode_26*.app 2>/dev/null | sort -V | tail -1)
-          [ -n "$XC" ] || { echo "::error::Kein Xcode 26 auf dem Runner gefunden"; exit 1; }
+          # Neueste stabile Xcode-27-Version auf dem Xcode-27-Runner.
+          XC=$(ls -d /Applications/Xcode_27*.app 2>/dev/null | grep -viE "beta|release_candidate|_rc" | sort -V | tail -1)
+          [ -n "$XC" ] || { echo "::error::Kein stabiles Xcode 27 auf dem Runner gefunden"; exit 1; }
           sudo xcode-select -s "$XC"
           xcodebuild -version
+          SDK=$(xcrun --sdk iphoneos --show-sdk-version)
+          [ "${SDK%%.*}" -ge 27 ] || { echo "::error::iOS-SDK $SDK ist älter als 27"; exit 1; }
 
       - name: API-Schlüssel ablegen
         run: |
